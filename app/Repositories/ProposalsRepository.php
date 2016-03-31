@@ -21,6 +21,33 @@ class ProposalsRepository
             ->get();
     }
 
+    /**
+     * Get all of the responses proposals for a given user.
+     *
+     * @param  User  $user
+     * @return Collection
+     */
+    public function getResponsesForUser($user_id)
+    {
+        return Proposal::where('responder_id', $user_id)
+            ->orderBy('created_at', 'asc')
+            ->get();
+    }
+
+
+//    /**
+//     * Get all of the proposals without responses.
+//     *
+//     * @param  User  $user
+//     * @return Collection
+//     */
+//    public function getProposalWithoutResponse()
+//    {
+//        return Proposal::whereNull('response')
+//            ->orderBy('created_at', 'asc')
+//            ->get();
+//    }
+
     public function sendProposalToCreator ($proposal)
     {
         //dd($proposal);

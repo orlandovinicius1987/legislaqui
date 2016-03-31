@@ -66,7 +66,15 @@ Route::group(['middleware' => ['web','auth']], function ()
 
     Route::get('proposals/{id}/destroy', ['as'=>'proposal.destroy', 'uses'=>'ProposalsController@destroy']);
 
+    Route::get('proposals/{id}/response', ['as'=>'proposal.response', 'uses'=>'ProposalsController@response']);
+
+    Route::patch('proposals/{id}/updateResponse', ['as'=>'proposal.updateResponse', 'uses'=>'ProposalsController@updateResponse']);
+
+    Route::get('proposals/notresponded', ['as'=>'proposals.notresponded', 'uses'=>'ProposalsController@notResponded']);
+
     Route::get('users/{id}/proposals', ['as'=>'users.proposals', 'uses'=>'UsersController@proposals']);
+
+    Route::get('users/{id}/responses', ['as'=>'users.responses', 'uses'=>'UsersController@responses']);
 
 });
 

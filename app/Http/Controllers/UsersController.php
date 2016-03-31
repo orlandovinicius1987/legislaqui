@@ -34,7 +34,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Display a list of all of the user's proposals.
+     * Display a list of all user's proposals.
      *
      * @param  Request $request
      * @return Response
@@ -43,6 +43,19 @@ class UsersController extends Controller
     {
         return view('users.proposals', [
             'proposals' => $this->proposalsRepository->forUser($user_id)
+        ]);
+    }
+
+    /**
+     * Display a list of all of the admin user's proposal responses.
+     *
+     * @param  Request $request
+     * @return Response
+     */
+    public function responses($responder_id)
+    {
+        return view('users.responses', [
+            'proposals' => $this->proposalsRepository->getResponsesForUser($responder_id)
         ]);
     }
 }

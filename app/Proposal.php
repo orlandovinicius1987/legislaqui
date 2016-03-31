@@ -25,5 +25,11 @@ class Proposal extends Eloquent {
     {
         return $this->belongsToMany(User::class, 'likes', 'proposal_id', 'user_id' );
     }
+
+    public function responder()
+    {
+        return $this->belongsTo(User::class, 'responder_id');
+    }
+
 }
 

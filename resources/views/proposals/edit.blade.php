@@ -1,24 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.alerj')
 
 @section('title', 'Editar Proposta Legislativa')
 
 @section('content')
 
-    <div class="container">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="">
+        <div class="">
 
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            @include('partials.error')
 
             <div class="panel panel-default">
-                <div class="panel-heading">Editar Proposta Legislativa</div>
+                <div class="panel-heading text-center"><strong>Editar Proposta Legislativa</strong></div>
                 <div class="panel-body">
 
                     {{ Form::model($proposal, [
@@ -29,11 +21,11 @@
 
                    {{-- Form::open(array('route' => 'proposal.update', 'class' => 'form')) --}}
 
-                    <div class="form-group">
+                    <div class="form-group coluna_02">
                         {{ Form::label('Nome da Proposta') }}
                         {{ Form::text('name', null,
                             array('required',
-                                  'class'=>'form-control',
+                                  'class'=>'campo',
                                   'placeholder'=>'Nome')) }}
                     </div>
 
@@ -41,7 +33,7 @@
                         {{ Form::label('Ideia Central') }}
                         {{ Form::textarea('idea_central', null,
                             array('required',
-                                  'class'=>'form-control',
+                                  'class'=>'textarea',
                                   'placeholder'=>'Resuma sua Ideia')) }}
                     </div>
 
@@ -49,7 +41,7 @@
                         {{ Form::label('Problema') }}
                         {{ Form::textarea('problem', null,
                             array('required',
-                                  'class'=>'form-control',
+                                  'class'=>'textarea',
                                   'placeholder'=>'Descreva o Problema')) }}
                     </div>
 
@@ -57,14 +49,14 @@
                         {{ Form::label('Exposição da Ideia') }}
                         {{ Form::textarea('idea_exposition', null,
                             array('required',
-                                  'class'=>'form-control',
+                                  'class'=>'textarea',
                                   'placeholder'=>'Descreva sua Ideia')) }}
                     </div>
 
 
                     <div class="form-group">
                         {{ Form::submit('Editar',
-                          array('class'=>'btn btn-primary')) }}
+                          array('class'=>'btn btn-primary botao')) }}
                     </div>
 
                     {{ Form::close() }}

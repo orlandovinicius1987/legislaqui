@@ -12,9 +12,12 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="http://getbootstrap.com/examples/theme/theme.css">
-
+    {{--<link rel="stylesheet" href="http://getbootstrap.com/examples/theme/theme.css">--}}
     {{ HTML::style('css/style.css') }}
+
+    <!-- Portal Alerj -->
+    {{ HTML::style('css/estilos.css') }}
+    {{--<link rel="stylesheet" href="http://www.portalalerj.rj.gov.br/Content/css/estilos.css">--}}
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

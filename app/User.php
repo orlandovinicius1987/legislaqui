@@ -4,6 +4,7 @@ namespace App;
 
 use \App\Proposal;
 use \App\Like;
+use Auth;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'uf'
+        'name', 'email', 'password', 'uf', 'is_admin'
     ];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
@@ -43,4 +44,15 @@ class User extends Authenticatable
     public function states() {
         return $this->hasOne(State::class);
     }
+
+    // User has Roles
+    public function roles() {
+        return $this->has(Role::class);
+    }
+
+    //is_admin attribute
+    public function getIsAdminAttribute() {
+        return Auth::user()->role_id === 0 or Auth::user()->role_id === 1;
+    }
+
 }

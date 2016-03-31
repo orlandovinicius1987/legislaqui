@@ -25,11 +25,11 @@ class CreateProposalsTable extends Migration
             $table->boolean('open')->default(true);
             $table->date('pub_date')->nullable();
             $table->date('limit_date')->nullable();
-
             $table->text('idea_central');
             $table->text('problem');
             $table->text('idea_exposition');
-
+            $table->text('response')->nullable();
+            $table->integer('responder_id')->unsigned()->nullable();
             $table->timestamps();
         });
 

@@ -4,12 +4,18 @@ use App\Proposal;
 use App\State;
 use App\User;
 
+use Faker\Factory;
+
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ProposalsTest extends TestCase
 {
+    //use DatabaseMigrations;
+    //use DatabaseTransactions;
+    //use WithoutMiddleware;
+
     /**
      * A basic functional test example.
      *
@@ -17,9 +23,13 @@ class ProposalsTest extends TestCase
      */
     public function testRandomProposal()
     {
-        $proposal = Proposal::all()->random();
+        //Use Eloquent
+        //$proposal = Proposal::all()->random();
 
-        $this->visit('/')
+        //Not use Eloquent
+        $proposal = factory(App\Proposal::class)->create();
+
+        $this->visit('/proposals')
             ->see($proposal->name);
     }
 
@@ -38,6 +48,15 @@ class ProposalsTest extends TestCase
             ->see($user_name);
     }
 
+    public function testProposalsControllerIndex()
+    {
+        $response = $this->call('GET', 'proposals');
+        $this->assertViewHas('proposals');
+        // getData() returns all vars attached to the response.
+        $proposals = $response->original->getData()['proposals'];
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $proposals);
+    }
+
     public function testClickProposal()
     {
         $proposal = Proposal::all()->shuffle()->first();
@@ -53,23 +72,33 @@ class ProposalsTest extends TestCase
 
     public function testRegisterAction ()
     {
+        //use the factory to create a Faker\Generator instance
+        $faker = Faker\Factory::create();
+        //Generate a User Data to Register
+        $name = $faker->name($gender = null|'male'|'female');
+        $email = $faker->freeEmail();
+        $pwd = '123456';
         $state = State::all()->random();
-        //State::where('uf', 'RJ')->get()->random();
 
         $this->visit('/')
             ->click('Registro')
-            ->seePageIs('/register')
-            ->type('Nome','name')
-            ->type('teste@gmail.com', 'email')
-            ->type('teste', 'password')
+            ->seePageIs('/login')
+            ->type($name,'name')
+            ->type($email, 'email')
+            ->type($pwd, 'password')
+            ->type($pwd, 'password_confirmation')
             ->select($state->uf, 'uf')
-            ->press('Registro');
-
+            ->press('Registro')
+            ->see('Registro feito com Sucesso.')
+            ->seePageIs('/')
+            ->seeInDatabase('users', ['email' => $email]);
     }
 
     public function testCreateProposal ()
     {
-        $this->testLogin()->visit('/proposals/create')
+        $user = User::all()->random();
+
+        $this->actingAs($user)->visit('/proposals/create')
             ->seePageIs('/proposals/create')
             ->type('idea name','name')
             ->type('central idea', 'idea_central')
@@ -79,4 +108,31 @@ class ProposalsTest extends TestCase
             ->see('Sucesso');
     }
 
+    public function testProposalResponse ()
+    {
+        //use the factory to create a Faker\Generator instance
+        $faker = Faker\Factory::create();
+        //generate a proposal response
+        $response = $faker->sentence($nbWords = 6, $variableNbWords = true);
+        //get first admin user in DB
+        $user = User::all()->where('is_admin', true)->first();
+        //authenticate the given user, navigate thru not responded menu, fill proposal response, see if it's in DB
+        $this->actingAs($user)
+            ->visit('/')
+            ->click('Sem Resposta')
+            ->seePageIs('/proposals/notresponded')
+            ->click('Responder Proposta')
+            ->see('Responder Proposta Legislativa')
+            ->type($response, 'response')
+            ->press('Responder')
+            ->see('Proposta Legislativa Respondida com Sucesso')
+            ->seeInDatabase('proposals', ['response' => $response]);
+    }
+
+    public function testProposalPaginates()
+    {
+        factory(App\Proposal::class, 50)->create();
+        $proposals = App\Proposal::paginate(10);
+        $this->assertEquals(10, $proposals->count());
+    }
 }

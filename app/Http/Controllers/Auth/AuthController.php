@@ -80,6 +80,7 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'uf' => $data['uf'],
+            'is_admin' => false
         ]);
     }
 
@@ -122,6 +123,10 @@ class AuthController extends Controller
     {
         Session::put('last_auth_attempt', 'register');
 
-        return $this->traitRegister($request);
+        $register = $this->traitRegister($request);
+
+        Session::flash('flash_msg','Registro feito com Sucesso.');
+
+        return $register;
     }
 }

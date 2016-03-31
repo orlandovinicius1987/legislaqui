@@ -30,6 +30,8 @@ class CreateHistoryTable extends Migration
             $table->text('idea_central');
             $table->text('problem');
             $table->text('idea_exposition');
+            $table->text('response')->nullable();
+            $table->integer('responder_id')->unsigned()->nullable();
 
             $table->integer('update_id')->unsigned();
             $table->timestamp('update_date');

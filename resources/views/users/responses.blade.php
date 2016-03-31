@@ -20,7 +20,7 @@
     <div class="">
         <div class="">
             <div class="panel panel-default">
-                <div class="panel-heading text-center"><strong>MINHAS IDEIAS LEGISLATIVAS</strong></div>
+                <div class="panel-heading text-center"><strong>IDEIAS LEGISLATIVAS RESPONDIDAS</strong></div>
                 <div class="panel-body">
                     <table id="datatable" class="table table-striped table-hover compact" cellspacing="0" width="100%">
                         <thead>

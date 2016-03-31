@@ -1,8 +1,6 @@
-
 <!-- Fixed navbar -->
 <nav class="navbar navbar-default">
-    <div class="container">
-
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -10,10 +8,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {{ Html::image(('img/alerj.png'), null, array( 'width' => 70, 'height' => 70 )) }}
+            {{--{{ Html::image(('img/alerj.png'), null, array( 'width' => 70, 'height' => 70 )) }}--}}
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <a class="navbar-brand" href="/">e-Cidadania</a>
+            {{--<a class="navbar-brand" href="/">e-Cidadania</a>--}}
             <ul class="nav navbar-nav">
                 <li class="active">{{ Html::linkRoute('proposals', 'Home')}}</li>
                 <li>{{ Html::linkRoute('about', 'Como Funciona?')}}</li>
@@ -29,13 +27,17 @@
                         <li class="dropdown-header">Nav header</li>
                         <li><a href="#">Separated link</a></li>
                         <li><a href="#">One more separated link</a></li>
+                        @elseif (Auth::user()->is_admin)
+                        {{--@elseif (Auth::user()->role_id === 0 or Auth::user()->role_id === 1)--}}
+                            <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>
+                            <a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
+                            <a href="{{ route('users.responses', Auth::user()->id) }}">Listar Minhas Respostas</a>
+                            <a href="{{ route('proposals.notresponded') }}">Sem Resposta</a>
                         @else
                             <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>
                             <a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
                         @endif
                     </ul>
-
-
                 </li>
             </ul>
 
@@ -59,5 +61,5 @@
                 @endif
             </ul>
         </div><!--/.nav-collapse -->
-    </div>
+    </div><!-- /.container-fluid -->
 </nav>

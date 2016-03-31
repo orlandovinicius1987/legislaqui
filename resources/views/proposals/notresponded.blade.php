@@ -18,19 +18,15 @@
     @endif
 
     <div class="panel panel-default">
+        <div class="panel-heading text-center"><strong>Propostas Legislativas sem Resposta</strong></div>
             <div class="panel-body">
-
-                {!! $proposals->links() !!}
-
                 <table id="datatable" class="table table-striped table-hover compact" cellspacing="0" width="100%">
+
                     <thead>
+                    <tr><td>{!! $proposals->links() !!}</td></tr>
                     <tr>
                         <th><h3>Proposta Legislativa</h3></th>
-                        @if (isset($is_not_responded) && Auth::user()->is_admin)
-                            <th><h3>Sem Resposta</h3></th>
-                        @else
-                            <th><h3>Apoios</h3></th>
-                        @endif
+                        <th><h3>Sem Resposta</h3></th>
                     </tr>
                     </thead>
 
@@ -48,12 +44,9 @@
                     @endforeach
                     </tbody>
                     <tfoot>
-                    <tr><td></td></tr>
+                    <tr><td>{!! $proposals->links() !!}</td></tr>
                     </tfoot>
                 </table>
-
-                {!! $proposals->links() !!}
-
             </div>
     </div>
 @stop

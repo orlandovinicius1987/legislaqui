@@ -1,42 +1,58 @@
-@extends('layouts.app')
+@extends('layouts.alerj')
 
 @section('title', 'Propostas Legislativas')
 
 @section('content')
 
-    <div class="container">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="">
+        <div class="">
+
+            @include('partials.error')
+
             <div class="panel panel-default">
-                <div class="panel-heading">{{ $proposal->name }}</div>
+                <div class="panel-heading"><h1>{{ $proposal->name }}</h1></div>
                 <div class="panel-body">
 
-                    <table class="table-responsive table-striped">
+                    <table class="table-responsive table-striped table-show">
                         <tbody>
-                            <tr><td>Situação:</td><td> {{ $proposal->open }}</td></tr>
-                            <tr><td>Data Publicação:</td><td> {{ $proposal->pub_date->format('d/m/Y') }}</td></tr>
-                            <tr><td>Data Limite:</td><td> {{ $proposal->limit_date->format('d/m/Y') }}</td></tr>
-                            <tr><td>Ideia Central:</td><td> {{ $proposal->idea_central }}</td></tr>
-                            <tr><td>Problema:</td><td> {{ $proposal->problem }}</td></tr>
-                            <tr><td>Exposição da Ideia:</td><td> {{ $proposal->idea_exposition }}</td></tr>
-                            <tr><td>Número de Apoios:</td><td> {{ $proposal->likes->count() }}</td></tr>
+                            <tr><td class="table-td-label-show">User Id</td><td class="table-td-show"> {{ $proposal->user->name }}</td></tr>
+                            <tr><td class="table-td-label-show">Situação</td><td class="table-td-show"> {{ $proposal->open }}</td></tr>
+                            <tr><td class="table-td-label-show">Data Publicação</td><td class="table-td-show"> {{ $proposal->pub_date->format('d/m/Y') }}</td></tr>
+                            <tr><td class="table-td-label-show">Data Limite</td><td class="table-td-show"> {{ $proposal->limit_date->format('d/m/Y') }}</td></tr>
+                            <tr><td class="table-td-label-show">Ideia Central</td><td class="table-td-show"> {{ $proposal->idea_central }}</td></tr>
+                            <tr><td class="table-td-label-show">Problema</td><td class="table-td-show"> {{ $proposal->problem }}</td></tr>
+                            <tr><td class="table-td-label-show">Exposição da Ideia</td><td class="table-td-show"> {{ $proposal->idea_exposition }}</td></tr>
+                            <tr><td class="table-td-label-show">Número de Apoios</td><td class="table-td-show"> {{ $proposal->likes->count() }}</td></tr>
+                            <tr></tr>
+                            {{-- if has response -> return response data, else null --}}
+                            <tr><td class="table-td-label-show">Autor Resposta</td><td class="table-td-show"> {{ $proposal->responder ? $proposal->responder->name  : null }} ({{ $proposal->responder ? $proposal->responder->email  : null }})</td></tr>
+                            <tr><td class="table-td-label-show">Resposta</td><td class="table-td-show"> {{ $proposal->response ? $proposal->response : null }}</td></tr>
                         </tbody>
                     </table>
 
-                    <div class="pull-left">
+                    <div class="pull-left botao">
                         {{--<a href="{{ URL::current() }}/like" class="btn btn-info" role="button">Apoiar essa Ideia!</a>--}}
-                        <a href="{{ route('proposal.like', $proposal->id) }}" class="btn btn-info" role="button">Apoiar essa Ideia!</a>
+                        <a href="{{ route('proposal.like', $proposal->id) }}" class="btn btn-info" role="button">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Apoiar essa Ideia!</a>
                     </div>
 
-                    <div class="pull-right">
+                    <div class="pull-right botao">
                         @can('edit', $proposal)
-                        <a href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary">Editar Proposta</a>
+                        <a href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Proposta</a>
                         @endcan
-                        <a href="{{ route('proposal.create') }}" class="btn btn-primary">Incluir Nova Proposta</a>
+                        <a href="{{ route('proposal.create') }}" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Proposta</a>
                         @can('destroy', $proposal)
-                        <a href="{{ route('proposal.destroy', $proposal->id) }}" class="btn btn-danger">Eliminar Proposta</a>
+                        <a href="{{ route('proposal.destroy', $proposal->id) }}" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Proposta</a>
                         @endcan
                     </div>
 
+                    {{--<div class="socialmedia">--}}
+                        {{--<div class="addthis_sharing_toolbox"></div>--}}
+                    {{--</div>--}}
+                    @include('partials.share', ['url' => 'http://e-democracia.alerj.rj,gov.br/'])
 
                 </div>
             </div>

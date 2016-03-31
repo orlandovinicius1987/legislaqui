@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         //Model::unguard();
 
+        //Inside Create_Roles_Table
+        //$this->call(RoleSeeder::class);
         $this->call(StateSeeder::class);
         $this->call(UserSeeder::class);
 

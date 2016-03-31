@@ -16,6 +16,7 @@ use Gate;
 
 use App\Http\Requests;
 use App\Http\Requests\ProposalFormRequest;
+use App\Http\Requests\ResponseFormRequest;
 use App\Http\Controllers\Controller;
 
 use Auth;
@@ -30,7 +31,7 @@ class ProposalsController extends Controller
 {
     public function index ()
     {
-       return view('proposals.index')->with('proposals', Proposal::all());
+       return view('proposals.index')->with('proposals', Proposal::paginate(20));
     }
 
     public function show ($id)
@@ -162,5 +163,71 @@ class ProposalsController extends Controller
         }
     }
 
+    public function notResponded()
+    {
+        return view('proposals.notresponded', [
+            'proposals' => Proposal::whereNull('response')->paginate(20),
+            'is_not_responded' => true
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function response($id)
+    {
+        //Get Proposal
+        $proposal = Proposal::findOrFail($id);
+
+        if (Gate::allows('edit', $proposal)) {
+            return view('proposals.response')->with('proposal', $proposal);
+        }
+        else {
+            return Redirect::route('proposals')->with('error_msg', 'Você não é o dono desta Proposta');
+        }
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function updateResponse ($id, ResponseFormRequest $formRequest)
+    {
+        $proposal = Proposal::findOrFail($id);
+
+        $input = $formRequest->except('_token','_method');
+
+        $input['responder_id'] = Auth::user()->id;
+
+        //Create ProposalHistory Object
+        $proposal_history = new ProposalHistory();
+        //Get attributes from Proposals Eloquent
+        $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), ['id','created_at', 'updated_at']));
+
+        //Append Update Info + Response
+        $proposal_history->proposal_id = $id;
+        $proposal_history->update_id =  Auth::user()->id;
+        $proposal_history->update_date = Carbon::now();
+        $proposal_history->response = $input['response'];
+        $proposal_history->responder_id = $input['responder_id'];
+        //$proposal_history->fill($input);
+
+        //dd($proposal_history);
+
+        //Save History
+        $proposal_history->save();
+
+        //Then update Proposal
+        $proposal->forcefill($input)->save();
+       // dd($proposal);
+        return Redirect::route('proposals')->with('proposal_crud_msg', 'Proposta Legislativa Respondida com Sucesso');
+
+    }
 }
 
