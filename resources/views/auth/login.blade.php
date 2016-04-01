@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <div class="col-xs-8 col-xs-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i>Login
+                                    <i class="fa fa-btn fa-sign-in fa-fw"></i>&nbsp; Login
                                 </button>
 
                                 <a class="btn btn-link form-forgot-pwd" href="{{ url('/password/reset') }}">Esqueceu sua Senha?</a>
@@ -145,7 +145,7 @@
                         <div class="form-group">
                             <div class="col-xs-8 col-xs-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>Registro
+                                    <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro
                                 </button>
                             </div>
                         </div>

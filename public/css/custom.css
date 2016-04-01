@@ -244,9 +244,9 @@ textarea {
     padding: 10px 0px 0px 0px;
 }
 
-    .form-horizontal .control-label {
-        text-align: right; !important   
-    }
+.form-horizontal .control-label {
+    text-align: right; !important
+}
 
 /* Pagination */
 .pagination a, .pagination span, .pagination li a, .pagination li span, .pagination>.disabled>span, .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
