@@ -12,9 +12,10 @@
                             {!! csrf_field() !!}
 
                             <div class="form-group{{ $errors->has('email') && Session::get('last_auth_attempt') == 'login' ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">E-Mail</label>
 
-                                <div class="col-md-6">
+                                <label class="col-xs-4 control-label">E-Mail</label>
+
+                                <div class="col-xs-8">
                                     <input type="email" class="campo" name="email" value="{{ old('email') }}" placeholder="Insira seu email">
 
                                     @if ($errors->has('email') && Session::get('last_auth_attempt') == 'login')
@@ -26,9 +27,9 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('password') && Session::get('last_auth_attempt') == 'login' ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Senha</label>
+                                <label class="col-xs-4 control-label">Senha</label>
 
-                                <div class="col-md-6">
+                                <div class="col-xs-8">
                                     <input type="password" class="campo" name="password" placeholder="Insira sua senha">
 
                                     @if ($errors->has('password') && Session::get('last_auth_attempt') == 'login')
@@ -40,7 +41,7 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
+                                <div class="col-xs-8 col-xs-offset-4">
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox" name="remember"> Permanecer conectado
@@ -50,12 +51,12 @@
                             </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-xs-8 col-xs-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-sign-in"></i>Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Esqueceu sua Senha?</a>
+                                <a class="btn btn-link form-forgot-pwd" href="{{ url('/password/reset') }}">Esqueceu sua Senha?</a>
                             </div>
                         </div>
                     </form>
@@ -71,9 +72,9 @@
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('name') && Session::get('last_auth_attempt') == 'register' ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Nome</label>
+                            <label class="col-xs-4 control-label">Nome</label>
 
-                            <div class="col-md-6">
+                            <div class="col-xs-8">
                                 <input type="text" class="campo" name="name" value="{{ old('name') }}" placeholder="Insira seu nome">
                                 @if ($errors->has('name') && Session::get('last_auth_attempt') == 'register')
                                     <span class="help-block">
@@ -84,9 +85,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') && Session::get('last_auth_attempt') == 'register' ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail</label>
+                            <label class="col-xs-4 control-label">E-Mail</label>
 
-                            <div class="col-md-6">
+                            <div class="col-xs-8">
                                 <input type="email" class="campo" name="email" value="{{ old('email') }}" placeholder="Insira seu email">
 
                                 @if ($errors->has('email') && Session::get('last_auth_attempt') == 'register')
@@ -98,9 +99,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') && Session::get('last_auth_attempt') == 'register' ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Senha</label>
+                            <label class="col-xs-4 control-label">Senha</label>
 
-                            <div class="col-md-6">
+                            <div class="col-xs-8">
                                 <input type="password" class="campo" name="password" placeholder="Insira sua senha">
 
                                 @if ($errors->has('password') && Session::get('last_auth_attempt') == 'register')
@@ -112,9 +113,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Confirme a Senha</label>
+                            <label class="col-xs-4 control-label">Confirme a Senha</label>
 
-                            <div class="col-md-6">
+                            <div class="col-xs-8">
                                 <input type="password" class="campo" name="password_confirmation" placeholder="Confirme sua senha">
 
                                 @if ($errors->has('password_confirmation'))
@@ -126,9 +127,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('uf') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">UF</label>
+                            <label class="col-xs-4 control-label">UF</label>
 
-                            <div class="col-md-6">
+                            <div class="col-xs-8">
 
                                 {{-- Form::Label('uf', 'UF:') --}}
                                 {{ Form::select('uf', $uf, null, ['class' => 'campo']) }}
@@ -142,7 +143,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-xs-8 col-xs-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i>Registro
                                 </button>

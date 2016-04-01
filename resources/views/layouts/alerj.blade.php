@@ -235,62 +235,61 @@
                 @include('partials.footer')
                 @include('partials.scripts')
             </div>
-            <div class="banner">
-                <div class="fio"></div>
-                <br>
+            {{--<div class="banner">--}}
+                {{--<div class="fio"></div>--}}
+                {{--<br>--}}
+                {{--<ul>--}}
+                {{--</ul>--}}
+                {{--<div class="paginacao_banner"></div>--}}
+            {{----}}
+                {{--<div class="modal" style="display: none" title="ATENÇÃO">--}}
+                    {{--<p>--}}
+                        {{--Você esta sendo direcionado para um website diferente do portal da ALERJ.--}}
+                        {{--<br />--}}
+                        {{--<br />--}}
+                        {{--Deseja continuar?--}}
+                    {{--</p>--}}
+                {{--</div>--}}
+                {{----}}
+{{--<link rel="stylesheet" type="text/css" href="http://www.portalalerj.rj.gov.br/Content/css/estilo_dsv.css" />--}}
+{{--<script type="text/javascript">--}}
+    {{--function downloadAnexo(caminho, tipoDocumento) {--}}
+        {{--window.location = rootUrl + 'Home/Download?caminho=' + caminho + '&tipoDocumento=' + tipoDocumento;--}}
+    {{--}--}}
+    {{--function redirecionaUrlExterna(url, isExibeAlerta, idCampo) {--}}
+        {{--if (url != "") {--}}
+            {{--if (url.indexOf("http") < 0) {--}}
+                {{--url = 'http://' + url;--}}
+            {{--}--}}
+            {{--if (isExibeAlerta == "true" || isExibeAlerta == "True") {--}}
+                {{--$(".modal").dialog({--}}
+                    {{--resizable: true,--}}
+                    {{--width: 500,--}}
+                    {{--height: 220,--}}
+                    {{--closeText: 'Fechar',--}}
+                    {{--modal: true,--}}
+                    {{--buttons: {--}}
+                        {{--SIM: function () {--}}
+                            {{--$(this).dialog("close");--}}
+                            {{--window.open(url, '_blank');--}}
+                            {{--return true;--}}
+                        {{--},--}}
+                        {{--NÃO: function () {--}}
+                            {{--$(this).dialog("close");--}}
+                            {{--return false;--}}
+                        {{--}--}}
+                    {{--}--}}
+                {{--});--}}
+            {{--} else {--}}
+                {{--window.open(url, '_blank');--}}
+            {{--}--}}
+        {{--} else--}}
+            {{--return false;--}}
 
-<ul>
-    
-</ul>
-<div class="paginacao_banner"></div>
+    {{--}--}}
+{{--</script>--}}
 
-<div class="modal" style="display: none" title="ATENÇÃO">
-    <p>
-        Você esta sendo direcionado para um website diferente do portal da ALERJ.
-        <br />
-        <br />
-        Deseja continuar?
-    </p>
-</div>
-<link rel="stylesheet" type="text/css" href="http://www.portalalerj.rj.gov.br/Content/css/estilo_dsv.css" />
-<script type="text/javascript">
-    function downloadAnexo(caminho, tipoDocumento) {
-        window.location = rootUrl + 'Home/Download?caminho=' + caminho + '&tipoDocumento=' + tipoDocumento;
-    }
-    function redirecionaUrlExterna(url, isExibeAlerta, idCampo) {
-        if (url != "") {
-            if (url.indexOf("http") < 0) {
-                url = 'http://' + url;
-            }
-            if (isExibeAlerta == "true" || isExibeAlerta == "True") {
-                $(".modal").dialog({
-                    resizable: true,
-                    width: 500,
-                    height: 220,
-                    closeText: 'Fechar',
-                    modal: true,
-                    buttons: {
-                        SIM: function () {
-                            $(this).dialog("close");
-                            window.open(url, '_blank');
-                            return true;
-                        },
-                        NÃO: function () {
-                            $(this).dialog("close");
-                            return false;
-                        }
-                    }
-                });
-            } else {
-                window.open(url, '_blank');
-            }
-        } else
-            return false;
-
-    }
-</script>
-
-            </div>
+            {{--</div>--}}
         </div>
     </div>
 

@@ -20,7 +20,7 @@ body {
 
 @media only screen and (max-width: 1016px) {
     .interna .alerj {
-        width: 580px;
+        /*width: 580px;*/
         min-height: 100px;
         overflow: hidden;
         float: right;
@@ -30,7 +30,7 @@ body {
 }
 @media only screen and (max-width: 836px) {
     .interna .alerj {
-        width: 440px;
+        /*width: 440px;*/
         min-height: 100px;
         overflow: hidden;
         float: left;
@@ -40,7 +40,7 @@ body {
 }
 @media only screen and (max-width: 496px) {
     .interna .alerj {
-        width: 280px;
+        /*width: 280px;*/
         min-height: 100px;
         overflow: hidden;
         float: left;
@@ -217,6 +217,13 @@ textarea {
     resize: none;
 }
 
+/* Form */
+
+.form-horizontal .form-group {
+     margin-right: 0px;
+     margin-left: 0px;
+}
+
 .form-horizontal .control-label, label {
     /* width: 100%; */
     min-height: 15px;
@@ -230,6 +237,16 @@ textarea {
     text-transform: uppercase;
     font-weight: normal;
 }
+
+.form-forgot-pwd {
+    color: #212e52;
+    font-size: 11px;
+    padding: 10px 0px 0px 0px;
+}
+
+    .form-horizontal .control-label {
+        text-align: right; !important   
+    }
 
 /* Pagination */
 .pagination a, .pagination span, .pagination li a, .pagination li span, .pagination>.disabled>span, .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
@@ -287,13 +304,14 @@ textarea {
 }
 
 .panel-body {
-    padding: 0px;
+    /*padding: 0px;*/
 }
 
-.panel-default>.panel-heading {
+.panel-default>.panel-heading, .panel-default>.panel-footer {
     color: #333;
     background-color: transparent;
     border: none;
+    /*padding: 0;*/
 }
 
 .btn-primary, .btn-info, .btn-danger, .btn-primary:hover, .btn-info:hover, .btn-danger:hover, .btn-primary:active, .btn-info:active, .btn-danger:active, .btn-primary:focus, .btn-info:focus, .btn-danger:focus, .btn-primary:active:focus, .btn-info:active:focus, .btn-danger:active:focus  {
@@ -347,3 +365,11 @@ textarea {
     display: block;
 }
 
+/*.social-buttons {*/
+    /*margin-bottom: 15px;*/
+/*}*/
+
+/* Font Awesome */
+.fa-facebook-official, .fa-twitter-square, .fa-google-plus-square {
+    font-size: 1.6em;
+}
