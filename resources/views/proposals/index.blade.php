@@ -18,10 +18,12 @@
     @endif
 
     <div class="panel panel-default">
-            <div class="panel-body">
 
+            <div class="panel-heading">
                 {!! $proposals->links() !!}
+            </div>
 
+            <div class="panel-body">
                 <table id="datatable" class="table table-striped table-hover compact" cellspacing="0" width="100%">
                     <thead>
                     <tr>
@@ -47,13 +49,11 @@
                         </tr>
                     @endforeach
                     </tbody>
-                    <tfoot>
-                    <tr><td></td></tr>
-                    </tfoot>
                 </table>
+            </div>
 
+            <div class="panel-footer">
                 {!! $proposals->links() !!}
-
             </div>
     </div>
 @stop

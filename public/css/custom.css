@@ -10,17 +10,19 @@ body {
 
 /* Structure and Viewports*/
 .interna .alerj {
+    width: 100%;
     /*width: 710px;*/
     min-height: 100px;
     overflow: hidden;
     /*float: right;*/
-    margin: 20px 40px 20px 40px;
-    padding: 0px 20px 0px 20px;
+    /*margin: 20px 40px 20px 40px;*/
+    /*padding: 0px 20px 0px 20px;*/
+    padding: 20px;
 }
 
 @media only screen and (max-width: 1016px) {
     .interna .alerj {
-        width: 580px;
+        /*width: 580px;*/
         min-height: 100px;
         overflow: hidden;
         float: right;
@@ -30,7 +32,7 @@ body {
 }
 @media only screen and (max-width: 836px) {
     .interna .alerj {
-        width: 440px;
+        /*width: 440px;*/
         min-height: 100px;
         overflow: hidden;
         float: left;
@@ -40,7 +42,7 @@ body {
 }
 @media only screen and (max-width: 496px) {
     .interna .alerj {
-        width: 280px;
+        /*width: 280px;*/
         min-height: 100px;
         overflow: hidden;
         float: left;
@@ -202,6 +204,7 @@ select {
 
 .botao a {
     border-color: transparent;
+    margin-bottom: 10px;
 }
 
 textarea {
@@ -215,6 +218,13 @@ textarea {
     border: 1px solid #ff6600;
     background: none;
     resize: none;
+}
+
+/* Form */
+
+.form-horizontal .form-group {
+     margin-right: 0px;
+     margin-left: 0px;
 }
 
 .form-horizontal .control-label, label {
@@ -231,6 +241,16 @@ textarea {
     font-weight: normal;
 }
 
+.form-forgot-pwd {
+    color: #212e52;
+    font-size: 11px;
+    padding: 10px 0px 0px 0px;
+}
+
+.form-horizontal .control-label {
+    text-align: right; !important
+}
+
 /* Pagination */
 .pagination a, .pagination span, .pagination li a, .pagination li span, .pagination>.disabled>span, .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
     width: 20px;
@@ -238,7 +258,7 @@ textarea {
     font-family: 'dinbold';
     font-size: 16px;
     line-height: 16px;
-    color: #ff6600;
+    color: #ff6600 !important;
     text-align: center;
     margin: 0px 0px 0px 0px;
     /*padding: 3px 0px 0px 0px;*/
@@ -258,11 +278,6 @@ textarea {
     /*padding: 3px 0px 0px 0px;*/
         background: none;
     padding: 3px 25px 0px 1px !important;
-}
-
-.btn>.btn-danger>a {
-    color: #ffffff;
-    text-transform: uppercase;
 }
 
 /*#datatable tbody tr td a {*/
@@ -286,15 +301,19 @@ textarea {
     background-color: #f4f4f6;
 }
 
-.panel-body {
-    padding: 0px;
-}
-
-.panel-default>.panel-heading {
+.panel-default>.panel-heading, .panel-default>.panel-footer {
     color: #333;
     background-color: transparent;
     border: none;
+
 }
+
+/* Buttons */
+
+/*.btn>.btn-danger>a {*/
+    /*color: #ffffff;*/
+    /*text-transform: uppercase;*/
+/*}*/
 
 .btn-primary, .btn-info, .btn-danger, .btn-primary:hover, .btn-info:hover, .btn-danger:hover, .btn-primary:active, .btn-info:active, .btn-danger:active, .btn-primary:focus, .btn-info:focus, .btn-danger:focus, .btn-primary:active:focus, .btn-info:active:focus, .btn-danger:active:focus  {
     /* width: auto; */
@@ -307,9 +326,9 @@ textarea {
     border-radius: 3px 3px 3px 3px;
     /* margin: 0px 1px 0px 0px; */
     padding: 6px 10px 3px 10px;
-    background: #ff6600;
+    background: #ff6600 !important;
     text-decoration: none;
-    border-color: transparent;
+    border-color: transparent !important;
     line-height: 1;
 }
 
@@ -320,6 +339,7 @@ textarea {
     /* padding: 0px 0px 0px 0px; */
 }
 
+/* Table */
 .table-responsive {
     margin-bottom: 15px;
     width: 100%;
@@ -347,3 +367,7 @@ textarea {
     display: block;
 }
 
+/* Font Awesome */
+.fa-facebook-official, .fa-twitter-square, .fa-google-plus-square {
+    font-size: 1.6em;
+}

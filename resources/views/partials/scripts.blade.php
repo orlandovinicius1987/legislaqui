@@ -23,6 +23,7 @@
 {{--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-56fbe38cd9a3aab0"></script>--}}
 
 
+{{--<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>--}}
 <script>
 
     var popupSize = {
