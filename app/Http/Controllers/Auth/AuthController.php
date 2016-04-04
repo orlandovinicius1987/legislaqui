@@ -121,6 +121,12 @@ class AuthController extends Controller
     // Method Overload
     public function register(Request $request)
     {
+        if ( ! $this->validateCaptcha()) {
+            return redirect('login')
+                ->withErrors($validate, 'register')
+                ->withInput();
+        }
+
         Session::put('last_auth_attempt', 'register');
 
         $register = $this->traitRegister($request);
@@ -128,5 +134,18 @@ class AuthController extends Controller
         Session::flash('flash_msg','Registro feito com Sucesso.');
 
         return $register;
+    }
+
+    // ValidateCaptcha
+    protected function validateCaptcha() {
+        $validate = Validator::make(Input::all(), [
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
+        if ($validate->fails()) {
+            return false;
+        }
+
+        return true;
     }
 }

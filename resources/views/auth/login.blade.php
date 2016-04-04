@@ -144,6 +144,13 @@
 
                         <div class="form-group">
                             <div class="col-xs-8 col-xs-offset-4">
+                                {!! app('captcha')->display(); !!}
+                                {{--<div class="g-recaptcha" data-sitekey="6Ld4hBwTAAAAAGysW_DwpbnwzIKmWtXyAsxsIrBf"></div>--}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-8 col-xs-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro
                                 </button>
