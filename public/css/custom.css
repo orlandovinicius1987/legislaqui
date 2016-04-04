@@ -1,0 +1,349 @@
+html {
+    font-size: 100%;
+}
+
+body {
+    font-size: 100%;
+    line-height: 1;
+    font-family: 'dinlight';
+}
+
+/* Structure and Viewports*/
+.interna .alerj {
+    /*width: 710px;*/
+    min-height: 100px;
+    overflow: hidden;
+    /*float: right;*/
+    margin: 20px 40px 20px 40px;
+    padding: 0px 20px 0px 20px;
+}
+
+@media only screen and (max-width: 1016px) {
+    .interna .alerj {
+        width: 580px;
+        min-height: 100px;
+        overflow: hidden;
+        float: right;
+        margin: 0px 0px 0px 0px;
+        padding: 0px 20px 0px 20px;
+    }
+}
+@media only screen and (max-width: 836px) {
+    .interna .alerj {
+        width: 440px;
+        min-height: 100px;
+        overflow: hidden;
+        float: left;
+        margin: 0px 0px 0px 0px;
+        padding: 0px 20px 0px 20px;
+    }
+}
+@media only screen and (max-width: 496px) {
+    .interna .alerj {
+        width: 280px;
+        min-height: 100px;
+        overflow: hidden;
+        float: left;
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+    }
+}
+
+/* Title */
+.interna .alerj .titulo {
+    width: 100%;
+    height: 57px;
+    overflow: hidden;
+    float: left;
+    margin: 0px 0px 20px 0px;
+    padding: 0px 0px 0px 0px;
+    display: block;
+}
+
+.interna .alerj .titulo h1 {
+    width: 100%;
+    height: 33px;
+    overflow: hidden;
+    font-family: 'univers_47';
+    font-size: 1.85em;
+    color: #212e52;
+    font-weight: normal;
+    margin: 0px 0px 0px 0px;
+    padding: 3px 0px 0px 0px;
+}
+
+.interna .alerj .titulo a {
+    width: auto;
+    height: auto;
+    float: right;
+    overflow: hidden;
+    font-size: 10px;
+    font-family: 'dinlight';
+    margin: 0px 0px 0px 0px;
+    padding: 5px 0px 0px 0px;
+}
+
+.interna .alerj .titulo .caminho {
+    /*width: 380px;*/
+    /*height: auto;*/
+    float: left;
+    /*overflow: hidden;*/
+    font-size: 11px;
+    font-family: 'dinlight';
+    color: #212e52;
+    /*margin: 0px 0px 0px 0px;*/
+    padding: 3px 0px 0px 0px;
+    text-transform: uppercase;
+}
+
+.interna .alerj .titulo .fio
+{
+    width: 100%;
+    height: 4px;
+    overflow: hidden;
+    float: left;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background: url(http://www.portalalerj.rj.gov.br/Content/imagens/fio.png) bottom repeat-x;
+}
+
+.interna>.controle>.alerj>.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+/* Headings & Paragraph */
+h1 {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    font-family: 'univers_47';
+    font-size: 1.500em;
+    color: #212e52;
+    line-height: auto;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 0px 0px 10px 0px;
+    padding: 3px 0px 0px 0px;
+}
+
+
+.termo p {
+    font-size: 0.875em;
+    line-height: 1.429em;
+    font-family: 'dinlight';
+    text-align: justify;
+}
+
+h3 {
+    /* width: 100%; */
+    /* height: auto; */
+    /* overflow: hidden; */
+    font-family: 'dinbold';
+    font-size: 0.875em;
+    line-height: auto;
+    color: #9ea745;
+    /* font-weight: normal; */
+    margin: 0px 0px 0px 0px;
+    padding: 3px 0px 0px 0px;
+    text-transform: uppercase;
+}
+
+/* Form Elements */
+.coluna_02 {
+    width: 100%;
+    height: auto;
+}
+
+.coluna_02>input {
+    width: 100%;
+}
+
+.campo
+{
+    width: auto;
+    height: 25px;
+    float: none;
+    overflow: hidden;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background: url(http://www.portalalerj.rj.gov.br/Content/imagens/direita.png) bottom right no-repeat, url(http://www.portalalerj.rj.gov.br/Content/imagens/esquerda.png) bottom left no-repeat;
+}
+
+input {
+    font-family: 'dinlight';
+    font-size: 12px;
+    color: #666666;
+    padding: 2px 0px 0px 4px;
+}
+
+input {
+    width: auto;
+    height: 15px;
+    float: left;
+    overflow: hidden;
+    color: #666666;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: .7em;
+    outline: none;
+    border: 0px;
+    margin: 5px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background: none;
+}
+
+select {
+    color: #666666;
+    font-size: .7em;
+    border: 0px;
+    margin: 5px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+.botao a {
+    border-color: transparent;
+}
+
+textarea {
+    width: 100%;
+    padding: 5px 0px 5px 10px !important;
+    margin: 5px 0px 0px 0px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: .75em;
+    font-weight: normal;
+    color: #666666;
+    border: 1px solid #ff6600;
+    background: none;
+    resize: none;
+}
+
+.form-horizontal .control-label, label {
+    /* width: 100%; */
+    min-height: 15px;
+    display: block;
+    /* float: left; */
+    font-size: .75em;
+    font-family: 'dinregular';
+    color: #212e52;
+    /* margin: 0px 0px 0px 0px; */
+    padding: 5px 0px 0px 0px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+/* Pagination */
+.pagination a, .pagination span, .pagination li a, .pagination li span, .pagination>.disabled>span, .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+    width: 20px;
+    height: 17px;
+    font-family: 'dinbold';
+    font-size: 16px;
+    line-height: 16px;
+    color: #ff6600;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+    /*padding: 3px 0px 0px 0px;*/
+    background: none;
+    border: none;
+    padding: 3px 25px 0px 1px !important;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    width: 20px;
+    height: 17px;
+    font-family: 'dinbold';
+    font-size: 16px;
+    color: #212e52;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+    /*padding: 3px 0px 0px 0px;*/
+        background: none;
+    padding: 3px 25px 0px 1px !important;
+}
+
+.btn>.btn-danger>a {
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+/*#datatable tbody tr td a {*/
+.blue_link a {
+    color: #212e52;
+    text-transform: uppercase;
+}
+
+/* Bootstrap Hack */
+.navbar-default {
+    background-color: transparent;
+    border: none;
+}
+
+.panel {
+    border: none;
+    box-shadow: none;
+}
+
+.panel-bg {
+    background-color: #f4f4f6;
+}
+
+.panel-body {
+    padding: 0px;
+}
+
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: transparent;
+    border: none;
+}
+
+.btn-primary, .btn-info, .btn-danger, .btn-primary:hover, .btn-info:hover, .btn-danger:hover, .btn-primary:active, .btn-info:active, .btn-danger:active, .btn-primary:focus, .btn-info:focus, .btn-danger:focus, .btn-primary:active:focus, .btn-info:active:focus, .btn-danger:active:focus  {
+    /* width: auto; */
+    /* height: auto; */
+    font-family: 'univers_47';
+    font-size: 11px;
+    text-transform: uppercase;
+    display: block;
+    color: #ffffff;
+    border-radius: 3px 3px 3px 3px;
+    /* margin: 0px 1px 0px 0px; */
+    padding: 6px 10px 3px 10px;
+    background: #ff6600;
+    text-decoration: none;
+    border-color: transparent;
+    line-height: 1;
+}
+
+.btn-link {
+    text-decoration: none;
+    color: #ff6600;
+    /* margin: 0px 0px 0px 0px; */
+    /* padding: 0px 0px 0px 0px; */
+}
+
+.table-responsive {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.table-td-label-show {
+    line-height: 1.42857143;
+    width: 20%;
+    font-size: 0.875em;
+    color: #9ea745;
+    margin: 0px 0px 10px 0px;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.table-td-show {
+    padding: 10px;
+    line-height: 1.2;
+}
+
+.dropdown-menu a {
+    line-height: 1.5;
+    padding: 3px;
+    display: block;
+}
+

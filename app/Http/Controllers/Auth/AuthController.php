@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\State;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Session;
+
 use Validator;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
@@ -21,7 +26,14 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesUsers, RegistersUsers {
+        AuthenticatesUsers::redirectPath insteadof RegistersUsers;
+        AuthenticatesUsers::getGuard insteadof RegistersUsers;
+        login as traitLogin;
+        register as traitRegister;
+    }
+
+    use ThrottlesLogins;
 
     /**
      * Where to redirect users after login / registration.
@@ -67,6 +79,54 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'uf' => $data['uf'],
+            'is_admin' => false
         ]);
+    }
+
+    // Method Overload
+    public function showRegistrationForm()
+    {
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView);
+        }
+
+        $uf = State::lists('nome', 'uf');
+        return view('auth.register', compact('uf'));
+    }
+
+    // Method Overload
+    public function showLoginForm()
+    {
+        if (property_exists($this, 'loginView')) {
+            return view($this->loginView);
+        }
+
+        if (view()->exists('auth.authenticate')) {
+            return view('auth.authenticate');
+        }
+
+        $uf = State::lists('nome', 'uf');
+        return view('auth.login', compact('uf'));
+    }
+
+    // Method Overload
+    public function login(Request $request)
+    {
+        Session::put('last_auth_attempt', 'login');
+
+        return $this->traitLogin($request);
+    }
+
+    // Method Overload
+    public function register(Request $request)
+    {
+        Session::put('last_auth_attempt', 'register');
+
+        $register = $this->traitRegister($request);
+
+        Session::flash('flash_msg','Registro feito com Sucesso.');
+
+        return $register;
     }
 }
