@@ -1,6 +1,11 @@
 @extends('layouts.alerj')
 
 @section('content')
+
+    @if (Session::has('error_msg'))
+        <div class="alert alert-danger">{{ Session::get('error_msg') }}</div>
+    @endif
+
 <div class="">
     <div class="row">
         <div class="col-xs-12">
@@ -139,6 +144,13 @@
                                         <strong>{{ $errors->first('uf') }}</strong>
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-8 col-xs-offset-4">
+                                {!! app('captcha')->display() !!}
+                                {{--<div class="g-recaptcha" data-sitekey="6Ld4hBwTAAAAAGysW_DwpbnwzIKmWtXyAsxsIrBf"></div>--}}
                             </div>
                         </div>
 

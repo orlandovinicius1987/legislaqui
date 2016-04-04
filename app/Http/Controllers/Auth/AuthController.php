@@ -7,9 +7,10 @@ use App\State;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Session;
-
 use Validator;
-use Illuminate\Http\Request;
+use Request;
+
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 
@@ -80,7 +81,7 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'uf' => $data['uf'],
-            'is_admin' => false
+            'role_id' => 99,
         ]);
     }
 
@@ -110,23 +111,53 @@ class AuthController extends Controller
         return view('auth.login', compact('uf'));
     }
 
-    // Method Overload
+    // Login Method Overload
     public function login(Request $request)
     {
+        // Request comes from Login form
         Session::put('last_auth_attempt', 'login');
 
         return $this->traitLogin($request);
     }
 
-    // Method Overload
+    // Register Method Overload
     public function register(Request $request)
     {
+        // Request comes from Register form
         Session::put('last_auth_attempt', 'register');
+
+        // Verifies Captcha
+        if (! $this->validateCaptcha()) {
+
+            Session::flash('error_msg','Por favor clique no campo reCAPTCHA! para efetuar o registro.');
+
+            return redirect()->back()->withInput(Request::all(), 'register');
+        }
 
         $register = $this->traitRegister($request);
 
         Session::flash('flash_msg','Registro feito com Sucesso.');
 
         return $register;
+
+    }
+
+    // ValidateCaptcha
+    protected function validateCaptcha() {
+
+        $validate = Validator::make(Request::all(), [
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
+//        if ($validate->fails()) {
+//            dd($validate->errors()->all());
+//            return false;
+//        }
+
+        if ($validate->fails()) {
+            return false;
+        }
+
+        return true;
     }
 }

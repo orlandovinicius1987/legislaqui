@@ -1,8 +1,13 @@
 <!-- JavaScripts -->
 <!-- Loading jQuery -->
 {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>--}}
+
 <!-- Loading Bootstrap -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Loading No-Captcha Re-captcha -->
+<script src='https://www.google.com/recaptcha/api.js?hl=pt-BR'></script>
+
 {{--<!-- Loading DataTable -->--}}
 {{--<script type="text/javascript" src="https://cdn.datatables.net/s/bs/dt-1.10.10,r-2.0.0/datatables.min.js"></script>--}}
 {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
