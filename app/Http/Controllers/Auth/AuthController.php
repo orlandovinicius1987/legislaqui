@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Session;
 use Validator;
-use Request;
+use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -127,11 +127,11 @@ class AuthController extends Controller
         Session::put('last_auth_attempt', 'register');
 
         // Verifies Captcha
-        if (! $this->validateCaptcha()) {
+        if (! $this->validateCaptcha($request)) {
 
             Session::flash('error_msg','Por favor clique no campo reCAPTCHA! para efetuar o registro.');
 
-            return redirect()->back()->withInput(Request::all(), 'register');
+            return redirect()->back()->withInput($request->all(), 'register');
         }
 
         $register = $this->traitRegister($request);
@@ -143,9 +143,9 @@ class AuthController extends Controller
     }
 
     // ValidateCaptcha
-    protected function validateCaptcha() {
+    protected function validateCaptcha($request) {
 
-        $validate = Validator::make(Request::all(), [
+        $validate = Validator::make($request->all(), [
             'g-recaptcha-response' => 'required|captcha'
         ]);
 
