@@ -35,19 +35,19 @@
                 <div class="panel-footer">
                     <div class="pull-left botao">
                         {{--<a href="{{ URL::current() }}/like" class="btn btn-info" role="button">Apoiar essa Ideia!</a>--}}
-                        <a href="{{ route('proposal.like', $proposal->id) }}" class="btn btn-info" role="button">
+                        <a href="{{ route('proposal.like', $proposal->id) }}" class="btn btn-info botao" role="button">
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Apoiar essa Ideia!</a>
                     </div>
 
                     <div class="pull-right botao">
                         @can('edit', $proposal)
-                        <a href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary">
+                        <a href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary botao">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Proposta</a>
                         @endcan
-                        <a href="{{ route('proposal.create') }}" class="btn btn-primary">
+                        <a href="{{ route('proposal.create') }}" class="btn btn-primary botao">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Proposta</a>
                         @can('destroy', $proposal)
-                        <a href="{{ route('proposal.destroy', $proposal->id) }}" class="btn btn-danger">
+                        <a href="{{ route('proposal.destroy', $proposal->id) }}" class="btn btn-danger botao">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Proposta</a>
                         @endcan
                     </div>

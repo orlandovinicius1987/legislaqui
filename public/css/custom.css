@@ -10,12 +10,14 @@ body {
 
 /* Structure and Viewports*/
 .interna .alerj {
+    width: 100%;
     /*width: 710px;*/
     min-height: 100px;
     overflow: hidden;
     /*float: right;*/
-    margin: 20px 40px 20px 40px;
-    padding: 0px 20px 0px 20px;
+    /*margin: 20px 40px 20px 40px;*/
+    /*padding: 0px 20px 0px 20px;*/
+    padding: 20px;
 }
 
 @media only screen and (max-width: 1016px) {
@@ -202,6 +204,7 @@ select {
 
 .botao a {
     border-color: transparent;
+    margin-bottom: 10px;
 }
 
 textarea {
@@ -255,7 +258,7 @@ textarea {
     font-family: 'dinbold';
     font-size: 16px;
     line-height: 16px;
-    color: #ff6600;
+    color: #ff6600 !important;
     text-align: center;
     margin: 0px 0px 0px 0px;
     /*padding: 3px 0px 0px 0px;*/
@@ -275,11 +278,6 @@ textarea {
     /*padding: 3px 0px 0px 0px;*/
         background: none;
     padding: 3px 25px 0px 1px !important;
-}
-
-.btn>.btn-danger>a {
-    color: #ffffff;
-    text-transform: uppercase;
 }
 
 /*#datatable tbody tr td a {*/
@@ -303,16 +301,19 @@ textarea {
     background-color: #f4f4f6;
 }
 
-.panel-body {
-    /*padding: 0px;*/
-}
-
 .panel-default>.panel-heading, .panel-default>.panel-footer {
     color: #333;
     background-color: transparent;
     border: none;
-    /*padding: 0;*/
+
 }
+
+/* Buttons */
+
+/*.btn>.btn-danger>a {*/
+    /*color: #ffffff;*/
+    /*text-transform: uppercase;*/
+/*}*/
 
 .btn-primary, .btn-info, .btn-danger, .btn-primary:hover, .btn-info:hover, .btn-danger:hover, .btn-primary:active, .btn-info:active, .btn-danger:active, .btn-primary:focus, .btn-info:focus, .btn-danger:focus, .btn-primary:active:focus, .btn-info:active:focus, .btn-danger:active:focus  {
     /* width: auto; */
@@ -325,9 +326,9 @@ textarea {
     border-radius: 3px 3px 3px 3px;
     /* margin: 0px 1px 0px 0px; */
     padding: 6px 10px 3px 10px;
-    background: #ff6600;
+    background: #ff6600 !important;
     text-decoration: none;
-    border-color: transparent;
+    border-color: transparent !important;
     line-height: 1;
 }
 
@@ -338,6 +339,7 @@ textarea {
     /* padding: 0px 0px 0px 0px; */
 }
 
+/* Table */
 .table-responsive {
     margin-bottom: 15px;
     width: 100%;
@@ -364,10 +366,6 @@ textarea {
     padding: 3px;
     display: block;
 }
-
-/*.social-buttons {*/
-    /*margin-bottom: 15px;*/
-/*}*/
 
 /* Font Awesome */
 .fa-facebook-official, .fa-twitter-square, .fa-google-plus-square {
