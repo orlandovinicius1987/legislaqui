@@ -69,7 +69,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new user (citizen - 99) instance after a valid registration.
      *
      * @param  array  $data
      * @return User
@@ -126,14 +126,18 @@ class AuthController extends Controller
         // Request comes from Register form
         Session::put('last_auth_attempt', 'register');
 
-        // Verifies Captcha
-        if (! $this->validateCaptcha($request)) {
+        // Validates Captcha
+        $validate = Validator::make($request->all(), [
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
 
-            Session::flash('error_msg','Por favor clique no campo reCAPTCHA! para efetuar o registro.');
-
-            return redirect()->back()->withInput($request->all(), 'register');
+        // Verifies if Captcha fails and redirect to register view
+        if ($validate->fails()) {
+            Session::flash('error_msg','Por favor, clique no campo reCAPTCHA para efetuar o registro!');
+            return redirect()->back()->withInput($request->all(), 'register')->withErrors($validate, 'register');
         }
 
+        //If Captcha is OK, then register User Request
         $register = $this->traitRegister($request);
 
         Session::flash('flash_msg','Registro feito com Sucesso.');
@@ -142,22 +146,4 @@ class AuthController extends Controller
 
     }
 
-    // ValidateCaptcha
-    protected function validateCaptcha($request) {
-
-        $validate = Validator::make($request->all(), [
-            'g-recaptcha-response' => 'required|captcha'
-        ]);
-
-//        if ($validate->fails()) {
-//            dd($validate->errors()->all());
-//            return false;
-//        }
-
-        if ($validate->fails()) {
-            return false;
-        }
-
-        return true;
-    }
 }

@@ -49,6 +49,19 @@ body {
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
     }
+
+    .g-recaptcha {
+        transform: scale(0.77);
+        transform-origin: 0 0 0;
+        -ms-transform: scale(0.77);
+        -webkit-transform: scale(0.77);
+        -moz-transform: scale(0.77);
+        -o-transform: scale(0.77);
+        -ms-transform-origin: left top;
+        -webkit-transform-origin: left top;
+        -moz-transform-origin: left top;
+        -o-transform-origin: left top;
+    }
 }
 
 /* Title */
@@ -370,4 +383,10 @@ textarea {
 /* Font Awesome */
 .fa-facebook-official, .fa-twitter-square, .fa-google-plus-square {
     font-size: 1.6em;
+}
+
+/* noCaptcha reCaptcha center */
+.g-recaptcha {
+    margin: 0 auto; !important;
+    width: 304px;
 }
