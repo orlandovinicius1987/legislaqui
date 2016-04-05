@@ -147,7 +147,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group form-recaptcha">
+                        <div class="form-group">
                             <div class="col-xs-12">
                                 {!! app('captcha')->display() !!}
                             </div>
