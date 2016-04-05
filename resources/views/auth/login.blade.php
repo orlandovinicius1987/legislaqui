@@ -147,10 +147,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-xs-8 col-xs-offset-4">
+                        <div class="form-group form-recaptcha">
+                            <div class="col-xs-12">
                                 {!! app('captcha')->display() !!}
-                                {{--<div class="g-recaptcha" data-sitekey="6Ld4hBwTAAAAAGysW_DwpbnwzIKmWtXyAsxsIrBf"></div>--}}
                             </div>
                         </div>
 
