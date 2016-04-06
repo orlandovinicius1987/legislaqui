@@ -57,6 +57,7 @@ body {
         -webkit-transform: scale(0.77);
         -moz-transform: scale(0.77);
         -o-transform: scale(0.77);
+        -ms-zoom: 77%;
         -ms-transform-origin: left top;
         -webkit-transform-origin: left top;
         -moz-transform-origin: left top;
@@ -64,7 +65,6 @@ body {
         transition-duration: 1s;
         -webkit-transition-duration: 1s;
     }
-
 }
 
 /* Title */
