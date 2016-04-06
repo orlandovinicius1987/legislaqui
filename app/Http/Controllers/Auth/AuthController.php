@@ -117,7 +117,7 @@ class AuthController extends Controller
         // Request comes from Login form
         Session::put('last_auth_attempt', 'login');
 
-        return $this->traitLogin($request);
+        return $this->traitLogin($request)->with('is_login', Session::get('last_auth_attempt') == 'login');
     }
 
     // Register Method Overload
@@ -133,12 +133,20 @@ class AuthController extends Controller
 
         // Verifies if Captcha fails and redirect to register view
         if ($validate->fails()) {
-            Session::flash('error_msg','Por favor, clique no campo reCAPTCHA para efetuar o registro!');
-            return redirect()->back()->withInput($request->all(), 'register')->withErrors($validate, 'register');
+
+            $error = Session::flash('error_msg','Por favor, clique no campo reCAPTCHA para efetuar o registro!');
+
+            //$validate->errors()->add('error_msg', 'Por favor, clique no campo reCAPTCHA para efetuar o registro!');
+
+            return redirect()
+                    ->back()
+                    ->withInput($request->all(), 'register')
+                    ->withErrors($error, 'register')
+                    ->with('is_login', Session::get('last_auth_attempt') == 'login');
         }
 
         //If Captcha is OK, then register User Request
-        $register = $this->traitRegister($request);
+        $register = $this->traitRegister($request)->with('is_login', Session::get('last_auth_attempt') == 'login');
 
         Session::flash('flash_msg','Registro feito com Sucesso.');
 
