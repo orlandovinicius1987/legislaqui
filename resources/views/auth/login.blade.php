@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <?php $is_login = isset($is_login) ? $is_login : false ?>
+
     @if (Session::has('error_msg'))
         <div class="alert alert-danger">{{ Session::get('error_msg') }}</div>
     @endif
@@ -16,14 +18,14 @@
 
                             {!! csrf_field() !!}
 
-                            <div class="form-group{{ $errors->has('email') && Session::get('last_auth_attempt') == 'login' ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('email') && $is_login ? ' has-error' : '' }}">
 
                                 <label class="col-xs-4 control-label">E-Mail</label>
 
                                 <div class="col-xs-8">
-                                    <input type="email" class="campo" name="email" value="{{ old('email') }}" placeholder="Insira seu email">
+                                    <input type="email" class="campo" name="email" value="{{ $is_login ? old('email') : '' }}" placeholder="Insira seu email">
 
-                                    @if ($errors->has('email') && Session::get('last_auth_attempt') == 'login')
+                                    @if ($errors->has('email') && $is_login)
                                         <span class="help-block">
                                             <strong>{{ $errors->first('email') }}</strong>
                                         </span>
@@ -31,13 +33,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('password') && Session::get('last_auth_attempt') == 'login' ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('password') && $is_login ? ' has-error' : '' }}">
                                 <label class="col-xs-4 control-label">Senha</label>
 
                                 <div class="col-xs-8">
                                     <input type="password" class="campo" name="password" placeholder="Insira sua senha">
 
-                                    @if ($errors->has('password') && Session::get('last_auth_attempt') == 'login')
+                                    @if ($errors->has('password') && $is_login)
                                         <span class="help-block">
                                             <strong>{{ $errors->first('password') }}</strong>
                                         </span>
@@ -76,12 +78,12 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('name') && Session::get('last_auth_attempt') == 'register' ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('name') && !$is_login ? ' has-error' : '' }}">
                             <label class="col-xs-4 control-label">Nome</label>
 
                             <div class="col-xs-8">
                                 <input type="text" class="campo" name="name" value="{{ old('name') }}" placeholder="Insira seu nome">
-                                @if ($errors->has('name') && Session::get('last_auth_attempt') == 'register')
+                                @if ($errors->has('name') && !$is_login)
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
@@ -89,13 +91,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') && Session::get('last_auth_attempt') == 'register' ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('email') && !$is_login ? ' has-error' : '' }}">
                             <label class="col-xs-4 control-label">E-Mail</label>
 
                             <div class="col-xs-8">
                                 <input type="email" class="campo" name="email" value="{{ old('email') }}" placeholder="Insira seu email">
 
-                                @if ($errors->has('email') && Session::get('last_auth_attempt') == 'register')
+                                @if ($errors->has('email') && !$is_login)
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
@@ -103,13 +105,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') && Session::get('last_auth_attempt') == 'register' ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('password') && !$is_login ? ' has-error' : '' }}">
                             <label class="col-xs-4 control-label">Senha</label>
 
                             <div class="col-xs-8">
                                 <input type="password" class="campo" name="password" placeholder="Insira sua senha">
 
-                                @if ($errors->has('password') && Session::get('last_auth_attempt') == 'register')
+                                @if ($errors->has('password') && !$is_login)
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>

@@ -6,7 +6,52 @@ body {
     font-size: 100%;
     line-height: 1;
     font-family: 'dinlight';
+    background: #e8eaed;
 }
+
+
+/* Fonts */
+/* ---------------------------------------------------------------------------------------------------- Fonts */
+@font-face {
+    font-family: 'univers_47';
+    src: url('/fonts/univ47-webfont.eot');
+    src: url('/fonts/univ47-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/univ47-webfont.svg#univers_47_lightcond47LtCn') format('svg'), url('/fonts/univ47-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'univers_57_condensedregular';
+    src: url('/fonts/ps_14-webfont.eot');
+    src: url('/fonts/ps_14-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/ps_14-webfont.svg#univers_57_condensedregular') format('svg'), url('/fonts/ps_14-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'dinregular';
+    src: url('/fonts/dinr52-webfont.eot');
+    src: url('/fonts/dinr52-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/dinr52-webfont.svg#dinregular') format('svg'), url('/fonts/dinr52-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'dinlight';
+    src: url('/fonts/dinl48-webfont.eot');
+    src: url('/fonts/dinl48-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/dinl48-webfont.svg#dinlight') format('svg'), url('/fonts/dinl48-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'dinbold';
+    src: url('/fonts/din-bold-webfont.eot');
+    src: url('/fonts/din-bold-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/din-bold-webfont.svg#dinbold') format('svg'), url('/fonts/din-bold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 /* Structure and Viewports*/
 .interna .alerj {
@@ -122,12 +167,18 @@ body {
     float: left;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(http://www.portalalerj.rj.gov.br/Content/imagens/fio.png) bottom repeat-x;
+    background: url(http://www.alerj.rj.gov.br/Content/imagens/fio.png) bottom repeat-x;
 }
 
 .interna>.controle>.alerj>.row {
     margin-right: 0;
     margin-left: 0;
+}
+
+.superior>.brilho>.conteudo {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
 }
 
 /* Headings & Paragraph */
@@ -185,7 +236,7 @@ h3 {
     overflow: hidden;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(http://www.portalalerj.rj.gov.br/Content/imagens/direita.png) bottom right no-repeat, url(http://www.portalalerj.rj.gov.br/Content/imagens/esquerda.png) bottom left no-repeat;
+    background: url(http://www.alerj.rj.gov.br/Content/imagens/direita.png) bottom right no-repeat, url(http://www.alerj.rj.gov.br/Content/imagens/esquerda.png) bottom left no-repeat;
 }
 
 input {
@@ -392,4 +443,13 @@ textarea {
 .g-recaptcha {
     margin: 0 auto; !important;
     width: 304px;
+}
+
+.detalhe {
+    width: 295px;
+    height: 20px;
+    overflow: hidden;
+    margin: 0px 0px 0px -5px;
+    padding: 0px 0px 0px 0px;
+    background: url(http://www.alerj.rj.gov.br/Content/imagens/menu_movel_320_detalhe.png) no-repeat;
 }
