@@ -445,11 +445,41 @@ textarea {
     width: 304px;
 }
 
-.detalhe {
-    width: 295px;
-    height: 20px;
-    overflow: hidden;
-    margin: 0px 0px 0px -5px;
-    padding: 0px 0px 0px 0px;
-    background: url(http://www.alerj.rj.gov.br/Content/imagens/menu_movel_320_detalhe.png) no-repeat;
+/* Navbar */
+@media only screen and (max-width: 767px) {
+    /*836*/
+    .detalhe {
+        /*width: 115%;*/
+        height: 20px;
+        /*overflow: hidden;*/
+        margin: -15px 0px 0px -15px;
+        /*padding: 0px 0px 0px 0px;*/
+        background: url(http://www.alerj.rj.gov.br/Content/imagens/menu_movel_detalhe.png) no-repeat;
+        background-size: contain;
+    }
+}
+
+@media only screen and (max-width: 496px) {
+    .detalhe {
+        width: 112%;
+        /*width: 295px;*/
+        height: 20px;
+        /*overflow: hidden;*/
+        margin: -15px 0px 0px -15px;
+        /*padding: 0px 0px 0px 0px;*/
+        background: url(http://www.alerj.rj.gov.br/Content/imagens/menu_movel_320_detalhe.png) no-repeat;
+        background-size: contain;
+    }
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #9ea745;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: 'univers_47';
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #212e52;
+    background: #e8eaed;
 }
