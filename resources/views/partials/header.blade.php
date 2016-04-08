@@ -13,9 +13,11 @@
         <div id="navbar" class="navbar-collapse collapse">
             {{--<a class="navbar-brand" href="/">e-Cidadania</a>--}}
             <ul class="nav navbar-nav">
-                <li class="active">{{ Html::linkRoute('proposals', 'Home')}}</li>
-                <li>{{ Html::linkRoute('about', 'Como Funciona?')}}</li>
-                <li><a href="#contact">Contato</a></li>
+                <li {{ Request::is('/') ? ' class=active' : null }}><a href="/">Home</a></li>
+                {{--<li>{{ Html::linkRoute('proposals', 'Home')}}</li>--}}
+                <li {{ Request::is('about') ? ' class=active' : null }}><a href="/about">Como Funciona?</a></li>
+                {{--<li>{{ Html::link('about', 'Como Funciona?')}}</li>--}}
+                <li {{ Request::is('contact') ? ' class=active' : null }}><a href="/contact">Contato</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Outros Serviços <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -60,6 +62,7 @@
                     </li>
                 @endif
             </ul>
+            <div class="detalhe"></div>
         </div><!--/.nav-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
