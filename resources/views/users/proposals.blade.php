@@ -16,7 +16,7 @@
     @if(Session::has('proposal_crud_msg'))
         <div class="alert alert-info">{{ Session::get('proposal_crud_msg') }}</div>
     @endif
-    @if ($proposals->isEmpty())
+    @if ( ! $proposals->isEmpty() )
     <div class="panel panel-default">
         <div class="panel-heading text-center"><strong>MINHAS IDEIAS LEGISLATIVAS</strong></div>
         <div class="panel-body">
