@@ -17,6 +17,7 @@
         <div class="alert alert-info">{{ Session::get('proposal_crud_msg') }}</div>
     @endif
 
+    @if ($proposals)
     <div class="panel panel-default">
         <div class="panel-heading text-center"><strong>MINHAS IDEIAS LEGISLATIVAS</strong></div>
         <div class="panel-body">
@@ -29,6 +30,7 @@
                 </thead>
 
                 <tbody>
+
                 @foreach ($proposals as $proposal)
                     <tr>
                         <!-- <td> {{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}} </td>-->
@@ -36,9 +38,11 @@
                         <td>{{ $proposal->likes->count() }}</td>
                     </tr>
                 @endforeach
+
                 </tbody>
             </table>
         </div>
     </div>
+    @endif
 
 @stop
