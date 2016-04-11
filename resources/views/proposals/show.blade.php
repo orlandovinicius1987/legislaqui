@@ -12,7 +12,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h1>{{ $proposal->name }}</h1>
-                    @include('partials.share', ['url' => URL::full() ])
+                    @include('partials.share', ['url' => URL::full()])
                 </div>
                 <div class="panel-body">
                     <table class="table-responsive table-striped table-show">

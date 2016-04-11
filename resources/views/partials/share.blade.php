@@ -1,5 +1,9 @@
 <div class="social-buttons">
 
+    <a href="mailto:&amp;subject=edemocracia&amp;body={{ urlencode($url) }} ">
+        <i class="fa fa-envelope-square"></i>
+    </a>
+
     <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($url) }}"
        target="_blank">
         <i class="fa fa-facebook-official"></i>
@@ -14,4 +18,5 @@
        target="_blank">
         <i class="fa fa-google-plus-square"></i>
     </a>
+
 </div>
