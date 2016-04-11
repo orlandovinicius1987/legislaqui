@@ -434,8 +434,13 @@ textarea {
     display: block;
 }
 
+/* Social Buttons */
+.social-buttons>a, .social-buttons>a:focus, .social-buttons>a:hover {
+    text-decoration: none;
+}
+
 /* Font Awesome */
-.fa-facebook-official, .fa-twitter-square, .fa-google-plus-square {
+.fa-facebook-official, .fa-twitter-square, .fa-google-plus-square, .fa-envelope-square {
     font-size: 1.6em;
 }
 
