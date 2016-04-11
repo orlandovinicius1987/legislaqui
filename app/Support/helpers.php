@@ -6,7 +6,7 @@
  * Time: 12:34
  */
 
-if ( ! function_exists('set_menu_active'))
+if ( !function_exists('set_menu_active') )
 {
     function set_menu_active($path)
     {
