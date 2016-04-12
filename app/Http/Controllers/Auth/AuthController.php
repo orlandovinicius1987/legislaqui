@@ -93,8 +93,8 @@ class AuthController extends Controller
         }
 
         $uf = State::lists('nome', 'uf');
-        $is_login = 0;
-        return view('auth.register', compact('uf'), compact('is_login'));
+        $is_registration = 1;
+        return view('auth.register', compact('uf'), compact('is_registration'));
     }
 
     // showLoginForm Method Overload

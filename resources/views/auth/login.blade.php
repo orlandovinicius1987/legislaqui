@@ -8,6 +8,11 @@
         No login!
     @endif
 
+    @if(isset($is_registration))
+        {{{ $is_registration }}}
+    @else
+        No registration!
+    @endif
     {{--@if($errors->has())--}}
         {{--@foreach ($errors->all() as $error)--}}
             {{--<div>{{ $error }}</div>--}}
