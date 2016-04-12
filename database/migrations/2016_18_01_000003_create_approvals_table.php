@@ -9,7 +9,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLikesTable extends Migration
+class CreateApprovalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,12 +18,12 @@ class CreateLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
+        Schema::create('approvals', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('proposal_id')->unsigned();
         });
 
-        Schema::table('likes', function (Blueprint $table) {
+        Schema::table('approvals', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('proposal_id')->references('id')->on('proposals')->onDelete('cascade')->onUpdate('cascade');
         });
@@ -36,8 +36,6 @@ class CreateLikesTable extends Migration
      */
     public function down()
     {
-        //Schema::dropForeign('user_id');
-        //Schema::dropForeign('proposal_id');
-        Schema::drop('likes');
+        Schema::drop('approvals');
     }
 }

@@ -35,9 +35,9 @@ class User extends Authenticatable
         return $this->hasMany(Proposal::class);
     }
 
-    // User Likes Proposals
-    public function likes() {
-        return $this->belongsToMany(Proposal::class, 'likes', 'user_id',  'proposal_id' );
+    // User approvals Proposals
+    public function approvals() {
+        return $this->belongsToMany(Proposal::class, 'approvals', 'user_id',  'proposal_id' );
     }
 
     // User has only one State
