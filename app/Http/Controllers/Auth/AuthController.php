@@ -72,7 +72,7 @@ class AuthController extends Controller
      * Create a new user (citizen - 99) instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     * @return model user
      */
     protected function create(array $data)
     {
@@ -85,7 +85,7 @@ class AuthController extends Controller
         ]);
     }
 
-    // Method Overload
+    // showRegistrationForm Method Overload
     public function showRegistrationForm()
     {
         if (property_exists($this, 'registerView')) {
@@ -93,10 +93,11 @@ class AuthController extends Controller
         }
 
         $uf = State::lists('nome', 'uf');
-        return view('auth.register', compact('uf'));
+        $is_login = 0;
+        return view('auth.register', compact('uf'), compact('is_login'));
     }
 
-    // Method Overload
+    // showLoginForm Method Overload
     public function showLoginForm()
     {
         if (property_exists($this, 'loginView')) {
@@ -108,7 +109,8 @@ class AuthController extends Controller
         }
 
         $uf = State::lists('nome', 'uf');
-        return view('auth.login', compact('uf'));
+        $is_login = 1;
+        return view('auth.login', compact('uf'), compact('is_login'));
     }
 
     // Login Method Overload
@@ -117,7 +119,7 @@ class AuthController extends Controller
         // Request comes from Login form
         Session::put('last_auth_attempt', 'login');
 
-        return $this->traitLogin($request)->with('is_login', Session::get('last_auth_attempt') == 'login');
+        return $this->traitLogin($request);
     }
 
     // Register Method Overload
@@ -136,17 +138,14 @@ class AuthController extends Controller
 
             $error = Session::flash('error_msg','Por favor, clique no campo reCAPTCHA para efetuar o registro!');
 
-            //$validate->errors()->add('error_msg', 'Por favor, clique no campo reCAPTCHA para efetuar o registro!');
-
             return redirect()
                     ->back()
                     ->withInput($request->all(), 'register')
-                    ->withErrors($error, 'register')
-                    ->with('is_login', Session::get('last_auth_attempt') == 'login');
+                    ->withErrors($validate, 'register');
         }
 
-        //If Captcha is OK, then register User Request
-        $register = $this->traitRegister($request)->with('is_login', Session::get('last_auth_attempt') == 'login');
+        // If Captcha is OK, then register User Request
+        $register = $this->traitRegister($request);
 
         Session::flash('flash_msg','Registro feito com Sucesso.');
 
