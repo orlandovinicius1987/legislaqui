@@ -54,7 +54,7 @@ Route::group(['middleware' => 'web'], function () {
 
 Route::group(['middleware' => ['web','auth']], function ()
 {
-    Route::get('proposals/{id}/like', ['as'=>'proposal.like', 'uses'=>'ProposalsController@like']);
+    Route::get('proposals/{id}/approval', ['as'=>'proposal.approval', 'uses'=>'ProposalsController@approval']);
 
     Route::get('proposals/create', ['as'=>'proposal.create', 'uses'=>'ProposalsController@create']);
 

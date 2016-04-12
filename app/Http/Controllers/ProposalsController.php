@@ -42,19 +42,19 @@ class ProposalsController extends Controller
         //return view('proposals.show')->with('proposal', $proposal);
     }
 
-    public function like ($id)
+    public function approval ($id)
     {
         $proposal = Proposal::findorFail($id);
 
         $user_id = Auth::user()->id;
 
-        $likes = User::find($user_id)->likes()->where('proposal_id', $id)->get()->count();
+        $approvals = User::find($user_id)->approvals()->where('proposal_id', $id)->get()->count();
 
-        if ($likes > '0') {
+        if ($approvals > '0') {
             Session::flash('error_msg','Você já apoiou este projeto.');
         }
         else {
-            $proposal->likes()->save(Auth::user());
+            $proposal->approvals()->save(Auth::user());
             Session::flash('flash_msg','Seu apoio foi incluído com sucesso.');
         }
 

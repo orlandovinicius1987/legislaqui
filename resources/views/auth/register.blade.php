@@ -1,98 +1,104 @@
-@extends('layouts.app')
+<!-- Registro -->
+<div class="col-xs-12">
+    <div class="panel panel-default panel-bg">
+        <div class="panel-heading"><h3>Registro</h3></div>
+        <div class="panel-body register">
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                {!! csrf_field() !!}
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Registro</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-                        {!! csrf_field() !!}
+                <div class="form-group{{ $errors->has('name') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
+                    <label class="col-xs-4 control-label">Nome</label>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Nome</label>
-
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
+                    <div class="col-xs-8">
+                        <input type="text" class="campo" name="name" value="{{ old('name') }}" placeholder="Insira seu nome">
+                        @if ($errors->has('name') && (Session::get('last_auth_attempt') === 'register'))
+                            <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                        @endif
+                    </div>
+                </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail</label>
+                <div class="form-group{{ $errors->has('email') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
+                    <label class="col-xs-4 control-label">E-Mail</label>
 
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                    <div class="col-xs-8">
+                        <input type="email" class="campo" name="email" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu email">
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
+                        @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'register'))
+                            <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                        @endif
+                    </div>
+                </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Senha</label>
+                <div class="form-group{{ $errors->has('password') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
+                    <label class="col-xs-4 control-label">Senha</label>
 
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
+                    <div class="col-xs-8">
+                        <input type="password" class="campo" name="password" placeholder="Mínimo de 6 dígitos">
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
+                        @if ($errors->has('password') && (Session::get('last_auth_attempt') === 'register'))
+                            <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                        @endif
+                    </div>
+                </div>
 
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Confirme a Senha</label>
+                <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                    <label class="col-xs-4 control-label">Confirme a Senha</label>
 
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation">
+                    <div class="col-xs-8">
+                        <input type="password" class="campo" name="password_confirmation" placeholder="Confirmar sua senha">
 
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
+                        @if ($errors->has('password_confirmation'))
+                            <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                        @endif
+                    </div>
+                </div>
 
-                        <div class="form-group{{ $errors->has('uf') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">UF</label>
+                <div class="form-group{{ $errors->has('uf') ? ' has-error' : '' }}">
+                    <label class="col-xs-4 control-label">UF</label>
 
-                            <div class="col-md-6">
+                    <div class="col-xs-8">
 
-                                {{-- Form::Label('uf', 'UF:') --}}
-                                {{ Form::select('uf', $uf, null, ['class' => 'form-control']) }}
+                        {{--Form::Label('uf', 'UF:')--}}
+                        {{ Form::select('uf', $uf, null, ['class' => 'campo']) }}
 
-                                @if ($errors->has('uf'))
-                                    <span class="help-block">
+                        @if ($errors->has('uf'))
+                            <span class="help-block">
                                         <strong>{{ $errors->first('uf') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>Registro
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                        @endif
+                    </div>
                 </div>
-            </div>
+
+                <div class="form-group{{ $errors->register->has('g-recaptcha-response') ? ' has-error text-center' : '' }}">
+                    <div class="col-xs-12">
+                        {!! app('captcha')->display() !!}
+
+                        @if ($errors->register->has('g-recaptcha-response'))
+                            <span class="help-block">
+                                        <strong>{{ $errors->register->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                        @endif
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-8 col-xs-offset-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-@endsection
+

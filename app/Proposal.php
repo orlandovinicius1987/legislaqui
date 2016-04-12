@@ -20,10 +20,10 @@ class Proposal extends Eloquent {
         return $this->belongsTo(User::class);
     }
 
-    // Likes __belongs_to_many__ Proposal
-    public function likes()
+    // Approvals __belongs_to_many__ Proposal
+    public function approvals()
     {
-        return $this->belongsToMany(User::class, 'likes', 'proposal_id', 'user_id' );
+        return $this->belongsToMany(User::class, 'approvals', 'proposal_id', 'user_id' );
     }
 
     public function responder()

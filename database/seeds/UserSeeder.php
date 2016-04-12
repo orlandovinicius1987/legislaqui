@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
                 foreach (range(1, rand(1, 20)) as $y) {
                     $user = User::all()->shuffle()->first();
 
-                    $proposal->likes()->attach($user->id);
+                    $proposal->approvals()->attach($user->id);
                 }
             }
         });

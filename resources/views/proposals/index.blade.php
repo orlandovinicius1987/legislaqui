@@ -44,7 +44,7 @@
                             @if (isset($is_not_responded) && Auth::user()->is_admin)
                                 <td><a href="{{ route('proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a></td>
                             @else
-                                <td>{{ $proposal->likes->count() }}</td>
+                                <td>{{ $proposal->approvals->count() }}</td>
                             @endif
                         </tr>
                     @endforeach
