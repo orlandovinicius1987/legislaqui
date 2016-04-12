@@ -93,8 +93,7 @@ class AuthController extends Controller
         }
 
         $uf = State::lists('nome', 'uf');
-        $is_registration = 1;
-        return view('auth.register', compact('uf'), compact('is_registration'));
+        return view('auth.register', compact('uf'));
     }
 
     // showLoginForm Method Overload
@@ -109,8 +108,7 @@ class AuthController extends Controller
         }
 
         $uf = State::lists('nome', 'uf');
-        $is_login = 1;
-        return view('auth.login', compact('uf'), compact('is_login'));
+        return view('auth.login', compact('uf'));
     }
 
     // Login Method Overload
@@ -119,7 +117,11 @@ class AuthController extends Controller
         // Request comes from Login form
         Session::put('last_auth_attempt', 'login');
 
-        return $this->traitLogin($request);
+        $login = $this->traitLogin($request);
+
+        Session::flash('flash_msg','Login feito com Sucesso.');
+
+        return $login;
     }
 
     // Register Method Overload
