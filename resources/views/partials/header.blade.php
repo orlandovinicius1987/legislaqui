@@ -51,7 +51,7 @@
                 <!-- Authentication Links -->
 
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login | Registro</a></li>
+                    <li class="{{ set_menu_active('login') }}"><a href="{{ url('/login') }}">Login | Registro</a></li>
                     {{--<li><a href="{{ url('/register') }}">Registro</a></li>--}}
                 @else
                     <li class="dropdown">
