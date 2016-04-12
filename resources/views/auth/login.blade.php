@@ -2,11 +2,11 @@
 
 @section('content')
 
-    {{--@if(isset($is_login))--}}
-        {{--{{{ $is_login }}}--}}
-    {{--@else--}}
-        {{--No login!--}}
-    {{--@endif--}}
+    @if(isset($is_login))
+        {{{ $is_login }}}
+    @else
+        No login!
+    @endif
 
     {{--@if($errors->has())--}}
         {{--@foreach ($errors->all() as $error)--}}
