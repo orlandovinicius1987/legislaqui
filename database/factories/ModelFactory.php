@@ -24,7 +24,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
         //Aprovador 1 or Cidadao 99
         'role_id' => $faker->randomElement(array (1, 99)),
-        'uf' => State::all()->shuffle()->first()->uf
+        'uf' => State::all()->shuffle()->first()->uf,
+        'cpf' => $faker->cpf
     ];
 });
 
