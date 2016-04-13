@@ -33,6 +33,20 @@
                     </div>
                 </div>
 
+                <div class="form-group{{ $errors->has('cpf') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
+                    <label class="col-xs-4 control-label">CPF</label>
+
+                    <div class="col-xs-8">
+                        <input type="cpf" class="campo" name="cpf" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu CPF">
+
+                        @if ($errors->has('cpf') && (Session::get('last_auth_attempt') === 'register'))
+                            <span class="help-block">
+                                        <strong>{{ $errors->first('cpf') }}</strong>
+                                    </span>
+                        @endif
+                    </div>
+                </div>
+
                 <div class="form-group{{ $errors->has('password') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
                     <label class="col-xs-4 control-label">Senha</label>
 
