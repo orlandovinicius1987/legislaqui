@@ -13,6 +13,7 @@
                 <div class="panel-heading">
                     <h1>{{ $proposal->name }}</h1>
                     @include('partials.share', ['url' => URL::full()])
+                    {{--@include('partials.like', ['proposalId' => $proposal->id])--}}
                 </div>
                 <div class="panel-body">
                     <table class="table-responsive table-striped table-show">
@@ -35,6 +36,8 @@
                 <div class="panel-footer">
                     <div class="pull-left botao">
                         {{--<a href="{{ URL::current() }}/like" class="btn btn-info" role="button">Apoiar essa Ideia!</a>--}}
+                        <a href="{{ route('proposal.like', $proposal->id) }}" class="btn btn-info botao" role="button">
+                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Gostei dessa Ideia!</a>
                         <a href="{{ route('proposal.approval', $proposal->id) }}" class="btn btn-info botao" role="button">
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Apoiar essa Ideia!</a>
                     </div>

@@ -9,6 +9,8 @@
 use App\User;
 use Illuminate\Database\Seeder;
 
+use Ramsey\Uuid\Uuid;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -29,10 +31,17 @@ class UserSeeder extends Seeder
                 $proposal = factory(App\Proposal::class)->create();
 
                 foreach (range(1, rand(1, 20)) as $y) {
+                    // Get random User
                     $user = User::all()->shuffle()->first();
 
+                    // Approvals and Likes
                     $proposal->approvals()->attach($user->id);
+                    //$proposal->likes()->attach($user->id);
                 }
+
+                //Likes
+                factory(App\Like::class)->create();
+
             }
         });
 

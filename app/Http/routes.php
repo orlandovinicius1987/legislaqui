@@ -50,6 +50,36 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('proposals/{id}', ['as'=>'proposal.show', 'uses'=>'ProposalsController@show'])->where('id', '[0-9]+');
 
     Route::get('about', ['as'=> 'about', 'uses'=> 'AboutController@index']);
+
+
+    Route::get('cookieset', function()
+    {
+        //$foreverCookie = Cookie::forever('forever', 'ttt');
+        //$tempCookie = Cookie::make('temporary', 'Victory', 5);
+        $uuid = \Ramsey\Uuid\Uuid::uuid4();
+        $uuid = Cookie::forever('uuid', $uuid);
+        //return Response::make()->withCookie($foreverCookie)->withCookie($tempCookie);
+        return Response::make()->withCookie($uuid);
+    });
+
+
+    Route::get('cookietest', function()
+    {
+        $unique = Cookie::get('uuid');
+        //$forever = Cookie::get('forever');
+        //$temporary = Cookie::get('temporary');
+        //return View::make('cookietest', array('forever' => $forever, 'temporary' => $temporary, 'variableTest' => 'works'));
+        return View::make('cookietest', array('uuid' => $unique));
+    });
+
+    // Like Button
+    //Route::get('/', ['as'=>'proposal.response', 'uses'=>'LikesController@index']);
+    //Route::post('proposals/{id}/like', ['as'=>'proposal.like', 'uses'=>'LikesController@like']);
+    //Route::post('proposals/{id}/unlike', ['as'=>'proposal.unlike', 'uses'=>'LikesController@unlike']);
+    Route::get('proposals/{id}/like', ['as'=>'proposal.like', 'uses'=>'ProposalsController@like']);
+    Route::get('proposals/{id}/unlike', ['as'=>'proposal.unlike', 'uses'=>'ProposalsController@unlike']);
+
+
 });
 
 Route::group(['middleware' => ['web','auth']], function ()
