@@ -9,7 +9,7 @@ use Faker\Factory;
 use Anhskohbo\NoCaptcha\Facades\NoCaptcha;
 use  Illuminate\Contracts\Auth\Authenticatable;
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
+//use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -91,6 +91,8 @@ class ProposalsTest extends TestCase
         $pwd = '123456';
         $state = State::all()->random();
 
+        $uuid = $faker->uuid;
+
         // prevent validation error on captcha
         NoCaptcha::shouldReceive('verifyResponse')
             ->once()
@@ -110,6 +112,8 @@ class ProposalsTest extends TestCase
             ->type($pwd, 'password')
             ->type($pwd, 'password_confirmation')
             ->select($state->uf, 'uf')
+            ->type($uuid, 'uuid')
+            //->submitForm('Search',['search_term' => 'tests'])
             ->press('Registro')
             ->see('Registro feito com Sucesso.')
             ->seePageIs('/')

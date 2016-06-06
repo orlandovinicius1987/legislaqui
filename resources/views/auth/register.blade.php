@@ -6,6 +6,8 @@
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                 {!! csrf_field() !!}
 
+                {{ Form::hidden('uuid', Cookie::get('uuid')) }}
+
                 <div class="form-group{{ $errors->has('name') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
                     <label class="col-xs-4 control-label">Nome</label>
 
