@@ -81,9 +81,13 @@ class ProposalsTest extends TestCase
     {
         // use the factory to create a Faker\Generator instance
         $faker = Faker\Factory::create();
+        // Add pt_BR provider
+        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+
         //Generate a User Data to Register
         $name = $faker->name($gender = null|'male'|'female');
         $email = $faker->freeEmail();
+        $cpf = $faker->cpf;
         $pwd = '123456';
         $state = State::all()->random();
 
@@ -102,6 +106,7 @@ class ProposalsTest extends TestCase
             ->seePageIs('/login')
             ->type($name,'name')
             ->type($email, 'email')
+            ->type($cpf, 'cpf')
             ->type($pwd, 'password')
             ->type($pwd, 'password_confirmation')
             ->select($state->uf, 'uf')
