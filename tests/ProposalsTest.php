@@ -9,7 +9,7 @@ use Faker\Factory;
 use Anhskohbo\NoCaptcha\Facades\NoCaptcha;
 use  Illuminate\Contracts\Auth\Authenticatable;
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
+//use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -81,11 +81,17 @@ class ProposalsTest extends TestCase
     {
         // use the factory to create a Faker\Generator instance
         $faker = Faker\Factory::create();
+        // Add pt_BR provider
+        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+
         //Generate a User Data to Register
         $name = $faker->name($gender = null|'male'|'female');
         $email = $faker->freeEmail();
+        $cpf = $faker->cpf;
         $pwd = '123456';
         $state = State::all()->random();
+
+        $uuid = $faker->uuid;
 
         // prevent validation error on captcha
         NoCaptcha::shouldReceive('verifyResponse')
@@ -102,9 +108,12 @@ class ProposalsTest extends TestCase
             ->seePageIs('/login')
             ->type($name,'name')
             ->type($email, 'email')
+            ->type($cpf, 'cpf')
             ->type($pwd, 'password')
             ->type($pwd, 'password_confirmation')
             ->select($state->uf, 'uf')
+            ->type($uuid, 'uuid')
+            //->submitForm('Search',['search_term' => 'tests'])
             ->press('Registro')
             ->see('Registro feito com Sucesso.')
             ->seePageIs('/')

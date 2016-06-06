@@ -6,6 +6,8 @@
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                 {!! csrf_field() !!}
 
+                {{ Form::hidden('uuid', Cookie::get('uuid')) }}
+
                 <div class="form-group{{ $errors->has('name') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
                     <label class="col-xs-4 control-label">Nome</label>
 
@@ -28,6 +30,20 @@
                         @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'register'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group{{ $errors->has('cpf') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
+                    <label class="col-xs-4 control-label">CPF</label>
+
+                    <div class="col-xs-8">
+                        <input type="cpf" class="campo" name="cpf" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">
+
+                        @if ($errors->has('cpf') && (Session::get('last_auth_attempt') === 'register'))
+                            <span class="help-block">
+                                        <strong>{{ $errors->first('cpf') }}</strong>
                                     </span>
                         @endif
                     </div>

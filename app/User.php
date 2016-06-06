@@ -2,8 +2,8 @@
 
 namespace App;
 
-use \App\Proposal;
-use \App\Like;
+//use \App\Proposal;
+//use \App\Like;
 use Auth;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'uf', 'role_id'
+        'name', 'email', 'password', 'uf', 'role_id', 'cpf', 'uuid'
     ];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
@@ -38,6 +38,11 @@ class User extends Authenticatable
     // User approvals Proposals
     public function approvals() {
         return $this->belongsToMany(Proposal::class, 'approvals', 'user_id',  'proposal_id' );
+    }
+
+    // User likes Proposals
+    public function likes() {
+        return $this->belongsToMany(Proposal::class, 'likes', 'user_id',  'proposal_id' );
     }
 
     // User has only one State

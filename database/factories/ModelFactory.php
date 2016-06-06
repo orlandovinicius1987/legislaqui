@@ -13,6 +13,8 @@
 
 use App\User;
 use App\State;
+use App\Proposal;
+use Illuminate\Support\Facades\Request;
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
@@ -24,7 +26,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
         //Aprovador 1 or Cidadao 99
         'role_id' => $faker->randomElement(array (1, 99)),
-        'uf' => State::all()->shuffle()->first()->uf
+        'uf' => State::all()->shuffle()->first()->uf,
+        'cpf' => $faker->cpf,
+        'uuid' => $faker->uuid
     ];
 });
 
@@ -51,5 +55,18 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
         'responder_id' => ! $response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
         'created_at' => \Carbon\Carbon::now(),
         'updated_at' => \Carbon\Carbon::now()
+    ];
+});
+
+$factory->define(App\Like::class, function (Faker\Generator $faker) {
+
+    $user_id = User::all()->shuffle()->first()->id;
+
+    return [
+        'user_id' => $user_id,
+        'proposal_id' => Proposal::all()->shuffle()->first()->id,
+        'uuid' => User::where('id', $user_id)->first()->uuid,
+        'like' => $faker->boolean($chanceOfGettingTrue = 70), // true - like
+        'ip_address' => Request::ip()
     ];
 });

@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\Events\ProposalWasCreated;
 use App\User;
 use App\Proposal;
+use App\Like;
 use App\ProposalHistory;
 use Gate;
 
@@ -24,25 +25,31 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Request;
+
+use Cookie;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 use App\Repositories\ProposalsRepository;
 
 class ProposalsController extends Controller
 {
-    public function index ()
+    public function index()
     {
        return view('proposals.index')->with('proposals', Proposal::paginate(20));
     }
 
-    public function show ($id)
+    public function show($id)
     {
+        //Get Proposal
         $proposal = Proposal::findOrFail($id);
 
         return view('proposals.show', ['proposal' => $proposal]);
         //return view('proposals.show')->with('proposal', $proposal);
     }
 
-    public function approval ($id)
+    public function approval($id)
     {
         $proposal = Proposal::findorFail($id);
 
@@ -61,12 +68,83 @@ class ProposalsController extends Controller
         return Redirect::route('proposals');
     }
 
-    public function create ()
+    public function isLikedByMe($id)
+    {
+        $proposal = Proposal::findOrFail($id)->first();
+        if (Like::whereUserId(Auth::id())->orwhere(Auth::guest())->whereProposalId($proposal->id)->exists()){
+            return 'true';
+        }
+        return 'false';
+    }
+
+    public function like($id)
+    {
+        //Get Proposal
+        $proposal = Proposal::findorFail($id);
+
+        //Get User
+        if (!Auth::check()) {
+            // The user is not logged in...
+            // Retrieve uuid from cookie
+            // and Like proposal
+            $unique = Cookie::get('uuid');
+
+            //$existing_like = Like::find('uuid', $unique)->where('proposal_id', $id)->get()->count();
+
+            $existing_like = Like::where('uuid', $unique)->where('proposal_id', $id)->get()->count();
+
+            if ($existing_like > '0') {
+                Session::flash('error_msg','Você já deu like neste projeto!');
+            }
+            else {
+
+                Like::create([
+                    'user_id' => null,
+                    'uuid' => $unique,
+                    'proposal_id' => $proposal->id,
+                    'like' => true,
+                    'ip_address' => Request::ip()
+                ]);
+                //dd($like);
+                //$proposal->likes()->save($like);
+                Session::flash('flash_msg','Seu like foi computado com sucesso!');
+            }
+
+        }
+        else {
+            $user_id = Auth::user()->id;
+            $uuid = Auth::user()->uuid;
+
+            $existing_like = User::find($user_id)->likes()->where('proposal_id', $id)->get()->count();
+
+            if ($existing_like > '0') {
+                Session::flash('error_msg','Você já deu like neste projeto.');
+            }
+            else {
+
+                Like::create([
+                    'user_id' => $user_id,
+                    'uuid' => $uuid,
+                    'proposal_id' => $proposal->id,
+                    'like' => true,
+                    'ip_address' => Request::ip()
+                ]);
+                //dd($like);
+                //$proposal->likes()->save($like);
+                Session::flash('flash_msg','Seu like foi computado com sucesso.');
+            }
+        }
+
+        return Redirect::route('proposals');
+
+    }
+
+    public function create()
     {
         return view('proposals.create');
     }
 
-    public function store (ProposalFormRequest $formRequest)
+    public function store(ProposalFormRequest $formRequest)
     {
         $input = $formRequest->except('_token');
 
@@ -197,7 +275,7 @@ class ProposalsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function updateResponse ($id, ResponseFormRequest $formRequest)
+    public function updateResponse($id, ResponseFormRequest $formRequest)
     {
         $proposal = Proposal::findOrFail($id);
 
@@ -230,4 +308,3 @@ class ProposalsController extends Controller
 
     }
 }
-
