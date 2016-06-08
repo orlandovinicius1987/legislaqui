@@ -68,75 +68,82 @@ class ProposalsController extends Controller
         return Redirect::route('proposals');
     }
 
-    public function isLikedByMe($id)
-    {
-        $proposal = Proposal::findOrFail($id)->first();
-        if (Like::whereUserId(Auth::id())->orwhere(Auth::guest())->whereProposalId($proposal->id)->exists()){
-            return 'true';
-        }
-        return 'false';
-    }
+//    public function isLikedByMe($id)
+//    {
+//        $proposal = Proposal::findOrFail($id)->first();
+//        if (Like::whereUserId(Auth::id())->orwhere(Auth::guest())->whereProposalId($proposal->id)->exists()){
+//            return 'true';
+//        }
+//        return 'false';
+//    }
 
-    public function like($id)
+    public function like($id, $action)
     {
+
+        if ($action) {
+            $str_action = 'like';
+        }
+        else {
+            $str_action = 'unlike';
+        }
+
         //Get Proposal
         $proposal = Proposal::findorFail($id);
 
         //Get User
         if (!Auth::check()) {
             // The user is not logged in...
-            // Retrieve uuid from cookie
-            // and Like proposal
+            // Retrieve UUID from Cookie
+            $user_id = null;
             $unique = Cookie::get('uuid');
-
-            //$existing_like = Like::find('uuid', $unique)->where('proposal_id', $id)->get()->count();
-
-            $existing_like = Like::where('uuid', $unique)->where('proposal_id', $id)->get()->count();
-
-            if ($existing_like > '0') {
-                Session::flash('error_msg','Você já deu like neste projeto!');
-            }
-            else {
-
-                Like::create([
-                    'user_id' => null,
-                    'uuid' => $unique,
-                    'proposal_id' => $proposal->id,
-                    'like' => true,
-                    'ip_address' => Request::ip()
-                ]);
-                //dd($like);
-                //$proposal->likes()->save($like);
-                Session::flash('flash_msg','Seu like foi computado com sucesso!');
-            }
-
         }
         else {
+            //Retrieve UUID from User
             $user_id = Auth::user()->id;
-            $uuid = Auth::user()->uuid;
+            $unique = Auth::user()->uuid;
+        }
 
-            $existing_like = User::find($user_id)->likes()->where('proposal_id', $id)->get()->count();
+        //Possible Values: Null, 0 or 1
+        $existing_like = Like::where('uuid', $unique)->where('proposal_id', $id)->value('like');
+        //dd($existing_like, $action, $str_action);
 
-            if ($existing_like > '0') {
-                Session::flash('error_msg','Você já deu like neste projeto.');
-            }
-            else {
-
+        switch ($existing_like) {
+            case '0':
+                switch ($str_action) {
+                    case "like":
+                        Like::where('uuid', $unique)->where('proposal_id', $id)->update(['like' => $action]);
+                        Session::flash('flash_msg', 'Seu ' . $str_action . ' foi computado com sucesso!');
+                        break;
+                    case "unlike":
+                        Session::flash('error_msg', 'Você já deu ' . $str_action . ' neste projeto!');
+                        break;
+                }
+                break;
+            case '1':
+                switch ($str_action) {
+                    case "like":
+                        Session::flash('error_msg', 'Você já deu ' . $str_action . ' neste projeto!');
+                        break;
+                    case "unlike":
+                        Like::where('uuid', $unique)->where('proposal_id', $id)->update(['like' => $action]);
+                        Session::flash('flash_msg', 'Seu ' . $str_action . ' foi computado com sucesso!');
+                        break;
+                }
+                break;
+            case null:
+                //dd($existing_like, $action, $str_action);
                 Like::create([
                     'user_id' => $user_id,
-                    'uuid' => $uuid,
+                    'uuid' => $unique,
                     'proposal_id' => $proposal->id,
-                    'like' => true,
+                    'like' => $action,
                     'ip_address' => Request::ip()
                 ]);
-                //dd($like);
-                //$proposal->likes()->save($like);
-                Session::flash('flash_msg','Seu like foi computado com sucesso.');
-            }
+                Session::flash('flash_msg','Seu ' . $str_action . ' foi computado com sucesso.');
+                break;
         }
 
         return Redirect::route('proposals');
-
     }
 
     public function create()

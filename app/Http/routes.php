@@ -77,7 +77,7 @@ Route::group(['middleware' => 'web'], function () {
     //Route::get('/', ['as'=>'proposal.response', 'uses'=>'LikesController@index']);
     //Route::post('proposals/{id}/like', ['as'=>'proposal.like', 'uses'=>'LikesController@like']);
     //Route::post('proposals/{id}/unlike', ['as'=>'proposal.unlike', 'uses'=>'LikesController@unlike']);
-    Route::get('proposals/{id}/like', ['as'=>'proposal.like', 'uses'=>'ProposalsController@like']);
+    Route::get('proposals/{id}/{action}', ['as'=>'proposal.like', 'uses'=>'ProposalsController@like']);
     Route::get('proposals/{id}/unlike', ['as'=>'proposal.unlike', 'uses'=>'ProposalsController@unlike']);
 
 
