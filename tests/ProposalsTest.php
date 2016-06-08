@@ -90,7 +90,6 @@ class ProposalsTest extends TestCase
         $cpf = $faker->cpf;
         $pwd = '123456';
         $state = State::all()->random();
-
         $uuid = $faker->uuid;
 
         // prevent validation error on captcha
@@ -163,5 +162,12 @@ class ProposalsTest extends TestCase
         factory(App\Proposal::class, 50)->create();
         $proposals = App\Proposal::paginate(20);
         $this->assertEquals(20, $proposals->count());
+    }
+
+
+    public function testCookie()
+    {
+        $this->call('GET', '/');
+        $this->seeCookie('uuid', Cookie::get('uuid'));
     }
 }

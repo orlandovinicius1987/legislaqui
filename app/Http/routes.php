@@ -63,13 +63,14 @@ Route::group(['middleware' => 'web'], function () {
     });
 
 
-    Route::get('cookietest', function()
+    Route::get('cookietest', ['as' => 'view.cookietest'], function()
     {
         $unique = Cookie::get('uuid');
         //$forever = Cookie::get('forever');
         //$temporary = Cookie::get('temporary');
         //return View::make('cookietest', array('forever' => $forever, 'temporary' => $temporary, 'variableTest' => 'works'));
         return View::make('cookietest', array('uuid' => $unique));
+        //return $request->cookie('uuid');
     });
 
     // Like Button

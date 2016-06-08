@@ -17,9 +17,19 @@ class Like extends Eloquent {
     protected $fillable = ['user_id', 'proposal_id', 'uuid', 'ip_address', 'like'];
     protected $table = 'likes';
 
-    public function owner()
+//    public function owner()
+//    {
+//        return $this->belongsTo(Proposal::class, 'proposal_id');
+//    }
+
+    /**
+     * Get the proposal that owns the like.
+     */
+    public function proposal()
     {
-        return $this->belongsTo(Proposal::class, 'proposal_id');
+        return $this->belongsTo(Proposal::class);
+        // if foreign_key is different of proposal_id; not the case
+        //return $this->belongsTo('App\Proposal', 'foreign_key');
     }
 
 }
