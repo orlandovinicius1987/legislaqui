@@ -63,20 +63,21 @@ Route::group(['middleware' => 'web'], function () {
     });
 
 
-    Route::get('cookietest', function()
+    Route::get('cookietest', ['as' => 'view.cookietest'], function()
     {
         $unique = Cookie::get('uuid');
         //$forever = Cookie::get('forever');
         //$temporary = Cookie::get('temporary');
         //return View::make('cookietest', array('forever' => $forever, 'temporary' => $temporary, 'variableTest' => 'works'));
         return View::make('cookietest', array('uuid' => $unique));
+        //return $request->cookie('uuid');
     });
 
     // Like Button
     //Route::get('/', ['as'=>'proposal.response', 'uses'=>'LikesController@index']);
     //Route::post('proposals/{id}/like', ['as'=>'proposal.like', 'uses'=>'LikesController@like']);
     //Route::post('proposals/{id}/unlike', ['as'=>'proposal.unlike', 'uses'=>'LikesController@unlike']);
-    Route::get('proposals/{id}/like', ['as'=>'proposal.like', 'uses'=>'ProposalsController@like']);
+    Route::get('proposals/{id}/{action}', ['as'=>'proposal.like', 'uses'=>'ProposalsController@like']);
     Route::get('proposals/{id}/unlike', ['as'=>'proposal.unlike', 'uses'=>'ProposalsController@unlike']);
 
 
