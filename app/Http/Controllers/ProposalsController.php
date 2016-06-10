@@ -77,15 +77,18 @@ class ProposalsController extends Controller
 //        return 'false';
 //    }
 
-    public function like($id, $action)
+    public function like($id)
     {
+        return $this->likeUnlike($id, 'like');
+    }
 
-        if ($action) {
-            $str_action = 'like';
-        }
-        else {
-            $str_action = 'unlike';
-        }
+    public function unlike($id)
+    {
+        return $this->likeUnlike($id, 'unlike');
+    }
+
+    public function likeUnlike($id, $action)
+    {
 
         //Get Proposal
         $proposal = Proposal::findorFail($id);
@@ -108,44 +111,47 @@ class ProposalsController extends Controller
         //dd($existing_like, $action, $str_action);
 
         switch ($existing_like) {
+            // Already Unliked
             case '0':
-                switch ($str_action) {
+                switch ($action) {
                     case "like":
-                        Like::where('uuid', $unique)->where('proposal_id', $id)->update(['like' => $action]);
-                        Session::flash('flash_msg', 'Seu ' . $str_action . ' foi computado com sucesso!');
+                        Like::where('uuid', $unique)->where('proposal_id', $id)->update(['like' => $action == 'like']);
+                        Session::flash('flash_msg', 'Seu ' . $action . ' foi recomputado com sucesso!');
                         break;
                     case "unlike":
-                        Session::flash('error_msg', 'Você já deu ' . $str_action . ' neste projeto!');
+                        Session::flash('error_msg', 'Você já deu ' . $action . ' neste projeto!');
                         break;
                 }
                 break;
+            // Already Liked
             case '1':
-                switch ($str_action) {
+                switch ($action) {
                     case "like":
-                        Session::flash('error_msg', 'Você já deu ' . $str_action . ' neste projeto!');
+                        Session::flash('error_msg', 'Você já deu ' . $action . ' neste projeto!');
                         break;
                     case "unlike":
-                        Like::where('uuid', $unique)->where('proposal_id', $id)->update(['like' => $action]);
-                        Session::flash('flash_msg', 'Seu ' . $str_action . ' foi computado com sucesso!');
+                        Like::where('uuid', $unique)->where('proposal_id', $id)->update(['like' => $action == 'like']);
+                        Session::flash('flash_msg', 'Seu ' . $action . ' foi recomputado com sucesso!');
                         break;
                 }
                 break;
+            // New Like
             case null:
                 //dd($existing_like, $action, $str_action);
                 Like::create([
                     'user_id' => $user_id,
                     'uuid' => $unique,
                     'proposal_id' => $proposal->id,
-                    'like' => $action,
+                    'like' => $action == 'like',
                     'ip_address' => Request::ip()
                 ]);
-                Session::flash('flash_msg','Seu ' . $str_action . ' foi computado com sucesso.');
+                Session::flash('flash_msg','Seu ' . $action . ' foi computado com sucesso.');
                 break;
         }
 
         return Redirect::route('proposals');
     }
-
+    
     public function create()
     {
         return view('proposals.create');
