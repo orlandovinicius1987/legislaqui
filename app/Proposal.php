@@ -65,8 +65,9 @@ class Proposal extends Eloquent {
         return Like::where('proposal_id', $this->id)->where('like', 0)->count();
     }
 
-
-
-
+    public function getTotalLikeCountAttribute ()
+    {
+        return (getLikeCountAttribute() - getUnlikeCountAttribute());
+    }
 }
 

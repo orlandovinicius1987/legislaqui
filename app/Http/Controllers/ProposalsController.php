@@ -114,11 +114,11 @@ class ProposalsController extends Controller
             // Already Unliked
             case '0':
                 switch ($action) {
-                    case "like":
+                    case 'like':
                         Like::where('uuid', $unique)->where('proposal_id', $id)->update(['like' => $action == 'like']);
                         Session::flash('flash_msg', 'Seu ' . $action . ' foi recomputado com sucesso!');
                         break;
-                    case "unlike":
+                    case 'unlike':
                         Session::flash('error_msg', 'Você já deu ' . $action . ' neste projeto!');
                         break;
                 }
@@ -126,10 +126,10 @@ class ProposalsController extends Controller
             // Already Liked
             case '1':
                 switch ($action) {
-                    case "like":
+                    case 'like':
                         Session::flash('error_msg', 'Você já deu ' . $action . ' neste projeto!');
                         break;
-                    case "unlike":
+                    case 'unlike':
                         Like::where('uuid', $unique)->where('proposal_id', $id)->update(['like' => $action == 'like']);
                         Session::flash('flash_msg', 'Seu ' . $action . ' foi recomputado com sucesso!');
                         break;
@@ -151,7 +151,7 @@ class ProposalsController extends Controller
 
         return Redirect::route('proposals');
     }
-    
+
     public function create()
     {
         return view('proposals.create');

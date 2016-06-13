@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     $(function(){
         var proposalId = <?php echo $proposal->id;  ?>;
 
@@ -27,9 +27,13 @@
             });
         });
     });
-</script>
+</script> -->
 
 <div class="like-buttons">
-    <div class="like-btn">Like</div>
-    <div class="dislike-btn">Dislike</div>
+    <div class="like-btn">
+        <a href="{{ route('proposal.like', ['id' => $proposal->id]) }}">
+            <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>Like</a></div>
+    <div class="dislike-btn">
+        <a href="{{ route('proposal.unlike', ['id' => $proposal->id]) }}">
+            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Dislike</a></div>
 </div>
