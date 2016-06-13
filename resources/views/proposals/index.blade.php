@@ -32,6 +32,8 @@
                             <th><h3>Sem Resposta</h3></th>
                         @else
                             <th><h3>Likes</h3></th>
+                            <th><h3>Unlikes</h3></th>
+                            <th><h3>Rating</h3></th>
                             <th><h3>Apoios</h3></th>
                         @endif
                     </tr>
@@ -45,8 +47,14 @@
                             @if (isset($is_not_responded) && Auth::user()->is_admin)
                                 <td><a href="{{ route('proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a></td>
                             @else
-                                <td>{{ $proposal->likes->count() }}</td>
-                                <td>{{ $proposal->approvals->count() }}</td>
+                                {{--Likes --}}
+                                <td>{{ $proposal->like_count }}</td>
+                                {{--Unlikes--}}
+                                <td>{{ $proposal->unlike_count }}</td>
+                                {{--Rating--}}
+                                <td>{{ $proposal->rating }}</td>
+                                {{--Approvals--}}
+                                <td>{{ $proposal->approvals()->count() }}</td>
                             @endif
                         </tr>
                     @endforeach

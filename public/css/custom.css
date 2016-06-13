@@ -440,7 +440,7 @@ textarea {
 }
 
 /* Font Awesome */
-.fa-facebook-official, .fa-twitter-square, .fa-google-plus-square, .fa-envelope-square {
+.fa, .fa-facebook-official, .fa-twitter-square, .fa-google-plus-square, .fa-envelope-square {
     font-size: 1.6em;
 }
 

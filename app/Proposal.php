@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Like;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Proposal extends Eloquent {
@@ -26,6 +27,7 @@ class Proposal extends Eloquent {
         return $this->belongsToMany(User::class, 'approvals', 'proposal_id', 'user_id' );
     }
 
+    // Proposal __belongs_to__ Responder (User)
     public function responder()
     {
         return $this->belongsTo(User::class, 'responder_id');
@@ -37,5 +39,35 @@ class Proposal extends Eloquent {
         return $this->hasMany(Like::class);
     }
 
+    // Rating = Lower bound of Wilson score confidence interval for a Bernoulli parameter
+    public function getRatingAttribute()
+    {
+        $like = Like::where('proposal_id', $this->id)->where('like', 1)->count();
+        $unlike = Like::where('proposal_id', $this->id)->where('like', 0)->count();
+
+        if ($like == 0 && $unlike == 0) {
+            return 0;
+        }
+
+        return (($like + 1.9208) / ($like + $unlike) -
+                1.96 * SQRT(($like * $unlike) / ($like + $unlike) + 0.9604) /
+                ($like + $unlike)) / (1 + 3.8416 / ($like + $unlike));
+    }
+
+    public function getLikeCountAttribute ()
+    {
+        return Like::where('proposal_id', $this->id)->where('like', 1)->count();
+
+    }
+
+    public function getUnlikeCountAttribute ()
+    {
+        return Like::where('proposal_id', $this->id)->where('like', 0)->count();
+    }
+
+    public function getTotalLikeCountAttribute ()
+    {
+        return (getLikeCountAttribute() - getUnlikeCountAttribute());
+    }
 }
 

@@ -19,4 +19,20 @@
         <i class="fa fa-google-plus-square"></i>
     </a>
 
+    <div class="pull-right">
+
+        <a href="{{ route('proposal.like', ['id' => $proposal->id]) }}">
+            <i class="fa fa-caret-square-o-up" aria-hidden="true"></i> Like
+        </a>
+
+        <a href="{{ route('proposal.unlike', ['id' => $proposal->id]) }}">
+            <i class="fa fa-caret-square-o-down" aria-hidden="true"></i> Dislike
+        </a>
+
+        <a href="{{ route('proposal.approval', $proposal->id) }}">
+            <i class="fa fa-star" aria-hidden="true"></i> Apoiar
+        </a>
+
+    </div>
 </div>
+
