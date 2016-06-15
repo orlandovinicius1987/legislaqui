@@ -38,6 +38,12 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
+
+
+    //Route::get('admin', ['as' =>'admin', 'uses'=>'UsersController@admin']);
+    Route::get('admin', ['as'=>'admin', 'uses'=>'AdminController@index']);
+
+
     Route::auth();
 
     Route::get('/', 'ProposalsController@index');

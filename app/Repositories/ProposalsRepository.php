@@ -34,20 +34,6 @@ class ProposalsRepository
             ->get();
     }
 
-
-//    /**
-//     * Get all of the proposals without responses.
-//     *
-//     * @param  User  $user
-//     * @return Collection
-//     */
-//    public function getProposalWithoutResponse()
-//    {
-//        return Proposal::whereNull('response')
-//            ->orderBy('created_at', 'asc')
-//            ->get();
-//    }
-
     public function sendProposalToCreator ($proposal)
     {
         //dd($proposal);
