@@ -69,5 +69,10 @@ class Proposal extends Eloquent {
     {
         return (getLikeCountAttribute() - getUnlikeCountAttribute());
     }
+
+    public function getApprovalsCountAttribute ()
+    {
+        return (User::all()->approvals()->get()->count());
+    }
 }
 

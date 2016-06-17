@@ -65,7 +65,7 @@
 </div><!-- ./wrapper -->
 
 <!-- jQuery 2.1.3 -->
-<script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+<script src="{{ asset('/plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
 <!-- jQuery UI 1.11.2 -->
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -96,11 +96,32 @@
 <script src="{{ asset('/plugins/slimScroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
 <!-- FastClick -->
 <script src="{{ asset('/plugins/fastclick/fastclick.min.js') }}"></script>
+
+<!-- InputMask -->
+<script src="{{ asset('/plugins/input-mask/jquery.inputmask.js') }}"></script>
+<script src="{{ asset('/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+<script src="{{ asset('/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
+
+
+
 <!-- AdminLTE App -->
 <script src="{{ asset('/dist/js/app.min.js') }}" type="text/javascript"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('/dist/js/pages/dashboard.js') }}" type="text/javascript"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('/dist/js/demo.js') }}" type="text/javascript"></script>
+
+<script>
+    $('#myTabs a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+</script>
+
+{{--Not Working--}}
+<script>
+    jQuery("#cpf").mask("999.999.999-99");
+</script>
+
 </body>
 </html>

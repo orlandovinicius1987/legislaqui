@@ -91,6 +91,7 @@ Route::group(['middleware' => 'web'], function () {
 
 Route::group(['middleware' => ['web','auth']], function ()
 {
+    //Proposals
     Route::get('proposals/{id}/approval', ['as'=>'proposal.approval', 'uses'=>'ProposalsController@approval']);
 
     Route::get('proposals/create', ['as'=>'proposal.create', 'uses'=>'ProposalsController@create']);
@@ -109,9 +110,25 @@ Route::group(['middleware' => ['web','auth']], function ()
 
     Route::get('proposals/notresponded', ['as'=>'proposals.notresponded', 'uses'=>'ProposalsController@notResponded']);
 
+    //Users
     Route::get('users/{id}/proposals', ['as'=>'users.proposals', 'uses'=>'UsersController@proposals']);
 
     Route::get('users/{id}/responses', ['as'=>'users.responses', 'uses'=>'UsersController@responses']);
+
+    //Admin
+    Route::get('admin', ['as'=>'admin', 'uses'=>'AdminController@index']);
+
+    Route::get('admin/users/create', ['as'=>'admin.users.create', 'uses'=>'AdminController@createUser']);
+
+    Route::post('admin/users', ['as'=>'admin.users.store', 'uses'=>'AdminController@storeUser']);
+
+    Route::get('admin/users/{id}', ['as'=>'admin.users.show', 'uses'=>'AdminController@showUser'])->where('id', '[0-9]+');
+
+    Route::get('admin/users/{id}/edit', ['as'=>'admin.users.edit', 'uses'=>'AdminController@editUser']);
+
+    Route::patch('admin/users/{id}/update', ['as'=>'admin.users.update', 'uses'=>'AdminController@updateUser']);
+
+    Route::get('admin/users/{id}/destroy', ['as'=>'admin.users.destroy', 'uses'=>'AdminController@destroyUser']);
 
 });
 
