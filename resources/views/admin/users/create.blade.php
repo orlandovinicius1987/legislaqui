@@ -54,15 +54,16 @@
                         {{ Form::label('CPF', 'CPF', array('class' => 'col-sm-2 control-label')) }}
                         <div class="col-sm-10">
                         {{ Form::text('cpf', null,
-                            array('required',
-                                  'class'=>'form-control',
-                                  'id' => 'cpf',
-                                  )) }}
-                            {{--
-                            'data-inputmask'=>'"mask": "(999) 999-9999"',
-                                  'data-mask'=>null,
+                         array('required',
+                               'class'=>'form-control',
+                               'id' => 'cpf',
+                               )) }}
 
-                            <input id="cpf" name="cpf" type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>--}}
+                         {{--'data-inputmask'=>'"mask": "(999) 999-9999"',--}}
+                               {{--'data-mask'=>null,--}}
+
+                        {{--<input id="cpf" name="cpf" type="text" />--}}
+
                         </div>
                     </div>
 

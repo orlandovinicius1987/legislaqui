@@ -17,6 +17,7 @@ use App\Proposal;
 use App\User;
 use App\State;
 use App\Role;
+use App\Approval;
 
 
 use Illuminate\Support\Facades\Hash;
@@ -31,7 +32,7 @@ class AdminController extends Controller
 
     public function index ()
     {
-        return view('admin.index')->with('proposals', Proposal::paginate(20))->with('users', User::all());
+        return view('admin.index')->with('proposals', Proposal::all())->with('users', User::all())->with('approvals', Approval::all()->count());
     }
 
     public function showUser($id)
@@ -78,7 +79,7 @@ class AdminController extends Controller
 
         $user->save();
 
-        return Redirect::to('/admin');
+        return Redirect::to('/admin')->with('user_crud_msg', 'Usuário Incluído com Sucesso');
 //
 //        $input = $formRequest->except('_token');
 //
@@ -124,7 +125,7 @@ class AdminController extends Controller
 
         $user->save();
 
-        return Redirect::to('/admin');
+        return Redirect::to('/admin')->with('user_crud_msg', 'Usuário Editado com Sucesso');
     }
 
     /**
@@ -137,7 +138,7 @@ class AdminController extends Controller
     {
         User::destroy($id);
 
-        return Redirect::to('/admin');
+        return Redirect::to('/admin')->with('user_crud_msg', 'Usuário Removido com Sucesso');
     }
 
 

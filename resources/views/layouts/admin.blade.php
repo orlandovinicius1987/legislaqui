@@ -64,8 +64,10 @@
     </footer>
 </div><!-- ./wrapper -->
 
-<!-- jQuery 2.1.3 -->
-<script src="{{ asset('/plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
+<!-- jQuery 3.0.0 -->
+{{--<script src="{{ asset('/plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+
 <!-- jQuery UI 1.11.2 -->
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -98,11 +100,29 @@
 <script src="{{ asset('/plugins/fastclick/fastclick.min.js') }}"></script>
 
 <!-- InputMask -->
-<script src="{{ asset('/plugins/input-mask/jquery.inputmask.js') }}"></script>
-<script src="{{ asset('/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
-<script src="{{ asset('/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
 
+{{--<script src="{{ asset('/plugins/input-mask/jquery.inputmask.js') }}"></script>--}}
+{{--<script src="{{ asset('/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>--}}
+{{--<script src="{{ asset('/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>--}}
 
+<!-- DataTables -->
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+<script>
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>
 
 <!-- AdminLTE App -->
 <script src="{{ asset('/dist/js/app.min.js') }}" type="text/javascript"></script>
@@ -118,9 +138,10 @@
     })
 </script>
 
-{{--Not Working--}}
 <script>
-    jQuery("#cpf").mask("999.999.999-99");
+    jQuery(function($){
+        $("#cpf").mask("999.999.999-99");
+    });
 </script>
 
 </body>
