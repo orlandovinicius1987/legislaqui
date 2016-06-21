@@ -35,9 +35,10 @@
                 </div>
                 <div class="panel-footer">
                     <div class="pull-left botao">
+
                         {{--<a href="{{ URL::current() }}/like" class="btn btn-info" role="button">Apoiar essa Ideia!</a>--}}
                         <a href="{{ route('proposal.like', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
-                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Gostei dessa Ideia!</a>
+                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Gostei dessa Ideia! </a>
                         <a href="{{ route('proposal.unlike', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
                             <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Não gostei dessa Ideia!</a>
                         <a href="{{ route('proposal.approval', $proposal->id) }}" class="btn btn-info botao" role="button">

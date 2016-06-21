@@ -13,12 +13,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 //use App\Http\Controllers\Controller;
 
+use Auth;
+
 use App\Proposal;
 use App\User;
 use App\State;
 use App\Role;
 use App\Approval;
+use App\ProposalHistory;
 
+use Carbon\Carbon;
+
+use App\Http\Requests\ResponseFormRequest;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
@@ -141,5 +147,83 @@ class AdminController extends Controller
         return Redirect::to('/admin')->with('user_crud_msg', 'Usuário Removido com Sucesso');
     }
 
+    /**
+     * Lists all proposals in Admin.
+     *
+     * @return Response
+     */
+    public function proposals()
+    {
+        return view('admin.proposals.index')->with('proposals', Proposal::all())->with('users', User::all())->with('approvals', Approval::all()->count());
+    }
+
+    public function notResponded()
+    {
+//        return view('admin.notresponded', [
+//            'proposals' => Proposal::whereNull('response')->paginate(20),
+//            'is_not_responded' => true
+//        ]);
+
+       // dd(Proposal::whereNull('response_id'));
+
+        return view('admin.notresponded')
+            ->with('proposals', Proposal::all())
+            ->with('users', User::all())
+            ->with('approvals', Approval::all()->count())
+            ->with('notrespondeds', Proposal::whereNull('responder_id')->get());
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function response($id)
+    {
+        //Get Proposal
+        $proposal = Proposal::findOrFail($id);
+
+        return view('admin.proposals.response')->with('proposal', $proposal);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function updateResponse($id, ResponseFormRequest $formRequest)
+    {
+        $proposal = Proposal::findOrFail($id);
+
+        $input = $formRequest->except('_token','_method');
+
+        $input['responder_id'] = Auth::user()->id;
+
+        //Create ProposalHistory Object
+        $proposal_history = new ProposalHistory();
+        //Get attributes from Proposals Eloquent
+        $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), ['id','created_at', 'updated_at']));
+
+        //Append Update Info + Response
+        $proposal_history->proposal_id = $id;
+        $proposal_history->update_id =  Auth::user()->id;
+        $proposal_history->update_date = Carbon::now();
+        $proposal_history->response = $input['response'];
+        $proposal_history->responder_id = $input['responder_id'];
+        //$proposal_history->fill($input);
+
+        //dd($proposal_history);
+
+        //Save History
+        $proposal_history->save();
+
+        //Then update Proposal
+        $proposal->forcefill($input)->save();
+        // dd($proposal);
+        return Redirect::route('admin.proposals')->with('proposal_crud_msg', 'Proposta Legislativa Respondida com Sucesso');
+
+    }
 
 }

@@ -130,6 +130,14 @@ Route::group(['middleware' => ['web','auth']], function ()
 
     Route::get('admin/users/{id}/destroy', ['as'=>'admin.users.destroy', 'uses'=>'AdminController@destroyUser']);
 
+    Route::get('admin/proposals', ['as'=>'admin.proposals', 'uses'=>'AdminController@proposals']);
+
+    Route::get('admin/notresponded', ['as'=>'admin.notresponded', 'uses'=>'AdminController@notResponded']);
+
+    Route::get('admin/proposals/{id}/response', ['as'=>'admin.proposal.response', 'uses'=>'AdminController@response']);
+
+    Route::patch('admin/proposals/{id}/updateResponse', ['as'=>'admin.proposal.updateResponse', 'uses'=>'AdminController@updateResponse']);
+
 });
 
 //
