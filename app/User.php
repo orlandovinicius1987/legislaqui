@@ -85,5 +85,9 @@ class User extends Authenticatable
         return Proposal::where('responder_id', $this->id)->count();
     }
 
+    public function getAvatarAttribute()
+    {
+        return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->email ) ) ) . "?d=identicon" . "&s=80";
+    }
 
 }

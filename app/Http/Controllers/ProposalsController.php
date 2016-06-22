@@ -149,7 +149,8 @@ class ProposalsController extends Controller
                 break;
         }
 
-        return Redirect::route('proposals');
+//        return Redirect::route('proposals');
+        return Redirect::back();
     }
 
     public function create()

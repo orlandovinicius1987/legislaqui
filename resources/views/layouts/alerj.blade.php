@@ -21,7 +21,7 @@
     <!-- Loading Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     {{--<link rel="stylesheet" type="text/css" href="/css/estilos.css" />--}}
-    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="/templates/alerj/css/custom.css" />
 
 
     <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery-1.11.1.min.js"></script>

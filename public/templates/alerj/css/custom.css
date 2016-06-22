@@ -14,40 +14,40 @@ body {
 /* ---------------------------------------------------------------------------------------------------- Fonts */
 @font-face {
     font-family: 'univers_47';
-    src: url('/fonts/univ47-webfont.eot');
-    src: url('/fonts/univ47-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/univ47-webfont.svg#univers_47_lightcond47LtCn') format('svg'), url('/fonts/univ47-webfont.ttf') format('truetype');
+    src: url('/templates/alerj/fonts/univ47-webfont.eot');
+    src: url('/templates/alerj/fonts/univ47-webfont.eot?#iefix') format('embedded-opentype'), url('/templates/alerj/fonts/univ47-webfont.svg#univers_47_lightcond47LtCn') format('svg'), url('/templates/alerj/fonts/univ47-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'univers_57_condensedregular';
-    src: url('/fonts/ps_14-webfont.eot');
-    src: url('/fonts/ps_14-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/ps_14-webfont.svg#univers_57_condensedregular') format('svg'), url('/fonts/ps_14-webfont.ttf') format('truetype');
+    src: url('/templates/alerj/fonts/ps_14-webfont.eot');
+    src: url('/templates/alerj/fonts/ps_14-webfont.eot?#iefix') format('embedded-opentype'), url('/templates/alerj/fonts/ps_14-webfont.svg#univers_57_condensedregular') format('svg'), url('/templates/alerj/fonts/ps_14-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'dinregular';
-    src: url('/fonts/dinr52-webfont.eot');
-    src: url('/fonts/dinr52-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/dinr52-webfont.svg#dinregular') format('svg'), url('/fonts/dinr52-webfont.ttf') format('truetype');
+    src: url('/templates/alerj/fonts/dinr52-webfont.eot');
+    src: url('/templates/alerj/fonts/dinr52-webfont.eot?#iefix') format('embedded-opentype'), url('/templates/alerj/fonts/dinr52-webfont.svg#dinregular') format('svg'), url('/templates/alerj/fonts/dinr52-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'dinlight';
-    src: url('/fonts/dinl48-webfont.eot');
-    src: url('/fonts/dinl48-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/dinl48-webfont.svg#dinlight') format('svg'), url('/fonts/dinl48-webfont.ttf') format('truetype');
+    src: url('/templates/alerj/fonts/dinl48-webfont.eot');
+    src: url('/templates/alerj/fonts/dinl48-webfont.eot?#iefix') format('embedded-opentype'), url('/templates/alerj/fonts/dinl48-webfont.svg#dinlight') format('svg'), url('/templates/alerj/fonts/dinl48-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'dinbold';
-    src: url('/fonts/din-bold-webfont.eot');
-    src: url('/fonts/din-bold-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/din-bold-webfont.svg#dinbold') format('svg'), url('/fonts/din-bold-webfont.ttf') format('truetype');
+    src: url('/templates/alerj/fonts/din-bold-webfont.eot');
+    src: url('/templates/alerj/fonts/din-bold-webfont.eot?#iefix') format('embedded-opentype'), url('/templates/alerj/fonts/din-bold-webfont.svg#dinbold') format('svg'), url('/templates/alerj/fonts/din-bold-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }

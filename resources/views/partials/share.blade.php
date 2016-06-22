@@ -21,7 +21,7 @@
 
     <div class="pull-right">
 
-        {{--{{ $proposal->total_like_count }}--}}
+        {{ $proposal->total_like_count }}
 
         <a href="{{ route('proposal.like', ['id' => $proposal->id]) }}">
             <i class="fa fa-caret-square-o-up" aria-hidden="true"></i> Like
