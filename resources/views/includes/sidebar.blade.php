@@ -24,14 +24,17 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="header">MAIN NAVIGATION</li>
+            <li class="header">NAVEGAÇÂO</li>
             <li class="active treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                    <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                    {{--<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>--}}
+                    {{--<li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>--}}
+                    <li class="active"><a href="/admin"><i class="fa fa-circle-o text-warning"></i> Usuários</a></li>
+                    <li><a href="/admin/proposals"><i class="fa fa-circle-o text-info"></i> Propostas Legislativas</a></li>
+                    <li><a href="/admin/proposals/notresponded"><i class="fa fa-circle-o text-danger"></i> Propostas sem Resposta</a></li>
                 </ul>
             </li>
             <li class="treeview">
