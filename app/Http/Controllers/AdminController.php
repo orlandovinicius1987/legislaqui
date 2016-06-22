@@ -166,7 +166,7 @@ class AdminController extends Controller
 
        // dd(Proposal::whereNull('response_id'));
 
-        return view('admin.notresponded')
+        return view('admin.proposals.notresponded')
             ->with('proposals', Proposal::all())
             ->with('users', User::all())
             ->with('approvals', Approval::all()->count())

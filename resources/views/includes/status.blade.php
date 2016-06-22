@@ -49,7 +49,7 @@
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="/admin/notresponded" class="small-box-footer">Mais info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/admin/proposals/notresponded" class="small-box-footer">Mais info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div><!-- ./col -->
 </div><!-- /.row -->

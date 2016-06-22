@@ -132,7 +132,7 @@ Route::group(['middleware' => ['web','auth']], function ()
 
     Route::get('admin/proposals', ['as'=>'admin.proposals', 'uses'=>'AdminController@proposals']);
 
-    Route::get('admin/notresponded', ['as'=>'admin.notresponded', 'uses'=>'AdminController@notResponded']);
+    Route::get('admin/proposals/notresponded', ['as'=>'admin.proposals.notresponded', 'uses'=>'AdminController@notResponded']);
 
     Route::get('admin/proposals/{id}/response', ['as'=>'admin.proposal.response', 'uses'=>'AdminController@response']);
 
