@@ -90,4 +90,9 @@ class User extends Authenticatable
         return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->email ) ) ) . "?d=identicon" . "&s=80";
     }
 
+    public function getCreatedAtAttribute($value)
+    {
+        return date('M y', strtotime($value));
+    }
+
 }

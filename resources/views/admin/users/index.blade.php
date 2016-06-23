@@ -18,57 +18,57 @@
 <!-- Main row -->
 <div class="row">
 
-    {{--<div class="col-md-12">--}}
+    <div class="col-md-12">
 
-        {{--<div class="box">--}}
-            {{--<div class="box-header">--}}
-                {{--<h3 class="box-title">Usuários</h3>--}}
-                {{--<div class="pull-right"><a href="admin/users/create" class="btn btn-success">Criar Novo Usuário</a></div>--}}
-            {{--</div><!-- /.box-header -->--}}
-            {{--<div class="box-body">--}}
-                {{--<div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">--}}
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Usuários</h3>
+                <div class="pull-right"><a href="admin/users/create" class="btn btn-success">Criar Novo Usuário</a></div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 
-                    {{--<div class="row">--}}
-                        {{--<div class="col-sm-12">--}}
-                            {{--<table id="example1" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="example1_info">--}}
-                                {{--<thead>--}}
-                                {{--<tr role="row">--}}
-                                    {{--<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" style="width: 196px;" aria-sort="ascending">Id</th>--}}
-                                    {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 241px;">Nome</th>--}}
-                                    {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 214px;">Email</th>--}}
-                                    {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 168px;">Função</th>--}}
-                                {{--</tr>--}}
-                                {{--</thead>--}}
-                                {{--<tbody>--}}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="example1" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="example1_info">
+                                <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" style="width: 196px;" aria-sort="ascending">Id</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 241px;">Nome</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 214px;">Email</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 168px;">Função</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                                {{--@foreach ($users as $user)--}}
-                                    {{--<tr>--}}
-                                        {{--<td>{{ $user->id }}</td>--}}
-                                        {{--<!-- <td> --}}{{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}}{{-- </td>-->--}}
-                                        {{--<td class="blue_link"><a href="{{ route('admin.users.show',array('id'=>$user->id)) }}">{{ $user->name }}</a></td>--}}
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{ $user->id }}</td>
+                                        <!-- <td> {{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}} </td>-->
+                                        <td class="blue_link"><a href="{{ route('admin.users.show',array('id'=>$user->id)) }}">{{ $user->name }}</a></td>
                                         {{--Email--}}
-                                        {{--<td>{{ $user->email }}</td>--}}
+                                        <td>{{ $user->email }}</td>
                                         {{--Role--}}
-                                        {{--<td> {{ $user->role_name }}</td>--}}
-                                    {{--</tr>--}}
-                                {{--@endforeach--}}
+                                        <td> {{ $user->role_name }}</td>
+                                    </tr>
+                                @endforeach
 
-                                {{--</tbody>--}}
-                                {{--<tfoot>--}}
-                                {{--<tr>--}}
-                                    {{--<th rowspan="1" colspan="1">Id</th>--}}
-                                    {{--<th rowspan="1" colspan="1">Nome</th>--}}
-                                    {{--<th rowspan="1" colspan="1">Email</th>--}}
-                                    {{--<th rowspan="1" colspan="1">Função</th>--}}
-                                {{--</tr>--}}
-                                {{--</tfoot>--}}
-                            {{--</table>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div><!-- /.box-body -->--}}
-        {{--</div>--}}
-    {{--</div>--}}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th rowspan="1" colspan="1">Id</th>
+                                    <th rowspan="1" colspan="1">Nome</th>
+                                    <th rowspan="1" colspan="1">Email</th>
+                                    <th rowspan="1" colspan="1">Função</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div>
+    </div>
 
     <!-- Left col -->
     {{--<section class="col-lg-7 connectedSortable">--}}

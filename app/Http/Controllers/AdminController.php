@@ -21,6 +21,9 @@ use App\State;
 use App\Role;
 use App\Approval;
 use App\ProposalHistory;
+use App\Repositories\ProposalsRepository;
+
+use Gate;
 
 use Carbon\Carbon;
 
@@ -33,12 +36,29 @@ use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Redirect;
 
 
+
 class AdminController extends Controller
 {
 
+    /**
+     * @var ProposalsRepository
+     */
+    private $proposalsRepository;
+
+    public function __construct(ProposalsRepository $proposalsRepository)
+    {
+        $this->proposalsRepository = $proposalsRepository;
+    }
+
     public function index ()
     {
-        return view('admin.index')->with('proposals', Proposal::all())->with('users', User::all())->with('approvals', Approval::all()->count());
+        return view('admin.index');
+    }
+
+    public function users ()
+    {
+        return view('admin.users.index')
+            ->with('users', User::all());
     }
 
     public function showUser($id)
@@ -154,7 +174,17 @@ class AdminController extends Controller
      */
     public function proposals()
     {
-        return view('admin.proposals.index')->with('proposals', Proposal::all())->with('users', User::all())->with('approvals', Approval::all()->count());
+        $proposals = $this->proposalsRepository->all();
+        return view('admin.proposals.index')->with(compact('proposals'));
+    }
+
+    public function showProposal($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+
+        return view('admin.proposals.show', ['proposal' => $proposal]);
+        //return view('proposals.show')->with('proposal', $proposal);
+        //return view('proposals.show')->with(compact('proposal'))
     }
 
     public function notResponded()
@@ -165,12 +195,10 @@ class AdminController extends Controller
 //        ]);
 
        // dd(Proposal::whereNull('response_id'));
+        //$proposals = Proposal::all();
+        $proposals = $this->proposalsRepository->all();
 
-        return view('admin.proposals.notresponded')
-            ->with('proposals', Proposal::all())
-            ->with('users', User::all())
-            ->with('approvals', Approval::all()->count())
-            ->with('notrespondeds', Proposal::whereNull('responder_id')->get());
+        return view('admin.proposals.notresponded')->with('notrespondeds', $proposals->where('responder_id', null));
     }
 
     /**
@@ -182,7 +210,8 @@ class AdminController extends Controller
     public function response($id)
     {
         //Get Proposal
-        $proposal = Proposal::findOrFail($id);
+        $proposal = $this->proposalsRepository->find($id);
+        //$proposal = Proposal::findOrFail($id);
 
         return view('admin.proposals.response')->with('proposal', $proposal);
     }
@@ -195,7 +224,8 @@ class AdminController extends Controller
      */
     public function updateResponse($id, ResponseFormRequest $formRequest)
     {
-        $proposal = Proposal::findOrFail($id);
+        $proposal = $this->proposalsRepository->find($id);
+        //$proposal = Proposal::findOrFail($id);
 
         $input = $formRequest->except('_token','_method');
 
@@ -224,6 +254,88 @@ class AdminController extends Controller
         // dd($proposal);
         return Redirect::route('admin.proposals')->with('proposal_crud_msg', 'Proposta Legislativa Respondida com Sucesso');
 
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function editProposal($id)
+    {
+        //Get Proposal
+        $proposal = $this->proposalsRepository->find($id);
+        //$proposal = Proposal::findOrFail($id);
+
+        //Via User Model
+        //        if ($user->can('update', $post)) {
+        //            //
+        //        }
+
+        if (Gate::allows('edit', $proposal)) {
+            return view('admin.proposals.edit')->with('proposal', $proposal);
+        }
+        else {
+            return Redirect::route('admin.proposals')->with('error_msg', 'Você não é o dono desta Proposta');
+        }
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function updateProposal($id, ProposalFormRequest $formRequest)
+    {
+        $proposal = Proposal::findOrFail($id);
+
+        $input = $formRequest->except('_token');
+
+        $input['user_id'] = Auth::user()->id;
+        $input['open'] = true;
+        $input['pub_date'] = Carbon::now();
+        $input['limit_date'] = Carbon::now();
+
+        //Create ProposalHistory Object
+        $proposal_history = new ProposalHistory();
+        //Get attributes from Proposals Eloquent
+
+        $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), ['id','created_at', 'updated_at']));
+        //dd($proposal_history);
+        //Append Update Info
+        $proposal_history->proposal_id = $id;
+        $proposal_history->update_id =  Auth::user()->id;
+        $proposal_history->update_date = Carbon::now();
+        //Save History
+        $proposal_history->save();
+
+        //Then update Proposal
+        $proposal->fill($input)->save();
+        return Redirect::route('admin.proposals')->with('proposal_crud_msg', 'Proposta Legislativa Editada com Sucesso');
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroyProposal($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+        //$proposal = Proposal::findOrFail($id);
+
+        if (Gate::allows('destroy', $proposal)) {
+            $proposal->delete();
+            return Redirect::route('admin.proposals')->with('proposal_crud_msg', 'Proposta Legislativa Removida com Sucesso');
+        }
+        else {
+            return Redirect::route('admin.proposals')->with('error_msg', 'Você não é o dono desta Proposta');
+        }
     }
 
 }

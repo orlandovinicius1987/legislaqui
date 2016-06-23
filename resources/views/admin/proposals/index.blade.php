@@ -51,7 +51,7 @@
                                                 {{--Id--}}
                                                 <td>{{ $proposal->id }}</td>
                                                 {{--Proposal Name--}}
-                                                <td>{{ $proposal->name }}</td>
+                                                <td><a href="{{ route('admin.proposal.show',array('id'=>$proposal->id)) }}">{{ $proposal->name }}</a></td>
                                                 {{--Likes --}}
                                                 <td>{{ $proposal->like_count }}</td>
                                                 {{--Unlikes--}}

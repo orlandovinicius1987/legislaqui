@@ -22,8 +22,6 @@
 */
 
 //Route::get('/', 'WelcomeController@index');
-//
-
 
 
 /*
@@ -39,24 +37,17 @@
 
 Route::group(['middleware' => 'web'], function () {
 
-
-    //Route::get('admin', ['as' =>'admin', 'uses'=>'UsersController@admin']);
-    Route::get('admin', ['as'=>'admin', 'uses'=>'AdminController@index']);
-
-
     Route::auth();
 
     Route::get('/', 'ProposalsController@index');
-    Route::get('/home', 'ProposalsController@index');
 
-    //Route::resource('ideas', 'IdeaController');
+    Route::get('/home', 'ProposalsController@index');
 
     Route::get('proposals',  ['as'=>'proposals', 'uses'=>'ProposalsController@index']);
 
     Route::get('proposals/{id}', ['as'=>'proposal.show', 'uses'=>'ProposalsController@show'])->where('id', '[0-9]+');
 
     Route::get('about', ['as'=> 'about', 'uses'=> 'AboutController@index']);
-
 
     Route::get('cookieset', function()
     {
@@ -80,12 +71,8 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     // Like Button
-    //Route::get('/', ['as'=>'proposal.response', 'uses'=>'LikesController@index']);
-    //Route::post('proposals/{id}/like', ['as'=>'proposal.like', 'uses'=>'LikesController@like']);
-    //Route::post('proposals/{id}/unlike', ['as'=>'proposal.unlike', 'uses'=>'LikesController@unlike']);
     Route::get('proposals/{id}/like', ['as'=>'proposal.like', 'uses'=>'ProposalsController@like']);
     Route::get('proposals/{id}/unlike', ['as'=>'proposal.unlike', 'uses'=>'ProposalsController@unlike']);
-
 
 });
 
@@ -116,13 +103,17 @@ Route::group(['middleware' => ['web','auth']], function ()
     Route::get('users/{id}/responses', ['as'=>'users.responses', 'uses'=>'UsersController@responses']);
 
     //Admin
+    View::composer('admin.*', 'App\Http\ViewComposers\StatusComposer');
+
     Route::get('admin', ['as'=>'admin', 'uses'=>'AdminController@index']);
+
+    Route::get('admin/users', ['as'=>'admin.users', 'uses'=>'AdminController@users']);
+
+    Route::get('admin/users/{id}', ['as'=>'admin.users.show', 'uses'=>'AdminController@showUser'])->where('id', '[0-9]+');
 
     Route::get('admin/users/create', ['as'=>'admin.users.create', 'uses'=>'AdminController@createUser']);
 
     Route::post('admin/users', ['as'=>'admin.users.store', 'uses'=>'AdminController@storeUser']);
-
-    Route::get('admin/users/{id}', ['as'=>'admin.users.show', 'uses'=>'AdminController@showUser'])->where('id', '[0-9]+');
 
     Route::get('admin/users/{id}/edit', ['as'=>'admin.users.edit', 'uses'=>'AdminController@editUser']);
 
@@ -132,11 +123,23 @@ Route::group(['middleware' => ['web','auth']], function ()
 
     Route::get('admin/proposals', ['as'=>'admin.proposals', 'uses'=>'AdminController@proposals']);
 
+    Route::get('admin/proposals/{id}', ['as'=>'admin.proposal.show', 'uses'=>'AdminController@showProposal'])->where('id', '[0-9]+');
+
     Route::get('admin/proposals/notresponded', ['as'=>'admin.proposals.notresponded', 'uses'=>'AdminController@notResponded']);
 
     Route::get('admin/proposals/{id}/response', ['as'=>'admin.proposal.response', 'uses'=>'AdminController@response']);
 
     Route::patch('admin/proposals/{id}/updateResponse', ['as'=>'admin.proposal.updateResponse', 'uses'=>'AdminController@updateResponse']);
+
+    Route::get('admin/proposals/create', ['as'=>'admin.proposal.create', 'uses'=>'AdminController@createProposal']);
+
+    Route::post('admin/proposals', ['as'=>'admin.proposal.store', 'uses'=>'AdminController@storeProposal']);
+
+    Route::get('admin/proposals/{id}/edit', ['as'=>'admin.proposal.edit', 'uses'=>'AdminController@editProposal']);
+
+    Route::patch('admin/proposals/{id}/update', ['as'=>'admin.proposal.update', 'uses'=>'AdminController@updateProposal']);
+
+    Route::get('admin/proposals/{id}/destroy', ['as'=>'admin.proposal.destroy', 'uses'=>'AdminController@destroyProposal']);
 
 });
 

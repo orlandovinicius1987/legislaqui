@@ -4,7 +4,7 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>{{ $proposals->count() }}</h3>
+                <h3>{{ $proposals_count }}</h3>
                 <p>Propostas Legislativas</p>
             </div>
             <div class="icon">
@@ -17,7 +17,7 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3> {{ $approvals }}</h3>
+                <h3> {{ $approvals_count }}</h3>
                 <p>Apoios</p>
             </div>
             <div class="icon">
@@ -30,7 +30,7 @@
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>{{ $users->count() }}</h3>
+                <h3>{{ $users_count }}</h3>
                 <p>Usuário Registrados</p>
             </div>
             <div class="icon">
@@ -43,7 +43,7 @@
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>{{ round(($proposals->where('responder_id', null)->count()/$proposals->count()) * 100, 2) }} <sup style="font-size: 20px">%</sup></h3>
+                <h3>{{ $not_responded_count }} <sup style="font-size: 20px">%</sup></h3>
                 <p>Propostas sem Resposta</p>
             </div>
             <div class="icon">
