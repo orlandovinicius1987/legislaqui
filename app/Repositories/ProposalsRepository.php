@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use Auth;
+use Session;
 use Illuminate\Support\Facades\Mail;
 use App\User;
 use App\Proposal;
@@ -34,20 +36,6 @@ class ProposalsRepository
             ->get();
     }
 
-
-//    /**
-//     * Get all of the proposals without responses.
-//     *
-//     * @param  User  $user
-//     * @return Collection
-//     */
-//    public function getProposalWithoutResponse()
-//    {
-//        return Proposal::whereNull('response')
-//            ->orderBy('created_at', 'asc')
-//            ->get();
-//    }
-
     public function sendProposalToCreator ($proposal)
     {
         //dd($proposal);
@@ -62,5 +50,32 @@ class ProposalsRepository
 
             $message->subject('e-democracia: Proposta Criada');
         });
+    }
+
+    public function all()
+    {
+        return Proposal::all();
+    }
+
+    public function find($id)
+    {
+        return Proposal::findOrFail($id);
+    }
+
+    public function approve($id)
+    {
+        $proposal = $this->find($id);
+
+        $user = Auth::user();
+
+        $approvals = $user->approvals()->where('proposal_id', $id)->get()->count();
+
+        if ($approvals > '0') {
+            Session::flash('error_msg','Você já apoiou este projeto.');
+        }
+        else {
+            $proposal->approvals()->save($user);
+            Session::flash('flash_msg','Seu apoio foi incluído com sucesso.');
+        }
     }
 }

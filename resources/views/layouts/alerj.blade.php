@@ -21,7 +21,7 @@
     <!-- Loading Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     {{--<link rel="stylesheet" type="text/css" href="/css/estilos.css" />--}}
-    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="/templates/alerj/css/custom.css" />
 
 
     <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery-1.11.1.min.js"></script>
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery-ui-1.10.4.custom.js"></script>
     <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.cookie.js"></script>
-    <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/acessibilidade.js"></script>
+    {{--<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/acessibilidade.js"></script>--}}
     <link href="http://www.alerj.rj.gov.br/BotDetectCaptcha.ashx?get=layoutStyleSheet" rel="stylesheet"/>
     <title>
 
@@ -273,6 +273,10 @@
     </div>
 </div>
 
+
+<!-- jQuery 3.0.0 -->
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>--}}
+
 <script type="text/javascript">
 
     var rootUrl = "http://www.alerj.rj.gov.br/";
@@ -345,14 +349,21 @@
     }
 </script>
 
-
-
 <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/Visualizar/listarPerfilDeputado.js"></script>
 <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/Visualizar/visualizar.js"></script>
 <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.mousewheel.js"></script>
 <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.jscrollpane.min.js"></script>
 <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jgrid.js"></script>
-<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.meio.mask.js"></script>
+<!-- InputMask -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+{{--<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.meio.mask.js"></script>--}}
+
+<script>
+    jQuery(function($){
+        console.log($("#cpf"));
+        $("#cpf").mask("999.999.999-99");
+    });
+</script>
 
 </body>
 </html>

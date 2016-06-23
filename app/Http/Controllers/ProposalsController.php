@@ -35,6 +35,16 @@ use App\Repositories\ProposalsRepository;
 
 class ProposalsController extends Controller
 {
+    /**
+     * @var ProposalsRepository
+     */
+    private $proposalsRepository;
+
+    public function __construct(ProposalsRepository $proposalsRepository)
+    {
+        $this->proposalsRepository = $proposalsRepository;
+    }
+
     public function index()
     {
        return view('proposals.index')->with('proposals', Proposal::paginate(20));
@@ -42,28 +52,16 @@ class ProposalsController extends Controller
 
     public function show($id)
     {
-        //Get Proposal
-        $proposal = Proposal::findOrFail($id);
+        $proposal = $this->proposalsRepository->find($id);
 
         return view('proposals.show', ['proposal' => $proposal]);
         //return view('proposals.show')->with('proposal', $proposal);
+        //return view('proposals.show')->with(compact('proposal'))
     }
 
     public function approval($id)
     {
-        $proposal = Proposal::findorFail($id);
-
-        $user_id = Auth::user()->id;
-
-        $approvals = User::find($user_id)->approvals()->where('proposal_id', $id)->get()->count();
-
-        if ($approvals > '0') {
-            Session::flash('error_msg','Você já apoiou este projeto.');
-        }
-        else {
-            $proposal->approvals()->save(Auth::user());
-            Session::flash('flash_msg','Seu apoio foi incluído com sucesso.');
-        }
+        $this->proposalsRepository->approve($id);
 
         return Redirect::route('proposals');
     }
@@ -149,7 +147,8 @@ class ProposalsController extends Controller
                 break;
         }
 
-        return Redirect::route('proposals');
+//        return Redirect::route('proposals');
+        return Redirect::back();
     }
 
     public function create()

@@ -157,6 +157,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        //PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
 
     ],
 
@@ -206,6 +207,7 @@ return [
         'Form'      => 'Collective\Html\FormFacade',
         'Html'      => 'Collective\Html\HtmlFacade',
         'NoCaptcha' => 'Anhskohbo\NoCaptcha\Facades\NoCaptcha',
+        //'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade',
 
     ],
 

@@ -10,21 +10,31 @@
             @include('partials.error')
 
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h1>{{ $proposal->name }}</h1>
-                    @include('partials.share', ['url' => URL::full()])
-                    {{--@include('partials.like', ['proposalId' => $proposal->id])--}}
+                <div class="panel-heading row">
+                    <div class="col-xs-1" style="width: 54px; text-align: center; margin-top: -12px; margin-left: 5px;">
+                        <a href="{{ route('proposal.like', ['id' => $proposal->id]) }}" title="Like"><i class="fa fa-caret-up fa-lg" aria-hidden="true"></i></a>
+                        <span class="vote-count-post">{{ $proposal->total_like_count }}</span>
+                        <a href="{{ route('proposal.unlike', ['id' => $proposal->id]) }}" title="Dislike"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i></a>
+                        <a href="{{ route('proposal.approval', $proposal->id) }}" title="Apoiar essa ideia" ><i class="fa fa-star" aria-hidden="true"></i></a>
+                        <div class="favoritecount"><b></b></div>
+                    </div>
+                    <div class="col-xs-11">
+                        <h1>{{ $proposal->name }}</h1>
+                        @include('partials.share', ['url' => URL::full()])
+                        {{--@include('partials.like', ['proposalId' => $proposal->id])--}}
+                    </div>
                 </div>
                 <div class="panel-body">
                     <table class="table-responsive table-striped table-show">
                         <tbody>
+
                             <tr><td class="table-td-label-show">User Id</td><td class="table-td-show"> {{ $proposal->user->name }}</td></tr>
                             <tr><td class="table-td-label-show">Situação</td><td class="table-td-show"> {{ $proposal->open }}</td></tr>
                             <tr><td class="table-td-label-show">Data Publicação</td><td class="table-td-show"> {{ $proposal->pub_date->format('d/m/Y') }}</td></tr>
                             <tr><td class="table-td-label-show">Data Limite</td><td class="table-td-show"> {{ $proposal->limit_date->format('d/m/Y') }}</td></tr>
-                            <tr><td class="table-td-label-show">Ideia Central</td><td class="table-td-show"> {{ $proposal->idea_central }}</td></tr>
-                            <tr><td class="table-td-label-show">Problema</td><td class="table-td-show"> {{ $proposal->problem }}</td></tr>
-                            <tr><td class="table-td-label-show">Exposição da Ideia</td><td class="table-td-show"> {{ $proposal->idea_exposition }}</td></tr>
+                            <tr><td class="table-td-label-show">Ideia Central</td><td class="table-td-show"> {!! $proposal->idea_central !!}</td></tr>
+                            <tr><td class="table-td-label-show">Problema</td><td class="table-td-show"> {!! $proposal->problem !!}</td></tr>
+                            <tr><td class="table-td-label-show">Exposição da Ideia</td><td class="table-td-show"> {!! $proposal->idea_exposition !!}</td></tr>
                             <tr><td class="table-td-label-show">Número de Apoios</td><td class="table-td-show"> {{ $proposal->approvals->count() }}</td></tr>
                             <tr></tr>
                             {{-- if has response -> return response data, else null --}}
@@ -35,9 +45,10 @@
                 </div>
                 <div class="panel-footer">
                     <div class="pull-left botao">
+
                         {{--<a href="{{ URL::current() }}/like" class="btn btn-info" role="button">Apoiar essa Ideia!</a>--}}
                         <a href="{{ route('proposal.like', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
-                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Gostei dessa Ideia!</a>
+                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Gostei dessa Ideia! </a>
                         <a href="{{ route('proposal.unlike', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
                             <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Não gostei dessa Ideia!</a>
                         <a href="{{ route('proposal.approval', $proposal->id) }}" class="btn btn-info botao" role="button">

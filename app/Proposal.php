@@ -42,8 +42,10 @@ class Proposal extends Eloquent {
     // Rating = Lower bound of Wilson score confidence interval for a Bernoulli parameter
     public function getRatingAttribute()
     {
-        $like = Like::where('proposal_id', $this->id)->where('like', 1)->count();
-        $unlike = Like::where('proposal_id', $this->id)->where('like', 0)->count();
+        $like = $this->like_count;
+      //$like = Like::where('proposal_id', $this->id)->where('like', 1)->count();
+        $unlike = $this->unlike_count;
+      //$unlike = Like::where('proposal_id', $this->id)->where('like', 0)->count();
 
         if ($like == 0 && $unlike == 0) {
             return 0;
@@ -54,20 +56,24 @@ class Proposal extends Eloquent {
                 ($like + $unlike)) / (1 + 3.8416 / ($like + $unlike));
     }
 
-    public function getLikeCountAttribute ()
+    public function getLikeCountAttribute()
     {
         return Like::where('proposal_id', $this->id)->where('like', 1)->count();
-
     }
 
-    public function getUnlikeCountAttribute ()
+    public function getUnlikeCountAttribute()
     {
         return Like::where('proposal_id', $this->id)->where('like', 0)->count();
     }
 
-    public function getTotalLikeCountAttribute ()
+    public function getTotalLikeCountAttribute()
     {
-        return (getLikeCountAttribute() - getUnlikeCountAttribute());
+        return ($this->like_count - $this->unlike_count);
+    }
+
+    public function getApprovalsCountAttribute()
+    {
+        return (User::all()->approvals()->get()->count());
     }
 }
 

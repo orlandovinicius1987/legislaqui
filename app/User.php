@@ -2,8 +2,6 @@
 
 namespace App;
 
-//use \App\Proposal;
-//use \App\Like;
 use Auth;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,14 +48,51 @@ class User extends Authenticatable
         return $this->hasOne(State::class);
     }
 
-    // User has Roles
+    // User has one Role
     public function roles() {
-        return $this->has(Role::class);
+        return $this->hasOne(Role::class, 'id');
     }
 
-    //is_admin attribute
+    // Get is_admin attribute
     public function getIsAdminAttribute() {
         return Auth::user()->role_id === 0 or Auth::user()->role_id === 1;
+    }
+
+    // Get Role Name
+        public function getRoleNameAttribute() {
+        return Role::find($this->role_id)->role;
+    }
+
+    // Get Proposals Count
+    public function getProposalsCountAttribute() {
+        return Proposal::where('user_id', $this->id)->count();
+    }
+
+    // Get Likes Count
+    public function getLikesCountAttribute() {
+        return Like::where('user_id', $this->id)->count();
+    }
+
+    // Get Approvals Count
+    public function getApprovalsCountAttribute ()
+    {
+        return Approval::where('user_id', $this->id)->count();
+    }
+
+    // Get Responded Count
+    public function getProposalsRespondedCountAttribute ()
+    {
+        return Proposal::where('responder_id', $this->id)->count();
+    }
+
+    public function getAvatarAttribute()
+    {
+        return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->email ) ) ) . "?d=identicon" . "&s=80";
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return date('M y', strtotime($value));
     }
 
 }
