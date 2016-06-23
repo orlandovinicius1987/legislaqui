@@ -8,13 +8,13 @@
 
     <div class="row">
         <div class="col-md-6">
-            <a href="{{ route('proposals') }}" class="btn btn-info">Voltar</a>
-            <a href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary">Editar Proposta</a>
+            <a href="{{ route('admin.proposals') }}" class="btn btn-info">Voltar</a>
+            <a href="{{ route('admin.proposal.edit', $proposal->id) }}" class="btn btn-primary">Editar Proposta</a>
         </div>
         <div class="col-md-6 text-right">
             {{ Form::open([
                 'method' => 'DELETE',
-                'route' => ['proposal.destroy', $proposal->id]
+                'route' => ['admin.proposal.destroy', $proposal->id]
             ]) }}
             {{ Form::submit('Deletar essa Proposta ?', ['class' => 'btn btn-danger']) }}
             {{ Form::close() }}

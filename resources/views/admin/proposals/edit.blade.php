@@ -15,7 +15,7 @@
 
                     {{ Form::model($proposal, [
                     'method' => 'PATCH',
-                    'route' => ['proposal.update', $proposal->id],
+                    'route' => ['admin.proposal.update', $proposal->id],
                     'class' => 'form'
                     ]) }}
 

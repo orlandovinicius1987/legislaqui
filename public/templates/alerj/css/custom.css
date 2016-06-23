@@ -187,7 +187,7 @@ h1 {
     height: auto;
     overflow: hidden;
     font-family: 'univers_47';
-    font-size: 1.500em;
+    font-size: 2.8em;
     color: #212e52;
     line-height: auto;
     text-transform: uppercase;
@@ -442,6 +442,20 @@ textarea {
 /* Font Awesome */
 .fa, .fa-facebook-official, .fa-twitter-square, .fa-google-plus-square, .fa-envelope-square {
     font-size: 1.6em;
+}
+
+.fa-caret-up, .fa-caret-down {
+    font-size: 2.6em;
+}
+
+.fa-caret-down {
+    margin-top: -6px;
+}
+
+.vote-count-post {
+    /*font-weight: bold;*/
+    /*margin-top: 5px;*/
+    font-size: 1.2em;
 }
 
 /* noCaptcha reCaptcha center */

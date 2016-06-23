@@ -28,6 +28,7 @@ use Gate;
 use Carbon\Carbon;
 
 use App\Http\Requests\ResponseFormRequest;
+use App\Http\Requests\ProposalFormRequest;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
