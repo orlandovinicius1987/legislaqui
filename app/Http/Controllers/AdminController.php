@@ -228,7 +228,7 @@ class AdminController extends Controller
         $proposal = $this->proposalsRepository->find($id);
         //$proposal = Proposal::findOrFail($id);
 
-        $input = $formRequest->except('_token','_method');
+        $input = $formRequest->except('_token','_method','_wysihtml5_mode');
 
         $input['responder_id'] = Auth::user()->id;
 

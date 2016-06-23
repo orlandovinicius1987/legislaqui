@@ -32,7 +32,7 @@
                         {{ Form::label('Resposta') }}
                         {{ Form::textarea('response', null,
                             array('required',
-                                  'class'=>'',
+                                  'class'=>'textarea',
                                   'name'=>'response',
                                   'placeholder'=>'Responder Proposta')) }}
                     </div>

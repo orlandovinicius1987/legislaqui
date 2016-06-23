@@ -25,7 +25,7 @@
                     <label class="col-xs-4 control-label">E-Mail</label>
 
                     <div class="col-xs-8">
-                        <input type="email" class="campo" name="email" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu email">
+                        <input type="text" class="campo" name="email" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu email">
 
                         @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'register'))
                             <span class="help-block">
@@ -39,7 +39,9 @@
                     <label class="col-xs-4 control-label">CPF</label>
 
                     <div class="col-xs-8">
-                        <input type="cpf" class="campo" name="cpf" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">
+                        <input required="required" class="campo" id="cpf" name="cpf" type="text" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">
+
+                        {{--<input id="cfp" type="text" class="campo" name="cpf" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">--}}
 
                         @if ($errors->has('cpf') && (Session::get('last_auth_attempt') === 'register'))
                             <span class="help-block">

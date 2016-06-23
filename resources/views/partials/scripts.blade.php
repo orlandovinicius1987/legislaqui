@@ -30,29 +30,29 @@
 
 {{--<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>--}}
 
-<script>
-//    $('.navbar ul li a').click(function(e) {
-//    var $this = $(this);
-//    if (!$this.hasClass('active')) {
-//        $this.addClass('active');
-//    }
-//    else {
-//        $this.removeClass('active');
-//    }
-//    e.preventDefault();
-//    });
+{{--<script>--}}
+{{--    $('.navbar ul li a').click(function(e) {--}}
+{{--    var $this = $(this);--}}
+{{--    if (!$this.hasClass('active')) {--}}
+{{--        $this.addClass('active');--}}
+{{--    }--}}
+{{--    else {--}}
+{{--        $this.removeClass('active');--}}
+{{--    }--}}
+{{--    e.preventDefault();--}}
+{{--    });--}}
 
-//$(".navbar ul li a").click(function() {
-//// remove classes from all
-//    $("li").removeClass("active");
-//// add class to the one we clicked
-//    $(this).addClass("active");
-//});
+{{--$(".navbar ul li a").click(function() {--}}
+{{--// remove classes from all--}}
+{{--    $("li").removeClass("active");--}}
+{{--// add class to the one we clicked--}}
+{{--    $(this).addClass("active");--}}
+{{--});--}}
 
-// Sets active link in Bootstrap menu
-// Add this code in a central place used\shared by all pages
-// like your _Layout.cshtml in ASP.NET MVC for example
-//$('a[href="' + this.location.pathname + '"]').parents('li,ul').addClass('active');
+{{--// Sets active link in Bootstrap menu--}}
+{{--// Add this code in a central place used\shared by all pages--}}
+{{--// like your _Layout.cshtml in ASP.NET MVC for example--}}
+{{--//$('a[href="' + this.location.pathname + '"]').parents('li,ul').addClass('active');--}}
 
 {{--$(function () {--}}
     {{--setNavigation();--}}
