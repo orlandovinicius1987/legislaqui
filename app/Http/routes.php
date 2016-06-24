@@ -141,6 +141,11 @@ Route::group(['middleware' => ['web','auth']], function ()
 
     Route::get('admin/proposals/{id}/destroy', ['as'=>'admin.proposal.destroy', 'uses'=>'AdminController@destroyProposal']);
 
+    Route::get('/admin/logout',function(){
+        Auth::logout();
+        return redirect('/');
+    });
+
 });
 
 //
