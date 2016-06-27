@@ -13,6 +13,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 //use App\Http\Controllers\Controller;
 
+use App\Repositories\UsersRepository;
 use Auth;
 
 use App\Proposal;
@@ -45,10 +46,12 @@ class AdminController extends Controller
      * @var ProposalsRepository
      */
     private $proposalsRepository;
+    private $usersRepository;
 
-    public function __construct(ProposalsRepository $proposalsRepository)
+    public function __construct(ProposalsRepository $proposalsRepository, UsersRepository $usersRepository)
     {
         $this->proposalsRepository = $proposalsRepository;
+        $this->usersRepository = $usersRepository;
     }
 
     public function index ()
@@ -58,16 +61,20 @@ class AdminController extends Controller
 
     public function users ()
     {
+        $users = $this->usersRepository->all();
+
         return view('admin.users.index')
-            ->with('users', User::all());
+            ->with(compact('users'));
     }
 
     public function showUser($id)
     {
-        //Get Proposal
-        $user = User::findOrFail($id);
+        //Get User
+        $user = $this->usersRepository->find($id);
 
-        return view('admin.users.show', ['user' => $user]);
+        return view('admin.users.show')
+            ->with(compact('user'));
+        // ['user' => $user]);
     }
 
     /**
@@ -131,7 +138,8 @@ class AdminController extends Controller
      */
     public function editUser($id)
     {
-        $user = User::find($id);
+
+        $user = $this->usersRepository->find($id);
 
         return view('admin.users.edit', [ 'user' => $user ]);
     }
@@ -144,7 +152,7 @@ class AdminController extends Controller
      */
     public function updateUser($id)
     {
-        $user = User::find($id);
+        $user = $this->usersRepository->find($id);
 
         $user->name = Input::get('name');
         $user->email = Input::get('email');
@@ -163,7 +171,7 @@ class AdminController extends Controller
      */
     public function destroyUser($id)
     {
-        User::destroy($id);
+        $this->usersRepository->destroy($id);
 
         return Redirect::to('/admin')->with('user_crud_msg', 'Usuário Removido com Sucesso');
     }
@@ -183,9 +191,9 @@ class AdminController extends Controller
     {
         $proposal = $this->proposalsRepository->find($id);
 
-        return view('admin.proposals.show', ['proposal' => $proposal]);
+        //return view('admin.proposals.show', ['proposal' => $proposal]);
         //return view('proposals.show')->with('proposal', $proposal);
-        //return view('proposals.show')->with(compact('proposal'))
+        return view('admin.proposals.show')->with(compact('proposal'));
     }
 
     public function notResponded()

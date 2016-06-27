@@ -89,7 +89,7 @@ class ProposalsController extends Controller
     {
 
         //Get Proposal
-        $proposal = Proposal::findorFail($id);
+        $proposal = $this->proposalsRepository->find($id);
 
         //Get User
         if (!Auth::check()) {
@@ -182,7 +182,7 @@ class ProposalsController extends Controller
     public function edit($id)
     {
         //Get Proposal
-        $proposal = Proposal::findOrFail($id);
+        $proposal = $this->proposalsRepository->find($id);
 
         //Via User Model
         //        if ($user->can('update', $post)) {
@@ -206,7 +206,7 @@ class ProposalsController extends Controller
      */
     public function update($id, ProposalFormRequest $formRequest)
     {
-        $proposal = Proposal::findOrFail($id);
+        $proposal = $this->proposalsRepository->find($id);
 
         $input = $formRequest->except('_token');
 
@@ -242,7 +242,7 @@ class ProposalsController extends Controller
      */
     public function destroy($id)
     {
-        $proposal = Proposal::findOrFail($id);
+        $proposal = $this->proposalsRepository->find($id);
 
         if (Gate::allows('destroy', $proposal)) {
             $proposal->delete();
@@ -270,7 +270,7 @@ class ProposalsController extends Controller
     public function response($id)
     {
         //Get Proposal
-        $proposal = Proposal::findOrFail($id);
+        $proposal = $this->proposalsRepository->find($id);
 
         if (Gate::allows('edit', $proposal)) {
             return view('proposals.response')->with('proposal', $proposal);
@@ -289,7 +289,7 @@ class ProposalsController extends Controller
      */
     public function updateResponse($id, ResponseFormRequest $formRequest)
     {
-        $proposal = Proposal::findOrFail($id);
+        $proposal = $this->proposalsRepository->find($id);
 
         $input = $formRequest->except('_token','_method');
 
