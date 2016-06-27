@@ -21,7 +21,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
         'email' => $faker->email,
         //'password' => bcrypt(str_random(10)),
-        'password' => Hash::make('senha'),
+        'password' => Hash::make('123456'),
         //'is_admin' => $faker->boolean(30),
         'remember_token' => str_random(10),
         //Aprovador 1 or Cidadao 99

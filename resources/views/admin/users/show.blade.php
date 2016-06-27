@@ -7,9 +7,10 @@
     <div class="">
         <div class="row">
 
-            @include('partials.error')
-
             <div class="col-md-12">
+
+                @include('partials.error')
+
                 <!-- Widget: user widget style 1 -->
                 <div class="box box-widget widget-user-2">
                     <!-- Add the bg color to the header using any of the bg-* classes -->

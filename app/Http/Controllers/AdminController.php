@@ -13,7 +13,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 //use App\Http\Controllers\Controller;
 
-use App\Repositories\UsersRepository;
 use Auth;
 
 use App\Proposal;
@@ -22,7 +21,10 @@ use App\State;
 use App\Role;
 use App\Approval;
 use App\ProposalHistory;
+
+use App\Repositories\UsersRepository;
 use App\Repositories\ProposalsRepository;
+use App\Repositories\DataRepository;
 
 use Gate;
 
@@ -47,11 +49,13 @@ class AdminController extends Controller
      */
     private $proposalsRepository;
     private $usersRepository;
+    private $dataRepository;
 
-    public function __construct(ProposalsRepository $proposalsRepository, UsersRepository $usersRepository)
+    public function __construct(ProposalsRepository $proposalsRepository, UsersRepository $usersRepository, DataRepository $dataRepository)
     {
         $this->proposalsRepository = $proposalsRepository;
         $this->usersRepository = $usersRepository;
+        $this->dataRepository = $dataRepository;
     }
 
     public function index ()
@@ -74,7 +78,6 @@ class AdminController extends Controller
 
         return view('admin.users.show')
             ->with(compact('user'));
-        // ['user' => $user]);
     }
 
     /**
@@ -84,10 +87,13 @@ class AdminController extends Controller
      */
     public function createUser()
     {
-        $states = State::pluck('nome', 'uf');
-        $roles = Role::pluck('role', 'id');
+        $states = $this->dataRepository->getStates();
+        //State::pluck('nome', 'uf');
+        $roles = $this->dataRepository->getRoles();
+        //Role::pluck('role', 'id');
 
-        return view('admin.users.create')->with('states', $states)->with('roles', $roles);
+        return view('admin.users.create')->with(compact('states'))->with(compact('roles'));
+        //return view('admin.users.create')->with('states', $states)->with('roles', $roles);
     }
 
     /**
@@ -97,21 +103,8 @@ class AdminController extends Controller
      */
     public function storeUser()
     {
-        $user = new User;
 
-        $uuid = Uuid::uuid4();
-
-        $user->name = Input::get('name');
-        $user->email = Input::get('email');
-        $user->password = Hash::make(Input::get('password'));
-
-        $user->uf = Input::get('uf');
-        $user->role_id = Input::get('role_id');
-        $user->cpf = Input::get('cpf');
-
-        $user->uuid = $uuid;
-
-        $user->save();
+        $this->usersRepository->storeUser();
 
         return Redirect::to('/admin')->with('user_crud_msg', 'Usuário Incluído com Sucesso');
 //
@@ -160,7 +153,10 @@ class AdminController extends Controller
 
         $user->save();
 
-        return Redirect::to('/admin')->with('user_crud_msg', 'Usuário Editado com Sucesso');
+        // Generating Redirects...
+        return redirect()->route('admin.users.show', ['id' => $id])->with('user_crud_msg', 'Usuário Editado com Sucesso');
+
+//        return Redirect::to('/admin')->with('user_crud_msg', 'Usuário Editado com Sucesso');
     }
 
     /**
@@ -261,7 +257,7 @@ class AdminController extends Controller
         //Then update Proposal
         $proposal->forcefill($input)->save();
         // dd($proposal);
-        return Redirect::route('admin.proposals')->with('proposal_crud_msg', 'Proposta Legislativa Respondida com Sucesso');
+        return Redirect::route('admin.proposal.show', ['id' => $id])->with('proposal_crud_msg', 'Proposta Legislativa Respondida com Sucesso');
 
     }
 
@@ -323,7 +319,7 @@ class AdminController extends Controller
 
         //Then update Proposal
         $proposal->fill($input)->save();
-        return Redirect::route('admin.proposals')->with('proposal_crud_msg', 'Proposta Legislativa Editada com Sucesso');
+        return Redirect::route('admin.proposal.show', ['id' => $id])->with('proposal_crud_msg', 'Proposta Legislativa Editada com Sucesso');
 
     }
 
