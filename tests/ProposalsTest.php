@@ -40,7 +40,7 @@ class ProposalsTest extends TestCase
         $user = User::all()->random();
         $user_name = $user->name;
         $user_email = $user->email;
-        $user_pwd = 'senha';
+        $user_pwd = '123456';
 
         return $this->visit('/')
             ->click('Login')
