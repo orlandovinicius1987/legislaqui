@@ -47,8 +47,6 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('proposals/{id}', ['as'=>'proposal.show', 'uses'=>'ProposalsController@show'])->where('id', '[0-9]+');
 
-    Route::get('about', ['as'=> 'about', 'uses'=> 'AboutController@index']);
-
     Route::get('cookieset', function()
     {
         //$foreverCookie = Cookie::forever('forever', 'ttt');
@@ -75,10 +73,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('proposals/{id}/unlike', ['as'=>'proposal.unlike', 'uses'=>'ProposalsController@unlike']);
 
     //About - Contact Form
-    Route::get('contact',
-        ['as' => 'contact', 'uses' => 'AboutController@create']);
-    Route::post('contact',
-        ['as' => 'contact_store', 'uses' => 'AboutController@store']);
+    Route::get('about', ['as'=> 'about', 'uses'=> 'AboutController@index']);
+    Route::get('contact', ['as' => 'contact', 'uses' => 'AboutController@create']);
+    Route::post('contact', ['as' => 'contact_store', 'uses' => 'AboutController@store']);
 
 });
 
