@@ -22,16 +22,13 @@
                 <li class="{{ set_menu_active('contact') }}"><a href="/contact">Contato</a></li>
                 {{--<li {{ Request::is('contact') ? ' class=active' : null }}><a href="/contact">Contato</a></li>--}}
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Outros Serviços <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Propostas <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if (Auth::guest())
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="{{ url('/login') }}">Proponha uma ideia legislativa<br>logando/registrando-se aqui</a></li>
                         <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
+                        <li class="dropdown-header">e-democracia 2016</li>
+                        <li class="dropdown-header">ALERJ</li>
                         @elseif (Auth::user()->is_admin)
                         {{--@elseif (Auth::user()->role_id === 0 or Auth::user()->role_id === 1)--}}
                             <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>

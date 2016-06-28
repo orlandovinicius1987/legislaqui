@@ -188,7 +188,7 @@ class AdminController extends Controller
         $proposal = $this->proposalsRepository->find($id);
 
         //return view('admin.proposals.show', ['proposal' => $proposal]);
-        //return view('proposals.show')->with('proposal', $proposal);
+        //return view('admin.proposals.show')->with('proposal', $proposal);
         return view('admin.proposals.show')->with(compact('proposal'));
     }
 
