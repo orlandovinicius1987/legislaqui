@@ -74,6 +74,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('proposals/{id}/like', ['as'=>'proposal.like', 'uses'=>'ProposalsController@like']);
     Route::get('proposals/{id}/unlike', ['as'=>'proposal.unlike', 'uses'=>'ProposalsController@unlike']);
 
+    //About - Contact Form
+    Route::get('contact',
+        ['as' => 'contact', 'uses' => 'AboutController@create']);
+    Route::post('contact',
+        ['as' => 'contact_store', 'uses' => 'AboutController@store']);
+
 });
 
 Route::group(['middleware' => ['web','auth']], function ()

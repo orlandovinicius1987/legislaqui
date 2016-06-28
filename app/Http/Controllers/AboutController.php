@@ -13,10 +13,50 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class AboutController extends Controller
-{
-    public function index ()
+use App\Http\Requests\ContactFormRequest;
+
+//class AboutController extends Controller
+//{
+//    public function index ()
+//    {
+//        return view('about');
+//    }
+//}
+
+
+class AboutController extends Controller {
+
+    public function create()
     {
-        return view('about');
+        return view('about.contact');
     }
+
+//    public function store(ContactFormRequest $request)
+//    {
+//        $msg = 'Obrigado por entrar em contato com a e-democracia da ALERJ. Você receberá uma cópia de sua mensagem e retornaremos o seu contato em breve!';
+//
+//        return \Redirect::route('contact')
+//            ->with('message', $msg);
+//
+//    }
+
+    public function store(ContactFormRequest $request)
+    {
+        $msg = 'Obrigado por entrar em contato com a e-democracia da ALERJ. Você receberá uma cópia de sua mensagem e retornaremos o seu contato em breve!';
+
+        \Mail::send('emails.contact',
+            array(
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'user_message' => $request->get('message')
+            ), function($message)
+            {
+                $message->from('wj@wjgilmore.com');
+                $message->to('wj@wjgilmore.com', 'Admin')->subject('TODOParrot Feedback');
+            });
+
+        return \Redirect::route('contact')->with('message', $msg);
+
+    }
+
 }
