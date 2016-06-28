@@ -15,16 +15,13 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ContactFormRequest;
 
-//class AboutController extends Controller
-//{
-//    public function index ()
-//    {
-//        return view('about');
-//    }
-//}
-
 
 class AboutController extends Controller {
+
+    public function index ()
+    {
+        return view('about.about');
+    }
 
     public function create()
     {
