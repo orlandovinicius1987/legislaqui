@@ -17,14 +17,14 @@
                 <table id="datatable" class="table table-striped table-hover compact" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th><h3>Proposta Legislativa</h3></th>
+                        <th><h3>Ideia Legislativa</h3></th>
                         @if (isset($is_not_responded) && Auth::user()->is_admin)
                             <th><h3>Sem Resposta</h3></th>
                         @else
-                            <th><h3>Likes</h3></th>
-                            <th><h3>Unlikes</h3></th>
-                            <th><h3>Rating</h3></th>
-                            <th><h3>Apoios</h3></th>
+                            <th><h3>Curtidas</h3></th>
+                            {{--<th><h3>Unlikes</h3></th>--}}
+                            {{--<th><h3>Rating</h3></th>--}}
+                            <th><h3>Apoiamentos</h3></th>
                         @endif
                     </tr>
                     </thead>
@@ -38,11 +38,11 @@
                                 <td><a href="{{ route('proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a></td>
                             @else
                                 {{--Likes --}}
-                                <td>{{ $proposal->like_count }}</td>
+                                <td>{{ ($proposal->like_count - $proposal->unlike_count) }}</td>
                                 {{--Unlikes--}}
-                                <td>{{ $proposal->unlike_count }}</td>
+                                {{--<td>{{ $proposal->unlike_count }}</td>--}}
                                 {{--Rating--}}
-                                <td>{{ $proposal->rating }}</td>
+                                {{--<td>{{ $proposal->rating }}</td>--}}
                                 {{--Approvals--}}
                                 <td>{{ $proposal->approvals()->count() }}</td>
                             @endif

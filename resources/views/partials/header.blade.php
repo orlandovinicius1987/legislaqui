@@ -13,7 +13,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             {{--<a class="navbar-brand" href="/">e-Cidadania</a>--}}
             <ul class="nav navbar-nav">
-                <li class="{{ set_menu_active('/') }}"><a href="/">Home</a></li>
+                <li class="{{ set_menu_active('/') }}"><a href="/">Início</a></li>
                 {{--<li {{ Request::is('/') ? ' class=active' : null }}><a href="/">Home</a></li>--}}
                 {{--<li>{{ Html::linkRoute('proposals', 'Home')}}</li>--}}
                 <li class="{{ set_menu_active('about') }}"><a href="/about">Como Funciona?</a></li>

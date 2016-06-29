@@ -54,7 +54,7 @@
 
         <div class="form-group">
             {!! Form::submit('Enviar!',
-              array('class'=>'btn btn-primary')) !!}
+              array('class'=>'btn btn-primary botao')) !!}
         </div>
         {!! Form::close() !!}
 
