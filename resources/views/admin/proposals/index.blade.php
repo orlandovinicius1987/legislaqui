@@ -26,7 +26,7 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Propostas Legislativas</h3>
+                        <h3 class="box-title">Ideias Legislativas</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -38,9 +38,9 @@
                                         <tr role="row">
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Id: activate to sort column ascending" style="width: 68px;">Id</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Nome: activate to sort column descending" style="width: 296px;" aria-sort="ascending">Nome</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Likes: activate to sort column ascending" style="width: 241px;">Likes</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Dislikes: activate to sort column ascending" style="width: 214px;">Dislikes</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rating: activate to sort column ascending" style="width: 168px;">Rating</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Likes: activate to sort column ascending" style="width: 241px;">Curtidas</th>
+                                            {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Dislikes: activate to sort column ascending" style="width: 214px;">Dislikes</th>--}}
+                                            {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rating: activate to sort column ascending" style="width: 168px;">Rating</th>--}}
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Apoios: activate to sort column ascending" style="width: 168px;">Apoios</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Resposta</th>
                                         </tr>
@@ -53,11 +53,11 @@
                                                 {{--Proposal Name--}}
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$proposal->id)) }}">{{ $proposal->name }}</a></td>
                                                 {{--Likes --}}
-                                                <td>{{ $proposal->like_count }}</td>
+                                                <td>{{ ($proposal->like_count - $proposal->unlike_count)}}</td>
                                                 {{--Unlikes--}}
-                                                <td>{{ $proposal->unlike_count }}</td>
+                                                {{--<td>{{ $proposal->unlike_count }}</td>--}}
                                                 {{--Rating--}}
-                                                <td>{{ $proposal->rating }}</td>
+                                                {{--<td>{{ $proposal->rating }}</td>--}}
                                                 {{--Approvals--}}
                                                 <td>{{ $proposal->approvals()->count() }}</td>
                                                 {{--Proposal Response--}}
@@ -80,10 +80,10 @@
                                         <tr>
                                             <th rowspan="1" colspan="1">Id</th>
                                             <th rowspan="1" colspan="1">Nome</th>
-                                            <th rowspan="1" colspan="1">Likes</th>
-                                            <th rowspan="1" colspan="1">Dislikes</th>
-                                            <th rowspan="1" colspan="1">Rating</th>
-                                            <th rowspan="1" colspan="1">Apoios</th>
+                                            <th rowspan="1" colspan="1">Curtidas</th>
+                                            {{--<th rowspan="1" colspan="1">Dislikes</th>--}}
+                                            {{--<th rowspan="1" colspan="1">Rating</th>--}}
+                                            <th rowspan="1" colspan="1">Apoiamentos</th>
                                             <th rowspan="1" colspan="1">Resposta</th>
                                         </tr>
                                         </tfoot>

@@ -33,7 +33,7 @@
                     {{--<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>--}}
                     {{--<li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>--}}
                     <li class="active"><a href="/admin/users"><i class="fa fa-circle-o text-warning"></i> Usuários</a></li>
-                    <li><a href="/admin/proposals"><i class="fa fa-circle-o text-info"></i> Propostas Legislativas</a></li>
+                    <li><a href="/admin/proposals"><i class="fa fa-circle-o text-info"></i> Ideias Legislativas</a></li>
                     <li><a href="/admin/proposals/notresponded"><i class="fa fa-circle-o text-danger"></i> Propostas sem Resposta</a></li>
                 </ul>
             </li>
