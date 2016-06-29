@@ -5,7 +5,7 @@
         <div class="small-box bg-aqua">
             <div class="inner">
                 <h3>{{ $proposals_count }}</h3>
-                <p>Propostas Legislativas</p>
+                <p>Ideias Legislativas</p>
             </div>
             <div class="icon">
                 <i class="ion ion-document-text"></i>
