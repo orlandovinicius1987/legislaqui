@@ -5,10 +5,19 @@ namespace App;
 use App\Like;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Proposal extends Eloquent {
+
+    use SoftDeletes;
 
     //public $timestamps = false;
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
     protected $dates = ['created_at', 'updated_at', 'deleted_at', 'pub_date', 'limit_date'];
 
     protected $fillable = ['name', 'idea_central', 'problem', 'idea_exposition', 'user_id', 'situation', 'pub_date', 'limit_date'];
