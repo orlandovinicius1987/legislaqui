@@ -257,7 +257,7 @@ class AdminController extends Controller
         //Then update Proposal
         $proposal->forcefill($input)->save();
         // dd($proposal);
-        return Redirect::route('admin.proposal.show', ['id' => $id])->with('proposal_crud_msg', 'Proposta Legislativa Respondida com Sucesso');
+        return Redirect::route('admin.proposal.show', ['id' => $id])->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
 
     }
 
@@ -282,7 +282,7 @@ class AdminController extends Controller
             return view('admin.proposals.edit')->with('proposal', $proposal);
         }
         else {
-            return Redirect::route('admin.proposals')->with('error_msg', 'Você não é o dono desta Proposta');
+            return Redirect::route('admin.proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
 
     }
@@ -319,7 +319,7 @@ class AdminController extends Controller
 
         //Then update Proposal
         $proposal->fill($input)->save();
-        return Redirect::route('admin.proposal.show', ['id' => $id])->with('proposal_crud_msg', 'Proposta Legislativa Editada com Sucesso');
+        return Redirect::route('admin.proposal.show', ['id' => $id])->with('proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
 
     }
 
@@ -336,10 +336,10 @@ class AdminController extends Controller
 
         if (Gate::allows('destroy', $proposal)) {
             $proposal->delete();
-            return Redirect::route('admin.proposals')->with('proposal_crud_msg', 'Proposta Legislativa Removida com Sucesso');
+            return Redirect::route('admin.proposals')->with('proposal_crud_msg', 'Ideia Legislativa Removida com Sucesso');
         }
         else {
-            return Redirect::route('admin.proposals')->with('error_msg', 'Você não é o dono desta Proposta');
+            return Redirect::route('admin.proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
 

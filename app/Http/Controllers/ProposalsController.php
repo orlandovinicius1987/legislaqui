@@ -143,7 +143,13 @@ class ProposalsController extends Controller
                     'like' => $action == 'like',
                     'ip_address' => Request::ip()
                 ]);
-                Session::flash('flash_msg','Seu ' . $action . ' foi computado com sucesso.');
+
+                $approval_url = route('proposal.approval', $id);
+                $msg = 'Sua curtida foi computada com sucesso. Caso queira apoiar oficialmente esta proposta, <a href="'.$approval_url.'">clique aqui</a>.';
+                Session::flash('flash_msg', $msg);
+//                Session::flash('flash_msg','Seu ' . $action . ' foi computado com sucesso.');
+
+
                 break;
         }
 
@@ -170,7 +176,7 @@ class ProposalsController extends Controller
         event(new ProposalWasCreated($proposal));
         //Event::fire(new ProposalWasCreated($proposal));
 
-        return Redirect::route('proposals')->with('proposal_crud_msg', 'Proposta Legislativa Incluída com Sucesso');
+        return Redirect::route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Incluída com Sucesso');
     }
 
     /**
@@ -193,7 +199,7 @@ class ProposalsController extends Controller
             return view('proposals.edit')->with('proposal', $proposal);
         }
         else {
-            return Redirect::route('proposals')->with('error_msg', 'Você não é o dono desta Proposta');
+            return Redirect::route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
 
     }
@@ -230,7 +236,7 @@ class ProposalsController extends Controller
 
         //Then update Proposal
         $proposal->fill($input)->save();
-        return Redirect::route('proposals')->with('proposal_crud_msg', 'Proposta Legislativa Editada com Sucesso');
+        return Redirect::route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
 
     }
 
@@ -246,10 +252,10 @@ class ProposalsController extends Controller
 
         if (Gate::allows('destroy', $proposal)) {
             $proposal->delete();
-            return Redirect::route('proposals')->with('proposal_crud_msg', 'Proposta Legislativa Removida com Sucesso');
+            return Redirect::route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Removida com Sucesso');
         }
         else {
-            return Redirect::route('proposals')->with('error_msg', 'Você não é o dono desta Proposta');
+            return Redirect::route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
 
@@ -276,7 +282,7 @@ class ProposalsController extends Controller
             return view('proposals.response')->with('proposal', $proposal);
         }
         else {
-            return Redirect::route('proposals')->with('error_msg', 'Você não é o dono desta Proposta');
+            return Redirect::route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
 
     }
@@ -316,7 +322,7 @@ class ProposalsController extends Controller
         //Then update Proposal
         $proposal->forcefill($input)->save();
        // dd($proposal);
-        return Redirect::route('proposals')->with('proposal_crud_msg', 'Proposta Legislativa Respondida com Sucesso');
+        return Redirect::route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
 
     }
 }
