@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="col-md-6 botao">
-                            <a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger botao">
+                            <a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger botao" onclick="if(!confirm('Deseja realmente excluir este usuário?')){return false;};">
                                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Usuário</a>
                         </div>
                     </div>

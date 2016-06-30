@@ -63,7 +63,7 @@
                         <a href="{{ route('proposal.create') }}" class="btn btn-primary botao">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Proposta</a>
                         @can('destroy', $proposal)
-                        <a href="{{ route('proposal.destroy', $proposal->id) }}" class="btn btn-danger botao">
+                        <a href="{{ route('proposal.destroy', $proposal->id) }}" class="btn btn-danger botao" onclick="if(!confirm('Você tem certeza que deseja apagar essa Ideia Legislativa?')){return false;};">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Proposta</a>
                         @endcan
                     </div>
