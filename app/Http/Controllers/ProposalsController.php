@@ -114,10 +114,10 @@ class ProposalsController extends Controller
                 switch ($action) {
                     case 'like':
                         Like::where('uuid', $unique)->where('proposal_id', $id)->update(['like' => $action == 'like']);
-                        Session::flash('flash_msg', 'Seu ' . $action . ' foi recomputado com sucesso!');
+                        Session::flash('flash_msg', 'Você voltou a curtir essa Ideia Legislativa!');
                         break;
                     case 'unlike':
-                        Session::flash('error_msg', 'Você já deu ' . $action . ' neste projeto!');
+                        Session::flash('error_msg', 'Você já deixou de curtir essa Ideia Legislativa!');
                         break;
                 }
                 break;
@@ -125,11 +125,11 @@ class ProposalsController extends Controller
             case '1':
                 switch ($action) {
                     case 'like':
-                        Session::flash('error_msg', 'Você já deu ' . $action . ' neste projeto!');
+                        Session::flash('error_msg', 'Você já curtiu essa Ideia Legislativa!');
                         break;
                     case 'unlike':
                         Like::where('uuid', $unique)->where('proposal_id', $id)->update(['like' => $action == 'like']);
-                        Session::flash('flash_msg', 'Seu ' . $action . ' foi recomputado com sucesso!');
+                        Session::flash('flash_msg', 'Você deixou de curtir essa Ideia Legislativa!');
                         break;
                 }
                 break;

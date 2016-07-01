@@ -31,9 +31,21 @@
             <i class="fa fa-caret-square-o-down" aria-hidden="true"></i> Dislike
         </a>
 
-        <a href="{{ route('proposal.approval', $proposal->id) }}">
-            <i class="fa fa-star" aria-hidden="true"></i> Apoiar
-        </a>
+        @if (!Auth::check())
+            <a href="{{ route('proposal.approval', $proposal->id) }}" onclick="if(!confirm('Para apoiar oficialmente uma ideia legislativa você precisa criar uma conta na página da ALERJ.')){return false;};">
+                {{--<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Apoiar essa Ideia!</a>--}}
+                <i class="fa fa-star" aria-hidden="true"></i> Apoiar essa Ideia!
+            </a>
+        @else
+            <a href="{{ route('proposal.approval', $proposal->id) }}">
+                {{--<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Apoiar essa Ideia!</a>--}}
+                <i class="fa fa-star" aria-hidden="true"></i> Apoiar essa Ideia!
+            </a>
+        @endif
+
+        {{--<a href="{{ route('proposal.approval', $proposal->id) }}">--}}
+            {{--<i class="fa fa-star" aria-hidden="true"></i> Apoiar--}}
+        {{--</a>--}}
 
     </div>
 </div>
