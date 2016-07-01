@@ -1,7 +1,10 @@
 <!-- Registro -->
 <div class="col-xs-12">
     <div class="panel panel-default panel-bg">
-        <div class="panel-heading"><h3>Registro</h3></div>
+        <div class="panel-heading">
+            <h3>Registro</h3>
+            <h4>Crie uma conta de usuário usando o formulário abaixo.</h4>
+        </div>
         <div class="panel-body register">
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                 {!! csrf_field() !!}
