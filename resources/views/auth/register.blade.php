@@ -98,6 +98,8 @@
                     </div>
                 </div>
 
+                {{--{{Location::get()->countryCode}}--}}
+
                 <div class="form-group{{ $errors->register->has('g-recaptcha-response') ? ' has-error text-center' : '' }}">
                     <div class="col-xs-12">
                         {!! app('captcha')->display() !!}

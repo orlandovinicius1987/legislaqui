@@ -105,6 +105,10 @@ Route::group(['middleware' => ['web','auth']], function ()
 
     Route::get('users/{id}/responses', ['as'=>'users.responses', 'uses'=>'UsersController@responses']);
 
+});
+
+Route::group(['middleware' => ['web','auth','admin']], function () {
+
     //Admin
     View::composer('admin.*', 'App\Http\ViewComposers\StatusComposer');
 
@@ -148,8 +152,9 @@ Route::group(['middleware' => ['web','auth']], function ()
         Auth::logout();
         return redirect('/');
     });
-
 });
+
+
 
 //
 //Route::group(['middleware' => ['web','auth']], function () {
