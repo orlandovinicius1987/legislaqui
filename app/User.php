@@ -63,6 +63,11 @@ class User extends Authenticatable
         return Auth::user()->role_id === 0 or Auth::user()->role_id === 1;
     }
 
+    // Get is_super_user attribute
+    public function getIsSuperUserAttribute() {
+        return Auth::user()->role_id === 0;
+    }
+
     // Get Role Name
         public function getRoleNameAttribute() {
         return Role::find($this->role_id)->role;
