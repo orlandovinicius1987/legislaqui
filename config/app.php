@@ -149,6 +149,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
+
         /*
          * Application Service Providers...
          */
@@ -157,8 +158,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
-        //PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
-
+        Stevebauman\Location\LocationServiceProvider::class,
     ],
 
     /*
@@ -207,8 +207,7 @@ return [
         'Form'      => 'Collective\Html\FormFacade',
         'Html'      => 'Collective\Html\HtmlFacade',
         'NoCaptcha' => 'Anhskohbo\NoCaptcha\Facades\NoCaptcha',
-        //'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade',
-
+        'Location' => 'Stevebauman\Location\Facades\Location',
     ],
 
 ];
