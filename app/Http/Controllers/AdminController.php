@@ -133,8 +133,11 @@ class AdminController extends Controller
     {
 
         $user = $this->usersRepository->find($id);
+        $roles = $this->dataRepository->getRoles();
 
-        return view('admin.users.edit', [ 'user' => $user ]);
+        return view('admin.users.edit')->with(compact('user'))->with(compact('roles'));
+
+//        return view('admin.users.edit', [ 'user' => $user ]);
     }
 
     /**
@@ -149,7 +152,7 @@ class AdminController extends Controller
 
         $user->name = Input::get('name');
         $user->email = Input::get('email');
-//        $user->password   = Hash::make(Input::get('password'));
+        $user->role_id  = Input::get('role_id');
 
         $user->save();
 

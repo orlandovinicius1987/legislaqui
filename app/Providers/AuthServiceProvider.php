@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\User;
 use App\Proposal;
+use App\Policies\UserPolicy;
 use App\Policies\ProposalPolicy;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
@@ -18,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         //'App\Model' => 'App\Policies\ModelPolicy',
         Proposal::class => ProposalPolicy::class,
+        User::class => UserPolicy::class,
     ];
 
     /**
@@ -29,7 +32,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(GateContract $gate)
     {
         $this->registerPolicies($gate);
-
-        //
     }
 }

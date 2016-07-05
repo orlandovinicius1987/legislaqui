@@ -25,16 +25,6 @@ class UUIDMiddleware
         {
             $uuid = Uuid::uuid4();
 
-//            if (Auth::check())
-//                $user_id = Auth::user()->id;
-//            else
-//                $user_id = '';
-//
-//            Visitors::create([
-//                'user_id' => $user_id,
-//                'uuid' => $uuid
-//            ]);
-
             $response = $next($request);
             return $response->withCookie(cookie()->forever('uuid', $uuid));
         }
