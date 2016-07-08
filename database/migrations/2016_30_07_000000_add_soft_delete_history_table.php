@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: falbernaz
- * Date: 03/06/2016
- * Time: 12:55
+ * Date: 12/04/2016
+ * Time: 14:56
  */
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUuidUsersTable extends Migration
+class AddSoftDeleteHistoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,8 +18,8 @@ class AddUuidUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function ($table) {
-            $table->uuid('uuid');
+        Schema::table('proposals_history', function ($table) {
+            $table->softDeletes();
         });
     }
 
@@ -28,10 +28,12 @@ class AddUuidUsersTable extends Migration
      *
      * @return void
      */
+
     public function down()
     {
-        Schema::table('users', function ($table) {
-            $table->dropColumn('uuid');
+        Schema::table('proposals_history', function ($table) {
+            $table->dropSoftDeletes();
         });
     }
+
 }
