@@ -309,7 +309,8 @@ class AdminController extends Controller
             //Save
             $proposal->save();
 
-            return redirect()->back()->with(compact('proposal'))->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso');
+            //return redirect()->back()->with(compact('proposal'))->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso');
+            return Redirect::route('admin.proposal.response', ['id' => $id])->with(compact('proposal'))->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso. Prossiga e motive sua desaprovação editando a resposta no formulário abaixo:');
         }
         else
         {

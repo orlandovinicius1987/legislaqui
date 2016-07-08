@@ -30,24 +30,24 @@
                         <tbody>
 
                             <tr><td class="table-td-label-show">User Id</td><td class="table-td-show"> {{ $proposal->user->name }}</td></tr>
-                            <tr><td class="table-td-label-show">Situação</td><td class="table-td-show">
+                            {{--<tr><td class="table-td-label-show">Situação</td><td class="table-td-show">--}}
 
-                                    @if ($proposal->approval == 0)
-                                        'DesAprovado'
-                                    @endif
-
-
-                                    @if ($proposal->approval == 1)
-                                    'Aprovado'
-                                        @endif
+                                    {{--@if ($proposal->approval == 0)--}}
+                                        {{--'DesAprovado'--}}
+                                    {{--@endif--}}
 
 
-                                        @if ($proposal->approval === null)
+                                    {{--@if ($proposal->approval == 1)--}}
+                                    {{--'Aprovado'--}}
+                                        {{--@endif--}}
 
-                                    'Não Moderado'
-                                        @endif
 
-                                </td></tr>
+                                        {{--@if ($proposal->approval === null)--}}
+
+                                    {{--'Não Moderado'--}}
+                                        {{--@endif--}}
+
+                                {{--</td></tr>--}}
                             <tr><td class="table-td-label-show">Data Publicação</td><td class="table-td-show"> {{ $proposal->pub_date->format('d/m/Y') }}</td></tr>
                             <tr><td class="table-td-label-show">Data Limite</td><td class="table-td-show"> {{ $proposal->limit_date->format('d/m/Y') }}</td></tr>
                             <tr><td class="table-td-label-show">Ideia Central</td><td class="table-td-show"> {!! $proposal->idea_central !!}</td></tr>
