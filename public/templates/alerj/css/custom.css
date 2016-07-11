@@ -502,3 +502,43 @@ textarea {
     color: #212e52;
     background: #e8eaed;
 }
+
+.termo {
+    border: 1px dashed #9ea745;
+    padding: 25px;
+}
+
+.termo p {
+    text-align: center;
+}
+
+.instrucao-topico {
+    text-align: center;
+    background-color: #9ea745;
+    color: white;
+    line-height: 46px;
+    font-size: 1.6em;
+    margin-top: -72px;
+}
+
+.instrucao-topico-h3 {
+    text-align: center;
+    color: #9ea745;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+.instrucao-topico-letra {
+    color: #9ea745;
+    font-weight: bold;
+}
+
+.instrucao-fundo-cinza {
+    background-color: #eaeaea;
+    color: #212e52;
+    padding: 20px;
+}
+
+
+/*Azul Escuro*/
+/*#212e52;*/
