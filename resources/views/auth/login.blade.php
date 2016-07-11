@@ -6,9 +6,13 @@
 <div class="alert alert-danger">{{ Session::get('error_msg') }}</div>
 @endif
 
-<div class="">
+<div class="login">
     <div class="row">
-        <div class="col-xs-12">
+
+        {{-- Include Auth Register View --}}
+        @include('auth.register')
+
+        <div class="col-md-5 col-xs-12">
             <div class="panel panel-default panel-bg">
                 <div class="panel-heading">
                     <h3>Login</h3>
@@ -71,9 +75,6 @@
                 </div>
             </div>
         </div>
-
-        {{-- Include Auth Register View --}}
-        @include('auth.register')
 
     </div>
 </div>

@@ -539,6 +539,32 @@ textarea {
     padding: 20px;
 }
 
+.form-control {
+    border: 1px solid #ff6600;
+    border-radius: 0px;
+}
+
+.form-control input[type=submit] {
+    text-align: center;
+}
+
+.login {
+    background-color: #212e52;
+    padding: 20px;
+    border: 2px solid #ff6600;
+}
+
+.panel {
+    border-radius: 0px;
+}
+
+.panel-heading h3 {
+    color: #ff6600;
+}
+
+.panel-heading h4 {
+   color: #212e52;
+}
 
 /*Azul Escuro*/
 /*#212e52;*/
