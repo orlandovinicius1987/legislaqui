@@ -9,7 +9,7 @@
         @include('partials.error')
 
         <div class="panel panel-default">
-            <div class="panel-heading text-center"><h1>Incluir Proposta Legislativa</h1></div>
+            <div class="panel-heading text-center">Incluir Proposta Legislativa</div>
             <div class="panel-body">
 
                 <p>Tão importante quanto escolher, pelo voto, um representante na Assembléia Legislativa é participar propondo ideias, posições e iniciativas ao processo parlamentar em favor da coletividade. Envie-nos sua proposta, os campos que contém <img width="10" height="10" title="Obrigatório" class="asterisco" alt="Obrigatório" src="http://www.portalalerj.rj.gov.br/Content/imagens/asterisco.png"> são de preenchimento obrigatório.</p>

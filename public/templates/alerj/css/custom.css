@@ -375,9 +375,10 @@ textarea {
 .panel-default>.panel-heading-about, .panel-default>.panel-footer-about {
     color: #ff6600;
     background-color: #212e52;
-    border: 1px #ff6600 solid;
+    border: 2px #ff6600 solid;
     font-size: 1.4em;
     line-height: 46px;
+    text-transform: uppercase;
 }
 
 .panel-body p {
@@ -447,15 +448,29 @@ textarea {
     display: block;
     color: white;
     text-decoration: none;
+    /*background-color: #9ea745;*/
 }
 
 .dropdown-menu>li>a {
     color: white;
+    background-color: #9ea745;
 }
 
 .dropdown-menu>li>a:hover {
     background-color: #9ea745;
     color: white;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        background-color: #9ea745;
+        color: white;
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+        background-color: #9ea745;
+        color: white;
+    }
 }
 
 /* Social Buttons */
@@ -599,6 +614,44 @@ textarea {
 
 .panel-heading h4 {
    color: #212e52;
+}
+
+.panel-default>.panel-heading-login {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    text-transform: uppercase;
+}
+
+.panel-heading-login h3 {
+    font-size: 1.1em;
+    color: #ff6600;
+}
+
+.panel-heading-login h4 {
+    font-size: 0.8em;
+}
+
+.panel-default>.panel-heading, .panel-default>.panel-footer {
+    /*color: #333;*/
+    /*background-color: #f5f5f5;*/
+    /*border-color: #ddd;*/
+    background-color: #212e52;
+    border: 2px #ff6600 solid;
+    color: #ff6600;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    text-transform: uppercase;
+    font-size: 1.4em;
+    line-height: 26px;
+}
+
+.panel-default>.panel-heading h1 {
+    color: #ff6600;
 }
 
 /*

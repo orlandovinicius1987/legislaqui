@@ -1,7 +1,7 @@
 <!-- Registro -->
 <div class="col-md-7 col-xs-12">
     <div class="panel panel-default panel-bg">
-        <div class="panel-heading">
+        <div class="panel-heading-login">
             <h3>Registro</h3>
             <h4>Crie uma conta de usuário usando o formulário abaixo.</h4>
         </div>
