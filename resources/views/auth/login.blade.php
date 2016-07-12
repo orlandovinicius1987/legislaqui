@@ -7,7 +7,7 @@
 @endif
 
 <div class="login">
-    <div class="row">
+    <div class="row row-eq-height">
 
         {{-- Include Auth Register View --}}
         @include('auth.register')

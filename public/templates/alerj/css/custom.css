@@ -437,10 +437,25 @@ textarea {
     line-height: 1.2;
 }
 
+.dropdown-menu {
+    background-color: #9ea745;
+}
+
 .dropdown-menu a {
     line-height: 1.5;
     padding: 3px;
     display: block;
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-menu>li>a {
+    color: white;
+}
+
+.dropdown-menu>li>a:hover {
+    background-color: #9ea745;
+    color: white;
 }
 
 /* Social Buttons */
@@ -586,5 +601,19 @@ textarea {
    color: #212e52;
 }
 
+/*
+ * Row with equal height columns
+ * --------------------------------------------------
+ */
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+}
+
 /*Azul Escuro*/
 /*#212e52;*/
+
+/*Verde*/
+/*#9ea745;*/

@@ -12,7 +12,9 @@
 
     @include('partials.error')
 
-        <h3>Entre em Contato</h3>
+    <div class="panel panel-default">
+        <div class="panel-heading-about text-center">Entre em Contato</div>
+        <div class="panel-body">
 
         <ul>
             @foreach($errors->all() as $error)
@@ -57,5 +59,8 @@
               array('class'=>'btn btn-primary botao text-center')) !!}
         </div>
         {!! Form::close() !!}
+
+        </div>
+    </div>
 
 @stop
