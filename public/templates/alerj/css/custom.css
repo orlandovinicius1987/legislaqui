@@ -355,6 +355,7 @@ textarea {
 .blue_link a {
     color: #212e52;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
 /* Bootstrap Hack */

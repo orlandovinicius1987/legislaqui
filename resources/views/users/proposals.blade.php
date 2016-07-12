@@ -35,7 +35,7 @@
                     @foreach ($proposals as $proposal)
                         <tr>
                             <!-- <td> {{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}} </td>-->
-                            <td><a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}">{{ $proposal->name }}</a> </td>
+                            <td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}">{{ $proposal->name }}</a> </td>
                             {{--Likes --}}
                             <td class="text-center">{{ ($proposal->like_count - $proposal->unlike_count) }}</td>
                             <td class="text-center">{{ $proposal->approvals->count() }}</td>
