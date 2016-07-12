@@ -17,7 +17,7 @@
 @endif
 
 @if(Session::has('proposal_crud_msg'))
-    <div class="alert alert-info">{!! Session::get('proposal_crud_msg') !!}</div>
+    <div class="alert alert-info">{!! Session::get('proposal_crud_msg') ? : $proposal_crud_msg !!}</div>
 @endif
 
 @if(Session::has('user_crud_msg'))

@@ -148,6 +148,10 @@ Route::group(['middleware' => ['web','auth','admin']], function () {
 
     Route::get('admin/proposals/{id}/destroy', ['as'=>'admin.proposal.destroy', 'uses'=>'AdminController@destroyProposal']);
 
+    Route::get('admin/proposals/{id}/approved_at_by', ['as'=>'admin.proposal.approved', 'uses'=>'AdminController@approvedProposal']);
+
+    Route::get('admin/proposals/{id}/disapproved_at_by', ['as'=>'admin.proposal.disapproved', 'uses'=>'AdminController@disapprovedProposal']);
+
     Route::get('/admin/logout',function(){
         Auth::logout();
         return redirect('/');

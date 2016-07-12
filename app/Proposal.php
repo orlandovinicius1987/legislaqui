@@ -20,7 +20,7 @@ class Proposal extends Eloquent {
      */
     protected $dates = ['created_at', 'updated_at', 'deleted_at', 'pub_date', 'limit_date'];
 
-    protected $fillable = ['name', 'idea_central', 'problem', 'idea_exposition', 'user_id', 'situation', 'pub_date', 'limit_date'];
+    protected $fillable = ['name', 'idea_central', 'problem', 'idea_exposition', 'user_id', 'approved', 'pub_date', 'limit_date'];
 
     //protected $guarded = ['id', 'pub_date', 'limit_date'];
 
@@ -84,5 +84,6 @@ class Proposal extends Eloquent {
     {
         return (User::all()->approvals()->get()->count());
     }
+
 }
 

@@ -1,5 +1,5 @@
 <!-- Registro -->
-<div class="col-xs-12">
+<div class="col-md-7 col-xs-12">
     <div class="panel panel-default panel-bg">
         <div class="panel-heading">
             <h3>Registro</h3>

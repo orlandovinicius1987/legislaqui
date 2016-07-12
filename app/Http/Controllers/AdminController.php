@@ -195,6 +195,130 @@ class AdminController extends Controller
         return view('admin.proposals.show')->with(compact('proposal'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function editProposal($id)
+    {
+        //Get Proposal
+        $proposal = $this->proposalsRepository->find($id);
+        //$proposal = Proposal::findOrFail($id);
+
+        //Via User Model
+        //        if ($user->can('update', $post)) {
+        //            //
+        //        }
+
+        if (Gate::allows('edit', $proposal)) {
+            return view('admin.proposals.edit')->with('proposal', $proposal);
+        }
+        else {
+            return Redirect::route('admin.proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
+        }
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function updateProposal($id, ProposalFormRequest $formRequest)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+
+        $input = $formRequest->except('_token');
+
+        $input['user_id'] = Auth::user()->id;
+        $input['open'] = true;
+        $input['pub_date'] = Carbon::now();
+        $input['limit_date'] = Carbon::now();
+
+        //Create ProposalHistory Object
+        $proposal_history = new ProposalHistory();
+        //Get attributes from Proposals Eloquent
+
+        $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), ['id','created_at', 'updated_at']));
+        //dd($proposal_history);
+        //Append Update Info
+        $proposal_history->proposal_id = $id;
+        $proposal_history->update_id =  Auth::user()->id;
+        $proposal_history->update_date = Carbon::now();
+        //Save History
+        $proposal_history->save();
+
+        //Then update Proposal
+        $proposal->fill($input)->save();
+        return Redirect::route('admin.proposals.show', ['id' => $id])->with('proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroyProposal($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+        //$proposal = Proposal::findOrFail($id);
+
+        if (Gate::allows('destroy', $proposal)) {
+            $proposal->delete();
+            return Redirect::route('admin.proposals')->with('proposal_crud_msg', 'Ideia Legislativa Removida com Sucesso');
+        }
+        else {
+            return Redirect::route('admin.proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
+        }
+    }
+
+    public function approvedProposal($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+
+        //Append Moderation Info only if never been Moderated before
+        if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
+        {
+            $proposal->approved_at = Carbon::now();
+            $proposal->approved_by =  Auth::user()->id;
+            //Save
+            $proposal->save();
+
+            return redirect()->back()->with('proposal_crud_msg', 'Ideia Legislativa Aprovada com Sucesso');
+        }
+        else
+        {
+            return redirect()->back()->with('error_msg', 'Ideia Legislativa já foi Moderada!');
+        }
+    }
+
+    public function disapprovedProposal($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+
+        //Append Moderation Info only if never been Moderated before
+        if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
+        {
+            $proposal->disapproved_at = Carbon::now();
+            $proposal->disapproved_by =  Auth::user()->id;
+            //Save
+            $proposal->save();
+
+            //return redirect()->back()->with(compact('proposal'))->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso');
+            return Redirect::route('admin.proposal.response', ['id' => $id])->with(compact('proposal'))->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso. Prossiga e motive sua desaprovação editando a resposta no formulário abaixo:');
+        }
+        else
+        {
+            return redirect()->back()->with(compact('proposal'))->with('error_msg', 'Ideia Legislativa já foi Moderada!');
+        }
+    }
+
+
     public function notResponded()
     {
 //        return view('admin.notresponded', [
@@ -202,7 +326,7 @@ class AdminController extends Controller
 //            'is_not_responded' => true
 //        ]);
 
-       // dd(Proposal::whereNull('response_id'));
+        // dd(Proposal::whereNull('response_id'));
         //$proposals = Proposal::all();
         $proposals = $this->proposalsRepository->all();
 
@@ -262,88 +386,6 @@ class AdminController extends Controller
         // dd($proposal);
         return Redirect::route('admin.proposal.show', ['id' => $id])->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
 
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function editProposal($id)
-    {
-        //Get Proposal
-        $proposal = $this->proposalsRepository->find($id);
-        //$proposal = Proposal::findOrFail($id);
-
-        //Via User Model
-        //        if ($user->can('update', $post)) {
-        //            //
-        //        }
-
-        if (Gate::allows('edit', $proposal)) {
-            return view('admin.proposals.edit')->with('proposal', $proposal);
-        }
-        else {
-            return Redirect::route('admin.proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
-        }
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function updateProposal($id, ProposalFormRequest $formRequest)
-    {
-        $proposal = Proposal::findOrFail($id);
-
-        $input = $formRequest->except('_token');
-
-        $input['user_id'] = Auth::user()->id;
-        $input['open'] = true;
-        $input['pub_date'] = Carbon::now();
-        $input['limit_date'] = Carbon::now();
-
-        //Create ProposalHistory Object
-        $proposal_history = new ProposalHistory();
-        //Get attributes from Proposals Eloquent
-
-        $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), ['id','created_at', 'updated_at']));
-        //dd($proposal_history);
-        //Append Update Info
-        $proposal_history->proposal_id = $id;
-        $proposal_history->update_id =  Auth::user()->id;
-        $proposal_history->update_date = Carbon::now();
-        //Save History
-        $proposal_history->save();
-
-        //Then update Proposal
-        $proposal->fill($input)->save();
-        return Redirect::route('admin.proposal.show', ['id' => $id])->with('proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroyProposal($id)
-    {
-        $proposal = $this->proposalsRepository->find($id);
-        //$proposal = Proposal::findOrFail($id);
-
-        if (Gate::allows('destroy', $proposal)) {
-            $proposal->delete();
-            return Redirect::route('admin.proposals')->with('proposal_crud_msg', 'Ideia Legislativa Removida com Sucesso');
-        }
-        else {
-            return Redirect::route('admin.proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
-        }
     }
 
 }
