@@ -133,30 +133,34 @@ body {
     font-weight: normal;
     margin: 0px 0px 0px 0px;
     padding: 3px 0px 0px 0px;
+    text-align: center;
 }
 
 .interna .alerj .titulo a {
-    width: auto;
-    height: auto;
-    float: right;
-    overflow: hidden;
-    font-size: 10px;
-    font-family: 'dinlight';
-    margin: 0px 0px 0px 0px;
-    padding: 5px 0px 0px 0px;
+    /*width: auto;*/
+    /*height: auto;*/
+    /*float: right;*/
+    /*overflow: hidden;*/
+    /*font-size: 10px;*/
+    /*font-family: 'dinlight';*/
+    /*margin: 0px 0px 0px 0px;*/
+    /*padding: 5px 0px 0px 0px;*/
+    text-decoration: none;
 }
 
 .interna .alerj .titulo .caminho {
     /*width: 380px;*/
     /*height: auto;*/
-    float: left;
+    /*float: left;*/
     /*overflow: hidden;*/
-    font-size: 11px;
+    /*font-size: 11px;*/
     font-family: 'dinlight';
-    color: #212e52;
+    color: #ff6600;
     /*margin: 0px 0px 0px 0px;*/
     padding: 3px 0px 0px 0px;
     text-transform: uppercase;
+    text-align: center;
+    font-size: 15px;
 }
 
 .interna .alerj .titulo .fio
@@ -368,11 +372,16 @@ textarea {
     background-color: #f4f4f6;
 }
 
-.panel-default>.panel-heading, .panel-default>.panel-footer {
-    color: #333;
-    background-color: transparent;
-    border: none;
+.panel-default>.panel-heading-about, .panel-default>.panel-footer-about {
+    color: #ff6600;
+    background-color: #212e52;
+    border: 1px #ff6600 solid;
+    font-size: 1.4em;
+    line-height: 46px;
+}
 
+.panel-body p {
+    text-align: center;
 }
 
 /* Buttons */
@@ -496,11 +505,22 @@ textarea {
     font-size: 14px;
     text-transform: uppercase;
     font-family: 'univers_47';
+    line-height: 5px;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: white;
+    background-color: #9ea745;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: white;
+    background-color: #9ea745;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-    color: #212e52;
-    background: #e8eaed;
+    color: white;
+    background: #9ea745;
 }
 
 .termo {
@@ -517,7 +537,7 @@ textarea {
     background-color: #9ea745;
     color: white;
     line-height: 46px;
-    font-size: 1.6em;
+    font-size: 1.4em;
     margin-top: -72px;
 }
 

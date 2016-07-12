@@ -233,10 +233,10 @@
             <div class="alerj">
                 <div class="row">
                     <div class="titulo">
-                        <h1>E-DEMOCRACIA</h1>
+                        <a href="/"><h1>E-DEMOCRACIA</h1></a>
                         <div class="caminho">Ideias Legislativas</div>
 
-                        <a href="javascript:history.back(-1);" title="Voltar">VOLTAR</a>
+                        {{--<a href="javascript:history.back(-1);" title="Voltar">VOLTAR</a>--}}
                         <div class="fio"></div>
                     </div>
                 </div>

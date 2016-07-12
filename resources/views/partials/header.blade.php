@@ -13,13 +13,13 @@
         <div id="navbar" class="navbar-collapse collapse">
             {{--<a class="navbar-brand" href="/">e-Cidadania</a>--}}
             <ul class="nav navbar-nav">
-                <li class="{{ set_menu_active('/') }}"><a href="/">Início</a></li>
+                {{--<li class="{{ set_menu_active('/') }}"><a href="/">Início</a></li>--}}
                 {{--<li {{ Request::is('/') ? ' class=active' : null }}><a href="/">Home</a></li>--}}
                 {{--<li>{{ Html::linkRoute('proposals', 'Home')}}</li>--}}
                 <li class="{{ set_menu_active('about') }}"><a href="/about">Como Funciona?</a></li>
                 {{--<li {{ Request::is('about') ? ' class=active' : null }}><a href="/about">Como Funciona?</a></li>--}}
                 {{--<li>{{ Html::link('about', 'Como Funciona?')}}</li>--}}
-                <li class="{{ set_menu_active('contact') }}"><a href="/contact">Contato</a></li>
+
                 {{--<li {{ Request::is('contact') ? ' class=active' : null }}><a href="/contact">Contato</a></li>--}}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Propostas <span class="caret"></span></a>
@@ -45,6 +45,9 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
+
+                <li class="{{ set_menu_active('contact') }}"><a href="/contact">Contato</a></li>
+
                 <!-- Authentication Links -->
 
                 @if (Auth::guest())
