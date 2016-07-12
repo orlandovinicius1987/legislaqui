@@ -383,6 +383,7 @@ textarea {
 
 .panel-body p {
     text-align: center;
+    line-height: 26px;
 }
 
 /* Buttons */
@@ -407,6 +408,10 @@ textarea {
     text-decoration: none;
     border-color: transparent !important;
     line-height: 1;
+}
+
+.btn-primary:hover {
+    background: #d44100;
 }
 
 .btn-link {
@@ -489,6 +494,10 @@ textarea {
 
 .fa-caret-down {
     margin-top: -6px;
+}
+
+.fa-thumbs-up, .fa-star {
+    color: #9ea745;
 }
 
 .vote-count-post {
@@ -652,6 +661,11 @@ textarea {
 
 .panel-default>.panel-heading h1 {
     color: #ff6600;
+}
+
+.panel-heading-nav, .panel-footer-nav {
+    margin-left: 15px;
+    margin-bottom: -20px;
 }
 
 /*

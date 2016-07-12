@@ -26,9 +26,9 @@
                     <ul class="dropdown-menu">
                         @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Proponha uma ideia legislativa<br>logando/registrando-se aqui</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">e-democracia 2016</li>
-                        <li class="dropdown-header">ALERJ</li>
+                        {{--<li role="separator" class="divider"></li>--}}
+                        {{--<li class="dropdown-header">e-democracia 2016</li>--}}
+                        {{--<li class="dropdown-header">ALERJ</li>--}}
                         @elseif (Auth::user()->is_admin)
                         {{--@elseif (Auth::user()->role_id === 0 or Auth::user()->role_id === 1)--}}
                             <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>

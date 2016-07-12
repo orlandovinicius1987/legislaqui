@@ -9,7 +9,7 @@
 
     <div class="panel panel-default">
 
-            <div class="panel-heading">
+            <div class="panel-heading-nav">
                 {!! $proposals->links() !!}
             </div>
 
@@ -21,10 +21,10 @@
                         @if (isset($is_not_responded) && Auth::user()->is_admin)
                             <th><h3>Sem Resposta</h3></th>
                         @else
-                            <th><h3>Curtidas</h3></th>
+                            <th class="text-center"><i class="fa fa-thumbs-up" aria-hidden="true"></i><h3>Curtidas</h3></th>
                             {{--<th><h3>Unlikes</h3></th>--}}
                             {{--<th><h3>Rating</h3></th>--}}
-                            <th><h3>Apoiamentos</h3></th>
+                            <th class="text-center"><i class="fa fa-star" aria-hidden="true"></i><h3>Apoios</h3></th>
                         @endif
                     </tr>
                     </thead>
@@ -38,13 +38,13 @@
                                 <td><a href="{{ route('proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a></td>
                             @else
                                 {{--Likes --}}
-                                <td>{{ ($proposal->like_count - $proposal->unlike_count) }}</td>
+                                <td class="text-center">{{ ($proposal->like_count - $proposal->unlike_count) }}</td>
                                 {{--Unlikes--}}
                                 {{--<td>{{ $proposal->unlike_count }}</td>--}}
                                 {{--Rating--}}
                                 {{--<td>{{ $proposal->rating }}</td>--}}
                                 {{--Approvals--}}
-                                <td>{{ $proposal->approvals()->count() }}</td>
+                                <td class="text-center">{{ $proposal->approvals()->count() }}</td>
                             @endif
                         </tr>
                     @endforeach
@@ -52,7 +52,7 @@
                 </table>
             </div>
 
-            <div class="panel-footer">
+            <div class="panel-footer-nav">
                 {!! $proposals->links() !!}
             </div>
     </div>
