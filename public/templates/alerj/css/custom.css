@@ -403,7 +403,7 @@ textarea {
     display: block;
     color: #ffffff;
     border-radius: 3px 3px 3px 3px;
-    /* margin: 0px 1px 0px 0px; */
+    margin: 0px 2px 0px 0px;
     padding: 6px 10px 3px 10px;
     background: #ff6600 !important;
     text-decoration: none;
@@ -412,7 +412,7 @@ textarea {
 }
 
 .btn-primary:hover {
-    background: #d44100;
+    background: #d44100 !important;
 }
 
 .btn-link {

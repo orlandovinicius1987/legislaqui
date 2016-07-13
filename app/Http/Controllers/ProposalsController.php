@@ -63,17 +63,8 @@ class ProposalsController extends Controller
     {
         $this->proposalsRepository->approve($id);
 
-        return Redirect::route('proposals');
+        return Redirect::back();
     }
-
-//    public function isLikedByMe($id)
-//    {
-//        $proposal = Proposal::findOrFail($id)->first();
-//        if (Like::whereUserId(Auth::id())->orwhere(Auth::guest())->whereProposalId($proposal->id)->exists()){
-//            return 'true';
-//        }
-//        return 'false';
-//    }
 
     public function like($id)
     {
@@ -106,7 +97,6 @@ class ProposalsController extends Controller
 
         //Possible Values: Null, 0 or 1
         $existing_like = Like::where('uuid', $unique)->where('proposal_id', $id)->value('like');
-        //dd($existing_like, $action, $str_action);
 
         switch ($existing_like) {
             // Already Unliked
@@ -147,13 +137,8 @@ class ProposalsController extends Controller
                 $approval_url = route('proposal.approval', $id);
                 $msg = 'Sua curtida foi computada com sucesso. Caso queira apoiar oficialmente esta proposta, <a href="'.$approval_url.'">clique aqui</a>.';
                 Session::flash('flash_msg', $msg);
-//                Session::flash('flash_msg','Seu ' . $action . ' foi computado com sucesso.');
-
-
                 break;
         }
-
-//        return Redirect::route('proposals');
         return Redirect::back();
     }
 
@@ -312,16 +297,12 @@ class ProposalsController extends Controller
         $proposal_history->update_date = Carbon::now();
         $proposal_history->response = $input['response'];
         $proposal_history->responder_id = $input['responder_id'];
-        //$proposal_history->fill($input);
-
-        //dd($proposal_history);
 
         //Save History
         $proposal_history->save();
 
         //Then update Proposal
         $proposal->forcefill($input)->save();
-       // dd($proposal);
         return Redirect::route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
 
     }
