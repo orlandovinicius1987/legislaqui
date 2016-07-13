@@ -21,31 +21,23 @@
 
     <div class="pull-right">
 
-        {{ $proposal->total_like_count }}
-
         <a href="{{ route('proposal.like', ['id' => $proposal->id]) }}">
-            <i class="fa fa-caret-square-o-up" aria-hidden="true"></i> Like
+            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Curtir
         </a>
 
         <a href="{{ route('proposal.unlike', ['id' => $proposal->id]) }}">
-            <i class="fa fa-caret-square-o-down" aria-hidden="true"></i> Dislike
+            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> Descurtir
         </a>
 
         @if (!Auth::check())
             <a href="{{ route('proposal.approval', $proposal->id) }}" onclick="if(!confirm('Para apoiar oficialmente uma ideia legislativa você precisa criar uma conta na página da ALERJ.')){return false;};">
-                {{--<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Apoiar essa Ideia!</a>--}}
                 <i class="fa fa-star" aria-hidden="true"></i> Apoiar essa Ideia!
             </a>
         @else
             <a href="{{ route('proposal.approval', $proposal->id) }}">
-                {{--<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Apoiar essa Ideia!</a>--}}
                 <i class="fa fa-star" aria-hidden="true"></i> Apoiar essa Ideia!
             </a>
         @endif
-
-        {{--<a href="{{ route('proposal.approval', $proposal->id) }}">--}}
-            {{--<i class="fa fa-star" aria-hidden="true"></i> Apoiar--}}
-        {{--</a>--}}
 
     </div>
 </div>
