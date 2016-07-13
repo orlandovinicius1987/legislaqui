@@ -534,7 +534,7 @@ textarea {
         /*width: 295px;*/
         height: 20px;
         /*overflow: hidden;*/
-        margin: -15px 0px 0px -15px;
+        margin: -10px 0px 0px -15px;
         /*padding: 0px 0px 0px 0px;*/
         background: url(http://www.alerj.rj.gov.br/Content/imagens/menu_movel_320_detalhe.png) no-repeat;
         background-size: contain;
@@ -674,17 +674,6 @@ textarea {
 .social-buttons a {
     text-decoration: none;
     font-size: 0.8em;
-}
-
-/*
- * Row with equal height columns
- * --------------------------------------------------
- */
-.row-eq-height {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display:         flex;
 }
 
 /*Azul Escuro*/

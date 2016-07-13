@@ -21,8 +21,6 @@
 
     <div class="pull-right">
 
-        {{ $proposal->total_like_count }}
-
         <a href="{{ route('proposal.like', ['id' => $proposal->id]) }}">
             <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Curtir
         </a>

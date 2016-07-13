@@ -53,6 +53,7 @@
                             <tr><td class="table-td-label-show">Ideia Central</td><td class="table-td-show"> {!! $proposal->idea_central !!}</td></tr>
                             <tr><td class="table-td-label-show">Problema</td><td class="table-td-show"> {!! $proposal->problem !!}</td></tr>
                             <tr><td class="table-td-label-show">Exposição da Ideia</td><td class="table-td-show"> {!! $proposal->idea_exposition !!}</td></tr>
+                            <tr><td class="table-td-label-show">Número de Curtidas</td><td class="table-td-show"> {{ $proposal->total_like_count }}</td></tr>
                             <tr><td class="table-td-label-show">Número de Apoios</td><td class="table-td-show"> {{ $proposal->approvals->count() }}</td></tr>
                             <tr></tr>
                             {{-- if has response -> return response data, else null --}}
