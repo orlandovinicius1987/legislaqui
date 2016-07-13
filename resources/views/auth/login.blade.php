@@ -7,14 +7,14 @@
 @endif
 
 <div class="login">
-    <div class="row">
+    <div class="row row-eq-height">
 
         {{-- Include Auth Register View --}}
         @include('auth.register')
 
         <div class="col-md-5 col-xs-12">
             <div class="panel panel-default panel-bg">
-                <div class="panel-heading">
+                <div class="panel-heading-login">
                     <h3>Login</h3>
                     <h4>Caso já tenha uma conta de usuário, entre com seus dados abaixo.</h4></div>
                 <div class="panel-body">

@@ -133,30 +133,34 @@ body {
     font-weight: normal;
     margin: 0px 0px 0px 0px;
     padding: 3px 0px 0px 0px;
+    text-align: center;
 }
 
 .interna .alerj .titulo a {
-    width: auto;
-    height: auto;
-    float: right;
-    overflow: hidden;
-    font-size: 10px;
-    font-family: 'dinlight';
-    margin: 0px 0px 0px 0px;
-    padding: 5px 0px 0px 0px;
+    /*width: auto;*/
+    /*height: auto;*/
+    /*float: right;*/
+    /*overflow: hidden;*/
+    /*font-size: 10px;*/
+    /*font-family: 'dinlight';*/
+    /*margin: 0px 0px 0px 0px;*/
+    /*padding: 5px 0px 0px 0px;*/
+    text-decoration: none;
 }
 
 .interna .alerj .titulo .caminho {
     /*width: 380px;*/
     /*height: auto;*/
-    float: left;
+    /*float: left;*/
     /*overflow: hidden;*/
-    font-size: 11px;
+    /*font-size: 11px;*/
     font-family: 'dinlight';
-    color: #212e52;
+    color: #ff6600;
     /*margin: 0px 0px 0px 0px;*/
     padding: 3px 0px 0px 0px;
     text-transform: uppercase;
+    text-align: center;
+    font-size: 15px;
 }
 
 .interna .alerj .titulo .fio
@@ -351,6 +355,7 @@ textarea {
 .blue_link a {
     color: #212e52;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
 /* Bootstrap Hack */
@@ -368,11 +373,18 @@ textarea {
     background-color: #f4f4f6;
 }
 
-.panel-default>.panel-heading, .panel-default>.panel-footer {
-    color: #333;
-    background-color: transparent;
-    border: none;
+.panel-default>.panel-heading-about, .panel-default>.panel-footer-about {
+    color: #ff6600;
+    background-color: #212e52;
+    border: 2px #ff6600 solid;
+    font-size: 1.4em;
+    line-height: 46px;
+    text-transform: uppercase;
+}
 
+.panel-body p {
+    text-align: center;
+    line-height: 26px;
 }
 
 /* Buttons */
@@ -397,6 +409,10 @@ textarea {
     text-decoration: none;
     border-color: transparent !important;
     line-height: 1;
+}
+
+.btn-primary:hover {
+    background: #d44100;
 }
 
 .btn-link {
@@ -428,10 +444,39 @@ textarea {
     line-height: 1.2;
 }
 
+.dropdown-menu {
+    background-color: #9ea745;
+}
+
 .dropdown-menu a {
     line-height: 1.5;
     padding: 3px;
     display: block;
+    color: white;
+    text-decoration: none;
+    /*background-color: #9ea745;*/
+}
+
+.dropdown-menu>li>a {
+    color: white;
+    background-color: #9ea745;
+}
+
+.dropdown-menu>li>a:hover {
+    background-color: #9ea745;
+    color: white;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        background-color: #9ea745;
+        color: white;
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
+        background-color: #9ea745;
+        color: white;
+    }
 }
 
 /* Social Buttons */
@@ -450,6 +495,10 @@ textarea {
 
 .fa-caret-down {
     margin-top: -6px;
+}
+
+.fa-thumbs-up, .fa-star {
+    color: #9ea745;
 }
 
 .vote-count-post {
@@ -496,11 +545,22 @@ textarea {
     font-size: 14px;
     text-transform: uppercase;
     font-family: 'univers_47';
+    line-height: 5px;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: white;
+    background-color: #9ea745;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: white;
+    background-color: #9ea745;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-    color: #212e52;
-    background: #e8eaed;
+    color: white;
+    background: #9ea745;
 }
 
 .termo {
@@ -517,7 +577,7 @@ textarea {
     background-color: #9ea745;
     color: white;
     line-height: 46px;
-    font-size: 1.6em;
+    font-size: 1.4em;
     margin-top: -72px;
 }
 
@@ -566,5 +626,62 @@ textarea {
    color: #212e52;
 }
 
+.panel-default>.panel-heading-login {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    text-transform: uppercase;
+}
+
+.panel-heading-login h3 {
+    font-size: 1.1em;
+    color: #ff6600;
+}
+
+.panel-heading-login h4 {
+    font-size: 0.8em;
+}
+
+.panel-default>.panel-heading, .panel-default>.panel-footer {
+    /*color: #333;*/
+    /*background-color: #f5f5f5;*/
+    /*border-color: #ddd;*/
+    background-color: #212e52;
+    border: 2px #ff6600 solid;
+    color: #ff6600;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    text-transform: uppercase;
+    font-size: 1.4em;
+    line-height: 26px;
+}
+
+.panel-default>.panel-heading h1 {
+    color: #ff6600;
+}
+
+.panel-heading-nav, .panel-footer-nav {
+    margin-left: 15px;
+    margin-bottom: -20px;
+}
+
+/*
+ * Row with equal height columns
+ * --------------------------------------------------
+ */
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+}
+
 /*Azul Escuro*/
 /*#212e52;*/
+
+/*Verde*/
+/*#9ea745;*/

@@ -26,7 +26,8 @@
                         <thead>
                         <tr>
                             <th><h3>Proposta Legislativa</h3></th>
-                            <th><h3>Apoios</h3></th>
+                            <th class="text-center"><i class="fa fa-thumbs-up" aria-hidden="true"></i><h3>Curtidas</h3></th>
+                            <th class="text-center"><i class="fa fa-star" aria-hidden="true"></i><h3>Apoios</h3></th>
                         </tr>
                         </thead>
 
@@ -34,8 +35,10 @@
                         @foreach ($proposals as $proposal)
                             <tr>
                                 <!-- <td> {{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}} </td>-->
-                                <td><a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}">{{ $proposal->name }}</a> </td>
-                                <td>{{ $proposal->likes->count() }}</td>
+                                <td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}">{{ $proposal->name }}</a> </td>
+                                {{--Likes --}}
+                                <td class="text-center">{{ ($proposal->like_count - $proposal->unlike_count) }}</td>
+                                <td class="text-center">{{ $proposal->approvals->count() }}</td>
                             </tr>
                         @endforeach
                         </tbody>
