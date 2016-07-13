@@ -231,6 +231,7 @@
     <div class="interna">
         <div class="controle">
             <div class="alerj">
+
                 <div class="row">
                     <div class="titulo">
                         <a href="/"><h1>E-DEMOCRACIA</h1></a>

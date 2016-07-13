@@ -564,6 +564,12 @@ textarea {
     background: #9ea745;
 }
 
+@media (min-width: 768px) {
+    .navbar-nav {
+        margin-top: -65px;
+    }
+}
+
 .termo {
     border: 1px dashed #9ea745;
     padding: 25px;
@@ -617,6 +623,7 @@ textarea {
 
 .panel {
     border-radius: 0px;
+    margin-top: -65px;
 }
 
 .panel-heading h3 {
@@ -675,6 +682,7 @@ textarea {
     text-decoration: none;
     font-size: 0.8em;
 }
+
 
 /*Azul Escuro*/
 /*#212e52;*/
