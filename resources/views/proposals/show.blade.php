@@ -80,7 +80,7 @@
 
                     {{--</div>--}}
 
-                    <div class="pull-right botao">
+                    <div class="">
                         @can('edit', $proposal)
                         <a href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary botao">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Proposta</a>
