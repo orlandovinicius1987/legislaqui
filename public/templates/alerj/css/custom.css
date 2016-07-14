@@ -446,26 +446,26 @@ textarea {
 }
 
 .dropdown-menu {
-    background-color: #9ea745;
+    background-color: #f5f6ec;
 }
 
 .dropdown-menu a {
     line-height: 1.5;
     padding: 3px;
     display: block;
-    color: white;
+    color: #9ea745;
     text-decoration: none;
     /*background-color: #9ea745;*/
 }
 
 .dropdown-menu>li>a {
-    color: white;
-    background-color: #9ea745;
+    color: #9ea745;
+    background-color: #f5f6ec;
 }
 
 .dropdown-menu>li>a:hover {
-    background-color: #9ea745;
-    color: white;
+    background-color: #f5f6ec;
+    color: #9ea745;
 }
 
 @media (max-width: 767px) {
@@ -489,6 +489,10 @@ textarea {
 .fa, .fa-facebook-official, .fa-twitter-square, .fa-google-plus-square, .fa-envelope-square {
     font-size: 1.3em;
     /*color: #9ea745;*/
+}
+
+.fa-asterisk {
+    color: #d44100;
 }
 
 .fa-caret-up, .fa-caret-down {
@@ -678,6 +682,13 @@ textarea {
     font-size: 0.8em;
 }
 
+.legislaqui {
+    background-color: #FB651D;
+    line-height: 3em;
+    height: 70px;
+    border-radius: 0px 0px 8px 8px;
+}
+
 /*Azul Escuro*/
 /*#212e52;*/
 
@@ -686,3 +697,9 @@ textarea {
 
 /*Laranja*/
 /*#FB651D*/
+
+/*Vermelho*/
+/*#d44100*/
+
+/*Verde Claro*/
+/*#f5f6ec*/
