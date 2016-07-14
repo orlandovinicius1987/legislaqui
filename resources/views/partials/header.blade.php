@@ -25,7 +25,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Propostas <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Proponha uma ideia legislativa<br>logando/registrando-se aqui</a></li>
+                        <li><a href="{{  route('proposal.create') }}">Proponha uma ideia legislativa<br>logando/registrando-se aqui</a></li>
+                         {{--url('/login') }}">Proponha uma ideia legislativa<br>logando/registrando-se aqui</a></li>--}}
                         {{--<li role="separator" class="divider"></li>--}}
                         {{--<li class="dropdown-header">e-democracia 2016</li>--}}
                         {{--<li class="dropdown-header">ALERJ</li>--}}

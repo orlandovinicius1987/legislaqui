@@ -161,7 +161,7 @@ class ProposalsController extends Controller
         event(new ProposalWasCreated($proposal));
         //Event::fire(new ProposalWasCreated($proposal));
 
-        return Redirect::route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Incluída com Sucesso');
+        return Redirect::route('proposal.show', ['proposal' => $proposal])->with('proposal_crud_msg', 'Ideia Legislativa Incluída com Sucesso');
     }
 
     /**
@@ -221,7 +221,7 @@ class ProposalsController extends Controller
 
         //Then update Proposal
         $proposal->fill($input)->save();
-        return Redirect::route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
+        return Redirect::route('proposal.show', ['proposal' => $proposal])->with('proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
 
     }
 
