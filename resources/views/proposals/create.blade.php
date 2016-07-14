@@ -12,7 +12,7 @@
             <div class="panel-heading text-center">Incluir Proposta Legislativa</div>
             <div class="panel-body">
 
-                <p>Tão importante quanto escolher, pelo voto, um representante na Assembléia Legislativa é participar propondo ideias, posições e iniciativas ao processo parlamentar em favor da coletividade. Envie-nos sua proposta, os campos que contém <img width="10" height="10" title="Obrigatório" class="asterisco" alt="Obrigatório" src="http://www.portalalerj.rj.gov.br/Content/imagens/asterisco.png"> são de preenchimento obrigatório.</p>
+                <p>Tão importante quanto escolher, pelo voto, um representante na Assembléia Legislativa é participar propondo ideias, posições e iniciativas ao processo parlamentar em favor da coletividade. Envie-nos sua proposta, os campos que contém <i class="fa fa-asterisk" aria-hidden="true"></i> são de preenchimento obrigatório.</p>
 
                 {{ Form::open(array('route' => 'proposal.store', 'class' => 'form')) }}
 

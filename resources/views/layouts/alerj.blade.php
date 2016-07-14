@@ -231,17 +231,20 @@
     <div class="interna">
         <div class="controle">
             <div class="alerj">
+
                 <div class="row">
-                    <div class="titulo">
-                        <a href="/"><h1>E-DEMOCRACIA</h1></a>
-                        <div class="caminho">Ideias Legislativas</div>
+                    {{--<div class="titulo">--}}
+                        {{--<a href="/"><h1>E-DEMOCRACIA</h1></a>--}}
+                        {{--<div class="caminho">Ideias Legislativas</div>--}}
 
                         {{--<a href="javascript:history.back(-1);" title="Voltar">VOLTAR</a>--}}
-                        <div class="fio"></div>
+                        {{--<div class="fio"></div>--}}
+                    {{--</div>--}}
+                    <div class="col-sm-4 col-xs-12 legislaqui text-center">#Legislaqui</div>
+                    <div class="col-sm-8 col-xs-12">
+                        @include('partials.header')
                     </div>
                 </div>
-
-                @include('partials.header')
                 @yield('content')
                 @include('partials.footer')
                 @include('partials.scripts')

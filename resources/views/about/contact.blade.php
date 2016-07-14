@@ -13,7 +13,7 @@
     @include('partials.error')
 
     <div class="panel panel-default">
-        <div class="panel-heading-about text-center">Entre em Contato</div>
+        <div class="panel-heading text-center">Entre em Contato</div>
         <div class="panel-body">
 
         <ul>
