@@ -30,7 +30,7 @@
     {{--<link href="{{ asset('/templates/admin/plugins/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css" />--}}
 
     <!-- bootstrap wysihtml5 - text editor -->
-    <link href="{{ asset('/templates/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet" type="text/css" />
+    {{--<link href="{{ asset('/templates/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet" type="text/css" />--}}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -98,7 +98,7 @@
 {{--<script src="{{ asset('/templates/admin/plugins/datepicker/bootstrap-datepicker.js') }}" type="text/javascript"></script>--}}
 
 <!-- Bootstrap WYSIHTML5 -->
-<script src="{{ asset('/templates/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}" type="text/javascript"></script>
+{{--<script src="{{ asset('/templates/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}" type="text/javascript"></script>--}}
 <!-- iCheck -->
 {{--<script src="{{ asset('/templates/admin/plugins/iCheck/icheck.min.js') }}" type="text/javascript"></script>--}}
 <!-- Slimscroll -->
@@ -119,7 +119,18 @@
 <script>
     $(function () {
         $("#example1").DataTable();
-        $('#example2').DataTable();
+        $('#example2').DataTable(
+                {
+                    "columnDefs": [
+                        { "width": "5%", "targets": 0 },
+                        { "width": "30%", "targets": 1 },
+                        { "width": "5%", "targets": 2 },
+                        { "width": "5%", "targets": 3 },
+                        { "width": "35%", "targets": 4 },
+                        { "width": "20%", "targets": 5 },
+                    ]
+                }
+        );
         $('#example3').DataTable();
     });
 </script>

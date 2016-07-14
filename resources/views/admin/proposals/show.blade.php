@@ -46,9 +46,9 @@
 
                                         <div class="pull-left botao">
                                             <a href="{{ route('admin.proposal.approved', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
-                                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Aprovar dessa Ideia! </a>
+                                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Aprovar! </a>
                                             <a href="{{ route('admin.proposal.disapproved', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
-                                                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Desaprovar dessa Ideia!</a>
+                                                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Desaprovar</a>
                                             {{--<a href="{{ route('proposal.approval', $proposal->id) }}" class="btn btn-info botao" role="button">--}}
                                                 {{--<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Apoiar essa Ideia!</a>--}}
                                         </div>

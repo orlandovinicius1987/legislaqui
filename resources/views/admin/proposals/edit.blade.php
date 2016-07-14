@@ -19,8 +19,6 @@
                     'class' => 'form'
                     ]) }}
 
-                   {{-- Form::open(array('route' => 'proposal.update', 'class' => 'form')) --}}
-
                     <div class="form-group coluna_02">
                         {{ Form::label('Nome da Proposta') }}
                         {{ Form::text('name', null,
@@ -55,7 +53,7 @@
 
 
                     <div class="form-group">
-                        {{ Form::submit('Editar',
+                        {{ Form::submit('Gravar',
                           array('class'=>'btn btn-primary botao')) }}
                     </div>
 
