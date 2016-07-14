@@ -42,6 +42,7 @@
                                             {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Dislikes: activate to sort column ascending" style="width: 214px;">Dislikes</th>--}}
                                             {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rating: activate to sort column ascending" style="width: 168px;">Rating</th>--}}
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Apoios: activate to sort column ascending" style="width: 168px;">Apoios</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Moderação</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Resposta</th>
                                         </tr>
                                         </thead>
@@ -60,6 +61,23 @@
                                                 {{--<td>{{ $proposal->rating }}</td>--}}
                                                 {{--Approvals--}}
                                                 <td>{{ $proposal->approvals()->count() }}</td>
+
+                                                {{--Proposal Moderation--}}
+                                                <td class="text-center">
+                                                    {{--{{$proposal->moderation($proposal->id)}}--}}
+                                                    {{--@if () === null)--}}
+                                                        {{--<a href="{{ route('admin.proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a>--}}
+                                                    {{--@endif--}}
+                                                    @if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
+                                                        <a href="{{ route('admin.proposal.approved', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
+                                                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Aprovar essa Ideia! </a>
+                                                        <a href="{{ route('admin.proposal.disapproved', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
+                                                            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Desaprovar essa Ideia!</a>
+                                                    @else
+                                                    já moderado
+                                                    @endif
+                                                </td>
+
                                                 {{--Proposal Response--}}
                                                 <td>
 

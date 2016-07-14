@@ -50,7 +50,7 @@
 
                     <div class="col-sm-12 text-center">
                     <div class="form-group">
-                        {{ Form::submit('Editar',
+                        {{ Form::submit('Gravar',
                           array('class'=>'btn btn-primary botao')) }}
                     </div>
 
