@@ -686,7 +686,15 @@ textarea {
     background-color: #FB651D;
     line-height: 3em;
     height: 70px;
-    border-radius: 0px 0px 8px 8px;
+    border-radius: 8px 8px 8px 8px;
+    border: 2px #9ea745 solid;
+    margin-bottom: 10px;
+    /*margin-left: 10px;*/
+    position: relative;
+    bottom: -30px;
+    left: 10px;
+    /*bottom:150px;*/
+    /*left:150px;*/
 }
 
 /*Azul Escuro*/

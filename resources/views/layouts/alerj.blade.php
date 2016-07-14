@@ -240,7 +240,7 @@
                         {{--<a href="javascript:history.back(-1);" title="Voltar">VOLTAR</a>--}}
                         {{--<div class="fio"></div>--}}
                     {{--</div>--}}
-                    <div class="col-sm-4 col-xs-12 legislaqui text-center">#Legislaqui</div>
+                    <div class="col-sm-4 col-xs-12 legislaqui text-center"><a href="/">#Legislaqui</a></div>
                     <div class="col-sm-8 col-xs-12">
                         @include('partials.header')
                     </div>

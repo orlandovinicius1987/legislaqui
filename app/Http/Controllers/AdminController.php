@@ -318,23 +318,6 @@ class AdminController extends Controller
         }
     }
 
-
-    public function moderation($id)
-    {
-        $proposal = $this->proposalsRepository->find($id);
-//        $user = Auth::user();
-
-        //if never been Moderated before
-        if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
-        {
-            return 'moderar';
-        }
-        else {
-            return 'já moderado';
-        }
-
-    }
-
     public function notResponded()
     {
 //        return view('admin.notresponded', [
