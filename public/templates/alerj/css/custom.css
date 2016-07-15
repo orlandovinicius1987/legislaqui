@@ -179,6 +179,10 @@ body {
     margin-left: 0;
 }
 
+.content {
+    margin-top: 0px;
+}
+
 .superior>.brilho>.conteudo {
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
@@ -229,7 +233,7 @@ h3 {
 }
 
 .coluna_02>input {
-    width: 100%;
+    width: 50%;
 }
 
 .campo
@@ -408,8 +412,9 @@ textarea {
     padding: 6px 10px 3px 10px;
     background: #ff6600 !important;
     text-decoration: none;
-    border-color: transparent !important;
-    line-height: 1;
+    /*border-color: transparent !important;*/
+    line-height: 2.6em;
+    border: 1px #212e52 solid;
 }
 
 .btn-primary:hover {
@@ -455,7 +460,8 @@ textarea {
     display: block;
     color: #9ea745;
     text-decoration: none;
-    /*background-color: #9ea745;*/
+    margin-left: 10px;
+    width: 173px;
 }
 
 .dropdown-menu>li>a {
@@ -548,10 +554,10 @@ textarea {
 
 .navbar-default .navbar-nav>li>a {
     color: #9ea745;
-    font-size: 14px;
+    font-size: 0.9em;
     text-transform: uppercase;
     font-family: 'univers_47';
-    line-height: 5px;
+    line-height: 0.9em;
 }
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
@@ -684,17 +690,21 @@ textarea {
 
 .legislaqui {
     background-color: #FB651D;
-    line-height: 3em;
-    height: 70px;
+    line-height: 4em;
+    /*height: 70px;*/
     border-radius: 8px 8px 8px 8px;
     border: 2px #9ea745 solid;
-    margin-bottom: 10px;
+    margin-top: -20px;
     /*margin-left: 10px;*/
-    position: relative;
-    bottom: -30px;
-    left: 10px;
+    /*position: relative;*/
+    /*bottom: -30px;*/
+    /*left: 10px;*/
     /*bottom:150px;*/
     /*left:150px;*/
+}
+
+.legislaqui a {
+    text-decoration: none;
 }
 
 /*Azul Escuro*/

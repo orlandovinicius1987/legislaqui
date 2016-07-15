@@ -31,15 +31,21 @@
                     <div class="form-group">
                         {{ Form::label('Resposta') }}
                         {{ Form::textarea('response', null,
-                            array('required',
-                                  'class'=>'textarea',
+                            array('class'=>'textarea',
                                   'name'=>'response',
                                   'placeholder'=>'Responder Proposta')) }}
                     </div>
 
-                    <div class="form-group">
-                        {{ Form::submit('Responder',
-                          array('class'=>'btn btn-primary botao')) }}
+                    <div class="pull-left botao">
+
+                        <div class="form-group">
+                            {{ Form::submit('Aprovar!',
+                              array('name' => 'approvalBtn', 'class'=>'btn btn-primary botao')) }}
+
+                            {{ Form::submit('Desaprovar',
+                               array('name' => 'disapprovalBtn', 'class'=>'btn btn-primary botao')) }}
+                        </div>
+
                     </div>
 
                     {{ Form::close() }}

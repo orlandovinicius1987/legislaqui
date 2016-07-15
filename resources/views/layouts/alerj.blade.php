@@ -245,7 +245,9 @@
                         @include('partials.header')
                     </div>
                 </div>
-                @yield('content')
+                <div class="content">
+                    @yield('content')
+                </div>
                 @include('partials.footer')
                 @include('partials.scripts')
             </div>
