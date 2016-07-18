@@ -241,7 +241,7 @@
                         {{--<div class="fio"></div>--}}
                     {{--</div>--}}
                     <div class="col-sm-4 col-xs-12 over">
-                        <div class="legislaqui text-center"><a href="/"><span class="letra_branca">#</span><span class="letra_azul">Legisla</span><span class="letra_branca">aqui</span></a>
+                        <div class="legislaqui text-center"><a href="/"><span class="letra_branca">#</span><span class="letra_azul">Legisl</span><span class="letra_branca">aqui</span></a>
                             <div class="moto">Seu espaço para propor</div>
                         </div>
                     </div>
