@@ -559,21 +559,50 @@ textarea {
     text-transform: uppercase;
     font-family: 'univers_47';
     line-height: 0.9em;
+
 }
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
     color: white;
     background-color: #9ea745;
+    border-radius: 4px;
 }
 
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
     color: white;
     background-color: #9ea745;
+    border-radius: 4px;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
     color: white;
     background: #9ea745;
+    border-radius: 4px;
+}
+
+/*last child = Login | Register */
+.navbar-default .navbar-nav>li:last-child>a {
+    color: white;
+    background-color: #ff6600;
+    border: 1px #9ea745 solid;
+    border-radius: 4px;
+}
+
+.navbar-nav>li>.dropdown-menu {
+    margin-top: 0;
+    border-radius: 4px;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #9ea745;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #f5f6ec;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #9ea745;
 }
 
 .termo {
@@ -676,7 +705,8 @@ textarea {
 
 .panel-default>.panel-heading h1 {
     color: #ff6600;
-    font-size: 1.5em;
+    font-size: 1.3em;
+    margin-top: 30px;
 }
 
 .panel-heading-nav, .panel-footer-nav {
@@ -700,6 +730,7 @@ textarea {
     padding-left: 5px;
     z-index: 100;
     margin-left: 10px;
+    width: 280px;
     /*position: relative;*/
     /*bottom: -30px;*/
     /*left: 10px;*/
@@ -733,9 +764,62 @@ textarea {
 
 .over {
     z-index: 9999;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
+@media (max-width: 768px) {
+    .legislaqui {
+        margin-left: 0px;
+        margin-top: 0px;
+        /*width: 100%;*/
+    }
+}
 
+@media (max-width: 1018px) {
+
+    .legislaqui {
+        margin-top: 0px;
+    }
+}
+
+/*Hack for menu toggle*/
+@media (max-width: 1018px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+}
 
 /*Azul Escuro*/
 /*#212e52;*/
