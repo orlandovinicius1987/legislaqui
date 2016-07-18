@@ -297,42 +297,31 @@ class AdminController extends Controller
         }
     }
 
-    public function disapprovedProposal($id)
+    public function disapprovedProposal($id, ResponseFormRequest $formRequest)
     {
         $proposal = $this->proposalsRepository->find($id);
+
+        $input = $formRequest->except('_token','_method','_wysihtml5_mode');
 
         //Append Moderation Info only if never been Moderated before
         if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
         {
-            $proposal->disapproved_at = Carbon::now();
-            $proposal->disapproved_by =  Auth::user()->id;
-            //Save
-            $proposal->save();
+                $proposal->response = $input['response'];
+                $proposal->response_id = Auth::user()->id;
 
-            //return redirect()->back()->with(compact('proposal'))->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso');
-            return Redirect::route('admin.proposal.response', ['id' => $id])->with(compact('proposal'))->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso. Prossiga e motive sua desaprovação editando a resposta no formulário abaixo:');
+                $proposal->disapproved_at = Carbon::now();
+                $proposal->disapproved_by =  Auth::user()->id;
+                //Save
+                //$proposal->forcefill($input)->save();
+                $proposal->save();
+
+                //return redirect()->back()->with(compact('proposal'))->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso');
+                return Redirect::route('admin.proposal.response', ['id' => $id])->with(compact('proposal'))->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso.');
         }
         else
         {
             return redirect()->back()->with(compact('proposal'))->with('error_msg', 'Ideia Legislativa já foi Moderada!');
         }
-    }
-
-
-    public function moderation($id)
-    {
-        $proposal = $this->proposalsRepository->find($id);
-//        $user = Auth::user();
-
-        //if never been Moderated before
-        if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
-        {
-            return 'moderar';
-        }
-        else {
-            return 'já moderado';
-        }
-
     }
 
     public function notResponded()
@@ -375,33 +364,44 @@ class AdminController extends Controller
         $proposal = $this->proposalsRepository->find($id);
         //$proposal = Proposal::findOrFail($id);
 
-        $input = $formRequest->except('_token','_method','_wysihtml5_mode');
+        //Disapproval
+        if(Input::get('disapprovalBtn')) {
+            $button = 'disapprovalBtn';
 
-        $input['responder_id'] = Auth::user()->id;
+            $input = $formRequest->except('_token','_method','_wysihtml5_mode', $button);
 
-        //Create ProposalHistory Object
-        $proposal_history = new ProposalHistory();
-        //Get attributes from Proposals Eloquent
-        $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), ['id','created_at', 'updated_at']));
+            $input['responder_id'] = Auth::user()->id;
 
-        //Append Update Info + Response
-        $proposal_history->proposal_id = $id;
-        $proposal_history->update_id =  Auth::user()->id;
-        $proposal_history->update_date = Carbon::now();
-        $proposal_history->response = $input['response'];
-        $proposal_history->responder_id = $input['responder_id'];
-        //$proposal_history->fill($input);
+            $proposal->disapproved_at = Carbon::now();
+            $proposal->disapproved_by =  Auth::user()->id;
 
-        //dd($proposal_history);
+            //Create ProposalHistory Object
+            $proposal_history = new ProposalHistory();
+            //Get attributes from Proposals Eloquent
+            $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), ['id','created_at', 'updated_at']));
 
-        //Save History
-        $proposal_history->save();
+            //Append Update Info + Response
+            $proposal_history->proposal_id = $id;
+            $proposal_history->update_id =  Auth::user()->id;
+            $proposal_history->update_date = Carbon::now();
+            $proposal_history->response = $input['response'];
+            $proposal_history->responder_id = $input['responder_id'];
+            //$proposal_history->fill($input);
 
-        //Then update Proposal
-        $proposal->forcefill($input)->save();
-        // dd($proposal);
-        return Redirect::route('admin.proposal.show', ['id' => $id])->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
+            //dd($proposal_history);
 
+            //Save History
+            $proposal_history->save();
+
+            //Then update Proposal
+            $proposal->forcefill($input)->save();
+            // dd($proposal);
+            return Redirect::route('admin.proposal.show', ['id' => $id])->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso');
+
+        }
+        else {
+           return $this->approvedProposal($id);
+        }
     }
 
 }

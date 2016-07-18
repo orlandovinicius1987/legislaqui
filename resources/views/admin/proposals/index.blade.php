@@ -69,10 +69,8 @@
                                                         {{--<a href="{{ route('admin.proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a>--}}
                                                     {{--@endif--}}
                                                     @if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
-                                                        <a href="{{ route('admin.proposal.approved', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
-                                                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Aprovar essa Ideia! </a>
-                                                        <a href="{{ route('admin.proposal.disapproved', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
-                                                            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Desaprovar essa Ideia!</a>
+                                                        <a href="{{ route('admin.proposal.response', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
+                                                            <i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa Ideia! </a>
                                                     @else
                                                     já moderado
                                                     @endif
