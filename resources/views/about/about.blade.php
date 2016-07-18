@@ -83,10 +83,10 @@
             <br><br><br><br>
             <div class="termo">
                 <h2 class="instrucao-topico">
-                    Qual o encaminhamento das Ideias Legislativas no Senado
+                    Qual o encaminhamento das Ideias Legislativas na Alerj
                 </h2>
                 <p>
-                    A ideia legislativa permanecerá publicada no portal e-Cidadania por até quatro meses para receber o apoio de outros cidadãos. A Ideia que receber 20.000 (vinte mil) apoios durante seu prazo de publicidade será remetida à Comissão de Direitos Humanos e Legislação Participativa (CDH), a fim de ser apreciada pelos Senadores. É importante destacar, pois, que se trata de proposta de projeto de lei ou de emenda à constituição. Ficará a juízo dos Senadores a conversão da ideia em proposição, bem como sua posterior aprovação ou rejeição.
+                    A ideia legislativa permanecerá publicada no portal e-Cidadania por até quatro meses para receber o apoio de outros cidadãos. A Ideia que receber 20.000 (vinte mil) apoios durante seu prazo de publicidade será remetida à Comissão de Direitos Humanos e Legislação Participativa (CDH), a fim de ser apreciada pelos Deputados. É importante destacar, pois, que se trata de proposta de projeto de lei ou de emenda à constituição. Ficará a juízo dos Deputados a conversão da ideia em proposição, bem como sua posterior aprovação ou rejeição.
                 </p>
                 <p>
                     Se, no decorrer do período, a ideia legislativa não alcançar a quantidade de apoios necessários, a proposta será automaticamente encerrada para votação, ficando disponível para consulta em área específica do portal.
