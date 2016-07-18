@@ -10,7 +10,7 @@
     <div class="panel panel-default">
 
             <div class="panel-heading-nav">
-                {!! $proposals->links() !!}
+                {{--{!! $proposals->links() !!}--}}
             </div>
 
             <div class="panel-body">
