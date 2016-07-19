@@ -821,6 +821,43 @@ textarea {
     }
 }
 
+.dummy {
+    margin-top: 100%;
+}
+.square {
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    text-align:center;
+    padding-top:calc(40% - 30px);
+    border-radius: 8px;
+    border: 2px solid #FB651D;
+
+    background: #212e52; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(circle, #2F5587, #212e52); /* Safari */
+    background: -o-radial-gradient(circle, #2F5587, #212e52); /* Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(circle, #2F5587, #212e52); /* Firefox 3.6 to 15 */
+    background: radial-gradient(circle, #2F5587, #212e52); /* Standard syntax */
+}
+
+a.square {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.icon {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+.icon .fa-star {
+    color: white;
+}
+
 /*Azul Escuro*/
 /*#212e52;*/
 
