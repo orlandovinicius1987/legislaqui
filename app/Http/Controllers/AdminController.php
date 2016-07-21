@@ -58,12 +58,12 @@ class AdminController extends Controller
         $this->dataRepository = $dataRepository;
     }
 
-    public function index ()
+    public function index()
     {
         return view('admin.index');
     }
 
-    public function users ()
+    public function users()
     {
         $users = $this->usersRepository->all();
 
@@ -103,24 +103,9 @@ class AdminController extends Controller
      */
     public function storeUser()
     {
-
         $this->usersRepository->storeUser();
 
-        return Redirect::to('/admin')->with('user_crud_msg', 'Usuário Incluído com Sucesso');
-//
-//        $input = $formRequest->except('_token');
-//
-//        $input['user_id'] = Auth::user()->id;
-//        $input['open'] = true;
-//        $input['pub_date'] = Carbon::now();
-//        $input['limit_date'] = Carbon::now();
-//        //dd($input);
-//
-//        $proposal = Proposal::create($input);
-//        event(new ProposalWasCreated($proposal));
-//        //Event::fire(new ProposalWasCreated($proposal));
-//
-//        return Redirect::route('proposals')->with('proposal_crud_msg', 'Proposta Legislativa Incluída com Sucesso');
+        return redirect()->route('admin.users')->with('admin_user_crud_msg', 'Usuário Incluído com Sucesso');
     }
 
     /**
@@ -131,13 +116,10 @@ class AdminController extends Controller
      */
     public function editUser($id)
     {
-
         $user = $this->usersRepository->find($id);
         $roles = $this->dataRepository->getRoles();
 
         return view('admin.users.edit')->with(compact('user'))->with(compact('roles'));
-
-//        return view('admin.users.edit', [ 'user' => $user ]);
     }
 
     /**
@@ -157,9 +139,7 @@ class AdminController extends Controller
         $user->save();
 
         // Generating Redirects...
-        return redirect()->route('admin.users.show', ['id' => $id])->with('user_crud_msg', 'Usuário Editado com Sucesso');
-
-//        return Redirect::to('/admin')->with('user_crud_msg', 'Usuário Editado com Sucesso');
+        return redirect()->route('admin.users.show', ['id' => $id])->with('admin_user_crud_msg', 'Usuário Editado com Sucesso');
     }
 
     /**
@@ -172,7 +152,7 @@ class AdminController extends Controller
     {
         $this->usersRepository->destroy($id);
 
-        return Redirect::to('/admin')->with('user_crud_msg', 'Usuário Removido com Sucesso');
+        return redirect()->route('admin.users')->with('admin_user_crud_msg', 'Usuário Removido com Sucesso');
     }
 
     /**
@@ -193,6 +173,28 @@ class AdminController extends Controller
         //return view('admin.proposals.show', ['proposal' => $proposal]);
         //return view('admin.proposals.show')->with('proposal', $proposal);
         return view('admin.proposals.show')->with(compact('proposal'));
+    }
+
+    public function createProposal()
+    {
+        return view('admin.proposals.create');
+    }
+
+    public function storeProposal(ProposalFormRequest $formRequest)
+    {
+        $input = $formRequest->except('_token');
+
+        $input['user_id'] = Auth::user()->id;
+        $input['open'] = true;
+        $input['pub_date'] = Carbon::now();
+        $input['limit_date'] = Carbon::now();
+        //dd($input);
+
+        $proposal = Proposal::create($input);
+//        event(new ProposalWasCreated($proposal));
+        //Event::fire(new ProposalWasCreated($proposal));
+
+        return redirect()->route('admin.proposal.show', ['proposal' => $proposal])->with('admin_proposal_crud_msg', 'Ideia Legislativa Incluída com Sucesso');
     }
 
     /**
@@ -216,7 +218,7 @@ class AdminController extends Controller
             return view('admin.proposals.edit')->with('proposal', $proposal);
         }
         else {
-            return Redirect::route('admin.proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
+            return redirect()->route('admin.proposals')->with('admin_error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
 
     }
@@ -253,7 +255,7 @@ class AdminController extends Controller
 
         //Then update Proposal
         $proposal->fill($input)->save();
-        return Redirect::route('admin.proposals.show', ['id' => $id])->with('proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
+        return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
 
     }
 
@@ -270,10 +272,10 @@ class AdminController extends Controller
 
         if (Gate::allows('destroy', $proposal)) {
             $proposal->delete();
-            return Redirect::route('admin.proposals')->with('proposal_crud_msg', 'Ideia Legislativa Removida com Sucesso');
+            return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Removida com Sucesso');
         }
         else {
-            return Redirect::route('admin.proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
+            return redirect()->route('admin.proposals')->with('admin_error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
 
@@ -289,11 +291,11 @@ class AdminController extends Controller
             //Save
             $proposal->save();
 
-            return redirect()->back()->with('proposal_crud_msg', 'Ideia Legislativa Aprovada com Sucesso');
+            return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada com Sucesso');
         }
         else
         {
-            return redirect()->back()->with('error_msg', 'Ideia Legislativa já foi Moderada!');
+            return redirect()->back()->with('admin_error_msg', 'Ideia Legislativa já foi Moderada!');
         }
     }
 
@@ -315,12 +317,12 @@ class AdminController extends Controller
                 //$proposal->forcefill($input)->save();
                 $proposal->save();
 
-                //return redirect()->back()->with(compact('proposal'))->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso');
-                return Redirect::route('admin.proposal.response', ['id' => $id])->with(compact('proposal'))->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso.');
+                //return redirect()->back()->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso');
+                return redirect()->route('admin.proposal.show', ['id' => $id])->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso.');
         }
         else
         {
-            return redirect()->back()->with(compact('proposal'))->with('error_msg', 'Ideia Legislativa já foi Moderada!');
+            return redirect()->back()->with(compact('proposal'))->with('admin_error_msg', 'Ideia Legislativa já foi Moderada!');
         }
     }
 
@@ -396,7 +398,7 @@ class AdminController extends Controller
             //Then update Proposal
             $proposal->forcefill($input)->save();
             // dd($proposal);
-            return Redirect::route('admin.proposal.show', ['id' => $id])->with('proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso');
+            return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso');
 
         }
         else {

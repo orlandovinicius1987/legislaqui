@@ -4,8 +4,8 @@
 
 @section('content')
 
-    <div class="">
-        <div class="">
+    <div class="row">
+        <div class="col-md-12">
 
             @include('partials.error')
 

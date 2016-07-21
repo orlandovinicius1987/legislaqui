@@ -136,6 +136,35 @@
 
 @endif
 
+@if(Session::has('admin_user_crud_msg'))
+    <div class="alert alert-info">{!! Session::get('admin_user_crud_msg') !!}</div>
+@endif
+
+@if(Session::has('admin_proposal_crud_msg'))
+    <div class="alert alert-info">{!! Session::get('admin_proposal_crud_msg') !!}</div>
+@endif
+
+@if (Session::has('admin_flash_msg'))
+    <div class="alert alert-info">{!! Session::get('admin_flash_msg') !!}</div>
+@endif
+
+@if (Session::has('admin_error_msg'))
+    <div class="alert alert-danger">{!! Session::get('admin_error_msg') !!}</div>
+@endif
+
+{{--@if (Session::has('flash_msg'))--}}
+{{--<div class="alert alert-info">{{ Session::get('flash_msg') }}</div>--}}
+{{--@endif--}}
+
+{{--@if (Session::has('error_msg'))--}}
+{{--<div class="alert alert-danger">{{ Session::get('error_msg') }}</div>--}}
+{{--@endif--}}
+
+{{--@if(Session::has('user_crud_msg'))--}}
+{{--<div class="alert alert-info">{{ Session::get('user_crud_msg') }}</div>--}}
+{{--@endif--}}
+
+
 <script>
     $(function() {
         $('#flash-overlay-modal').modal('show');
