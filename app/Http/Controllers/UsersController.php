@@ -58,4 +58,5 @@ class UsersController extends Controller
             'proposals' => $this->proposalsRepository->getResponsesForUser($responder_id)
         ]);
     }
+
 }

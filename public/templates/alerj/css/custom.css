@@ -927,6 +927,12 @@ a.square {
     border-color: #FB651D;
 }
 
+@media only screen and (max-width: 496px) {
+    .table {
+        font-size: 74%;
+    }
+}
+
 /* Colors */
 /*Azul Escuro*/
 /*#212e52;*/
