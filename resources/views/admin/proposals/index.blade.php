@@ -74,7 +74,7 @@
                                                         <a href="{{ route('admin.proposal.response', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
                                                             <i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa Ideia! </a>
                                                     @else
-                                                    já moderado
+                                                        <i class="fa fa-check-square text-success" aria-hidden="true"></i> Já Moderada
                                                     @endif
                                                 </td>
 

@@ -36,9 +36,9 @@
                     <li class="active"><a href="/admin/users"><i class="fa fa-circle-o text-warning"></i> Usuários</a></li>
                     @endcan
                     <li><a href="/admin/proposals"><i class="fa fa-circle-o text-info"></i> Ideias Legislativas</a></li>
-                    <li><a href="/admin/proposals/approved"><i class="fa fa-circle-o text-danger"></i> Propostas Aprovadas</a></li>
-                    <li><a href="/admin/proposals/disapproved"><i class="fa fa-circle-o text-danger"></i> Propostas Desaprovadas</a></li>
-                    <li><a href="/admin/proposals/notresponded"><i class="fa fa-circle-o text-danger"></i> Propostas sem Resposta</a></li>
+                    <li><a href="/admin/proposals/approved"><i class="fa fa-circle-o text-success"></i> Ideias Aprovadas</a></li>
+                    <li><a href="/admin/proposals/disapproved"><i class="fa fa-circle-o text-warning"></i> Ideias Desaprovadas</a></li>
+                    <li><a href="/admin/proposals/notresponded"><i class="fa fa-circle-o text-danger"></i> Ideias sem Resposta</a></li>
                 </ul>
             </li>
             {{--<li class="treeview">--}}
