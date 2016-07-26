@@ -7,6 +7,8 @@ use Session;
 use Illuminate\Support\Facades\Mail;
 use App\User;
 use App\Proposal;
+use App\Like;
+use Illuminate\Support\Facades\DB;
 
 class ProposalsRepository
 {
@@ -35,6 +37,7 @@ class ProposalsRepository
             ->orderBy('created_at', 'asc')
             ->get();
     }
+
 
     public function sendProposalToCreator ($proposal)
     {
@@ -77,5 +80,15 @@ class ProposalsRepository
             $proposal->approvals()->save($user);
             Session::flash('flash_msg','Seu apoio foi incluído com sucesso.');
         }
+    }
+
+    public function approved()
+    {
+        return Proposal::whereNotNull('approved_at')->get();
+    }
+
+    public function disapproved()
+    {
+        return Proposal::whereNotNull('disapproved_at')->get();
     }
 }

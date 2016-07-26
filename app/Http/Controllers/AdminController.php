@@ -340,6 +340,20 @@ class AdminController extends Controller
         return view('admin.proposals.notresponded')->with('notrespondeds', $proposals->where('responder_id', null));
     }
 
+    public function approved()
+    {
+        $proposals = $this->proposalsRepository->approved();
+
+        return view('admin.proposals.approved')->with('approveds', $proposals);
+    }
+
+    public function disapproved()
+    {
+        $proposals = $this->proposalsRepository->disapproved();
+
+        return view('admin.proposals.disapproved')->with('disapproveds', $proposals);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
