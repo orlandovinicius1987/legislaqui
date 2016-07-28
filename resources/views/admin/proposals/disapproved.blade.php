@@ -26,7 +26,7 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Propostas Legislativas Aprovadas</h3>
+                        <h3 class="box-title">Propostas Legislativas Desaprovadas</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div id="example3_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">

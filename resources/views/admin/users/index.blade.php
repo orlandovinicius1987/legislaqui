@@ -13,7 +13,7 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Usuários</h3>
-                <div class="pull-right"><a href="/admin/users/create" class="btn btn-success">Criar Novo Usuário</a></div>
+                <div class="pull-right"><a href="/admin/users/create" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Criar Novo Usuário</a></div>
             </div><!-- /.box-header -->
             <div class="box-body">
                 <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">

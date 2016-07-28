@@ -26,7 +26,7 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Propostas Legislativas sem Resposta</h3>
+                        <h3 class="box-title">Propostas Legislativas não Moderadas</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div id="example3_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -38,7 +38,7 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Sem Resposta</th>
+                                            <th>Não Moderadas</th>
                                         </tr>
                                         </thead>
 
@@ -48,15 +48,30 @@
                                                 <td>{{ $notresponded->id }}</td>
                                                 <td>{{ $notresponded->name }}</td>
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$notresponded->id)) }}">{{ $notresponded->name }}</a></td>--}}
-                                                <td><a href="{{ route('admin.proposal.response', $notresponded->id) }}" class="btn btn-danger">Responder Proposta</a></td>
+                                                {{--<td><a href="{{ route('admin.proposal.response', $notresponded->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
+                                                {{--Proposal Moderation--}}
+                                                <td class="text-center">
+                                                    {{--{{$proposal->moderation($proposal->id)}}--}}
+                                                    {{--@if () === null)--}}
+                                                    {{--<a href="{{ route('admin.proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a>--}}
+                                                    {{--@endif--}}
+                                                    @if ($notresponded->approved_at == null && $notresponded->approved_by == null && $notresponded->disapproved_at == null && $notresponded->disapproved_by == null )
+                                                        <a href="{{ route('admin.proposal.response', ['id' => $notresponded->id]) }}" class="btn btn-info botao" role="button">
+                                                            <i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa Ideia! </a>
+                                                    @else
+                                                        <i class="fa fa-check-square text-success" aria-hidden="true"></i> Já Moderada
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
+
+
                                         </tbody>
                                         <tfoot>
                                         <tr>
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Sem Resposta</th>
+                                            <th>Não Moderadas</th>
                                         </tr>
                                         </tfoot>
                                     </table>
