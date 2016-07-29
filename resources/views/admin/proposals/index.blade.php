@@ -29,6 +29,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Ideias Legislativas</h3>
+                        <div class="pull-right"><a href="{{ route('admin.proposal.create') }}" class="btn btn-success"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Proposta</a></div>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -45,7 +46,7 @@
                                             {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rating: activate to sort column ascending" style="width: 168px;">Rating</th>--}}
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Apoios: activate to sort column ascending" style="width: 168px;">Apoios</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Moderação</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Resposta</th>
+                                            {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Resposta</th>--}}
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -74,19 +75,19 @@
                                                         <a href="{{ route('admin.proposal.response', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
                                                             <i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa Ideia! </a>
                                                     @else
-                                                    já moderado
+                                                        <i class="fa fa-check-square text-success" aria-hidden="true"></i> Já Moderada
                                                     @endif
                                                 </td>
 
                                                 {{--Proposal Response--}}
-                                                <td>
+                                                {{--<td>--}}
 
-                                                    @if ($proposal->responder_id === null)
-                                                    <a href="{{ route('admin.proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a>
-                                                    @endif
+                                                    {{--@if ($proposal->responder_id === null)--}}
+                                                    {{--<a href="{{ route('admin.proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a>--}}
+                                                    {{--@endif--}}
 
                                                     {{--{{ $proposal->responder_id or 'Sem Resposta' }}--}}
-                                                </td>
+                                                {{--</td>--}}
                                                 <!-- <td> {{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}} </td>-->
                                                 {{--<td class="blue_link"><a href="{{ route('admin.users.show',array('id'=>$user->id)) }}">{{ $user->name }}</a></td>--}}
 

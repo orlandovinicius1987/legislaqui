@@ -182,7 +182,7 @@
 
     <div class="menu">
         <ul>
-            <li><a class="" href="/" id="lkbInicio">IN&#205;CIO</a></li>
+            <li><a class="ativo" href="/" id="lkbInicio">IN&#205;CIO</a></li>
 
             <li class="pai">
                 <a target="" href="javascript:;" class="titulo " title="ALERJ">ALERJ</a>

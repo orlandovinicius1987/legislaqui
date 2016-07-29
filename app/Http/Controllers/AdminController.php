@@ -40,7 +40,6 @@ use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Redirect;
 
 
-
 class AdminController extends Controller
 {
 
@@ -291,7 +290,8 @@ class AdminController extends Controller
             //Save
             $proposal->save();
 
-            return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada com Sucesso');
+//            return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada com Sucesso');
+            return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada com Sucesso');
         }
         else
         {
@@ -318,7 +318,8 @@ class AdminController extends Controller
                 $proposal->save();
 
                 //return redirect()->back()->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso');
-                return redirect()->route('admin.proposal.show', ['id' => $id])->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso.');
+//                return redirect()->route('admin.proposal.show', ['id' => $id])->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso.');
+            return redirect()->route('admin.proposals')->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso.');
         }
         else
         {
@@ -403,7 +404,6 @@ class AdminController extends Controller
             $proposal_history->response = $input['response'];
             $proposal_history->responder_id = $input['responder_id'];
             //$proposal_history->fill($input);
-
             //dd($proposal_history);
 
             //Save History
@@ -412,9 +412,10 @@ class AdminController extends Controller
             //Then update Proposal
             $proposal->forcefill($input)->save();
             // dd($proposal);
-            return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso');
-
+//            return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso');
+            return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso');
         }
+        //Approval
         else {
            return $this->approvedProposal($id);
         }

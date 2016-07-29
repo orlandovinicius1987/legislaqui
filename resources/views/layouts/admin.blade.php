@@ -120,16 +120,16 @@
     $(function () {
         $("#example1").DataTable();
         $('#example2').DataTable(
-                {
-                    "columnDefs": [
-                        { "width": "5%", "targets": 0 },
-                        { "width": "30%", "targets": 1 },
-                        { "width": "5%", "targets": 2 },
-                        { "width": "5%", "targets": 3 },
-                        { "width": "35%", "targets": 4 },
-                        { "width": "20%", "targets": 5 },
-                    ]
-                }
+//                {
+//                    "columnDefs": [
+//                        { "width": "5%", "targets": 0 },
+//                        { "width": "30%", "targets": 1 },
+//                        { "width": "5%", "targets": 2 },
+//                        { "width": "5%", "targets": 3 },
+//                        { "width": "35%", "targets": 4 },
+//                        { "width": "20%", "targets": 5 },
+//                    ]
+//                }
         );
         $('#example3').DataTable();
     });

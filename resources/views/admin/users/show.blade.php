@@ -46,16 +46,16 @@
                         <div class="col-md-12">&nbsp;</div>
 
                         @can('edit', Auth::user())
-                            <div class="col-md-6 botao">
+                            <div class="col-md-12 botao">
                                 <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary botao">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Usuário</a>
                             </div>
 
 
-                        <div class="col-md-6 botao">
-                            <a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger botao" onclick="if(!confirm('Deseja realmente excluir este usuário?')){return false;};">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Usuário</a>
-                        </div>
+                        {{--<div class="col-md-6 botao">--}}
+                            {{--<a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger botao" onclick="if(!confirm('Deseja realmente excluir este usuário?')){return false;};">--}}
+                                {{--<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Usuário</a>--}}
+                        {{--</div>--}}
                         @endcan
                     </div>
                 </div><!-- /.widget-user -->

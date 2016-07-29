@@ -933,6 +933,10 @@ a.square {
     }
 }
 
+.base_menu .menu ul li a.ativo {
+    height: 46px;
+}
+
 /* Colors */
 /*Azul Escuro*/
 /*#212e52;*/

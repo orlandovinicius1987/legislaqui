@@ -38,6 +38,7 @@
                             {{--<li class="dropdown-header">ALERJ</li>--}}
                         @elseif (Auth::user()->is_admin)
                             {{--@elseif (Auth::user()->role_id === 0 or Auth::user()->role_id === 1)--}}
+                            <a href="{{ route('admin') }}">Ir ao Painel de Admin</a>
                             <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>
                             <a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
                             <a href="{{ route('users.responses', Auth::user()->id) }}">Listar Minhas Respostas</a>
@@ -63,6 +64,9 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+                            @if (Auth::user()->is_admin)
+                            <a href="{{ route('admin') }}">Ir ao Painel de Admin</a>
+                            @endif
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Sair</a></li>
                         </ul>
                     </li>
