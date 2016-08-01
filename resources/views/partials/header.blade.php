@@ -28,7 +28,7 @@
 
                 {{--<li {{ Request::is('contact') ? ' class=active' : null }}><a href="/contact">Contato</a></li>--}}
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Propostas <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">IDEIA LEGISLATIVA <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if (Auth::guest())
                             <li><div><a href="{{ route('proposal.create') }}">Proponha uma ideia legislativa logando ou registrando-se aqui</a></div></li>
