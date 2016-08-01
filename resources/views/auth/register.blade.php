@@ -2,8 +2,8 @@
 <div class="col-md-7 col-xs-12">
     <div class="panel panel-default panel-bg">
         <div class="panel-heading-login">
-            <h3>Registro</h3>
-            <h4>Crie uma conta de usuário usando o formulário abaixo.</h4>
+            <div class="col-xs-4 auth"><h3>Registro</h3></div>
+            <div class="after-auth"><h4>Crie uma conta de usuário usando o formulário abaixo.</h4></div>
         </div>
         <div class="panel-body register">
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">

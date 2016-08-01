@@ -29,7 +29,7 @@
             <i class="fa fa-facebook-official"></i>
         </a>
 
-        <a href="https://twitter.com/intent/tweet?url={{ urlencode($url) }}"
+        <a href="https://twitter.com/intent/tweet?text=Proponha%20sua%20Ideia%20Legislativa%20Aqui!&url={{ urlencode($url) }}&via=Legislaqui! - ALERJ&hashtags=e-democracia,e-cidadania"
            target="_blank">
             <i class="fa fa-twitter-square"></i>
         </a>

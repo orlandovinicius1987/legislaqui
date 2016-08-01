@@ -654,6 +654,7 @@ textarea {
     background-color: #212e52;
     padding: 20px;
     border: 2px solid #ff6600;
+    border-radius: 20px;
 }
 
 .panel {
@@ -936,6 +937,27 @@ a.square {
 .base_menu .menu ul li a.ativo {
     height: 46px;
 }
+
+.checkbox input[type=checkbox] {
+    margin-top: -2px;
+}
+
+.auth {
+    background-color: #212e52;
+    line-height: 3em;
+    padding: 15px;
+    margin-left: -15px;
+    margin-top: -10px;
+    border-radius: 0px 0px 10px 0px;
+    color: #FB651D;
+}
+
+.after-auth {
+    clear: left;
+    padding-top: 10px;
+    text-align: center;
+}
+
 
 /* Colors */
 /*Azul Escuro*/

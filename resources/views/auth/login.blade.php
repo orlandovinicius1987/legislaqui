@@ -15,8 +15,9 @@
         <div class="col-md-5 col-xs-12">
             <div class="panel panel-default panel-bg">
                 <div class="panel-heading-login">
-                    <h3>Login</h3>
-                    <h4>Caso já tenha uma conta de usuário, entre com seus dados abaixo.</h4></div>
+                    <div class="col-xs-4 auth"><h3>Login</h3></div>
+                    <div class="after-auth"><h4>Caso já tenha uma conta de usuário, entre com seus dados abaixo.</h4></div>
+                </div>
                 <div class="panel-body">
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">

@@ -28,13 +28,13 @@
 
                 {{--<li {{ Request::is('contact') ? ' class=active' : null }}><a href="/contact">Contato</a></li>--}}
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Propostas <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">IDEIA LEGISLATIVA <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if (Auth::guest())
                             <li><div><a href="{{ route('proposal.create') }}">Proponha uma ideia legislativa logando ou registrando-se aqui</a></div></li>
                             {{--url('/login') }}">Proponha uma ideia legislativa<br>logando/registrando-se aqui</a></li>--}}
-                            {{--<li role="separator" class="divider"></li>--}}
-                            {{--<li class="dropdown-header">e-democracia 2016</li>--}}
+                            <li role="separator" class="divider"></li>
+                            <li><div><a href="{{ route('terms') }}">Termos de Uso</a></div></li>
                             {{--<li class="dropdown-header">ALERJ</li>--}}
                         @elseif (Auth::user()->is_admin)
                             {{--@elseif (Auth::user()->role_id === 0 or Auth::user()->role_id === 1)--}}

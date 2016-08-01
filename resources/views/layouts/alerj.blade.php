@@ -15,6 +15,13 @@
     <link rel="stylesheet" type="text/css" href="http://www.alerj.rj.gov.br/Content/css/jquery-ui.structure.css">
     <link rel="stylesheet" type="text/css" href="http://www.alerj.rj.gov.br/Content/css/estilos.css" />
 
+    {{--FaceBook MetaTags--}}
+    <meta property="og:url"                content="{{Request::fullUrl()}}" />
+    <meta property="og:type"               content="Ideias Legislativas" />
+    <meta property="og:title"              content="Legislaqui" />
+    <meta property="og:description"        content="Proponha sua Ideia Legislativa" />
+    <meta property="og:image"              content="http://www.alerj.rj.gov.br/Content/imagens/logotipo.png" />
+
     <!-- Styles -->
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
