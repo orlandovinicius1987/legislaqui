@@ -46,7 +46,7 @@
                     O Portal #Legislaaqui não se responsabiliza por erros do cidadão no seu cadastramento, como, por exemplo, cadastro duplo na web, informação errada de dados, entre outros, podendo não publicar a manifestação que contiver dados que não correspondam à realidade.
                 </p>
                 <p>
-                    Os formulários eletrônicos disponíveis no Portal #Legislaaqui somente poderão ser utilizados para envio de informações compatíveis com a destinação das ferramentas e pertinentes à esfera de atuação da ALERJ, bem como dos senadores. Assim, não serão aceitos textos que:
+                    Os formulários eletrônicos disponíveis no Portal #Legislaaqui somente poderão ser utilizados para envio de informações compatíveis com a destinação das ferramentas e pertinentes à esfera de atuação da ALERJ, bem como dos deputados. Assim, não serão aceitos textos que:
                 </p>
                 <p class="instrucao-fundo-cinza">
                             Tratem de assuntos diversos ao ambiente político e legislativo da ALERJ;
@@ -87,7 +87,7 @@
 
                 <p>A utilização das ferramentas do Portal #Legislaaqui que demandam contribuições e manifestações dos cidadãos pressupõe autorização para publicação desse conteúdo no Portal #Legislaaqui ou em quaisquer sites mantidos pela ALERJ. Ao utilizar quaisquer dessas ferramentas, o cidadão abre mão de eventuais direitos autorais incidentes sobre suas contribuições e manifestações ao Portal #Legislaaqui.</p>
 
-                <p>As ideias, comentários, opiniões e quaisquer manifestações dos cidadãos não representam a opinião da ALERJ e dos senadores.</p>
+                <p>As ideias, comentários, opiniões e quaisquer manifestações dos cidadãos não representam a opinião da ALERJ e dos deputados.</p>
             </div>
 
         </div>
