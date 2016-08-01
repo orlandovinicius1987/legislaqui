@@ -23,6 +23,11 @@ class AboutController extends Controller {
         return view('about.about');
     }
 
+    public function terms ()
+    {
+        return view('about.terms');
+    }
+
     public function create()
     {
         return view('about.contact');
