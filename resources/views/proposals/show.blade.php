@@ -97,6 +97,9 @@
                         <a href="{{ route('proposal.destroy', $proposal->id) }}" class="btn btn-primary botao" onclick="if(!confirm('Você tem certeza que deseja apagar essa Ideia Legislativa?')){return false;};">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Proposta</a>
                         @endcan
+
+                        <a href="{{ route('proposals')}}" class="btn btn-primary botao">
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Propostas</a>
                     </div>
 
                     {{--<div class="socialmedia">--}}
