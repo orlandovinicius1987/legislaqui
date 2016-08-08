@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ProposalWasCreated' => [
             'App\Listeners\EmailProposalCreator',
         ],
+        'App\Events\ProposalReachedApprovalGoal' => [
+            'App\Listeners\EmailProposalReachedApprovalGoal',
+        ],
     ];
 
     /**

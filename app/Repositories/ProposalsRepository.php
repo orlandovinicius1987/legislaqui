@@ -55,6 +55,21 @@ class ProposalsRepository
         });
     }
 
+    public function sendProposalApprovalGoalNotification ($proposal)
+    {
+        //dd($proposal);
+
+        Mail::send('emails.proposal-goal-notification', ['proposal' => $proposal], function ($message) use ($proposal) {
+
+            $message->from('admin@alerj.rj.gov.br', 'e-democracia');
+
+            $message->to($proposal->user->email, $proposal->user->name);
+            $message->bcc('admin@alerj.rj.gov.br', 'e-democracia');
+
+            $message->subject('e-democracia: Notificação - Sua Proposta atingiu o número necessário de Apoios');
+        });
+    }
+
     public function all()
     {
         return Proposal::all();
@@ -90,5 +105,15 @@ class ProposalsRepository
     public function disapproved()
     {
         return Proposal::whereNotNull('disapproved_at')->get();
+    }
+
+    public function approved_by_committee()
+    {
+        return Proposal::whereNotNull('approved_at_committee')->get();
+    }
+
+    public function disapproved_by_committee()
+    {
+        return Proposal::whereNotNull('disapproved_at_committee')->get();
     }
 }
