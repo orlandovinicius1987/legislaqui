@@ -14,6 +14,8 @@ return [
 
     'approvalGoal' => 20000,
 
+    'timeLimit' => 180,
+
     'pagination' => 20
 
 ];
