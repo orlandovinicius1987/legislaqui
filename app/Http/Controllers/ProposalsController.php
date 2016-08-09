@@ -47,7 +47,7 @@ class ProposalsController extends Controller
 
     public function index()
     {
-       return view('proposals.index')->with('proposals', Proposal::orderBy('created_at', 'desc')->paginate(20));
+       return view('proposals.index')->with('proposals', Proposal::orderBy('created_at', 'desc')->paginate(config('global.pagination')));
     }
 
     public function show($id)
