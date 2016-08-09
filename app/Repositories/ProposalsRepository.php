@@ -95,6 +95,12 @@ class ProposalsRepository
             $proposal->approvals()->save($user);
             Session::flash('flash_msg','Seu apoio foi incluído com sucesso.');
         }
+
+        // Event Trigger
+        // Condition 20.000 approved this proposal
+        if ($approvals >= config('global.approvalGoal')) {
+            event(new ProposalReachedApprovalGoal($proposal));
+        }
     }
 
     public function approved()
