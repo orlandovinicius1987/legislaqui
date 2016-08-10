@@ -9,6 +9,7 @@ use App\User;
 use App\Proposal;
 use App\Like;
 use Illuminate\Support\Facades\DB;
+use Carbon;
 
 class ProposalsRepository
 {
@@ -121,5 +122,25 @@ class ProposalsRepository
     public function disapproved_by_committee()
     {
         return Proposal::whereNotNull('disapproved_at_committee')->get();
+    }
+
+    public function timeLimit()
+    {
+        // Get approveds Proposals
+        $proposals_approveds = $this->approved();
+
+        // Get today - 2015-12-19 00:00:00
+        $today = Carbon::today();
+
+        foreach ($proposals_approveds as $proposal_approved) {
+            //If expired
+            if ($proposal_approved->approved_at->addDays(config('global.timeLimit'))->diffInDays($today) < 0)
+            {
+                $proposal_approved->time_limit = true;
+
+                $proposal_approved->save();
+            }
+        }
+
     }
 }
