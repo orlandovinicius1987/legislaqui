@@ -100,6 +100,7 @@ class ProposalsRepository
         // Event Trigger
         // Condition 20.000 approved this proposal
         if ($approvals >= config('global.approvalGoal')) {
+            $proposal->approval_goal = true;
             event(new ProposalReachedApprovalGoal($proposal));
         }
     }
