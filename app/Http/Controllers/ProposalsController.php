@@ -78,7 +78,6 @@ class ProposalsController extends Controller
 
     public function likeUnlike($id, $action)
     {
-
         //Get Proposal
         $proposal = $this->proposalsRepository->find($id);
 

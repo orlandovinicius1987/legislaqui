@@ -165,6 +165,12 @@ class AdminController extends Controller
         return view('admin.proposals.index')->with(compact('proposals'));
     }
 
+    /**
+     * Show the specified proposal from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function showProposal($id)
     {
         $proposal = $this->proposalsRepository->find($id);
@@ -174,11 +180,23 @@ class AdminController extends Controller
         return view('admin.proposals.show')->with(compact('proposal'));
     }
 
+    /**
+     * Create the specified proposal form.
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function createProposal()
     {
         return view('admin.proposals.create');
     }
 
+    /**
+     * Store the specified proposal in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function storeProposal(ProposalFormRequest $formRequest)
     {
         $input = $formRequest->except('_token');
@@ -190,7 +208,7 @@ class AdminController extends Controller
         //dd($input);
 
         $proposal = Proposal::create($input);
-//        event(new ProposalWasCreated($proposal));
+        //event(new ProposalWasCreated($proposal));
         //Event::fire(new ProposalWasCreated($proposal));
 
         return redirect()->route('admin.proposal.show', ['proposal' => $proposal])->with('admin_proposal_crud_msg', 'Ideia Legislativa Incluída com Sucesso');
@@ -278,6 +296,12 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * First Moderation: Approving Proposals to get them published and listed on frontend.
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function approvedProposal($id)
     {
         $proposal = $this->proposalsRepository->find($id);
@@ -299,6 +323,12 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * First Moderation: Disapproving Proposals to get them rid off frontend.
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function disapprovedProposal($id, ResponseFormRequest $formRequest)
     {
         $proposal = $this->proposalsRepository->find($id);
@@ -313,7 +343,10 @@ class AdminController extends Controller
 
                 $proposal->disapproved_at = Carbon::now();
                 $proposal->disapproved_by =  Auth::user()->id;
-                //Save
+
+                // Close
+                $proposal->open = false;
+                // and Save
                 //$proposal->forcefill($input)->save();
                 $proposal->save();
 
@@ -325,34 +358,6 @@ class AdminController extends Controller
         {
             return redirect()->back()->with(compact('proposal'))->with('admin_error_msg', 'Ideia Legislativa já foi Moderada!');
         }
-    }
-
-    public function notResponded()
-    {
-//        return view('admin.notresponded', [
-//            'proposals' => Proposal::whereNull('response')->paginate(20),
-//            'is_not_responded' => true
-//        ]);
-
-        // dd(Proposal::whereNull('response_id'));
-        //$proposals = Proposal::all();
-        $proposals = $this->proposalsRepository->all();
-
-        return view('admin.proposals.notresponded')->with('notrespondeds', $proposals->where('responder_id', null));
-    }
-
-    public function approved()
-    {
-        $proposals = $this->proposalsRepository->approved();
-
-        return view('admin.proposals.approved')->with('approveds', $proposals);
-    }
-
-    public function disapproved()
-    {
-        $proposals = $this->proposalsRepository->disapproved();
-
-        return view('admin.proposals.disapproved')->with('disapproveds', $proposals);
     }
 
     /**
@@ -417,8 +422,161 @@ class AdminController extends Controller
         }
         //Approval
         else {
-           return $this->approvedProposal($id);
+            return $this->approvedProposal($id);
         }
+    }
+
+    /**
+     * Committee Moderation: Approving Proposal when it reached approval Goal and forward to respective Committee.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function approvedProposalByCommittee($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+
+        //Append Committee Moderation Info only if never been Moderated by Committee before
+        if ($proposal->approved_at_committee == null && $proposal->approved_by_committee == null && $proposal->disapproved_at_committee == null && $proposal->disapproved_by_committee == null )
+        {
+            $proposal->approved_at_committee = Carbon::now();
+            $proposal->approved_by_committee =  Auth::user()->id;
+            //Save
+            $proposal->save();
+
+            return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada pelo Comitê com Sucesso');
+        }
+        else
+        {
+            return redirect()->back()->with('admin_error_msg', 'Ideia Legislativa já foi Moderada pelo Comitê!');
+        }
+    }
+
+    /**
+     * Committee Moderation: Disapproving Proposals by Committee and Close Proposal.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function disapprovedProposalByCommittee($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+
+        //Append Moderation Info only if never been Moderated before
+        if ($proposal->approved_at_committee == null && $proposal->approved_by_committee == null && $proposal->disapproved_at_committee == null && $proposal->disapproved_by_committee == null )
+        {
+            $proposal->disapproved_at_committee = Carbon::now();
+            $proposal->disapproved_by_committee =  Auth::user()->id;
+
+            // Close
+            $proposal->open = false;
+            // and Save
+            //$proposal->forcefill($input)->save();
+            $proposal->save();
+
+            return redirect()->route('admin.proposals')->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada pelo Comitê e Finalizada com Sucesso.');
+        }
+        else
+        {
+            return redirect()->back()->with(compact('proposal'))->with('admin_error_msg', 'Ideia Legislativa já foi Moderada pelo Comitê!');
+        }
+    }
+
+    /**
+     * Time Limit Moderation: Time Limit expired Proposals
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function timeLimit($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+
+        //Append Time Limit Moderation Info only if Proposal lifetime has expired (time_limit = true)
+        if ($proposal->time_limit == true)
+        {
+            $proposal->time_limit_at = Carbon::now();
+            $proposal->time_limit_by =  Auth::user()->id;
+
+            // Close
+            $proposal->open = false;
+            //Save
+            $proposal->save();
+
+            return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Expirada e Finalizada com Sucesso.');
+        }
+    }
+
+    /**
+     * List: Not Responded Proposals.
+     *
+     * @param  void
+     * @return Response
+     */
+    public function notResponded()
+    {
+//        return view('admin.notresponded', [
+//            'proposals' => Proposal::whereNull('response')->paginate(20),
+//            'is_not_responded' => true
+//        ]);
+
+        // dd(Proposal::whereNull('response_id'));
+        //$proposals = Proposal::all();
+        $proposals = $this->proposalsRepository->all();
+
+        return view('admin.proposals.notresponded')->with('notrespondeds', $proposals->where('responder_id', null));
+    }
+
+    /**
+     * List: First Moderation Approved Proposals.
+     *
+     * @param  void
+     * @return Response
+     */
+    public function approved()
+    {
+        $proposals = $this->proposalsRepository->approved();
+
+        return view('admin.proposals.approved')->with('approveds', $proposals);
+    }
+
+    /**
+     * List: First Moderation Disapproved Proposals.
+     *
+     * @param  void
+     * @return Response
+     */
+    public function disapproved()
+    {
+        $proposals = $this->proposalsRepository->disapproved();
+
+        return view('admin.proposals.disapproved')->with('disapproveds', $proposals);
+    }
+
+    /**
+     * List: Approved Proposals by Committee.
+     *
+     * @param  void
+     * @return Response
+     */
+    public function approvedByCommittee()
+    {
+        $proposals = $this->proposalsRepository->approvedByCommittee();
+
+        return view('admin.proposals.approvedByCommittee')->with('approvedsByCommittee', $proposals);
+    }
+
+    /**
+     * List: Disapproved Proposals by Committee.
+     *
+     * @param  void
+     * @return Response
+     */
+    public function disapprovedByCommittee()
+    {
+        $proposals = $this->proposalsRepository->disapprovedByCommittee();
+
+        return view('admin.proposals.disapprovedByCommittee')->with('disapprovedsByCommittee', $proposals);
     }
 
 }

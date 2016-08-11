@@ -41,8 +41,8 @@
                             <a href="{{ route('admin') }}">Ir ao Painel de Admin</a>
                             <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>
                             <a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
-                            <a href="{{ route('users.responses', Auth::user()->id) }}">Listar Minhas Respostas</a>
-                            <a href="{{ route('proposals.notresponded') }}">Sem Resposta</a>
+                            {{--<a href="{{ route('users.responses', Auth::user()->id) }}">Listar Minhas Respostas</a>--}}
+                            {{--<a href="{{ route('proposals.notresponded') }}">Sem Resposta</a>--}}
                         @else
                             <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>
                             <a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
