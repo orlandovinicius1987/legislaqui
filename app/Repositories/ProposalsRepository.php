@@ -114,14 +114,14 @@ class ProposalsRepository
         return Proposal::whereNotNull('disapproved_at')->get();
     }
 
-    public function approved_by_committee()
+    public function approvedByCommittee()
     {
-        return Proposal::whereNotNull('approved_at_committee')->get();
+        return Proposal::whereNotNull('approved_by_committee')->get();
     }
 
-    public function disapproved_by_committee()
+    public function disapprovedByCommittee()
     {
-        return Proposal::whereNotNull('disapproved_at_committee')->get();
+        return Proposal::whereNotNull('disapproved_by_committee')->get();
     }
 
     public function timeLimit()
