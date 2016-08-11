@@ -165,6 +165,12 @@ class AdminController extends Controller
         return view('admin.proposals.index')->with(compact('proposals'));
     }
 
+    /**
+     * Show the specified proposal from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function showProposal($id)
     {
         $proposal = $this->proposalsRepository->find($id);
@@ -174,11 +180,23 @@ class AdminController extends Controller
         return view('admin.proposals.show')->with(compact('proposal'));
     }
 
+    /**
+     * Create the specified proposal form.
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function createProposal()
     {
         return view('admin.proposals.create');
     }
 
+    /**
+     * Store the specified proposal in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function storeProposal(ProposalFormRequest $formRequest)
     {
         $input = $formRequest->except('_token');
@@ -190,7 +208,7 @@ class AdminController extends Controller
         //dd($input);
 
         $proposal = Proposal::create($input);
-//        event(new ProposalWasCreated($proposal));
+        //event(new ProposalWasCreated($proposal));
         //Event::fire(new ProposalWasCreated($proposal));
 
         return redirect()->route('admin.proposal.show', ['proposal' => $proposal])->with('admin_proposal_crud_msg', 'Ideia Legislativa Incluída com Sucesso');
@@ -426,7 +444,6 @@ class AdminController extends Controller
             //Save
             $proposal->save();
 
-//            return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada com Sucesso');
             return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada pelo Comitê com Sucesso');
         }
         else
@@ -457,13 +474,36 @@ class AdminController extends Controller
             //$proposal->forcefill($input)->save();
             $proposal->save();
 
-            //return redirect()->back()->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso');
-//                return redirect()->route('admin.proposal.show', ['id' => $id])->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso.');
             return redirect()->route('admin.proposals')->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada pelo Comitê e Finalizada com Sucesso.');
         }
         else
         {
             return redirect()->back()->with(compact('proposal'))->with('admin_error_msg', 'Ideia Legislativa já foi Moderada pelo Comitê!');
+        }
+    }
+
+    /**
+     * Time Limit Moderation: Time Limit expired Proposals
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function timeLimit($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+
+        //Append Time Limit Moderation Info only if Proposal lifetime has expired (time_limit = true)
+        if ($proposal->time_limit == true)
+        {
+            $proposal->time_limit_at = Carbon::now();
+            $proposal->time_limit_by =  Auth::user()->id;
+
+            // Close
+            $proposal->open = false;
+            //Save
+            $proposal->save();
+
+            return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Expirada e Finalizada com Sucesso.');
         }
     }
 
