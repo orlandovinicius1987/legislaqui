@@ -10,6 +10,9 @@ namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
 
+use App\Events\ProposalApprovedByCommittee;
+use App\Events\ProposalClosedByCommittee;
+use App\Events\ProposalTimeLimit;
 use App\Http\Requests;
 //use App\Http\Controllers\Controller;
 
@@ -350,6 +353,9 @@ class AdminController extends Controller
                 //$proposal->forcefill($input)->save();
                 $proposal->save();
 
+                //Fire Event
+                event(new ProposalClosed($proposal));
+
                 //return redirect()->back()->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso');
 //                return redirect()->route('admin.proposal.show', ['id' => $id])->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso.');
             return redirect()->route('admin.proposals')->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso.');
@@ -444,6 +450,9 @@ class AdminController extends Controller
             //Save
             $proposal->save();
 
+            //Fire Event
+            event(new ProposalApprovedByCommittee($proposal));
+
             return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada pelo Comitê com Sucesso');
         }
         else
@@ -474,6 +483,9 @@ class AdminController extends Controller
             //$proposal->forcefill($input)->save();
             $proposal->save();
 
+            //Fire Event
+            event(new ProposalClosedByCommittee($proposal));
+
             return redirect()->route('admin.proposals')->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada pelo Comitê e Finalizada com Sucesso.');
         }
         else
@@ -502,6 +514,9 @@ class AdminController extends Controller
             $proposal->open = false;
             //Save
             $proposal->save();
+
+            //Fire Event
+            event(new ProposalTimeLimit($proposal));
 
             return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Expirada e Finalizada com Sucesso.');
         }
