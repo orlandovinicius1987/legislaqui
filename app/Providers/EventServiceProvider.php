@@ -16,20 +16,23 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ProposalWasCreated' => [
             'App\Listeners\EmailProposalCreator',
         ],
-        'App\Events\ProposalReachedApprovalGoal' => [
-            'App\Listeners\EmailProposalReachedApprovalGoal',
+        'App\Events\ProposalApproved' => [
+            'App\Listeners\EmailProposalApproved',
         ],
         'App\Events\ProposalClosed' => [
             'App\Listeners\EmailProposalClosed',
         ],
-        'App\Events\ProposalClosedByCommittee' => [
-            'App\Listeners\EmailProposalClosedByCommittee',
+        'App\Events\ProposalReachedApprovalGoal' => [
+            'App\Listeners\EmailProposalReachedApprovalGoal',
+        ],
+        'App\Events\ProposalTimeLimit' => [
+            'App\Listeners\EmailProposalTimeLimit',
         ],
         'App\Events\ProposalApprovedByCommittee' => [
             'App\Listeners\EmailProposalApprovedByCommittee',
         ],
-        'App\Events\ProposalTimeLimit' => [
-            'App\Listeners\EmailProposalTimeLimit',
+        'App\Events\ProposalClosedByCommittee' => [
+            'App\Listeners\EmailProposalClosedByCommittee',
         ],
     ];
 
