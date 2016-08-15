@@ -7,6 +7,8 @@
 
     @include('partials.error')
 
+
+
     <div class="panel panel-default">
 
             <div class="panel-heading-nav">
@@ -14,10 +16,19 @@
             </div>
 
             <div class="panel-body">
+
                 <table id="datatable" class="table table-striped table-hover compact" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th><h3>Ideia Legislativa</h3></th>
+                        <th>
+                            <h3><a>
+                                <div class="icon-wrapper"><i class="fa fa-plus-circle custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
+                                {{--<span class="fa-stack fa-lg">--}}
+                                  {{--<i class="fa fa-circle fa-stack-2x"></i>--}}
+                                  {{--<i class="fa fa-plus fa-stack-1x fa-inverse"></i>--}}
+                                {{--</span>--}}Criar Ideia Legislativa
+                            </a></h3>
+                        </th>
                         @if (isset($is_not_responded) && Auth::user()->is_admin)
                             <th><h3>Sem Resposta</h3></th>
                         @else
