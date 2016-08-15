@@ -59,6 +59,31 @@ class ProposalsController extends Controller
         //return view('proposals.show')->with(compact('proposal'))
     }
 
+    //proposals in progress
+    public function progress()
+    {
+     return view('proposals.index')->with('proposals', Proposal::where('open',true)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
+    //proposals open
+    public function open()
+    {
+        return view('proposals.index')->with('proposals', Proposal::where(['open'=>true,'in_committee'=>false])->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
+    //proposals in committee
+    public function committee()
+    {
+        return view('proposals.index')->with('proposals', Proposal::where('in_committee',true)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
+    //proposals finished
+    public function finished()
+    {
+        return view('proposals.index')->with('proposals', Proposal::where('open',false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
+
     public function approval($id)
     {
         $this->proposalsRepository->approve($id);

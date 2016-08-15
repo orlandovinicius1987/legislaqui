@@ -16,6 +16,19 @@
             <div class="panel-body">
                 <table id="datatable" class="table table-striped table-hover compact" cellspacing="0" width="100%">
                     <thead>
+
+                    <a href="/proposals/progress">
+                        <div class="icon"><i class="fa fa-star" aria-hidden="true"></i></div>Em andamento</a>
+
+                    <a href="/proposals/open">
+                        <div class="icon"><i class="fa fa-star" aria-hidden="true"></i></div>Abertas</a>
+
+                    <a href="/proposals/committee">
+                        <div class="icon"><i class="fa fa-star" aria-hidden="true"></i></div>Na comissão</a>
+
+                    <a href="/proposals/finished">
+                        <div class="icon"><i class="fa fa-star" aria-hidden="true"></i></div>Concluídas</a>
+
                     <tr>
                         <th><h3>Ideia Legislativa</h3></th>
                         @if (isset($is_not_responded) && Auth::user()->is_admin)
@@ -28,7 +41,6 @@
                         @endif
                     </tr>
                     </thead>
-
                     <tbody>
                     @foreach ($proposals as $proposal)
                         <tr>

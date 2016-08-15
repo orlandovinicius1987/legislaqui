@@ -45,6 +45,23 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('proposals',  ['as'=>'proposals', 'uses'=>'ProposalsController@index']);
 
+    /* proposals in progress */
+    Route::get('proposals/progress',  ['as'=>'proposals.progress', 'uses'=>'ProposalsController@progress']);
+
+    /* proposals in progress - open */
+    Route::get('proposals/open',  ['as'=>'proposals.open', 'uses'=>'ProposalsController@open']);
+
+    /* proposals in progress - in committee */
+    Route::get('proposals/committee',  ['as'=>'proposals.committee', 'uses'=>'ProposalsController@committee']);
+
+
+
+    /* proposals finished */
+    Route::get('proposals/finished',  ['as'=>'proposals.finished', 'uses'=>'ProposalsController@finished']);
+
+
+
+
     Route::get('proposals/{id}', ['as'=>'proposal.show', 'uses'=>'ProposalsController@show'])->where('id', '[0-9]+');
 
     Route::get('cookieset', function()

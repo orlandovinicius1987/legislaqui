@@ -39,7 +39,7 @@
                               'class'=>'textarea',
                               'placeholder'=>'Resuma sua Ideia')) }}
                 </div>
-               
+
                 <div class="form-group">
                     {{ Form::label('Exposição da Ideia') }}
                     {{ Form::textarea('idea_exposition', null,
