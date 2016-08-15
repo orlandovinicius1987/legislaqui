@@ -41,10 +41,17 @@ class ProposalsRepository
         }
 
         // Event Trigger
-        // Condition 20.000 approved this proposal
-        if ($approvals >= config('global.approvalGoal')) {
+        // Condition: 20.000 approved this proposal + is not in_committee
+        if (($approvals >= config('global.approvalGoal')) && ($proposal->in_committee == null)) {
+
+            // Set approval_goal flag
             $proposal->approval_goal = true;
+
+            // Fire Event
             event(new ProposalReachedApprovalGoal($proposal));
+
+            // Set in_committee flag
+            $proposal->in_committee = true;
         }
     }
 
