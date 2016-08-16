@@ -21,7 +21,12 @@
                     <thead>
                     <tr>
                         <th class="create">
-                            <h3><a>
+                            <h3>
+                                @if (!Auth::check())
+                                    <a href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                @else
+                                    <a href="{{ route('proposal.create') }}" class="btn btn-primary botao">
+                                @endif
                                 <div class="icon-wrapper"><i class="fa fa-plus-circle custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
                                 <div class="quadrado_legislaqui">Crie nova Ideia</div>
                             </a></h3>

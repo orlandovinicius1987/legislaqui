@@ -225,6 +225,11 @@ h3 {
     margin: 0px 0px 0px 0px;
     padding: 3px 0px 0px 0px;
     text-transform: uppercase;
+
+}
+
+h3 a:focus, h3 a:hover {
+    text-decoration: none;
 }
 
 /* Form Elements */
