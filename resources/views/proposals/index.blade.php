@@ -8,7 +8,7 @@
     @include('partials.error')
 
     <div class="col-xs-12 instrucao">
-        As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa
+        As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa.
     </div>
 
     <div class="panel panel-default">

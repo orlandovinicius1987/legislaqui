@@ -47,9 +47,30 @@
             </div>
         </div>
     @else
-        <div class="alert alert-info">Clique abaixo para incluir sua primeira proposta legislativa.</div>
-        <a href="{{ route('proposal.create') }}" class="btn btn-primary botao">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Proposta</a>
+
+        <div class="panel-body">
+            <br><br>
+            <div class="alert alert-info">Clique abaixo para incluir sua primeira proposta legislativa.</div>
+
+            <table id="datatable" class="" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th class="create">
+                        <h3>
+                            @if (!Auth::check())
+                                <a href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                    @else
+                                        <a href="{{ route('proposal.create') }}">
+                                            @endif
+                                            <div class="icon-wrapper"><i class="fa fa-plus-circle custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
+                                            <div class="quadrado_legislaqui">Crie nova Ideia</div>
+                                        </a></h3>
+                    </th>
+                </tr>
+                </thead>
+            </table>
+        {{--<a href="{{ route('proposal.create') }}" class="btn btn-primary botao">--}}
+            {{--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Proposta</a>--}}
     @endif
 
 @stop
