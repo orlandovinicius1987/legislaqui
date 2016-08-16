@@ -7,7 +7,9 @@
 
     @include('partials.error')
 
-
+    <div class="col-xs-12 instrucao">
+        As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa
+    </div>
 
     <div class="panel panel-default">
 
@@ -25,7 +27,7 @@
                                 @if (!Auth::check())
                                     <a href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
                                 @else
-                                    <a href="{{ route('proposal.create') }}" class="btn btn-primary botao">
+                                    <a href="{{ route('proposal.create') }}">
                                 @endif
                                 <div class="icon-wrapper"><i class="fa fa-plus-circle custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
                                 <div class="quadrado_legislaqui">Crie nova Ideia</div>

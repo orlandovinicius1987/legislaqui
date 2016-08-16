@@ -189,6 +189,40 @@ body {
     -moz-box-sizing: content-box;
     box-sizing: content-box;
 }
+.menu a {
+    text-decoration: none;
+}
+
+.menu ul li:last-child {
+    float: right;
+}
+
+.base_menu .menu ul {
+    float: none;
+    margin-right: 15px;
+}
+
+.base_menu .menu ul li .submenu {
+    background: #f5f6ec;
+}
+
+.menu ul li:last-child>a {
+    color: white;
+    background-color: #ff6600;
+    border: 1px #9ea745 solid;
+    border-radius: 4px;
+}
+
+.menu ul li:last-child>a:hover {
+    color: white;
+    background-color: #ff6600;
+}
+
+.pai .submenu .filho_pai a {
+     background-color: transparent;
+     border: none;
+     border-radius: 0px;
+}
 
 /* Headings & Paragraph */
 h1 {
@@ -678,6 +712,16 @@ textarea {
     background-color: #eaeaea;
     color: #212e52;
     padding: 20px;
+}
+
+.instrucao {
+    background-color: #f5f6ec;
+    color: #212e52;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 2em;
 }
 
 .form-control {
