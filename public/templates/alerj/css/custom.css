@@ -536,6 +536,7 @@ textarea {
     -webkit-transition:.5s;
     -o-transition:.5s;
     transition:.5s;
+    margin-left: -10px;
 }
 .custom-icon:hover {
     background:rgba(0,0,0,0.6);
@@ -786,6 +787,25 @@ textarea {
 
 .letra_azul {
     color: #212e52;
+}
+
+.quadrado_legislaqui {
+    background-color: #FB651D;
+    line-height: 1.6em;
+    border-radius: 8px 8px 8px 8px;
+    border: 2px #9ea745 solid;
+    margin-top: -2.5em;
+    padding-left: 2.5em;
+    color: white;
+    width: 25vw;
+    font-family: 'dinlight';
+    padding-top: 3px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.table>thead>tr>th .create{
+    padding: 0px;
 }
 
 .moto {
