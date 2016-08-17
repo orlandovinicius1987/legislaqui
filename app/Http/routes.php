@@ -43,7 +43,25 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'ProposalsController@index');
 
-    Route::get('proposals',  ['as'=>'proposals', 'uses'=>'ProposalsController@index']);
+    Route::get('/proposals',  ['as'=>'proposals', 'uses'=>'ProposalsController@index']);
+
+   /*
+     proposals in progress
+    Route::get('proposals/{q}',  ['as'=>'proposals.progress', 'uses'=>'ProposalsController@progress']);
+
+  proposals in progress - open
+    Route::get('proposals/{q}',  ['as'=>'proposals.open', 'uses'=>'ProposalsController@open']);
+
+  proposals in progress - in committee
+    Route::get('proposals/{q}',  ['as'=>'proposals.committee', 'uses'=>'ProposalsController@committee']);
+*/
+
+
+    /* proposals finished */
+  //  Route::get('proposals/finished',  ['as'=>'proposals.finished', 'uses'=>'ProposalsController@finished']);
+
+
+
 
     Route::get('proposals/{id}', ['as'=>'proposal.show', 'uses'=>'ProposalsController@show'])->where('id', '[0-9]+');
 

@@ -7,16 +7,30 @@
 
     @include('partials.error')
 
-    <div class="col-xs-12 instrucao">
-        As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa.
+<!-- o que vc inseriu Fabiano -->
+     <div class="col-xs-12 instrucao">
+         As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa.
     </div>
-
+<!-- fim -->
     <div class="panel panel-default">
 
             <div class="panel-heading-nav">
                 {{--{!! $proposals->links() !!}--}}
             </div>
 
+          <div class="panel-body">
+                <table id="datatable" class="table table-striped table-hover compact" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <div class="btn-group" role="group" aria-label="...">
+                           <a href="/proposals?q=progress" class="btn btn-default {{ $query == "progress" ? 'active' :'' }}"> Em andamento</a>
+                           <a href="/proposals?q=open" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
+                           <a href="/proposals?q=comittee" class="btn btn-default {{ $query == "comittee" ? 'active' :'' }}">Na comissão</a>
+                           <a href="/proposals?q=finished" class="btn btn-default {{ $query == "finished" ? 'active' :'' }}">Concluídas</a>
+                        </div>
+
+                        <th><h3>Ideia Legislativa</h3></th>
+<!-- o que vc inseriu  Fabiano
             <div class="panel-body">
                 <br><br>
                 <table id="datatable" class="table table-striped table-hover compact" cellspacing="0" width="100%">
@@ -33,6 +47,7 @@
                                 <div class="quadrado_legislaqui">Crie nova Ideia</div>
                             </a></h3>
                         </th>
+         -->
                         @if (isset($is_not_responded) && Auth::user()->is_admin)
                             <th><h3>Sem Resposta</h3></th>
                         @else
@@ -43,7 +58,6 @@
                         @endif
                     </tr>
                     </thead>
-
                     <tbody>
                     @foreach ($proposals as $proposal)
                         <tr>

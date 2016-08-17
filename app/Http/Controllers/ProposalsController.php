@@ -47,8 +47,32 @@ class ProposalsController extends Controller
 
     public function index()
     {
-       return view('proposals.index')->with('proposals', Proposal::orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+       $q = Input::get('q');
+       $resultSet = $this->filterProposals($q);
+       return view('proposals.index')->with('proposals', $resultSet)->with('query',$q);
     }
+    /**
+     * @return mixed
+     */
+    public function filterProposals($q)
+    {
+        if ($q=="progress"){
+            return Proposal::orderBy('created_at', 'desc')->paginate(config('global.pagination'));
+
+        } elseif ($q=="open"){
+            return Proposal::where(['open'=>true,'in_committee'=>false])->orderBy('created_at', 'desc')
+                ->paginate(config('global.pagination'));
+
+        } elseif ($q=="comittee"){
+            return Proposal::where('in_committee',true)->orderBy('created_at', 'desc')
+                ->paginate(config('global.pagination'));
+
+        } else {
+            return Proposal::where('open',false)->orderBy('created_at', 'desc')
+                ->paginate(config('global.pagination'));
+        }
+    }
+
 
     public function show($id)
     {
@@ -58,6 +82,31 @@ class ProposalsController extends Controller
         //return view('proposals.show')->with('proposal', $proposal);
         //return view('proposals.show')->with(compact('proposal'))
     }
+
+    //proposals in progress
+    public function progress()
+    {
+     return view('proposals.index')->with('proposals', Proposal::where('open',true)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
+    //proposals open
+    public function open()
+    {
+        return view('proposals.index')->with('proposals', Proposal::where(['open'=>true,'in_committee'=>false])->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
+    //proposals in committee
+    public function committee()
+    {
+        return view('proposals.index')->with('proposals', Proposal::where('in_committee',true)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
+    //proposals finished
+    public function finished()
+    {
+        return view('proposals.index')->with('proposals', Proposal::where('open',false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
 
     public function approval($id)
     {
@@ -305,4 +354,6 @@ class ProposalsController extends Controller
         return redirect()->route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
 
     }
+
+
 }
