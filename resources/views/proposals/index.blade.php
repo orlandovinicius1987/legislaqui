@@ -7,8 +7,11 @@
 
     @include('partials.error')
 
-
-
+<!-- o que vc inseriu Fabiano -->
+     <div class="col-xs-12 instrucao">
+         As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa.
+    </div>
+<!-- fim -->
     <div class="panel panel-default">
 
             <div class="panel-heading-nav">
@@ -27,6 +30,24 @@
                         </div>
 
                         <th><h3>Ideia Legislativa</h3></th>
+<!-- o que vc inseriu  Fabiano
+            <div class="panel-body">
+                <br><br>
+                <table id="datatable" class="table table-striped table-hover compact" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="create">
+                            <h3>
+                                @if (!Auth::check())
+                                    <a href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                @else
+                                    <a href="{{ route('proposal.create') }}">
+                                @endif
+                                <div class="icon-wrapper"><i class="fa fa-plus-circle custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
+                                <div class="quadrado_legislaqui">Crie nova Ideia</div>
+                            </a></h3>
+                        </th>
+         -->
                         @if (isset($is_not_responded) && Auth::user()->is_admin)
                             <th><h3>Sem Resposta</h3></th>
                         @else

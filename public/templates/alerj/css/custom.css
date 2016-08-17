@@ -189,6 +189,40 @@ body {
     -moz-box-sizing: content-box;
     box-sizing: content-box;
 }
+.menu a {
+    text-decoration: none;
+}
+
+.menu ul li:last-child {
+    float: right;
+}
+
+.base_menu .menu ul {
+    float: none;
+    margin-right: 15px;
+}
+
+.base_menu .menu ul li .submenu {
+    background: #f5f6ec;
+}
+
+.menu ul li:last-child>a {
+    color: white;
+    background-color: #ff6600;
+    border: 1px #9ea745 solid;
+    border-radius: 4px;
+}
+
+.menu ul li:last-child>a:hover {
+    color: white;
+    background-color: #ff6600;
+}
+
+.pai .submenu .filho_pai a {
+     background-color: transparent;
+     border: none;
+     border-radius: 0px;
+}
 
 /* Headings & Paragraph */
 h1 {
@@ -225,6 +259,11 @@ h3 {
     margin: 0px 0px 0px 0px;
     padding: 3px 0px 0px 0px;
     text-transform: uppercase;
+
+}
+
+h3 a:focus, h3 a:hover {
+    text-decoration: none;
 }
 
 /* Form Elements */
@@ -493,7 +532,7 @@ textarea {
 }
 
 /* Font Awesome */
-.fa, .fa-facebook-official, .fa-twitter-square, .fa-google-plus-square, .fa-envelope-square {
+.fa-facebook-official, .fa-twitter-square, .fa-google-plus-square, .fa-envelope-square {
     font-size: 1.3em;
     /*color: #9ea745;*/
 }
@@ -512,6 +551,40 @@ textarea {
 
 .fa-thumbs-up, .fa-star {
     color: #9ea745;
+}
+
+.custom-icon {
+    font-size:3em;
+    /*background:#666;*/
+    /*background:rgba(0,0,0,0.4);*/
+    background: white;
+    /*padding:8px;*/
+    -webkit-border-radius:1100%;
+    -moz-border-radius:100%;
+    -o-border-radius:100%;
+    border-radius:100%;
+    border: 1px solid #9ea745;
+    color: #FB651D;
+    /*box-shadow: 0 1px 10px rgba(0, 0, 0, 0.46);*/
+    text-align:center;
+    /*display:table-cell;*/
+    vertical-align:middle;
+    width:1em;
+    height:1em;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    -o-transition:.5s;
+    transition:.5s;
+    margin-left: -10px;
+}
+.custom-icon:hover {
+    background:rgba(0,0,0,0.6);
+}
+.fix-editor {
+    display:none;
+}
+.icon-wrapper {
+    display:inline-block;
 }
 
 .vote-count-post {
@@ -641,6 +714,16 @@ textarea {
     padding: 20px;
 }
 
+.instrucao {
+    background-color: #f5f6ec;
+    color: #212e52;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 2em;
+}
+
 .form-control {
     border: 1px solid #ff6600;
     border-radius: 0px;
@@ -753,6 +836,25 @@ textarea {
 
 .letra_azul {
     color: #212e52;
+}
+
+.quadrado_legislaqui {
+    background-color: #FB651D;
+    line-height: 1.6em;
+    border-radius: 8px 8px 8px 8px;
+    border: 2px #9ea745 solid;
+    margin-top: -2.5em;
+    padding-left: 2.5em;
+    color: white;
+    width: 25vw;
+    font-family: 'dinlight';
+    padding-top: 3px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.table>thead>tr>th .create{
+    padding: 0px;
 }
 
 .moto {
