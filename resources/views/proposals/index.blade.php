@@ -7,29 +7,25 @@
 
     @include('partials.error')
 
+
+
     <div class="panel panel-default">
 
             <div class="panel-heading-nav">
                 {{--{!! $proposals->links() !!}--}}
             </div>
 
-            <div class="panel-body">
+          <div class="panel-body">
                 <table id="datatable" class="table table-striped table-hover compact" cellspacing="0" width="100%">
                     <thead>
-
-                    <a href="/proposals/progress">
-                        <div class="icon"><i class="fa fa-star" aria-hidden="true"></i></div>Em andamento</a>
-
-                    <a href="/proposals/open">
-                        <div class="icon"><i class="fa fa-star" aria-hidden="true"></i></div>Abertas</a>
-
-                    <a href="/proposals/committee">
-                        <div class="icon"><i class="fa fa-star" aria-hidden="true"></i></div>Na comissão</a>
-
-                    <a href="/proposals/finished">
-                        <div class="icon"><i class="fa fa-star" aria-hidden="true"></i></div>Concluídas</a>
-
                     <tr>
+                        <div class="btn-group" role="group" aria-label="...">
+                           <a href="/proposals?q=progress" class="btn btn-default {{ $query == "progress" ? 'active' :'' }}"> Em andamento</a>
+                           <a href="/proposals?q=open" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
+                           <a href="/proposals?q=comittee" class="btn btn-default {{ $query == "comittee" ? 'active' :'' }}">Na comissão</a>
+                           <a href="/proposals?q=finished" class="btn btn-default {{ $query == "finished" ? 'active' :'' }}">Concluídas</a>
+                        </div>
+
                         <th><h3>Ideia Legislativa</h3></th>
                         @if (isset($is_not_responded) && Auth::user()->is_admin)
                             <th><h3>Sem Resposta</h3></th>

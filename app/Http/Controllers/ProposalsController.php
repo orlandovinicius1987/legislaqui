@@ -47,8 +47,32 @@ class ProposalsController extends Controller
 
     public function index()
     {
-       return view('proposals.index')->with('proposals', Proposal::orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+       $q = Input::get('q');
+       $resultSet = $this->filterProposals($q);
+       return view('proposals.index')->with('proposals', $resultSet)->with('query',$q);
     }
+    /**
+     * @return mixed
+     */
+    public function filterProposals($q)
+    {
+        if ($q=="progress"){
+            return Proposal::orderBy('created_at', 'desc')->paginate(config('global.pagination'));
+
+        } elseif ($q=="open"){
+            return Proposal::where(['open'=>true,'in_committee'=>false])->orderBy('created_at', 'desc')
+                ->paginate(config('global.pagination'));
+
+        } elseif ($q=="comittee"){
+            return Proposal::where('in_committee',true)->orderBy('created_at', 'desc')
+                ->paginate(config('global.pagination'));
+
+        } else {
+            return Proposal::where('open',false)->orderBy('created_at', 'desc')
+                ->paginate(config('global.pagination'));
+        }
+    }
+
 
     public function show($id)
     {
@@ -330,4 +354,6 @@ class ProposalsController extends Controller
         return redirect()->route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
 
     }
+
+
 }

@@ -43,21 +43,22 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
 
-    Route::get('proposals',  ['as'=>'proposals', 'uses'=>'ProposalsController@index']);
+    Route::get('/proposals',  ['as'=>'proposals', 'uses'=>'ProposalsController@index']);
 
-    /* proposals in progress */
-    Route::get('proposals/progress',  ['as'=>'proposals.progress', 'uses'=>'ProposalsController@progress']);
+   /*
+     proposals in progress
+    Route::get('proposals/{q}',  ['as'=>'proposals.progress', 'uses'=>'ProposalsController@progress']);
 
-    /* proposals in progress - open */
-    Route::get('proposals/open',  ['as'=>'proposals.open', 'uses'=>'ProposalsController@open']);
+  proposals in progress - open
+    Route::get('proposals/{q}',  ['as'=>'proposals.open', 'uses'=>'ProposalsController@open']);
 
-    /* proposals in progress - in committee */
-    Route::get('proposals/committee',  ['as'=>'proposals.committee', 'uses'=>'ProposalsController@committee']);
-
+  proposals in progress - in committee
+    Route::get('proposals/{q}',  ['as'=>'proposals.committee', 'uses'=>'ProposalsController@committee']);
+*/
 
 
     /* proposals finished */
-    Route::get('proposals/finished',  ['as'=>'proposals.finished', 'uses'=>'ProposalsController@finished']);
+  //  Route::get('proposals/finished',  ['as'=>'proposals.finished', 'uses'=>'ProposalsController@finished']);
 
 
 
