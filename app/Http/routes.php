@@ -61,7 +61,7 @@ Route::group(['middleware' => 'web'], function () {
   //  Route::get('proposals/finished',  ['as'=>'proposals.finished', 'uses'=>'ProposalsController@finished']);
 
 
-
+    Route::get('proposals/search/{query}', ['as'=>'proposals.search', 'uses'=>'ProposalsController@search']);
 
     Route::get('proposals/{id}', ['as'=>'proposal.show', 'uses'=>'ProposalsController@show'])->where('id', '[0-9]+');
 

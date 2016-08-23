@@ -7,6 +7,15 @@
 
     @include('partials.error')
 
+    {{--{!! Form::open(array('route' => 'proposals.search', 'class'=>'form navbar-form navbar-right searchform')) !!}--}}
+    {{--{!! Form::text('search', null,--}}
+                           {{--array('required',--}}
+                                {{--'class'=>'form-control',--}}
+                                {{--'placeholder'=>'Pesquise uma ideia legislativa')) !!}--}}
+    {{--{!! Form::submit('Buscar',--}}
+                               {{--array('class'=>'btn')) !!}--}}
+    {{--{!! Form::close() !!}--}}
+
     <div class="btn-group" role="group" aria-label="...">
         <a href="/proposals?q=progress" class="btn btn-default {{ $query == "progress" ? 'active' :'' }}"> Em andamento</a>
         <a href="/proposals?q=open" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>

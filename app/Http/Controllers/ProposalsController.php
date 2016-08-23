@@ -51,11 +51,15 @@ class ProposalsController extends Controller
        $resultSet = $this->filterProposals($q);
        return view('proposals.index')->with('proposals', $resultSet)->with('query',$q);
     }
+
     /**
      * @return mixed
      */
     public function filterProposals($q)
     {
+        if ($q == null){
+//            dd($q);
+        }
         if ($q=="progress"){
             return Proposal::orderBy('created_at', 'desc')->paginate(config('global.pagination'));
 
@@ -72,7 +76,6 @@ class ProposalsController extends Controller
                 ->paginate(config('global.pagination'));
         }
     }
-
 
     public function show($id)
     {
@@ -353,6 +356,18 @@ class ProposalsController extends Controller
         $proposal->forcefill($input)->save();
         return redirect()->route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
 
+    }
+
+    public function search($query)
+    {
+        // Gets the query string from our form submission
+//        $query = Request::input('search');
+        // Returns an array of articles that have the query string located somewhere within
+        // our articles titles. Paginates them so we can break up lots of search results.
+        $proposals = Proposal::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
+
+        // returns a view and passes the view the list of articles and the original query.
+        return view('proposals.search', compact('proposals', 'query'));
     }
 
 
