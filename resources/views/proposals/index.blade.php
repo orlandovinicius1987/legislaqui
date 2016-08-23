@@ -7,11 +7,17 @@
 
     @include('partials.error')
 
-<!-- o que vc inseriu Fabiano -->
+    <div class="btn-group" role="group" aria-label="...">
+     {{--   <a href="/proposals?q=progress" class="btn btn-default {{ $query == "progress" ? 'active' :'' }}"> Em andamento</a>--}}
+        <a href="/proposals?q=open" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
+        <a href="/proposals?q=comittee" class="btn btn-default {{ $query == "comittee" ? 'active' :'' }}">Na comissão</a>
+        <a href="/proposals?q=finished" class="btn btn-default {{ $query == "finished" ? 'active' :'' }}">Concluídas</a>
+    </div>
+
      <div class="col-xs-12 instrucao">
          As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa.
     </div>
-<!-- fim -->
+
     <div class="panel panel-default">
 
             <div class="panel-heading-nav">
@@ -19,20 +25,7 @@
             </div>
 
           <div class="panel-body">
-                <table id="datatable" class="table table-striped table-hover compact" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <div class="btn-group" role="group" aria-label="...">
-                           <a href="/proposals?q=progress" class="btn btn-default {{ $query == "progress" ? 'active' :'' }}"> Em andamento</a>
-                           <a href="/proposals?q=open" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
-                           <a href="/proposals?q=comittee" class="btn btn-default {{ $query == "comittee" ? 'active' :'' }}">Na comissão</a>
-                           <a href="/proposals?q=finished" class="btn btn-default {{ $query == "finished" ? 'active' :'' }}">Concluídas</a>
-                        </div>
-
-                        <th><h3>Ideia Legislativa</h3></th>
-<!-- o que vc inseriu  Fabiano
-            <div class="panel-body">
-                <br><br>
+              <br><br>
                 <table id="datatable" class="table table-striped table-hover compact" cellspacing="0" width="100%">
                     <thead>
                     <tr>
@@ -42,12 +35,13 @@
                                     <a href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
                                 @else
                                     <a href="{{ route('proposal.create') }}">
-                                @endif
-                                <div class="icon-wrapper"><i class="fa fa-plus-circle custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
-                                <div class="quadrado_legislaqui">Crie nova Ideia</div>
-                            </a></h3>
+                                        @endif
+                                        <div class="icon-wrapper"><i class="fa fa-plus-circle custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
+                                        <div class="quadrado_legislaqui">Crie nova Ideia</div>
+                                    </a>
+                            </h3>
                         </th>
-         -->
+
                         @if (isset($is_not_responded) && Auth::user()->is_admin)
                             <th><h3>Sem Resposta</h3></th>
                         @else

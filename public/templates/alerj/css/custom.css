@@ -224,6 +224,10 @@ body {
      border-radius: 0px;
 }
 
+.menu_movel .controle ul li {
+    text-transform: uppercase;
+}
+
 /* Headings & Paragraph */
 h1 {
     width: 100%;
