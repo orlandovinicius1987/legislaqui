@@ -8,7 +8,7 @@
     @include('partials.error')
 
     <div class="btn-group" role="group" aria-label="...">
-        <a href="/proposals?q=progress" class="btn btn-default {{ $query == "progress" ? 'active' :'' }}"> Em andamento</a>
+     {{--   <a href="/proposals?q=progress" class="btn btn-default {{ $query == "progress" ? 'active' :'' }}"> Em andamento</a>--}}
         <a href="/proposals?q=open" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
         <a href="/proposals?q=comittee" class="btn btn-default {{ $query == "comittee" ? 'active' :'' }}">Na comissão</a>
         <a href="/proposals?q=finished" class="btn btn-default {{ $query == "finished" ? 'active' :'' }}">Concluídas</a>

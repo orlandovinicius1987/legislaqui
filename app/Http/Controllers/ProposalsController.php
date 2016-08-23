@@ -54,25 +54,45 @@ class ProposalsController extends Controller
     /**
      * @return mixed
      */
-    public function filterProposals($q)
+  /*  public function filterProposals($q)
     {
         if ($q=="progress"){
-            return Proposal::orderBy('created_at', 'desc')->paginate(config('global.pagination'));
+            return Proposal::where('open',true)
+                ->orderBy('created_at', 'desc')->paginate(config('global.pagination'));
 
         } elseif ($q=="open"){
-            return Proposal::where(['open'=>true,'in_committee'=>false])->orderBy('created_at', 'desc')
+            return Proposal::where(['open'=>true,'in_committee'=>false])
+                ->orderBy('created_at', 'desc')
                 ->paginate(config('global.pagination'));
 
         } elseif ($q=="comittee"){
-            return Proposal::where('in_committee',true)->orderBy('created_at', 'desc')
+            return Proposal::where('in_committee',true)
+                ->orderBy('created_at', 'desc')
+                ->paginate(config('global.pagination'));
+
+        } else {
+            return Proposal::where('open',false)
+                ->orderBy('created_at', 'desc')
+                ->paginate(config('global.pagination'));
+        }
+    }*/
+
+    public function filterProposals($q)
+    {
+        if ($q=="open"){
+            return Proposal::where(['open'=>true,'in_committee'=>false])->whereNotNull('approved_by')
+                ->orderBy('created_at', 'desc')->paginate(config('global.pagination'));
+
+        } elseif ($q=="comittee"){
+            return Proposal::where(['open'=>true,'in_committee'=>true])->whereNotNull('approved_by')
+                ->orderBy('created_at', 'desc')
                 ->paginate(config('global.pagination'));
 
         } else {
             return Proposal::where('open',false)->orderBy('created_at', 'desc')
                 ->paginate(config('global.pagination'));
         }
-    }
-
+      }
 
     public function show($id)
     {
