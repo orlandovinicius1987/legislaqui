@@ -35,6 +35,11 @@
 |
 */
 
+Route::get('seed', function()
+{
+    Artisan::call('db:seed');
+});
+
 Route::group(['middleware' => 'web'], function () {
 
     Route::auth();

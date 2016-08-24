@@ -55,6 +55,8 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
         'responder_id' => ! $response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
         'disapproved_at' => ! $response ? null : \Carbon\Carbon::now(),
         'disapproved_by' => ! $response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
+        'approved_at' => ! $response ? null : \Carbon\Carbon::now(),
+        'approved_by' => ! $response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
         'created_at' => \Carbon\Carbon::now(),
         'updated_at' => \Carbon\Carbon::now()
     ];

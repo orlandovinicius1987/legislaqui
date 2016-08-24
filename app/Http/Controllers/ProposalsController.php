@@ -63,6 +63,7 @@ class ProposalsController extends Controller
 
     public function filterProposals($q)
     {
+
         if ($q=="open"){
             return Proposal::where(['open'=>true,'in_committee'=>false])->whereNotNull('approved_by')
                 ->orderBy('created_at', 'desc')->paginate(config('global.pagination'));

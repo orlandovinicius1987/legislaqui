@@ -20,11 +20,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->delete();
-        DB::table('proposals')->delete();
-
         //50 Users and Proposals
-        factory(App\User::class, 50)->create()->each(function($user){
+        factory(App\User::class, 15)->create()->each(function($user){
             //echo "user: $user->id\n";
 
             foreach(range(1, rand(1, 10)) as $x) {

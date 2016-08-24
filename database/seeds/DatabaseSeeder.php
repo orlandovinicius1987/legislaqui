@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
 
         //Inside Create_Roles_Table
         //$this->call(RoleSeeder::class);
+        $this->call(ClearAllTablesSeeder::class);
         $this->call(StateSeeder::class);
         $this->call(UserSeeder::class);
 

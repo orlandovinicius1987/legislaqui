@@ -19,8 +19,6 @@ class StateSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('states')->delete();
-
         //$state = App\State::create(['uf' => 'AC', 'nome' => 'ACRE']);
         //, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
 
