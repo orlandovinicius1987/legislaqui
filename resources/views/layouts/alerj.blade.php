@@ -352,9 +352,9 @@
                             <div class="moto">Seu espaço para propor</div>
                         </div>
                     </div>
-                    {{--<div class="col-sm-8 col-xs-12">--}}
-                        {{--@include('partials.header')--}}
-                    {{--</div>--}}
+                    <div class="col-sm-8 col-xs-12">
+                        @include('partials.header')
+                    </div>
                 </div>
                 <div class="content">
                     @yield('content')

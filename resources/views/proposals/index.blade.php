@@ -7,29 +7,13 @@
 
     @include('partials.error')
 
-    {!! Form::open(array('route' => 'home.post', 'class'=>'form navbar-form navbar-right searchform')) !!}
-    {!! Form::text('search', null,
-                           array('required',
-                                'class'=>'form-control',
-                                'placeholder'=>'Pesquise uma ideia legislativa')) !!}
-    {!! Form::submit('Buscar',
-                               array('class'=>'btn')) !!}
-    {!! Form::close() !!}
-
-    <div class="btn-group" role="group" aria-label="...">
-        {{--<a href="/proposals?q=progress" class="btn btn-default {{ $query == "progress" ? 'active' :'' }}"> Em andamento</a>--}}
-        <a href="/" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
-        <a href="/?q=comittee" class="btn btn-default {{ $query == "comittee" ? 'active' :'' }}">Na comissão</a>
-        <a href="/?q=finished" class="btn btn-default {{ $query == "finished" ? 'active' :'' }}">Concluídas</a>
-    </div>
-
      <div class="col-xs-12 instrucao">
          As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa.
     </div>
 
     <div class="panel panel-default">
         <div class="panel-heading-nav">
-            {!! $proposals->links() !!}
+            {{--{!! $proposals->links() !!}--}}
         </div>
 
           <div class="panel-body">
@@ -84,7 +68,7 @@
             </div>
 
             <div class="panel-footer-nav">
-                {{--{!! $proposals->links() !!}--}}
+                {!! $proposals->links() !!}
             </div>
     </div>
 @stop
