@@ -47,9 +47,15 @@ class ProposalsController extends Controller
 
     public function index()
     {
-       $q = Input::get('q');
-       $resultSet = $this->filterProposals($q);
-       return view('proposals.index')->with('proposals', $resultSet)->with('query',$q);
+        $proposals = Proposal::all()->paginate(config('global.pagination'));
+//        $proposals = $this->proposalsRepository->all()->paginate(config('global.pagination'));
+        return view('proposals.index')->with(compact('proposals'));
+
+//       $q = Input::get('q');
+//       $resultSet = $this->filterProposals($q)->paginate(config('global.pagination'));
+//       return view('proposals.index')->with('proposals', $resultSet)->with('query',$q);
+
+
     }
 
     /**
@@ -57,23 +63,17 @@ class ProposalsController extends Controller
      */
     public function filterProposals($q)
     {
-        if ($q == null){
-//            dd($q);
-        }
-        if ($q=="progress"){
-            return Proposal::orderBy('created_at', 'desc')->paginate(config('global.pagination'));
-
-        } elseif ($q=="open"){
-            return Proposal::where(['open'=>true,'in_committee'=>false])->orderBy('created_at', 'desc')
-                ->paginate(config('global.pagination'));
+        if ($q=="open"){
+            return Proposal::all();
+//                Proposal::where(['open'=>true,'in_committee'=>false])->whereNotNull('approved_by')
+//                ->orderBy('created_at', 'desc');
 
         } elseif ($q=="comittee"){
-            return Proposal::where('in_committee',true)->orderBy('created_at', 'desc')
-                ->paginate(config('global.pagination'));
+            return Proposal::where(['open'=>true,'in_committee'=>true])->whereNotNull('approved_by')
+                ->orderBy('created_at', 'desc');
 
         } else {
-            return Proposal::where('open',false)->orderBy('created_at', 'desc')
-                ->paginate(config('global.pagination'));
+            return Proposal::where('open',false)->orderBy('created_at', 'desc');
         }
     }
 
@@ -109,7 +109,6 @@ class ProposalsController extends Controller
     {
         return view('proposals.index')->with('proposals', Proposal::where('open',false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
     }
-
 
     public function approval($id)
     {
