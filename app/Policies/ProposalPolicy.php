@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\Proposal;
-
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProposalPolicy
@@ -24,8 +23,8 @@ class ProposalPolicy
     /**
      * Determine if the given proposal can be updated by the user.
      *
-     * @param  \App\User  $user
-     * @param  \App\Proposal  $proposal
+     * @param \App\User     $user
+     * @param \App\Proposal $proposal
      *
      * @return bool
      */
@@ -37,8 +36,9 @@ class ProposalPolicy
     /**
      * Determine if the given proposal can be destroyed by the user.
      *
-     * @param  \App\User  $user
-     * @param  \App\Proposal  $proposal
+     * @param \App\User     $user
+     * @param \App\Proposal $proposal
+     *
      * @return bool
      */
     public function destroy(User $user, Proposal $proposal)
@@ -47,8 +47,9 @@ class ProposalPolicy
     }
 
     /**
-     * @param User $user
+     * @param User     $user
      * @param Proposal $proposal
+     *
      * @return bool
      */
     public function isProposalOwner(User $user, Proposal $proposal)

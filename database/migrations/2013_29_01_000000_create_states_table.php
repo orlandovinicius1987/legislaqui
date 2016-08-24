@@ -1,11 +1,15 @@
 <?php
-use Illuminate\Database\Schema\Blueprint;
+
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
 class CreateStatesTable extends Migration
 {
     /**
-     * Criação de schema para estados
+     * Criação de schema para estados.
+     *
      * @author Cesar André (https://github.com/cesar-andre)
+     *
      * @return void
      */
     public function up()
@@ -17,8 +21,9 @@ class CreateStatesTable extends Migration
             $table->primary('uf');
         });
     }
+
     /**
-     * Reverter a migration
+     * Reverter a migration.
      *
      * @return void
      */

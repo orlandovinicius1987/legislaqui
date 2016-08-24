@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-use App\Proposal;
-use Auth;
+
 
 class ProposalFormRequest extends Request
 {
@@ -27,10 +25,10 @@ class ProposalFormRequest extends Request
     {
         return [
             //
-            'name' => 'required',
-            'idea_central' => 'required',
-            'problem' => 'required',
-            'idea_exposition' => 'required'
+            'name'            => 'required',
+            'idea_central'    => 'required',
+            'problem'         => 'required',
+            'idea_exposition' => 'required',
         ];
     }
 }

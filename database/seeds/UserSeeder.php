@@ -3,13 +3,11 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 18/01/2016
- * Time: 12:19
+ * Time: 12:19.
  */
-
 use App\User;
 use Illuminate\Database\Seeder;
 
-use Ramsey\Uuid\Uuid;
 
 class UserSeeder extends Seeder
 {
@@ -21,10 +19,10 @@ class UserSeeder extends Seeder
     public function run()
     {
         //50 Users and Proposals
-        factory(App\User::class, 15)->create()->each(function($user){
+        factory(App\User::class, 15)->create()->each(function ($user) {
             //echo "user: $user->id\n";
 
-            foreach(range(1, rand(1, 10)) as $x) {
+            foreach (range(1, rand(1, 10)) as $x) {
                 $proposal = factory(App\Proposal::class)->create();
 
                 foreach (range(1, rand(1, 20)) as $y) {
@@ -38,15 +36,12 @@ class UserSeeder extends Seeder
 
                 //Likes
                 factory(App\Like::class)->create();
-
             }
         });
 
         //Administrator
         factory(App\User::class, 'admin', 1)->create([
-        'name' => 'Adm', 'email' => 'adm@teste.com'
+        'name' => 'Adm', 'email' => 'adm@teste.com',
         ]);
-
     }
 }
-

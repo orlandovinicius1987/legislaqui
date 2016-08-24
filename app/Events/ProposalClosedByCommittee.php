@@ -3,11 +3,9 @@
 namespace App\Events;
 
 use App\Proposal;
-use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class ProposalClosed extends Event
+class ProposalClosedByCommittee extends Event
 {
     use SerializesModels;
     /**

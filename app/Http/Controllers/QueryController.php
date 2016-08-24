@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 class QueryController extends Controller
 {
@@ -32,7 +30,8 @@ class QueryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,7 +42,8 @@ class QueryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -54,7 +54,8 @@ class QueryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -65,8 +66,9 @@ class QueryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -77,7 +79,8 @@ class QueryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -91,7 +94,7 @@ class QueryController extends Controller
         $query = Request::input('search');
         // Returns an array of articles that have the query string located somewhere within
         // our articles titles. Paginates them so we can break up lots of search results.
-        $proposals = DB::table('proposals')->where('name', 'LIKE', '%' . $query . '%')->paginate(10);
+        $proposals = DB::table('proposals')->where('name', 'LIKE', '%'.$query.'%')->paginate(10);
 
         // returns a view and passes the view the list of articles and the original query.
         return view('proposals.search', compact('proposals', 'query'));

@@ -3,13 +3,12 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 27/06/2016
- * Time: 17:24
+ * Time: 17:24.
  */
-
 namespace App\Repositories;
 
-use App\State;
 use App\Role;
+use App\State;
 
 class DataRepository
 {
@@ -23,4 +22,3 @@ class DataRepository
         return Role::pluck('role', 'id');
     }
 }
-

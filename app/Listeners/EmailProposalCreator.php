@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use App\Events\ProposalWasCreated;
 use App\Repositories\ProposalsRepository;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class EmailProposalCreator
 {
@@ -27,7 +25,8 @@ class EmailProposalCreator
     /**
      * Handle the event.
      *
-     * @param  ProposalWasCreated  $event
+     * @param ProposalWasCreated $event
+     *
      * @return void
      */
     public function handle(ProposalWasCreated $event)
