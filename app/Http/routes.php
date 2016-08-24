@@ -21,7 +21,7 @@
 |
 */
 
-//Route::get('/', 'WelcomeController@index');
+//  Route::get('/', 'WelcomeController@index');
 
 
 /*
@@ -35,54 +35,36 @@
 |
 */
 
-Route::get('seed', function () {
-    Artisan::call('db:seed');
-});
-
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/', ['as' => 'home', 'uses' => 'ProposalsController@index']);
+
     Route::post('/', ['as' => 'home.post', 'uses' => 'ProposalsController@index']);
-
-   /*
-     proposals in progress
-    Route::get('proposals/{q}',  ['as'=>'proposals.progress', 'uses'=>'ProposalsController@progress']);
-
-  proposals in progress - open
-    Route::get('proposals/{q}',  ['as'=>'proposals.open', 'uses'=>'ProposalsController@open']);
-
-  proposals in progress - in committee
-    Route::get('proposals/{q}',  ['as'=>'proposals.committee', 'uses'=>'ProposalsController@committee']);
-*/
-
-
-    /* proposals finished */
-  //  Route::get('proposals/finished',  ['as'=>'proposals.finished', 'uses'=>'ProposalsController@finished']);
-
-
-    Route::get('proposals/search/{query}', ['as' => 'proposals.search', 'uses' => 'ProposalsController@search']);
 
     Route::get('proposals/{id}', ['as' => 'proposal.show', 'uses' => 'ProposalsController@show'])->where('id', '[0-9]+');
 
-    Route::get('cookieset', function () {
-        //$foreverCookie = Cookie::forever('forever', 'ttt');
-        //$tempCookie = Cookie::make('temporary', 'Victory', 5);
-        $uuid = \Ramsey\Uuid\Uuid::uuid4();
-        $uuid = Cookie::forever('uuid', $uuid);
-        //return Response::make()->withCookie($foreverCookie)->withCookie($tempCookie);
-        return Response::make()->withCookie($uuid);
-    });
+//    Route::get('cookieset', function()
+//    {
+//        //$foreverCookie = Cookie::forever('forever', 'ttt');
+//        //$tempCookie = Cookie::make('temporary', 'Victory', 5);
+//        $uuid = \Ramsey\Uuid\Uuid::uuid4();
+//        $uuid = Cookie::forever('uuid', $uuid);
+//        //return Response::make()->withCookie($foreverCookie)->withCookie($tempCookie);
+//        return Response::make()->withCookie($uuid);
+//    });
+//
+//
+//    Route::get('cookietest', ['as' => 'view.cookietest'], function()
+//    {
+//        $unique = Cookie::get('uuid');
+//        //$forever = Cookie::get('forever');
+//        //$temporary = Cookie::get('temporary');
+//        //return View::make('cookietest', array('forever' => $forever, 'temporary' => $temporary, 'variableTest' => 'works'));
+//        return View::make('cookietest', array('uuid' => $unique));
+//        //return $request->cookie('uuid');
+//    });
 
-
-    Route::get('cookietest', ['as' => 'view.cookietest'], function () {
-        $unique = Cookie::get('uuid');
-        //$forever = Cookie::get('forever');
-        //$temporary = Cookie::get('temporary');
-        //return View::make('cookietest', array('forever' => $forever, 'temporary' => $temporary, 'variableTest' => 'works'));
-        return View::make('cookietest', ['uuid' => $unique]);
-        //return $request->cookie('uuid');
-    });
 
     // Like Button
     Route::get('proposals/{id}/like', ['as' => 'proposal.like', 'uses' => 'ProposalsController@like']);
@@ -176,11 +158,3 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
         return redirect('/');
     });
 });
-
-
-
-//
-//Route::group(['middleware' => ['web','auth']], function () {
-////     Route::get('/home', 'HomeController@index');
-////    Route::get('/', 'ProposalsController@index');
-//});
