@@ -1,36 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: falbernaz
- * Date: 18/01/2016
- * Time: 16:53
- */
 
 namespace App\Http\Controllers;
 
-use App\Events\ProposalWasCreated;
-use App\User;
-use App\Proposal;
-use App\Like;
-use App\ProposalHistory;
-use Gate;
-
-use App\Http\Requests;
-use App\Http\Requests\ProposalFormRequest;
-use App\Http\Requests\ResponseFormRequest;
-use App\Http\Controllers\Controller;
-
 use Auth;
+use Gate;
+use Cookie;
+use App\Like;
+use App\Proposal;
 use Carbon\Carbon;
+use App\ProposalHistory;
+use App\Events\ProposalWasCreated;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Request;
-
-use Cookie;
-use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
-
+use App\Http\Requests\ProposalFormRequest;
+use App\Http\Requests\ResponseFormRequest;
 use App\Repositories\ProposalsRepository;
 
 class ProposalsController extends Controller
@@ -372,8 +356,5 @@ class ProposalsController extends Controller
         //Then update Proposal
         $proposal->forcefill($input)->save();
         return redirect()->route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
-
     }
-
-
 }
