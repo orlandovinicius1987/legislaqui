@@ -38,7 +38,10 @@ class ProposalsController extends Controller
 
     public function committee()
     {
-        return view('proposals.index')->with('proposals', Proposal::where('in_committee', true)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+        return view('proposals.index')
+            ->with('proposals', Proposal::where('in_committee', true)
+            ->orderBy('created_at', 'desc')
+            ->paginate(config('global.pagination')));
     }
 
     //proposals in progress
@@ -64,9 +67,11 @@ class ProposalsController extends Controller
         if (Gate::allows('destroy', $proposal)) {
             $proposal->delete();
 
-            return redirect()->route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Removida com Sucesso');
+            return redirect()->route('proposals')
+                ->with('proposal_crud_msg', 'Ideia Legislativa Removida com Sucesso');
         } else {
-            return redirect()->route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
+            return redirect()->route('proposals')
+                ->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
 
@@ -92,7 +97,8 @@ class ProposalsController extends Controller
         if (Gate::allows('edit', $proposal)) {
             return view('proposals.edit')->with('proposal', $proposal);
         } else {
-            return redirect()->route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
+            return redirect()->route('proposals')
+                ->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
 
@@ -100,7 +106,8 @@ class ProposalsController extends Controller
 
     public function finished()
     {
-        return view('proposals.index')->with('proposals', Proposal::where('open', false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+        return view('proposals.index')
+            ->with('proposals', Proposal::where('open', false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
     }
 
     public function index()
@@ -194,21 +201,24 @@ class ProposalsController extends Controller
     public function notResponded()
     {
         return view('proposals.notresponded', [
-            'proposals'        => Proposal::whereNull('response')->paginate(20),
+            'proposals'        => Proposal::whereNull('response')->paginate(config('global.pagination')),
             'is_not_responded' => true,
         ]);
     }
 
     public function open()
     {
-        return view('proposals.index')->with('proposals', Proposal::where([
-                                                                              'open' => true, 'in_committee' => false,
-                                                                          ])->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+        return view('proposals.index')
+            ->with('proposals', Proposal::where(['open' => true, 'in_committee' => false,])->orderBy('created_at', 'desc')
+            ->paginate(config('global.pagination')));
     }
 
     public function progress()
     {
-        return view('proposals.index')->with('proposals', Proposal::where('open', true)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+        return view('proposals.index')
+            ->with('proposals', Proposal::where('open', true)->orderBy('created_at', 'desc')
+            ->paginate(config('global.pagination')));
+
     }
 
     /**
@@ -224,9 +234,11 @@ class ProposalsController extends Controller
         $proposal = $this->proposalsRepository->find($id);
 
         if (Gate::allows('edit', $proposal)) {
-            return view('proposals.response')->with('proposal', $proposal);
+            return view('proposals.response')
+                ->with('proposal', $proposal);
         } else {
-            return redirect()->route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
+            return redirect()->route('proposals')
+                ->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
 
@@ -254,7 +266,8 @@ class ProposalsController extends Controller
 
         //Event::fire(new ProposalWasCreated($proposal));
 
-        return redirect()->route('proposal.show', ['proposal' => $proposal])->with('proposal_crud_msg', 'Ideia Legislativa Incluída com Sucesso');
+        return redirect()->route('proposal.show', ['proposal' => $proposal])
+            ->with('proposal_crud_msg', 'Ideia Legislativa Incluída com Sucesso');
     }
 
     public function unlike($id)
@@ -298,7 +311,8 @@ class ProposalsController extends Controller
         //Then update Proposal
         $proposal->fill($input)->save();
 
-        return redirect()->route('proposal.show', ['proposal' => $proposal])->with('proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
+        return redirect()->route('proposal.show', ['proposal' => $proposal])
+            ->with('proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
     }
 
     /**
@@ -336,6 +350,7 @@ class ProposalsController extends Controller
         //Then update Proposal
         $proposal->forcefill($input)->save();
 
-        return redirect()->route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
+        return redirect()->route('proposals')
+            ->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
     }
 }
