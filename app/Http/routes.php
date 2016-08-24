@@ -44,11 +44,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::auth();
 
-    Route::get('/', 'ProposalsController@index');
-
-    Route::get('/home', 'ProposalsController@index');
-
-    Route::get('/proposals',  ['as'=>'proposals', 'uses'=>'ProposalsController@index']);
+    Route::get('/',  ['as'=>'home', 'uses'=>'ProposalsController@index']);
+    Route::post('/',  ['as'=>'home.post', 'uses'=>'ProposalsController@index']);
 
    /*
      proposals in progress

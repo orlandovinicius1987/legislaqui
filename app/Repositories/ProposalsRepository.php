@@ -2,17 +2,22 @@
 
 namespace App\Repositories;
 
+use DB;
 use Auth;
 use Session;
-use Illuminate\Support\Facades\Mail;
 use App\User;
 use App\Proposal;
-use App\Like;
-use Illuminate\Support\Facades\DB;
-use Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class ProposalsRepository
 {
+    private $searchColumns = [
+        'name',
+        'idea_central',
+        'problem',
+        'idea_exposition',
+        'response',
+    ];
 
     public function all()
     {
@@ -209,6 +214,38 @@ class ProposalsRepository
             $message->bcc('admin@alerj.rj.gov.br', 'e-democracia');
 
             $message->subject('e-democracia: Notificação - Proposta encerrada');
+        });
+    }
+
+    /**
+     * @return mixed
+     */
+    public function filterProposals($q = 'open', $s)
+    {
+        // Users cannot see what's not approved
+        $query = Proposal::whereNotNull('approved_by');
+
+        if ($q == 'comittee') {
+            $query->whereTrue('in_committee');
+        }
+
+        if ($q == 'finished') {
+            return $query->where('open', false);
+        }
+
+        $this->buildSearch($query, $s);
+
+        $query->orderBy('created_at', 'desc');
+
+        return $query;
+    }
+
+    public function buildSearch($sqlQuery, $search)
+    {
+        $sqlQuery->where(function ($sqlQuery) use ($search) {
+            foreach ($this->searchColumns as $searchColumn) {
+                $sqlQuery->orWhere(DB::raw("lower({$searchColumn})"), 'LIKE', '%' . strtolower($search) . '%');
+            }
         });
     }
 }

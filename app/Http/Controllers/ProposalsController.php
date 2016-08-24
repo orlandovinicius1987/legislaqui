@@ -29,72 +29,6 @@ class ProposalsController extends Controller
         $this->proposalsRepository = $proposalsRepository;
     }
 
-    public function index()
-    {
-        $proposals = Proposal::all()->paginate(config('global.pagination'));
-//        $proposals = $this->proposalsRepository->all()->paginate(config('global.pagination'));
-        return view('proposals.index')->with(compact('proposals'));
-
-//       $q = Input::get('q');
-//       $resultSet = $this->filterProposals($q)->paginate(config('global.pagination'));
-//       return view('proposals.index')->with('proposals', $resultSet)->with('query',$q);
-
-
-    }
-
-    /**
-     * @return mixed
-     */
-    public function filterProposals($q)
-    {
-
-        if ($q=="open"){
-            return Proposal::all();
-//                Proposal::where(['open'=>true,'in_committee'=>false])->whereNotNull('approved_by')
-//                ->orderBy('created_at', 'desc');
-
-        } elseif ($q=="comittee"){
-            return Proposal::where(['open'=>true,'in_committee'=>true])->whereNotNull('approved_by')
-                ->orderBy('created_at', 'desc');
-
-        } else {
-            return Proposal::where('open',false)->orderBy('created_at', 'desc');
-        }
-    }
-
-    public function show($id)
-    {
-        $proposal = $this->proposalsRepository->find($id);
-
-        return view('proposals.show', ['proposal' => $proposal]);
-        //return view('proposals.show')->with('proposal', $proposal);
-        //return view('proposals.show')->with(compact('proposal'))
-    }
-
-    //proposals in progress
-    public function progress()
-    {
-     return view('proposals.index')->with('proposals', Proposal::where('open',true)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
-    }
-
-    //proposals open
-    public function open()
-    {
-        return view('proposals.index')->with('proposals', Proposal::where(['open'=>true,'in_committee'=>false])->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
-    }
-
-    //proposals in committee
-    public function committee()
-    {
-        return view('proposals.index')->with('proposals', Proposal::where('in_committee',true)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
-    }
-
-    //proposals finished
-    public function finished()
-    {
-        return view('proposals.index')->with('proposals', Proposal::where('open',false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
-    }
-
     public function approval($id)
     {
         $this->proposalsRepository->approve($id);
@@ -102,14 +36,94 @@ class ProposalsController extends Controller
         return redirect()->back();
     }
 
+    public function committee()
+    {
+        return view('proposals.index')->with('proposals', Proposal::where('in_committee', true)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
+    //proposals in progress
+
+    public function create()
+    {
+        return view('proposals.create');
+    }
+
+    //proposals open
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+
+        if (Gate::allows('destroy', $proposal)) {
+            $proposal->delete();
+
+            return redirect()->route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Removida com Sucesso');
+        }
+        else {
+            return redirect()->route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
+        }
+    }
+
+    //proposals in committee
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //Get Proposal
+        $proposal = $this->proposalsRepository->find($id);
+
+        //Via User Model
+        //        if ($user->can('update', $post)) {
+        //            //
+        //        }
+
+        if (Gate::allows('edit', $proposal)) {
+            return view('proposals.edit')->with('proposal', $proposal);
+        }
+        else {
+            return redirect()->route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
+        }
+    }
+
+    //proposals finished
+
+    public function finished()
+    {
+        return view('proposals.index')->with('proposals', Proposal::where('open', false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
+    public function index()
+    {
+//        $proposals = Proposal::paginate(config('global.pagination'));
+////        $proposals = $this->proposalsRepository->all()->paginate(config('global.pagination'));
+//        return view('proposals.index')->with(compact('proposals'));
+
+        $q = Input::get('q');
+        $s = Input::get('search');
+
+        $resultSet = $this->proposalsRepository
+            ->filterProposals($q, $s)
+            ->paginate(config('global.pagination'));
+
+        return view('proposals.index')
+            ->with('query', $q)
+            ->with('proposals', $resultSet);
+    }
+
     public function like($id)
     {
         return $this->likeUnlike($id, 'like');
-    }
-
-    public function unlike($id)
-    {
-        return $this->likeUnlike($id, 'unlike');
     }
 
     public function likeUnlike($id, $action)
@@ -162,24 +176,68 @@ class ProposalsController extends Controller
             case null:
                 //dd($existing_like, $action, $str_action);
                 Like::create([
-                    'user_id' => $user_id,
-                    'uuid' => $unique,
-                    'proposal_id' => $proposal->id,
-                    'like' => $action == 'like',
-                    'ip_address' => Request::ip()
-                ]);
+                                 'user_id'     => $user_id,
+                                 'uuid'        => $unique,
+                                 'proposal_id' => $proposal->id,
+                                 'like'        => $action == 'like',
+                                 'ip_address'  => Request::ip(),
+                             ]);
 
                 $approval_url = route('proposal.approval', $id);
-                $msg = 'Sua curtida foi computada com sucesso. Caso queira apoiar oficialmente esta proposta, <a href="'.$approval_url.'">clique aqui</a>.';
+                $msg = 'Sua curtida foi computada com sucesso. Caso queira apoiar oficialmente esta proposta, <a href="' . $approval_url . '">clique aqui</a>.';
                 Session::flash('flash_msg', $msg);
                 break;
         }
+
         return redirect()->back();
     }
 
-    public function create()
+    public function notResponded()
     {
-        return view('proposals.create');
+        return view('proposals.notresponded', [
+            'proposals'        => Proposal::whereNull('response')->paginate(20),
+            'is_not_responded' => true,
+        ]);
+    }
+
+    public function open()
+    {
+        return view('proposals.index')->with('proposals', Proposal::where([
+                                                                              'open' => true, 'in_committee' => false,
+                                                                          ])->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
+    public function progress()
+    {
+        return view('proposals.index')->with('proposals', Proposal::where('open', true)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function response($id)
+    {
+        //Get Proposal
+        $proposal = $this->proposalsRepository->find($id);
+
+        if (Gate::allows('edit', $proposal)) {
+            return view('proposals.response')->with('proposal', $proposal);
+        }
+        else {
+            return redirect()->route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
+        }
+    }
+
+    public function show($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+
+        return view('proposals.show', ['proposal' => $proposal]);
+        //return view('proposals.show')->with('proposal', $proposal);
+        //return view('proposals.show')->with(compact('proposal'))
     }
 
     public function store(ProposalFormRequest $formRequest)
@@ -194,40 +252,21 @@ class ProposalsController extends Controller
 
         $proposal = Proposal::create($input);
         event(new ProposalWasCreated($proposal));
+
         //Event::fire(new ProposalWasCreated($proposal));
 
         return redirect()->route('proposal.show', ['proposal' => $proposal])->with('proposal_crud_msg', 'Ideia Legislativa Incluída com Sucesso');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
+    public function unlike($id)
     {
-        //Get Proposal
-        $proposal = $this->proposalsRepository->find($id);
-
-        //Via User Model
-        //        if ($user->can('update', $post)) {
-        //            //
-        //        }
-
-        if (Gate::allows('edit', $proposal)) {
-            return view('proposals.edit')->with('proposal', $proposal);
-        }
-        else {
-            return redirect()->route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
-        }
-
+        return $this->likeUnlike($id, 'unlike');
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function update($id, ProposalFormRequest $formRequest)
@@ -245,90 +284,47 @@ class ProposalsController extends Controller
         $proposal_history = new ProposalHistory();
         //Get attributes from Proposals Eloquent
 
-        $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), ['id','created_at', 'updated_at']));
+        $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), [
+            'id', 'created_at', 'updated_at',
+        ]));
         //dd($proposal_history);
         //Append Update Info
         $proposal_history->proposal_id = $id;
-        $proposal_history->update_id =  Auth::user()->id;
+        $proposal_history->update_id = Auth::user()->id;
         $proposal_history->update_date = Carbon::now();
         //Save History
         $proposal_history->save();
 
         //Then update Proposal
         $proposal->fill($input)->save();
+
         return redirect()->route('proposal.show', ['proposal' => $proposal])->with('proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        $proposal = $this->proposalsRepository->find($id);
-
-        if (Gate::allows('destroy', $proposal)) {
-            $proposal->delete();
-            return redirect()->route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Removida com Sucesso');
-        }
-        else {
-            return redirect()->route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
-        }
-    }
-
-    public function notResponded()
-    {
-        return view('proposals.notresponded', [
-            'proposals' => Proposal::whereNull('response')->paginate(20),
-            'is_not_responded' => true
-        ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function response($id)
-    {
-        //Get Proposal
-        $proposal = $this->proposalsRepository->find($id);
-
-        if (Gate::allows('edit', $proposal)) {
-            return view('proposals.response')->with('proposal', $proposal);
-        }
-        else {
-            return redirect()->route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
-        }
-
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function updateResponse($id, ResponseFormRequest $formRequest)
     {
         $proposal = $this->proposalsRepository->find($id);
 
-        $input = $formRequest->except('_token','_method');
+        $input = $formRequest->except('_token', '_method');
 
         $input['responder_id'] = Auth::user()->id;
 
         //Create ProposalHistory Object
         $proposal_history = new ProposalHistory();
         //Get attributes from Proposals Eloquent
-        $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), ['id','created_at', 'updated_at']));
+        $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), [
+            'id', 'created_at', 'updated_at',
+        ]));
 
         //Append Update Info + Response
         $proposal_history->proposal_id = $id;
-        $proposal_history->update_id =  Auth::user()->id;
+        $proposal_history->update_id = Auth::user()->id;
         $proposal_history->update_date = Carbon::now();
         $proposal_history->response = $input['response'];
         $proposal_history->responder_id = $input['responder_id'];
@@ -338,19 +334,7 @@ class ProposalsController extends Controller
 
         //Then update Proposal
         $proposal->forcefill($input)->save();
+
         return redirect()->route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
     }
-    
-    public function search($query)
-    {
-        // Gets the query string from our form submission
-//        $query = Request::input('search');
-        // Returns an array of articles that have the query string located somewhere within
-        // our articles titles. Paginates them so we can break up lots of search results.
-        $proposals = Proposal::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
-
-        // returns a view and passes the view the list of articles and the original query.
-        return view('proposals.search', compact('proposals', 'query'));
-    }
-
 }
