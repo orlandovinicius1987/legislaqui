@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 14/04/2016
- * Time: 13:32
+ * Time: 13:32.
  */
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateLikesTable extends Migration
 {
@@ -43,4 +42,3 @@ class CreateLikesTable extends Migration
         Schema::drop('likes');
     }
 }
-

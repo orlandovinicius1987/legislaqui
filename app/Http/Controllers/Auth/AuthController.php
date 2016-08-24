@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Http\Controllers\Controller;
 use App\State;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Http\Request;
 use Session;
 use Validator;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
 
 class AuthController extends Controller
 {
@@ -56,35 +54,37 @@ class AuthController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'name'     => 'required|max:255',
+            'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-            'cpf' => 'required',
+            'cpf'      => 'required',
         ]);
     }
 
     /**
      * Create a new user (citizen - 99) instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return model user
      */
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'name'     => $data['name'],
+            'email'    => $data['email'],
             'password' => bcrypt($data['password']),
-            'uf' => $data['uf'],
-            'role_id' => 99,
-            'cpf' => $data['cpf'],
-            'uuid' => $data['uuid'],
+            'uf'       => $data['uf'],
+            'role_id'  => 99,
+            'cpf'      => $data['cpf'],
+            'uuid'     => $data['uuid'],
         ]);
     }
 
@@ -96,6 +96,7 @@ class AuthController extends Controller
         }
 
         $uf = State::lists('nome', 'uf');
+
         return view('auth.register', compact('uf'));
     }
 
@@ -111,6 +112,7 @@ class AuthController extends Controller
         }
 
         $uf = State::lists('nome', 'uf');
+
         return view('auth.login', compact('uf'));
     }
 
@@ -122,7 +124,7 @@ class AuthController extends Controller
 
         $login = $this->traitLogin($request);
 
-        Session::flash('flash_msg','Login feito com Sucesso.');
+        Session::flash('flash_msg', 'Login feito com Sucesso.');
 
         return $login;
     }
@@ -133,17 +135,15 @@ class AuthController extends Controller
         // Request comes from Register form
         Session::put('last_auth_attempt', 'register');
 
-        if (! app()->environment('local'))
-        {
+        if (!app()->environment('local')) {
             // Validates Captcha
             $validate = Validator::make($request->all(), [
-                'g-recaptcha-response' => 'required|captcha'
+                'g-recaptcha-response' => 'required|captcha',
             ]);
 
             // Verifies if Captcha fails and redirect to register view
             if ($validate->fails()) {
-
-                $error = Session::flash('error_msg','Por favor, clique no campo reCAPTCHA para efetuar o registro!');
+                $error = Session::flash('error_msg', 'Por favor, clique no campo reCAPTCHA para efetuar o registro!');
 
                 return redirect()
                     ->back()
@@ -155,7 +155,7 @@ class AuthController extends Controller
         // If Captcha is OK, then register User Request
         $register = $this->traitRegister($request);
 
-        Session::flash('flash_msg','Registro feito com Sucesso.');
+        Session::flash('flash_msg', 'Registro feito com Sucesso.');
 
         return $register;
     }

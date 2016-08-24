@@ -3,15 +3,14 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 14/04/2016
- * Time: 14:11
+ * Time: 14:11.
  */
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Approval extends Eloquent {
-
+class Approval extends Eloquent
+{
     public $timestamps = false;
 
     protected $fillable = ['user_id', 'proposal_id'];
@@ -31,5 +30,4 @@ class Approval extends Eloquent {
         // if foreign_key is different of proposal_id; not the case
         //return $this->belongsTo('App\Proposal', 'foreign_key');
     }
-
 }

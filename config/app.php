@@ -207,7 +207,7 @@ return [
         'Form'      => 'Collective\Html\FormFacade',
         'Html'      => 'Collective\Html\HtmlFacade',
         'NoCaptcha' => 'Anhskohbo\NoCaptcha\Facades\NoCaptcha',
-        'Location' => 'Stevebauman\Location\Facades\Location',
+        'Location'  => 'Stevebauman\Location\Facades\Location',
     ],
 
 ];

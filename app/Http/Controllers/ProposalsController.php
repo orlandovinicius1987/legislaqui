@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Gate;
-use Cookie;
-use App\Like;
-use App\Proposal;
-use Carbon\Carbon;
-use App\ProposalHistory;
 use App\Events\ProposalWasCreated;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Request;
 use App\Http\Requests\ProposalFormRequest;
 use App\Http\Requests\ResponseFormRequest;
+use App\Like;
+use App\Proposal;
+use App\ProposalHistory;
 use App\Repositories\ProposalsRepository;
+use Auth;
+use Carbon\Carbon;
+use Cookie;
+use Gate;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProposalsController extends Controller
 {
@@ -53,7 +53,8 @@ class ProposalsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function destroy($id)
@@ -64,8 +65,7 @@ class ProposalsController extends Controller
             $proposal->delete();
 
             return redirect()->route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Removida com Sucesso');
-        }
-        else {
+        } else {
             return redirect()->route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
@@ -75,7 +75,8 @@ class ProposalsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function edit($id)
@@ -90,8 +91,7 @@ class ProposalsController extends Controller
 
         if (Gate::allows('edit', $proposal)) {
             return view('proposals.edit')->with('proposal', $proposal);
-        }
-        else {
+        } else {
             return redirect()->route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
@@ -105,7 +105,7 @@ class ProposalsController extends Controller
 
     public function index()
     {
-//        $proposals = Proposal::paginate(config('global.pagination'));
+        //        $proposals = Proposal::paginate(config('global.pagination'));
 ////        $proposals = $this->proposalsRepository->all()->paginate(config('global.pagination'));
 //        return view('proposals.index')->with(compact('proposals'));
 
@@ -137,8 +137,7 @@ class ProposalsController extends Controller
             // Retrieve UUID from Cookie
             $user_id = null;
             $unique = Cookie::get('uuid');
-        }
-        else {
+        } else {
             //Retrieve UUID from User
             $user_id = Auth::user()->id;
             $unique = Auth::user()->uuid;
@@ -184,7 +183,7 @@ class ProposalsController extends Controller
                              ]);
 
                 $approval_url = route('proposal.approval', $id);
-                $msg = 'Sua curtida foi computada com sucesso. Caso queira apoiar oficialmente esta proposta, <a href="' . $approval_url . '">clique aqui</a>.';
+                $msg = 'Sua curtida foi computada com sucesso. Caso queira apoiar oficialmente esta proposta, <a href="'.$approval_url.'">clique aqui</a>.';
                 Session::flash('flash_msg', $msg);
                 break;
         }
@@ -215,7 +214,8 @@ class ProposalsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function response($id)
@@ -225,8 +225,7 @@ class ProposalsController extends Controller
 
         if (Gate::allows('edit', $proposal)) {
             return view('proposals.response')->with('proposal', $proposal);
-        }
-        else {
+        } else {
             return redirect()->route('proposals')->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
@@ -266,7 +265,8 @@ class ProposalsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function update($id, ProposalFormRequest $formRequest)
@@ -304,7 +304,8 @@ class ProposalsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return Response
      */
     public function updateResponse($id, ResponseFormRequest $formRequest)

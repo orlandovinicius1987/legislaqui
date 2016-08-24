@@ -2,13 +2,11 @@
 
 namespace App;
 
-use App\Like;
 use Illuminate\Database\Eloquent\Model as Eloquent;
-
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Proposal extends Eloquent {
-
+class Proposal extends Eloquent
+{
     use SoftDeletes;
 
     //public $timestamps = false;
@@ -33,7 +31,7 @@ class Proposal extends Eloquent {
     // Approvals __belongs_to_many__ Proposal
     public function approvals()
     {
-        return $this->belongsToMany(User::class, 'approvals', 'proposal_id', 'user_id' );
+        return $this->belongsToMany(User::class, 'approvals', 'proposal_id', 'user_id');
     }
 
     // Proposal __belongs_to__ Responder (User)
@@ -61,7 +59,7 @@ class Proposal extends Eloquent {
         }
 
         return (($like + 1.9208) / ($like + $unlike) -
-                1.96 * SQRT(($like * $unlike) / ($like + $unlike) + 0.9604) /
+                1.96 * sqrt(($like * $unlike) / ($like + $unlike) + 0.9604) /
                 ($like + $unlike)) / (1 + 3.8416 / ($like + $unlike));
     }
 
@@ -77,13 +75,11 @@ class Proposal extends Eloquent {
 
     public function getTotalLikeCountAttribute()
     {
-        return ($this->like_count - $this->unlike_count);
+        return $this->like_count - $this->unlike_count;
     }
 
     public function getApprovalsCountAttribute()
     {
-        return (User::all()->approvals()->get()->count());
+        return User::all()->approvals()->get()->count();
     }
-
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 //	include 'config.php';
 //
 //	extract($_POST);
@@ -31,5 +32,3 @@
 //	endif;
 
 dd($proposalID);
-
-?>

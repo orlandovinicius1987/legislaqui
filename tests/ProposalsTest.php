@@ -1,17 +1,12 @@
 <?php
 
+use Anhskohbo\NoCaptcha\Facades\NoCaptcha;
 use App\Proposal;
 use App\State;
 use App\User;
-
 use Faker\Factory;
 
-use Anhskohbo\NoCaptcha\Facades\NoCaptcha;
-use  Illuminate\Contracts\Auth\Authenticatable;
-
 //use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ProposalsTest extends TestCase
 {
@@ -67,7 +62,7 @@ class ProposalsTest extends TestCase
     public function testClickProposal()
     {
         $proposal = Proposal::paginate(20)->shuffle()->first();
-        $url_proposal = '/proposals/' . $proposal->id;
+        $url_proposal = '/proposals/'.$proposal->id;
         //dd($proposal->id, $url_proposal);
         $this->visit('/proposals')
             ->click($proposal->name);
@@ -77,7 +72,7 @@ class ProposalsTest extends TestCase
 //            ->seePageIs($url_proposal);
     }
 
-    public function testRegisterAction ()
+    public function testRegisterAction()
     {
         // use the factory to create a Faker\Generator instance
         $faker = Faker\Factory::create();
@@ -85,7 +80,7 @@ class ProposalsTest extends TestCase
         $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
 
         //Generate a User Data to Register
-        $name = $faker->name($gender = null|'male'|'female');
+        $name = $faker->name($gender = null | 'male' | 'female');
         $email = $faker->freeEmail();
         $cpf = $faker->cpf;
         $pwd = '123456';
@@ -105,7 +100,7 @@ class ProposalsTest extends TestCase
         $this->visit('/')
             ->click('Registro')
             ->seePageIs('/login')
-            ->type($name,'name')
+            ->type($name, 'name')
             ->type($email, 'email')
             ->type($cpf, 'cpf')
             ->type($pwd, 'password')
@@ -119,21 +114,21 @@ class ProposalsTest extends TestCase
             ->seeInDatabase('users', ['email' => $email]);
     }
 
-    public function testCreateProposal ()
+    public function testCreateProposal()
     {
         $user = User::all()->random();
 
         $this->actingAs($user)->visit('/proposals/create')
             ->seePageIs('/proposals/create')
-            ->type('idea name','name')
+            ->type('idea name', 'name')
             ->type('central idea', 'idea_central')
-            ->type('problem','problem')
-            ->type('idea exposition','idea_exposition')
+            ->type('problem', 'problem')
+            ->type('idea exposition', 'idea_exposition')
             ->press('Incluir')
             ->see('Sucesso');
     }
 
-    public function testProposalResponse ()
+    public function testProposalResponse()
     {
         //use the factory to create a Faker\Generator instance
         $faker = Faker\Factory::create();
@@ -163,7 +158,6 @@ class ProposalsTest extends TestCase
         $proposals = App\Proposal::paginate(20);
         $this->assertEquals(20, $proposals->count());
     }
-
 
     public function testCookie()
     {

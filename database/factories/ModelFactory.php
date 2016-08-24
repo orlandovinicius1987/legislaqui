@@ -11,66 +11,63 @@
 |
 */
 
-use App\User;
-use App\State;
 use App\Proposal;
+use App\State;
+use App\User;
 use Illuminate\Support\Facades\Request;
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
+        'name'  => $faker->name,
         'email' => $faker->email,
         //'password' => bcrypt(str_random(10)),
         'password' => Hash::make('123456'),
         //'is_admin' => $faker->boolean(30),
         'remember_token' => str_random(10),
         //Aprovador 1 or Cidadao 99
-        'role_id' => $faker->randomElement(array (1, 99)),
-        'uf' => State::all()->shuffle()->first()->uf,
-        'cpf' => $faker->cpf,
-        'uuid' => $faker->uuid
+        'role_id' => $faker->randomElement([1, 99]),
+        'uf'      => State::all()->shuffle()->first()->uf,
+        'cpf'     => $faker->cpf,
+        'uuid'    => $faker->uuid,
     ];
 });
 
 $factory->defineAs(App\User::class, 'admin', function (Faker\Generator $faker) use ($factory) {
-
     $user = $factory->raw(App\User::class);
 
     //Admin 0
     return array_merge($user, ['role_id' => 0]);
-
 });
 
 $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-        'user_id' => User::all()->shuffle()->first()->id,
-        'open'  => true,
-        'pub_date' => $faker->dateTime(),
-        'limit_date' => $faker->dateTime(),
-        'idea_central' => $faker->text($maxNbChars = 100),
-        'problem' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+        'name'            => $faker->sentence($nbWords = 6, $variableNbWords = true),
+        'user_id'         => User::all()->shuffle()->first()->id,
+        'open'            => true,
+        'pub_date'        => $faker->dateTime(),
+        'limit_date'      => $faker->dateTime(),
+        'idea_central'    => $faker->text($maxNbChars = 100),
+        'problem'         => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
         'idea_exposition' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-        'response' => $response = $faker->randomElement($array = array (null ,$faker->realText($maxNbChars = 100, $indexSize = 2), $faker->text($maxNbChars = 50))),
-        'responder_id' => ! $response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
-        'disapproved_at' => ! $response ? null : \Carbon\Carbon::now(),
-        'disapproved_by' => ! $response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
-        'approved_at' => ! $response ? null : \Carbon\Carbon::now(),
-        'approved_by' => ! $response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
-        'created_at' => \Carbon\Carbon::now(),
-        'updated_at' => \Carbon\Carbon::now()
+        'response'        => $response = $faker->randomElement($array =  [null, $faker->realText($maxNbChars = 100, $indexSize = 2), $faker->text($maxNbChars = 50)]),
+        'responder_id'    => !$response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
+        'disapproved_at'  => !$response ? null : \Carbon\Carbon::now(),
+        'disapproved_by'  => !$response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
+        'approved_at'     => !$response ? null : \Carbon\Carbon::now(),
+        'approved_by'     => !$response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
+        'created_at'      => \Carbon\Carbon::now(),
+        'updated_at'      => \Carbon\Carbon::now(),
     ];
 });
 
 $factory->define(App\Like::class, function (Faker\Generator $faker) {
-
     $user_id = User::all()->shuffle()->first()->id;
 
     return [
-        'user_id' => $user_id,
+        'user_id'     => $user_id,
         'proposal_id' => Proposal::all()->shuffle()->first()->id,
-        'uuid' => User::where('id', $user_id)->first()->uuid,
-        'like' => $faker->boolean($chanceOfGettingTrue = 70), // true - like
-        'ip_address' => Request::ip()
+        'uuid'        => User::where('id', $user_id)->first()->uuid,
+        'like'        => $faker->boolean($chanceOfGettingTrue = 70), // true - like
+        'ip_address'  => Request::ip(),
     ];
 });

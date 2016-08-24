@@ -3,14 +3,11 @@
 namespace App;
 
 use Auth;
-
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-
     use SoftDeletes;
 
     /**
@@ -19,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'uf', 'role_id', 'cpf', 'uuid'
+        'name', 'email', 'password', 'uf', 'role_id', 'cpf', 'uuid',
     ];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
@@ -34,75 +31,84 @@ class User extends Authenticatable
     ];
 
     // User has many Proposals
-    public function proposals() {
+    public function proposals()
+    {
         return $this->hasMany(Proposal::class);
     }
 
     // User approvals Proposals
-    public function approvals() {
-        return $this->belongsToMany(Proposal::class, 'approvals', 'user_id',  'proposal_id' );
+    public function approvals()
+    {
+        return $this->belongsToMany(Proposal::class, 'approvals', 'user_id', 'proposal_id');
     }
 
     // User likes Proposals
-    public function likes() {
-        return $this->belongsToMany(Proposal::class, 'likes', 'user_id',  'proposal_id' );
+    public function likes()
+    {
+        return $this->belongsToMany(Proposal::class, 'likes', 'user_id', 'proposal_id');
     }
 
     // User has only one State
-    public function states() {
+    public function states()
+    {
         return $this->hasOne(State::class);
     }
 
     // User has one Role
-    public function roles() {
+    public function roles()
+    {
         return $this->hasOne(Role::class, 'id');
     }
 
     // Get is_admin attribute
-    public function getIsAdminAttribute() {
+    public function getIsAdminAttribute()
+    {
         return Auth::user()->role_id === 0 or Auth::user()->role_id === 1;
     }
 
     // Get is_super_user attribute
-    public function getIsSuperUserAttribute() {
+    public function getIsSuperUserAttribute()
+    {
         return Auth::user()->role_id === 0;
     }
 
     // Get Role Name
-        public function getRoleNameAttribute() {
-        return Role::find($this->role_id)->role;
-    }
+        public function getRoleNameAttribute()
+        {
+            return Role::find($this->role_id)->role;
+        }
 
     // Get Proposals Count
-    public function getProposalsCountAttribute() {
+    public function getProposalsCountAttribute()
+    {
         return Proposal::where('user_id', $this->id)->count();
     }
 
     // Get Likes Count
-    public function getLikesCountAttribute() {
+    public function getLikesCountAttribute()
+    {
         return Like::where('user_id', $this->id)->count();
     }
 
     // Get Approvals Count
-    public function getApprovalsCountAttribute ()
+    public function getApprovalsCountAttribute()
     {
         return Approval::where('user_id', $this->id)->count();
     }
 
     // Get Responded Count
-    public function getProposalsRespondedCountAttribute ()
+    public function getProposalsRespondedCountAttribute()
     {
         return Proposal::where('responder_id', $this->id)->count();
     }
 
     public function getAvatarAttribute()
     {
-        return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->email ) ) ) . "?d=identicon" . "&s=80";
+        return 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?d=identicon'.'&s=80';
     }
 
     public function getCreatedAtAttribute($value)
     {
         return date('M y', strtotime($value));
     }
-
 }

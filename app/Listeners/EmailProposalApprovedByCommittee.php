@@ -2,10 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\ProposalWasCreated;
 use App\Repositories\ProposalsRepository;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class EmailProposalApprovedByCommittee
 {
@@ -27,7 +24,8 @@ class EmailProposalApprovedByCommittee
     /**
      * Handle the event.
      *
-     * @param  ProposalApprovedByCommittee  $event
+     * @param ProposalApprovedByCommittee $event
+     *
      * @return void
      */
     public function handle(ProposalApprovedByCommittee $event)

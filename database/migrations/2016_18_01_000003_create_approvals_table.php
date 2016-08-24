@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 18/01/2016
- * Time: 11:08
+ * Time: 11:08.
  */
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateApprovalsTable extends Migration
 {

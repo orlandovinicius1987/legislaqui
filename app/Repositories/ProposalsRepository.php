@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use DB;
-use Auth;
-use Session;
-use App\User;
 use App\Proposal;
+use App\User;
+use Auth;
+use DB;
 use Illuminate\Support\Facades\Mail;
+use Session;
 
 class ProposalsRepository
 {
@@ -38,11 +38,10 @@ class ProposalsRepository
         $approvals = $user->approvals()->where('proposal_id', $id)->get()->count();
 
         if ($approvals > '0') {
-            Session::flash('error_msg','Você já apoiou este projeto.');
-        }
-        else {
+            Session::flash('error_msg', 'Você já apoiou este projeto.');
+        } else {
             $proposal->approvals()->save($user);
-            Session::flash('flash_msg','Seu apoio foi incluído com sucesso.');
+            Session::flash('flash_msg', 'Seu apoio foi incluído com sucesso.');
         }
 
         // Event Trigger
@@ -90,20 +89,19 @@ class ProposalsRepository
 
         foreach ($proposals_approveds as $proposal_approved) {
             //If expired
-            if ($proposal_approved->approved_at->addDays(config('global.timeLimit'))->diffInDays($today) < 0)
-            {
+            if ($proposal_approved->approved_at->addDays(config('global.timeLimit'))->diffInDays($today) < 0) {
                 $proposal_approved->time_limit = true;
 
                 $proposal_approved->save();
             }
         }
-
     }
 
     /**
      * Get all of the proposals for a given user.
      *
-     * @param  User  $user
+     * @param User $user
+     *
      * @return Collection
      */
     public function forUser($user_id)
@@ -116,7 +114,8 @@ class ProposalsRepository
     /**
      * Get all of the responses proposals for a given user.
      *
-     * @param  User  $user
+     * @param User $user
+     *
      * @return Collection
      */
     public function getResponsesForUser($user_id)
@@ -126,7 +125,7 @@ class ProposalsRepository
             ->get();
     }
 
-    public function sendProposalToCreator ($proposal)
+    public function sendProposalToCreator($proposal)
     {
         //dd($proposal);
 
@@ -142,12 +141,11 @@ class ProposalsRepository
         });
     }
 
-    public function sendProposalApprovalGoalNotification ($proposal)
+    public function sendProposalApprovalGoalNotification($proposal)
     {
         //dd($proposal);
 
         Mail::send('emails.proposal-goal-notification', ['proposal' => $proposal], function ($message) use ($proposal) {
-
             $message->from('admin@alerj.rj.gov.br', 'e-democracia');
 
             $message->to($proposal->user->email, $proposal->user->name);
@@ -157,12 +155,11 @@ class ProposalsRepository
         });
     }
 
-    public function sendProposalApprovalByCommittee ($proposal)
+    public function sendProposalApprovalByCommittee($proposal)
     {
         //dd($proposal);
 
         Mail::send('emails.proposal-approval-by-committee', ['proposal' => $proposal], function ($message) use ($proposal) {
-
             $message->from('admin@alerj.rj.gov.br', 'e-democracia');
 
             $message->to($proposal->user->email, $proposal->user->name);
@@ -172,12 +169,11 @@ class ProposalsRepository
         });
     }
 
-    public function sendProposalClosedByCommittee ($proposal)
+    public function sendProposalClosedByCommittee($proposal)
     {
         //dd($proposal);
 
         Mail::send('emails.proposal-closed-by-committee', ['proposal' => $proposal], function ($message) use ($proposal) {
-
             $message->from('admin@alerj.rj.gov.br', 'e-democracia');
 
             $message->to($proposal->user->email, $proposal->user->name);
@@ -187,12 +183,11 @@ class ProposalsRepository
         });
     }
 
-    public function sendProposalTimeLimit ($proposal)
+    public function sendProposalTimeLimit($proposal)
     {
         //dd($proposal);
 
         Mail::send('emails.proposal-time-limit', ['proposal' => $proposal], function ($message) use ($proposal) {
-
             $message->from('admin@alerj.rj.gov.br', 'e-democracia');
 
             $message->to($proposal->user->email, $proposal->user->name);
@@ -202,12 +197,11 @@ class ProposalsRepository
         });
     }
 
-    public function sendProposalClosed ($proposal)
+    public function sendProposalClosed($proposal)
     {
         //dd($proposal);
 
         Mail::send('emails.proposal-closed', ['proposal' => $proposal], function ($message) use ($proposal) {
-
             $message->from('admin@alerj.rj.gov.br', 'e-democracia');
 
             $message->to($proposal->user->email, $proposal->user->name);
@@ -220,7 +214,7 @@ class ProposalsRepository
     /**
      * @return mixed
      */
-    public function filterProposals($q = 'open', $s)
+    public function filterProposals($q, $s)
     {
         // Users cannot see what's not approved
         $query = Proposal::whereNotNull('approved_by');
@@ -244,7 +238,7 @@ class ProposalsRepository
     {
         $sqlQuery->where(function ($sqlQuery) use ($search) {
             foreach ($this->searchColumns as $searchColumn) {
-                $sqlQuery->orWhere(DB::raw("lower({$searchColumn})"), 'LIKE', '%' . strtolower($search) . '%');
+                $sqlQuery->orWhere(DB::raw("lower({$searchColumn})"), 'LIKE', '%'.strtolower($search).'%');
             }
         });
     }
