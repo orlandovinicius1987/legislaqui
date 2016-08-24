@@ -1064,6 +1064,10 @@ a.square {
     text-align: center;
 }
 
+.searchform>input {
+    height:auto;
+}
+
 
 /* Colors */
 /*Azul Escuro*/
