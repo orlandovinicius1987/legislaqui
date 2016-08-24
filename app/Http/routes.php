@@ -48,8 +48,6 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('/',  ['as'=>'home.post', 'uses'=>'ProposalsController@index']);
 
-    Route::get('proposals/search/{query}', ['as'=>'proposals.search', 'uses'=>'ProposalsController@search']);
-
     Route::get('proposals/{id}', ['as'=>'proposal.show', 'uses'=>'ProposalsController@show'])->where('id', '[0-9]+');
 
 //    Route::get('cookieset', function()

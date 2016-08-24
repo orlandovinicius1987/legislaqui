@@ -226,7 +226,7 @@ class ProposalsRepository
         $query = Proposal::whereNotNull('approved_by');
 
         if ($q == 'comittee') {
-            $query->whereTrue('in_committee');
+            $query->where('in_committee', true);
         }
 
         if ($q == 'finished') {
