@@ -31,53 +31,36 @@ class ProposalsController extends Controller
 
     public function index()
     {
-       $q = Input::get('q');
-       $resultSet = $this->filterProposals($q);
-       return view('proposals.index')->with('proposals', $resultSet)->with('query',$q);
+        $proposals = Proposal::all()->paginate(config('global.pagination'));
+//        $proposals = $this->proposalsRepository->all()->paginate(config('global.pagination'));
+        return view('proposals.index')->with(compact('proposals'));
+
+//       $q = Input::get('q');
+//       $resultSet = $this->filterProposals($q)->paginate(config('global.pagination'));
+//       return view('proposals.index')->with('proposals', $resultSet)->with('query',$q);
+
+
     }
+
     /**
      * @return mixed
      */
-  /*  public function filterProposals($q)
-    {
-        if ($q=="progress"){
-            return Proposal::where('open',true)
-                ->orderBy('created_at', 'desc')->paginate(config('global.pagination'));
-
-        } elseif ($q=="open"){
-            return Proposal::where(['open'=>true,'in_committee'=>false])
-                ->orderBy('created_at', 'desc')
-                ->paginate(config('global.pagination'));
-
-        } elseif ($q=="comittee"){
-            return Proposal::where('in_committee',true)
-                ->orderBy('created_at', 'desc')
-                ->paginate(config('global.pagination'));
-
-        } else {
-            return Proposal::where('open',false)
-                ->orderBy('created_at', 'desc')
-                ->paginate(config('global.pagination'));
-        }
-    }*/
-
     public function filterProposals($q)
     {
 
         if ($q=="open"){
-            return Proposal::where(['open'=>true,'in_committee'=>false])->whereNotNull('approved_by')
-                ->orderBy('created_at', 'desc')->paginate(config('global.pagination'));
+            return Proposal::all();
+//                Proposal::where(['open'=>true,'in_committee'=>false])->whereNotNull('approved_by')
+//                ->orderBy('created_at', 'desc');
 
         } elseif ($q=="comittee"){
             return Proposal::where(['open'=>true,'in_committee'=>true])->whereNotNull('approved_by')
-                ->orderBy('created_at', 'desc')
-                ->paginate(config('global.pagination'));
+                ->orderBy('created_at', 'desc');
 
         } else {
-            return Proposal::where('open',false)->orderBy('created_at', 'desc')
-                ->paginate(config('global.pagination'));
+            return Proposal::where('open',false)->orderBy('created_at', 'desc');
         }
-      }
+    }
 
     public function show($id)
     {
@@ -111,7 +94,6 @@ class ProposalsController extends Controller
     {
         return view('proposals.index')->with('proposals', Proposal::where('open',false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
     }
-
 
     public function approval($id)
     {
@@ -358,4 +340,17 @@ class ProposalsController extends Controller
         $proposal->forcefill($input)->save();
         return redirect()->route('proposals')->with('proposal_crud_msg', 'Ideia Legislativa Respondida com Sucesso');
     }
+    
+    public function search($query)
+    {
+        // Gets the query string from our form submission
+//        $query = Request::input('search');
+        // Returns an array of articles that have the query string located somewhere within
+        // our articles titles. Paginates them so we can break up lots of search results.
+        $proposals = Proposal::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
+
+        // returns a view and passes the view the list of articles and the original query.
+        return view('proposals.search', compact('proposals', 'query'));
+    }
+
 }

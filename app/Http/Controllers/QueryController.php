@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class PageController extends Controller
+class QueryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -83,5 +83,17 @@ class PageController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        // Gets the query string from our form submission
+        $query = Request::input('search');
+        // Returns an array of articles that have the query string located somewhere within
+        // our articles titles. Paginates them so we can break up lots of search results.
+        $proposals = DB::table('proposals')->where('name', 'LIKE', '%' . $query . '%')->paginate(10);
+
+        // returns a view and passes the view the list of articles and the original query.
+        return view('proposals.search', compact('proposals', 'query'));
     }
 }

@@ -7,11 +7,20 @@
 
     @include('partials.error')
 
+    {{--{!! Form::open(array('route' => 'proposals.search', 'class'=>'form navbar-form navbar-right searchform')) !!}--}}
+    {{--{!! Form::text('search', null,--}}
+                           {{--array('required',--}}
+                                {{--'class'=>'form-control',--}}
+                                {{--'placeholder'=>'Pesquise uma ideia legislativa')) !!}--}}
+    {{--{!! Form::submit('Buscar',--}}
+                               {{--array('class'=>'btn')) !!}--}}
+    {{--{!! Form::close() !!}--}}
+
     <div class="btn-group" role="group" aria-label="...">
      {{--   <a href="/proposals?q=progress" class="btn btn-default {{ $query == "progress" ? 'active' :'' }}"> Em andamento</a>--}}
-        <a href="/proposals?q=open" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
-        <a href="/proposals?q=comittee" class="btn btn-default {{ $query == "comittee" ? 'active' :'' }}">Na comissão</a>
-        <a href="/proposals?q=finished" class="btn btn-default {{ $query == "finished" ? 'active' :'' }}">Concluídas</a>
+        {{--<a href="/proposals?q=open" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>--}}
+        {{--<a href="/proposals?q=comittee" class="btn btn-default {{ $query == "comittee" ? 'active' :'' }}">Na comissão</a>--}}
+        {{--<a href="/proposals?q=finished" class="btn btn-default {{ $query == "finished" ? 'active' :'' }}">Concluídas</a>--}}
     </div>
 
      <div class="col-xs-12 instrucao">
@@ -76,7 +85,7 @@
             </div>
 
             <div class="panel-footer-nav">
-                {!! $proposals->links() !!}
+                {{--{!! $proposals->links() !!}--}}
             </div>
     </div>
 @stop
