@@ -2,10 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\ProposalWasCreated;
 use App\Repositories\ProposalsRepository;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class EmailProposalTimeLimit
 {
@@ -27,7 +24,8 @@ class EmailProposalTimeLimit
     /**
      * Handle the event.
      *
-     * @param  ProposalTimeLimit  $event
+     * @param ProposalTimeLimit $event
+     *
      * @return void
      */
     public function handle(ProposalTimeLimit $event)

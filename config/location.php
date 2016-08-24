@@ -45,7 +45,7 @@ return [
             'configuration' => [
 
                 'web_service' => false, //If set to true, you must fill in your user ID and license key
-                'user_id' => '',
+                'user_id'     => '',
                 'license_key' => '',
 
             ],
@@ -133,7 +133,7 @@ return [
     'dropdown_config' => [
 
         'value' => 'country_code',
-        'name' => 'country_name',
+        'name'  => 'country_name',
 
     ],
 

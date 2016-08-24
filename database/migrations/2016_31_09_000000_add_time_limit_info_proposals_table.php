@@ -3,10 +3,8 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 12/04/2016
- * Time: 14:56
+ * Time: 14:56.
  */
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class AddTimeLimitInfoProposalsTable extends Migration
@@ -29,7 +27,6 @@ class AddTimeLimitInfoProposalsTable extends Migration
      *
      * @return void
      */
-
     public function down()
     {
         Schema::table('proposals', function ($table) {
@@ -37,5 +34,4 @@ class AddTimeLimitInfoProposalsTable extends Migration
             $table->dropColumn('time_limit_by');
         });
     }
-
 }

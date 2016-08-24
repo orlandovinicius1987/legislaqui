@@ -3,17 +3,13 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 04/03/2016
- * Time: 12:15
+ * Time: 12:15.
  */
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-use Carbon\Carbon;
 
 class AddCommitteeRolesTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -43,5 +39,4 @@ class AddCommitteeRolesTable extends Migration
     {
         DB::table('roles')->where('id', '=', 2)->delete();
     }
-
 }

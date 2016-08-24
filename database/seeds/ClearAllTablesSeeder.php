@@ -1,6 +1,5 @@
 <?php
 
-use App\User;
 use Illuminate\Database\Seeder;
 
 class ClearAllTablesSeeder extends Seeder
@@ -17,4 +16,3 @@ class ClearAllTablesSeeder extends Seeder
         DB::table('states')->delete();
     }
 }
-

@@ -3,18 +3,18 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 29/01/2016
- * Time: 15:51
+ * Time: 15:51.
  */
-
-use Illuminate\Database\Seeder;
-
 use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 
 class StateSeeder extends Seeder
 {
     /**
-     * Alimenta uma schema de estados
+     * Alimenta uma schema de estados.
+     *
      * @author Cesar André (https://github.com/cesar-andre)
+     *
      * @return void
      */
     public function run()

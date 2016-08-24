@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-use App\Proposal;
-use Auth;
+
 use Illuminate\Support\Facades\Input;
 
 class ResponseFormRequest extends Request
@@ -27,15 +25,14 @@ class ResponseFormRequest extends Request
     public function rules()
     {
         //check which submit was clicked on
-        if(Input::get('disapprovalBtn')) {
+        if (Input::get('disapprovalBtn')) {
             return [
                 //
-                'response' => 'required'
+                'response' => 'required',
             ];
         }
 
         //return $this->rules();
         return [];
     }
-
 }

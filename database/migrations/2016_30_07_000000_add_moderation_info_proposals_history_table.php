@@ -3,10 +3,8 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 12/04/2016
- * Time: 14:56
+ * Time: 14:56.
  */
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class AddModerationInfoProposalsHistoryTable extends Migration
@@ -31,7 +29,6 @@ class AddModerationInfoProposalsHistoryTable extends Migration
      *
      * @return void
      */
-
     public function down()
     {
         Schema::table('proposals_history', function ($table) {
@@ -41,5 +38,4 @@ class AddModerationInfoProposalsHistoryTable extends Migration
             $table->dropColumn('disapproved_by');
         });
     }
-
 }

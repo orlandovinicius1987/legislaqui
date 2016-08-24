@@ -2,10 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\ProposalWasCreated;
 use App\Repositories\ProposalsRepository;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class EmailProposalClosed
 {
@@ -27,7 +24,8 @@ class EmailProposalClosed
     /**
      * Handle the event.
      *
-     * @param  ProposalClosed  $event
+     * @param ProposalClosed $event
+     *
      * @return void
      */
     public function handle(ProposalClosed $event)

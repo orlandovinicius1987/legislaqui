@@ -3,15 +3,14 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 14/04/2016
- * Time: 14:11
+ * Time: 14:11.
  */
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Like extends Eloquent {
-
+class Like extends Eloquent
+{
     public $timestamps = false;
 
     protected $fillable = ['user_id', 'proposal_id', 'uuid', 'ip_address', 'like'];
@@ -31,5 +30,4 @@ class Like extends Eloquent {
         // if foreign_key is different of proposal_id; not the case
         //return $this->belongsTo('App\Proposal', 'foreign_key');
     }
-
 }

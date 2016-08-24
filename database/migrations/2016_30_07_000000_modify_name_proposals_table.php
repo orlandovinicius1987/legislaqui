@@ -3,10 +3,8 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 12/04/2016
- * Time: 14:56
+ * Time: 14:56.
  */
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class ModifyNameProposalsTable extends Migration
@@ -18,11 +16,9 @@ class ModifyNameProposalsTable extends Migration
      */
     public function up()
     {
-
-        Schema::table('proposals', function($table) {
+        Schema::table('proposals', function ($table) {
             $table->text('name')->change();
         });
-
     }
 
     /**
@@ -30,12 +26,10 @@ class ModifyNameProposalsTable extends Migration
      *
      * @return void
      */
-
     public function down()
     {
         Schema::table('proposals', function ($table) {
             $table->string('name')->change();
         });
     }
-
 }

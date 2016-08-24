@@ -3,13 +3,11 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 04/03/2016
- * Time: 12:15
+ * Time: 12:15.
  */
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-use Carbon\Carbon;
 
 class CreateRolesTable extends Migration
 {

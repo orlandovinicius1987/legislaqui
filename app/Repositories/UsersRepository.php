@@ -3,19 +3,14 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 27/06/2016
- * Time: 10:49
+ * Time: 10:49.
  */
-
 namespace App\Repositories;
 
-use Auth;
-use Session;
 use App\User;
-use App\Proposal;
-use Ramsey\Uuid\Uuid;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Input;
+use Ramsey\Uuid\Uuid;
 
 class UsersRepository
 {
@@ -36,7 +31,7 @@ class UsersRepository
 
     public function storeUser()
     {
-        $user = new User;
+        $user = new User();
 
         $uuid = Uuid::uuid4();
 
@@ -52,5 +47,4 @@ class UsersRepository
 
         $user->save();
     }
-
 }

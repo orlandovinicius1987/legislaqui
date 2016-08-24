@@ -3,10 +3,8 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 03/06/2016
- * Time: 12:55
+ * Time: 12:55.
  */
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class AddUuidUsersTable extends Migration

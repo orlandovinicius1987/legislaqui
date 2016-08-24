@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 16/02/2016
- * Time: 13:39
+ * Time: 13:39.
  */
-
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateHistoryTable extends Migration
 {

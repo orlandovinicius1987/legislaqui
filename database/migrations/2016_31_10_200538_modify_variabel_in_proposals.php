@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class ModifyVariabelInProposals extends Migration
@@ -27,7 +26,5 @@ class ModifyVariabelInProposals extends Migration
         Schema::table('proposals', function ($table) {
             $table->dropColumn('in_committee');
         });
-
     }
 }
-
