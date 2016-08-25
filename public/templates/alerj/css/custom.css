@@ -194,6 +194,7 @@ body {
     width: 45vw;
     margin-right: 20px;
     border-radius: 5px !important;
+    text-transform: uppercase;
 }
 
 .input-group>.search {
@@ -209,6 +210,22 @@ body {
     margin-right: 25px;
     line-height: 24px;
     height: 26px;
+}
+
+.index input::-webkit-input-placeholder {
+    color: #9ea745;
+}
+
+.index input:-moz-placeholder { /* Firefox 18- */
+    color: #9ea745;
+}
+
+.index input::-moz-placeholder {  /* Firefox 19+ */
+    color: #9ea745;
+}
+
+.index input:-ms-input-placeholder {
+    color: #9ea745;
 }
 
 .superior>.brilho>.conteudo {
