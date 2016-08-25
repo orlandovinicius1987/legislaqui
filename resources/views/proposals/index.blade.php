@@ -27,10 +27,10 @@
         <div class="row">
             <div class="col-xs-12 text-center" role="group" aria-label="...">
                 {{--<a href="/proposals?q=progress" class="btn btn-default {{ $query == "progress" ? 'active' :'' }}"> Em andamento</a>--}}
-
-                <a href="/" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
-                <a href="/?q=comittee" class="btn btn-default {{ $query == "comittee" ? 'active' :'' }}">Na comissão</a>
-                <a href="/?q=finished" class="btn btn-default {{ $query == "finished" ? 'active' :'' }}">Concluídas</a>
+             <a href="/?q=open" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
+             <a href="/?q=comittee" class="btn btn-default {{ $query == "comittee" ? 'active' :'' }}">Na comissão</a>
+             <a href="/?q=expired" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}">Expiradas</a>
+             <a href="/?q=disapprove" class="btn btn-default {{ $query == "disapprove" ? 'active' :'' }}">Não acatadas</a>
             </div>
         </div>
 
