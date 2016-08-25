@@ -353,7 +353,7 @@
                         </div>
                     </div>
                     <div class="col-sm-8 col-xs-12">
-                        @include('partials.header')
+                        {{--@include('partials.header')--}}
                     </div>
                 </div>
                 <div class="content">

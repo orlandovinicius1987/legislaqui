@@ -184,6 +184,16 @@ body {
     margin-top: -10px;
 }
 
+.index {
+    margin-top: -95px;
+}
+
+.index input[type="submit"] {
+    font-family: FontAwesome;
+    font-size: 1.3em;
+    color: #FB651D;
+}
+
 .superior>.brilho>.conteudo {
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
