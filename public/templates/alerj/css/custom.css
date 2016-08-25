@@ -188,10 +188,27 @@ body {
     margin-top: -95px;
 }
 
-.index input[type="submit"] {
-    font-family: FontAwesome;
-    font-size: 1.3em;
-    color: #FB651D;
+.index input[type="text"] {
+    color: #9ea745;
+    border-color: #9ea745;
+    width: 45vw;
+    margin-right: 20px;
+    border-radius: 5px !important;
+}
+
+.input-group>.search {
+    margin-right: 20px;
+}
+
+.form-control-feedback {
+    margin-top: 17px;
+    background-color: #9ea745;
+    color: white;
+    padding: 2px;
+    border-radius: 0px;
+    margin-right: 25px;
+    line-height: 24px;
+    height: 26px;
 }
 
 .superior>.brilho>.conteudo {
