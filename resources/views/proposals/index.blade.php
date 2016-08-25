@@ -9,17 +9,29 @@
 
         @include('partials.error')
 
-        <div class="row pull-right">
-            {!! Form::open(array('route' => 'home.post', 'class'=>'form navbar-form navbar-right searchform')) !!}
-            {!! Form::text('search', null,
-                                   array('required',
-                                        'class'=>'form-control',
-                                        'placeholder'=>'Pesquise uma ideia legislativa')) !!}
-            {!! Form::submit('&#xf002;',
-                                       array('class'=>'btn search')) !!}
-            {!! Form::close() !!}
+        <div class="row">
+            <div class="col-xs-7 pull-right">
+                <div class="input-group search pull-right">
+                    {!! Form::open(array('route' => 'home.post', 'class'=>'form navbar-form navbar-right searchform')) !!}
+                    {!! Form::text('search', null,
+                        array('required',
+                        'class'=>'form-control',
+                        'placeholder'=>'Pesquise uma ideia legislativa')) !!}
 
-            <div class="" role="group" aria-label="...">
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    {{----}}
+                    {{--{!! Form::submit('&#xf002;',--}}
+                    {{--array('class'=>'btn search')) !!}--}}
+                    {!! Form::close() !!}
+                </div>
+            </div>
+
+            {{--<div class="form-group has-feedback">--}}
+                {{--<input type="text" class="form-control" id="inputSuccess2"/>--}}
+                {{--<span class="glyphicon glyphicon-search form-control-feedback"></span>--}}
+            {{--</div>--}}
+
+            <div class="col-xs-6 pull-left" role="group" aria-label="...">
                 {{--<a href="/proposals?q=progress" class="btn btn-default {{ $query == "progress" ? 'active' :'' }}"> Em andamento</a>--}}
 
                 <a href="/" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
