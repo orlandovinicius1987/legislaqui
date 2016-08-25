@@ -10,28 +10,22 @@
         @include('partials.error')
 
         <div class="row">
-            <div class="col-xs-7 pull-right">
-                <div class="input-group search pull-right">
-                    {!! Form::open(array('route' => 'home.post', 'class'=>'form navbar-form navbar-right searchform')) !!}
-                    {!! Form::text('search', null,
-                        array('required',
-                        'class'=>'form-control',
-                        'placeholder'=>'Pesquise uma ideia legislativa')) !!}
+            <div class="col-xs-12 col-sm-6 pull-right">
+                {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
+                {!! Form::text('search', null,
+                    array('required',
+                    'class'=>'form-control',
+                    'placeholder'=>'Busque uma ideia ...')) !!}
 
-                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                    {{----}}
-                    {{--{!! Form::submit('&#xf002;',--}}
-                    {{--array('class'=>'btn search')) !!}--}}
-                    {!! Form::close() !!}
-                </div>
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                {{----}}
+                {{--{!! Form::submit('&#xf002;',--}}
+                {{--array('class'=>'btn search')) !!}--}}
+                {!! Form::close() !!}
             </div>
-
-            {{--<div class="form-group has-feedback">--}}
-                {{--<input type="text" class="form-control" id="inputSuccess2"/>--}}
-                {{--<span class="glyphicon glyphicon-search form-control-feedback"></span>--}}
-            {{--</div>--}}
-
-            <div class="col-xs-6 pull-left" role="group" aria-label="...">
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center" role="group" aria-label="...">
                 {{--<a href="/proposals?q=progress" class="btn btn-default {{ $query == "progress" ? 'active' :'' }}"> Em andamento</a>--}}
 
                 <a href="/" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
