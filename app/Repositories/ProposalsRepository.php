@@ -216,19 +216,29 @@ class ProposalsRepository
      */
     public function filterProposals($q, $s)
     {
+        if (empty($q)){
+          $q='open';
+        }
         // Users cannot see what's not approved
         $query = Proposal::whereNotNull('approved_by');
 
-        if ($q == 'comittee') {
-            $query->where('in_committee', true);
+        if ($q == 'open') {
+            $query->where(['open'=>true,'in_committee'=>false]);
         }
 
-        if ($q == 'finished') {
-            return $query->where('open', false);
+        if ($q == 'comittee') {
+            $query->where(['open'=>true,'in_committee'=>true]);
+        }
+
+        if ($q == 'expired') { // não terminado  não terminado
+            $query->where(['open'=>false,'time_limit'=>true]);
+        }
+
+        if ($q == 'disapprove') {  // não terminado  não terminado
+            $query->whereNotNull('disapproved_by_committee')->where('open',false);
         }
 
         $this->buildSearch($query, $s);
-
         $query->orderBy('created_at', 'desc');
 
         return $query;
