@@ -230,16 +230,16 @@ class ProposalsRepository
             $query->where(['open' => true, 'in_committee' => true]);
         }
 
-        if ($q == 'expired') { // não terminado  não terminado
-            $query->where(['open' => false, 'time_limit' => true]);
+        if ($q == 'expired') {
+            $query->whereNotNull('time_limit_by')->where(['open' => false, 'time_limit' => true]);
         }
 
-        if ($q == 'disapprove') {  // não terminado  não terminado
+        if ($q == 'disapprove') {
             $query->whereNotNull('disapproved_by_committee')->where('open', false);
         }
 
         $this->buildSearch($query, $s);
-        $query->orderBy('created_at', 'desc');
+        $query->orderBy('created_at', 'desc')->paginate(config('global.pagination'));
 
         return $query;
     }
