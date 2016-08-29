@@ -239,7 +239,7 @@ class ProposalsRepository
         }
 
         $this->buildSearch($query, $s);
-        $query->orderBy('created_at', 'desc')->paginate(config('global.pagination'));
+        $query->orderBy('created_at', 'desc');
 
         return $query;
     }
