@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-
 use Illuminate\Support\Facades\Input;
 
 class ResponseFormRequest extends Request
