@@ -1,19 +1,25 @@
 @extends('layouts.alerj')
 
-@section('title', 'Sobre as Propostas Legislativas')
+@section('title', 'Nossas Comissões')
 
 <!-- Current Content -->
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading text-center">Como Funciona ?</div>
+        <div class="panel-heading text-center">Comissões</div>
         <div class="panel-body">
 
             <p>
-                Oferecer ao cidadão a possibilidade de propor ideias de projetos legislativos, ou seja, destinados a criar novas leis ou a alterar as que já existem, ou ainda a aperfeiçoar  a Constituição da República. Essas ideias serão publicadas no Portal e-Cidadania e poderão receber apoios. As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa.
+                Comissão de Direitos Humanos<br>
+                Comissão de Pesca<br>
+                Comissão de Propaganda Oficial<br>
+                Comissão do Bem-Estar Social<br>
+                Comissão de controle do Cercado<br>
+                Comissão de Justiça
             </p>
             <hr>
             <br><br><br><br>
+            <!--
             <div class="termo">
                 <h2 class="instrucao-topico">
                     Como criar uma Ideia Legislativa?
@@ -97,7 +103,7 @@
                 <p>
                     Além do texto integral da ideia e do número de apoios recebidos, constará do material encaminhado à Comissão de Direitos Humanos e Legislação Participativa, a completa identificação de seu autor.
                 </p>
-            </div>
+            </div> -->
         </div>
     </div>
 
