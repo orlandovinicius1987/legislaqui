@@ -44,14 +44,10 @@ class ProposalsController extends Controller
             ->paginate(config('global.pagination')));
     }
 
-    //proposals in progress
-
     public function create()
     {
         return view('proposals.create');
     }
-
-    //proposals open
 
     /**
      * Remove the specified resource from storage.
@@ -74,8 +70,6 @@ class ProposalsController extends Controller
                 ->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
-
-    //proposals in committee
 
     /**
      * Show the form for editing the specified resource.
@@ -101,8 +95,6 @@ class ProposalsController extends Controller
                 ->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
-
-    //proposals finished
 
     public function finished()
     {
