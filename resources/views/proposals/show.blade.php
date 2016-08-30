@@ -84,22 +84,22 @@
                     <div class="col-xs-12">
                         @can('edit', $proposal)
                         <a href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary botao">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Proposta</a>
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Ideia</a>
                         @endcan
                         @if (!Auth::check())
                         <a href="{{ route('proposal.create') }}" class="btn btn-primary botao" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Proposta</a>
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
                         @else
                             <a href="{{ route('proposal.create') }}" class="btn btn-primary botao">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Proposta</a>
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
                         @endif
                         @can('destroy', $proposal)
                         <a href="{{ route('proposal.destroy', $proposal->id) }}" class="btn btn-primary botao" onclick="if(!confirm('Você tem certeza que deseja apagar essa Ideia Legislativa?')){return false;};">
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Proposta</a>
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Ideia</a>
                         @endcan
 
-                        <a href="{{ route('proposals')}}" class="btn btn-primary botao">
-                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Propostas</a>
+                        <a href="{{ route('home')}}" class="btn btn-primary botao pull-right">
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Voltar para a listagem das Ideias</a>
                     </div>
 
                     {{--<div class="socialmedia">--}}
