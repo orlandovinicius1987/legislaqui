@@ -7,7 +7,6 @@
  */
 use Illuminate\Database\Migrations\Migration;
 
-
 class AddCommitteeRolesTable extends Migration
 {
     /**

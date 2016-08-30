@@ -9,7 +9,6 @@ namespace App\Http\Controllers;
 
 use App\Proposal;
 use App\Repositories\ProposalsRepository;
-
 use App\User;
 
 class UsersController extends Controller

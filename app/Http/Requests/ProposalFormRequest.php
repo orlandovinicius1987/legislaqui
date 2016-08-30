@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-
-
 class ProposalFormRequest extends Request
 {
     /**
