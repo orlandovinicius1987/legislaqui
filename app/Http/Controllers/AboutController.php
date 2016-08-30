@@ -16,6 +16,12 @@ class AboutController extends Controller
         return view('about.about');
     }
 
+    /* relationship commissions */
+    public function committee()
+    {
+        return view('about.committee');
+    }
+
     public function terms()
     {
         return view('about.terms');
