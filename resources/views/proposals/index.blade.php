@@ -33,10 +33,37 @@
             </div>
         </div>
 
+
         <div class="row">
             <div class="col-xs-12 instrucao">
-             As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa.
+
+                Você pode propor e apoiar ideias legislativas - que podem resultar em novas leis - ou ainda alterar as que
+                já existem. As ideias que receberem 20 mil apoios serão encaminhadas à Comissão de Direitos Humanos e
+                Legislação Participativa (CDH), onde receberão parecer dos deputados. Antes de propor uma nova Ideia
+                Legislativa, verifique se já existe na lista de ideias abertas outra com o mesmo conteúdo. Várias ideias
+                semelhantes terminam diluindo o apoio dos demais cidadãos. As ideias que obtiverem apoio significativo
+                serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação
+                Participativa.
             </div>
+            @if( $query == "open" )
+              <div class="col-xs-12 instrucao">
+                Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
+                encaminhada à Comissão. Antes de criar uma proposta, verifique se não há uma já criada para o mesmo fim.
+                 Várias ideias semelhantes terminam diluindo o apoio dos demais cidadãos.
+              </div>
+            @elseif ( $query == "comittee" )
+              <div class="col-xs-12 instrucao">
+                 Essas são as propostas que receberam o apoio suficiente e, neste momento, estão sendo analisadas pela comissão.
+               </div>
+            @elseif ( $query == "expired" )
+              <div class="col-xs-12 instrucao">
+                  Essas são as propostas que não receberam o apoio suficiente e não foram encaminhadas para análise da comissão.
+              </div>
+            @elseif ( $query == "disapprove" )
+               <div class="col-xs-12 instrucao">
+                   Essas são as propostas analisadas e não acatadas pela comissão.
+               </div>
+             @endif
         </div>
 
         <div class="panel panel-default">
