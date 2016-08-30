@@ -16,6 +16,12 @@ class AboutController extends Controller
         return view('about.about');
     }
 
+    /* relationship commissions */
+    public function committee()
+    {
+        return view('about.committee');
+    }
+
     public function terms()
     {
         return view('about.terms');
@@ -25,7 +31,6 @@ class AboutController extends Controller
     {
         return view('about.contact');
     }
-
 //    public function store(ContactFormRequest $request)
 //    {
 //        $msg = 'Obrigado por entrar em contato com a e-democracia da ALERJ. Você receberá uma cópia de sua mensagem e retornaremos o seu contato em breve!';

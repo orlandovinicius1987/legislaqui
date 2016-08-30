@@ -75,6 +75,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('terms', ['as' => 'terms', 'uses' => 'AboutController@terms']);
     Route::get('contact', ['as' => 'contact', 'uses' => 'AboutController@create']);
     Route::post('contact', ['as' => 'contact_store', 'uses' => 'AboutController@store']);
+    // relationship commissions
+    Route::get('committee', ['as' => 'committee', 'uses' => 'AboutController@committee']);
+
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
