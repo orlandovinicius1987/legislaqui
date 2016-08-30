@@ -107,14 +107,14 @@ class ProposalsController extends Controller
     public function finished()
     {
         return view('proposals.index')
-            ->with('proposals', Proposal::where('open', false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+       ->with('proposals', Proposal::where('open', false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
     }
 
     public function index()
     {
-//        $proposals = Proposal::paginate(config('global.pagination'));
-//        $proposals = $this->proposalsRepository->all()->paginate(config('global.pagination'));
-//        return view('proposals.index')->with(compact('proposals'));
+        // $proposals = Proposal::paginate(config('global.pagination'));
+//         $proposals = $this->proposalsRepository->all()->paginate(config('global.pagination'));
+//         return view('proposals.index')->with(compact('proposals'));
 
         $q = Input::get('q');
         $s = Input::get('search');
@@ -209,7 +209,7 @@ class ProposalsController extends Controller
     public function open()
     {
         return view('proposals.index')
-            ->with('proposals', Proposal::where(['open' => true, 'in_committee' => false,])->orderBy('created_at', 'desc')
+            ->with('proposals', Proposal::where(['open' => true, 'in_committee' => false])->orderBy('created_at', 'desc')
             ->paginate(config('global.pagination')));
     }
 
@@ -218,7 +218,6 @@ class ProposalsController extends Controller
         return view('proposals.index')
             ->with('proposals', Proposal::where('open', true)->orderBy('created_at', 'desc')
             ->paginate(config('global.pagination')));
-
     }
 
     /**
