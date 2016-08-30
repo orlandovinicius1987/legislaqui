@@ -26,17 +26,16 @@
         </div>
         <div class="row">
             <div class="col-xs-12 text-center" role="group" aria-label="...">
-             <a href="/?q=open" class="btn btn-default {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
+
+             <a href="/?q=open" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
              <a href="/?q=comittee" class="btn btn-default {{ $query == "comittee" ? 'active' :'' }}">Na comissão</a>
              <a href="/?q=expired" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}">Expiradas</a>
              <a href="/?q=disapprove" class="btn btn-default {{ $query == "disapprove" ? 'active' :'' }}">Não acatadas</a>
+
             </div>
         </div>
-
-
         <div class="row">
             <div class="col-xs-12 instrucao">
-
                 Você pode propor e apoiar ideias legislativas - que podem resultar em novas leis - ou ainda alterar as que
                 já existem. As ideias que receberem 20 mil apoios serão encaminhadas à Comissão de Direitos Humanos e
                 Legislação Participativa (CDH), onde receberão parecer dos deputados. Antes de propor uma nova Ideia
