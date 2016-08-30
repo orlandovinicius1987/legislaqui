@@ -31,6 +31,7 @@ class AboutController extends Controller
     {
         return view('about.contact');
     }
+
 //    public function store(ContactFormRequest $request)
 //    {
 //        $msg = 'Obrigado por entrar em contato com a e-democracia da ALERJ. Você receberá uma cópia de sua mensagem e retornaremos o seu contato em breve!';
