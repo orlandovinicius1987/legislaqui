@@ -49,7 +49,7 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
         'idea_central'    => $faker->text($maxNbChars = 100),
         'problem'         => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
         'idea_exposition' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-        'response'        => $response = $faker->randomElement($array =  [null, $faker->realText($maxNbChars = 100, $indexSize = 2), $faker->text($maxNbChars = 50)]),
+        'response'        => $response = $faker->randomElement($array = [null, $faker->realText($maxNbChars = 100, $indexSize = 2), $faker->text($maxNbChars = 50)]),
         'responder_id'    => !$response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
         'disapproved_at'  => !$response ? null : \Carbon\Carbon::now(),
         'disapproved_by'  => !$response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
