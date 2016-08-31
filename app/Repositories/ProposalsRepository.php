@@ -8,6 +8,7 @@ use Auth;
 use DB;
 use Illuminate\Support\Facades\Mail;
 use Session;
+use App\Events\ProposalReachedApprovalGoal;
 
 class ProposalsRepository
 {
@@ -35,9 +36,10 @@ class ProposalsRepository
 
         $user = Auth::user();
 
-        $approvals = $user->approvals()->where('proposal_id', $id)->get()->count();
+        $user_approvals = $user->approvals()->where('proposal_id', $id)->get()->count();
+        $total_approvals = $proposal->approvals()->where('proposal_id', $id)->get()->count();
 
-        if ($approvals > '0') {
+        if ($user_approvals > '0') {
             Session::flash('error_msg', 'Você já apoiou este projeto.');
         } else {
             $proposal->approvals()->save($user);
@@ -46,10 +48,10 @@ class ProposalsRepository
 
         // Event Trigger
         // Condition: 20.000 approved this proposal + is not in_committee
-        if (($approvals >= config('global.approvalGoal')) && ($proposal->in_committee == null)) {
-
+        if (($total_approvals >= config('global.approvalGoal'))) {
             // Set approval_goal flag
             $proposal->approval_goal = true;
+            $proposal->save();
 
             // Fire Event
             event(new ProposalReachedApprovalGoal($proposal));
