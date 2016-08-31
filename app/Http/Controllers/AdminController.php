@@ -554,6 +554,34 @@ class AdminController extends Controller
     }
 
     /**
+     * List: Time Expired Proposals.
+     *
+     * @param  void
+     *
+     * @return Response
+     */
+    public function expired()
+    {
+        $proposals = $this->proposalsRepository->expired();
+
+        return view('admin.proposals.expired')->with('expired', $proposals);
+    }
+
+    /**
+     * List: Approval Goal Reached.
+     *
+     * @param  void
+     *
+     * @return Response
+     */
+    public function approvalGoal()
+    {
+        $proposals = $this->proposalsRepository->approvalGoal();
+
+        return view('admin.proposals.approval-goal')->with('approveds', $proposals);
+    }
+
+    /**
      * List: Approved Proposals by Committee.
      *
      * @param  void
@@ -564,7 +592,7 @@ class AdminController extends Controller
     {
         $proposals = $this->proposalsRepository->approvedByCommittee();
 
-        return view('admin.proposals.approvedByCommittee')->with('approvedsByCommittee', $proposals);
+        return view('admin.proposals.approved-by-committee')->with('approvedsByCommittee', $proposals);
     }
 
     /**
@@ -578,6 +606,6 @@ class AdminController extends Controller
     {
         $proposals = $this->proposalsRepository->disapprovedByCommittee();
 
-        return view('admin.proposals.disapprovedByCommittee')->with('disapprovedsByCommittee', $proposals);
+        return view('admin.proposals.disapproved-by-committee')->with('disapprovedsByCommittee', $proposals);
     }
 }

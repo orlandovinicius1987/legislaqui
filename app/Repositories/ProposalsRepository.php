@@ -74,6 +74,16 @@ class ProposalsRepository
         return Proposal::whereNotNull('disapproved_at')->get();
     }
 
+    public function expired()
+    {
+        return Proposal::where('time_limit', true)->get();
+    }
+
+    public function approvalGoal()
+    {
+        return Proposal::where('approval_goal', true)->get();
+    }
+
     public function approvedByCommittee()
     {
         return Proposal::whereNotNull('approved_by_committee')->get();
