@@ -154,6 +154,14 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 
     Route::get('admin/proposals/disapproved', ['as' => 'admin.proposals.disapproved', 'uses' => 'AdminController@disapproved']);
 
+    Route::get('admin/proposals/expired', ['as' => 'admin.proposals.expired', 'uses' => 'AdminController@expired']);
+
+    Route::get('admin/proposals/approval-goal', ['as' => 'admin.proposals.approvalGoal', 'uses' => 'AdminController@approvalGoal']);
+
+    Route::get('admin/proposals/approved-by-committee', ['as' => 'admin.proposals.approvedByCommittee', 'uses' => 'AdminController@approvedByCommittee']);
+
+    Route::get('admin/proposals/disapproved-by-committee', ['as' => 'admin.proposals.disapprovedByCommittee', 'uses' => 'AdminController@disapprovedByCommittee']);
+
     Route::get('/admin/logout', function () {
         Auth::logout();
 
