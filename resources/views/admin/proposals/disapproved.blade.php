@@ -38,7 +38,7 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Sem Resposta</th>
+                                            {{--<th>Sem Resposta</th>--}}
                                         </tr>
                                         </thead>
 
@@ -46,9 +46,9 @@
                                         @foreach ($disapproveds as $disapproved)
                                             <tr>
                                                 <td>{{ $disapproved->id }}</td>
-                                                <td>{{ $disapproved->name }}</td>
+                                                <td><a href="{{ route('admin.proposal.show',array('id'=>$disapproved->id)) }}">{{ $disapproved->name }}</a></td>
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$disapproved->id)) }}">{{ $disapproved->name }}</a></td>--}}
-                                                <td><a href="{{ route('admin.proposal.response', $disapproved->id) }}" class="btn btn-danger">Responder Proposta</a></td>
+                                                {{--<td><a href="{{ route('admin.proposal.response', $disapproved->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -56,7 +56,7 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Sem Resposta</th>
+                                            {{--<th>Sem Resposta</th>--}}
                                         </tr>
                                         </tfoot>
                                     </table>

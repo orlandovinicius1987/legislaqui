@@ -46,7 +46,7 @@
                                         @foreach ($notrespondeds as $notresponded)
                                             <tr>
                                                 <td>{{ $notresponded->id }}</td>
-                                                <td>{{ $notresponded->name }}</td>
+                                                <td><a href="{{ route('admin.proposal.show',array('id'=>$notresponded->id)) }}">{{ $notresponded->name }}</a></td>
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$notresponded->id)) }}">{{ $notresponded->name }}</a></td>--}}
                                                 {{--<td><a href="{{ route('admin.proposal.response', $notresponded->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
                                                 {{--Proposal Moderation--}}
@@ -55,12 +55,12 @@
                                                     {{--@if () === null)--}}
                                                     {{--<a href="{{ route('admin.proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a>--}}
                                                     {{--@endif--}}
-                                                    @if ($notresponded->approved_at == null && $notresponded->approved_by == null && $notresponded->disapproved_at == null && $notresponded->disapproved_by == null )
+                                                    {{--@if ($notresponded->approved_at == null && $notresponded->approved_by == null && $notresponded->disapproved_at == null && $notresponded->disapproved_by == null )--}}
                                                         <a href="{{ route('admin.proposal.response', ['id' => $notresponded->id]) }}" class="btn btn-info botao" role="button">
                                                             <i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa Ideia! </a>
-                                                    @else
-                                                        <i class="fa fa-check-square text-success" aria-hidden="true"></i> Já Moderada
-                                                    @endif
+                                                    {{--@else--}}
+                                                        {{--<i class="fa fa-check-square text-success" aria-hidden="true"></i> Já Moderada--}}
+                                                    {{--@endif--}}
                                                 </td>
                                             </tr>
                                         @endforeach
