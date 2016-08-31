@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
+use App\Events\ProposalReachedApprovalGoal;
 use App\Proposal;
 use App\User;
 use Auth;
 use DB;
 use Illuminate\Support\Facades\Mail;
 use Session;
-use App\Events\ProposalReachedApprovalGoal;
 
 class ProposalsRepository
 {

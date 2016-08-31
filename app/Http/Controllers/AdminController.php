@@ -7,24 +7,20 @@
  */
 namespace App\Http\Controllers;
 
-use Auth;
-use Gate;
-
+use App\Events\ProposalApprovedByCommittee;
+use App\Events\ProposalClosedByCommittee;
+use App\Events\ProposalTimeLimit;
+use App\Http\Requests\ProposalFormRequest;
+use App\Http\Requests\ResponseFormRequest;
 use App\Proposal;
 use App\ProposalHistory;
 use App\Repositories\DataRepository;
 use App\Repositories\ProposalsRepository;
 use App\Repositories\UsersRepository;
-
-use App\Http\Requests\ProposalFormRequest;
-use App\Http\Requests\ResponseFormRequest;
-
+use Auth;
 use Carbon\Carbon;
+use Gate;
 use Illuminate\Support\Facades\Input;
-
-use App\Events\ProposalApprovedByCommittee;
-use App\Events\ProposalClosedByCommittee;
-use App\Events\ProposalTimeLimit;
 
 class AdminController extends Controller
 {
