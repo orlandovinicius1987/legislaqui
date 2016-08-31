@@ -520,16 +520,9 @@ class AdminController extends Controller
      */
     public function notResponded()
     {
-        //        return view('admin.notresponded', [
-//            'proposals' => Proposal::whereNull('response')->paginate(20),
-//            'is_not_responded' => true
-//        ]);
+        $proposals = $this->proposalsRepository->notResponded();
 
-        // dd(Proposal::whereNull('response_id'));
-        //$proposals = Proposal::all();
-        $proposals = $this->proposalsRepository->all();
-
-        return view('admin.proposals.notresponded')->with('notrespondeds', $proposals->where('responder_id', null));
+        return view('admin.proposals.notresponded')->with('notrespondeds', $proposals);
     }
 
     /**

@@ -59,6 +59,11 @@ class ProposalsRepository
         }
     }
 
+    public function notResponded()
+    {
+        return Proposal::whereNull('approved_by')->whereNull('disapproved_by')->whereNull('response')->get();
+    }
+
     public function approved()
     {
         return Proposal::whereNotNull('approved_at')->get();
