@@ -42,7 +42,7 @@
                     <li><a href="/admin/proposals/approved"><i class="fa fa-check-circle-o text-success"></i> Ideias Aprovadas</a></li>
                     <li><a href="/admin/proposals/disapproved"><i class="fa fa-times-circle text-warning"></i> Ideias Desaprovadas</a></li>
                     <hr>
-                    <li><a href="/admin/proposals/approval-goal"><i class="fa fa-trophy text-success"></i> Antingiram Apoios</a></li>
+                    <li><a href="/admin/proposals/approval-goal"><i class="fa fa-trophy text-success"></i> {{ config('global.approvalGoal') }} Apoios</a></li>
                     <li><a href="/admin/proposals/expired"><i class="fa fa-clock-o text-warning"></i> Ideias Expiradas</a></li>
                     <hr>
                     <li><a href="/admin/proposals/approved-by-committee"><i class="fa fa-gavel text-success"></i> Comitê: Aprovadas</a></li>

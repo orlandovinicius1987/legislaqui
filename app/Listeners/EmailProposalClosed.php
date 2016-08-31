@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Events\ProposalClosed;
 use App\Repositories\ProposalsRepository;
 
 class EmailProposalClosed
