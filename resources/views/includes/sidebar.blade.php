@@ -32,13 +32,21 @@
                 <ul class="treeview-menu">
                     {{--<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>--}}
                     {{--<li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>--}}
+
                     @can('edit', Auth::user())
-                    <li class="active"><a href="/admin/users"><i class="fa fa-circle-o text-warning"></i> Usuários</a></li>
+                    <li><a href="/admin/users"><i class="fa fa fa-users text-warning"></i> Usuários</a></li>
                     @endcan
-                    <li><a href="/admin/proposals"><i class="fa fa-circle-o text-info"></i> Ideias Legislativas</a></li>
-                    <li><a href="/admin/proposals/approved"><i class="fa fa-circle-o text-success"></i> Ideias Aprovadas</a></li>
-                    <li><a href="/admin/proposals/disapproved"><i class="fa fa-circle-o text-warning"></i> Ideias Desaprovadas</a></li>
-                    <li><a href="/admin/proposals/notresponded"><i class="fa fa-circle-o text-danger"></i> Ideias não Moderadas</a></li>
+
+                    <li><a href="/admin/proposals"><i class="fa fa-hashtag text-info"></i> Ideias Legislativas</a></li>
+                    <li><a href="/admin/proposals/notresponded"><i class="fa fa-cogs text-danger "></i> Ideias não Moderadas</a></li>
+                    <li><a href="/admin/proposals/approved"><i class="fa fa-check-circle-o text-success"></i> Ideias Aprovadas</a></li>
+                    <li><a href="/admin/proposals/disapproved"><i class="fa fa-times-circle text-warning"></i> Ideias Desaprovadas</a></li>
+                    <hr>
+                    <li><a href="/admin/proposals/approval-goal"><i class="fa fa-trophy text-success"></i> Antingiram Apoios</a></li>
+                    <li><a href="/admin/proposals/time-limit"><i class="fa fa-clock-o text-warning"></i> Ideias Expiradas</a></li>
+                    <hr>
+                    <li><a href="/admin/proposals/approved-by-committee"><i class="fa fa-gavel text-success"></i> Comitê: Aprovadas</a></li>
+                    <li><a href="/admin/proposals/disapproved-by-committee"><i class="fa fa-exclamation-triangle text-warning"></i> Comitê: Encerradas</a></li>
                 </ul>
             </li>
             {{--<li class="treeview">--}}
