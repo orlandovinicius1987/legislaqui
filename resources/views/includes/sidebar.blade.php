@@ -45,8 +45,9 @@
                     <li><a href="/admin/proposals/approval-goal"><i class="fa fa-trophy text-success"></i> {{ config('global.approvalGoal') }} Apoios</a></li>
                     <li><a href="/admin/proposals/expired"><i class="fa fa-clock-o text-warning"></i> Ideias Expiradas</a></li>
                     <hr>
-                    <li><a href="/admin/proposals/approved-by-committee"><i class="fa fa-gavel text-success"></i> Comitê: Aprovadas</a></li>
-                    <li><a href="/admin/proposals/disapproved-by-committee"><i class="fa fa-exclamation-triangle text-warning"></i> Comitê: Encerradas</a></li>
+                    <li><a href="/admin/proposals/in-committee"><i class="fa fa-gavel text-danger"></i> Na Comissão</a></li>
+                    <li><a href="/admin/proposals/approved-by-committee"><i class="fa fa-check-circle-o text-success"></i> Comissão: Aprovadas</a></li>
+                    <li><a href="/admin/proposals/disapproved-by-committee"><i class="fa fa-exclamation-triangle text-warning"></i> Comissão: Encerradas</a></li>
                 </ul>
             </li>
             {{--<li class="treeview">--}}

@@ -38,17 +38,17 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Enviar para Comissão</th>
+                                            <th>Moderação da Comissão</th>
                                         </tr>
                                         </thead>
 
                                         <tbody>
-                                        @foreach ($approveds as $approved)
+                                        @foreach ($inCommittee as $inCommittee)
                                             <tr>
-                                                <td>{{ $approved->id }}</td>
-                                                <td><a href="{{ route('admin.proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>
+                                                <td>{{ $inCommittee->id }}</td>
+                                                <td><a href="{{ route('admin.proposal.show',array('id'=>$inCommittee->id)) }}">{{ $inCommittee->name }}</a></td>
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
-                                                <td><a href="{{ route('admin.proposal.toCommittee', $approved->id) }}" class="btn btn-danger">Enviar</a></td>
+                                                {{--<td><a href="{{ route('admin.proposal.toCommittee', $inCommittee->id) }}" class="btn btn-danger">Enviar</a></td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -56,7 +56,7 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Enviar para Comissão</th>
+                                            <th>Moderação da Comissão</th>
                                         </tr>
                                         </tfoot>
                                     </table>
