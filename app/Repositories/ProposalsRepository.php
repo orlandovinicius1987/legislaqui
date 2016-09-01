@@ -60,17 +60,20 @@ class ProposalsRepository
 
     public function notResponded()
     {
-        return Proposal::whereNull('approved_by')->whereNull('disapproved_by')->whereNull('response')->get();
+        return Proposal::whereNull('approved_by')
+            ->whereNull('disapproved_by')
+            ->whereNull('response')
+            ->get();
     }
 
     public function approved()
     {
-        return Proposal::whereNotNull('approved_at')->get();
+        return Proposal::whereNotNull('approved_by')->get();
     }
 
     public function disapproved()
     {
-        return Proposal::whereNotNull('disapproved_at')->get();
+        return Proposal::whereNotNull('disapproved_by')->get();
     }
 
     public function expired()
@@ -80,12 +83,18 @@ class ProposalsRepository
 
     public function approvalGoal()
     {
-        return Proposal::where('approval_goal', true)->where('in_committee', false)->get();
+        return Proposal::where('approval_goal', true)
+            ->where('in_committee', false)
+            ->get();
     }
 
     public function inCommittee()
     {
-        return Proposal::where('in_committee', true)->whereNull('approved_by_committee')->whereNull('disapproved_by_committee')->get();
+        return Proposal::whereNotNull('approved_by')
+            ->where('in_committee', true)
+            ->whereNull('approved_by_committee')
+            ->whereNull('disapproved_by_committee')
+            ->get();
     }
 
     public function approvedByCommittee()
@@ -246,7 +255,7 @@ class ProposalsRepository
         }
 
         if ($q == 'comittee') {
-            $query->where(['open' => true, 'in_committee' => true]);
+            $query->where(['open' => true, 'in_committee' => true, 'approved_by_committee' => null, 'disapproved_by_committee' => null ]);
         }
 
         if ($q == 'expired') {
