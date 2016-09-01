@@ -24,7 +24,7 @@ class ModifyVariabelInProposals extends Migration
     public function down()
     {
         Schema::table('proposals', function ($table) {
-          $table->boolean('in_committee')->default(null)->change();
+            $table->boolean('in_committee')->default(null)->change();
         });
     }
 }
