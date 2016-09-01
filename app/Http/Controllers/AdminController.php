@@ -476,7 +476,6 @@ class AdminController extends Controller
             // Close
             $proposal->open = false;
             // and Save
-            //$proposal->forcefill($input)->save();
             $proposal->save();
 
             //Fire Event
