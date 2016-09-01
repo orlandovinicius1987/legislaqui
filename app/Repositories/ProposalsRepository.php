@@ -255,7 +255,7 @@ class ProposalsRepository
         }
 
         if ($q == 'comittee') {
-            $query->where(['open' => true, 'in_committee' => true, 'approved_by_committee' => null, 'disapproved_by_committee' => null ]);
+            $query->where(['open' => true, 'in_committee' => true, 'approved_by_committee' => null, 'disapproved_by_committee' => null]);
         }
 
         if ($q == 'expired') {
