@@ -44,14 +44,10 @@ class ProposalsController extends Controller
             ->paginate(config('global.pagination')));
     }
 
-    //proposals in progress
-
     public function create()
     {
         return view('proposals.create');
     }
-
-    //proposals open
 
     /**
      * Remove the specified resource from storage.
@@ -74,8 +70,6 @@ class ProposalsController extends Controller
                 ->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
-
-    //proposals in committee
 
     /**
      * Show the form for editing the specified resource.
@@ -101,8 +95,6 @@ class ProposalsController extends Controller
                 ->with('error_msg', 'Você não é o dono desta Ideia Legislativa');
         }
     }
-
-    //proposals finished
 
     public function finished()
     {
@@ -198,13 +190,13 @@ class ProposalsController extends Controller
         return redirect()->back();
     }
 
-    public function notResponded()
-    {
-        return view('proposals.notresponded', [
-            'proposals'        => Proposal::whereNull('response')->paginate(config('global.pagination')),
-            'is_not_responded' => true,
-        ]);
-    }
+//    public function notResponded()
+//    {
+//        return view('proposals.notresponded', [
+//            'proposals'        => Proposal::whereNull('approved_by')->whereNull('disapproved_by')->whereNull('response')->paginate(config('global.pagination')),
+//            'is_not_responded' => true,
+//        ]);
+//    }
 
     public function open()
     {

@@ -7,13 +7,8 @@
  */
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
-
-use App\Approval;
 use App\Events\ProposalApprovedByCommittee;
 use App\Events\ProposalClosedByCommittee;
-//use App\Http\Controllers\Controller;
-
 use App\Events\ProposalTimeLimit;
 use App\Http\Requests\ProposalFormRequest;
 use App\Http\Requests\ResponseFormRequest;
@@ -22,14 +17,10 @@ use App\ProposalHistory;
 use App\Repositories\DataRepository;
 use App\Repositories\ProposalsRepository;
 use App\Repositories\UsersRepository;
-use App\Role;
-use App\State;
-use App\User;
 use Auth;
 use Carbon\Carbon;
 use Gate;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -520,16 +511,9 @@ class AdminController extends Controller
      */
     public function notResponded()
     {
-        //        return view('admin.notresponded', [
-//            'proposals' => Proposal::whereNull('response')->paginate(20),
-//            'is_not_responded' => true
-//        ]);
+        $proposals = $this->proposalsRepository->notResponded();
 
-        // dd(Proposal::whereNull('response_id'));
-        //$proposals = Proposal::all();
-        $proposals = $this->proposalsRepository->all();
-
-        return view('admin.proposals.notresponded')->with('notrespondeds', $proposals->where('responder_id', null));
+        return view('admin.proposals.notresponded')->with('notrespondeds', $proposals);
     }
 
     /**
@@ -561,6 +545,34 @@ class AdminController extends Controller
     }
 
     /**
+     * List: Time Expired Proposals.
+     *
+     * @param  void
+     *
+     * @return Response
+     */
+    public function expired()
+    {
+        $proposals = $this->proposalsRepository->expired();
+
+        return view('admin.proposals.expired')->with('expired', $proposals);
+    }
+
+    /**
+     * List: Approval Goal Reached.
+     *
+     * @param  void
+     *
+     * @return Response
+     */
+    public function approvalGoal()
+    {
+        $proposals = $this->proposalsRepository->approvalGoal();
+
+        return view('admin.proposals.approval-goal')->with('approveds', $proposals);
+    }
+
+    /**
      * List: Approved Proposals by Committee.
      *
      * @param  void
@@ -571,7 +583,7 @@ class AdminController extends Controller
     {
         $proposals = $this->proposalsRepository->approvedByCommittee();
 
-        return view('admin.proposals.approvedByCommittee')->with('approvedsByCommittee', $proposals);
+        return view('admin.proposals.approved-by-committee')->with('approvedsByCommittee', $proposals);
     }
 
     /**
@@ -585,6 +597,6 @@ class AdminController extends Controller
     {
         $proposals = $this->proposalsRepository->disapprovedByCommittee();
 
-        return view('admin.proposals.disapprovedByCommittee')->with('disapprovedsByCommittee', $proposals);
+        return view('admin.proposals.disapproved-by-committee')->with('disapprovedsByCommittee', $proposals);
     }
 }

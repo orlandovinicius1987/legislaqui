@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Events\ProposalApproved;
 use App\Repositories\ProposalsRepository;
 
 class EmailProposalApproved

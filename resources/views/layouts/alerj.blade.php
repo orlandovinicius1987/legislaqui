@@ -279,7 +279,7 @@
             {{--</li>--}}
 
             <!-- relationship commissions -->
-            <li class="pai"><a href="/committee" class="titulo " title="Contato">Nossas comissões</a></li>
+            <li class="pai"><a href="/committee" class="titulo " title="Comissões">Nossas comissões</a></li>
 
             <li class="pai"><a href="/contact" class="titulo " title="Contato">Contato</a></li>
 

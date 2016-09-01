@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'approvalGoal' => 20000,
+    'approvalGoal' => 5,
 
     'timeLimit' => 180,
 

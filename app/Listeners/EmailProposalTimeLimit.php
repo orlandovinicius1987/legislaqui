@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Events\ProposalTimeLimit;
 use App\Repositories\ProposalsRepository;
 
 class EmailProposalTimeLimit

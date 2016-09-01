@@ -26,7 +26,7 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Propostas Legislativas Aprovadas</h3>
+                        <h3 class="box-title">Propostas Legislativas Desaprovadas pelo Comitê</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div id="example3_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -38,17 +38,14 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            {{--<th>Sem Resposta</th>--}}
                                         </tr>
                                         </thead>
 
                                         <tbody>
-                                        @foreach ($approveds as $approved)
+                                        @foreach ($disapprovedsByCommittee as $disapprovedByCommittee)
                                             <tr>
-                                                <td>{{ $approved->id }}</td>
-                                                <td><a href="{{ route('admin.proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>
-                                                {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
-                                                {{--<td><a href="{{ route('admin.proposal.response', $approved->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
+                                                <td>{{ $disapprovedByCommittee->id }}</td>
+                                                <td><a href="{{ route('admin.proposal.show',array('id'=>$disapprovedByCommittee->id)) }}">{{ $disapprovedByCommittee->name }}</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -56,7 +53,6 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            {{--<th>Sem Resposta</th>--}}
                                         </tr>
                                         </tfoot>
                                     </table>
