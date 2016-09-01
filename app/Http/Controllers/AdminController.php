@@ -420,6 +420,16 @@ class AdminController extends Controller
         }
     }
 
+    public function toCommittee($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+        // Set in_committee flag
+        $proposal->in_committee = true;
+        $proposal->save();
+
+        return redirect()->route('admin.proposals.approvalGoal')->with('admin_proposal_crud_msg', 'Ideia Legislativa enviada ao Comitê com Sucesso');
+    }
+
     /**
      * Committee Moderation: Approving Proposal when it reached approval Goal and forward to respective Committee.
      *
@@ -574,6 +584,20 @@ class AdminController extends Controller
         $proposals = $this->proposalsRepository->approvalGoal();
 
         return view('admin.proposals.approval-goal')->with('approveds', $proposals);
+    }
+
+    /**
+     * List: in Committee.
+     *
+     * @param  void
+     *
+     * @return Response
+     */
+    public function inCommittee()
+    {
+        $proposals = $this->proposalsRepository->inCommittee();
+
+        return view('admin.proposals.in-committee')->with('inCommittee', $proposals);
     }
 
     /**

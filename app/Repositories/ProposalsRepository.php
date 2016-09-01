@@ -48,16 +48,13 @@ class ProposalsRepository
 
         // Event Trigger
         // Condition: 20.000 approved this proposal + is not in_committee
-        if (($total_approvals >= config('global.approvalGoal'))) {
+        if (($total_approvals >= config('global.approvalGoal')) && ($proposal->in_committee == false)) {
             // Set approval_goal flag
             $proposal->approval_goal = true;
             $proposal->save();
 
             // Fire Event
             event(new ProposalReachedApprovalGoal($proposal));
-
-            // Set in_committee flag
-            $proposal->in_committee = true;
         }
     }
 
@@ -83,7 +80,12 @@ class ProposalsRepository
 
     public function approvalGoal()
     {
-        return Proposal::where('approval_goal', true)->get();
+        return Proposal::where('approval_goal', true)->where('in_committee', false)->get();
+    }
+
+    public function inCommittee()
+    {
+        return Proposal::where('in_committee', true)->get();
     }
 
     public function approvedByCommittee()

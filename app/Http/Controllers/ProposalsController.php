@@ -190,14 +190,6 @@ class ProposalsController extends Controller
         return redirect()->back();
     }
 
-//    public function notResponded()
-//    {
-//        return view('proposals.notresponded', [
-//            'proposals'        => Proposal::whereNull('approved_by')->whereNull('disapproved_by')->whereNull('response')->paginate(config('global.pagination')),
-//            'is_not_responded' => true,
-//        ]);
-//    }
-
     public function open()
     {
         return view('proposals.index')
