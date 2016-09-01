@@ -49,6 +49,13 @@
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$inCommittee->id)) }}">{{ $inCommittee->name }}</a></td>
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
                                                 {{--<td><a href="{{ route('admin.proposal.toCommittee', $inCommittee->id) }}" class="btn btn-danger">Enviar</a></td>--}}
+                                                {{--<td><a href="{{ route('admin.proposal.response', ['id' => $inCommittee->id]) }}" class="btn btn-info botao" role="button">--}}
+                                                    {{--<i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa Ideia! </a></td>--}}
+                                                <td>
+                                                    <a href="{{ route('admin.proposal.committeeApproval', $inCommittee->id) }}" class="btn btn-danger">Aprovar</a>
+                                                    <a href="{{ route('admin.proposal.committeeDisapproval', $inCommittee->id) }}" class="btn btn-danger">Desaprovar</a>
+                                                </td>
+
                                             </tr>
                                         @endforeach
                                         </tbody>
