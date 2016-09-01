@@ -85,7 +85,7 @@ class ProposalsRepository
 
     public function inCommittee()
     {
-        return Proposal::where('in_committee', true)->get();
+        return Proposal::where('in_committee', true)->whereNull('approved_by_committee')->whereNull('disapproved_by_committee')->get();
     }
 
     public function approvedByCommittee()
@@ -174,7 +174,7 @@ class ProposalsRepository
         });
     }
 
-    public function sendProposalApprovalByCommittee($proposal)
+    public function sendProposalApprovedByCommittee($proposal)
     {
         //dd($proposal);
 

@@ -451,7 +451,7 @@ class AdminController extends Controller
             //Fire Event
             event(new ProposalApprovedByCommittee($proposal));
 
-            return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada pelo Comitê com Sucesso');
+            return redirect()->route('admin.proposals.inCommittee')->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada pelo Comitê com Sucesso');
         } else {
             return redirect()->back()->with('admin_error_msg', 'Ideia Legislativa já foi Moderada pelo Comitê!');
         }
@@ -482,7 +482,7 @@ class AdminController extends Controller
             //Fire Event
             event(new ProposalClosedByCommittee($proposal));
 
-            return redirect()->route('admin.proposals')->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada pelo Comitê e Finalizada com Sucesso.');
+            return redirect()->route('admin.proposals.inCommittee')->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada pelo Comitê e Finalizada com Sucesso.');
         } else {
             return redirect()->back()->with(compact('proposal'))->with('admin_error_msg', 'Ideia Legislativa já foi Moderada pelo Comitê!');
         }
