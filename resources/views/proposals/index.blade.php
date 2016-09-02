@@ -73,18 +73,16 @@
                             <th class="create">
                                 <h3>
                                     @if (!Auth::check())
-                                        <a href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado'))
-                                        {return false;};"></a>
-                                    @else
-                                        <a href="{{ route('proposal.create') }}">
+                                        <a href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                            @else
+                                                <a href="{{ route('proposal.create') }}">
                                             @endif
                                             <div class="icon-wrapper"><i class="fa fa-plus-circle custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
                                             <div class="quadrado_legislaqui">Crie nova Ideia</div>
-                                        </a>
-                                 </h3>
-                                 {{-- LINK PARA DÚVIDAS FREQUENTES
-                                 <a href="{{ route('about') }}">Dúvidas frequentes</a> --}}
-
+                                        </a></a>
+                                </h3>
+                                 {{--LINK PARA DÚVIDAS FREQUENTES--}}
+                                 {{--<a href="{{ route('about') }}">Dúvidas frequentes</a> --}}
                             </th>
                             @if (isset($is_not_responded) && Auth::user()->is_admin)
                                 <th><h3>Sem Resposta</h3></th>
@@ -99,7 +97,7 @@
                         <tbody>
                         @foreach ($proposals as $proposal)
                             <tr>
-                                <!-- <td> {{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}} </td>-->
+                                {{--<!-- <td> --}}{{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}}{{-- </td>-->--}}
                                 <td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}">{{ $proposal->name }}</a></td>
                                 @if (isset($is_not_responded) && Auth::user()->is_admin)
                                     <td><a href="{{ route('proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a></td>

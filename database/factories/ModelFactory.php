@@ -40,6 +40,9 @@ $factory->defineAs(App\User::class, 'admin', function (Faker\Generator $faker) u
 });
 
 $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
+
+    $random = $faker->boolean($chanceOfGettingTrue = 70);
+
     return [
         'name'            => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'user_id'         => User::all()->shuffle()->first()->id,
@@ -53,8 +56,8 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
         'responder_id'    => !$response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
         'disapproved_at'  => !$response ? null : \Carbon\Carbon::now(),
         'disapproved_by'  => !$response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
-        'approved_at'     => !$response ? null : \Carbon\Carbon::now(),
-        'approved_by'     => !$response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
+        'approved_at'     => $response ? null : ($random ? null : \Carbon\Carbon::now()),
+        'approved_by'     => $response ? null : ($random ? null : User::all()->where('role_id', 1)->shuffle()->first()->id),
         'created_at'      => \Carbon\Carbon::now(),
         'updated_at'      => \Carbon\Carbon::now(),
     ];
