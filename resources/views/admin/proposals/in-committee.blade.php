@@ -26,7 +26,7 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Propostas Legislativas Aprovadas pelo Comitê</h3>
+                        <h3 class="box-title">Propostas Legislativas que estão em Comissão</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div id="example3_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -38,18 +38,24 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Projeto de Lei</th>
+                                            <th>Moderação da Comissão</th>
                                         </tr>
                                         </thead>
 
                                         <tbody>
-                                        @foreach ($approvedsByCommittee as $approvedByCommittee)
+                                        @foreach ($inCommittee as $inCommittee)
                                             <tr>
-                                                <td>{{ $approvedByCommittee->id }}</td>
-                                                <td><a href="{{ route('admin.proposal.show',array('id'=>$approvedByCommittee->id)) }}">{{ $approvedByCommittee->name }}</a></td>
+                                                <td>{{ $inCommittee->id }}</td>
+                                                <td><a href="{{ route('admin.proposal.show',array('id'=>$inCommittee->id)) }}">{{ $inCommittee->name }}</a></td>
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
-                                                {{--<td><a href="{{ route('admin.proposal.response', $approved->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
-                                                <td>{{ $approvedByCommittee->bill_project_id }}</td>
+                                                {{--<td><a href="{{ route('admin.proposal.toCommittee', $inCommittee->id) }}" class="btn btn-danger">Enviar</a></td>--}}
+                                                {{--<td><a href="{{ route('admin.proposal.response', ['id' => $inCommittee->id]) }}" class="btn btn-info botao" role="button">--}}
+                                                    {{--<i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa Ideia! </a></td>--}}
+                                                <td>
+                                                    <a href="{{ route('admin.proposal.committeeApproval', $inCommittee->id) }}" class="btn btn-danger">Aprovar</a>
+                                                    <a href="{{ route('admin.proposal.committeeDisapproval', $inCommittee->id) }}" class="btn btn-danger">Desaprovar</a>
+                                                </td>
+
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -57,7 +63,7 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Projeto de Lei</th>
+                                            <th>Moderação da Comissão</th>
                                         </tr>
                                         </tfoot>
                                     </table>

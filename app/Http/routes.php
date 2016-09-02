@@ -158,9 +158,17 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 
     Route::get('admin/proposals/approval-goal', ['as' => 'admin.proposals.approvalGoal', 'uses' => 'AdminController@approvalGoal']);
 
-    Route::get('admin/proposals/approved-by-committee', ['as' => 'admin.proposals.approvedByCommittee', 'uses' => 'AdminController@approvedByCommittee']);
+    Route::get('admin/proposals/{id}/to-committee', ['as' => 'admin.proposal.toCommittee', 'uses' => 'AdminController@toCommittee']);
 
-    Route::get('admin/proposals/disapproved-by-committee', ['as' => 'admin.proposals.disapprovedByCommittee', 'uses' => 'AdminController@disapprovedByCommittee']);
+    Route::get('admin/proposals/in-committee', ['as' => 'admin.proposals.inCommittee', 'uses' => 'AdminController@inCommittee']);
+
+    Route::get('admin/proposals/{id}/committee-approval', ['as' => 'admin.proposal.committeeApproval', 'uses' => 'AdminController@approvedProposalByCommittee']);
+
+    Route::get('admin/proposals/{id}/committee-disapproval', ['as' => 'admin.proposal.committeeDisapproval', 'uses' => 'AdminController@disapprovedProposalByCommittee']);
+
+    Route::get('admin/proposals/approved-by-committee', ['as' => 'admin.proposal.approvedByCommittee', 'uses' => 'AdminController@approvedByCommittee']);
+
+    Route::get('admin/proposals/disapproved-by-committee', ['as' => 'admin.proposal.disapprovedByCommittee', 'uses' => 'AdminController@disapprovedByCommittee']);
 
     Route::get('/admin/logout', function () {
         Auth::logout();

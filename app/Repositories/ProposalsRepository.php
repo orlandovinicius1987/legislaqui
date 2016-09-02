@@ -48,32 +48,32 @@ class ProposalsRepository
 
         // Event Trigger
         // Condition: 20.000 approved this proposal + is not in_committee
-        if (($total_approvals >= config('global.approvalGoal'))) {
+        if (($total_approvals >= config('global.approvalGoal')) && ($proposal->in_committee == false)) {
             // Set approval_goal flag
             $proposal->approval_goal = true;
             $proposal->save();
 
             // Fire Event
             event(new ProposalReachedApprovalGoal($proposal));
-
-            // Set in_committee flag
-            $proposal->in_committee = true;
         }
     }
 
     public function notResponded()
     {
-        return Proposal::whereNull('approved_by')->whereNull('disapproved_by')->whereNull('response')->get();
+        return Proposal::whereNull('approved_by')
+            ->whereNull('disapproved_by')
+            ->whereNull('response')
+            ->get();
     }
 
     public function approved()
     {
-        return Proposal::whereNotNull('approved_at')->get();
+        return Proposal::whereNotNull('approved_by')->get();
     }
 
     public function disapproved()
     {
-        return Proposal::whereNotNull('disapproved_at')->get();
+        return Proposal::whereNotNull('disapproved_by')->get();
     }
 
     public function expired()
@@ -83,7 +83,18 @@ class ProposalsRepository
 
     public function approvalGoal()
     {
-        return Proposal::where('approval_goal', true)->get();
+        return Proposal::where('approval_goal', true)
+            ->where('in_committee', false)
+            ->get();
+    }
+
+    public function inCommittee()
+    {
+        return Proposal::whereNotNull('approved_by')
+            ->where('in_committee', true)
+            ->whereNull('approved_by_committee')
+            ->whereNull('disapproved_by_committee')
+            ->get();
     }
 
     public function approvedByCommittee()
@@ -172,7 +183,7 @@ class ProposalsRepository
         });
     }
 
-    public function sendProposalApprovalByCommittee($proposal)
+    public function sendProposalApprovedByCommittee($proposal)
     {
         //dd($proposal);
 
@@ -244,7 +255,7 @@ class ProposalsRepository
         }
 
         if ($q == 'comittee') {
-            $query->where(['open' => true, 'in_committee' => true]);
+            $query->where(['open' => true, 'in_committee' => true, 'approved_by_committee' => null, 'disapproved_by_committee' => null]);
         }
 
         if ($q == 'expired') {

@@ -416,6 +416,16 @@ class AdminController extends Controller
         }
     }
 
+    public function toCommittee($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+        // Set in_committee flag
+        $proposal->in_committee = true;
+        $proposal->save();
+
+        return redirect()->route('admin.proposals.approvalGoal')->with('admin_proposal_crud_msg', 'Ideia Legislativa enviada ao Comitê com Sucesso');
+    }
+
     /**
      * Committee Moderation: Approving Proposal when it reached approval Goal and forward to respective Committee.
      *
@@ -437,7 +447,7 @@ class AdminController extends Controller
             //Fire Event
             event(new ProposalApprovedByCommittee($proposal));
 
-            return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada pelo Comitê com Sucesso');
+            return redirect()->route('admin.proposals.inCommittee')->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada pelo Comitê com Sucesso');
         } else {
             return redirect()->back()->with('admin_error_msg', 'Ideia Legislativa já foi Moderada pelo Comitê!');
         }
@@ -462,13 +472,12 @@ class AdminController extends Controller
             // Close
             $proposal->open = false;
             // and Save
-            //$proposal->forcefill($input)->save();
             $proposal->save();
 
             //Fire Event
             event(new ProposalClosedByCommittee($proposal));
 
-            return redirect()->route('admin.proposals')->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada pelo Comitê e Finalizada com Sucesso.');
+            return redirect()->route('admin.proposals.inCommittee')->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada pelo Comitê e Finalizada com Sucesso.');
         } else {
             return redirect()->back()->with(compact('proposal'))->with('admin_error_msg', 'Ideia Legislativa já foi Moderada pelo Comitê!');
         }
@@ -570,6 +579,20 @@ class AdminController extends Controller
         $proposals = $this->proposalsRepository->approvalGoal();
 
         return view('admin.proposals.approval-goal')->with('approveds', $proposals);
+    }
+
+    /**
+     * List: in Committee.
+     *
+     * @param  void
+     *
+     * @return Response
+     */
+    public function inCommittee()
+    {
+        $proposals = $this->proposalsRepository->inCommittee();
+
+        return view('admin.proposals.in-committee')->with('inCommittee', $proposals);
     }
 
     /**
