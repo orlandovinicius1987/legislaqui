@@ -635,7 +635,7 @@ textarea {
     margin-left: -10px;
 }
 .custom-icon:hover {
-    background:rgba(0,0,0,0.6);
+    background: white;
 }
 .fix-editor {
     display:none;
