@@ -40,7 +40,6 @@ $factory->defineAs(App\User::class, 'admin', function (Faker\Generator $faker) u
 });
 
 $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
-
     $random = $faker->boolean($chanceOfGettingTrue = 70);
 
     return [
