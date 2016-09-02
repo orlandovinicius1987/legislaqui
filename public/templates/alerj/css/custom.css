@@ -782,7 +782,14 @@ textarea {
 
 .form-control {
     border: 1px solid #ff6600;
+    display:inline-block;
     border-radius: 0px;
+}
+
+input,
+button {
+    background-color:transparent;
+    border:0;
 }
 
 .form-control input[type=submit] {

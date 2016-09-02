@@ -82,8 +82,8 @@
                                             <div class="quadrado_legislaqui">Crie nova Ideia</div>
                                         </a>
                                  </h3>
-                                       <!-- LINK PARA DÚVIDAS FREQUENTES
-                                 <a href="{{ route('about') }}">Dúvidas frequentes</a> ----->
+                                 {{-- LINK PARA DÚVIDAS FREQUENTES
+                                 <a href="{{ route('about') }}">Dúvidas frequentes</a> --}}
 
                             </th>
                             @if (isset($is_not_responded) && Auth::user()->is_admin)
