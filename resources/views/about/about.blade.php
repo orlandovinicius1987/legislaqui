@@ -35,20 +35,20 @@
                     Você não precisa escrever sua ideia já no formato de um projeto de lei. Basta preencher o formulário com a sugestão que será debatida pelos parlamentares. O formulário é dividiro em quatro partes:
                 </p>
                 <p>
-                    <span class="instrucao-topico-letra">a)</span> Área temática da Ideia Legislativa: você deverá selecionar o tema a que se refere sua Ideia Legislativa. Somente é possível escolher uma opção. Se a ideia tem relação com várias áreas, indique a principal.
-                    Nome da proposta: Onde você vai resumir sua ideia para identificá-la.
+                    {{--<span class="instrucao-topico-letra">a)</span> Área temática da Ideia Legislativa: você deverá selecionar o tema a que se refere sua Ideia Legislativa. Somente é possível escolher uma opção. Se a ideia tem relação com várias áreas, indique a principal.--}}
+                    <b>Nome da proposta:</b> Onde você vai resumir sua ideia para identificá-la.
                 </p>
                 <p>
-                    <span class="instrucao-topico-letra">b)</span> Ideia Central: neste campo, você deve expor, em poucas palavras, o que é essencial em sua ideia. Seja claro e conciso, pois esse campo identificará sua Ideia Legislativa na lista geral.
-                    Problema: aqui você apresenta, em poucas palavras, o problema que, na sua opinião, seria solucionado ou reduzido com a implementação da sua proposta.
+                    {{--<span class="instrucao-topico-letra">b)</span> Ideia Central: neste campo, você deve expor, em poucas palavras, o que é essencial em sua ideia. Seja claro e conciso, pois esse campo identificará sua Ideia Legislativa na lista geral.--}}
+                    <b>Problema:</b> aqui você apresenta, em poucas palavras, o problema que, na sua opinião, seria solucionado ou reduzido com a implementação da sua proposta.
                 </p>
                 <p>
-                    <span class="instrucao-topico-letra">c)</span> Identificação do Problema: neste campo, você apresenta, em poucas palavras, o problema que, em seu entendimento, seria solucionado ou atenuado com a implementação de sua Ideia Legislativa.
-                    Ideia Central: neste campo você deverá dizer, resumidamente, o que é fundamental na sua proposta. É importante ser claro e conciso.
+                    {{--<span class="instrucao-topico-letra">c)</span> Identificação do Problema: neste campo, você apresenta, em poucas palavras, o problema que, em seu entendimento, seria solucionado ou atenuado com a implementação de sua Ideia Legislativa.--}}
+                    <b>Ideia Central:</b> neste campo você deverá dizer, resumidamente, o que é fundamental na sua proposta. É importante ser claro e conciso.
                 </p>
                 <p>
-                    <span class="instrucao-topico-letra">d)</span> Exposição da Ideia: neste campo, você deverá expor sua ideia legislativa de maneira mais detalhada. Aproveite para apresentar seus argumentos e convencer os demais cidadãos a apoiá-la.
-                    Exposição da ideia: aqui você deverá detalhar sua proposta, apresentando seus argumentos para convencer outros cidadãos a apoiá-la.
+                    {{--<span class="instrucao-topico-letra">d)</span> Exposição da Ideia: neste campo, você deverá expor sua ideia legislativa de maneira mais detalhada. Aproveite para apresentar seus argumentos e convencer os demais cidadãos a apoiá-la.--}}
+                    <b>Exposição da ideia:</b> aqui você deverá detalhar sua proposta, apresentando seus argumentos para convencer outros cidadãos a apoiá-la.
                 </p>
                 <hr>
                 <h3 class="instrucao-topico-h3">
