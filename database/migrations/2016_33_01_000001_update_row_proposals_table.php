@@ -3,6 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+use App\Proposal;
+
 class UpdateRowProposalsTable extends Migration
 {
     /**
@@ -12,7 +14,7 @@ class UpdateRowProposalsTable extends Migration
      */
     public function up()
     {
-        Proposals::where('in_committee', null)->update(['in_committee'=>false]);
+        Proposal::where('in_committee', null)->update(['in_committee'=>false]);
     }
        /**
      * Reverse the migrations.
@@ -21,6 +23,6 @@ class UpdateRowProposalsTable extends Migration
      */
     public function down()
     {
-        Proposals::where('in_committee', false)->update(['in_committee'=>null]);
+        Proposal::where('in_committee', false)->update(['in_committee'=>null]);
     }
 }
