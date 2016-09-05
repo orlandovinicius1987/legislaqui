@@ -254,7 +254,7 @@ class ProposalsRepository
             $query->where(['open' => true, 'in_committee' => false]);
         }
 
-        if ($q == 'comittee') {
+        if ($q == 'committee') {
             $query->where(['open' => true, 'in_committee' => true, 'approved_by_committee' => null, 'disapproved_by_committee' => null ]);
         }
 
