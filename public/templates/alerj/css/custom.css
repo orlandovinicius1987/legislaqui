@@ -848,6 +848,7 @@ button {
     font-size: 1.4em;
     line-height: 2.6em;
     border-radius: 10px;
+    margin-top: 90px;
 }
 
 .panel-default>.panel-heading h1 {
@@ -932,6 +933,7 @@ button {
     z-index: 2;
     padding-left: 0px;
     padding-right: 0px;
+    position: absolute;
 }
 
 @media (max-width: 768px) {
@@ -1133,6 +1135,38 @@ a.square {
     border: 2px solid #9ea745;
     background-color: #f5f6ec;
     color: #9ea745;
+}
+
+.btn-default {
+    color: #9ea745;
+    background-color: #f5f6ec;
+    border: 2px #9ea745 solid;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.btn-default:hover {
+    background-color: #212e52;
+    color: white;
+    border: 2px #9ea745 solid;
+}
+
+.btn-default:focus {
+    background-color: #212e52;
+    color: white;
+    border: 2px #9ea745 solid;
+}
+
+.btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default {
+    background-color: #212e52;
+    color: white;
+    border: 2px #9ea745 solid;
+}
+
+.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+    background-color: #212e52;
+    color: white;
+    border: 2px #9ea745 solid;
 }
 
 /* Colors */
