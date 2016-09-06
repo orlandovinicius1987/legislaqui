@@ -349,12 +349,12 @@
                         {{--<a href="javascript:history.back(-1);" title="Voltar">VOLTAR</a>--}}
                         {{--<div class="fio"></div>--}}
                     {{--</div>--}}
-                    <div class="col-sm-4 col-xs-12 over">
+                    <div class="col-sm-2 col-xs-12 over">
                         <div class="legislaqui text-center"><a href="/"><span class="letra_branca">#</span><span class="letra_azul">Legisl</span><span class="letra_branca">aqui</span></a>
                             <div class="moto">Seu espaço para propor</div>
                         </div>
                     </div>
-                    <div class="col-sm-8 col-xs-12 pull-right">
+                    <div class="col-sm-10 col-xs-12 pull-right">
                         @if (Request::path() == '/')
                             @include('partials.header')
                         @endif

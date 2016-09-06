@@ -15,6 +15,7 @@
         <a href="/?q=open" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
         <a href="/?q=committee" class="btn btn-default {{ $query == "committee" ? 'active' :'' }}">Na comissão</a>
         <a href="/?q=expired" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}">Expiradas</a>
-        <a href="/?q=disapprove" class="btn btn-default {{ $query == "disapprove" ? 'active' :'' }}">Não acatadas</a>
+        <a href="/?q=disapproved" class="btn btn-default {{ $query == "disapprove" ? 'active' :'' }}">Não acatadas</a>
+        <a href="/?q=approved" class="btn btn-default {{ $query == "approved" ? 'active' :'' }}">Aprovadas</a>
     </div>
 </div>
