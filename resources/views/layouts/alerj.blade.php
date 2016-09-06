@@ -354,13 +354,14 @@
                             <div class="moto">Seu espaço para propor</div>
                         </div>
                     </div>
-                    <div class="col-sm-8 col-xs-12">
+                    <div class="col-sm-8 col-xs-12 pull-right">
                         @if (Request::path() == '/')
                             @include('partials.header')
                         @endif
                     </div>
                 </div>
-                <div class="content">
+                {{--<div class="content">--}}
+                <div>
                     @yield('content')
                 </div>
                 @include('partials.footer')
