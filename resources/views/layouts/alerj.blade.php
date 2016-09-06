@@ -355,7 +355,9 @@
                         </div>
                     </div>
                     <div class="col-sm-8 col-xs-12">
-                        {{--@include('partials.header')--}}
+                        @if (Request::path() == '/')
+                            @include('partials.header')
+                        @endif
                     </div>
                 </div>
                 <div class="content">
