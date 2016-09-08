@@ -262,8 +262,12 @@ class ProposalsRepository
             $query->whereNotNull('time_limit_by')->where(['open' => false, 'time_limit' => true]);
         }
 
-        if ($q == 'disapprove') {
+        if ($q == 'disapproved') {
             $query->whereNotNull('disapproved_by_committee')->where('open', false);
+        }
+
+        if ($q == 'approved') {
+            $query->whereNotNull('approved_by_committee')->where('open', true);
         }
 
         $this->buildSearch($query, $s);

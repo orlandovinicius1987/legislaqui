@@ -180,7 +180,7 @@ body {
 
 .content {
     position: relative;
-    margin-top: -10px;
+    /*margin-top: -10px;*/
 }
 
 .index {
@@ -848,7 +848,7 @@ button {
     font-size: 1.4em;
     line-height: 2.6em;
     border-radius: 10px;
-    margin-top: 90px;
+    /*margin-top: 90px;*/
 }
 
 .panel-default>.panel-heading h1 {
@@ -879,6 +879,7 @@ button {
     z-index: 100;
     margin-left: 10px;
     width: 280px;
+    margin-bottom: 5px;
     /*position: relative;*/
     /*bottom: -30px;*/
     /*left: 10px;*/
@@ -933,7 +934,7 @@ button {
     z-index: 2;
     padding-left: 0px;
     padding-right: 0px;
-    position: absolute;
+    /*position: absolute;*/
 }
 
 @media (max-width: 768px) {
