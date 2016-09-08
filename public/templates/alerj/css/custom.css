@@ -238,10 +238,10 @@ body {
 
 .filter-line {
     border-top: #9ea745 3px solid;
-    margin-top: -8px;
+    margin-top: 74px;
     position: relative;
     background-color: white;
-
+    z-index: 9999;
 }
 
 .superior>.brilho>.conteudo {

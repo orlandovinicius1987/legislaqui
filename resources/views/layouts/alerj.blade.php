@@ -343,6 +343,7 @@
                             @include('partials.header')
                         @endif
                     </div>
+                    <div class="filter-line">&nbsp;</div>
                 </div>
                 {{--<div class="content">--}}
                 <div>
