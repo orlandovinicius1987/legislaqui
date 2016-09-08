@@ -932,7 +932,7 @@ button {
 
 .moto {
     line-height: 0.8em;
-    font-size: 0.9em;
+    font-size: 0.75em;
     text-transform: uppercase;
     font-weight: bolder;
     margin-bottom: 5px;
@@ -1150,7 +1150,8 @@ a.square {
     color: #9ea745;
     background-color: #f5f6ec;
     border: 2px #9ea745 solid;
-    border-radius: 10px;
+    border-top-right-radius: 0.8em;
+    border-top-left-radius: 0.8em;
     margin-top: 5px;
 }
 
