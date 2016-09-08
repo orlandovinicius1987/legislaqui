@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'e-democracia')
+@section('title', config('app.name'))
 
 <!-- Current Proposals -->
 @section('content')

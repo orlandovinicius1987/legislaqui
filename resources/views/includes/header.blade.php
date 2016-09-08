@@ -1,6 +1,6 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="/admin" class="logo"><b>e</b>Democracia</a>
+    <a href="/admin" class="logo">{!! config('app.name_formatted') !!}</a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->

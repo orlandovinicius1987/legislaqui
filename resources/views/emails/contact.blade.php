@@ -1,4 +1,4 @@
-Você recebeu uma menssagem do e-democracia da ALERJ:
+Você recebeu uma menssagem do {{ config('app.name') }} da ALERJ:
 
 <p>
     Name: {{ $name }}

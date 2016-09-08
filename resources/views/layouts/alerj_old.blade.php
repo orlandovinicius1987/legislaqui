@@ -222,7 +222,7 @@
             <div class="alerj">
                     <div class="row">
                         <div class="titulo">
-                            <h1>E-DEMOCRACIA</h1>
+                            <h1>{{ strtoupper(config('app.name')) }}</h1>
                             <div class="caminho">Ideias Legislativas</div>
 
                             <a href="javascript:history.back(-1);" title="Voltar">VOLTAR</a>

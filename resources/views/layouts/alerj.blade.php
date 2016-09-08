@@ -343,7 +343,7 @@
 
                 <div class="row">
                     {{--<div class="titulo">--}}
-                        {{--<a href="/"><h1>E-DEMOCRACIA</h1></a>--}}
+                        {{--<a href="/"><h1>{{ config('app.name') }}</h1></a>--}}
                         {{--<div class="caminho">Ideias Legislativas</div>--}}
 
                         {{--<a href="javascript:history.back(-1);" title="Voltar">VOLTAR</a>--}}
