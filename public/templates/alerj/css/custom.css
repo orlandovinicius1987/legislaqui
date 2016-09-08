@@ -1170,6 +1170,10 @@ a.square {
     border: 2px #9ea745 solid;
 }
 
+.superior .conteudo .coluna {
+    position: inherit;
+}
+
 /* Colors */
 /*Azul Escuro*/
 /*#212e52;*/
