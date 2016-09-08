@@ -20,5 +20,4 @@
             <a href="/?q=approved" class="btn btn-default {{ $query == "approved" ? 'active' :'' }}">Aprovadas</a>
         </div>
     </div>
-    <div class="filter-line">&nbsp;</div>
 </div>
