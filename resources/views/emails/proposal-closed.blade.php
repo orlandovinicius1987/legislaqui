@@ -26,7 +26,7 @@
                                                         {{ Html::image(('img/alerj.png'), null, array( 'width' => 70, 'height' => 70 )) }}
                                                     </td>
                                                     <td class="six sub-columns last" align="right" style="text-align:right; vertical-align:middle;">
-                                                        <span class="template-label">e-Democracia</span>
+                                                        <span class="template-label">{{ config('app.name') }}</span>
                                                     </td>
                                                     <td class="expander"></td>
                                                 </tr>

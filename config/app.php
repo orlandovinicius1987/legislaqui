@@ -2,6 +2,10 @@
 
 return [
 
+    'name' => '#Legislaqui',
+
+    'name_formatted' => '<b>#</b>Legislaqui',
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
