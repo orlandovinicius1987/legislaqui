@@ -105,7 +105,7 @@
                     {{--<div class="socialmedia">--}}
                         {{--<div class="addthis_sharing_toolbox"></div>--}}
                     {{--</div>--}}
-                    {{--@include('partials.share', ['url' => 'http://e-democracia.alerj.rj.gov.br/'])--}}
+                    {{--@include('partials.share', ['url' => 'http://???????????/'])--}}
                 </div>
 
             </div>
