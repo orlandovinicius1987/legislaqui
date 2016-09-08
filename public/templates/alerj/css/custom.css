@@ -236,6 +236,11 @@ body {
     color: #9ea745;
 }
 
+.filter-line {
+    border-bottom: #9ea745 3px solid;
+    margin-bottom: -15px;
+}
+
 .superior>.brilho>.conteudo {
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
