@@ -11,7 +11,7 @@
 
             <p>
                 {{--Oferecer ao cidadão a possibilidade de propor ideias de projetos legislativos, ou seja, destinados a criar novas leis ou a alterar as que já existem, ou ainda a aperfeiçoar  a Constituição da República. Essas ideias serão publicadas no Portal e-Cidadania e poderão receber apoios. As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa.--}}
-                Esta é uma ferramenta que oferece aos cidadãos um canal direto para sugerir pautas e projetos aos deputados estaduais. As ideias enviadas são analisadas por uma equipe técnica, que vai observar a pertinência da sugestão para a esfera de governo envolvida, no caso a Estadual. Ideias que digam respeito a assuntos de responsabilidade do Governo Federal, como mudanças na legislação penal por exemplo, não serão disponibilizadas ao público.
+                Esta é uma ferramenta que oferece aos cidadãos um canal direto para sugerir pautas e projetos aos deputados estaduais. As ideias enviadas são analisadas por uma equipe técnica, que vai observar a pertinência da sugestão para a esfera de governo envolvida, no caso a Estadual. Ideias que digam respeito a assuntos de responsabilidade Federal, como mudanças na legislação penal por exemplo, não serão disponibilizadas ao público.
             </p>
             <hr>
             <br><br><br><br>
