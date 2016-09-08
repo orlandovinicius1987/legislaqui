@@ -61,25 +61,24 @@
 
 
 
-
 <div class="superior">
     <div class="brilho ">
         <div class="conteudo">
             <div class="logotipo">
-                <a href="/">
+                <a href="http://www.alerj.rj.gov.br/">
                     <img src="http://www.alerj.rj.gov.br/Content/imagens/logotipo.png" class="sem_altocontraste" width="210" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
                     <img src="http://www.alerj.rj.gov.br/Content/imagens/logotipo_altocontraste.png" width="210" class="altocontraste" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
                 </a>
             </div>
 
-            <div class="coluna">
-                <div class="link_alo_alerj"><a href="https://www.aloalerj.rj.gov.br/" target="_blank" title="Alô ALERJ" class="links_topo">ALÔ ALERJ</a></div>
+            <div class="coluna pull-right">
+                <div>
+
+                </div>
                 <div class="redes_sociais">
                     <div class="logotipo_redes">
-
                         <a target="_blank" href="https://instagram.com/instalerj/" title="Instagram">
                             <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_36.png" width="20" height="20" alt="Instagram" title="Instagram"></a>
-
                     </div>
 
                     <div class="logotipo_redes">
@@ -99,23 +98,8 @@
                             <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_09.png" width="20" height="20" alt="Youtube" title="Youtube"></a>
                     </div>
                 </div>
-                <div class="acessibilidade">
-                    <div class="icone first display_none"><a href="http://www.alerj.rj.gov.br/ResultadoPesquisa/MontaTelaPesquisa" class="icone_05" title="Pesquisar"></a></div>
-                    <div class="icone"><a href="javascript:;" class="icone_01 diminuir_fonte" rel="nofollow" title="Diminuir fonte do texto"></a></div>
-                    <div class="icone"><a href="javascript:;" class="icone_02 normalizar_fonte" rel="nofollow" title="Voltar para tamanho original da fonte do texto"></a></div>
-                    <div class="icone"><a href="javascript:;" class="icone_03 aumentar_fonte" rel="nofollow" title="Aumentar fonte do texto"></a></div>
-                    <div class="icone"><a href="javascript:;" class="icone_04 altocontraste_fonte" rel="nofollow" title="Ativar Alto contraste" style="cursor: pointer;"></a></div>
-                </div>
-                <div class="link_perguntas_frequentes"><a href="http://www.alerj.rj.gov.br/Transparencia/PerguntasFrequentes" title="Perguntas frequentes" class="links_topo">PERGUNTAS FREQUENTES</a></div>
 
-                <div class="pesquisar display_none_320">
-                    <input type="text" value="" id="txtPesquisar" placeholder="Procurar..." maxlength="50">
-                    <div class="icone">
-                        <a href="#" id="btnPesquisar"  class="icone_05" title="Pesquisar">
-                        </a>
-                    </div>
-                    <div class="fio"></div>
-                </div>
+
             </div>
 
         </div>
