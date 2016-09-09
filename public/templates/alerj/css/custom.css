@@ -790,8 +790,6 @@ textarea {
     margin-bottom: 10px;
     text-align: center;
     line-height: 2em;
-    padding-left: 4em;
-    padding-right: 4em;
     font-size: 1.08em;
 }
 
@@ -966,9 +964,15 @@ button {
 }
 
 @media (max-width: 1018px) {
-
     .legislaqui {
         margin-top: 0px;
+    }
+}
+
+@media (min-width: 1018px) {
+    .instrucao {
+        padding-left: 4em;
+        padding-right: 4em;
     }
 }
 
