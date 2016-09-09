@@ -187,6 +187,10 @@ body {
     /*margin-top: -95px;*/
 /*}*/
 
+.header {
+    margin-top: -20px;
+}
+
 .header input[type="text"] {
     color: #9ea745;
     border-color: #9ea745;
@@ -238,7 +242,7 @@ body {
 
 .filter-line {
     border-top: #9ea745 3px solid;
-    margin-top: 74px;
+    margin-top: 77px;
     position: relative;
     background-color: white;
     z-index: 9999;
@@ -1114,8 +1118,13 @@ a.square {
     }
 }
 
+.base_menu .menu ul li a {
+    padding: 7px 15px 0px 15px;
+}
+
 .base_menu .menu ul li a.ativo {
     height: 46px;
+    padding: 19px 15px 0px 15px;
 }
 
 .checkbox input[type=checkbox] {
@@ -1157,6 +1166,8 @@ a.square {
     border-top-right-radius: 0.8em;
     border-top-left-radius: 0.8em;
     margin-top: 5px;
+    padding: 17px;
+    text-transform: uppercase;
 }
 
 .btn-default:hover {
@@ -1181,6 +1192,10 @@ a.square {
     background-color: #212e52;
     color: white;
     border: 2px #9ea745 solid;
+}
+
+.btn-group-justified {
+    margin-top: 4px;
 }
 
 .superior .conteudo .coluna {

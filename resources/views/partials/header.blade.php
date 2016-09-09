@@ -1,6 +1,6 @@
 <div class="header">
     <div class="row">
-        <div class="col-xs-12 col-sm-8 pull-right">
+        <div class="col-xs-12">
             {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
             {!! Form::text('search', null,
                 array('required',
@@ -12,12 +12,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-8 pull-right" role="group" aria-label="...">
-            <a href="/?q=open" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"> Abertas</a>
-            <a href="/?q=committee" class="btn btn-default {{ $query == "committee" ? 'active' :'' }}">Na comissão</a>
-            <a href="/?q=expired" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}">Expiradas</a>
-            <a href="/?q=disapproved" class="btn btn-default {{ $query == "disapprove" ? 'active' :'' }}">Não acatadas</a>
-            <a href="/?q=approved" class="btn btn-default {{ $query == "approved" ? 'active' :'' }}">Aprovadas</a>
+        <div class="col-xs-12" role="group" aria-label="...">
+            <a href="/?q=open" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"> ABERTAS</a>
+            <a href="/?q=committee" class="btn btn-default {{ $query == "committee" ? 'active' :'' }}">NA COMISSÃO</a>
+            <a href="/?q=expired" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}">EXPIRADAS</a>
+            <a href="/?q=disapproved" class="btn btn-default {{ $query == "disapprove" ? 'active' :'' }}">NÃO ACATADAS</a>
+            <a href="/?q=approved" class="btn btn-default {{ $query == "approved" ? 'active' :'' }}">APROVADAS</a>
         </div>
     </div>
 </div>
