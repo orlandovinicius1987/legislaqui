@@ -241,8 +241,8 @@ body {
 }
 
 .filter-line {
-    border-top: #9ea745 3px solid;
-    margin-top: 77px;
+    border-top: #9ea745 4px solid;
+    margin-top: 84px;
     position: relative;
     background-color: white;
     z-index: 9999;
@@ -790,8 +790,6 @@ textarea {
     margin-bottom: 10px;
     text-align: center;
     line-height: 2em;
-    padding-left: 4em;
-    padding-right: 4em;
     font-size: 1.08em;
 }
 
@@ -886,7 +884,7 @@ button {
     background-color: #FB651D;
     line-height: 3.6em;
     /*height: 70px;*/
-    border-radius: 8px 8px 8px 8px;
+    border-radius: 18px 18px 0px 0px;
     border: 2px #9ea745 solid;
     margin-top: -20px;
     padding: 15px;
@@ -966,9 +964,15 @@ button {
 }
 
 @media (max-width: 1018px) {
-
     .legislaqui {
         margin-top: 0px;
+    }
+}
+
+@media (min-width: 1018px) {
+    .instrucao {
+        padding-left: 4em;
+        padding-right: 4em;
     }
 }
 
@@ -1167,9 +1171,9 @@ a.square {
     color: #9ea745;
     background-color: #f5f6ec;
     border: 2px #9ea745 solid;
-    border-top-right-radius: 0.8em;
-    border-top-left-radius: 0.8em;
-    margin-top: 10px;
+    border-top-right-radius: 1.2em;
+    border-top-left-radius: 1.2em;
+    margin-top: 15px;
     padding: 17px;
     text-transform: uppercase;
     letter-spacing: -1px;
