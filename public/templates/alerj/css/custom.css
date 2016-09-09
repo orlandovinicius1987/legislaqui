@@ -1118,8 +1118,13 @@ a.square {
     }
 }
 
+.base_menu .menu ul li a {
+    padding: 7px 15px 0px 15px;
+}
+
 .base_menu .menu ul li a.ativo {
     height: 46px;
+    padding: 19px 15px 0px 15px;
 }
 
 .checkbox input[type=checkbox] {
