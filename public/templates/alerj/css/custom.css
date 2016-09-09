@@ -886,7 +886,7 @@ button {
     background-color: #FB651D;
     line-height: 3.6em;
     /*height: 70px;*/
-    border-radius: 8px 8px 8px 8px;
+    border-radius: 18px 18px 0px 0px;
     border: 2px #9ea745 solid;
     margin-top: -20px;
     padding: 15px;
