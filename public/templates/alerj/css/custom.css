@@ -241,7 +241,7 @@ body {
 }
 
 .filter-line {
-    border-top: #9ea745 3px solid;
+    border-top: #9ea745 4px solid;
     margin-top: 84px;
     position: relative;
     background-color: white;
@@ -1167,8 +1167,8 @@ a.square {
     color: #9ea745;
     background-color: #f5f6ec;
     border: 2px #9ea745 solid;
-    border-top-right-radius: 0.8em;
-    border-top-left-radius: 0.8em;
+    border-top-right-radius: 1.2em;
+    border-top-left-radius: 1.2em;
     margin-top: 15px;
     padding: 17px;
     text-transform: uppercase;
