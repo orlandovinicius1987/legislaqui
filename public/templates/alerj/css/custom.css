@@ -951,6 +951,10 @@ button {
         margin-top: 0px;
         /*width: 100%;*/
     }
+
+    .btn-default {
+        width: 100%;
+    }
 }
 
 @media (max-width: 1018px) {

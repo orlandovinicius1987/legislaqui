@@ -99,7 +99,7 @@
                         @endcan
 
                         <a href="{{ route('home')}}" class="btn btn-primary botao pull-right">
-                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Voltar para a listagem das Ideias</a>
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Voltar</a>
                     </div>
 
                     {{--<div class="socialmedia">--}}

@@ -343,13 +343,13 @@
                             @include('partials.header')
                         @endif
                     </div>
-                    <div class="filter-line hidden-xs">&nbsp;</div>
+                    <div class="filter-line hidden-xs hidden-sm">&nbsp;</div>
                 </div>
                 {{--<div class="content">--}}
                 <div>
                     @yield('content')
                 </div>
-                @include('partials.footer')
+                {{--@include('partials.footer')--}}
                 @include('partials.scripts')
             </div>
         </div>
