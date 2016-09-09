@@ -32,22 +32,23 @@
                 <ul class="treeview-menu">
                     {{--<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>--}}
                     {{--<li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>--}}
-
-                    @can('edit', Auth::user())
-                    <li><a href="/admin/users"><i class="fa fa fa-users text-warning"></i> Usuários</a></li>
-                    @endcan
-
-                    <li><a href="/admin/proposals"><i class="fa fa-hashtag text-info"></i> Ideias Legislativas</a></li>
-                    <li><a href="/admin/proposals/notresponded"><i class="fa fa-cogs text-danger "></i> Ideias não Moderadas</a></li>
-                    <li><a href="/admin/proposals/approved"><i class="fa fa-check-circle-o text-success"></i> Ideias Aprovadas</a></li>
-                    <li><a href="/admin/proposals/disapproved"><i class="fa fa-times-circle text-warning"></i> Ideias Desaprovadas</a></li>
+                    <li><a>Ideias Legislativas</a></li>
+                    <li><a href="/admin/proposals"><i class="fa fa-hashtag text-info"></i> Todas</a></li>
+                    <li><a href="/admin/proposals/notresponded"><i class="fa fa-cogs text-danger "></i> Aguardando Moderação</a></li>
+                    <li><a href="/admin/proposals/approved"><i class="fa fa-check-circle-o text-success"></i> Publicadas</a></li>
+                    <li><a href="/admin/proposals/disapproved"><i class="fa fa-times-circle text-warning"></i> Desaprovadas</a></li>
                     <hr>
                     <li><a href="/admin/proposals/approval-goal"><i class="fa fa-trophy text-success"></i> {{ config('global.approvalGoal') }} Apoios</a></li>
                     <li><a href="/admin/proposals/expired"><i class="fa fa-clock-o text-warning"></i> Ideias Expiradas</a></li>
                     <hr>
-                    <li><a href="/admin/proposals/in-committee"><i class="fa fa-gavel text-danger"></i> Na Comissão</a></li>
-                    <li><a href="/admin/proposals/approved-by-committee"><i class="fa fa-check-circle-o text-success"></i> Comissão: Aprovadas</a></li>
-                    <li><a href="/admin/proposals/disapproved-by-committee"><i class="fa fa-exclamation-triangle text-warning"></i> Comissão: Encerradas</a></li>
+                    <li><a>Na Comissão</a></li>
+                    <li><a href="/admin/proposals/in-committee"><i class="fa fa-gavel text-danger"></i> Todas</a></li>
+                    <li><a href="/admin/proposals/approved-by-committee"><i class="fa fa-check-circle-o text-success"></i> Aprovadas</a></li>
+                    <li><a href="/admin/proposals/disapproved-by-committee"><i class="fa fa-exclamation-triangle text-warning"></i> Encerradas</a></li>
+                    <hr>
+                    @can('edit', Auth::user())
+                    <li><a href="/admin/users"><i class="fa fa fa-users text-warning"></i> Usuários</a></li>
+                    @endcan
                 </ul>
             </li>
             {{--<li class="treeview">--}}
