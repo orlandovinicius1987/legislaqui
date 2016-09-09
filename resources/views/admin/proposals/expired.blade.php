@@ -26,7 +26,7 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Propostas Legislativas que receberam o número mínimo de Apoios</h3>
+                        <h3 class="box-title">Propostas Legislativas que expiraram, sem receberam o número mínimo de Apoios</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div id="example3_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
