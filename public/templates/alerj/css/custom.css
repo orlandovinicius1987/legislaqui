@@ -790,6 +790,9 @@ textarea {
     margin-bottom: 10px;
     text-align: center;
     line-height: 2em;
+    padding-left: 4em;
+    padding-right: 4em;
+    font-size: 1.08em;
 }
 
 .form-control {
@@ -936,7 +939,7 @@ button {
 
 .moto {
     line-height: 0.8em;
-    font-size: 0.75em;
+    font-size: 0.8em;
     text-transform: uppercase;
     font-weight: bolder;
     margin-bottom: 5px;
@@ -946,6 +949,7 @@ button {
     z-index: 2;
     padding-left: 0px;
     padding-right: 0px;
+    margin-bottom: 15px;
     /*position: absolute;*/
 }
 
@@ -1165,9 +1169,10 @@ a.square {
     border: 2px #9ea745 solid;
     border-top-right-radius: 0.8em;
     border-top-left-radius: 0.8em;
-    margin-top: 5px;
+    margin-top: 10px;
     padding: 17px;
     text-transform: uppercase;
+    letter-spacing: -1px;
 }
 
 .btn-default:hover {
