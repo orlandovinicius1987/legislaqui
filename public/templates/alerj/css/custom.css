@@ -187,6 +187,10 @@ body {
     /*margin-top: -95px;*/
 /*}*/
 
+.header {
+    margin-top: -20px;
+}
+
 .header input[type="text"] {
     color: #9ea745;
     border-color: #9ea745;
@@ -237,8 +241,8 @@ body {
 }
 
 .filter-line {
-    border-top: #9ea745 3px solid;
-    margin-top: 74px;
+    border-top: #9ea745 4px solid;
+    margin-top: 84px;
     position: relative;
     background-color: white;
     z-index: 9999;
@@ -786,6 +790,7 @@ textarea {
     margin-bottom: 10px;
     text-align: center;
     line-height: 2em;
+    font-size: 1.08em;
 }
 
 .form-control {
@@ -879,7 +884,7 @@ button {
     background-color: #FB651D;
     line-height: 3.6em;
     /*height: 70px;*/
-    border-radius: 8px 8px 8px 8px;
+    border-radius: 18px 18px 0px 0px;
     border: 2px #9ea745 solid;
     margin-top: -20px;
     padding: 15px;
@@ -932,7 +937,7 @@ button {
 
 .moto {
     line-height: 0.8em;
-    font-size: 0.75em;
+    font-size: 0.8em;
     text-transform: uppercase;
     font-weight: bolder;
     margin-bottom: 5px;
@@ -942,6 +947,7 @@ button {
     z-index: 2;
     padding-left: 0px;
     padding-right: 0px;
+    margin-bottom: 15px;
     /*position: absolute;*/
 }
 
@@ -958,9 +964,15 @@ button {
 }
 
 @media (max-width: 1018px) {
-
     .legislaqui {
         margin-top: 0px;
+    }
+}
+
+@media (min-width: 1018px) {
+    .instrucao {
+        padding-left: 4em;
+        padding-right: 4em;
     }
 }
 
@@ -1114,8 +1126,13 @@ a.square {
     }
 }
 
+.base_menu .menu ul li a {
+    padding: 7px 15px 0px 15px;
+}
+
 .base_menu .menu ul li a.ativo {
     height: 46px;
+    padding: 19px 15px 0px 15px;
 }
 
 .checkbox input[type=checkbox] {
@@ -1154,9 +1171,12 @@ a.square {
     color: #9ea745;
     background-color: #f5f6ec;
     border: 2px #9ea745 solid;
-    border-top-right-radius: 0.8em;
-    border-top-left-radius: 0.8em;
-    margin-top: 5px;
+    border-top-right-radius: 1.2em;
+    border-top-left-radius: 1.2em;
+    margin-top: 15px;
+    padding: 17px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
 }
 
 .btn-default:hover {
@@ -1181,6 +1201,10 @@ a.square {
     background-color: #212e52;
     color: white;
     border: 2px #9ea745 solid;
+}
+
+.btn-group-justified {
+    margin-top: 4px;
 }
 
 .superior .conteudo .coluna {
