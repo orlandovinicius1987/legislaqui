@@ -155,12 +155,7 @@
                             </div>
                         </li>
 
-
-                        <li><a href="/about" target="" href="javascript:;" class="titulo">Como Funciona?</a></li>
-                        {{--<li class="pai"><a target="" href="javascript:;" class="titulo" title="DEPUTADOS">DEPUTADOS</a>--}}
-
-                            {{--<div class='submenu_movel'><ul><li><a target='' href='http://www.alerj.rj.gov.br/Deputados/QuemSao' title='Quem São'>Quem São</a></li><li><a target='' href='/Deputados/RepresentacaoPartidaria' title='Representação Partidária'>Representação Partidária</a></li><li><a target='' href='/Deputados/LinhaDireta' title='Linha Direta'>Linha Direta</a></li></ul></div>--}}
-                        {{--</li>--}}
+                        <li><a href="{{ route('about') }}" target="" href="javascript:;" class="titulo">Como Funciona?</a></li>
 
                         <li class="pai">
                             <a target='' href="javascript:;" class="titulo" title="Ideia Legislativa">Ideia Legislativa <span class="caret"></span></a>
@@ -168,23 +163,23 @@
                             <div class='submenu_movel'>
                                 <ul>
                                     @if (Auth::guest())
-                                        <li><div><a target='' href="{{ route('proposal.create') }}">Proponha uma ideia legislativa logando ou registrando-se aqui</a></div></li>
+                                        <li><a target='' href="{{ route('proposal.create') }}">Proponha uma ideia legislativa logando ou registrando-se aqui</a></li>
                                         {{--url('/login') }}">Proponha uma ideia legislativa<br>logando/registrando-se aqui</a></li>--}}
                                         <li role="separator" class="divider"></li>
-                                        <li><div><a href="{{ route('terms') }}">Termos de Uso</a></div></li>
+                                        <li><a href="{{ route('terms') }}">Termos de Uso</a></li>
                                         {{--<li class="dropdown-header">ALERJ</li>--}}
                                     @elseif (Auth::user()->is_admin)
                                         {{--@elseif (Auth::user()->role_id === 0 or Auth::user()->role_id === 1)--}}
-                                        <a target='' href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
-                                        <a target='' href="/proposals/create">Incluir Nova Proposta</a>
-                                        <a target='' href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
-                                        <a target='' href="{{ route('home') }}">Listar Todas Propostas</a>
+                                        {{--<a target='' href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>--}}
+                                        <li><a target='' href="{{ route('proposal.create') }}" title='Incluir Nova Proposta'>Incluir Nova Proposta</a></li>
+                                        <li><a target='' href="{{ route('users.proposals', Auth::user()->id) }}" title='Listar Minhas Propostas'>Listar Minhas Propostas</a></li>
+                                        <li><a target='' href="{{ route('home') }}" title='Listar Todas Propostas'>Listar Todas Propostas</a></li>
                                         {{--<a href="{{ route('users.responses', Auth::user()->id) }}">Listar Minhas Respostas</a>--}}
                                         {{--<a href="{{ route('proposals.notresponded') }}">Sem Resposta</a>--}}
                                     @else
-                                        <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>
-                                        <a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
-                                        <a href="{{ route('home') }}">Listar Todas Propostas</a>
+                                        <li><a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a></li>
+                                        <li><a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a></li>
+                                        <li><a href="{{ route('home') }}">Listar Todas Propostas</a></li>
                                     @endif
                                 </ul>
                             </div>
