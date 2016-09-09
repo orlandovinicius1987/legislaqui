@@ -242,7 +242,7 @@ body {
 
 .filter-line {
     border-top: #9ea745 3px solid;
-    margin-top: 77px;
+    margin-top: 84px;
     position: relative;
     background-color: white;
     z-index: 9999;
@@ -1169,7 +1169,7 @@ a.square {
     border: 2px #9ea745 solid;
     border-top-right-radius: 0.8em;
     border-top-left-radius: 0.8em;
-    margin-top: 10px;
+    margin-top: 15px;
     padding: 17px;
     text-transform: uppercase;
     letter-spacing: -1px;
