@@ -128,39 +128,63 @@
                     <ul>
                         <li><a href="/" id="lkbInicioMovel">Início</a></li>
 
-                        <li class="pai"><a target="" href="javascript:;" class="titulo" title="ALERJ">Alerj</a>
+                        <li class="pai">
+                            <a target='' href="javascript:;" class="titulo" title="ALERJ">Alerj <span class="caret"></span></a>
 
-                            <div class='submenu_movel'><ul><li><a target='' href='http://www.alerj.rj.gov.br/Alerj/ComoFunciona' title='Como Funciona'>Como Funciona</a></li><li><a target='' href='/Alerj/MesaDiretora' title='Mesa Diretora'>Mesa Diretora</a></li><li><a target='' href='/Alerj/Historia' title='História'>História</a></li><li><a target='' href='/Alerj/VisitaGuiada' title='Visita Guiada'>Visita Guiada</a></li><li><a target='' href='/Alerj/TourVirtual' title='Tour Virtual'>Tour Virtual</a></li><li><a target='' href='/Alerj/Biblioteca' title='Biblioteca'>Biblioteca</a></li></ul></div>
+                            <div class='submenu_movel'>
+                                <ul>
+                                    <li>
+                                        <a target='' href='http://www.alerj.rj.gov.br/Alerj/ComoFunciona' title='Como Funciona'>Como Funciona</a>
+                                    </li>
+                                    <li>
+                                        <a target='' href='http://www.alerj.rj.gov.br/Alerj/MesaDiretora' title='Mesa Diretora'>Mesa Diretora</a>
+                                    </li>
+                                    <li>
+                                        <a target='' href='http://www.alerj.rj.gov.br/Alerj/Historia' title='História'>História</a>
+                                    </li>
+                                    <li>
+                                        <a target='' href='http://www.alerj.rj.gov.br/Alerj/VisitaGuiada' title='Visita Guiada'>Visita Guiada</a>
+                                    </li>
+                                    <li>
+                                        <a target='' href='http://www.alerj.rj.gov.br/Alerj/TourVirtual' title='Tour Virtual'>Tour Virtual</a>
+                                    </li>
+                                    <li>
+                                        <a target='' href='http://www.alerj.rj.gov.br/Alerj/Biblioteca' title='Biblioteca'>Biblioteca</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
 
 
-                        <li class="pai"><a href="/about" target="" href="javascript:;" class="titulo">Como Funciona?</a></li>
+                        <li><a href="/about" target="" href="javascript:;" class="titulo">Como Funciona?</a></li>
                         {{--<li class="pai"><a target="" href="javascript:;" class="titulo" title="DEPUTADOS">DEPUTADOS</a>--}}
 
                             {{--<div class='submenu_movel'><ul><li><a target='' href='http://www.alerj.rj.gov.br/Deputados/QuemSao' title='Quem São'>Quem São</a></li><li><a target='' href='/Deputados/RepresentacaoPartidaria' title='Representação Partidária'>Representação Partidária</a></li><li><a target='' href='/Deputados/LinhaDireta' title='Linha Direta'>Linha Direta</a></li></ul></div>--}}
                         {{--</li>--}}
 
                         <li class="pai">
-                            <a href="#" href="javascript:;" class="titulo" title="Ideia Legislativa">Ideia Legislativa <span class="caret"></span></a>
+                            <a target='' href="javascript:;" class="titulo" title="Ideia Legislativa">Ideia Legislativa <span class="caret"></span></a>
 
                             <div class='submenu_movel'>
                                 <ul>
                                     @if (Auth::guest())
-                                        <li><div><a href="{{ route('proposal.create') }}">Proponha uma ideia legislativa logando ou registrando-se aqui</a></div></li>
+                                        <li><div><a target='' href="{{ route('proposal.create') }}">Proponha uma ideia legislativa logando ou registrando-se aqui</a></div></li>
                                         {{--url('/login') }}">Proponha uma ideia legislativa<br>logando/registrando-se aqui</a></li>--}}
                                         <li role="separator" class="divider"></li>
                                         <li><div><a href="{{ route('terms') }}">Termos de Uso</a></div></li>
                                         {{--<li class="dropdown-header">ALERJ</li>--}}
                                     @elseif (Auth::user()->is_admin)
                                         {{--@elseif (Auth::user()->role_id === 0 or Auth::user()->role_id === 1)--}}
-                                        <a href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
-                                        <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>
-                                        <a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
+                                        <a target='' href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
+                                        <a target='' href="/proposals/create">Incluir Nova Proposta</a>
+                                        <a target='' href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
+                                        <a target='' href="{{ route('home') }}">Listar Todas Propostas</a>
                                         {{--<a href="{{ route('users.responses', Auth::user()->id) }}">Listar Minhas Respostas</a>--}}
                                         {{--<a href="{{ route('proposals.notresponded') }}">Sem Resposta</a>--}}
                                     @else
                                         <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>
                                         <a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
+                                        <a href="{{ route('home') }}">Listar Todas Propostas</a>
                                     @endif
                                 </ul>
                             </div>
@@ -171,7 +195,7 @@
                             {{--<div class='submenu_movel'><ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Plenário'>Plenário</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=57' title='Discursos e Votações'>Discursos e Votações</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=59' title='Ordem do Dia'>Ordem do Dia</a></li></ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Comissões'>Comissões</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=60' title='O Que São'>O Que São</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=61' title='Comissões Permanentes'>Comissões Permanentes</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=62' title='CPI (COMISSÃO PARLAMENTAR DE INQUÉRITO)'>CPI (COMISSÃO PARLAMENTAR DE INQUÉRITO)</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=63' title='Comissões Especiais'>Comissões Especiais</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=64' title='Comissões de Representação'>Comissões de Representação</a></li></ul><li><a target='_blank' href='http://www2.alerj.rj.gov.br/Diario-of.htm' title='Diário Oficial'>Diário Oficial</a></li><li><a target='_blank' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=1' title='Processo Legislativo'>Processo Legislativo</a></li></ul></div>--}}
                         {{--</li>--}}
 
-                        <li class="pai"><a href="/contact" class="titulo " title="Contato">Contato</a></li>
+                        <li><a href="/contact" class="titulo " title="Contato">Contato</a></li>
 
                         {{--<li class="pai"><a target="" href="javascript:;" class="titulo" title="COMUNICA&#199;&#195;O">COMUNICA&#199;&#195;O</a>--}}
 
@@ -181,19 +205,19 @@
                         <!-- Authentication Links -->
 
                         @if (Auth::guest())
-                            <li class="pai">
+                            <li>
                                 <a href="{{ url('/login') }}" class="titulo" title="Login | Registro">Login | Registro</a></li>
                             {{--<li><a href="{{ url('/register') }}">Registro</a></li>--}}
                         @else
                             <li class="pai">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a target='' href="javascript:;" class="titulo" title="Usuário">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class='submenu'>
+                                <div class='submenu_movel'>
                                     <ul>
                                         @if (Auth::user()->is_admin)
-                                            <a href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
+                                            <li><a href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a></li>
                                         @endif
                                         <li class='filho_pai'><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Sair</a></li>
                                     </ul>
@@ -247,11 +271,13 @@
                         <a href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
                         <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>
                         <a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
+                        <a href="{{ route('home') }}">Listar Todas Propostas</a>
                         {{--<a href="{{ route('users.responses', Auth::user()->id) }}">Listar Minhas Respostas</a>--}}
                         {{--<a href="{{ route('proposals.notresponded') }}">Sem Resposta</a>--}}
                     @else
                         <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>
                         <a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
+                        <a href="{{ route('home') }}">Listar Todas Propostas</a>
                     @endif
                     </ul>
                 </div>
