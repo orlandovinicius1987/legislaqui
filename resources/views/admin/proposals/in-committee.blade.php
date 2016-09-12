@@ -33,7 +33,7 @@
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="example3" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="example3_info">
+                                    <table id="dataTableAdmin2" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="dataTableAdmin2_info">
                                         <thead>
                                         <tr role="row">
                                             <th>Id</th>
