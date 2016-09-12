@@ -10,7 +10,7 @@
             @include('partials.error')
 
             <div class="panel panel-default">
-                <div class="panel-heading row">
+                <div class="panel-heading">
                     {{--<div class="col-xs-1" style="width: 54px; text-align: center; margin-top: -12px; margin-left: 5px;">--}}
                         {{--<a href="{{ route('proposal.like', ['id' => $proposal->id]) }}" title="Like"><i class="fa fa-caret-up fa-lg" aria-hidden="true"></i></a>--}}
                         {{--<span class="vote-count-post">{{ $proposal->total_like_count }}</span>--}}
@@ -19,7 +19,7 @@
                         {{--<div class="favoritecount"><b></b></div>--}}
                     {{--</div>--}}
                     {{--<div class="col-xs-11">--}}
-                    <div class="col-xs-12">
+                    <div>
                         <h1>{{ $proposal->name }}</h1>
                         @include('partials.share', ['url' => URL::full()])
                         {{--@include('partials.like', ['proposalId' => $proposal->id])--}}
