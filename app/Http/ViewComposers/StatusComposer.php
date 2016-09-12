@@ -21,7 +21,7 @@ class StatusComposer
         $proposals_count = $proposals->count();
         $approvals_count = Approval::all()->count();
         $users_count = User::all()->count();
-        $not_responded_count = round(($proposals->where('responder_id', null)->count() / $proposals->count()) * 100, 2);
+        $not_responded_count = round(($proposals->where('approved_by', null)->where('disapproved_by', null)->where('response', null)->count() / $proposals->count()) * 100, 2);
 
         $view
             ->with(compact('proposals_count'))

@@ -44,7 +44,7 @@
         <div class="small-box bg-red">
             <div class="inner">
                 <h3>{{ $not_responded_count }} <sup style="font-size: 20px">%</sup></h3>
-                <p>Propostas sem Resposta</p>
+                <p>Aguardando Moderação</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
