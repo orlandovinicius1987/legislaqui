@@ -241,11 +241,12 @@ body {
 }
 
 .filter-line {
-    border-top: #9ea745 4px solid;
+    border-top: #9ea745 1px solid;
     margin-top: 84px;
     position: relative;
     background-color: white;
     z-index: 9999;
+    display: none;
 }
 
 .superior>.brilho>.conteudo {
@@ -789,8 +790,9 @@ textarea {
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
-    line-height: 2em;
-    font-size: 1.08em;
+    line-height: 1.4em;
+    font-size: 1em;
+    font-weight: bold;
 }
 
 .form-control {
@@ -818,6 +820,11 @@ button {
 
 .panel {
     border-radius: 0px;
+}
+
+.panel-body {
+    padding: 0;
+    padding-top: 15px;
 }
 
 .panel-heading h3 {
@@ -942,6 +949,7 @@ button {
     font-weight: 800;
     margin-top: -5px;
     font-family: dinbold;
+    padding-left: 2px;
 }
 
 .over {
@@ -972,14 +980,14 @@ button {
 
 @media (min-width: 1018px) {
     .instrucao {
-        padding-left: 4em;
-        padding-right: 4em;
+        padding-left: 3em;
+        padding-right: 3em;
     }
 
     .panel-default>.panel-heading, .panel-default>.panel-footer {
-        padding-left: 4em;
-        padding-right: 4em;
-        padding-bottom: 1em;
+        padding-left: 3em;
+        padding-right: 3em;
+        /*padding-bottom: 1em;*/
     }
 }
 
@@ -1174,14 +1182,26 @@ a.square {
     color: #9ea745;
 }
 
+/*.btn-default {*/
+    /*color: #9ea745;*/
+    /*background-color: #f5f6ec;*/
+    /*border: 2px #9ea745 solid;*/
+    /*border-top-right-radius: 1.2em;*/
+    /*border-top-left-radius: 1.2em;*/
+    /*margin-top: 15px;*/
+    /*padding: 17px;*/
+    /*text-transform: uppercase;*/
+    /*letter-spacing: -1px;*/
+/*}*/
 .btn-default {
     color: #9ea745;
     background-color: #f5f6ec;
-    border: 2px #9ea745 solid;
-    border-top-right-radius: 1.2em;
-    border-top-left-radius: 1.2em;
+    /* border: 2px #9ea745 solid; */
+    /* border-top-right-radius: 1.2em; */
+    /* border-top-left-radius: 1.2em; */
     margin-top: 15px;
-    padding: 17px;
+    /* padding: 8px 10px; */
+    padding-top: 10px;
     text-transform: uppercase;
     letter-spacing: -1px;
 }

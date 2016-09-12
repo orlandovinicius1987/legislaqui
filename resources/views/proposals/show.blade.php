@@ -62,7 +62,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="panel-footer row">
+                <div class="panel-footer">
                     {{--<div class="pull-left botao">--}}
 
                         {{--<a href="{{ URL::current() }}/like" class="btn btn-info" role="button">Apoiar essa Ideia!</a>--}}
@@ -81,7 +81,8 @@
 
                     {{--</div>--}}
 
-                    <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-12">
                         @can('edit', $proposal)
                         <a href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary botao">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Ideia</a>
@@ -100,6 +101,7 @@
 
                         <a href="{{ route('home')}}" class="btn btn-primary botao pull-right">
                         <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Voltar</a>
+                        </div>
                     </div>
 
                     {{--<div class="socialmedia">--}}

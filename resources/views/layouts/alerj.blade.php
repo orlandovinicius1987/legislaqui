@@ -356,7 +356,7 @@
                     {{--</div>--}}
                     <div class="col-sm-4 col-xs-12 over">
                         <div class="legislaqui text-center"><a href="/"><span class="letra_branca">#</span><span class="letra_azul">Legisl</span><span class="letra_branca">aqui</span></a>
-                            <div class="moto"><b>Você legislando na ALERJ</b></div>
+                            <div class="moto letra_azul"><b>Você legislando na ALERJ</b></div>
                         </div>
                     </div>
                     <div class="col-sm-8 col-xs-12 pull-right">
