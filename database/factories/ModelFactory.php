@@ -24,8 +24,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => Hash::make('123456'),
         //'is_admin' => $faker->boolean(30),
         'remember_token' => str_random(10),
-        //Aprovador 1 or Cidadao 99
-        'role_id' => $faker->randomElement([1, 99]),
+        //Aprovador 1 - Comissao 2 - Cidadao 99
+        'role_id' => $faker->randomElement([1, 2, 99]),
         'uf'      => State::all()->shuffle()->first()->uf,
         'cpf'     => $faker->cpf,
         'uuid'    => $faker->uuid,
