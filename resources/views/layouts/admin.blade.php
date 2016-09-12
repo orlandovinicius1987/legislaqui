@@ -122,10 +122,10 @@
         $('#example2').DataTable(
                 {
                     "oLanguage": {
-                        "sLengthMenu": "Mostrando _MENU_ propostas",
+                        "sLengthMenu": "Mostrando _MENU_ registros",
                         "sSearch": "Pesquisa:",
-                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ propostas",
-                        "sInfoEmpty": "Sem propostas para mostrar",
+                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                        "sInfoEmpty": "Sem registros para mostrar",
                         "oPaginate": {
                             "sPrevious": "Anterior",
                             "sNext" : "Próximo"
