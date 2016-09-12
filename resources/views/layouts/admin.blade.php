@@ -121,6 +121,7 @@
         $("#example1").DataTable();
         $('#example2').DataTable(
                 {
+                    "order": [],
                     "oLanguage": {
                         "sLengthMenu": "Mostrando _MENU_ registros",
                         "sSearch": "Pesquisa:",
@@ -146,6 +147,7 @@
         );
         $('#example3').DataTable(
                 {
+                    "order": [],
                     "oLanguage": {
                         "sLengthMenu": "Mostrando _MENU_ registros",
                         "sSearch": "Pesquisa:",
