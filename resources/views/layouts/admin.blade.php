@@ -125,6 +125,7 @@
                         "sLengthMenu": "Mostrando _MENU_ registros",
                         "sSearch": "Pesquisa:",
                         "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                        "sEmptyTable": "Sem registros para mostrar",
                         "sInfoEmpty": "Sem registros para mostrar",
                         "oPaginate": {
                             "sPrevious": "Anterior",
@@ -143,7 +144,21 @@
 //                    ]
 //                }
         );
-        $('#example3').DataTable();
+        $('#example3').DataTable(
+                {
+                    "oLanguage": {
+                        "sLengthMenu": "Mostrando _MENU_ registros",
+                        "sSearch": "Pesquisa:",
+                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                        "sEmptyTable": "Sem registros para mostrar",
+                        "sInfoEmpty": "Sem registros para mostrar",
+                        "oPaginate": {
+                            "sPrevious": "Anterior",
+                            "sNext" : "Próximo"
+                        }
+                    }
+                }
+        );
     });
 </script>
 
