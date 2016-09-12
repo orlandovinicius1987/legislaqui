@@ -1217,6 +1217,11 @@ a.square {
     position: inherit;
 }
 
+.action_links a:hover {
+    color: white;
+    text-decoration: none;
+}
+
 /* Colors */
 /*Azul Escuro*/
 /*#212e52;*/
