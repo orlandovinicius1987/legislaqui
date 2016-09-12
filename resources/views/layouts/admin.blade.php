@@ -120,6 +120,18 @@
     $(function () {
         $("#example1").DataTable();
         $('#example2').DataTable(
+                {
+                    "oLanguage": {
+                        "sLengthMenu": "Mostrando _MENU_ propostas",
+                        "sSearch": "Pesquisa:",
+                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ propostas",
+                        "sInfoEmpty": "Sem propostas para mostrar",
+                        "oPaginate": {
+                            "sPrevious": "Anterior",
+                            "sNext" : "Próximo"
+                        }
+                    }
+                }
 //                {
 //                    "columnDefs": [
 //                        { "width": "5%", "targets": 0 },
