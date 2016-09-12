@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //50 Users and Proposals
+        //15 Users and Proposals
         factory(App\User::class, 15)->create()->each(function ($user) {
             //echo "user: $user->id\n";
 
