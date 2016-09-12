@@ -143,7 +143,11 @@
 //                    ]
 //                }
         );
-        $('#example3').DataTable();
+        $('#example3').DataTable(
+                {
+
+                }
+        );
     });
 </script>
 
