@@ -881,11 +881,11 @@ button {
 }
 
 .legislaqui {
-    background-color: #FB651D;
+    /*background-color: #FB651D;*/
     line-height: 3.6em;
     /*height: 70px;*/
-    border-radius: 18px 18px 0px 0px;
-    border: 2px #9ea745 solid;
+    /*border-radius: 18px 18px 0px 0px;*/
+    /*border: 2px #9ea745 solid;*/
     margin-top: -20px;
     padding: 15px;
     padding-left: 5px;
@@ -909,7 +909,7 @@ button {
 }
 
 .letra_branca {
-    color: white;
+    color: #FB651D;
 }
 
 .letra_azul {
@@ -937,10 +937,11 @@ button {
 
 .moto {
     line-height: 0.8em;
-    font-size: 0.8em;
+    font-size: 0.9em;
     text-transform: uppercase;
-    font-weight: bolder;
-    margin-bottom: 5px;
+    font-weight: 800;
+    margin-top: -5px;
+    font-family: dinbold;
 }
 
 .over {
