@@ -119,7 +119,7 @@
 <script>
     $(function () {
         $("#example1").DataTable();
-        $('#example2').DataTable(
+        $('#dataTableAdmin').DataTable(
                 {
                     "order": [],
                     "oLanguage": {
@@ -145,7 +145,7 @@
 //                    ]
 //                }
         );
-        $('#example3').DataTable(
+        $('#dataTableAdmin2').DataTable(
                 {
                     "order": [],
                     "oLanguage": {
