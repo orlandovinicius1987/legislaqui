@@ -285,9 +285,8 @@
 
             <!-- relationship commissions -->
             <li class="pai"><a href="/committee" class="titulo " title="Comissões">Nossas comissões</a></li>
-
+            <li class="pai"><a href="/terms" class="titulo " title="Comissões">Termos de uso</a></li>
             <li class="pai"><a href="/contact" class="titulo " title="Contato">Contato</a></li>
-
             {{--<li class="pai">--}}
                 {{--<a target="" href="javascript:;" class="titulo " title="ATIVIDADE PARLAMENTAR">ATIVIDADE PARLAMENTAR</a>--}}
                 {{--<div class='submenu'><ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Plenário'>Plenário</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=57' title='Discursos e Votações'>Discursos e Votações</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=59' title='Ordem do Dia'>Ordem do Dia</a></li></ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Comissões'>Comissões</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=60' title='O Que São'>O Que São</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=61' title='Comissões Permanentes'>Comissões Permanentes</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=62' title='CPI (COMISSÃO PARLAMENTAR DE INQUÉRITO)'>CPI (COMISSÃO PARLAMENTAR DE INQUÉRITO)</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=63' title='Comissões Especiais'>Comissões Especiais</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=64' title='Comissões de Representação'>Comissões de Representação</a></li></ul><li><a target='_blank' href='http://www2.alerj.rj.gov.br/Diario-of.htm' title='Diário Oficial'>Diário Oficial</a></li><li><a target='_blank' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=1' title='Processo Legislativo'>Processo Legislativo</a></li></ul><div class='detalhe'></div></div>--}}

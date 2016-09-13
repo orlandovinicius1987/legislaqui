@@ -6,6 +6,7 @@ use App\Events\ProposalReachedApprovalGoal;
 use App\Proposal;
 use App\User;
 use Auth;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Facades\Mail;
 use Session;
@@ -56,6 +57,40 @@ class ProposalsRepository
             // Fire Event
             event(new ProposalReachedApprovalGoal($proposal));
         }
+    }
+
+    public function toCommittee($id)
+    {
+        $proposal = $this->find($id);
+
+        // Set in_committee flag
+        $proposal->in_committee = true;
+        $proposal->save();
+        return $proposal;
+    }
+
+    public function setApprovalGoal($id)
+    {
+        $proposal = $this->find($id);
+
+        // Set approval_goal flag
+        $proposal->approval_goal = true;
+        $proposal->save();
+        return $proposal;
+    }
+
+    public function publish($id)
+    {
+        $proposal = $this->find($id);
+
+        //Append Moderation Info only if never been Moderated before
+        if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null) {
+            $proposal->approved_at = Carbon::now();
+            $proposal->approved_by = Auth::user()->id;
+            //Save
+            $proposal->save();
+        }
+        return $proposal;
     }
 
     public function notResponded()
