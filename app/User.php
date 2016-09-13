@@ -63,13 +63,19 @@ class User extends Authenticatable
     // Get is_admin attribute
     public function getIsAdminAttribute()
     {
-        return Auth::user()->role_id === 0 or Auth::user()->role_id === 1;
+        return Auth::user()->role_id === 0 or Auth::user()->role_id === 1 or Auth::user()->role_id === 2;
     }
 
     // Get is_super_user attribute
     public function getIsSuperUserAttribute()
     {
         return Auth::user()->role_id === 0;
+    }
+
+    // Get is_committee_user attribute
+    public function getIsCommitteeUserAttribute()
+    {
+        return Auth::user()->role_id === 0 or Auth::user()->role_id === 2;
     }
 
     // Get Role Name
