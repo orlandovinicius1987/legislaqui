@@ -32,11 +32,11 @@
                         <div class="pull-right"><a href="{{ route('admin.proposal.create') }}" class="btn btn-success"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Proposta</a></div>
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div id="dataTableAdmin_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="example2" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="example2_info">
+                                    <table id="dataTableAdmin" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="example2_info">
                                         <thead>
                                         <tr role="row">
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Id: activate to sort column ascending" style="width: 68px;">Id</th>
