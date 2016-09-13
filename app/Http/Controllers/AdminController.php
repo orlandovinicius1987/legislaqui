@@ -426,6 +426,27 @@ class AdminController extends Controller
         return redirect()->route('admin.proposals.approvalGoal')->with('admin_proposal_crud_msg', 'Ideia Legislativa enviada ao Comitê com Sucesso');
     }
 
+
+    public function bypass($id)
+    {
+        $proposal = $this->proposalsRepository->find($id);
+
+        //Approve
+        //Append Moderation Info only if never been Moderated before
+        if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null) {
+            $proposal->approved_at = Carbon::now();
+            $proposal->approved_by = Auth::user()->id;
+            //Save
+            $proposal->save();
+        }
+
+        // Set in_committee flag
+        $proposal->in_committee = true;
+        $proposal->save();
+
+        return redirect()->route('admin.proposals.approvalGoal')->with('admin_proposal_crud_msg', 'Ideia Legislativa enviada ao Comitê com Sucesso');
+    }
+
     /**
      * Committee Moderation: Approving Proposal when it reached approval Goal and forward to respective Committee.
      *

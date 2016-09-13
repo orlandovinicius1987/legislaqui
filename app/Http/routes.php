@@ -170,6 +170,8 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 
     Route::get('admin/proposals/disapproved-by-committee', ['as' => 'admin.proposal.disapprovedByCommittee', 'uses' => 'AdminController@disapprovedByCommittee']);
 
+    Route::get('admin/proposals/{id}/bypass', ['as' => 'admin.proposal.bypass', 'uses' => 'AdminController@bypass']);
+
     Route::get('/admin/logout', function () {
         Auth::logout();
 
