@@ -119,7 +119,8 @@
 <script>
     $(function () {
         $("#example1").DataTable();
-        $('#dataTableAdmin').DataTable(
+        // DataTable #Todas Interface do Admin //
+        $("#dataTableAdmin").DataTable(
                 {
                     "order": [],
                     "oLanguage": {
@@ -145,7 +146,8 @@
 //                    ]
 //                }
         );
-        $('#dataTableAdmin2').DataTable(
+        // DataTable das demais //
+        $("#dataTableAdmin2").DataTable(
                 {
                     "order": [],
                     "oLanguage": {
