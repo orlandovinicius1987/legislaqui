@@ -6,10 +6,10 @@ use App\Events\ProposalReachedApprovalGoal;
 use App\Proposal;
 use App\User;
 use Auth;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Facades\Mail;
 use Session;
-use Carbon\Carbon;
 
 class ProposalsRepository
 {
