@@ -22,7 +22,7 @@ class ProposalsRepository
 
     public function all()
     {
-        return Proposal::all();
+        return Proposal::orderBy('updated_at', 'desc')->get();
     }
 
     public function find($id)
@@ -63,28 +63,36 @@ class ProposalsRepository
         return Proposal::whereNull('approved_by')
             ->whereNull('disapproved_by')
             ->whereNull('response')
+            ->orderBy('updated_at', 'desc')
             ->get();
     }
 
     public function approved()
     {
-        return Proposal::whereNotNull('approved_by')->get();
+        return Proposal::whereNotNull('approved_by')
+            ->orderBy('updated_at', 'desc')
+            ->get();
     }
 
     public function disapproved()
     {
-        return Proposal::whereNotNull('disapproved_by')->get();
+        return Proposal::whereNotNull('disapproved_by')
+            ->orderBy('updated_at', 'desc')
+            ->get();
     }
 
     public function expired()
     {
-        return Proposal::where('time_limit', true)->get();
+        return Proposal::where('time_limit', true)
+            ->orderBy('updated_at', 'desc')
+            ->get();
     }
 
     public function approvalGoal()
     {
         return Proposal::where('approval_goal', true)
             ->where('in_committee', false)
+            ->orderBy('updated_at', 'desc')
             ->get();
     }
 
@@ -94,17 +102,22 @@ class ProposalsRepository
             ->where('in_committee', true)
             ->whereNull('approved_by_committee')
             ->whereNull('disapproved_by_committee')
+            ->orderBy('updated_at', 'desc')
             ->get();
     }
 
     public function approvedByCommittee()
     {
-        return Proposal::whereNotNull('approved_by_committee')->get();
+        return Proposal::whereNotNull('approved_by_committee')
+            ->orderBy('updated_at', 'desc')
+            ->get();
     }
 
     public function disapprovedByCommittee()
     {
-        return Proposal::whereNotNull('disapproved_by_committee')->get();
+        return Proposal::whereNotNull('disapproved_by_committee')
+            ->orderBy('updated_at', 'desc')
+            ->get();
     }
 
     public function timeLimit()

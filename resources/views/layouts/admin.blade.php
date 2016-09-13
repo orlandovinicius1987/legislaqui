@@ -49,7 +49,7 @@
         <section class="content-header">
             <h1>
                 Dashboard
-                <small>Control panel</small>
+                <small>Painel de Controle</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -63,9 +63,9 @@
     </div><!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 2.0
+            <b>Version</b> 1.0
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; #Legislaqui 2016 <a href="http://alerj.rj.gov.br">Alerj</a>.</strong> Todos os direitos reservados.
     </footer>
 </div><!-- ./wrapper -->
 
@@ -119,7 +119,21 @@
 <script>
     $(function () {
         $("#example1").DataTable();
-        $('#example2').DataTable(
+        $('#dataTableAdmin').DataTable(
+                {
+                    "order": [],
+                    "oLanguage": {
+                        "sLengthMenu": "Mostrando _MENU_ registros",
+                        "sSearch": "Pesquisa:",
+                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                        "sEmptyTable": "Sem registros para mostrar",
+                        "sInfoEmpty": "Sem registros para mostrar",
+                        "oPaginate": {
+                            "sPrevious": "Anterior",
+                            "sNext" : "Próximo"
+                        }
+                    }
+                }
 //                {
 //                    "columnDefs": [
 //                        { "width": "5%", "targets": 0 },
@@ -131,7 +145,22 @@
 //                    ]
 //                }
         );
-        $('#example3').DataTable();
+        $('#dataTableAdmin2').DataTable(
+                {
+                    "order": [],
+                    "oLanguage": {
+                        "sLengthMenu": "Mostrando _MENU_ registros",
+                        "sSearch": "Pesquisa:",
+                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                        "sEmptyTable": "Sem registros para mostrar",
+                        "sInfoEmpty": "Sem registros para mostrar",
+                        "oPaginate": {
+                            "sPrevious": "Anterior",
+                            "sNext" : "Próximo"
+                        }
+                    }
+                }
+        );
     });
 </script>
 

@@ -29,11 +29,11 @@
                         <h3 class="box-title">Propostas Legislativas que estão em Comissão</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        <div id="example3_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="example3" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="example3_info">
+                                    <table id="dataTableAdmin2" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="dataTableAdmin2_info">
                                         <thead>
                                         <tr role="row">
                                             <th>Id</th>

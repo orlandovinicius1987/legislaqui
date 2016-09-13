@@ -38,7 +38,7 @@
                     <li><a href="/admin/proposals/approved"><i class="fa fa-check-circle-o text-success"></i> Publicadas</a></li>
                     <li><a href="/admin/proposals/disapproved"><i class="fa fa-times-circle text-warning"></i> Desaprovadas</a></li>
                     <hr>
-                    <li><a href="/admin/proposals/approval-goal"><i class="fa fa-trophy text-success"></i> {{ config('global.approvalGoal') }} Apoios</a></li>
+                    <li><a href="/admin/proposals/approval-goal"><i class="fa fa-trophy text-success"></i>Atingiram {{ config('global.approvalGoal') }} apoios</a></li>
                     <li><a href="/admin/proposals/expired"><i class="fa fa-clock-o text-warning"></i> Ideias Expiradas</a></li>
                     <hr>
                     <li><a>Na Comissão</a></li>

@@ -2,17 +2,7 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Global Variables
-    |--------------------------------------------------------------------------
-    |
-    | This option controls the global variables that application use while
-    | functioning. Set proper values to attend and be in compliance with local laws.
-    |
-    */
-
-    'approvalGoal' => 5,
+    'approvalGoal' => env('APPROVAL_GOAL', 20000),
 
     'timeLimit' => 180,
 
