@@ -415,13 +415,14 @@ class AdminController extends Controller
 
         return redirect()->route('admin.proposals.approvalGoal')->with('admin_proposal_crud_msg', 'Ideia Legislativa enviada ao Comitê com Sucesso');
     }
-    
+
     public function bypass($id)
     {
         $this->proposalsRepository->publish($id);
+        $this->proposalsRepository->setApprovalGoal($id);
         $this->proposalsRepository->toCommittee($id);
 
-        return redirect()->route('admin.proposals.approvalGoal')->with('admin_proposal_crud_msg', 'Ideia Legislativa enviada ao Comitê com Sucesso');
+        return redirect()->route('admin.proposals.inCommittee')->with('admin_proposal_crud_msg', 'Ideia Legislativa enviada ao Comitê com Sucesso');
     }
 
     /**

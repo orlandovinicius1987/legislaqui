@@ -69,6 +69,16 @@ class ProposalsRepository
         return $proposal;
     }
 
+    public function setApprovalGoal($id)
+    {
+        $proposal = $this->find($id);
+
+        // Set approval_goal flag
+        $proposal->approval_goal = true;
+        $proposal->save();
+        return $proposal;
+    }
+
     public function publish($id)
     {
         $proposal = $this->find($id);
