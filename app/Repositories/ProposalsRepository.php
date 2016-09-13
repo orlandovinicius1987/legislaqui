@@ -66,6 +66,7 @@ class ProposalsRepository
         // Set in_committee flag
         $proposal->in_committee = true;
         $proposal->save();
+
         return $proposal;
     }
 
@@ -76,6 +77,7 @@ class ProposalsRepository
         // Set approval_goal flag
         $proposal->approval_goal = true;
         $proposal->save();
+
         return $proposal;
     }
 
@@ -90,6 +92,7 @@ class ProposalsRepository
             //Save
             $proposal->save();
         }
+
         return $proposal;
     }
 

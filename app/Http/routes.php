@@ -78,7 +78,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('contact', ['as' => 'contact_store', 'uses' => 'AboutController@store']);
     // relationship commissions
     Route::get('committee', ['as' => 'committee', 'uses' => 'AboutController@committee']);
-
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
