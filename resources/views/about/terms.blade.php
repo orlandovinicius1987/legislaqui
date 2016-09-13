@@ -25,7 +25,7 @@
                     Ideia Legislativa
                 </h3>
                 <p>
-                    Enviar e apoiar ideias legislativas, que são sugestões de alteração na legislação vigente ou de criação de novas leis. As ideias que receberem 20 mil apoios serão encaminhadas para a Comissão de Direitos Humanos e Legislação Participativa (CDH), onde receberão parecer; Saiba mais
+                    O cidadão pode enviar e/ou apoiar ideias legislativas - que são sugestões de alteração na legislação vigente ou para a criação de novas leis. As ideias que receberem 20 mil apoios serão encaminhadas para a Comissão de Direitos Humanos e Legislação Participativa (CDH), onde receberão parecer.
                 </p>
                 <hr>
                 <h3 class="instrucao-topico-h3">
@@ -57,7 +57,7 @@
                 </p>
 
                 <p>
-                    Caso sejam identificadas informações ou conteúdos que não estejam em conformidade com as exigências descritas acima, o Portal #Legislaaqui se reserva o direito de bloquear o cadastro do cidadão e de não publicar o conteúdo enviado, além de bloquear o acesso de determinados endereços IP. Essas e outras providências poderão ser adotadas, ainda, se identificado cadastramento, envio de mensagens ou qualquer outra manifestação originária de sistema automatizado (scripts, bots, etc.).
+                    Caso sejam identificadas informações ou conteúdos que não estejam em conformidade com as exigências descritas acima, o Portal #Legislaaqui se reserva o direito de não publicar o conteúdo enviado e, até mesmo, bloquear o cadastro do cidadão(além de bloquear o acesso de determinados endereços IP). Essas e outras providências poderão ser adotadas, ainda, se identificado cadastramento, envio de mensagens ou qualquer outra manifestação originária de sistema automatizado (scripts, bots, etc).
                 </p>
                 <p class="instrucao-fundo-cinza">
                     Todo o conteúdo proposto pelo cidadão passará por moderação do Portal #Legislaaqui. O objetivo da moderação não é a realização de qualquer tipo de censura de assuntos ou temas tratados pelo cidadão. Busca-se, apenas, assegurar que as condições de participação descritas neste termo de uso sejam cumpridas.
