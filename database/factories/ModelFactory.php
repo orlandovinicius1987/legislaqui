@@ -46,8 +46,6 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
         'name'            => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'user_id'         => User::all()->shuffle()->first()->id,
         'open'            => true,
-        'pub_date'        => $faker->dateTime(),
-        'limit_date'      => $faker->dateTime(),
         'idea_central'    => $faker->text($maxNbChars = 100),
         'problem'         => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
         'idea_exposition' => $faker->realText($maxNbChars = 200, $indexSize = 2),
@@ -59,6 +57,8 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
         'approved_by'     => $response ? null : ($random ? null : User::all()->where('role_id', 1)->shuffle()->first()->id),
         'created_at'      => \Carbon\Carbon::now(),
         'updated_at'      => \Carbon\Carbon::now(),
+        'pub_date'        => \Carbon\Carbon::now(),
+        'limit_date'      => \Carbon\Carbon::now()->addMonth(config('global.timeLimitMonth')),
     ];
 });
 

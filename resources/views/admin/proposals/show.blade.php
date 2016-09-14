@@ -22,7 +22,7 @@
                                         <table class="table-responsive table-striped table-show">
                                             <tbody>
                                             <tr><td class="table-td-label-show">Nome</td><td class="table-td-show"> {{ $proposal->user->name }}</td></tr>
-                                            <tr><td class="table-td-label-show">Situação</td><td class="table-td-show"> {{ $proposal->open }}</td></tr>
+                                            <tr><td class="table-td-label-show">Situação</td><td class="table-td-show"> {{  $proposal->open ? 'Aberta' : 'Fechada'   }}</td></tr>
                                             <tr><td class="table-td-label-show">Data Publicação</td><td class="table-td-show"> {{ $proposal->pub_date->format('d/m/Y') }}</td></tr>
                                             <tr><td class="table-td-label-show">Data Limite</td><td class="table-td-show"> {{ $proposal->limit_date->format('d/m/Y') }}</td></tr>
                                             <tr><td class="table-td-label-show">Ideia Central</td><td class="table-td-show"> {!! $proposal->idea_central !!}</td></tr>

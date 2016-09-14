@@ -29,7 +29,7 @@
                     <table class="table-responsive table-striped table-show">
                         <tbody>
 
-                            <tr><td class="table-td-label-show">User Id</td><td class="table-td-show"> {{ $proposal->user->name }}</td></tr>
+                            <tr><td class="table-td-label-show">Nome</td><td class="table-td-show"> {{ $proposal->user->name }}</td></tr>
                             {{--<tr><td class="table-td-label-show">Situação</td><td class="table-td-show">--}}
 
                                     {{--@if ($proposal->approval == 0)--}}
@@ -53,8 +53,9 @@
                             <tr><td class="table-td-label-show">Ideia Central</td><td class="table-td-show"> {!! $proposal->idea_central !!}</td></tr>
                             <tr><td class="table-td-label-show">Problema</td><td class="table-td-show"> {!! $proposal->problem !!}</td></tr>
                             <tr><td class="table-td-label-show">Exposição da Ideia</td><td class="table-td-show"> {!! $proposal->idea_exposition !!}</td></tr>
-                            <tr><td class="table-td-label-show">Número de Curtidas</td><td class="table-td-show"> {{ $proposal->total_like_count }}</td></tr>
-                            <tr><td class="table-td-label-show">Número de Apoios</td><td class="table-td-show"> {{ $proposal->approvals->count() }}</td></tr>
+                            <tr><td class="table-td-label-show">Curtidas</td><td class="table-td-show"> {{ $proposal->like_count }}</td></tr>
+                            <tr><td class="table-td-label-show">Não Curtidas</td><td class="table-td-show"> {{ $proposal->unlike_count }}</td></tr>
+                            <tr><td class="table-td-label-show">Apoios</td><td class="table-td-show"> {{ $proposal->approvals->count() }}</td></tr>
                             <tr></tr>
                             {{-- if has response -> return response data, else null --}}
                             <tr><td class="table-td-label-show">Autor Resposta</td><td class="table-td-show"> {{ $proposal->responder ? $proposal->responder->name  : null }}</td></tr>
