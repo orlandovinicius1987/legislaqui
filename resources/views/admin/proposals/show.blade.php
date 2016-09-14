@@ -43,6 +43,7 @@
                                     </div>
 
                                     <div class="panel-footer">
+                                        <div class="row">
                                         {{--Proposal Moderation--}}
                                         <div class="pull-left botao">
                                             @if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
@@ -88,6 +89,7 @@
                                             {{--<a href="{{ route('admin.proposal.destroy', $proposal->id) }}" class="btn btn-danger botao" onclick="if(!confirm('Você tem certeza que deseja apagar essa Ideia Legislativa?')){return false;};">--}}
                                                 {{--<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Proposta</a>--}}
                                             {{--@endcan--}}
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
