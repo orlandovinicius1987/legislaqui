@@ -273,8 +273,8 @@ class ProposalsController extends Controller
 
         $input['user_id'] = Auth::user()->id;
         $input['open'] = true;
-        $input['pub_date'] = Carbon::now();
-        $input['limit_date'] = Carbon::now();
+        //$input['pub_date'] = Carbon::now();
+        //$input['limit_date'] = Carbon::now();
 
         //Create ProposalHistory Object
         $proposal_history = new ProposalHistory();
