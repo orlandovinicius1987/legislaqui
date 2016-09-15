@@ -70,6 +70,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('proposals/{id}/like', ['as' => 'proposal.like', 'uses' => 'ProposalsController@like']);
     Route::get('proposals/{id}/unlike', ['as' => 'proposal.unlike', 'uses' => 'ProposalsController@unlike']);
 
+    //Follow Button
+    Route::get('proposals/{id}/follow', ['as' => 'admin.proposal.follow', 'uses' => 'ProposalsController@follow']);
+
     //About - Contact Form
     Route::get('about', ['as' => 'about', 'uses' => 'AboutController@index']);
     // use terms
@@ -172,6 +175,10 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::get('admin/proposals/disapproved-by-committee', ['as' => 'admin.proposal.disapprovedByCommittee', 'uses' => 'AdminController@disapprovedByCommittee']);
 
     Route::get('admin/proposals/{id}/bypass', ['as' => 'admin.proposal.bypass', 'uses' => 'AdminController@bypass']);
+
+    Route::get('admin/proposals/{id}/bill-project', ['as' => 'admin.proposal.billProject', 'uses' => 'AdminController@billProject']);
+
+    Route::patch('admin/proposals/{id}/update-bill-project', ['as' => 'admin.proposal.updateBillProject', 'uses' => 'AdminController@updateBillProject']);
 
     Route::get('/admin/logout', function () {
         Auth::logout();

@@ -1,0 +1,58 @@
+@extends('layouts.admin')
+
+@section('title', 'Editar Ideia Legislativa -> Projeto de Lei')
+
+@section('content')
+
+    <div class="row">
+        <div class="col-md-12">
+
+            @include('partials.error')
+
+            <div class="panel panel-default">
+                <div class="panel-heading text-center"><strong>Editar Ideia Legislativa -> Projeto de Lei</strong></div>
+                <div class="panel-body">
+
+                    {{ Form::model($proposal, [
+                    'method' => 'PATCH',
+                    'route' => ['admin.proposal.updateBillProject', $proposal->id],
+                    'class' => 'form'
+                    ]) }}
+
+                    <div class="form-group coluna_02">
+                        {{ Form::label('Número do Projeto de Lei') }}
+                        {{ Form::text('number', null,
+                            array('required',
+                                  'class'=>'campo',
+                                  'placeholder'=>'Número do Projeto de Lei')) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('Responsável') }}
+                        {{ Form::text('owner', null,
+                            array('required',
+                                  'class'=>'campo',
+                                  'placeholder'=>'Deputado Responsável')) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('Link') }}
+                        {{ Form::text('link', null,
+                            array('required',
+                                  'class'=>'campo',
+                                  'placeholder'=>'Insira o Link')) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::submit('Gravar',
+                          array('class'=>'btn btn-primary botao')) }}
+                    </div>
+
+                    {{ Form::close() }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+@stop

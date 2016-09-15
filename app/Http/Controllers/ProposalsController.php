@@ -96,6 +96,15 @@ class ProposalsController extends Controller
         }
     }
 
+    public function follow($id)
+    {
+        //Save User
+        $user = $this->usersRepository->storeUser();
+
+        //Save Follow table
+
+    }
+
     public function finished()
     {
         return view('proposals.index')

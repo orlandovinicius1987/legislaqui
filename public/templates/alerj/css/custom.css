@@ -1247,6 +1247,10 @@ a.square {
     position: inherit;
 }
 
+.action_links {
+    font-size: 0.8em;
+}
+
 .action_links a:hover {
     color: #212e52;
     text-decoration: none;

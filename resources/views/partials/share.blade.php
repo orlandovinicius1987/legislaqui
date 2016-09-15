@@ -10,13 +10,17 @@
 
     @if (!Auth::check())
         <a href="{{ route('proposal.approval', $proposal->id) }}" onclick="if(!confirm('Para apoiar oficialmente uma ideia legislativa você precisa criar uma conta na página da ALERJ.')){return false;};">
-            <i class="fa fa-star" aria-hidden="true"></i> Apoiar essa Ideia!
+            <i class="fa fa-star" aria-hidden="true"></i> Apoiar!
         </a>
     @else
         <a href="{{ route('proposal.approval', $proposal->id) }}">
-            <i class="fa fa-star" aria-hidden="true"></i> Apoiar essa Ideia!
+            <i class="fa fa-star" aria-hidden="true"></i> Apoiar!
         </a>
     @endif
+
+    <a href="{{ route('proposal.follow', $proposal->id) }}">
+        <i class="fa fa-asterisk" aria-hidden="true"></i> Acompanhar essa Ideia!
+    </a>
 
     <div class="pull-right">
 
