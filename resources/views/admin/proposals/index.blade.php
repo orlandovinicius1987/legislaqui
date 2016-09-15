@@ -29,7 +29,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Ideias Legislativas</h3>
-                        <div class="pull-right"><a href="{{ route('admin.proposal.create') }}" class="btn btn-success"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Proposta</a></div>
+                        <div class="pull-right"><a href="{{ route('admin.proposal.create') }}" class="btn btn-success"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Ideia</a></div>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div id="dataTableAdmin_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -45,7 +45,7 @@
                                             {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Dislikes: activate to sort column ascending" style="width: 214px;">Dislikes</th>--}}
                                             {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rating: activate to sort column ascending" style="width: 168px;">Rating</th>--}}
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Apoios: activate to sort column ascending" style="width: 168px;">Apoios</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Moderação</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Publicação</th>
                                             {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Resposta</th>--}}
                                         </tr>
                                         </thead>
@@ -73,9 +73,13 @@
                                                     {{--@endif--}}
                                                     @if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
                                                         <a href="{{ route('admin.proposal.response', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
-                                                            <i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa Ideia! </a>
+                                                            <i class="fa fa-cog fa-spin fa fa-fw"></i> Publicar essa Ideia! </a>
                                                     @else
-                                                        <i class="fa fa-check-square text-success" aria-hidden="true"></i> Já Moderada
+                                                        @if ($proposal->approved_at)
+                                                            <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i> Já Publicada
+                                                        @else
+                                                            <i class="fa fa-times-circle text-warning" aria-hidden="true"></i> Desaprovada
+                                                        @endif
                                                     @endif
                                                 </td>
 

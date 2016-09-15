@@ -78,7 +78,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('contact', ['as' => 'contact_store', 'uses' => 'AboutController@store']);
     // relationship commissions
     Route::get('committee', ['as' => 'committee', 'uses' => 'AboutController@committee']);
-
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
@@ -171,6 +170,8 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::get('admin/proposals/approved-by-committee', ['as' => 'admin.proposal.approvedByCommittee', 'uses' => 'AdminController@approvedByCommittee']);
 
     Route::get('admin/proposals/disapproved-by-committee', ['as' => 'admin.proposal.disapprovedByCommittee', 'uses' => 'AdminController@disapprovedByCommittee']);
+
+    Route::get('admin/proposals/{id}/bypass', ['as' => 'admin.proposal.bypass', 'uses' => 'AdminController@bypass']);
 
     Route::get('/admin/logout', function () {
         Auth::logout();

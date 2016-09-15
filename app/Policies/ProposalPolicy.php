@@ -21,6 +21,19 @@ class ProposalPolicy
     }
 
     /**
+     * Determine if the given proposal can be bypassed to committee by the user.
+     *
+     * @param \App\User     $user
+     * @param \App\Proposal $proposal
+     *
+     * @return bool
+     */
+    public function bypass(User $user, Proposal $proposal)
+    {
+        return $user->is_committee_user;
+    }
+
+    /**
      * Determine if the given proposal can be updated by the user.
      *
      * @param \App\User     $user

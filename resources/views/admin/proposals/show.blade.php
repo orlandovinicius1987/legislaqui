@@ -79,6 +79,11 @@
                                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Proposta</a>
                                             @endcan
 
+                                            @can('bypass', $proposal)
+                                            <a href="{{ route('admin.proposal.bypass', $proposal->id) }}" class="btn btn-danger botao">
+                                                <span class="glyphicon glyphicon-forward" aria-hidden="true"></span> Enviar diretamente à Comissão</a>
+                                            @endcan
+
                                             {{--@can('destroy', $proposal)--}}
                                             {{--<a href="{{ route('admin.proposal.destroy', $proposal->id) }}" class="btn btn-danger botao" onclick="if(!confirm('Você tem certeza que deseja apagar essa Ideia Legislativa?')){return false;};">--}}
                                                 {{--<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Proposta</a>--}}

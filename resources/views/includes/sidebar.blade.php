@@ -34,7 +34,7 @@
                     {{--<li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>--}}
                     <li><a>Ideias Legislativas</a></li>
                     <li><a href="/admin/proposals"><i class="fa fa-hashtag text-info"></i> Todas</a></li>
-                    <li><a href="/admin/proposals/notresponded"><i class="fa fa-cogs text-danger "></i> Aguardando Moderação</a></li>
+                    <li><a href="/admin/proposals/notresponded"><i class="fa fa-cogs text-danger "></i> Aguardando Publicação</a></li>
                     <li><a href="/admin/proposals/approved"><i class="fa fa-check-circle-o text-success"></i> Publicadas</a></li>
                     <li><a href="/admin/proposals/disapproved"><i class="fa fa-times-circle text-warning"></i> Desaprovadas</a></li>
                     <hr>

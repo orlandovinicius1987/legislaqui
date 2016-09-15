@@ -855,20 +855,29 @@ button {
     font-size: 0.8em;
 }
 
+/*.panel-default>.panel-heading, .panel-default>.panel-footer {*/
+    /*!*color: #333;*!*/
+    /*!*background-color: #f5f5f5;*!*/
+    /*!*border-color: #ddd;*!*/
+    /*background-color: #212e52;*/
+    /*border: 2px #ff6600 solid;*/
+    /*color: #ff6600;*/
+    /*border-top-left-radius: 0px;*/
+    /*border-top-right-radius: 0px;*/
+    /*text-transform: uppercase;*/
+    /*font-size: 1.4em;*/
+    /*line-height: 2.6em;*/
+    /*border-radius: 10px;*/
+    /*!*margin-top: 90px;*!*/
+/*}*/
+
 .panel-default>.panel-heading, .panel-default>.panel-footer {
-    /*color: #333;*/
-    /*background-color: #f5f5f5;*/
-    /*border-color: #ddd;*/
-    background-color: #212e52;
-    border: 2px #ff6600 solid;
+
     color: #ff6600;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
     text-transform: uppercase;
     font-size: 1.4em;
-    line-height: 2.6em;
-    border-radius: 10px;
-    /*margin-top: 90px;*/
+    line-height: 1.4em;
+    border-radius: 0.8em;
 }
 
 .panel-default>.panel-heading h1 {
@@ -1209,25 +1218,25 @@ a.square {
 .btn-default:hover {
     background-color: #212e52;
     color: white;
-    border: 2px #9ea745 solid;
+    border: 1px #9ea745 solid;
 }
 
 .btn-default:focus {
     background-color: #212e52;
     color: white;
-    border: 2px #9ea745 solid;
+    border: 1px #9ea745 solid;
 }
 
 .btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default {
     background-color: #212e52;
     color: white;
-    border: 2px #9ea745 solid;
+    border: 1px #9ea745 solid;
 }
 
 .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
     background-color: #212e52;
     color: white;
-    border: 2px #9ea745 solid;
+    border: 1px #9ea745 solid;
 }
 
 .btn-group-justified {
@@ -1239,7 +1248,7 @@ a.square {
 }
 
 .action_links a:hover {
-    color: white;
+    color: #212e52;
     text-decoration: none;
 }
 
