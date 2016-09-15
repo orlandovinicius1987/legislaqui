@@ -24,7 +24,7 @@
                 encaminhada à Comissão. Antes de criar uma proposta, verifique se não há uma já criada para o mesmo fim.
                  Várias ideias semelhantes terminam diluindo o apoio dos demais cidadãos.
               </div>
-            @elseif ( $query == "comittee" )
+            @elseif ( $query == "committee" )
               <div class="col-xs-12 instrucao">
                  Essas são as propostas que receberam o apoio suficiente e, neste momento, estão sendo analisadas pela comissão.
                </div>
@@ -32,11 +32,15 @@
               <div class="col-xs-12 instrucao">
                   Essas são as propostas que não receberam o apoio suficiente e não foram encaminhadas para análise da comissão.
               </div>
-            @elseif ( $query == "disapprove" )
+            @elseif ( $query == "disapproved" )
                <div class="col-xs-12 instrucao">
                    Essas são as propostas analisadas e não acatadas pela comissão.
                </div>
-             @endif
+            @elseif ( $query == "approved" )
+                <div class="col-xs-12 instrucao">
+                    Essas são as propostas analisadas e aprovadas pela comissão.
+                </div>
+            @endif
         </div>
 
         <div class="panel panel-default">

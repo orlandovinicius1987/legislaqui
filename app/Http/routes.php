@@ -178,4 +178,8 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 
         return redirect('/');
     });
+
+    Route::get('manage-vue', 'VueItemController@manageVue');
+    Route::resource('vueitems','VueItemController');
+
 });
