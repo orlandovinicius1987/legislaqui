@@ -22,7 +22,7 @@
                                         <table class="table-responsive table-striped table-show">
                                             <tbody>
                                             <tr><td class="table-td-label-show">Nome</td><td class="table-td-show"> {{ $proposal->user->name }}</td></tr>
-                                            <tr><td class="table-td-label-show">Situação</td><td class="table-td-show"> {{ $proposal->open }}</td></tr>
+                                            <tr><td class="table-td-label-show">Situação</td><td class="table-td-show"> {{  $proposal->open ? 'Aberta' : 'Fechada'   }}</td></tr>
                                             <tr><td class="table-td-label-show">Data Publicação</td><td class="table-td-show"> {{ $proposal->pub_date->format('d/m/Y') }}</td></tr>
                                             <tr><td class="table-td-label-show">Data Limite</td><td class="table-td-show"> {{ $proposal->limit_date->format('d/m/Y') }}</td></tr>
                                             <tr><td class="table-td-label-show">Ideia Central</td><td class="table-td-show"> {!! $proposal->idea_central !!}</td></tr>
@@ -43,6 +43,7 @@
                                     </div>
 
                                     <div class="panel-footer">
+                                        <div class="row">
                                         {{--Proposal Moderation--}}
                                         <div class="pull-left botao">
                                             @if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
@@ -88,6 +89,7 @@
                                             {{--<a href="{{ route('admin.proposal.destroy', $proposal->id) }}" class="btn btn-danger botao" onclick="if(!confirm('Você tem certeza que deseja apagar essa Ideia Legislativa?')){return false;};">--}}
                                                 {{--<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Proposta</a>--}}
                                             {{--@endcan--}}
+                                        </div>
                                         </div>
                                     </div>
                                 </div>

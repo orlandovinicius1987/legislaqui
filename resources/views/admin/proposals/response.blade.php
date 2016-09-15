@@ -54,7 +54,7 @@
                               array('name' => 'approvalBtn', 'class'=>'btn btn-primary botao')) }}
 
                             {{ Form::submit('Desaprovar',
-                               array('name' => 'disapprovalBtn', 'class'=>'btn btn-primary botao')) }}
+                               array('name' => 'disapprovalBtn', 'class'=>'btn btn-danger botao')) }}
                         </div>
 
                     </div>

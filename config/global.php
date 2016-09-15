@@ -6,6 +6,8 @@ return [
 
     'timeLimit' => 180,
 
+    'timeLimitMonth' => 3,
+
     'pagination' => 20,
 
 ];
