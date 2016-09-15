@@ -14,7 +14,7 @@ class Follow extends Eloquent
     public $timestamps = false;
 
     protected $fillable = ['user_id', 'proposal_id'];
-    protected $table = 'follows';
+    protected $table = 'proposal_follows';
 
     /**
      * Get the followed proposal.
