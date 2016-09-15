@@ -39,14 +39,14 @@
                                     <table id="dataTableAdmin" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="example2_info">
                                         <thead>
                                         <tr role="row">
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Id: activate to sort column ascending" style="width: 68px;">Id</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Nome: activate to sort column descending" style="width: 296px;" aria-sort="ascending">Nome</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Likes: activate to sort column ascending" style="width: 241px;">Curtidas</th>
-                                            {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Dislikes: activate to sort column ascending" style="width: 214px;">Dislikes</th>--}}
-                                            {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rating: activate to sort column ascending" style="width: 168px;">Rating</th>--}}
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Apoios: activate to sort column ascending" style="width: 168px;">Apoios</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Publicação</th>
-                                            {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Resposta</th>--}}
+                                            <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Id: activate to sort column ascending" style="width: 68px;">Id</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Nome: activate to sort column descending" style="width: 296px;" aria-sort="ascending">Nome</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Likes: activate to sort column ascending" style="width: 241px;">Curtidas</th>
+                                            {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Dislikes: activate to sort column ascending" style="width: 214px;">Dislikes</th>--}}
+                                            {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Rating: activate to sort column ascending" style="width: 168px;">Rating</th>--}}
+                                            <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Apoios: activate to sort column ascending" style="width: 168px;">Apoios</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Publicação</th>
+                                            {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Resposta</th>--}}
                                         </tr>
                                         </thead>
                                         <tbody>

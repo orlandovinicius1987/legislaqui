@@ -28,17 +28,17 @@
                 {{--<div class="pull-right"><a href="admin/users/create" class="btn btn-success">Criar Novo Usuário</a></div>--}}
             {{--</div><!-- /.box-header -->--}}
             {{--<div class="box-body">--}}
-                {{--<div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">--}}
+                {{--<div id="dataTableUser_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">--}}
 
                     {{--<div class="row">--}}
                         {{--<div class="col-sm-12">--}}
-                            {{--<table id="example1" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="example1_info">--}}
+                            {{--<table id="dataTableUser" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="dataTableUser_info">--}}
                                 {{--<thead>--}}
                                 {{--<tr role="row">--}}
-                                    {{--<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" style="width: 196px;" aria-sort="ascending">Id</th>--}}
-                                    {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 241px;">Nome</th>--}}
-                                    {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 214px;">Email</th>--}}
-                                    {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 168px;">Função</th>--}}
+                                    {{--<th class="sorting_asc" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" style="width: 196px;" aria-sort="ascending">Id</th>--}}
+                                    {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 241px;">Nome</th>--}}
+                                    {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 214px;">Email</th>--}}
+                                    {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 168px;">Função</th>--}}
                                 {{--</tr>--}}
                                 {{--</thead>--}}
                                 {{--<tbody>--}}

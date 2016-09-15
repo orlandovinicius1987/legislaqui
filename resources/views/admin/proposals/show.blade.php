@@ -15,7 +15,7 @@
                         <h3 class="box-title">{{ $proposal->name }}</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div id="dataTableUser_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="panel-body">
