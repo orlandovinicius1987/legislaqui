@@ -23,4 +23,9 @@ class UserPolicy
     {
         return $loggedUser->is_super_user;
     }
+
+    public function bypass(User $loggedUser, User $userCan)
+    {
+        return $loggedUser->is_committee_user;
+    }
 }

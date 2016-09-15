@@ -294,16 +294,9 @@ class AdminController extends Controller
      */
     public function approvedProposal($id)
     {
-        $proposal = $this->proposalsRepository->find($id);
-
         //Append Moderation Info only if never been Moderated before
-        if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null) {
-            $proposal->approved_at = Carbon::now();
-            $proposal->approved_by = Auth::user()->id;
-            //Save
-            $proposal->save();
-
-//            return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada com Sucesso');
+        if ($proposal = $this->proposalsRepository->publish($id)) {
+            //return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada com Sucesso');
             return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada com Sucesso');
         } else {
             return redirect()->back()->with('admin_error_msg', 'Ideia Legislativa já foi Moderada!');
@@ -418,12 +411,18 @@ class AdminController extends Controller
 
     public function toCommittee($id)
     {
-        $proposal = $this->proposalsRepository->find($id);
-        // Set in_committee flag
-        $proposal->in_committee = true;
-        $proposal->save();
+        $this->proposalsRepository->toCommittee($id);
 
         return redirect()->route('admin.proposals.approvalGoal')->with('admin_proposal_crud_msg', 'Ideia Legislativa enviada ao Comitê com Sucesso');
+    }
+
+    public function bypass($id)
+    {
+        $this->proposalsRepository->publish($id);
+        $this->proposalsRepository->setApprovalGoal($id);
+        $this->proposalsRepository->toCommittee($id);
+
+        return redirect()->route('admin.proposals.inCommittee')->with('admin_proposal_crud_msg', 'Ideia Legislativa enviada ao Comitê com Sucesso');
     }
 
     /**
