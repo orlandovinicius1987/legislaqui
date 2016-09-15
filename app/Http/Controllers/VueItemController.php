@@ -3,17 +3,14 @@
  * Created by PhpStorm.
  * User: falbernaz
  * Date: 13/09/2016
- * Time: 15:52
+ * Time: 15:52.
  */
-
 namespace App\Http\Controllers;
 
-use App\Repositories\UsersRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\User;
 use App\Repositories\DataRepository;
-
+use App\Repositories\UsersRepository;
+use App\User;
+use Illuminate\Http\Request;
 
 class VueItemController extends Controller
 {
@@ -46,14 +43,14 @@ class VueItemController extends Controller
 
         $response = [
             'pagination' => [
-                'total' => $items->total(),
-                'per_page' => $items->perPage(),
+                'total'        => $items->total(),
+                'per_page'     => $items->perPage(),
                 'current_page' => $items->currentPage(),
-                'last_page' => $items->lastPage(),
-                'from' => $items->firstItem(),
-                'to' => $items->lastItem()
+                'last_page'    => $items->lastPage(),
+                'from'         => $items->firstItem(),
+                'to'           => $items->lastItem(),
             ],
-            'data' => $items
+            'data' => $items,
         ];
 
         return response()->json($response);
@@ -62,13 +59,14 @@ class VueItemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'name'  => 'required',
             'email' => 'required',
         ]);
 
@@ -85,14 +83,15 @@ class VueItemController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'name'  => 'required',
             'email' => 'required',
         ]);
 
@@ -104,12 +103,14 @@ class VueItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         User::find($id)->delete();
+
         return response()->json(['done']);
     }
 }

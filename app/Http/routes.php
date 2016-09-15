@@ -180,6 +180,5 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     });
 
     Route::get('manage-vue', 'VueItemController@manageVue');
-    Route::resource('vueitems','VueItemController');
-
+    Route::resource('vueitems', 'VueItemController');
 });
