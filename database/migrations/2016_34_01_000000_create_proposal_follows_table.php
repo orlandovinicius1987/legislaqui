@@ -8,7 +8,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateFollowsTable extends Migration
+class CreateProposalFollowsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,13 +17,13 @@ class CreateFollowsTable extends Migration
      */
     public function up()
     {
-        Schema::create('follows', function (Blueprint $table) {
+        Schema::create('proposal_follows', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('proposal_id');
         });
 
-        Schema::table('follows', function (Blueprint $table) {
+        Schema::table('proposal_follows', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('proposal_id')->references('id')->on('proposals')->onDelete('cascade')->onUpdate('cascade');
         });
@@ -36,6 +36,6 @@ class CreateFollowsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('follows');
+        Schema::drop('proposal_follows');
     }
 }
