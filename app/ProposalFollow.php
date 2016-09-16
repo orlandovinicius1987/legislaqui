@@ -9,7 +9,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Follow extends Eloquent
+class ProposalFollow extends Eloquent
 {
     public $timestamps = false;
 

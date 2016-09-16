@@ -18,9 +18,17 @@
         </a>
     @endif
 
-    <a href="{{ route('proposal.follow', $proposal->id) }}">
-        <i class="fa fa-asterisk" aria-hidden="true"></i> Acompanhar essa Ideia!
-    </a>
+    @if (!Auth::check())
+        <a href="{{ route('proposal.follow', $proposal->id) }}" onclick="if(!confirm('Para acompanhar uma ideia legislativa você precisa criar uma conta na página da ALERJ.')){return false;};">
+            <i class="fa fa-asterisk" aria-hidden="true"></i> Acompanhar essa Ideia!
+        </a>
+    @else
+        <a href="{{ route('proposal.follow', $proposal->id) }}">
+            <i class="fa fa-asterisk" aria-hidden="true"></i> Acompanhar essa Ideia!
+        </a>
+    @endif
+
+
 
     <div class="pull-right">
 

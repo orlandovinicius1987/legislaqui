@@ -70,9 +70,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('proposals/{id}/like', ['as' => 'proposal.like', 'uses' => 'ProposalsController@like']);
     Route::get('proposals/{id}/unlike', ['as' => 'proposal.unlike', 'uses' => 'ProposalsController@unlike']);
 
-    //Follow Button
-    Route::get('proposals/{id}/follow', ['as' => 'admin.proposal.follow', 'uses' => 'ProposalsController@follow']);
-
     //About - Contact Form
     Route::get('about', ['as' => 'about', 'uses' => 'AboutController@index']);
     // use terms
@@ -85,8 +82,6 @@ Route::group(['middleware' => 'web'], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     //Proposals
-    Route::get('proposals/{id}/approval', ['as' => 'proposal.approval', 'uses' => 'ProposalsController@approval']);
-
     Route::get('proposals/create', ['as' => 'proposal.create', 'uses' => 'ProposalsController@create']);
 
     Route::post('proposals', ['as' => 'proposal.store', 'uses' => 'ProposalsController@store']);
@@ -102,6 +97,12 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::patch('proposals/{id}/updateResponse', ['as' => 'proposal.updateResponse', 'uses' => 'ProposalsController@updateResponse']);
 
     Route::get('proposals/notresponded', ['as' => 'proposals.notresponded', 'uses' => 'ProposalsController@notResponded']);
+
+    //Approval Button
+    Route::get('proposals/{id}/approval', ['as' => 'proposal.approval', 'uses' => 'ProposalsController@approval']);
+
+    //Follow Button
+    Route::get('proposals/{id}/follow', ['as' => 'proposal.follow', 'uses' => 'ProposalsController@follow']);
 
     //Users
     Route::get('users/{id}/proposals', ['as' => 'users.proposals', 'uses' => 'UsersController@proposals']);
