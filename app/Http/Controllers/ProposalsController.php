@@ -97,8 +97,14 @@ class ProposalsController extends Controller
         }
     }
 
+    public function finished()
+    {
+        return view('proposals.index')
+       ->with('proposals', Proposal::where('open', false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
     /**
-     * Show the form to store the specified resource.
+     * Store Proposal Follow information.
      *
      * @param int $id
      *
@@ -117,12 +123,6 @@ class ProposalsController extends Controller
 
         return redirect()->route('proposal.show', ['proposal' => $proposal])
             ->with('proposal_crud_msg', 'Esta Ideia Legislativa será acompanhada! Obrigado.');
-    }
-
-    public function finished()
-    {
-        return view('proposals.index')
-       ->with('proposals', Proposal::where('open', false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
     }
 
     public function index()
