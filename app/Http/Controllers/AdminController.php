@@ -228,6 +228,31 @@ class AdminController extends Controller
     }
 
     /**
+     * Show the form for editing the specified BillProject resource.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function billProject($id)
+    {
+        //Get Proposal
+        $proposal = $this->proposalsRepository->find($id);
+        //$proposal = Proposal::findOrFail($id);
+
+        //Via User Model
+        //        if ($user->can('update', $post)) {
+        //            //
+        //        }
+
+        if (Gate::allows('edit', $proposal)) {
+            return view('admin.proposals.bill-project')->with('proposal', $proposal);
+        } else {
+            return redirect()->route('admin.proposals')->with('admin_error_msg', 'Você não tem direitos para realizar essa operação');
+        }
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param int $id

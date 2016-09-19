@@ -82,8 +82,6 @@ Route::group(['middleware' => 'web'], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     //Proposals
-    Route::get('proposals/{id}/approval', ['as' => 'proposal.approval', 'uses' => 'ProposalsController@approval']);
-
     Route::get('proposals/create', ['as' => 'proposal.create', 'uses' => 'ProposalsController@create']);
 
     Route::post('proposals', ['as' => 'proposal.store', 'uses' => 'ProposalsController@store']);
@@ -99,6 +97,12 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::patch('proposals/{id}/updateResponse', ['as' => 'proposal.updateResponse', 'uses' => 'ProposalsController@updateResponse']);
 
     Route::get('proposals/notresponded', ['as' => 'proposals.notresponded', 'uses' => 'ProposalsController@notResponded']);
+
+    //Approval Button
+    Route::get('proposals/{id}/approval', ['as' => 'proposal.approval', 'uses' => 'ProposalsController@approval']);
+
+    //Follow Button
+    Route::get('proposals/{id}/follow', ['as' => 'proposal.follow', 'uses' => 'ProposalsController@follow']);
 
     //Users
     Route::get('users/{id}/proposals', ['as' => 'users.proposals', 'uses' => 'UsersController@proposals']);
@@ -172,6 +176,10 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::get('admin/proposals/disapproved-by-committee', ['as' => 'admin.proposal.disapprovedByCommittee', 'uses' => 'AdminController@disapprovedByCommittee']);
 
     Route::get('admin/proposals/{id}/bypass', ['as' => 'admin.proposal.bypass', 'uses' => 'AdminController@bypass']);
+
+    Route::get('admin/proposals/{id}/bill-project', ['as' => 'admin.proposal.billProject', 'uses' => 'AdminController@billProject']);
+
+    Route::patch('admin/proposals/{id}/update-bill-project', ['as' => 'admin.proposal.updateBillProject', 'uses' => 'AdminController@updateBillProject']);
 
     Route::get('/admin/logout', function () {
         Auth::logout();

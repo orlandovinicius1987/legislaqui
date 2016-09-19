@@ -7,6 +7,7 @@ use App\Http\Requests\ProposalFormRequest;
 use App\Http\Requests\ResponseFormRequest;
 use App\Like;
 use App\Proposal;
+use App\ProposalFollow;
 use App\ProposalHistory;
 use App\Repositories\ProposalsRepository;
 use Auth;
@@ -100,6 +101,28 @@ class ProposalsController extends Controller
     {
         return view('proposals.index')
        ->with('proposals', Proposal::where('open', false)->orderBy('created_at', 'desc')->paginate(config('global.pagination')));
+    }
+
+    /**
+     * Store Proposal Follow information.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function follow($id)
+    {
+        //Get Proposal
+        $proposal = $this->proposalsRepository->find($id);
+
+        //Save Follow table
+        ProposalFollow::create([
+            'user_id'     => Auth::user()->id,
+            'proposal_id' => $proposal->id,
+        ]);
+
+        return redirect()->route('proposal.show', ['proposal' => $proposal])
+            ->with('proposal_crud_msg', 'Esta Ideia Legislativa será acompanhada! Obrigado.');
     }
 
     public function index()
