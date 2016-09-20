@@ -36,7 +36,7 @@
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="dataTableAdmin" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="example2_info">
+                                    <table id="dataTableAdmin" class="table table-bordered table-striped table-hover compact dataTable" role="grid" aria-describedby="dataTableAdmin_info">
                                         <thead>
                                         <tr role="row">
                                             <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Id: activate to sort column ascending" style="width: 68px;">Id</th>

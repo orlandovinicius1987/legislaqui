@@ -18,7 +18,7 @@
                 Antes de propor uma ideia, procure, na lista de ideias já apresentadas, outras com o mesmo conteúdo, para não dividir os apoios e atrasar a tramitação.
             </div>
 
-            @if( $query == "open" )
+            @if(($query == "open")or($query == ""))
               <div class="col-xs-12 instrucao">
                 Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
                 encaminhada à Comissão. Antes de criar uma proposta, verifique se não há uma já criada para o mesmo fim.
