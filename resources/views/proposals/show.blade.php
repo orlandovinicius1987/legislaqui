@@ -56,7 +56,6 @@
                             <tr><td class="table-td-label-show">Curtidas</td><td class="table-td-show"> {{ $proposal->like_count }}</td></tr>
                             <tr><td class="table-td-label-show">Não Curtidas</td><td class="table-td-show"> {{ $proposal->unlike_count }}</td></tr>
                             <tr><td class="table-td-label-show">Apoios</td><td class="table-td-show"> {{ $proposal->approvals->count() }}</td></tr>
-                            <tr></tr>
                             {{-- if has response -> return response data, else null --}}
                             <tr><td class="table-td-label-show">Autor Resposta</td><td class="table-td-show"> {{ $proposal->responder ? $proposal->responder->name  : null }}</td></tr>
                             <tr><td class="table-td-label-show">Resposta</td><td class="table-td-show"> {{ $proposal->response ? $proposal->response : null }}</td></tr>
