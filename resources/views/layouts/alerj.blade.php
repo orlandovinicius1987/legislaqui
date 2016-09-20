@@ -71,6 +71,14 @@
                 </a>
             </div>
 
+            <div class="logotipo2">
+
+                    <div class="legislaqui text-center"><a href="/"><span class="letra_branca">#</span><span class="letra_azul">Legisl</span><span class="letra_branca">aqui</span></a>
+                        <div class="moto letra_azul"><b>Você legislando na ALERJ</b></div>
+                    </div>
+
+            </div>
+
             <div class="coluna pull-right">
                 <div>
 
@@ -346,11 +354,7 @@
             <div class="alerj">
 
                 <div class="row">
-                    <div class="col-sm-4 col-xs-12 over">
-                        <div class="legislaqui text-center"><a href="/"><span class="letra_branca">#</span><span class="letra_azul">Legisl</span><span class="letra_branca">aqui</span></a>
-                            <div class="moto letra_azul"><b>Você legislando na ALERJ</b></div>
-                        </div>
-                    </div>
+
                     <div class="col-sm-8 col-xs-12 pull-right">
                         @if (Request::path() == '/')
                             @include('partials.header')

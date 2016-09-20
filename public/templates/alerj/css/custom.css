@@ -204,6 +204,11 @@ body {
     margin-top: 11px;
 }
 
+
+.panel-body .table {
+    margin-bottom: 0px;
+}
+
 .input-group>.search {
     margin-right: 20px;
 }
@@ -488,7 +493,9 @@ textarea {
     color: #212e52;
     text-transform: uppercase;
     text-decoration: none;
+    padding-left: 20px;
 }
+
 
 /* Bootstrap Hack */
 .navbar-default {
@@ -498,7 +505,7 @@ textarea {
 
 .panel {
     border-radius: 5px;
-    border: 3px solid #dddddd;
+    border: 3px solid #E8EAED;
     box-shadow: none;
 }
 
@@ -560,7 +567,7 @@ textarea {
 
 /* Table */
 .table-responsive {
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     width: 100%;
 }
 
@@ -816,6 +823,11 @@ textarea {
     font-weight: bold;
 }
 
+.row.explica {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .form-control {
     border: 1px solid #ff6600;
     display:inline-block;
@@ -845,7 +857,7 @@ button {
 }
 
 .panel-default h1 {
-    margin: 25px 0 0 25px;
+    /*margin: 25px 0 0 25px;*/
 }
 
 .col-xs-3.pull-right.crienova {
@@ -903,26 +915,34 @@ button {
 /*}*/
 
 .panel-default>.panel-heading, .panel-default>.panel-footer {
-
     color: #ff6600;
     text-transform: uppercase;
     font-size: 1.4em;
     line-height: 1.4em;
-    border-radius: 0.8em;
+    /*border-radius: 0.8em;*/
+    background: #E8EAED;
 }
 
 .panel-default>.panel-heading h1 {
     color: #ff6600;
     font-size: 1.3em;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
 }
 
-.panel-heading-nav, .panel-footer-nav {
-    background: #dddddd;
+.panel-heading-nav {
+    background: #E8EAED;
+    padding: 20px 20px 0px 20px;
+}
+.panel-footer-nav {
+    background: #E8EAED;
+}
+
+.buscaideia {
+    margin-top: 11px;
 }
 
 table#datatable thead {
-    background: #dddddd;
+    background: #E8EAED;
 }
 
 .social-buttons a {
@@ -1028,8 +1048,8 @@ table#datatable thead {
     }
 
     .panel-default>.panel-heading, .panel-default>.panel-footer {
-        padding-left: 3em;
-        padding-right: 3em;
+        /*padding-left: 3em;
+        padding-right: 3em;*/
         /*padding-bottom: 1em;*/
     }
 }
@@ -1306,3 +1326,10 @@ a.square {
 
 /*Verde Claro*/
 /*#f5f6ec*/
+
+
+.logotipo2{
+    float: left;
+    margin-top: 15px;
+}
+
