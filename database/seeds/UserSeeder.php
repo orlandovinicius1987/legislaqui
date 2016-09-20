@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
                 factory(App\Like::class)->create();
 
                 //Follows
-                factory(App\Follow::class)->create();
+                factory(App\ProposalFollow::class)->create();
             }
         });
 
