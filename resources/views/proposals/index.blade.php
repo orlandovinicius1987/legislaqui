@@ -64,7 +64,7 @@
                                         <a href="{{ route('proposal.create') }}">
                                             @endif
                                             <div class="icon-wrapper"><i class="fa fa-plus-circle custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
-                                            <div class="quadrado_legislaqui">Crie nova Ideia</div>
+                                            <div class="quadrado_legislaqui" title="clique para criar uma nova ideia legislativa">Sua ideia legislativa</div>
                                         </a></a>
                         </h3>
                     </div>
