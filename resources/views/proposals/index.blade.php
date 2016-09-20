@@ -38,7 +38,7 @@
         </div>
 
 
-        <div class="row">
+        <div class="row explica">
             <div class="col-xs-12 panel instrucao hidden-xs">
                 Você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar leis já existentes ou mudar a Constituição Estadual.
 
@@ -183,7 +183,7 @@
                     </table>
                 </div>
 
-                <div class="panel-footer-nav">
+                <div class="panel-footer-nav text-center">
                     {!! $proposals->links() !!}
                 </div>
         </div>

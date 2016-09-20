@@ -503,7 +503,7 @@ textarea {
 
 .panel {
     border-radius: 5px;
-    border: 3px solid #dddddd;
+    border: 3px solid #E8EAED;
     box-shadow: none;
 }
 
@@ -913,7 +913,7 @@ button {
     font-size: 1.4em;
     line-height: 1.4em;
     /*border-radius: 0.8em;*/
-    background: #dddddd;
+    background: #E8EAED;
 }
 
 .panel-default>.panel-heading h1 {
@@ -923,11 +923,11 @@ button {
 }
 
 .panel-heading-nav, .panel-footer-nav {
-    background: #dddddd;
+    background: #E8EAED;
 }
 
 table#datatable thead {
-    background: #dddddd;
+    background: #E8EAED;
 }
 
 .social-buttons a {
@@ -1311,3 +1311,10 @@ a.square {
 
 /*Verde Claro*/
 /*#f5f6ec*/
+
+
+.logotipo2{
+    float: left;
+    margin-top: 15px;
+}
+
