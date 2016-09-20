@@ -45,6 +45,6 @@ class UsersRepository
 
         $user->uuid = $uuid;
 
-        $user->save();
+        return $user->save();
     }
 }

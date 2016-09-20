@@ -176,6 +176,25 @@ class ProposalsRepository
         }
     }
 
+    public function storeBillProject()
+    {
+        $user = new BillProject();
+
+        $uuid = Uuid::uuid4();
+
+        $user->name = Input::get('name');
+        $user->email = Input::get('email');
+        $user->password = Hash::make(Input::get('password'));
+
+        $user->uf = Input::get('uf');
+        $user->role_id = Input::get('role_id');
+        $user->cpf = Input::get('cpf');
+
+        $user->uuid = $uuid;
+
+        $user->save();
+    }
+
     /**
      * Get all of the proposals for a given user.
      *
