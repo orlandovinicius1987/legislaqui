@@ -74,7 +74,7 @@ $factory->define(App\Like::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Follow::class, function (Faker\Generator $faker) {
+$factory->define(App\ProposalFollow::class, function (Faker\Generator $faker) {
 
     return [
         'user_id'     => User::all()->shuffle()->first()->id,
