@@ -493,7 +493,9 @@ textarea {
     color: #212e52;
     text-transform: uppercase;
     text-decoration: none;
+    padding-left: 20px;
 }
+
 
 /* Bootstrap Hack */
 .navbar-default {
@@ -821,6 +823,11 @@ textarea {
     font-weight: bold;
 }
 
+.row.explica {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .form-control {
     border: 1px solid #ff6600;
     display:inline-block;
@@ -922,8 +929,16 @@ button {
     /*margin-top: 30px;*/
 }
 
-.panel-heading-nav, .panel-footer-nav {
+.panel-heading-nav {
     background: #E8EAED;
+    padding: 20px 20px 0px 20px;
+}
+.panel-footer-nav {
+    background: #E8EAED;
+}
+
+.buscaideia {
+    margin-top: 11px;
 }
 
 table#datatable thead {
