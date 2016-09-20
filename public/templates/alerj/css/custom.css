@@ -191,6 +191,26 @@ body {
     margin-top: -20px;
 }
 
+.panel-body .table input[type="text"] {
+    color: #9ea745;
+    border-color: #9ea745;
+    /*width: 45vw;*/
+    margin-right: 20px;
+    border-radius: 5px !important;
+    text-transform: uppercase;
+}
+
+.panel-body .table .col-xs-4.buscaideia {
+    margin-top: 11px;
+}
+
+.input-group>.search {
+    margin-right: 20px;
+}
+
+
+
+
 .header input[type="text"] {
     color: #9ea745;
     border-color: #9ea745;
@@ -200,9 +220,8 @@ body {
     text-transform: uppercase;
 }
 
-.input-group>.search {
-    margin-right: 20px;
-}
+
+
 
 .form-control-feedback {
     background-color: #9ea745;
@@ -478,9 +497,11 @@ textarea {
 }
 
 .panel {
-    border: none;
+    border-radius: 5px;
+    border: 3px solid #dddddd;
     box-shadow: none;
 }
+
 
 .panel-bg {
     background-color: #f4f4f6;
@@ -818,13 +839,23 @@ button {
     border-radius: 20px;
 }
 
-.panel {
-    border-radius: 0px;
-}
 
 .panel-body {
     padding: 0;
-    padding-top: 15px;
+}
+
+.panel-default h1 {
+    margin: 25px 0 0 25px;
+}
+
+.col-xs-3.pull-right.crienova {
+    margin: 20px;
+}
+
+
+.filtros .btn-default {
+    font-size: 0.85em;
+    font-weight: 700;
 }
 
 .panel-heading h3 {
@@ -887,8 +918,11 @@ button {
 }
 
 .panel-heading-nav, .panel-footer-nav {
-    margin-left: 15px;
-    margin-bottom: -20px;
+    background: #dddddd;
+}
+
+table#datatable thead {
+    background: #dddddd;
 }
 
 .social-buttons a {
@@ -940,7 +974,7 @@ button {
     margin-top: -2.5em;
     padding-left: 2.5em;
     color: white;
-    width: 25vw;
+    /*width: 25vw;*/
     font-family: 'dinlight';
     padding-top: 3px;
     margin-left: 5px;
