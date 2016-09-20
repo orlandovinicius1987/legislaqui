@@ -39,7 +39,7 @@
 
 
         <div class="row">
-            <div class="col-xs-12 panel instrucao">
+            <div class="col-xs-12 panel instrucao hidden-xs">
                 Você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar leis já existentes ou mudar a Constituição Estadual.
 
                 As sugestões que receberem pelo menos 20 mil apoios serão encaminhadas à Comissão de Direitos Humanos e Legislação Participativa (CDH), onde serão discutidas e receberão parecer dos deputados, podendo virar um projeto de lei.
@@ -53,10 +53,10 @@
         <div class="panel panel-default">
             <div class="panel-heading-nav">
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-xs-12 col-md-6">
                       <h1>Idéias Legislativas</h1>
                     </div>
-                    <div class="col-xs-3 pull-right crienova">
+                    <div class="col-xs-10 col-md-3 pull-right crienova">
                         <h3>
                             @if (!Auth::check())
                                 <a href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
@@ -106,7 +106,7 @@
                         <thead>
                         <tr>
                             <th >
-                                <div class="col-xs-8 filtros">
+                                <div class="col-xs-12 col-md-8 filtros">
                                     <button type="button" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
@@ -136,7 +136,7 @@
                                 </div>
 
 
-                                    <div class="col-xs-4 buscaideia">
+                                    <div class="col-xs-12 col-md-4 buscaideia">
                                         {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
                                         {!! Form::text('search', null,
                                             array('required',
