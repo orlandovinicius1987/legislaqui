@@ -540,6 +540,38 @@ td.blue_link {
     border-radius: 16px 0 0 0 ;
 }
 
+@media only screen and (max-width: 496px) {
+    .corpodaideia .panel-heading {
+        border-radius: 0 ;
+    }
+    .tituloideia .panel h1 {
+        font-size: 1.3em;
+        margin: 15px 15px 0px 10px;
+        color: #ff6600;
+    }
+    .tituloideia .panel {
+        border-radius: 15px 15px 0px 0px;
+        min-height: 80px;
+    }
+    .corpodaideia .panel {
+        border-radius: 0;
+    }
+    .share_links {
+        font-size: 16px;
+    }
+    .action_links{
+        font-size: 16px;
+    }
+    .titulopagina {
+        text-align: center;
+    }
+
+    .titulopagina h1{
+        font-size: 1.4em;
+        font-family: dinbold;
+    }
+}
+
 
 .panel-bg {
     background-color: #f4f4f6;
