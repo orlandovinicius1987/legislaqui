@@ -539,6 +539,12 @@ td.blue_link {
 .corpodaideia .panel-heading {
     border-radius: 16px 0 0 0 ;
 }
+p.leading {
+    font-size: 22px;
+    text-align: center;
+    line-height: 26px;
+    font-family: dinregular;
+}
 
 @media only screen and (max-width: 496px) {
     .corpodaideia .panel-heading {
@@ -569,6 +575,19 @@ td.blue_link {
     .titulopagina h1{
         font-size: 1.4em;
         font-family: dinbold;
+    }
+    .titulosecao {
+        margin-top: 10px;
+        font-size: 11px;
+        font-family: dinbold;
+        margin-bottom: 10px;
+    }
+    p.leading {
+        font-size: 16px;
+        text-align: center;
+        line-height: 18px;
+        font-family: dinbold;
+        margin: 5px 15px 0px;
     }
 }
 
@@ -1418,9 +1437,3 @@ a.square {
 
 
 
-p.leading {
-    font-size: 22px;
-    text-align: center;
-    line-height: 26px;
-    font-family: dinregular;
-}
