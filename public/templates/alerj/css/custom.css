@@ -493,7 +493,10 @@ textarea {
     color: #212e52;
     text-transform: uppercase;
     text-decoration: none;
-    padding-left: 20px;
+}
+
+td.blue_link {
+    padding-left: 25px !important;
 }
 
 
@@ -815,12 +818,15 @@ textarea {
     background-color: #f5f6ec;
     color: #212e52;
     padding: 20px;
-    margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
-    line-height: 1.4em;
-    font-size: 1em;
+    line-height: 1.3em;
+    font-size: 0.8em;
     font-weight: bold;
+    background: none;
+    border: none;
+    margin-top: -12px;
+
 }
 
 .row.explica {
@@ -1010,9 +1016,9 @@ table#datatable thead {
     font-size: 0.9em;
     text-transform: uppercase;
     font-weight: 800;
-    margin-top: -5px;
+    margin-top: -6px;
     font-family: dinbold;
-    padding-left: 2px;
+    padding-left: 7px;
 }
 
 .over {
