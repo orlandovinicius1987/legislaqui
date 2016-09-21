@@ -809,6 +809,7 @@ td.blue_link {
 .termo {
     border: 1px dashed #9ea745;
     padding: 25px;
+    margin: 0px 10px 0 10px;
 }
 
 .termo p {
@@ -821,7 +822,7 @@ td.blue_link {
     color: white;
     line-height: 46px;
     font-size: 1.4em;
-    margin-top: -72px;
+    margin: 30px 30px 0 30px;
 }
 
 .instrucao-topico-h3 {
@@ -1383,3 +1384,11 @@ a.square {
 }
 
 
+
+
+p.leading {
+    font-size: 22px;
+    text-align: center;
+    line-height: 26px;
+    font-family: dinregular;
+}

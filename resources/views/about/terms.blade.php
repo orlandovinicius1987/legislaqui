@@ -18,15 +18,15 @@
         {{--<div class="panel-heading text-center">Termos de Uso</div>--}}
         <div class="">
 
-            <p>
+            <p class="leading">
                 O acesso do cidadão aos serviços disponibilizados no Portal #Legislaaqui fica sujeito aos termos e condições abaixo, bem como à legislação vigente. Ao acessar e utilizar os serviços oferecidos por este Portal, o cidadão reconhece que leu e aceita, sem limitação ou ressalvas, os presentes termos de uso.
             </p>
-            <hr>
-            <br><br><br><br>
+
+            <h2 class="instrucao-topico">
+                O que é
+            </h2>
             <div class="termo">
-                <h2 class="instrucao-topico">
-                    O que é
-                </h2>
+
                 <p>
                     O Portal #Legislaaqui oferece serviços de interatividade que buscam estimular a participação do cidadão na atividade parlamentar, em suas dimensões legislativa, representativa e fiscalizadora. Para isso, o Portal oferece e requer as seguintes informações:
                 </p>
@@ -43,11 +43,13 @@
                 <p>
                     A utilização de quaisquer ferramentas disponíveis no Portal #Legislaaqui está condicionada à realização de cadastro pelo preenchimento de formulário eletrônico com as informações solicitadas (nome, e-mail, senha CPF e UF). Neste último caso, o cadastro deverá ser validado conforme instruções na mensagem automática enviada pelo Portal #Legislaaqui para o e-mail informado.
                 </p>
-            <br><br><br><br>
+            </div>
+
+            <h2 class="instrucao-topico">
+                Atenção
+            </h2>
             <div class="termo">
-                <h2 class="instrucao-topico">
-                    Atenção
-                </h2>
+
                 <p>
                     É terminantemente proibida a realização de mais de um cadastro por cidadão, bem como a utilização de contas temporárias de e-mail e a utilização da identidade de outra pessoa.
                 </p>
@@ -82,12 +84,11 @@
                 </p>
 
             </div>
-            <br><br><br><br>
-            <div class="termo">
-                <h2 class="instrucao-topico">
-                    Política de Privacidade
-                </h2>
 
+            <h2 class="instrucao-topico">
+                Política de Privacidade
+            </h2>
+            <div class="termo">
                 <p>As informações fornecidas pelos cidadãos no momento do cadastro serão armazenadas nos bancos de dados da ALERJ.</p>
 
                 <p>A ALERJ reserva-se o direito de divulgar, quando necessário ao funcionamento das ferramentas existentes no Portal #Legislaaqui, o nome e outras informações referentes à identificação do autor de ideia, comentário, opinião ou qualquer manifestação.</p>

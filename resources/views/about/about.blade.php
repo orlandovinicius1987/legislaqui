@@ -13,20 +13,19 @@
             <!-- Current Content -->
 @section('content')
 
-    <div class="">
+    <div class="row">
         {{--<div class="panel-heading text-center">Como Funciona?</div>--}}
         <div class="">
 
-            <p>
+            <p class="leading">
                 {{--Oferecer ao cidadão a possibilidade de propor ideias de projetos legislativos, ou seja, destinados a criar novas leis ou a alterar as que já existem, ou ainda a aperfeiçoar  a Constituição da República. Essas ideias serão publicadas no Portal e-Cidadania e poderão receber apoios. As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa.--}}
                 Esta é uma ferramenta que oferece aos cidadãos um canal direto para sugerir pautas e projetos aos deputados estaduais. As ideias enviadas são analisadas por uma equipe técnica, que vai observar a pertinência da sugestão para a esfera de governo envolvida, no caso a Estadual. Ideias que digam respeito a assuntos de responsabilidade Federal, como mudanças na legislação penal por exemplo, não serão disponibilizadas ao público.
             </p>
-            <hr>
-            <br><br><br><br>
+
+            <h2 class="instrucao-topico">
+                Como criar uma Ideia Legislativa?
+            </h2>
             <div class="termo">
-                <h2 class="instrucao-topico">
-                    Como criar uma Ideia Legislativa?
-                </h2>
                 <h3 class="instrucao-topico-h3">
                     PASSO 1
                 </h3>
@@ -88,11 +87,11 @@
                     Se a ideia não incidir em quaisquer daquelas vedações, será publicada e estará disponível para apoio pelo prazo de quatro meses.
                 </p>
             </div>
-            <br><br><br><br>
+
+            <h2 class="instrucao-topico">
+                Como apoiar uma Ideia Legislativa?
+            </h2>
             <div class="termo">
-                <h2 class="instrucao-topico">
-                    Como apoiar uma Ideia Legislativa?
-                </h2>
                 <p>
                     {{--Quem tiver interesse em participar da fase de apoio da Ideia Legislativa deverá localizar uma com a qual concorde e declarar seu apoio. Após manifestar o apoio, se quiser, você poderá acompanhar o desempenho da Ideia. Nesse caso, você receberá e-mail de confirmação e link para compartilhamento da ideia legislativa no ambiente das redes sociais. É possível acompanhar a ideia mesmo sem apoiá-la. Para tanto, clique no botão de acompanhamento na tela de exibição da ideia legislativa.--}}
                     Para dar seu apoio a uma sugestão enviada por outra pessoa, você deve localizar a ideia e registrar seu apoio. Depois disso, você poderá acompanhar o andamento da ideia. Neste caso, você receberá um email de confirmação e um link para compartilhar a ideia nas redes sociais. Também é possível acompanhar o andamento de uma ideia que você não apoia, clicando no botão de acompanhamento na página da sugestão.
@@ -102,11 +101,11 @@
                     Você também pode apoiar mais de uma ideia ao mesmo tempo.
                 </p>
             </div>
-            <br><br><br><br>
+            <h2 class="instrucao-topico">
+                Qual o encaminhamento das Ideias Legislativas na Alerj?
+            </h2>
             <div class="termo">
-                <h2 class="instrucao-topico">
-                    Qual o encaminhamento das Ideias Legislativas na Alerj?
-                </h2>
+
                 <p>
                     {{--A ideia legislativa permanecerá publicada no portal e-Cidadania por até quatro meses para receber o apoio de outros cidadãos. A Ideia que receber 20.000 (vinte mil) apoios durante seu prazo de publicidade será remetida à Comissão de Direitos Humanos e Legislação Participativa (CDH), a fim de ser apreciada pelos Deputados. É importante destacar, pois, que se trata de proposta de projeto de lei ou de emenda à constituição. Ficará a juízo dos Deputados a conversão da ideia em proposição, bem como sua posterior aprovação ou rejeição.--}}
                     A sugestão ficará no portal #Legislaqui por quatro meses para o recebimento de apoios. A ideia que receber pelo menos 20 mil apoios será enviada à Comissão (essa parte tem que ser resolvida ainda), para ser analisada pelos deputados. Ficará a cargo dessa comissão, por meio da realização de audiências públicas e reuniões, a transformação da sugestão num projeto formal, dando início a sua tramitação.
