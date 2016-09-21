@@ -2,7 +2,15 @@
 
 @section('title', 'Sobre as Propostas Legislativas')
 
-<!-- Current Content -->
+@section('header-text')
+    <div class="row explica">
+        <div class="col-xs-12 panel instrucao hidden-xs">
+            About
+        </div>
+    </div>
+@stop
+
+            <!-- Current Content -->
 @section('content')
 
     <div class="panel panel-default">

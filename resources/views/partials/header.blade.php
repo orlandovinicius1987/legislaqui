@@ -2,6 +2,7 @@
 
 
 <div class="header">
+    @yield('header-text')
 {{--    <div class="row">
         <div class="col-xs-12">
             {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
