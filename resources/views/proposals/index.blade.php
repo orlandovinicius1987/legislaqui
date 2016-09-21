@@ -4,7 +4,7 @@
 
 @section('header-text')
     <div class="row explica">
-        <div class="col-xs-12 panel instrucao hidden-xs">
+        <div class="col-xs-12 instrucao hidden-xs">
             Você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar leis já existentes ou mudar a Constituição Estadual.
 
             As sugestões que receberem pelo menos 20 mil apoios serão encaminhadas à Comissão de Direitos Humanos e Legislação Participativa (CDH), onde serão discutidas e receberão parecer dos deputados, podendo virar um projeto de lei.
@@ -96,6 +96,22 @@
                             <a href="/?q=approved">APROVADAS</a></button>
                     </div>--}}
                 </div>
+                <div class="row visible-xs">
+                    <div class="wrap-select">
+                        <div id="dd" class="wrapper-dropdown-3">
+                            <span>Filtre sua busca...</span>
+                            <ul class="dropdown">
+                                <li><a href="#">Abertas</a></li>
+                                <li><a href="#">Na Comissão</a></li>
+                                <li><a href="#">Expiradas</a></li>
+                                <li><a href="#">Não Acatadas</a></li>
+                                <li><a href="#">Aprovadas</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
 
                 {{--{!! $proposals->links() !!}--}}
             </div>
@@ -105,7 +121,7 @@
                         <thead>
                         <tr>
                             <th >
-                                <div class="col-xs-12 col-md-8 filtros">
+                                <div class="hidden-xs col-md-8 filtros">
                                     <button type="button" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
