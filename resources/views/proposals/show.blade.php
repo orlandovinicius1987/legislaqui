@@ -2,10 +2,19 @@
 
 @section('title', 'Propostas Legislativas')
 
+@section('header-text')
+    <div class="row tituloideia">
+        <div class="col-xs-12 panel ">
+            <h1>{{ $proposal->name }}</h1>
+        </div>
+    </div>
+@stop
+
+
 @section('content')
 
     <div class="">
-        <div class="">
+        <div class="corpodaideia">
 
             @include('partials.error')
 
@@ -20,7 +29,7 @@
                     {{--</div>--}}
                     {{--<div class="col-xs-11">--}}
                     <div>
-                        <h1>{{ $proposal->name }}</h1>
+
                         @include('partials.share', ['url' => URL::full()])
                         {{--@include('partials.like', ['proposalId' => $proposal->id])--}}
                     </div>

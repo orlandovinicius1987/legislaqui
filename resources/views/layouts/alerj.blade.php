@@ -352,9 +352,7 @@
                         </div>
                     </div>
                     <div class="col-sm-8 col-xs-12 pull-right">
-                        @if (Request::path() == '/')
-                            @include('partials.header')
-                        @endif
+                        @include('partials.header')
                     </div>
                     <div class="filter-line hidden-xs hidden-sm">&nbsp;</div>
                 </div>
