@@ -2,12 +2,21 @@
 
 @section('title', 'Termos de Uso')
 
+@section('header-text')
+    <div class="row">
+        <div class="col-xs-12 titulosecao text-center">
+            <h1>Termos de Uso</h1>
+        </div>
+    </div>
+@stop
+
+
 <!-- Current Content -->
 @section('content')
 
-    <div class="panel panel-default">
-        <div class="panel-heading text-center">Termos de Uso</div>
-        <div class="panel-body">
+    <div class="">
+        {{--<div class="panel-heading text-center">Termos de Uso</div>--}}
+        <div class="">
 
             <p>
                 O acesso do cidadão aos serviços disponibilizados no Portal #Legislaaqui fica sujeito aos termos e condições abaixo, bem como à legislação vigente. Ao acessar e utilizar os serviços oferecidos por este Portal, o cidadão reconhece que leu e aceita, sem limitação ou ressalvas, os presentes termos de uso.

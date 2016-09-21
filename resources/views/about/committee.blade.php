@@ -2,12 +2,20 @@
 
 @section('title', 'Nossas Comissões')
 
+@section('header-text')
+    <div class="row">
+        <div class="col-xs-12 titulosecao text-center">
+            <h1>Comissões
+        </div>
+    </div>
+    @stop
+
 <!-- Current Content -->
 @section('content')
 
-    <div class="panel panel-default">
-        <div class="panel-heading text-center">Comissões</div>
-        <div class="panel-body">
+    <div class="">
+        {{--<div class="panel-heading text-center">Comissões</div>--}}
+        <div class="">
 
             <p>
                 Comissão de Direitos Humanos<br>

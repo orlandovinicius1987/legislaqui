@@ -3,9 +3,9 @@
 @section('title', 'Sobre as Propostas Legislativas')
 
 @section('header-text')
-    <div class="row explica">
-        <div class="col-xs-12 panel instrucao hidden-xs">
-            About
+    <div class="row">
+        <div class="col-xs-12 titulosecao text-center">
+            <h1>Como Funciona?</h1>
         </div>
     </div>
 @stop
@@ -13,9 +13,9 @@
             <!-- Current Content -->
 @section('content')
 
-    <div class="panel panel-default">
-        <div class="panel-heading text-center">Como Funciona ?</div>
-        <div class="panel-body">
+    <div class="">
+        {{--<div class="panel-heading text-center">Como Funciona?</div>--}}
+        <div class="">
 
             <p>
                 {{--Oferecer ao cidadão a possibilidade de propor ideias de projetos legislativos, ou seja, destinados a criar novas leis ou a alterar as que já existem, ou ainda a aperfeiçoar  a Constituição da República. Essas ideias serão publicadas no Portal e-Cidadania e poderão receber apoios. As ideias que obtiverem apoio significativo serão transformadas em sugestão e encaminhadas formalmente à Comissão de Direitos Humanos e Legislação Participativa.--}}
