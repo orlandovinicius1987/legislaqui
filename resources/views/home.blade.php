@@ -1,6 +1,6 @@
 @extends('layouts.alerj')
 
-@section('content')
+\@section('content')
 <div class="home-content">
     <br>
     <br>
