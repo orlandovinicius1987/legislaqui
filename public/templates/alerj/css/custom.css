@@ -500,96 +500,6 @@ td.blue_link {
 }
 
 
-/* Bootstrap Hack */
-.navbar-default {
-    background-color: transparent;
-    border: none;
-}
-
-/*.panel {*/
-    /*border-radius: 5px;*/
-    /*border: 3px solid #E8EAED;*/
-    /*box-shadow: none;*/
-/*}*/
-
-
-.panel {
-    border:solid #E8EAED;
-}
-
-
-.tituloideia .panel {
-    border-radius: 30px 30px 0px 0px ;
-    background: #E8EAED;
-    margin-bottom: 0;
-    min-height: 120px;
-    box-shadow: none;
-}
-
-.tituloideia .panel h1{
-    font-size: 1.8em;
-    margin:30px 30px 0px 20px;
-    color: #ff6600;
-}
-
-.corpodaideia .panel {
-    border-radius: 20px 0 0 0 ;
-}
-
-.corpodaideia .panel-heading {
-    border-radius: 16px 0 0 0 ;
-}
-p.leading {
-    font-size: 22px;
-    text-align: center;
-    line-height: 26px;
-    font-family: dinregular;
-}
-
-@media only screen and (max-width: 496px) {
-    .corpodaideia .panel-heading {
-        border-radius: 0 ;
-    }
-    .tituloideia .panel h1 {
-        font-size: 1.3em;
-        margin: 15px 15px 0px 10px;
-        color: #ff6600;
-    }
-    .tituloideia .panel {
-        border-radius: 15px 15px 0px 0px;
-        min-height: 80px;
-    }
-    .corpodaideia .panel {
-        border-radius: 0;
-    }
-    .share_links {
-        font-size: 16px;
-    }
-    .action_links{
-        font-size: 16px;
-    }
-    .titulopagina {
-        text-align: center;
-    }
-
-    .titulopagina h1{
-        font-size: 1.4em;
-        font-family: dinbold;
-    }
-    .titulosecao {
-        margin-top: 10px;
-        font-size: 11px;
-        font-family: dinbold;
-        margin-bottom: 10px;
-    }
-    p.leading {
-        font-size: 16px;
-        text-align: center;
-        line-height: 18px;
-        font-family: dinbold;
-        margin: 5px 15px 0px;
-    }
-}
 
 
 .panel-bg {
@@ -1409,7 +1319,7 @@ a.square {
 }
 
 .action_links a {
-    margin-right: 15px !important;
+    margin-right: 25px !important;
 }
 
 /* Colors */
@@ -1436,10 +1346,119 @@ a.square {
 
 
 
+/***************************** BRENO´S CHANGES **********************************/
 
 
 
 
+/* Bootstrap Hack */
+.navbar-default {
+    background-color: transparent;
+    border: none;
+}
+
+/*.panel {*/
+/*border-radius: 5px;*/
+/*border: 3px solid #E8EAED;*/
+/*box-shadow: none;*/
+/*}*/
+
+
+.panel {
+    border:solid #E8EAED;
+}
+
+
+.tituloideia .panel {
+    border-radius: 30px 30px 0px 0px ;
+    background: #E8EAED;
+    margin-bottom: 0;
+    min-height: 120px;
+    box-shadow: none;
+}
+
+.tituloideia .panel h1{
+    font-size: 1.8em;
+    margin:30px 30px 0px 20px;
+    color: #ff6600;
+}
+
+.corpodaideia .panel {
+    border-radius: 20px 0 0 0 ;
+}
+
+.corpodaideia .panel-heading {
+    border-radius: 16px 0 0 0 ;
+}
+p.leading {
+    font-size: 22px;
+    text-align: center;
+    line-height: 26px;
+    font-family: dinregular;
+}
+
+.controleideias.row span {
+    margin-left: 5px;
+}
+
+.share_links a{
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 496px) {
+    .corpodaideia .panel-heading {
+        border-radius: 0 ;
+    }
+    .row.tituloideia {
+        margin-top: 20px;
+    }
+    .tituloideia .panel h1 {
+        font-size: 1.3em;
+        margin: 15px 15px 0px 10px;
+        color: #ff6600;
+    }
+    .tituloideia .panel {
+        border-radius: 15px 15px 0px 0px;
+        min-height: 80px;
+    }
+    .corpodaideia .panel {
+        border-radius: 0;
+        border-top:0 ;
+    }
+    .share_links {
+        font-size: 16px;
+    }
+    .action_links{
+        font-size: 16px;
+    }
+    .titulopagina {
+        text-align: center;
+    }
+
+    .titulopagina h1{
+        font-size: 1.4em;
+        font-family: dinbold;
+    }
+    .titulosecao {
+        margin-top: 10px;
+        font-size: 11px;
+        font-family: dinbold;
+        margin-bottom: 10px;
+    }
+    p.leading {
+        font-size: 16px;
+        text-align: center;
+        line-height: 18px;
+        font-family: dinbold;
+        margin: 5px 15px 0px;
+    }
+    .interna .controle {
+        padding: 00px 0px 0px 0px;
+    }
+    .over {
+        margin: 0;
+    }
+}
 
 
 .wrapper-dropdown-3 {
@@ -1574,3 +1593,9 @@ a.square {
     display: block;
 }
 /*#############################*/
+
+
+
+
+
+/************************************* END OF BRENO´S CHANGES **********************************/

@@ -1,5 +1,5 @@
 <div class="controleideias row">
-    <div class="action_links col-xs-7 col-md-10">
+    <div class="action_links col-xs-7 col-md-9">
         <a href="{{ route('proposal.like', ['id' => $proposal->id]) }}">
             <i class="fa fa-thumbs-o-up" aria-hidden="true"></i><span class="hidden-xs">Curtir</span></a>
 
@@ -24,7 +24,7 @@
     </div>
 
 
-    <div class="share_links col-xs-5 col-md-2">
+    <div class="share_links col-xs-5 col-md-3">
         <div class="pull-right">
             <a href="mailto:&amp;subject={{ config('app.name') }}&amp;body={{ urlencode($url) }} "><i class="fa fa-envelope-square"></i></a>
 

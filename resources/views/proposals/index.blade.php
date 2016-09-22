@@ -4,7 +4,7 @@
 
 @section('header-text')
     <div class="row explica">
-        <div class="col-xs-12 panel instrucao hidden-xs">
+        <div class="col-xs-12 instrucao hidden-xs">
             Você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar leis já existentes ou mudar a Constituição Estadual.
 
             As sugestões que receberem pelo menos 20 mil apoios serão encaminhadas à Comissão de Direitos Humanos e Legislação Participativa (CDH), onde serão discutidas e receberão parecer dos deputados, podendo virar um projeto de lei.
