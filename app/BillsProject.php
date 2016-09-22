@@ -19,6 +19,6 @@ class BillsProject extends Eloquent
     // BillsProject __belongs_to__ Proposal
     public function proposal()
     {
-        return $this->belongsTo(Proposal::class, 'bills_project_id');
+        return $this->belongsTo(Proposal::class);
     }
 }

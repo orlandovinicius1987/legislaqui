@@ -54,7 +54,7 @@
                                                         <i class="fa fa-toggle-on"></i> Assignar Projeto de Lei </a>
                                                     {{--{{ $approvedByCommittee->bill_project_id }}--}}</td>
                                                 @else
-                                                    <td>{{ $approvedByCommittee->bill_project_id }}</td>
+                                                    <td>{{ $approvedByCommittee->bill_project->link }}</td>
                                                 @endif
                                             </tr>
                                         @endforeach

@@ -46,6 +46,13 @@ class Proposal extends Eloquent
         return $this->hasMany(Like::class);
     }
 
+    // Proposal __has_one_Bills_Project
+    public function bill_project()
+    {
+        return $this->hasOne(BillsProject::class, 'id', 'bill_project_id');
+    }
+
+
     // Rating = Lower bound of Wilson score confidence interval for a Bernoulli parameter
     public function getRatingAttribute()
     {
