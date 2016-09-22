@@ -346,22 +346,13 @@
             <div class="alerj">
 
                 <div class="row">
-                    {{--<div class="titulo">--}}
-                        {{--<a href="/"><h1>{{ config('app.name') }}</h1></a>--}}
-                        {{--<div class="caminho">Ideias Legislativas</div>--}}
-
-                        {{--<a href="javascript:history.back(-1);" title="Voltar">VOLTAR</a>--}}
-                        {{--<div class="fio"></div>--}}
-                    {{--</div>--}}
                     <div class="col-sm-4 col-xs-12 over">
                         <div class="legislaqui text-center"><a href="/"><span class="letra_branca">#</span><span class="letra_azul">Legisl</span><span class="letra_branca">aqui</span></a>
                             <div class="moto letra_azul"><b>Você legislando na ALERJ</b></div>
                         </div>
                     </div>
                     <div class="col-sm-8 col-xs-12 pull-right">
-                        @if (Request::path() == '/')
-                            @include('partials.header')
-                        @endif
+                        @include('partials.header')
                     </div>
                     <div class="filter-line hidden-xs hidden-sm">&nbsp;</div>
                 </div>
@@ -496,6 +487,49 @@
         $('[data-toggle="tooltip"]').tooltip()
     })
 </script>
+
+<script>
+    function DropDown(el) {
+        this.dd = el;
+        this.placeholder = this.dd.children('span');
+        this.opts = this.dd.find('.dropdown a');
+        this.val = '';
+        this.index = -1;
+        this.initEvents();
+    }
+    DropDown.prototype = {
+        initEvents : function() {
+            var obj = this;
+
+            obj.dd.on('click', function(event){
+                $(this).toggleClass('active');
+                return false;
+            });
+
+            obj.opts.on('click',function(){
+                var opt = $(this);
+                obj.val = opt.text();
+                obj.index = opt.index();
+                obj.placeholder.text(obj.val);
+            });
+        },
+        getValue : function() {
+            return this.val;
+        },
+        getIndex : function() {
+            return this.index;
+        }
+    }
+
+    $(function() {
+
+        var dd = new DropDown( $('#dd') );
+
+
+
+    });
+</script>
+
 
 </body>
 </html>

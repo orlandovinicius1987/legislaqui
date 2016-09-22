@@ -40,7 +40,7 @@ $factory->defineAs(App\User::class, 'admin', function (Faker\Generator $faker) u
 });
 
 $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
-    $random = $faker->boolean($chanceOfGettingTrue = 70);
+    $random = $faker->boolean($chanceOfGettingTrue = 20);
 
     return [
         'name'            => $faker->sentence($nbWords = 6, $variableNbWords = true),
@@ -74,7 +74,7 @@ $factory->define(App\Like::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Follow::class, function (Faker\Generator $faker) {
+$factory->define(App\ProposalFollow::class, function (Faker\Generator $faker) {
     return [
         'user_id'     => User::all()->shuffle()->first()->id,
         'proposal_id' => Proposal::all()->shuffle()->first()->id,

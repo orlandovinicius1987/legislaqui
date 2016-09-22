@@ -191,6 +191,31 @@ body {
     margin-top: -20px;
 }
 
+.panel-body .table input[type="text"] {
+    color: #9ea745;
+    border-color: #9ea745;
+    /*width: 45vw;*/
+    margin-right: 20px;
+    border-radius: 5px !important;
+    text-transform: uppercase;
+}
+
+.panel-body .table .col-xs-4.buscaideia {
+    margin-top: 11px;
+}
+
+
+.panel-body .table {
+    margin-bottom: 0px;
+}
+
+.input-group>.search {
+    margin-right: 20px;
+}
+
+
+
+
 .header input[type="text"] {
     color: #9ea745;
     border-color: #9ea745;
@@ -200,9 +225,8 @@ body {
     text-transform: uppercase;
 }
 
-.input-group>.search {
-    margin-right: 20px;
-}
+
+
 
 .form-control-feedback {
     background-color: #9ea745;
@@ -471,16 +495,12 @@ textarea {
     text-decoration: none;
 }
 
-/* Bootstrap Hack */
-.navbar-default {
-    background-color: transparent;
-    border: none;
+td.blue_link {
+    padding-left: 25px !important;
 }
 
-.panel {
-    border: none;
-    box-shadow: none;
-}
+
+
 
 .panel-bg {
     background-color: #f4f4f6;
@@ -539,7 +559,7 @@ textarea {
 
 /* Table */
 .table-responsive {
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     width: 100%;
 }
 
@@ -750,6 +770,7 @@ textarea {
 .termo {
     border: 1px dashed #9ea745;
     padding: 25px;
+    margin: 0px 10px 0 10px;
 }
 
 .termo p {
@@ -762,7 +783,7 @@ textarea {
     color: white;
     line-height: 46px;
     font-size: 1.4em;
-    margin-top: -72px;
+    margin: 30px 30px 0 30px;
 }
 
 .instrucao-topico-h3 {
@@ -787,13 +808,30 @@ textarea {
     background-color: #f5f6ec;
     color: #212e52;
     padding: 20px;
-    margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
-    line-height: 1.4em;
-    font-size: 1em;
+    line-height: 1.3em;
+    font-size: 0.8em;
     font-weight: bold;
+    background: none;
+    border: none;
+    margin-top: -12px;
+    box-shadow: none;
 }
+
+.row.explica {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.titulosecao {
+    margin-top: 30px;
+}
+.titulosecao h1 {
+    margin: 0;
+    padding: 0;
+}
+
 
 .form-control {
     border: 1px solid #ff6600;
@@ -818,13 +856,23 @@ button {
     border-radius: 20px;
 }
 
-.panel {
-    border-radius: 0px;
-}
 
 .panel-body {
     padding: 0;
-    padding-top: 15px;
+}
+
+.panel-default h1 {
+    /*margin: 25px 0 0 25px;*/
+}
+
+.col-xs-3.pull-right.crienova {
+    margin: 20px;
+}
+
+
+.filtros .btn-default {
+    font-size: 0.85em;
+    font-weight: 700;
 }
 
 .panel-heading h3 {
@@ -872,23 +920,34 @@ button {
 /*}*/
 
 .panel-default>.panel-heading, .panel-default>.panel-footer {
-
     color: #ff6600;
     text-transform: uppercase;
     font-size: 1.4em;
     line-height: 1.4em;
-    border-radius: 0.8em;
+    /*border-radius: 0.8em;*/
+    background: #E8EAED;
 }
 
 .panel-default>.panel-heading h1 {
     color: #ff6600;
     font-size: 1.3em;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
 }
 
-.panel-heading-nav, .panel-footer-nav {
-    margin-left: 15px;
-    margin-bottom: -20px;
+.panel-heading-nav {
+    background: #E8EAED;
+    padding: 20px 20px 0px 20px;
+}
+.panel-footer-nav {
+    background: #E8EAED;
+}
+
+.buscaideia {
+    margin-top: 11px;
+}
+
+table#datatable thead {
+    background: #E8EAED;
 }
 
 .social-buttons a {
@@ -940,7 +999,7 @@ button {
     margin-top: -2.5em;
     padding-left: 2.5em;
     color: white;
-    width: 25vw;
+    /*width: 25vw;*/
     font-family: 'dinlight';
     padding-top: 3px;
     margin-left: 5px;
@@ -956,9 +1015,9 @@ button {
     font-size: 0.9em;
     text-transform: uppercase;
     font-weight: 800;
-    margin-top: -5px;
+    margin-top: -6px;
     font-family: dinbold;
-    padding-left: 2px;
+    padding-left: 7px;
 }
 
 .over {
@@ -994,8 +1053,8 @@ button {
     }
 
     .panel-default>.panel-heading, .panel-default>.panel-footer {
-        padding-left: 3em;
-        padding-right: 3em;
+        /*padding-left: 3em;
+        padding-right: 3em;*/
         /*padding-bottom: 1em;*/
     }
 }
@@ -1248,13 +1307,19 @@ a.square {
     position: inherit;
 }
 
+
 .action_links {
-    font-size: 0.8em;
+    font-size: 0.7em;
+    font-weight: 600;
 }
 
 .action_links a:hover {
     color: #212e52;
     text-decoration: none;
+}
+
+.action_links a {
+    margin-right: 25px !important;
 }
 
 /* Colors */
@@ -1272,3 +1337,265 @@ a.square {
 
 /*Verde Claro*/
 /*#f5f6ec*/
+
+
+.logotipo2{
+    float: left;
+    margin-top: 15px;
+}
+
+
+
+/***************************** BRENO´S CHANGES **********************************/
+
+
+
+
+/* Bootstrap Hack */
+.navbar-default {
+    background-color: transparent;
+    border: none;
+}
+
+/*.panel {*/
+/*border-radius: 5px;*/
+/*border: 3px solid #E8EAED;*/
+/*box-shadow: none;*/
+/*}*/
+
+
+.panel {
+    border:solid #E8EAED;
+}
+
+
+.tituloideia .panel {
+    border-radius: 30px 30px 0px 0px ;
+    background: #E8EAED;
+    margin-bottom: 0;
+    min-height: 120px;
+    box-shadow: none;
+}
+
+.tituloideia .panel h1{
+    font-size: 1.8em;
+    margin:30px 30px 0px 20px;
+    color: #ff6600;
+}
+
+.corpodaideia .panel {
+    border-radius: 20px 0 0 0 ;
+}
+
+.corpodaideia .panel-heading {
+    border-radius: 16px 0 0 0 ;
+}
+p.leading {
+    font-size: 22px;
+    text-align: center;
+    line-height: 26px;
+    font-family: dinregular;
+}
+
+.controleideias.row span {
+    margin-left: 5px;
+}
+
+.share_links a{
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 496px) {
+    .corpodaideia .panel-heading {
+        border-radius: 0 ;
+    }
+    .row.tituloideia {
+        margin-top: 20px;
+    }
+    .tituloideia .panel h1 {
+        font-size: 1.3em;
+        margin: 15px 15px 0px 10px;
+        color: #ff6600;
+    }
+    .tituloideia .panel {
+        border-radius: 15px 15px 0px 0px;
+        min-height: 80px;
+    }
+    .corpodaideia .panel {
+        border-radius: 0;
+        border-top:0 ;
+    }
+    .share_links {
+        font-size: 16px;
+    }
+    .action_links{
+        font-size: 16px;
+    }
+    .titulopagina {
+        text-align: center;
+    }
+
+    .titulopagina h1{
+        font-size: 1.4em;
+        font-family: dinbold;
+    }
+    .titulosecao {
+        margin-top: 10px;
+        font-size: 11px;
+        font-family: dinbold;
+        margin-bottom: 10px;
+    }
+    p.leading {
+        font-size: 16px;
+        text-align: center;
+        line-height: 18px;
+        font-family: dinbold;
+        margin: 5px 15px 0px;
+    }
+    .interna .controle {
+        padding: 00px 0px 0px 0px;
+    }
+    .over {
+        margin: 0;
+    }
+}
+
+
+.wrapper-dropdown-3 {
+    /* Size and position */
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+
+    /* Styles */
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.15);
+    box-shadow: 0 1px 1px rgba(50,50,50,0.1);
+    cursor: pointer;
+    outline: none;
+}
+
+.wrapper-dropdown-3:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -3px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: #000 transparent;
+}
+
+.wrapper-dropdown-3 .dropdown {
+    /* Size & position */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding:0;
+    margin:0;
+    /* Styles */
+    background: white;
+    border: 1px solid rgba(0,0,0,0.17);
+    font-weight: normal;
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+    list-style: none;
+
+    /* Hiding */
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999999;
+}
+
+/*.wrapper-dropdown-3 .dropdown:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 100%;
+    right: 15px;
+    border-width: 0 6px 6px 6px;
+    border-style: solid;
+    border-color: #fff transparent;
+}
+
+.wrapper-dropdown-3 .dropdown:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 100%;
+    right: 13px;
+    border-width: 0 8px 8px 8px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.1) transparent;
+}*/
+
+.wrapper-dropdown-3 .dropdown li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+    border-bottom: 1px solid #e6e8ea;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,1);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper-dropdown-3 .dropdown li i {
+    float: right;
+    color: inherit;
+}
+
+.wrapper-dropdown-3 .dropdown li:first-of-type a {
+    border-radius: 7px 7px 0 0;
+}
+
+.wrapper-dropdown-3 .dropdown li:last-of-type a {
+    border: none;
+    border-radius: 0 0 7px 7px;
+}
+
+/* Hover state */
+
+.wrapper-dropdown-3 .dropdown li:hover a {
+    background: #f3f8f8;
+}
+
+/* Active state */
+
+.wrapper-dropdown-3.active .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* No CSS3 support */
+
+.no-opacity       .wrapper-dropdown-3 .dropdown,
+.no-pointerevents .wrapper-dropdown-3 .dropdown {
+    display: none;
+    opacity: 1; /* If opacity support but no pointer-events support */
+    pointer-events: auto; /* If pointer-events support but no pointer-events support */
+}
+
+.no-opacity       .wrapper-dropdown-3.active .dropdown,
+.no-pointerevents .wrapper-dropdown-3.active .dropdown {
+    display: block;
+}
+/*#############################*/
+
+
+
+
+
+/************************************* END OF BRENO´S CHANGES **********************************/

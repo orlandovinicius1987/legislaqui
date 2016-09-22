@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                     // Get random User
                     $user = User::all()->shuffle()->first();
 
-                    // Approvals and Likes
+                    // Approvals
                     $proposal->approvals()->attach($user->id);
                     //$proposal->likes()->attach($user->id);
                 }
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
                 factory(App\Like::class)->create();
 
                 //Follows
-                factory(App\Follow::class)->create();
+                factory(App\ProposalFollow::class)->create();
             }
         });
 

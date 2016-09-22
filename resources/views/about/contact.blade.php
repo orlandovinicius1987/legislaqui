@@ -8,13 +8,22 @@
 @section('title', config('app.name'))
 
         <!-- Current Proposals -->
+
+
+@section('header-text')
+    <div class="row">
+        <div class="col-xs-12 titulosecao text-center">
+            <h1>Contato</h1>
+        </div>
+    </div>
+@stop
 @section('content')
 
     @include('partials.error')
 
-    <div class="panel panel-default">
-        <div class="panel-heading text-center">Contato</div>
-        <div class="panel-body">
+    <div class="">
+        {{--<div class="panel-heading text-center">Contato</div>--}}
+        <div class="">
 
         <ul>
             @foreach($errors->all() as $error)
