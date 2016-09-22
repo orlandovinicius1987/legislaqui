@@ -7,13 +7,13 @@
  */
 namespace App\Http\Controllers;
 
+use App\BillsProject;
 use App\Events\ProposalApprovedByCommittee;
 use App\Events\ProposalClosedByCommittee;
 use App\Events\ProposalTimeLimit;
 use App\Http\Requests\BillProjectFormRequest;
 use App\Http\Requests\ProposalFormRequest;
 use App\Http\Requests\ResponseFormRequest;
-use App\BillsProject;
 use App\Proposal;
 use App\ProposalHistory;
 use App\Repositories\DataRepository;
