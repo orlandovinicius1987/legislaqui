@@ -46,7 +46,7 @@ class Proposal extends Eloquent
         return $this->hasMany(Like::class);
     }
 
-    // Proposal __has_one_Bills_Project
+    // Proposal __has_one_Bill_Project
     public function bill_project()
     {
         return $this->hasOne(BillsProject::class, 'id', 'bill_project_id');
