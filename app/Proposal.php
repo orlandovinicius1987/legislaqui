@@ -51,8 +51,7 @@ class Proposal extends Eloquent
     {
         return $this->hasOne(BillsProject::class, 'id', 'bill_project_id');
     }
-
-
+    
     // Rating = Lower bound of Wilson score confidence interval for a Bernoulli parameter
     public function getRatingAttribute()
     {
