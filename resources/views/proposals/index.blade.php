@@ -122,32 +122,32 @@
                         <tr>
                             <th >
                                 <div class="hidden-xs col-md-8 filtros">
-                                    <button type="button" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"
+                                    <a href="/?q=open"><button type="button" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
                 encaminhada à Comissão. Antes de criar uma proposta, verifique se não há uma já criada para o mesmo fim.
                  Várias ideias semelhantes terminam diluindo o apoio dos demais cidadãos.">
-                                        <a href="/?q=open"> ABERTAS</a></button>
+                                         ABERTAS</button></a>
 
-                                    <button type="button" class="btn btn-default {{ $query == "committee" ? 'active' :'' }}"
+                                    <a href="/?q=committee"><button type="button" class="btn btn-default  {{ $query == "committee" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Essas são as propostas que receberam o apoio suficiente e, neste momento, estão sendo analisadas pela comissão.">
-                                        <a href="/?q=committee">NA COMISSÃO</a></button>
+                                        NA COMISSÃO</button></a>
 
-                                    <button type="button" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}"
+                                    <a href="/?q=expired"><button type="button" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Essas são as propostas que não receberam o apoio suficiente e não foram encaminhadas para análise da comissão.">
-                                        <a href="/?q=expired">EXPIRADAS</a></button>
+                                        EXPIRADAS</button></a>
 
-                                    <button type="button" class="btn btn-default {{ $query == "disapproved" ? 'active' :'' }}"
+                                    <a href="/?q=disapproved"><button type="button" class="btn btn-default {{ $query == "disapproved" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Essas são as propostas analisadas e não acatadas pela comissão.">
-                                        <a href="/?q=disapproved">NÃO ACATADAS</a></button>
+                                        NÃO ACATADAS</button></a>
 
-                                    <button type="button" class="btn btn-default {{ $query == "approved" ? 'active' :'' }}"
+                                    <a href="/?q=approved"><button type="button" class="btn btn-default {{ $query == "approved" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Essas são as propostas analisadas e aprovadas pela comissão.">
-                                        <a href="/?q=approved">APROVADAS</a></button>
+                                        APROVADAS</button></a>
                                 </div>
 
 
