@@ -1594,3 +1594,9 @@ p.leading {
 }
 /*#############################*/
 /************************************* END OF BRENO´S CHANGES **********************************/
+
+.base_menu .menu ul li a:hover {
+    color: #212e52;
+    background: #ffffff;
+    padding-bottom: 5px;
+}
