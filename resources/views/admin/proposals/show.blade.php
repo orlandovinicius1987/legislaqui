@@ -38,6 +38,7 @@
                                             {{-- if has response -> return response data, else null --}}
                                             <tr><td class="table-td-label-show">Autor Resposta</td><td class="table-td-show"> {{ $proposal->responder ? $proposal->responder->name  : null }}</td></tr>
                                             <tr><td class="table-td-label-show">Resposta</td><td class="table-td-show"> {!! $proposal->response ? $proposal->response : null !!}</td></tr>
+                                            <tr><td class="table-td-label-show">Projeto de Lei</td><td class="table-td-show"> {!! $proposal->bill_project_id ? $proposal->bill_project_id : 'Ainda não virou Projeto de Lei' !!}</td></tr>
                                             </tbody>
                                         </table>
                                     </div>
