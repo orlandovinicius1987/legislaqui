@@ -1590,8 +1590,7 @@ p.leading {
 /*#############################*/
 /************************************* END OF BRENO´S CHANGES **********************************/
 
-
-/* Barra de Menu */
+/* Menu bar */
 .base_menu .menu ul li a:hover {
     color: #212e52;
     background: #ffffff;
@@ -1619,3 +1618,9 @@ p.leading {
 }
 /* Filters in Mobile DropDown END */
 
+/* Background magnifying glass in Search field */
+.dimensionsBackground {
+    top: 1%;
+    width: 10%;
+    height: 65%;
+}

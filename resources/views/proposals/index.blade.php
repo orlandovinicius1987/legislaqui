@@ -158,7 +158,7 @@
                                             'class'=>'form-control',
                                             'placeholder'=>'Busque uma ideia ...')) !!}
 
-                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                        <span class="glyphicon glyphicon-search form-control-feedback dimensionsBackground"></span>
                                         {!! Form::close() !!}
                                     </div>
 
