@@ -1344,12 +1344,7 @@ a.square {
     margin-top: 15px;
 }
 
-
-
 /***************************** BRENO´S CHANGES **********************************/
-
-
-
 
 /* Bootstrap Hack */
 .navbar-default {
@@ -1595,8 +1590,32 @@ p.leading {
 /*#############################*/
 /************************************* END OF BRENO´S CHANGES **********************************/
 
+
+/* Barra de Menu */
 .base_menu .menu ul li a:hover {
     color: #212e52;
     background: #ffffff;
     padding-bottom: 5px;
 }
+
+/* Filters in Mobile DropDown */
+.drop_filter {
+    /* Size and position */
+    width: 186px;
+    top: 5px;
+    left: 20%;
+    padding: 10px;
+
+    /* Styles */
+    background: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.15);
+    box-shadow: 0 1px 1px rgba(50,50,50,0.1);
+    cursor: pointer;
+    outline: none;
+}
+
+.dropdown-menu {
+    left: 20%;
+}
+/* Filters in Mobile DropDown END */
+
