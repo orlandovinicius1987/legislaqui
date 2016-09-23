@@ -97,23 +97,6 @@
                     </div>--}}
                 </div>
 
-                {{--<div class="row visible-xs">
-                    <div class="wrap-select">
-                        <div id="dd" class="wrapper-dropdown-3">
-                            <span>Filtre sua busca...</span>
-                            <ul class="dropdown">
-                                <li><a href="/?q=open">Abertas</a></li>
-                                <li><a href="/?q=committee">Na Comissão</a></li>
-                                <li><a href="/?q=expired">Expiradas</a></li>
-                                <li><a href="/?q=disapproved">Não Acatadas</a></li>
-                                <li><a href="/?q=approved">Aprovadas</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>--}}
-
- {{-- COMPARE - AINDA NÃO CONCLUIDO  --}}
-
                 <div class="row visible-xs">
                     <div class="dropdown btn-group">
                         <button class="btn gradient dropdown-toggle drop_filter" data-toggle="dropdown" id="filters">
@@ -129,8 +112,6 @@
                         </ul>
                     </div>
                  </div>
-
-
 
                 {{--{!! $proposals->links() !!}--}}
             </div>
