@@ -49,9 +49,16 @@
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$approvedByCommittee->id)) }}">{{ $approvedByCommittee->name }}</a></td>
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
                                                 {{--<td><a href="{{ route('admin.proposal.response', $approved->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
+                                                @if ($approvedByCommittee->bill_project_id == null)
                                                 <td><a href="{{ route('admin.proposal.billProject', ['id' => $approvedByCommittee->id]) }}" class="btn btn-warning botao" role="button">
                                                         <i class="fa fa-toggle-on"></i> Assignar Projeto de Lei </a>
                                                     {{--{{ $approvedByCommittee->bill_project_id }}--}}</td>
+                                                @else
+                                                    <td>Número: {{ $approvedByCommittee->bill_project->number }}<br>
+                                                        Link: <a href="$approvedByCommittee->bill_project->link" target="_blank">{{ $approvedByCommittee->bill_project->link }}</a><br>
+                                                        Responsável: {{$approvedByCommittee->bill_project->owner}}
+                                                    </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                         </tbody>

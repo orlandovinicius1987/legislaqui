@@ -7,9 +7,11 @@
  */
 namespace App\Http\Controllers;
 
+use App\BillsProject;
 use App\Events\ProposalApprovedByCommittee;
 use App\Events\ProposalClosedByCommittee;
 use App\Events\ProposalTimeLimit;
+use App\Http\Requests\BillProjectFormRequest;
 use App\Http\Requests\ProposalFormRequest;
 use App\Http\Requests\ResponseFormRequest;
 use App\Proposal;
@@ -287,6 +289,39 @@ class AdminController extends Controller
         $proposal->fill($input)->save();
 
         return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function updateBillProject($id, BillProjectFormRequest $formRequest)
+    {
+        //Get Proposal
+        $proposal = $this->proposalsRepository->find($id);
+
+        //Create BillProject Object
+        $bill_project = new BillsProject();
+
+        // Receive form input
+        $input = $formRequest->except('_token');
+
+        //Fill more data into input
+        $input['date'] = Carbon::now();
+
+        //Update Bills_Project Table
+        $bill_project->fill($input)->save();
+        //Update Proposals Table
+        $proposal->bill_project_id = $bill_project->id;
+        $proposal->open = false;
+
+        //Save Proposal
+        $proposal->save();
+
+        return redirect()->route('admin.proposal.approvedByCommittee', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa transformada em Projeto de Lei com Sucesso!');
     }
 
     /**
