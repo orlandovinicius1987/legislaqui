@@ -1590,6 +1590,7 @@ p.leading {
 /*#############################*/
 /************************************* END OF BRENO´S CHANGES **********************************/
 
+
 /* Menu bar */
 .base_menu .menu ul li a:hover {
     color: #212e52;
@@ -1623,4 +1624,16 @@ p.leading {
     top: 1%;
     width: 10%;
     height: 65%;
+}
+
+/* Modal to Mobile with information about edemocracia */
+.modal_button, .modal_button:focus {
+    /* Size and position */
+    width: 186px;
+    background: #212e52;
+    color: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.15);
+    margin-left: 14%;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
