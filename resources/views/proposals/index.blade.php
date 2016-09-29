@@ -6,9 +6,7 @@
     <div class="row explica">
         <div class="col-xs-12 instrucao hidden-xs">
             Você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar leis já existentes ou mudar a Constituição Estadual.
-
             As sugestões que receberem pelo menos 20 mil apoios serão encaminhadas à Comissão de Direitos Humanos e Legislação Participativa (CDH), onde serão discutidas e receberão parecer dos deputados, podendo virar um projeto de lei.
-
             Antes de propor uma ideia, procure, na lista de ideias já apresentadas, outras com o mesmo conteúdo, para não dividir os apoios e atrasar a tramitação.
         </div>
     </div>
@@ -97,7 +95,37 @@
                     </div>--}}
                 </div>
 
+                {{-- specific for Mobile --}}
                 <div class="row visible-xs">
+
+                    {{-- button to modal --}}
+                    <button type="button" class="btn modal_button" data-toggle="modal" data-target=".bs-example-modal-lg">
+                        Entenda!
+                    </button>
+
+                    {{-- modal --}}
+                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">O que é?</h4>
+                                </div>
+                                <div class="modal-body">
+                                No #Legislaqui você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar
+                                leis já existentes ou mudar a Constituição Estadual. As sugestões que receberem pelo menos 20 mil apoios
+                                serão encaminhadas à Comissão de Direitos Humanos e Legislação Participativa (CDH), onde serão discutidas
+                                e receberão parecer dos deputados, podendo virar um projeto de lei. Antes de propor uma ideia, procure, na
+                                lista de ideias já apresentadas, outras com o mesmo conteúdo, para não dividir os apoios e atrasar a tramitação.
+                                </div>
+                                <div class="modal-footer">
+                                   #Legislaqui - 2016
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Menu DropDown --}}
                     <div class="dropdown btn-group">
                         <button class="btn gradient dropdown-toggle drop_filter" data-toggle="dropdown" id="filters">
                             Filtre sua busca
@@ -111,9 +139,10 @@
                             <li><a href="/?q=approved">Aprovadas</a></li>
                         </ul>
                     </div>
-                 </div>
 
-                {{--{!! $proposals->links() !!}--}}
+                </div>
+                {{-- specific for Mobile End --}}
+
             </div>
 
               <div class="panel-body">
@@ -125,8 +154,8 @@
                                     <a href="/?q=open"><button type="button" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
-                encaminhada à Comissão. Antes de criar uma proposta, verifique se não há uma já criada para o mesmo fim.
-                 Várias ideias semelhantes terminam diluindo o apoio dos demais cidadãos.">
+                                                  encaminhada à Comissão. Antes de criar uma proposta, verifique se não há uma já criada para o mesmo fim.
+                                                  Várias ideias semelhantes terminam diluindo o apoio dos demais cidadãos.">
                                          ABERTAS</button></a>
 
                                     <a href="/?q=committee"><button type="button" class="btn btn-default  {{ $query == "committee" ? 'active' :'' }}"
