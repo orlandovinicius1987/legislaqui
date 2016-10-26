@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" /><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <![endif]-->
     <meta charset="utf-8" /><meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
-    <link rel="stylesheet" type="text/css" href="/www.alerj.rj.gov.br/jquery-ui.css" />
-    <link rel="stylesheet" type="text/css" href="/www.alerj.rj.gov.br/colorpicker.css" />
-    <link rel="stylesheet" type="text/css" href="/www.alerj.rj.gov.br/datepicker.css" />
-    <link rel="stylesheet" type="text/css" href="/www.alerj.rj.gov.br/lightbox.css" />
-    <link rel="stylesheet" type="text/css" href="/www.alerj.rj.gov.br/jquery.jscrollpane.css" />
-    <link rel="stylesheet" type="text/css" href="/www.alerj.rj.gov.br/jquery-ui.theme.css">
-    <link rel="stylesheet" type="text/css" href="/www.alerj.rj.gov.br/jquery-ui.structure.css">
-    <link rel="stylesheet" type="text/css" href="/www.alerj.rj.gov.br/estilos.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.alerj.rj.gov.br/Content/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.alerj.rj.gov.br/Content/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.alerj.rj.gov.br/Content/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.alerj.rj.gov.br/Content/css/lightbox.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.alerj.rj.gov.br/Content/css/jquery.jscrollpane.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.alerj.rj.gov.br/Content/css/jquery-ui.theme.css">
+    <link rel="stylesheet" type="text/css" href="http://www.alerj.rj.gov.br/Content/css/jquery-ui.structure.css">
+    <link rel="stylesheet" type="text/css" href="http://www.alerj.rj.gov.br/Content/css/estilos.css" />
 
     {{--FaceBook MetaTags--}}
     <meta property="og:url"                content="{{Request::fullUrl()}}" />
@@ -45,8 +45,7 @@
 
     </title>
     <link href="http://www.alerj.rj.gov.br/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
-    {{--<link href="http://www.alerj.rj.gov.br/Content/css?v=" rel="stylesheet"/>--}}
+    <meta name="viewport" content="width=device-width" /><link href="http://www.alerj.rj.gov.br/Content/css?v=" rel="stylesheet"/>
     <script src="http://www.alerj.rj.gov.br/bundles/modernizr?v=qVODBytEBVVePTNtSFXgRX0NCEjh9U_Oj8ePaSiRcGg1"></script>
     <script src="http://www.alerj.rj.gov.br/bundles/jquery?v="></script>
 </head>
@@ -423,55 +422,55 @@
 
 
 
-//        RequisicaoAjax(rootUrl + "Home/RecuperaConfiguracoesExibicao", "", function (response) {
-//            $("#tempoNoticia").val(response.tempoNoticia * 1000);
-//            $("#tempoBanner").val(response.tempoBanner * 1000);
-//
-//            $('.banner ul').cycle({
-//                fx: 'scrollLeft',
-//                speed: 500,
-//                timeout: $("#tempoBanner").val(),
-//                pager: '.paginacao_banner'
-//            })
-//        }, function (error) {
-//
-//        });
+        RequisicaoAjax(rootUrl + "Home/RecuperaConfiguracoesExibicao", "", function (response) {
+            $("#tempoNoticia").val(response.tempoNoticia * 1000);
+            $("#tempoBanner").val(response.tempoBanner * 1000);
+
+            $('.banner ul').cycle({
+                fx: 'scrollLeft',
+                speed: 500,
+                timeout: $("#tempoBanner").val(),
+                pager: '.paginacao_banner'
+            })
+        }, function (error) {
+
+        });
 
         $(function () {
             $('input').placeholder();
         });
 
-//        //script partial _superior
-//        $("#btnPesquisar").click(function () {
-//            window.location.href = rootUrl + "ResultadoPesquisa/PesquisarSite/?termoPesquisa=" + $("#txtPesquisar").val();
-//        });
-//        //fim script partial _superior
+        //script partial _superior
+        $("#btnPesquisar").click(function () {
+            window.location.href = rootUrl + "ResultadoPesquisa/PesquisarSite/?termoPesquisa=" + $("#txtPesquisar").val();
+        });
+        //fim script partial _superior
 
 
     });
 
-//    function RequisicaoAjax(urlMetodo, parametros, funcSucesso, funcErro, isAsync) {
-//
-//        $.ajax({
-//            url: urlMetodo,
-//            data: parametros,
-//            type: 'post',
-//            async: isAsync ? isAsync : false,
-//            dataType: 'json',
-//            success: function (data) {
-//                funcSucesso(data);
-//            },
-//            error: (funcErro) ? function (data) { funcErro(data); } : null
-//        });
-//
-//    }
+    function RequisicaoAjax(urlMetodo, parametros, funcSucesso, funcErro, isAsync) {
+
+        $.ajax({
+            url: urlMetodo,
+            data: parametros,
+            type: 'post',
+            async: isAsync ? isAsync : false,
+            dataType: 'json',
+            success: function (data) {
+                funcSucesso(data);
+            },
+            error: (funcErro) ? function (data) { funcErro(data); } : null
+        });
+
+    }
 </script>
 
-<script type="text/javascript" src="/www.alerj.rj.gov.br/listarPerfilDeputado.js"></script>
-<script type="text/javascript" src="/www.alerj.rj.gov.br/visualizar.js"></script>
-<script type="text/javascript" src="/www.alerj.rj.gov.br/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="/www.alerj.rj.gov.br/jquery.jscrollpane.min.js"></script>
-<script type="text/javascript" src="/www.alerj.rj.gov.br/jgrid.js"></script>
+<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/Visualizar/listarPerfilDeputado.js"></script>
+<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/Visualizar/visualizar.js"></script>
+<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jgrid.js"></script>
 <!-- InputMask -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
 {{--<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.meio.mask.js"></script>--}}
