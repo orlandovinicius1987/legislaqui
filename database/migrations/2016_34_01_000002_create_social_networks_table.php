@@ -16,9 +16,17 @@ class CreateSocialNetworksTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
-            $table->string('logo');
-            $table->string('token');
+            $table->string('logo')->nullable();
+            $table->softDeletes();
         });
+
+        $this->seed();
+
+    }
+
+    public function seed(){
+
+        DB::table('social_networks')->insert(['name' => 'facebook', 'slug' => 'Facebook']);
     }
     /**
      * Reverse the migrations.
@@ -30,5 +38,4 @@ class CreateSocialNetworksTable extends Migration
         Schema::drop('social_networks');
     }
 }
-
 
