@@ -117,4 +117,11 @@ class User extends Authenticatable
     {
         return date('M y', strtotime($value));
     }
+
+    // Socialite
+    public function socialNetworks()
+    {
+        return $this->belongsToMany('App\SocialNetwork', 'social_users', 'user_id');
+    }
+
 }
