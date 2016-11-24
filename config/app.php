@@ -152,8 +152,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-
-
         /*
          * Application Service Providers...
          */
@@ -163,6 +161,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
+        /*
+          Other service providers...
+        */
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -212,6 +214,7 @@ return [
         'Html'      => 'Collective\Html\HtmlFacade',
         'NoCaptcha' => 'Anhskohbo\NoCaptcha\Facades\NoCaptcha',
         'Location'  => 'Stevebauman\Location\Facades\Location',
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

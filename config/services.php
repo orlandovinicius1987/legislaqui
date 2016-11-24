@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '924736410991077',
+        'client_secret' => '8184d025a6a35a2b1d7a2eb6610d45a6',
+        'redirect' => 'http://local.edemocracia.com/callback',
+    ],
+
 ];

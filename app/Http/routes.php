@@ -34,8 +34,19 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
 Route::group(['middleware' => 'web'], function () {
+
+    Route::get('/teste', 'SocialAuthController@redirectToProvider');
+
+    Route::get('/teste', function () {
+        return view('teste');
+    });
+
+    //Socialite Login Facebook
+    Route::get('/redirect', 'SocialAuthController@redirectToProvider');
+    Route::get('/callback', 'SocialAuthController@handleProviderCallback');
+
+
     Route::auth();
 
     Route::get('/', ['as' => 'home', 'uses' => 'ProposalsController@index']);
