@@ -118,6 +118,7 @@
                         <button type="submit" class="btn btn-primary">
                             <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro
                         </button>
+                        <a href="redirect">Facebook</a>
                     </div>
                 </div>
             </form>

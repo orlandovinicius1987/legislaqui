@@ -70,6 +70,7 @@
                                 </button>
 
                                 <a class="btn btn-link form-forgot-pwd" href="{{ url('/password/reset') }}">Esqueceu sua Senha?</a>
+                                <a href="redirect">Facebook</a>
                             </div>
                         </div>
                     </form>
