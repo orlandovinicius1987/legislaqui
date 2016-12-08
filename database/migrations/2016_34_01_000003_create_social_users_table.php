@@ -15,9 +15,9 @@ class CreateSocialUsersTable extends Migration
         Schema::create('social_users', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('social_network_id')->unsigned();
-            $table->bigInteger('social_network_user_id');
+            $table->string('social_network_user_id');
             $table->json('data')->nullable();
-
+            $table->softDeletes();
      });
 
         Schema::table('social_users', function (Blueprint $table) {
