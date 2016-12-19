@@ -5,6 +5,7 @@
  * Date: 13/09/2016
  * Time: 15:52.
  */
+
 namespace App\Http\Controllers;
 
 use App\Repositories\DataRepository;

@@ -5,6 +5,7 @@
  * Date: 27/06/2016
  * Time: 10:49.
  */
+
 namespace App\Repositories;
 
 use App\User;
@@ -32,9 +33,9 @@ class UsersRepository
     public function findByEmail($email)
     {
         $user = new User();
+
         return $user->getUserByEmail($email);
     }
-
 
     public function storeUser()
     {

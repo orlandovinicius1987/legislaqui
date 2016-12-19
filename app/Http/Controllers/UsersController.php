@@ -5,6 +5,7 @@
  * Date: 18/02/2016
  * Time: 17:02.
  */
+
 namespace App\Http\Controllers;
 
 use App\Proposal;

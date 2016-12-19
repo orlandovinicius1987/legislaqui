@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateSocialNetworksTable extends Migration
 {
@@ -21,16 +21,16 @@ class CreateSocialNetworksTable extends Migration
         });
 
         $this->seed();
-
     }
 
-    public function seed(){
-
+    public function seed()
+    {
         DB::table('social_networks')->insert(['name' => 'facebook', 'slug' => 'Facebook']);
         DB::table('social_networks')->insert(['name' => 'twitter', 'slug' => 'Twitter']);
         DB::table('social_networks')->insert(['name' => 'youtube', 'slug' => 'Youtube']);
         DB::table('social_networks')->insert(['name' => 'linkedin', 'slug' => 'Linkedin']);
     }
+
     /**
      * Reverse the migrations.
      *
@@ -41,4 +41,3 @@ class CreateSocialNetworksTable extends Migration
         Schema::drop('social_networks');
     }
 }
-
