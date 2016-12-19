@@ -27,6 +27,9 @@ class CreateSocialNetworksTable extends Migration
     public function seed(){
 
         DB::table('social_networks')->insert(['name' => 'facebook', 'slug' => 'Facebook']);
+        DB::table('social_networks')->insert(['name' => 'twitter', 'slug' => 'Twitter']);
+        DB::table('social_networks')->insert(['name' => 'youtube', 'slug' => 'Youtube']);
+        DB::table('social_networks')->insert(['name' => 'linkedin', 'slug' => 'Linkedin']);
     }
     /**
      * Reverse the migrations.
