@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateSocialUsersTable extends Migration
 {
@@ -18,15 +18,14 @@ class CreateSocialUsersTable extends Migration
             $table->string('social_network_user_id');
             $table->json('data')->nullable();
             $table->softDeletes();
-     });
+        });
 
         Schema::table('social_users', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('social_network_id')->references('id')->on('social_networks');
-
         });
-
     }
+
     /**
      * Reverse the migrations.
      *
@@ -37,7 +36,6 @@ class CreateSocialUsersTable extends Migration
         Schema::drop('social_users');
     }
 }
-
 
 //->onDelete('cascade')->onUpdate('cascade')
 //->onDelete('cascade')->onUpdate('cascade')

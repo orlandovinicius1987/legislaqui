@@ -5,6 +5,7 @@
  * Date: 22/06/2016
  * Time: 12:24.
  */
+
 namespace App\Http\ViewComposers;
 
 use App\Approval;

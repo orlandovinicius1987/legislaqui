@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: ffeder
  * Date: 12/12/2016
- * Time: 16:43
+ * Time: 16:43.
  */
 
 namespace App\Services\SocialLogin;
@@ -11,7 +11,6 @@ namespace App\Services\SocialLogin;
 use App\Repositories\SocialUserRepository;
 use App\Repositories\UsersRepository;
 use App\SocialNetwork;
-
 
 class SocialUserService
 {
@@ -48,6 +47,7 @@ class SocialUserService
 
     /**
      * @param $socialUser
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function login($user)
@@ -64,6 +64,7 @@ class SocialUserService
      * @param $socialNetwork
      * @param $socialUser
      * @param $email
+     *
      * @return \App\User
      */
     public function findOrCreateUser($socialNetwork, $socialUser, $email)
@@ -79,6 +80,7 @@ class SocialUserService
 
     /**
      * @param $socialNetwork
+     *
      * @return mixed
      */
     public function getSocialNetwork($socialNetwork)
@@ -100,4 +102,3 @@ class SocialUserService
         }
     }
 }
-
