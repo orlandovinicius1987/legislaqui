@@ -13,14 +13,24 @@ class SocialNetwork extends Model
     protected $table = 'social_networks';
 
     protected $fillable = [
-        'id', 'name', 'slug', 'logo',
+        'name', 'slug', 'logo',
     ];
 
     protected $dates = ['deleted_at'];
 
+
+    public function getSocialNetwork($id){
+        return SocialNetwork::find(4);
+    }
+
+
      // Socialite
     public function users()
     {
-        return $this->belongsToMany('App\User', 'social_users', 'social_network_id');
+        return $this->belongsToMany('App\User', 'social_users', 'social_network_id')->withPivot('social_network_user_id', 'data');
     }
+
+
+
 }
+
