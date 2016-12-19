@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Session;
 use Validator;
+use Socialite;
 
 class AuthController extends Controller
 {

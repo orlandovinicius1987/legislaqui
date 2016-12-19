@@ -34,8 +34,19 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
 Route::group(['middleware' => 'web'], function () {
+
+    Route::get('/teste', 'SocialAuthController@redirectToProvider');
+
+    Route::get('/teste', function () {
+        return view('teste');
+    });
+
+    //Social Login
+    Route::get('/redirect/{socialNetwork}', 'SocialAuthController@redirect');
+    Route::get('/auth/{socialNetwork}/callback', 'SocialAuthController@socialNetworkCallback');
+
+
     Route::auth();
 
     Route::get('/', ['as' => 'home', 'uses' => 'ProposalsController@index']);
@@ -43,28 +54,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/', ['as' => 'home.post', 'uses' => 'ProposalsController@index']);
 
     Route::get('proposals/{id}', ['as' => 'proposal.show', 'uses' => 'ProposalsController@show'])->where('id', '[0-9]+');
-
-//    Route::get('cookieset', function()
-//    {
-//        //$foreverCookie = Cookie::forever('forever', 'ttt');
-//        //$tempCookie = Cookie::make('temporary', 'Victory', 5);
-//        $uuid = \Ramsey\Uuid\Uuid::uuid4();
-//        $uuid = Cookie::forever('uuid', $uuid);
-//        //return Response::make()->withCookie($foreverCookie)->withCookie($tempCookie);
-//        return Response::make()->withCookie($uuid);
-//    });
-//
-//
-//    Route::get('cookietest', ['as' => 'view.cookietest'], function()
-//    {
-//        $unique = Cookie::get('uuid');
-//        //$forever = Cookie::get('forever');
-//        //$temporary = Cookie::get('temporary');
-//        //return View::make('cookietest', array('forever' => $forever, 'temporary' => $temporary, 'variableTest' => 'works'));
-//        return View::make('cookietest', array('uuid' => $unique));
-//        //return $request->cookie('uuid');
-//    });
-
 
     // Like Button
     Route::get('proposals/{id}/like', ['as' => 'proposal.like', 'uses' => 'ProposalsController@like']);

@@ -12,6 +12,8 @@
         {{-- Include Auth Register View --}}
         @include('auth.register')
 
+
+
         <div class="col-md-5 col-xs-12">
             <div class="panel panel-default panel-bg">
                 <div class="panel-heading-login">
@@ -69,7 +71,12 @@
                                     <i class="fa fa-btn fa-sign-in fa-fw"></i>&nbsp; Login
                                 </button>
 
-                                <a class="btn btn-link form-forgot-pwd" href="{{ url('/password/reset') }}">Esqueceu sua Senha?</a>
+                                <a class="btn btn-link form-forgot-pwd" href="{{ url('/password/reset') }}">Esqueceu sua Senha?</a><br>
+                                <a href="redirect/facebook"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\fb_logo_blue29.png"></a>
+                                <a href="redirect/twitter"><img src="www.alerj.rj.gov.br\icone_08.png"></a>
+                                <a href="redirect/youtube"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\youTube48px.png"></a>
+                                <a href="redirect/linkedin">LinkedIn</a>
+                                <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
                             </div>
                         </div>
                     </form>

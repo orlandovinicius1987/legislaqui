@@ -34,6 +34,11 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ProposalClosedByCommittee' => [
             'App\Listeners\EmailProposalClosedByCommittee',
         ],
+
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            // add your listeners (aka providers) here
+            'SocialiteProviders\YouTube\YouTubeExtendSocialite@handle',
+        ],
     ];
 
     /**

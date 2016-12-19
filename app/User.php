@@ -8,8 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use SoftDeletes;
 
+    use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
@@ -117,4 +117,23 @@ class User extends Authenticatable
     {
         return date('M y', strtotime($value));
     }
+
+    public function getUserByEmail($email)
+    {
+        return User::Where('email', $email)->first();
+    }
+
+
+    // Socialite
+    public function socialNetworks()
+    {
+        return $this->belongsToMany('App\SocialNetwork', 'social_users', 'user_id');
+    }
+
+    public function socialUser()
+    {
+        return $this->hasMany('App\SocialUser');
+
+    }
+
 }
