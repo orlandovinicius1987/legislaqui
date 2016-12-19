@@ -2,57 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\SocialUserRepository;
-use App\SocialNetwork;
-use App\User;
-use App\State;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Socialite;
-use Ramsey\Uuid\Uuid;
+use App\Services\SocialLogin\SocialUserService;
 
 class SocialAuthController extends Controller
 {
     /**
-     * @var SocialUser
+     * @var SocialUserService
      */
+    private $socialUserService;
 
-    private $SocialUserRepository;
-
-    /**
-     * Redirect the user to the Facebook authentication page.
-     *
-     * @return Response
-     */
-    public function redirectToProvider()
+    public function __construct(SocialUserService $socialUserService)
     {
-        return Socialite::driver('facebook')->redirect();
+        $this->socialUserService = $socialUserService;
     }
-    /**
-     * Obtain the user information from Facebook.
-     *
-     * @return Response
-     */
-    public function handleProviderCallback()
-    {
-        $user = Socialite::driver('facebook')->user();
-        $this->SocialUserRepository = new SocialUserRepository();
-        $this->SocialUserRepository->storeUser($user);
 
-        #############  Test Area ###############
-        $id = $user->getId();
-        $nickName = $user->getNickname();
-        $name = $user->getName();
-        $email = $user->getEmail();
-        $avatar = $user->getAvatar();
-        return view('teste', ['id'=> $id,'nickName'=>$nickName,'name'=>$name,'email'=>$email,'avatar'=>$avatar]);
-        /*$user = Socialite::driver('facebook')->user();
-        return view('socialite')->with(compact('user'));     recebendo o usuário e mandando pra view
-        dd($user);    //'dump and die'*/
+    public function redirect($socialNetwork)
+    {
+        return $this->getDriver($socialNetwork)->redirect();
+    }
+
+    public function socialNetworkCallback($socialNetwork)
+    {
+        if (! $this->socialUserService->find($socialNetwork, $this->getDriver($socialNetwork)->user()))
+        {
+            return redirect()->route('login');
+        }
+
+        return redirect()->intended();
+    }
+
+    public function getDriver($driver)
+    {
+        return Socialite::driver($driver);
     }
 }
-
-
-
