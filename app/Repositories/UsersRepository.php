@@ -29,6 +29,13 @@ class UsersRepository
         return User::destroy($id);
     }
 
+    public function findByEmail($email)
+    {
+        $user = new User();
+        return $user->getUserByEmail($email);
+    }
+
+
     public function storeUser()
     {
         $user = new User();
