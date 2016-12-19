@@ -15,5 +15,16 @@ class SocialUser extends Model
     protected $guarded = ['user_id', 'social_network_id', 'data'];
 
 
+    public function find($id)
+    {
+        return SocialUser::where('social_network_user_id', $id)->first();
+    }
+
+    // Socialite
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 
 }
+
