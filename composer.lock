@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "28c76edde5de92c0258327c64da7c1bf",
-    "content-hash": "2eacbc8696a10ec3eda25e3fdeeb755e",
+    "hash": "b1a1716cc78e2458a4282d67bedaa4ef",
+    "content-hash": "95d09ca47184974ede4fab21dfa5ed1c",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -2019,6 +2019,85 @@
                 "uuid"
             ],
             "time": "2016-10-02 15:51:17"
+        },
+        {
+            "name": "socialiteproviders/manager",
+            "version": "v2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Manager.git",
+                "reference": "775bd7f25c71ed88e9ae73ed52ba129fecc7abd0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/775bd7f25c71ed88e9ae73ed52ba129fecc7abd0",
+                "reference": "775bd7f25c71ed88e9ae73ed52ba129fecc7abd0",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/socialite": "~2.0",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Manager\\": "src/",
+                    "SocialiteProviders\\Manager\\Test\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Wendt",
+                    "email": "andy@awendt.com"
+                }
+            ],
+            "description": "Easily add new or override built-in providers in Laravel Socialite.",
+            "time": "2016-12-04 07:11:20"
+        },
+        {
+            "name": "socialiteproviders/youtube",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/YouTube.git",
+                "reference": "19527294af77b2dd3e7fc0c91f68afdf73180963"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/YouTube/zipball/19527294af77b2dd3e7fc0c91f68afdf73180963",
+                "reference": "19527294af77b2dd3e7fc0c91f68afdf73180963",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\YouTube\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "DraperStudio",
+                    "email": "hello@draperstud.io"
+                }
+            ],
+            "description": "YouTube OAuth2 Provider for Laravel Socialite",
+            "time": "2016-06-07 12:46:05"
         },
         {
             "name": "stevebauman/location",
