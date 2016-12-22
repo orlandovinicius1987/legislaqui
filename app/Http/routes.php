@@ -23,7 +23,6 @@
 
 //  Route::get('/', 'WelcomeController@index');
 
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -35,7 +34,6 @@
 |
 */
 Route::group(['middleware' => 'web'], function () {
-
     Route::get('/teste', 'SocialAuthController@redirectToProvider');
 
     Route::get('/teste', function () {
@@ -45,7 +43,6 @@ Route::group(['middleware' => 'web'], function () {
     //Social Login
     Route::get('/redirect/{socialNetwork}', 'SocialAuthController@redirect');
     Route::get('/auth/{socialNetwork}/callback', 'SocialAuthController@socialNetworkCallback');
-
 
     Route::auth();
 

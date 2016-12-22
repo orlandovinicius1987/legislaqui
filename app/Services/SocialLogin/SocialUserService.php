@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: ffeder
  * Date: 12/12/2016
- * Time: 16:43
+ * Time: 16:43.
  */
 
 namespace App\Services\SocialLogin;
@@ -11,7 +11,6 @@ namespace App\Services\SocialLogin;
 use App\Repositories\SocialUserRepository;
 use App\Repositories\UsersRepository;
 use App\SocialNetwork;
-
 
 class SocialUserService
 {
@@ -42,7 +41,11 @@ class SocialUserService
         return $user;
     }
 
-
+    /**
+     * @param $socialUser
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function login($user)
     {
         return auth()->login($user);
@@ -53,8 +56,8 @@ class SocialUserService
         return $user->getEmail() ?: sprintf('%s@%s.legislaqui.rj.gov.br', $user->getId(), $socialNetwork);
     }
 
-
     public function findOrCreateUser($socialUser, $email)
+
     {
         if (!$user = $this->usersRepository->findByEmail($email)) {
             $user = $this->socialUserRepository->createUser($email, $socialUser);
@@ -64,7 +67,6 @@ class SocialUserService
 
         return $user;
     }
-
 
     public function getSocialNetwork($socialNetwork)
     {
@@ -81,4 +83,3 @@ class SocialUserService
         }
     }
 }
-

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateSocialNetworksTable extends Migration
 {
@@ -19,7 +19,6 @@ class CreateSocialNetworksTable extends Migration
             $table->string('logo')->nullable();
             $table->softDeletes();
         });
-
      }
 
     /**
@@ -32,4 +31,3 @@ class CreateSocialNetworksTable extends Migration
         Schema::drop('social_networks');
     }
 }
-

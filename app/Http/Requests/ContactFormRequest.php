@@ -5,6 +5,7 @@
  * Date: 28/06/2016
  * Time: 11:20.
  */
+
 namespace App\Http\Requests;
 
 class ContactFormRequest extends Request

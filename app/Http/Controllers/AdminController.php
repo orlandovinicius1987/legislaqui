@@ -5,6 +5,7 @@
  * Date: 26/01/2016
  * Time: 13:59.
  */
+
 namespace App\Http\Controllers;
 
 use App\BillsProject;
