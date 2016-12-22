@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ClearAllTablesSeeder::class);
         $this->call(StateSeeder::class);
         $this->call(UserSeeder::class);
-
+        $this->call(SocialNetworkSeeder::class);
         //Model::reguard();
     }
 }
