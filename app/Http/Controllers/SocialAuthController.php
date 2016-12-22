@@ -7,8 +7,6 @@ use Socialite;
 
 class SocialAuthController extends Controller
 {
-
-
     private $socialUserService;
 
     public function __construct(SocialUserService $socialUserService)

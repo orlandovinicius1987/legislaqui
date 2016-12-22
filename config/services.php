@@ -59,16 +59,16 @@ return [
     // Login social - linkedIn
 
         'linkedin' => [
-            'client_id' => '78fg8nqdvhwhs1',
+            'client_id'     => '78fg8nqdvhwhs1',
             'client_secret' => 'gmYsYGtGta6Dc3yv',
-            'redirect' => 'http://local.edemocracia.com/auth/linkedin/callback',
+            'redirect'      => 'http://local.edemocracia.com/auth/linkedin/callback',
         ],
 
     // Login social - linkedIn
         'instagram' => [
-            'client_id' => '48d9bd9957274b57beadbbab85f9f1c8',
+            'client_id'     => '48d9bd9957274b57beadbbab85f9f1c8',
             'client_secret' => '1e5a51eba2cc4a8da9a9eeda3b86b29b',
-            'redirect' => 'http://local.edemocracia.com/auth/instagram/callback',
+            'redirect'      => 'http://local.edemocracia.com/auth/instagram/callback',
         ],
 
 ];

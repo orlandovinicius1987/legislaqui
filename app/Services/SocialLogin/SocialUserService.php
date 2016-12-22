@@ -14,9 +14,7 @@ use App\SocialNetwork;
 
 class SocialUserService
 {
-
     private $socialUserRepository;
-
 
     private $usersRepository;
 
@@ -57,7 +55,6 @@ class SocialUserService
     }
 
     public function findOrCreateUser($socialUser, $email)
-
     {
         if (!$user = $this->usersRepository->findByEmail($email)) {
             $user = $this->socialUserRepository->createUser($email, $socialUser);
@@ -74,7 +71,6 @@ class SocialUserService
 
         return $socialNetwork;
     }
-
 
     public function findOrCreateUserSocialNetwork($socialNetwork, $socialUser, $user)
     {
