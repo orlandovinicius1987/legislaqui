@@ -205,24 +205,30 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($proposals as $proposal)
-                            <tr>
-                                {{--<!-- <td> --}}{{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}}{{-- </td>-->--}}
-                                <td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}">{{ $proposal->name }}</a></td>
-                                @if (isset($is_not_responded) && Auth::user()->is_admin)
-                                    <td><a href="{{ route('proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a></td>
-                                @else
-                                    {{--Likes --}}
-                                    <td class="text-center">{{ ($proposal->like_count - $proposal->unlike_count) }}</td>
-                                    {{--Unlikes--}}
-                                    {{--<td>{{ $proposal->unlike_count }}</td>--}}
-                                    {{--Rating--}}
-                                    {{--<td>{{ $proposal->rating }}</td>--}}
-                                    {{--Approvals--}}
-                                    <td class="text-center">{{ $proposal->approvals()->count() }}</td>
-                                @endif
-                            </tr>
-                        @endforeach
+                            @if ($proposals->count()>0)
+                                    @foreach ($proposals as $proposal)
+                                        <tr>
+                                            {{--<!-- <td> --}}{{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}}{{-- </td>-->--}}
+                                            <td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}">{{ $proposal->name }}</a></td>
+                                            @if (isset($is_not_responded) && Auth::user()->is_admin)
+                                                <td><a href="{{ route('proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a></td>
+                                            @else
+                                                {{--Likes --}}
+                                                <td class="text-center">{{ ($proposal->like_count - $proposal->unlike_count) }}</td>
+                                                {{--Unlikes--}}
+                                                {{--<td>{{ $proposal->unlike_count }}</td>--}}
+                                                {{--Rating--}}
+                                                {{--<td>{{ $proposal->rating }}</td>--}}
+                                                {{--Approvals--}}
+                                                <td class="text-center">{{ $proposal->approvals()->count() }}</td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
+                            @else
+                                <tr>
+                                    <th><h3>Não há propostas</h3></th>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
