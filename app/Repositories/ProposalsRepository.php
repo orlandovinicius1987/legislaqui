@@ -321,27 +321,32 @@ class ProposalsRepository
         $query = Proposal::whereNotNull('approved_by');
 
         if ($q == 'open') {
-            $query->where(['open' => true, 'in_committee' => false]);
+            $query->where(['open' => true, 'in_committee' => false])
+                ->withCount('approvals')->get();
         }
 
         if ($q == 'committee') {
-            $query->where(['open' => true, 'in_committee' => true, 'approved_by_committee' => null, 'disapproved_by_committee' => null]);
+            $query->where(['open' => true, 'in_committee' => true, 'approved_by_committee' => null, 'disapproved_by_committee' => null])
+                ->withCount('approvals')->get();
         }
 
         if ($q == 'expired') {
-            $query->whereNotNull('time_limit_by')->where(['open' => false, 'time_limit' => true]);
+            $query->whereNotNull('time_limit_by')->where(['open' => false, 'time_limit' => true])
+                ->withCount('approvals')->get();
         }
 
         if ($q == 'disapproved') {
-            $query->whereNotNull('disapproved_by_committee')->where('open', false);
+            $query->whereNotNull('disapproved_by_committee')->where('open', false)
+                ->withCount('approvals')->get();
         }
 
         if ($q == 'approved') {
-            $query->whereNotNull('approved_by_committee')->where('open', true);
+            $query->whereNotNull('approved_by_committee')->where('open', true)
+                ->withCount('approvals')->get();
         }
 
         $this->buildSearch($query, $s);
-        $query->orderBy('created_at', 'desc');
+        $query->orderBy('created_at', 'desc')->orderBy('approvals_count', 'desc');
 
         return $query;
     }
