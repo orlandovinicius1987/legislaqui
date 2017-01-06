@@ -15,9 +15,23 @@ use Ramsey\Uuid\Uuid;
 
 class UsersRepository
 {
-    public function all()
+    public function all($q)
     {
-        return User::all();
+        $user = new User();
+
+        if ($q)
+        {
+            if ($q == "cidadao")
+            {
+               return $user->getUsersCommon();
+            } else
+            {
+               return $user->getUsersAdm();
+            }
+
+        } else
+
+          return User::all();
     }
 
     public function find($id)

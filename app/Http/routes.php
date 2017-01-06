@@ -103,7 +103,7 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 
     Route::get('admin', ['as' => 'admin', 'uses' => 'AdminController@index']);
 
-    Route::get('admin/users', ['as' => 'admin.users', 'uses' => 'AdminController@users']);
+    Route::get('admin/users/', ['as' => 'admin.users', 'uses' => 'AdminController@users']);
 
     Route::get('admin/users/{id}', ['as' => 'admin.users.show', 'uses' => 'AdminController@showUser'])->where('id', '[0-9]+');
 
