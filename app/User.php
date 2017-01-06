@@ -132,4 +132,17 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\SocialUser');
     }
+
+    // Return users of system
+    public function getUsersCommon()
+    {
+        return $this->where('role_id', '99')->get();
+    }
+
+    // Return users Adm, Approvers and Commission
+    public function getUsersAdm()
+    {
+        return $this->whereIn('role_id', [0, 1, 2])->get();
+    }
+
 }

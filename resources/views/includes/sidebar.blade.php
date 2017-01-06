@@ -47,7 +47,11 @@
                     <li><a href="/admin/proposals/disapproved-by-committee"><i class="fa fa-exclamation-triangle text-warning"></i> Encerradas</a></li>
                     <hr>
                     @can('edit', Auth::user())
-                    <li><a href="/admin/users"><i class="fa fa fa-users text-warning"></i> Usuários</a></li>
+                    <li><a>Usuários</a></li>
+                    <li><a href="/admin/users"><i class="fa fa fa-users text-warning"></i> Todos</a></li>
+                    <li><a href="/admin/users/?q=cidadao"><i class="fa fa fa-users text-warning"></i> Cidadãos</a></li>
+                    <li><a href="/admin/users/?q=servidores"><i class="fa fa fa-users text-warning"></i> Servidores</a></li>
+
                     @endcan
                 </ul>
             </li>

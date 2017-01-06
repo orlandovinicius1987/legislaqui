@@ -48,7 +48,7 @@ class AdminController extends Controller
 
     public function users()
     {
-        $users = $this->usersRepository->all();
+        $users = $this->usersRepository->all(Input::get('q'));
 
         return view('admin.users.index')
             ->with(compact('users'));
