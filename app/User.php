@@ -144,5 +144,4 @@ class User extends Authenticatable
     {
         return $this->whereIn('role_id', [0, 1, 2])->get();
     }
-
 }
