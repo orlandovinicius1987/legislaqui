@@ -186,6 +186,7 @@
                                             array('required',
                                             'class'=>'form-control',
                                             'placeholder'=>'Busque uma ideia ...')) !!}
+                                        {!! Form::submit('Pesquisar') !!}
 
                                         <span class="glyphicon glyphicon-search form-control-feedback dimensionsBackground"></span>
                                         {!! Form::close() !!}
