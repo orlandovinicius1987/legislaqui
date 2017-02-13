@@ -1,15 +1,8 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-
-use App\User;
-use App\Proposal;
 
 class LinksAndOthersTest extends TestCase
 {
-
     public function testLinksMenuBar()
     {
         $this->visit('/')
@@ -79,7 +72,7 @@ class LinksAndOthersTest extends TestCase
 
     public function testContact()
     {
-         $this->visit('/contact')
+        $this->visit('/contact')
             ->type('Acebolado Silva', 'name')
             ->type('alerjteste@alerj.com', 'email')
             ->type('Gostaria de solicitar neve no natal de São Gonçalo', 'message')
@@ -87,6 +80,4 @@ class LinksAndOthersTest extends TestCase
             ->seePageIs('/contact')
             ->see('Obrigado por');
     }
-
 }
-

@@ -8,7 +8,6 @@
 
 namespace App\Repositories;
 
-use App\SocialNetwork;
 use App\SocialUser;
 use App\User;
 use Ramsey\Uuid\Uuid;
@@ -28,7 +27,7 @@ class SocialUserRepository
     {
         return User::destroy($id);
     }
-  
+
     public function createUser($email, $socialUser)
     {
         $userModel = new User();

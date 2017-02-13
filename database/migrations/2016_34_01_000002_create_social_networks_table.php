@@ -19,7 +19,7 @@ class CreateSocialNetworksTable extends Migration
             $table->string('logo')->nullable();
             $table->softDeletes();
         });
-     }
+    }
 
     /**
      * Reverse the migrations.
