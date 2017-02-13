@@ -80,18 +80,19 @@ class UsersTest extends TestCase
             ->see($user->name);
     }
 
-    public function testFunctionsOfUser(){
+    public function testFunctionsOfUser()
+    {
         $proposal = factory(App\Proposal::class)->create();
         $id = $proposal->user_id;
         $user = App\User::find($id);
         $user->role_id;
     }
 
-    public function testViewAdminWithoutLogin(){
+    public function testViewAdminWithoutLogin()
+    {
         $this->visit('/admin')
             ->seePageIs('/login');
     }
-
 
     // TEST ADMIN
 
@@ -104,8 +105,8 @@ class UsersTest extends TestCase
             ->see('Ideias Legislativas');
     }
 
-    public function testAdminProposalsFilter() {
-
+    public function testAdminProposalsFilter()
+    {
         $user = factory(App\User::class, 'admin')->create();
         $this->actingAs($user)
             ->visit('/')
@@ -167,21 +168,21 @@ class UsersTest extends TestCase
         //    ->seePageIs('/admin/proposals/in-committee');  // NÃO ENTENDO PORQUE DÁ PROBLEMA (testei como usuário normalmente)
     }
 
-      public function testAdminEditing(){
+    public function testAdminEditing()
+    {
+        $faker = Faker\Factory::create();
 
-          $faker = Faker\Factory::create();
+        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
 
-          $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
-
-          $user = factory(App\User::class, 'admin')->create();
-          $name = $user->name;
-          $input = array(0, 1, 99, 2);
-          $roleId = $input[array_rand($input, 1)];
-          $this->actingAs($user)
+        $user = factory(App\User::class, 'admin')->create();
+        $name = $user->name;
+        $input = [0, 1, 99, 2];
+        $roleId = $input[array_rand($input, 1)];
+        $this->actingAs($user)
               ->visit('/')
               ->click('Ir ao Painel de Admin')
               ->click('Todos')
-              ->type($name,'dataTableUser')
+              ->type($name, 'dataTableUser')
               ->click($name)
            // ->seePageIs('/admin/users/'.$user->id);
               ->visit('/admin/users/'.$user->id)
@@ -191,17 +192,18 @@ class UsersTest extends TestCase
               ->type($faker->email, 'email')
               ->select($roleId, 'role_id')
               ->press('Gravar');
-      }
+    }
 
-      public function testAdmCreatingUser () {
-          $faker = Faker\Factory::create();
+    public function testAdmCreatingUser()
+    {
+        $faker = Faker\Factory::create();
           // Add pt_BR provider
           $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
 
-          $user = factory(App\User::class, 'admin')->create();
-          $input = array(0, 1, 99, 2);
-          $roleId = $input[array_rand($input, 1)];
-          $this->actingAs($user)
+        $user = factory(App\User::class, 'admin')->create();
+        $input = [0, 1, 99, 2];
+        $roleId = $input[array_rand($input, 1)];
+        $this->actingAs($user)
               ->visit('/')
               ->click('Ir ao Painel de Admin')
               ->click('Todos')
@@ -211,12 +213,13 @@ class UsersTest extends TestCase
               ->type($faker->email, 'email')
               ->select('RJ', 'uf')
               ->select($roleId, 'role_id')
-              ->type($faker->cpf,'cpf')
+              ->type($faker->cpf, 'cpf')
               ->press('Incluir Novo Usuário');
-      }
+    }
 
     // FUNCTION don't done
-    public function testUserInteractingWithProposal() {
+    public function testUserInteractingWithProposal()
+    {
         $proposal = factory(App\Proposal::class)->create();
         $id = $proposal->user_id;
 
@@ -224,24 +227,24 @@ class UsersTest extends TestCase
         $name = $proposal->name;
         $this->actingAs($user)
             ->visit('/')
-            ->type($name,'search')
+            ->type($name, 'search')
             ->click('pesquisar')   // não tá localizando, mesmo com o botão inserido lá
             ->click($name);
 //            ->seePageIs('/proposals/'.$proposal->id);
     }
 
-       public function testPush() {
-           $stack = array();
-           $this->assertEquals(0,count($stack));
-           array_push($stack, 'Felipe');
+    public function testPush()
+    {
+        $stack = [];
+        $this->assertEquals(0, count($stack));
+        array_push($stack, 'Felipe');
 
-           $this->assertEquals('Felipe', $stack[count($stack)-1]);
-           $this->assertEquals(1, count($stack));
+        $this->assertEquals('Felipe', $stack[count($stack) - 1]);
+        $this->assertEquals(1, count($stack));
 
-           $this->assertEquals('Felipe', array_pop($stack));
-           $this->assertEquals(0 , count($stack));
+        $this->assertEquals('Felipe', array_pop($stack));
+        $this->assertEquals(0, count($stack));
 
-           $this->assertEmpty($stack);
-       }
-
+        $this->assertEmpty($stack);
+    }
 }
