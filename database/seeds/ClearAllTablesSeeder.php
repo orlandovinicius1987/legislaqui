@@ -13,6 +13,5 @@ class ClearAllTablesSeeder extends Seeder
     {
         DB::table('users')->delete();
         DB::table('proposals')->delete();
-        DB::table('states')->delete();
     }
 }

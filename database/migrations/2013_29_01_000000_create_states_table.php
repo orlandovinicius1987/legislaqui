@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use App\Support\StateSeederSupport;
 
 class CreateStatesTable extends Migration
 {
@@ -20,6 +21,9 @@ class CreateStatesTable extends Migration
             $table->timestamps();
             $table->primary('uf');
         });
+
+        $state = new StateSeederSupport();
+        $state->run();
     }
 
     /**

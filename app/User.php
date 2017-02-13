@@ -29,35 +29,40 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    // User has many Proposals
-    public function proposals()
+     /* EM TESTE DE USO - NÃO MEXER     não está usando esse código, porém no 'User/Show' há uma menção $user->proposals_count
+        User has many Proposals*/
+    /*public function proposals()
     {
         return $this->hasMany(Proposal::class);
-    }
+    }*/
 
-    // User approvals Proposals
+       /* EM TESTE DE USO - NÃO MEXER    ESTÁ SENDO USADA! - 'APOIAR UMA IDEIA'    *************
+       User approvals Proposals */
     public function approvals()
     {
         return $this->belongsToMany(Proposal::class, 'approvals', 'user_id', 'proposal_id');
     }
 
-    // User likes Proposals
-    public function likes()
+       /*EM TESTE DE USO - NÃO MEXER    não está usando esse código, porém no 'User/Show' há uma menção $user->likes_count
+        User likes Proposals*/
+    /*public function likes()
     {
         return $this->belongsToMany(Proposal::class, 'likes', 'user_id', 'proposal_id');
-    }
+    }*/
 
-    // User has only one State
-    public function states()
+       /* EM TESTE DE USO - NÃO MEXER     Não está sendo usado!
+        User has only one State*/
+   /* public function states()
     {
         return $this->hasOne(State::class);
-    }
+    }*/
 
-    // User has one Role
-    public function roles()
+        /*EM TESTE DE USO - NÃO MEXER    Não está sendo usado!
+        User has one Role*/
+    /*public function roles()
     {
         return $this->hasOne(Role::class, 'id');
-    }
+    }*/
 
     // Get is_admin attribute
     public function getIsAdminAttribute()

@@ -17,6 +17,10 @@ use App\User;
 use Illuminate\Support\Facades\Request;
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
+
+//    $state = factory(App\State::class)->create();
+
+//    dd($state->getUfAttribute());
     return [
         'name'  => $faker->name,
         'email' => $faker->email,
@@ -26,13 +30,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
         //Aprovador 1 - Comissao 2 - Cidadao 99
         'role_id' => $faker->randomElement([1, 2, 99]),
-        'uf'      => State::all()->shuffle()->first()->uf,
+        'uf'      => State::all()->shuffle()->first()->getUfAttribute(),
         'cpf'     => $faker->cpf,
         'uuid'    => $faker->uuid,
     ];
 });
 
-$factory->defineAs(App\User::class, 'admin', function (Faker\Generator $faker) use ($factory) {
+
+$factory->defineAs(App\User::class, 'admin', function ($faker) use ($factory) {  //
     $user = $factory->raw(App\User::class);
 
     //Admin 0
