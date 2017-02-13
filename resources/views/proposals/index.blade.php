@@ -186,10 +186,11 @@
                                             array('required',
                                             'class'=>'form-control',
                                             'placeholder'=>'Busque uma ideia ...')) !!}
-                                        {!! Form::submit('Pesquisar') !!}
-
+                                            {{--{!! Form::submit('Pesquisar') !!} --}}
                                         <span class="glyphicon glyphicon-search form-control-feedback dimensionsBackground"></span>
+                                        <a href="#" type="submit" class="btn btn-default" name="pesquisar">Pesquisar</a>
                                         {!! Form::close() !!}
+
                                     </div>
 
                                  {{--LINK PARA DÚVIDAS FREQUENTES--}}
