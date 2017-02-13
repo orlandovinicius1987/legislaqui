@@ -96,22 +96,21 @@ class UsersTest extends TestCase
             ->seePageIs('/login');
     }
 
+
     // TEST ADMIN
 
-    public function testActingAsUserAdminMainScreen()
+    public function testAdminMainScreen()
     {
         $user = factory(App\User::class, 'admin')->create();
-        //dd($user);
         $this->actingAs($user)
             ->visit('/')
             ->click('Ir ao Painel de Admin')
             ->see('Ideias Legislativas');
     }
 
-    public function testActingAsUserAdminProposalsFilter() {
+    public function testAdminProposalsFilter() {
 
         $user = factory(App\User::class, 'admin')->create();
-        echo "$user->email $user->role_id";
         $this->actingAs($user)
             ->visit('/')
             ->click('Ir ao Painel de Admin')
@@ -172,18 +171,16 @@ class UsersTest extends TestCase
         //    ->seePageIs('/admin/proposals/in-committee');  // NÃO ENTENDO PORQUE DÁ PROBLEMA (testei como usuário normalmente)
     }
 
+      public function testAdminEditing(){
 
-    // FUNCTION don't done
-      public function testActingAsUserAdminEditing(){
-          // use the factory to create a Faker\Generator instance
           $faker = Faker\Factory::create();
-          // Add pt_BR provider
+
           $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
 
           $user = factory(App\User::class, 'admin')->create();
           $name = $user->name;
           $input = array(0, 1, 99, 2);
-          $roleName = $input[array_rand($input, 1)];
+          $roleId = $input[array_rand($input, 1)];
           $this->actingAs($user)
               ->visit('/')
               ->click('Ir ao Painel de Admin')
@@ -196,38 +193,46 @@ class UsersTest extends TestCase
               ->seePageIs('/admin/users/'.$user->id.'/edit')
               ->type($faker->name, 'name')
               ->type($faker->email, 'email')
-              ->select($roleName, 'role_id')
+              ->select($roleId, 'role_id')
               ->press('Gravar');
       }
 
+      public function testAdmCreatingUser () {
+          $faker = Faker\Factory::create();
+          // Add pt_BR provider
+          $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+
+          $user = factory(App\User::class, 'admin')->create();
+          $input = array(0, 1, 99, 2);
+          $roleId = $input[array_rand($input, 1)];
+          $this->actingAs($user)
+              ->visit('/')
+              ->click('Ir ao Painel de Admin')
+              ->click('Todos')
+              ->click('criarNovoUsuario')
+              ->seePageIs('/admin/users/create')
+              ->type($faker->name, 'name')
+              ->type($faker->email, 'email')
+              ->select('RJ', 'uf')
+              ->select($roleId, 'role_id')
+              ->type($faker->cpf,'cpf')
+              ->press('Incluir Novo Usuário');
+      }
+
     // FUNCTION don't done
-    public function testActingAsUserInteractingWithProposal() {
+    public function testUserInteractingWithProposal() {
         $proposal = factory(App\Proposal::class)->create();
         $id = $proposal->user_id;
+
         $user = App\User::find($id);
         $name = $proposal->name;
         $this->actingAs($user)
             ->visit('/')
             ->type($name,'search')
-            ->click('Pesquisar')   // não tá localizando, mesmo com o botão inserido lá
+            ->click('pesquisar')   // não tá localizando, mesmo com o botão inserido lá
             ->click($name);
 //            ->seePageIs('/proposals/'.$proposal->id);
     }
-
-
-
-
-
-
-
-    // A request to [http://localhost/redirect/facebook] failed. Received status code [500].
-       /* public function testLoginSocialNetwork()
-       {
-          $this->visit('/')
-               ->click('Login | Registro')
-               ->seePageIs('/login')
-               ->click('facebookButton');
-       }*/
 
        public function testPush() {
            $stack = array();
