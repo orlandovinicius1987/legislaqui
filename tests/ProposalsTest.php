@@ -1,8 +1,6 @@
 <?php
 
-use Anhskohbo\NoCaptcha\Facades\NoCaptcha;
 use App\Proposal;
-use App\State;
 use App\User;
 use Faker\Factory;
 
@@ -11,26 +9,25 @@ use Faker\Factory;
 class ProposalsTest extends TestCase
 {
     /**
-     * A basic functional test example.
-     *
-     * @return void
-     */
-
+   * A basic functional test example.
+   *
+   * @return void
+   */
   public function testRandomProposal()
-    {
-        //Use Eloquent
+  {
+      //Use Eloquent
         $proposal = Proposal::all()->random();
-        $this->seeInDatabase('proposals', ['name' => $proposal->name]);
+      $this->seeInDatabase('proposals', ['name' => $proposal->name]);
 
         //Not use Eloquent
         $proposal = factory(App\Proposal::class)->create();
 
-        $this->visit('/proposals/'.$proposal->id);
+      $this->visit('/proposals/'.$proposal->id);
 //         ->seeInDatabase('proposals', ['name' => $proposal->name]);
 
         //Not with Paginator
         //->see($proposal->name);
-    }
+  }
 
     public function testPageProposal()
     {
@@ -40,7 +37,7 @@ class ProposalsTest extends TestCase
              ->see($proposal->name)
              ->see($proposal->central_idea)
              ->see($proposal->problem);
-      }
+    }
 
     public function testCreateProposal()
     {
@@ -54,8 +51,6 @@ class ProposalsTest extends TestCase
             ->press('Incluir')
             ->see('Sucesso');
     }
-
-
 
     /* public function testCreateProposalUserNotloggedIn()     NÃO TERMINADO
     {
@@ -123,5 +118,4 @@ class ProposalsTest extends TestCase
         $this->assertInstanceOf('Illuminate\Pagination\LengthAwarePaginator', $proposals);
         //$this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $proposals);
     } */
-
 }

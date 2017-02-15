@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Support\StateSeederSupport;
+use Illuminate\Console\Command;
 
 class MinimumSeedToTestUserRegister extends Command
 {
