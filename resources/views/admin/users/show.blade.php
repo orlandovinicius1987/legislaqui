@@ -47,7 +47,7 @@
 
                         @can('edit', Auth::user())
                             <div class="col-md-12 botao">
-                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary botao">
+                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary botao" id="editarUsuario">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Usuário</a>
                             </div>
 
