@@ -64,7 +64,7 @@ return [
             'redirect'      => 'http://local.edemocracia.com/auth/linkedin/callback',
         ],
 
-    // Login social - linkedIn
+    // Login social - instagram
         'instagram' => [
             'client_id'     => '48d9bd9957274b57beadbbab85f9f1c8',
             'client_secret' => '1e5a51eba2cc4a8da9a9eeda3b86b29b',

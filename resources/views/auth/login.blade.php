@@ -72,7 +72,7 @@
                                 </button>
 
                                 <a class="btn btn-link form-forgot-pwd" href="{{ url('/password/reset') }}">Esqueceu sua Senha?</a><br>
-                                <a href="redirect/facebook"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\fb_logo_blue29.png"></a>
+                                <a href="redirect/facebook" id="facebookButton"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\fb_logo_blue29.png"></a>
                                 <a href="redirect/twitter"><img src="www.alerj.rj.gov.br\icone_08.png"></a>
                                 <a href="redirect/youtube"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\youTube48px.png"></a>
                                 <a href="redirect/linkedin"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\linkedin_2C_34px.png"></a>
