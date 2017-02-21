@@ -95,7 +95,6 @@ class UsersTest extends TestCase
     }
 
     // TEST ADMIN
-
     public function testAdminMainScreen()
     {
         $user = factory(App\User::class, 'admin')->create();
@@ -103,6 +102,24 @@ class UsersTest extends TestCase
             ->visit('/')
             ->click('Ir ao Painel de Admin')
             ->see('Ideias Legislativas');
+    }
+
+    // FUNCTION doesn't done   LINK NÃO FUNCIONAL
+    public function testLinksAdminMainScreen ()
+    {
+        $user = factory(App\User::class, 'admin')->create();
+        $this->actingAs($user)
+            ->visit('/')
+            ->click('Ir ao Painel de Admin')
+            ->seePageIs('/admin')
+            ->click('verpropostas')
+            ->seePageIs('/admin/proposals')
+         //   ->click('maisinfoapoios')      LINK NÃO FUNCIONAL
+        //    ->seePageIs('/admin/proposals#');
+            ->click('maisinfousuarioregistrados')
+            ->seePageIs('/admin/users')
+            ->click('maisinfoaguardandomoderacao')
+            ->seePageIs('/admin/proposals/notresponded');
     }
 
     public function testAdminProposalsFilter()
@@ -191,7 +208,8 @@ class UsersTest extends TestCase
               ->type($faker->name, 'name')
               ->type($faker->email, 'email')
               ->select($roleId, 'role_id')
-              ->press('Gravar');
+              ->press('Gravar')
+              ->see('Usuário Editado com Sucesso');
     }
 
     public function testAdmCreatingUser()
@@ -217,7 +235,7 @@ class UsersTest extends TestCase
               ->press('Incluir Novo Usuário');
     }
 
-    // FUNCTION don't done
+    // FUNCTION doesn't done
     public function testUserInteractingWithProposal()
     {
         $proposal = factory(App\Proposal::class)->create();
@@ -231,20 +249,6 @@ class UsersTest extends TestCase
             ->click('pesquisar')
            // ->click($name)
             ->visit('/admin/users/'.$user->id);
-//            ->seePageIs('/proposals/'.$proposal->id);
-    }
-
-
-      public function testPush() {
-           $stack = array();
-           $this->assertEquals(0,count($stack));
-           array_push($stack, 'Felipe');
-
-           $this->assertEquals('Felipe', $stack[count($stack)-1]);
-           $this->assertEquals(1, count($stack));
-            ->type($name, 'search')
-            ->click('pesquisar')   // não tá localizando, mesmo com o botão inserido lá
-            ->click($name);
 //            ->seePageIs('/proposals/'.$proposal->id);
     }
 
