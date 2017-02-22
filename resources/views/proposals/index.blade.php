@@ -186,9 +186,7 @@
                                             array('required',
                                             'class'=>'form-control',
                                             'placeholder'=>'Busque uma ideia ...')) !!}
-                                            {{--{!! Form::submit('Pesquisar') !!} --}}
-                                        <span class="glyphicon glyphicon-search form-control-feedback dimensionsBackground"></span>
-                                        <a href="#"  name="pesquisar"><button href="#" type="submit" class="btn btn-default">Pesquisar</button></a>
+                                        <a href="#"  name="pesquisar"><button href="#" type="submit" class="btn btn-default glyphicon glyphicon-search form-control-feedback dimensionsBackground   ">{{--Pesquisar--}}</button></a>
                                         {!! Form::close() !!}
 
                                     </div>
