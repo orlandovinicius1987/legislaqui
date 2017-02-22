@@ -105,7 +105,7 @@ class UsersTest extends TestCase
     }
 
     // FUNCTION doesn't done   LINK NÃO FUNCIONAL
-    public function testLinksAdminMainScreen ()
+    public function testLinksAdminMainScreen()
     {
         $user = factory(App\User::class, 'admin')->create();
         $this->actingAs($user)
@@ -245,8 +245,9 @@ class UsersTest extends TestCase
         $name = $proposal->name;
         $this->actingAs($user)
             ->visit('/')
-            ->type($name,'search')
+           ->type($name,'search')
             ->click('pesquisar');
+
            // ->click($name)
   //          ->visit('/admin/users/'.$user->id);
 //            ->seePageIs('/proposals/'.$proposal->id);
@@ -257,7 +258,6 @@ class UsersTest extends TestCase
         $stack = [];
         $this->assertEquals(0, count($stack));
         array_push($stack, 'Felipe');
-
 
         $this->assertEquals('Felipe', $stack[count($stack) - 1]);
         $this->assertEquals(1, count($stack));
