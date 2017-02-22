@@ -49,8 +49,8 @@
                     @can('edit', Auth::user())
                     <li><a>Usuários</a></li>
                     <li><a href="/admin/users"><i class="fa fa fa-users text-warning"></i> Todos</a></li>
-                    <li><a href="/admin/users/?q=cidadao"><i class="fa fa fa-users text-warning"></i> Cidadãos</a></li>
-                    <li><a href="/admin/users/?q=servidores"><i class="fa fa fa-users text-warning"></i> Servidores</a></li>
+                    <li><a href="/admin/users/?q=cidadao"><i class="fa fa-user-circle text-warning"></i> Cidadãos</a></li>
+                    <li><a href="/admin/users/?q=servidores"><i class="fa fa-id-card text-warning"></i> Servidores</a></li>
 
                     @endcan
                 </ul>
