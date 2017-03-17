@@ -40,11 +40,6 @@ class SocialUserRepository
             $userModel->name = 'sem nome';
         }
 
-        if ($socialUser->getEmail()) {
-        } else {
-            $userModel->email = $socialUser->getId().'@legislaqui.rj.gov.br';
-        }
-
         $userModel->email = $email;
         $userModel->password = 'Empty';
         $userModel->uf = 'RJ';
