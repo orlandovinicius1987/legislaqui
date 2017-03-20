@@ -245,7 +245,7 @@ class UsersTest extends TestCase
         $name = $proposal->name;
         $this->actingAs($user)
             ->visit('/')
-           ->type($name,'search')
+           ->type($name, 'search')
             ->click('pesquisar');
 
            // ->click($name)
