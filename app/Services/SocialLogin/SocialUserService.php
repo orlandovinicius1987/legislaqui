@@ -75,7 +75,7 @@ class SocialUserService
     public function findOrCreateUserSocialNetwork($socialNetwork, $socialUser, $user)
     {
         if (!$userSocialNetwork = $user->socialNetworks()->where('social_network_id', $socialNetwork->id)->first()) {
-            $userSocialNetwork = $user->socialNetworks()->save($socialNetwork, ['social_network_user_id' => $socialUser->getId(), 'data' => json_encode($user)]);
+            $userSocialNetwork = $user->socialNetworks()->save($socialNetwork, ['social_network_user_id' => $socialUser->getId(), 'data' => json_encode($socialUser)]);
         }
     }
 }

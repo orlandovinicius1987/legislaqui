@@ -245,10 +245,11 @@ class UsersTest extends TestCase
         $name = $proposal->name;
         $this->actingAs($user)
             ->visit('/')
-            ->type($name, 'search')
-            ->click('pesquisar')
+           ->type($name,'search')
+            ->click('pesquisar');
+
            // ->click($name)
-            ->visit('/admin/users/'.$user->id);
+  //          ->visit('/admin/users/'.$user->id);
 //            ->seePageIs('/proposals/'.$proposal->id);
     }
 
