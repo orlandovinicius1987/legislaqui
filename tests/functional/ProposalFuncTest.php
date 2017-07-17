@@ -1,15 +1,10 @@
 <?php
 
-use App\State;
 use App\Proposal;
 use App\User;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ProposalFuncTest extends TestCase
 {
-
     public function testCreateProposalMainButton()
     {
         $proposal = factory(App\Proposal::class)->create();
@@ -28,7 +23,8 @@ class ProposalFuncTest extends TestCase
             ->seeInDatabase('proposals', ['name' => $proposal->name]);
     }
 
-    public function testCreateProposalBySecondButton() {
+    public function testCreateProposalBySecondButton()
+    {
         $proposal = factory(App\Proposal::class)->create();
         $user = User::all()->random();
 
@@ -69,7 +65,8 @@ class ProposalFuncTest extends TestCase
             ->see('Esta Ideia Legislativa será acompanhada');
     }
 
-    public function testUserEditIdea() {
+    public function testUserEditIdea()
+    {
         $proposal = factory(App\Proposal::class)->create();
         $user = User::all()->random();
 
@@ -86,5 +83,4 @@ class ProposalFuncTest extends TestCase
             ->seePageIs('/')
             ->seeInDatabase('proposals', ['name' => $proposal->name]);
     }
-
 }
