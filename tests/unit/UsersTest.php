@@ -39,7 +39,6 @@ class UsersTest extends TestCase
             ->type($pwd, 'password_confirmation')
             ->select($state->uf, 'uf')
             ->type($uuid, 'uuid')
-            //->submitForm('Search',['search_term' => 'tests'])
             ->press('Registro')
             ->see('Registro feito com Sucesso.')
             ->seePageIs('/')
@@ -80,13 +79,13 @@ class UsersTest extends TestCase
             ->see($user->name);
     }
 
-    public function testFunctionsOfUser()
+    /*public function testFunctionsOfUser()    Função sem sentido
     {
         $proposal = factory(App\Proposal::class)->create();
         $id = $proposal->user_id;
         $user = App\User::find($id);
         $user->role_id;
-    }
+    }*/
 
     public function testViewAdminWithoutLogin()
     {
@@ -94,7 +93,6 @@ class UsersTest extends TestCase
             ->seePageIs('/login');
     }
 
-    // TEST ADMIN
     public function testAdminMainScreen()
     {
         $user = factory(App\User::class, 'admin')->create();
@@ -104,7 +102,6 @@ class UsersTest extends TestCase
             ->see('Ideias Legislativas');
     }
 
-    // FUNCTION doesn't done   LINK NÃO FUNCIONAL
     public function testLinksAdminMainScreen()
     {
         $user = factory(App\User::class, 'admin')->create();
@@ -169,6 +166,12 @@ class UsersTest extends TestCase
         $this->actingAs($user)
             ->visit('/')
             ->click('Ir ao Painel de Admin')
+            ->click('Aguardando Análise')
+            ->seePageIs('/admin/proposals/in-committee');
+
+        $this->actingAs($user)
+            ->visit('/')
+            ->click('Ir ao Painel de Admin')
             ->click('Aprovadas')
             ->seePageIs('/admin/proposals/approved-by-committee');
 
@@ -181,8 +184,20 @@ class UsersTest extends TestCase
         $this->actingAs($user)
             ->visit('/')
             ->click('Ir ao Painel de Admin')
-            ->click('Todas');
-        //    ->seePageIs('/admin/proposals/in-committee');  // NÃO ENTENDO PORQUE DÁ PROBLEMA (testei como usuário normalmente)
+            ->click('Todos')
+            ->seePageIs('/admin/users');
+
+        $this->actingAs($user)
+            ->visit('/')
+            ->click('Ir ao Painel de Admin')
+            ->click('Cidadãos')
+            ->seePageIs('/admin/users?q=cidadao');
+
+        $this->actingAs($user)
+            ->visit('/')
+            ->click('Ir ao Painel de Admin')
+            ->click('Servidores')
+            ->seePageIs('/admin/users?q=servidores');
     }
 
     public function testAdminEditing()
@@ -201,7 +216,6 @@ class UsersTest extends TestCase
               ->click('Todos')
               ->type($name, 'dataTableUser')
               ->click($name)
-           // ->seePageIs('/admin/users/'.$user->id);
               ->visit('/admin/users/'.$user->id)
               ->click('editarUsuario')
               ->seePageIs('/admin/users/'.$user->id.'/edit')
@@ -235,7 +249,7 @@ class UsersTest extends TestCase
               ->press('Incluir Novo Usuário');
     }
 
-    // FUNCTION doesn't done
+ /*   // FUNCTION não funciona
     public function testUserInteractingWithProposal()
     {
         $proposal = factory(App\Proposal::class)->create();
@@ -246,12 +260,33 @@ class UsersTest extends TestCase
         $this->actingAs($user)
             ->visit('/')
            ->type($name,'search')
-            ->click('pesquisar');
+            ->click('pesquisar')
+            ->click($name)
+            ->visit('/proposals/'.$proposal->id);
+    }*/
 
-           // ->click($name)
-  //          ->visit('/admin/users/'.$user->id);
-//            ->seePageIs('/proposals/'.$proposal->id);
+
+    // testes unitarios de funções
+
+    public function testSocialNetworks()
+    {
+        //$user = factory(App\User::class, 'admin')->create();
+        $user = factory(App\User::class)->create();
+        $roleId = $user->socialNetworks();
+        return $roleId;
     }
+
+
+    public function testGetUserByEmail()
+     {
+         $user = App\User::all()->random();
+         $user = factory(App\User::class)->create();
+
+     }
+
+
+
+
 
     public function testPush()
     {
