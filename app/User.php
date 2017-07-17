@@ -36,7 +36,7 @@ class User extends Authenticatable
         return $this->hasMany(Proposal::class);
     }*/
 
-       /* EM TESTE DE USO - NÃO MEXER    ESTÁ SENDO USADA! - 'APOIAR UMA IDEIA'    *************
+       /* EM TESTE DE USO - NÃO MEXER    ESTÁ SENDO USADA! - 'APOIAR UMA IDEIA'/'APOIAR PROPOSTA *************
        User approvals Proposals */
     public function approvals()
     {

@@ -42,7 +42,7 @@
                     <li><a href="/admin/proposals/expired"><i class="fa fa-clock-o text-warning"></i> Ideias Expiradas</a></li>
                     <hr>
                     <li><a>Na Comissão</a></li>
-                    <li><a href="/admin/proposals/in-committee"><i class="fa fa-gavel text-danger"></i> Todas</a></li>
+                    <li><a href="/admin/proposals/in-committee"><i class="fa fa-gavel text-danger"></i> Aguardando Análise</a></li>
                     <li><a href="/admin/proposals/approved-by-committee"><i class="fa fa-check-circle-o text-success"></i> Aprovadas</a></li>
                     <li><a href="/admin/proposals/disapproved-by-committee"><i class="fa fa-exclamation-triangle text-warning"></i> Encerradas</a></li>
                     <hr>

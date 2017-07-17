@@ -2,8 +2,80 @@
 
 use App\State;
 
-class UsersTest extends TestCase
+
+class UserFunctionalTest extends TestCase
 {
+    public function testLinksMenuBar()
+    {
+        $this->visit('/')
+            ->click('INÍCIO')
+            ->seePageIs('/');
+
+        $this->visit('/')
+            ->click('Como Funciona?')
+            ->seePageIs('/about');
+
+        $this->visit('/')
+            // Sub-menu Ideia Legislativa?
+            ->click('Proponha uma ideia legislativa logando ou registrando-se aqui')
+            ->seePageIs('/login');
+
+        $this->visit('/')
+            // Sub-menu Ideia Legislativa?
+            ->click('Termos de Uso')
+            ->seePageIs('/terms');
+
+        $this->visit('/')
+            ->click('Nossas comissões')
+            ->seePageIs('/committee');
+
+        $this->visit('/')
+            ->click('Termos de uso')
+            ->seePageIs('/terms');
+
+        $this->visit('/')
+            ->click('Contato')
+            ->seePageIs('/contact');
+
+        $this->visit('/')
+            ->click('Login | Registro')
+            ->seePageIs('/login');
+    }
+
+    public function testContact()
+    {
+        $this->visit('/contact')
+            ->type('Acebolado Silva', 'name')
+            ->type('alerjteste@alerj.com', 'email')
+            ->type('Gostaria de solicitar neve no natal de São Gonçalo', 'message')
+            ->press('Enviar!')
+            ->seePageIs('/contact')
+            ->see('Obrigado por');
+    }
+
+    public function testLinksFiltersIndex()
+    {
+        $this->visit('/')
+            ->click('ABERTAS')
+            ->seePageIs('/?q=open');
+
+        $this->visit('/')
+            ->click('NA COMISSÃO')
+            ->seePageIs('/?q=committee');
+
+        $this->visit('/')
+            ->click('EXPIRADAS')
+            ->seePageIs('/?q=expired');
+
+        $this->visit('/')
+            ->click('NÃO ACATADAS')
+            ->seePageIs('/?q=disapproved');
+
+        $this->visit('/')
+            ->click('APROVADAS')
+            ->seePageIs('/?q=approved');
+    }
+
     public function testRegisterAction()
     {
         // use the factory to create a Faker\Generator instance
@@ -39,7 +111,6 @@ class UsersTest extends TestCase
             ->type($pwd, 'password_confirmation')
             ->select($state->uf, 'uf')
             ->type($uuid, 'uuid')
-            //->submitForm('Search',['search_term' => 'tests'])
             ->press('Registro')
             ->see('Registro feito com Sucesso.')
             ->seePageIs('/')
@@ -51,14 +122,13 @@ class UsersTest extends TestCase
         $user = App\User::all()->random();
         $user_name = $user->name;
         $user_email = $user->email;
-        $user_pwd = '123456';
+        $user_pwd = $user->password;
 
         return $this->visit('/')
             ->click('Login')
             ->type($user_email, 'email')
             ->type($user_pwd, 'password')
-            ->press('Login')
-            ->see($user_name);
+            ->press('Login');
     }
 
     public function testLoginError()
@@ -80,21 +150,12 @@ class UsersTest extends TestCase
             ->see($user->name);
     }
 
-    public function testFunctionsOfUser()
-    {
-        $proposal = factory(App\Proposal::class)->create();
-        $id = $proposal->user_id;
-        $user = App\User::find($id);
-        $user->role_id;
-    }
-
     public function testViewAdminWithoutLogin()
     {
         $this->visit('/admin')
             ->seePageIs('/login');
     }
 
-    // TEST ADMIN
     public function testAdminMainScreen()
     {
         $user = factory(App\User::class, 'admin')->create();
@@ -104,7 +165,6 @@ class UsersTest extends TestCase
             ->see('Ideias Legislativas');
     }
 
-    // FUNCTION doesn't done   LINK NÃO FUNCIONAL
     public function testLinksAdminMainScreen()
     {
         $user = factory(App\User::class, 'admin')->create();
@@ -114,8 +174,8 @@ class UsersTest extends TestCase
             ->seePageIs('/admin')
             ->click('verpropostas')
             ->seePageIs('/admin/proposals')
-         //   ->click('maisinfoapoios')      LINK NÃO FUNCIONAL
-        //    ->seePageIs('/admin/proposals#');
+            //   ->click('maisinfoapoios')      LINK NÃO FUNCIONAL
+            //    ->seePageIs('/admin/proposals#');
             ->click('maisinfousuarioregistrados')
             ->seePageIs('/admin/users')
             ->click('maisinfoaguardandomoderacao')
@@ -169,6 +229,12 @@ class UsersTest extends TestCase
         $this->actingAs($user)
             ->visit('/')
             ->click('Ir ao Painel de Admin')
+            ->click('Aguardando Análise')
+            ->seePageIs('/admin/proposals/in-committee');
+
+        $this->actingAs($user)
+            ->visit('/')
+            ->click('Ir ao Painel de Admin')
             ->click('Aprovadas')
             ->seePageIs('/admin/proposals/approved-by-committee');
 
@@ -181,90 +247,73 @@ class UsersTest extends TestCase
         $this->actingAs($user)
             ->visit('/')
             ->click('Ir ao Painel de Admin')
-            ->click('Todas');
-        //    ->seePageIs('/admin/proposals/in-committee');  // NÃO ENTENDO PORQUE DÁ PROBLEMA (testei como usuário normalmente)
+            ->click('Todos')
+            ->seePageIs('/admin/users');
+
+        $this->actingAs($user)
+            ->visit('/')
+            ->click('Ir ao Painel de Admin')
+            ->click('Cidadãos')
+            ->seePageIs('/admin/users?q=cidadao');
+
+        $this->actingAs($user)
+            ->visit('/')
+            ->click('Ir ao Painel de Admin')
+            ->click('Servidores')
+            ->seePageIs('/admin/users?q=servidores');
     }
+
 
     public function testAdminEditing()
     {
         $faker = Faker\Factory::create();
-
         $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
 
         $user = factory(App\User::class, 'admin')->create();
+
         $name = $user->name;
         $input = [0, 1, 99, 2];
         $roleId = $input[array_rand($input, 1)];
+
         $this->actingAs($user)
-              ->visit('/')
-              ->click('Ir ao Painel de Admin')
-              ->click('Todos')
-              ->type($name, 'dataTableUser')
-              ->click($name)
-           // ->seePageIs('/admin/users/'.$user->id);
-              ->visit('/admin/users/'.$user->id)
-              ->click('editarUsuario')
-              ->seePageIs('/admin/users/'.$user->id.'/edit')
-              ->type($faker->name, 'name')
-              ->type($faker->email, 'email')
-              ->select($roleId, 'role_id')
-              ->press('Gravar')
-              ->see('Usuário Editado com Sucesso');
+            ->visit('/')
+            ->click('Ir ao Painel de Admin')
+            ->click('Todos')
+            ->type($name, 'dataTableUser')
+            ->click($name)
+            ->visit('/admin/users/'.$user->id)
+            ->click('editarUsuario')
+            ->seePageIs('/admin/users/'.$user->id.'/edit')
+            ->type($faker->name, 'name')
+            ->type($faker->email, 'email')
+            ->select($roleId, 'role_id')
+            ->press('Gravar')
+            ->see('Usuário Editado com Sucesso');
     }
 
     public function testAdmCreatingUser()
     {
         $faker = Faker\Factory::create();
-          // Add pt_BR provider
-          $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+        // Add pt_BR provider
+        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
 
         $user = factory(App\User::class, 'admin')->create();
+
         $input = [0, 1, 99, 2];
         $roleId = $input[array_rand($input, 1)];
-        $this->actingAs($user)
-              ->visit('/')
-              ->click('Ir ao Painel de Admin')
-              ->click('Todos')
-              ->click('criarNovoUsuario')
-              ->seePageIs('/admin/users/create')
-              ->type($faker->name, 'name')
-              ->type($faker->email, 'email')
-              ->select('RJ', 'uf')
-              ->select($roleId, 'role_id')
-              ->type($faker->cpf, 'cpf')
-              ->press('Incluir Novo Usuário');
-    }
 
-    // FUNCTION doesn't done
-    public function testUserInteractingWithProposal()
-    {
-        $proposal = factory(App\Proposal::class)->create();
-        $id = $proposal->user_id;
-
-        $user = App\User::find($id);
-        $name = $proposal->name;
         $this->actingAs($user)
             ->visit('/')
-           ->type($name, 'search')
-            ->click('pesquisar');
-
-           // ->click($name)
-  //          ->visit('/admin/users/'.$user->id);
-//            ->seePageIs('/proposals/'.$proposal->id);
+            ->click('Ir ao Painel de Admin')
+            ->click('Todos')
+            ->click('criarNovoUsuario')
+            ->seePageIs('/admin/users/create')
+            ->type($faker->name, 'name')
+            ->type($faker->email, 'email')
+            ->select('RJ', 'uf')
+            ->select($roleId, 'role_id')
+            ->type($faker->cpf, 'cpf')
+            ->press('Incluir Novo Usuário');
     }
 
-    public function testPush()
-    {
-        $stack = [];
-        $this->assertEquals(0, count($stack));
-        array_push($stack, 'Felipe');
-
-        $this->assertEquals('Felipe', $stack[count($stack) - 1]);
-        $this->assertEquals(1, count($stack));
-
-        $this->assertEquals('Felipe', array_pop($stack));
-        $this->assertEquals(0, count($stack));
-
-        $this->assertEmpty($stack);
-    }
 }
