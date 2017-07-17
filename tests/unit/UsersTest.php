@@ -1,10 +1,8 @@
 <?php
 
-use App\State;
 
 class UsersTest extends TestCase
 {
-
     /*
   public function testSocialNetworks()
  {
@@ -21,5 +19,4 @@ class UsersTest extends TestCase
       $user = factory(App\User::class)->create();
 
   }*/
-
 }
