@@ -196,7 +196,6 @@ class AdminController extends Controller
         $input['open'] = true;
         $input['pub_date'] = Carbon::now();
         $input['limit_date'] = Carbon::now();
-        //dd($input);
 
         $proposal = Proposal::create($input);
         //event(new ProposalWasCreated($proposal));
@@ -311,7 +310,7 @@ class AdminController extends Controller
         $input = $formRequest->except('_token');
 
         //Fill more data into input
-        $input['date'] = Carbon::now();
+        //$input['date'] = Carbon::now();
 
         //Update Bills_Project Table
         $bill_project->fill($input)->save();
