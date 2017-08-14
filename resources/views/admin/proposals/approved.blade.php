@@ -39,6 +39,7 @@
                                             <th>Id</th>
                                             <th>Nome</th>
                                             <th>Apoios</th>
+                                            <th>Situação</th>
                                         </tr>
                                         </thead>
 
@@ -50,6 +51,22 @@
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
                                                 {{--<td><a href="{{ route('admin.proposal.response', $approved->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
                                                 <td> {{$approved->approvals()->count()}}</td>
+                                                <td>
+                                                   @if ($approved->in_committee == false)
+                                                        <span class="label label-default"> Em votação</span></a>
+
+                                                   @elseif ($approved->in_committee == true && $approved->approved_by_committee == null &&  $approved->disapproved_by_committee == null)
+                                                            <span class="label label-primary"> Está na Comissão</span>
+                                                   @else
+                                                        @if ($approved->approved_by_committee != null && $approved->bill_project_id != null)
+                                                            <span class="label label-success"> Virou projeto de lei!</span>
+                                                        @elseif ($approved->approved_by_committee != null && $approved->bill_project_id == null)
+                                                            <span class="label label-info"> Aprovada pela Comissão</span>
+                                                        @elseif ($approved->disapproved_by_committee)
+                                                            <span class="label label-warning"> Desaprovada pela Comissão</span>
+                                                        @endif
+                                                   @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -58,6 +75,7 @@
                                             <th>Id</th>
                                             <th>Nome</th>
                                             <th>Apoios</th>
+                                            <th>Situação</th>
                                         </tr>
                                         </tfoot>
                                     </table>

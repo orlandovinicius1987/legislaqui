@@ -49,9 +49,33 @@ class Handler extends ExceptionHandler
     {
         if ($e instanceof \Illuminate\Session\TokenMismatchException) {
             return redirect()->back()->withInput($request->except('_token'))->with('flash_msg', 'Sua sessão provavelmente expirou, por favor tente novamente.');
-//            return response()->view('errors.custom', [], 500);
+//          return response()->view('errors.custom', [], 500);
+        }
+
+        if($this->isHttpException($e))
+        {
+            switch ($e->getStatusCode())
+            {
+                // not found
+                case 404:
+                    return redirect()->route('home');
+                    break;
+
+                // internal error
+                case '500':
+                    return redirect()->route('home');
+                    break;
+
+                default:
+                    return $this->renderHttpException($e);
+                    break;
+            }
         }
 
         return parent::render($request, $e);
     }
+
+
+
+
 }
