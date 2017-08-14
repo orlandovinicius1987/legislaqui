@@ -136,10 +136,10 @@ class ProposalsRepository
 
     public function inCommittee()
     {
-       return Proposal::where(function ($query) {
-                $query->where('approved_by', '<>', null)
+        return Proposal::where(function ($query) {
+            $query->where('approved_by', '<>', null)
                 ->orwhere('disapproved_by', '<>', null);
-              })->where('in_committee', true)
+        })->where('in_committee', true)
                 ->whereNull('approved_by_committee')
                 ->whereNull('disapproved_by_committee')
                 ->orderBy('updated_at', 'desc')
