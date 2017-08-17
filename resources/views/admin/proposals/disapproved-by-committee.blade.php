@@ -38,6 +38,8 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
+                                            <th>Curtidas</th>
+                                            <th>Apoios</th>
                                         </tr>
                                         </thead>
 
@@ -46,6 +48,8 @@
                                             <tr>
                                                 <td>{{ $disapprovedByCommittee->id }}</td>
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$disapprovedByCommittee->id)) }}">{{ $disapprovedByCommittee->name }}</a></td>
+                                                <td>{{$disapprovedByCommittee->like_count - $disapprovedByCommittee->unlike_count}}</td>
+                                                <td>{{$disapprovedByCommittee->approvals()->count()}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -53,6 +57,8 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Nome</th>
+                                            <th>Curtidas</th>
+                                            <th>Apoios</th>
                                         </tr>
                                         </tfoot>
                                     </table>

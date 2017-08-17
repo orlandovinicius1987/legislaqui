@@ -38,6 +38,8 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
+                                            <th>Curtidas</th>
+                                            <th>Apoios</th>
                                             {{--<th>Sem Resposta</th>--}}
                                         </tr>
                                         </thead>
@@ -47,6 +49,8 @@
                                             <tr>
                                                 <td>{{ $expired->id }}</td>
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$expired->id)) }}">{{ $expired->name }}</a></td>
+                                                <td>{{$expired->like_count - $expired->unlike_count}}</td>
+                                                <td>{{$expired->approvals()->count()}}</td>
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
                                                 {{--<td><a href="{{ route('admin.proposal.response', $approved->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
                                             </tr>
@@ -56,6 +60,8 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Nome</th>
+                                            <th>Curtidas</th>
+                                            <th>Apoios</th>
                                             {{--<th>Sem Resposta</th>--}}
                                         </tr>
                                         </tfoot>

@@ -51,8 +51,8 @@
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
                                                 {{--<td><a href="{{ route('admin.proposal.response', $approved->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
-                                                <td> {{$approved->like_count - $approved->unlike_count}}</td>
-                                                <td> {{$approved->approvals()->count()}}</td>
+                                                <td>{{$approved->like_count - $approved->unlike_count}}</td>
+                                                <td>{{$approved->approvals()->count()}}</td>
                                                 <td>
                                                    @if ($approved->in_committee == false)
                                                         <span class="label label-default"> Em votação</span></a>
