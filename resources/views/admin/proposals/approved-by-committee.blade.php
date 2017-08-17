@@ -38,6 +38,8 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
+                                            <th>Curtidas</th>
+                                            <th>Apoios</th>
                                             <th>Projeto de Lei</th>
                                         </tr>
                                         </thead>
@@ -49,6 +51,8 @@
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$approvedByCommittee->id)) }}">{{ $approvedByCommittee->name }}</a></td>
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
                                                 {{--<td><a href="{{ route('admin.proposal.response', $approved->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
+                                                <td>{{$approvedByCommittee->like_count - $approvedByCommittee->unlike_count}}</td>
+                                                <td>{{$approvedByCommittee->approvals()->count()}}</td>
                                                 @if ($approvedByCommittee->bill_project_id == null)
                                                 <td><a href="{{ route('admin.proposal.billProject', ['id' => $approvedByCommittee->id]) }}" class="btn btn-warning botao" role="button">
                                                         <i class="fa fa-toggle-on"></i> Assignar Projeto de Lei </a>
@@ -66,6 +70,8 @@
                                         <tr>
                                             <th>Id</th>
                                             <th>Nome</th>
+                                            <th>Curtidas</th>
+                                            <th>Apoios</th>
                                             <th>Projeto de Lei</th>
                                         </tr>
                                         </tfoot>
