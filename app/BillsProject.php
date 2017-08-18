@@ -14,7 +14,7 @@ class BillsProject extends Eloquent
 {
     //public $timestamps = false;
 
-    protected $fillable = ['number', 'owner', 'link'];
+    protected $fillable = ['number', 'owner', 'link', 'year'];
     protected $table = 'bills_project';
 
     // BillsProject __belongs_to__ Proposal

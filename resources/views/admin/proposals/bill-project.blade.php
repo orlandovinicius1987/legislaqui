@@ -27,6 +27,14 @@
                                   'placeholder'=>'Número do Projeto de Lei')) }}
                     </div>
 
+                    <div class="form-group coluna_02">
+                        {{ Form::label('Ano') }}
+                        {{ Form::text('year', null,
+                            array('required',
+                                  'class'=>'campo',
+                                  'placeholder'=>'Ano')) }}
+                    </div>
+
                     <div class="form-group">
                         {{ Form::label('Responsável') }}
                         {{ Form::text('owner', null,
