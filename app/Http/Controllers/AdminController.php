@@ -589,7 +589,6 @@ class AdminController extends Controller
     {
         $proposals = $this->proposalsRepository->approved();
 
-
         return view('admin.proposals.approved')->with('approveds', $proposals);
     }
 
