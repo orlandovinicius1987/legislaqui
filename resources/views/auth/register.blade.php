@@ -118,9 +118,11 @@
                         <button type="submit" class="btn btn-primary">
                             <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro
                         </button>
-                        <a href="redirectFacebook"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\fb_logo_blue29.png"></a>
-                        <a href="redirectTwitter"><img src="www.alerj.rj.gov.br\icone_08.png"></a>
-                        <a href="redirectYoutube"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\youTube48px.png"></a>
+                        <a href="redirect/facebook" id="facebookButton"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\fb_logo_blue29.png"></a>
+                        <a href="redirect/twitter"><img src="www.alerj.rj.gov.br\icone_08.png"></a>
+                        <a href="redirect/youtube"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\youTube48px.png"></a>
+                        <a href="redirect/linkedin"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\linkedin_2C_34px.png"></a>
+                        <a href="redirect/instagram"><img src="www.alerj.rj.gov.br\icone_36.png"></a>
                     </div>
                 </div>
             </form>

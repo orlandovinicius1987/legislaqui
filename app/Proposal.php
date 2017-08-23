@@ -41,10 +41,10 @@ class Proposal extends Eloquent
     }
 
     // Proposal __has_many__ Likes
-    public function likes()
+    /*public function likes()
     {
         return $this->hasMany(Like::class);
-    }
+    }*/
 
     // Proposal __has_one_Bill_Project
     public function bill_project()
@@ -53,7 +53,7 @@ class Proposal extends Eloquent
     }
 
     // Rating = Lower bound of Wilson score confidence interval for a Bernoulli parameter
-    public function getRatingAttribute()
+    /*public function getRatingAttribute()
     {
         $like = $this->like_count;
         //$like = Like::where('proposal_id', $this->id)->where('like', 1)->count();
@@ -67,7 +67,7 @@ class Proposal extends Eloquent
         return (($like + 1.9208) / ($like + $unlike) -
                 1.96 * sqrt(($like * $unlike) / ($like + $unlike) + 0.9604) /
                 ($like + $unlike)) / (1 + 3.8416 / ($like + $unlike));
-    }
+    }*/
 
     public function getLikeCountAttribute()
     {
@@ -79,13 +79,13 @@ class Proposal extends Eloquent
         return Like::where('proposal_id', $this->id)->where('like', 0)->count();
     }
 
-    public function getTotalLikeCountAttribute()
+    /*public function getTotalLikeCountAttribute()
     {
         return $this->like_count - $this->unlike_count;
-    }
+    }*/
 
-    public function getApprovalsCountAttribute()
+   /* public function getApprovalsCountAttribute()
     {
         return User::all()->approvals()->get()->count();
-    }
+    }*/
 }

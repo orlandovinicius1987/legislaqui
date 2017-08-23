@@ -240,12 +240,6 @@ class AdminController extends Controller
     {
         //Get Proposal
         $proposal = $this->proposalsRepository->find($id);
-        //$proposal = Proposal::findOrFail($id);
-
-        //Via User Model
-        //        if ($user->can('update', $post)) {
-        //            //
-        //        }
 
         if (Gate::allows('edit', $proposal)) {
             return view('admin.proposals.bill-project')->with('proposal', $proposal);
@@ -594,6 +588,7 @@ class AdminController extends Controller
     public function approved()
     {
         $proposals = $this->proposalsRepository->approved();
+
 
         return view('admin.proposals.approved')->with('approveds', $proposals);
     }

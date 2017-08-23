@@ -209,7 +209,12 @@
                                     @foreach ($proposals as $proposal)
                                         <tr>
                                             {{--<!-- <td> --}}{{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}}{{-- </td>-->--}}
-                                            <td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}">{{ $proposal->name }}</a></td>
+                                            <td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}">{{$proposal->name}}</a>
+                                            @if ($proposal->bill_project)
+                                                  [VIROU PROJETO DE LEI]
+                                            @endif
+                                            </td>
+
                                             @if (isset($is_not_responded) && Auth::user()->is_admin)
                                                 <td><a href="{{ route('proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a></td>
                                             @else
