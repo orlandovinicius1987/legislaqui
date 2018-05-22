@@ -43,8 +43,8 @@ class UserSeeder extends Seeder
 
         //Administrator
         factory(App\User::class, 'admin', 1)->create([
-            'name' => 'Adm',
-            'email' => 'adm@teste.com',
+            'name'     => 'Adm',
+            'email'    => 'adm@teste.com',
             'password' => Hash::make('secret'),
         ]);
     }
