@@ -1649,3 +1649,11 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
     padding-top: 0;
     pointer-events: all;
 }
+
+.bold {
+    font-weight: 900;
+}
+
+.double {
+    font-size: 1.2em;
+}
