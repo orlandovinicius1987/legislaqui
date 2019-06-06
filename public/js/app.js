@@ -3323,14 +3323,12 @@
                                     u > 1 && _e(p),
                                     u > 1 &&
                                         me(
-                                            e
-                                                .slice(0, u - 1)
-                                                .concat({
-                                                    value:
-                                                        ' ' === e[u - 2].type
-                                                            ? '*'
-                                                            : '',
-                                                }),
+                                            e.slice(0, u - 1).concat({
+                                                value:
+                                                    ' ' === e[u - 2].type
+                                                        ? '*'
+                                                        : '',
+                                            }),
                                         ).replace(W, '$1'),
                                     n,
                                     u < i && Te(e.slice(u, i)),

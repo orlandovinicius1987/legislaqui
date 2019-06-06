@@ -28,7 +28,6 @@
 
 /* Global scope for FixedColumns */
 var FixedHeader
-
 ;(function(window, document, undefined) {
     var factory = function($, DataTable) {
         'use strict'

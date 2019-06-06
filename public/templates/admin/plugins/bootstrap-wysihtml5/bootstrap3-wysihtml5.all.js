@@ -12443,7 +12443,6 @@ wysihtml5.commands.bold = {
         return wysihtml5.commands.formatInline.state(composer, command, 'b')
     },
 }
-
 ;(function(wysihtml5) {
     var undef,
         NODE_NAME = 'A',

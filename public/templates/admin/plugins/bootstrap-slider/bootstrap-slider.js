@@ -186,7 +186,6 @@
 			BOOTSTRAP-SLIDER SOURCE CODE
 
 	**************************************************/
-
     ;(function($) {
         var ErrorMsgs = {
             formatInvalidInputErrorMsg: function(input) {

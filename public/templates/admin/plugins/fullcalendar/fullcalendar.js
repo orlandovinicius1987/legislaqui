@@ -5828,7 +5828,6 @@ Common interface:
             }
 
             seg.level = j
-
             ;(levels[j] || (levels[j] = [])).push(seg)
         }
 

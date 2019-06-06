@@ -23,7 +23,6 @@
 
 // Global scope for KeyTable for backwards compatibility. Will be removed in 1.3
 var KeyTable
-
 ;(function(window, document, undefined) {
     var factory = function($, DataTable) {
         'use strict'

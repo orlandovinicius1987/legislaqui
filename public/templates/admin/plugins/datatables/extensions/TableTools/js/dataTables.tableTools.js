@@ -28,7 +28,6 @@
  * Will be removed in 2.3
  */
 var TableTools
-
 ;(function(window, document, undefined) {
     var factory = function($, DataTable) {
         'use strict'
@@ -507,7 +506,6 @@ var TableTools
          */
 
         /*globals TableTools,ZeroClipboard_TableTools*/
-
         ;(function($, window, document) {
             /**
              * TableTools provides flexible buttons and other tools for a DataTables enhanced table

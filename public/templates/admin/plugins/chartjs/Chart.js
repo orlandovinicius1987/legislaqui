@@ -2421,7 +2421,6 @@
         return Chart
     }
 }.call(this))
-
 ;(function() {
     'use strict'
 
@@ -2813,7 +2812,6 @@
         },
     })
 }.call(this))
-
 ;(function() {
     'use strict'
 
@@ -3524,7 +3522,6 @@
         },
     })
 }.call(this))
-
 ;(function() {
     'use strict'
 

@@ -6405,7 +6405,6 @@
          * Released under the MIT license.
          * http://jquery.org/license
          */
-
         ;(function(factory) {
             if (typeof S2.define === 'function' && S2.define.amd) {
                 // AMD. Register as an anonymous module.
