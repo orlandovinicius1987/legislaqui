@@ -28,12 +28,20 @@ class CreateProposalsTable extends Migration
             $table->text('problem');
             $table->text('idea_exposition');
             $table->text('response')->nullable();
-            $table->integer('responder_id')->unsigned()->nullable();
+            $table
+                ->integer('responder_id')
+                ->unsigned()
+                ->nullable();
             $table->timestamps();
         });
 
         Schema::table('proposals', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table
+                ->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

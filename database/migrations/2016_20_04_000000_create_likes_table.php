@@ -22,13 +22,26 @@ class CreateLikesTable extends Migration
             $table->uuid('uuid')->nullable();
             $table->integer('user_id')->nullable();
             $table->integer('proposal_id')->unsigned();
-            $table->integer('like')->boolean()->nullable(); // Like or Dislike
+            $table
+                ->integer('like')
+                ->boolean()
+                ->nullable(); // Like or Dislike
             $table->string('ip_address')->nullable();
         });
 
         Schema::table('likes', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('proposal_id')->references('id')->on('proposals')->onDelete('cascade')->onUpdate('cascade');
+            $table
+                ->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table
+                ->foreign('proposal_id')
+                ->references('id')
+                ->on('proposals')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

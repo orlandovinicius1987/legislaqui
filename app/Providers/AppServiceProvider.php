@@ -2,12 +2,20 @@
 
 namespace App\Providers;
 
-use Faker\Factory as FakerFactory;
-use Faker\Generator as FakerGenerator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
     /**
      * Bootstrap any application services.
      *
@@ -16,18 +24,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        // Faker Generator in pt-BR
-        $this->app->singleton(FakerGenerator::class, function () {
-            return FakerFactory::create('pt_BR');
-        });
     }
 }

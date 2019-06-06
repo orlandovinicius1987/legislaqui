@@ -1,6 +1,5 @@
 <?php
 
-
 class UsersTest extends TestCase
 {
     /*

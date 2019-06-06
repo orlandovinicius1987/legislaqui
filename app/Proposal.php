@@ -16,9 +16,24 @@ class Proposal extends Eloquent
      *
      * @var array
      */
-    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'pub_date', 'limit_date'];
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'pub_date',
+        'limit_date',
+    ];
 
-    protected $fillable = ['name', 'idea_central', 'problem', 'idea_exposition', 'user_id', 'approved', 'pub_date', 'limit_date'];
+    protected $fillable = [
+        'name',
+        'idea_central',
+        'problem',
+        'idea_exposition',
+        'user_id',
+        'approved',
+        'pub_date',
+        'limit_date',
+    ];
 
     //protected $guarded = ['id', 'pub_date', 'limit_date'];
 
@@ -31,7 +46,12 @@ class Proposal extends Eloquent
     // Approvals __belongs_to_many__ Proposal
     public function approvals()
     {
-        return $this->belongsToMany(User::class, 'approvals', 'proposal_id', 'user_id');
+        return $this->belongsToMany(
+            User::class,
+            'approvals',
+            'proposal_id',
+            'user_id'
+        );
     }
 
     // Proposal __belongs_to__ Responder (User)
@@ -71,12 +91,16 @@ class Proposal extends Eloquent
 
     public function getLikeCountAttribute()
     {
-        return Like::where('proposal_id', $this->id)->where('like', 1)->count();
+        return Like::where('proposal_id', $this->id)
+            ->where('like', 1)
+            ->count();
     }
 
     public function getUnlikeCountAttribute()
     {
-        return Like::where('proposal_id', $this->id)->where('like', 0)->count();
+        return Like::where('proposal_id', $this->id)
+            ->where('like', 0)
+            ->count();
     }
 
     /*public function getTotalLikeCountAttribute()
@@ -84,7 +108,7 @@ class Proposal extends Eloquent
         return $this->like_count - $this->unlike_count;
     }*/
 
-   /* public function getApprovalsCountAttribute()
+    /* public function getApprovalsCountAttribute()
     {
         return User::all()->approvals()->get()->count();
     }*/

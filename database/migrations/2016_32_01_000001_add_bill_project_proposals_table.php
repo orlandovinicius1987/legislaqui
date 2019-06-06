@@ -22,7 +22,12 @@ class AddBillProjectProposalsTable extends Migration
         });
 
         Schema::table('proposals', function (Blueprint $table) {
-            $table->foreign('bill_project_id')->references('id')->on('bills_project')->onDelete('cascade')->onUpdate('cascade');
+            $table
+                ->foreign('bill_project_id')
+                ->references('id')
+                ->on('bills_project')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

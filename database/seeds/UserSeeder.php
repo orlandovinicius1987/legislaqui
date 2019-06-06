@@ -18,33 +18,37 @@ class UserSeeder extends Seeder
     public function run()
     {
         //15 Users and Proposals
-        factory(App\User::class, 15)->create()->each(function ($user) {
-            //echo "user: $user->id\n";
+        factory(App\User::class, 15)
+            ->create()
+            ->each(function ($user) {
+                //echo "user: $user->id\n";
 
-            foreach (range(1, rand(1, 10)) as $x) {
-                $proposal = factory(App\Proposal::class)->create();
+                foreach (range(1, rand(1, 10)) as $x) {
+                    $proposal = factory(App\Proposal::class)->create();
 
-                foreach (range(1, rand(1, 20)) as $y) {
-                    // Get random User
-                    $user = User::all()->shuffle()->first();
+                    foreach (range(1, rand(1, 20)) as $y) {
+                        // Get random User
+                        $user = User::all()
+                            ->shuffle()
+                            ->first();
 
-                    // Approvals
-                    $proposal->approvals()->attach($user->id);
-                    //$proposal->likes()->attach($user->id);
+                        // Approvals
+                        $proposal->approvals()->attach($user->id);
+                        //$proposal->likes()->attach($user->id);
+                    }
+
+                    //Likes
+                    factory(App\Like::class)->create();
+
+                    //Follows
+                    factory(App\ProposalFollow::class)->create();
                 }
-
-                //Likes
-                factory(App\Like::class)->create();
-
-                //Follows
-                factory(App\ProposalFollow::class)->create();
-            }
-        });
+            });
 
         //Administrator
         factory(App\User::class, 'admin', 1)->create([
-            'name'     => 'Adm',
-            'email'    => 'adm@test.com',
+            'name' => 'Adm',
+            'email' => 'adm@test.com',
             'password' => Hash::make('secret'),
         ]);
     }

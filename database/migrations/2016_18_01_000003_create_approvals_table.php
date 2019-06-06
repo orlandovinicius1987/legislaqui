@@ -23,8 +23,18 @@ class CreateApprovalsTable extends Migration
         });
 
         Schema::table('approvals', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('proposal_id')->references('id')->on('proposals')->onDelete('cascade')->onUpdate('cascade');
+            $table
+                ->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table
+                ->foreign('proposal_id')
+                ->references('id')
+                ->on('proposals')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

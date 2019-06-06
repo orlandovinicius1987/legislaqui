@@ -3,73 +3,46 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Foundation\Validation\ValidationException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
     /**
-     * A list of the exception types that should not be reported.
+     * A list of the exception types that are not reported.
      *
      * @var array
      */
     protected $dontReport = [
-        AuthorizationException::class,
-        HttpException::class,
-        ModelNotFoundException::class,
-        ValidationException::class,
+        //
     ];
+
+    /**
+     * A list of the inputs that are never flashed for validation exceptions.
+     *
+     * @var array
+     */
+    protected $dontFlash = ['password', 'password_confirmation'];
 
     /**
      * Report or log an exception.
      *
-     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
-     *
-     * @param \Exception $e
-     *
+     * @param  \Exception  $exception
      * @return void
      */
-    public function report(Exception $e)
+    public function report(Exception $exception)
     {
-        parent::report($e);
+        parent::report($exception);
     }
 
     /**
      * Render an exception into an HTTP response.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Exception               $e
-     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $e)
+    public function render($request, Exception $exception)
     {
-        if ($e instanceof \Illuminate\Session\TokenMismatchException) {
-            return redirect()->back()->withInput($request->except('_token'))->with('flash_msg', 'Sua sessão provavelmente expirou, por favor tente novamente.');
-            //          return response()->view('errors.custom', [], 500);
-        }
-
-        if ($this->isHttpException($e)) {
-            switch ($e->getStatusCode()) {
-                // not found
-                case 404:
-                    return redirect()->route('home');
-                    break;
-
-                // internal error
-                case '500':
-                    return redirect()->route('home');
-                    break;
-
-                default:
-                    return $this->renderHttpException($e);
-                    break;
-            }
-        }
-
-        return parent::render($request, $e);
+        return parent::render($request, $exception);
     }
 }

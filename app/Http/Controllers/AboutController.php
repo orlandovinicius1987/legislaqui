@@ -44,17 +44,23 @@ class AboutController extends Controller
 
     public function store(ContactFormRequest $request)
     {
-        $msg = 'Obrigado por entrar em contato com a e-democracia da ALERJ. Você receberá uma cópia de sua mensagem e retornaremos o seu contato em breve!';
+        $msg =
+            'Obrigado por entrar em contato com a e-democracia da ALERJ. Você receberá uma cópia de sua mensagem e retornaremos o seu contato em breve!';
 
-        \Mail::send('emails.contact',
+        \Mail::send(
+            'emails.contact',
             [
-                'name'         => $request->get('name'),
-                'email'        => $request->get('email'),
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
                 'user_message' => $request->get('message'),
-            ], function ($message) {
+            ],
+            function ($message) {
                 $message->from('wj@wjgilmore.com');
-                $message->to('wj@wjgilmore.com', 'Admin')->subject('TODOParrot Feedback');
-            });
+                $message
+                    ->to('wj@wjgilmore.com', 'Admin')
+                    ->subject('TODOParrot Feedback');
+            }
+        );
 
         return \Redirect::route('contact')->with('message', $msg);
     }

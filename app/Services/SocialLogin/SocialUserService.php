@@ -18,8 +18,10 @@ class SocialUserService
 
     private $usersRepository;
 
-    public function __construct(SocialUserRepository $socialUserRepository, UsersRepository $usersRepository)
-    {
+    public function __construct(
+        SocialUserRepository $socialUserRepository,
+        UsersRepository $usersRepository
+    ) {
         $this->socialUserRepository = $socialUserRepository;
         $this->usersRepository = $usersRepository;
     }
@@ -32,7 +34,11 @@ class SocialUserService
 
         $socialNetwork = $this->getSocialNetwork($socialNetwork);
 
-        $this->findOrCreateUserSocialNetwork($socialNetwork, $socialUser, $user);
+        $this->findOrCreateUserSocialNetwork(
+            $socialNetwork,
+            $socialUser,
+            $user
+        );
 
         $this->login($user);
 
@@ -51,13 +57,21 @@ class SocialUserService
 
     private function getEmail($user, $socialNetwork)
     {
-        return $user->getEmail() ?: sprintf('%s@%s.legislaqui.rj.gov.br', $user->getId(), $socialNetwork);
+        return $user->getEmail() ?:
+            sprintf(
+                '%s@%s.legislaqui.rj.gov.br',
+                $user->getId(),
+                $socialNetwork
+            );
     }
 
     public function findOrCreateUser($socialUser, $email)
     {
-        if (!$user = $this->usersRepository->findByEmail($email)) {
-            $user = $this->socialUserRepository->createUser($email, $socialUser);
+        if (!($user = $this->usersRepository->findByEmail($email))) {
+            $user = $this->socialUserRepository->createUser(
+                $email,
+                $socialUser
+            );
 
             return $user;
         }
@@ -72,10 +86,23 @@ class SocialUserService
         return $socialNetwork;
     }
 
-    public function findOrCreateUserSocialNetwork($socialNetwork, $socialUser, $user)
-    {
-        if (!$userSocialNetwork = $user->socialNetworks()->where('social_network_id', $socialNetwork->id)->first()) {
-            $userSocialNetwork = $user->socialNetworks()->save($socialNetwork, ['social_network_user_id' => $socialUser->getId(), 'data' => json_encode($socialUser)]);
+    public function findOrCreateUserSocialNetwork(
+        $socialNetwork,
+        $socialUser,
+        $user
+    ) {
+        if (
+            !($userSocialNetwork = $user
+                ->socialNetworks()
+                ->where('social_network_id', $socialNetwork->id)
+                ->first())
+        ) {
+            $userSocialNetwork = $user
+                ->socialNetworks()
+                ->save($socialNetwork, [
+                    'social_network_user_id' => $socialUser->getId(),
+                    'data' => json_encode($socialUser),
+                ]);
         }
     }
 }

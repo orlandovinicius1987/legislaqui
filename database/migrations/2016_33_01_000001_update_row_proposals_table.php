@@ -12,7 +12,9 @@ class UpdateRowProposalsTable extends Migration
      */
     public function up()
     {
-        Proposal::where('in_committee', null)->update(['in_committee' => false]);
+        Proposal::where('in_committee', null)->update([
+            'in_committee' => false,
+        ]);
     }
 
     /**
@@ -22,6 +24,8 @@ class UpdateRowProposalsTable extends Migration
      */
     public function down()
     {
-        Proposal::where('in_committee', false)->update(['in_committee' => null]);
+        Proposal::where('in_committee', false)->update([
+            'in_committee' => null,
+        ]);
     }
 }

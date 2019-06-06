@@ -61,10 +61,10 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name'     => 'required|max:255',
-            'email'    => 'required|email|max:255|unique:users',
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-            'cpf'      => 'required',
+            'cpf' => 'required',
         ]);
     }
 
@@ -78,13 +78,13 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
+            'name' => $data['name'],
+            'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'uf'       => $data['uf'],
-            'role_id'  => 99,
-            'cpf'      => $data['cpf'],
-            'uuid'     => $data['uuid'],
+            'uf' => $data['uf'],
+            'role_id' => 99,
+            'cpf' => $data['cpf'],
+            'uuid' => $data['uuid'],
         ]);
     }
 
@@ -143,7 +143,10 @@ class AuthController extends Controller
 
             // Verifies if Captcha fails and redirect to register view
             if ($validate->fails()) {
-                $error = Session::flash('error_msg', 'Por favor, clique no campo reCAPTCHA para efetuar o registro!');
+                $error = Session::flash(
+                    'error_msg',
+                    'Por favor, clique no campo reCAPTCHA para efetuar o registro!'
+                );
 
                 return redirect()
                     ->back()

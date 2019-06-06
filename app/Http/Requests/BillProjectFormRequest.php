@@ -23,9 +23,9 @@ class BillProjectFormRequest extends Request
     {
         return [
             //
-            'number'   => 'required',
-            'owner'    => 'required',
-            'link'     => 'required',
+            'number' => 'required',
+            'owner' => 'required',
+            'link' => 'required',
         ];
     }
 }

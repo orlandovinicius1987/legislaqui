@@ -34,8 +34,11 @@ class AdminController extends Controller
     private $usersRepository;
     private $dataRepository;
 
-    public function __construct(ProposalsRepository $proposalsRepository, UsersRepository $usersRepository, DataRepository $dataRepository)
-    {
+    public function __construct(
+        ProposalsRepository $proposalsRepository,
+        UsersRepository $usersRepository,
+        DataRepository $dataRepository
+    ) {
         $this->proposalsRepository = $proposalsRepository;
         $this->usersRepository = $usersRepository;
         $this->dataRepository = $dataRepository;
@@ -50,8 +53,7 @@ class AdminController extends Controller
     {
         $users = $this->usersRepository->all(Input::get('q'));
 
-        return view('admin.users.index')
-            ->with(compact('users'));
+        return view('admin.users.index')->with(compact('users'));
     }
 
     public function showUser($id)
@@ -59,8 +61,7 @@ class AdminController extends Controller
         //Get User
         $user = $this->usersRepository->find($id);
 
-        return view('admin.users.show')
-            ->with(compact('user'));
+        return view('admin.users.show')->with(compact('user'));
     }
 
     /**
@@ -75,7 +76,9 @@ class AdminController extends Controller
         $roles = $this->dataRepository->getRoles();
         //Role::pluck('role', 'id');
 
-        return view('admin.users.create')->with(compact('states'))->with(compact('roles'));
+        return view('admin.users.create')
+            ->with(compact('states'))
+            ->with(compact('roles'));
         //return view('admin.users.create')->with('states', $states)->with('roles', $roles);
     }
 
@@ -88,7 +91,9 @@ class AdminController extends Controller
     {
         $this->usersRepository->storeUser();
 
-        return redirect()->route('admin.users')->with('admin_user_crud_msg', 'Usuário Incluído com Sucesso');
+        return redirect()
+            ->route('admin.users')
+            ->with('admin_user_crud_msg', 'Usuário Incluído com Sucesso');
     }
 
     /**
@@ -103,7 +108,9 @@ class AdminController extends Controller
         $user = $this->usersRepository->find($id);
         $roles = $this->dataRepository->getRoles();
 
-        return view('admin.users.edit')->with(compact('user'))->with(compact('roles'));
+        return view('admin.users.edit')
+            ->with(compact('user'))
+            ->with(compact('roles'));
     }
 
     /**
@@ -124,7 +131,9 @@ class AdminController extends Controller
         $user->save();
 
         // Generating Redirects...
-        return redirect()->route('admin.users.show', ['id' => $id])->with('admin_user_crud_msg', 'Usuário Editado com Sucesso');
+        return redirect()
+            ->route('admin.users.show', ['id' => $id])
+            ->with('admin_user_crud_msg', 'Usuário Editado com Sucesso');
     }
 
     /**
@@ -138,7 +147,9 @@ class AdminController extends Controller
     {
         $this->usersRepository->destroy($id);
 
-        return redirect()->route('admin.users')->with('admin_user_crud_msg', 'Usuário Removido com Sucesso');
+        return redirect()
+            ->route('admin.users')
+            ->with('admin_user_crud_msg', 'Usuário Removido com Sucesso');
     }
 
     /**
@@ -201,7 +212,12 @@ class AdminController extends Controller
         //event(new ProposalWasCreated($proposal));
         //Event::fire(new ProposalWasCreated($proposal));
 
-        return redirect()->route('admin.proposal.show', ['proposal' => $proposal])->with('admin_proposal_crud_msg', 'Ideia Legislativa Incluída com Sucesso');
+        return redirect()
+            ->route('admin.proposal.show', ['proposal' => $proposal])
+            ->with(
+                'admin_proposal_crud_msg',
+                'Ideia Legislativa Incluída com Sucesso'
+            );
     }
 
     /**
@@ -225,7 +241,12 @@ class AdminController extends Controller
         if (Gate::allows('edit', $proposal)) {
             return view('admin.proposals.edit')->with('proposal', $proposal);
         } else {
-            return redirect()->route('admin.proposals')->with('admin_error_msg', 'Você não é o dono desta Ideia Legislativa');
+            return redirect()
+                ->route('admin.proposals')
+                ->with(
+                    'admin_error_msg',
+                    'Você não é o dono desta Ideia Legislativa'
+                );
         }
     }
 
@@ -242,9 +263,17 @@ class AdminController extends Controller
         $proposal = $this->proposalsRepository->find($id);
 
         if (Gate::allows('edit', $proposal)) {
-            return view('admin.proposals.bill-project')->with('proposal', $proposal);
+            return view('admin.proposals.bill-project')->with(
+                'proposal',
+                $proposal
+            );
         } else {
-            return redirect()->route('admin.proposals')->with('admin_error_msg', 'Você não tem direitos para realizar essa operação');
+            return redirect()
+                ->route('admin.proposals')
+                ->with(
+                    'admin_error_msg',
+                    'Você não tem direitos para realizar essa operação'
+                );
         }
     }
 
@@ -270,7 +299,13 @@ class AdminController extends Controller
         $proposal_history = new ProposalHistory();
         //Get attributes from Proposals Eloquent
 
-        $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), ['id', 'created_at', 'updated_at']));
+        $proposal_history->setRawAttributes(
+            array_except($proposal->getAttributes(), [
+                'id',
+                'created_at',
+                'updated_at',
+            ])
+        );
         //dd($proposal_history);
         //Append Update Info
         $proposal_history->proposal_id = $id;
@@ -282,7 +317,12 @@ class AdminController extends Controller
         //Then update Proposal
         $proposal->fill($input)->save();
 
-        return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Editada com Sucesso');
+        return redirect()
+            ->route('admin.proposal.show', ['id' => $id])
+            ->with(
+                'admin_proposal_crud_msg',
+                'Ideia Legislativa Editada com Sucesso'
+            );
     }
 
     /**
@@ -315,7 +355,12 @@ class AdminController extends Controller
         //Save Proposal
         $proposal->save();
 
-        return redirect()->route('admin.proposal.approvedByCommittee', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa transformada em Projeto de Lei com Sucesso!');
+        return redirect()
+            ->route('admin.proposal.approvedByCommittee', ['id' => $id])
+            ->with(
+                'admin_proposal_crud_msg',
+                'Ideia Legislativa transformada em Projeto de Lei com Sucesso!'
+            );
     }
 
     /**
@@ -333,9 +378,19 @@ class AdminController extends Controller
         if (Gate::allows('destroy', $proposal)) {
             $proposal->delete();
 
-            return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Removida com Sucesso');
+            return redirect()
+                ->route('admin.proposals')
+                ->with(
+                    'admin_proposal_crud_msg',
+                    'Ideia Legislativa Removida com Sucesso'
+                );
         } else {
-            return redirect()->route('admin.proposals')->with('admin_error_msg', 'Você não é o dono desta Ideia Legislativa');
+            return redirect()
+                ->route('admin.proposals')
+                ->with(
+                    'admin_error_msg',
+                    'Você não é o dono desta Ideia Legislativa'
+                );
         }
     }
 
@@ -351,9 +406,16 @@ class AdminController extends Controller
         //Append Moderation Info only if never been Moderated before
         if ($proposal = $this->proposalsRepository->publish($id)) {
             //return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada com Sucesso');
-            return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada com Sucesso');
+            return redirect()
+                ->route('admin.proposals')
+                ->with(
+                    'admin_proposal_crud_msg',
+                    'Ideia Legislativa Aprovada com Sucesso'
+                );
         } else {
-            return redirect()->back()->with('admin_error_msg', 'Ideia Legislativa já foi Moderada!');
+            return redirect()
+                ->back()
+                ->with('admin_error_msg', 'Ideia Legislativa já foi Moderada!');
         }
     }
 
@@ -371,7 +433,12 @@ class AdminController extends Controller
         $input = $formRequest->except('_token', '_method', '_wysihtml5_mode');
 
         //Append Moderation Info only if never been Moderated before
-        if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null) {
+        if (
+            $proposal->approved_at == null &&
+            $proposal->approved_by == null &&
+            $proposal->disapproved_at == null &&
+            $proposal->disapproved_by == null
+        ) {
             $proposal->response = $input['response'];
             $proposal->response_id = Auth::user()->id;
 
@@ -389,9 +456,18 @@ class AdminController extends Controller
 
             //return redirect()->back()->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso');
             //                return redirect()->route('admin.proposal.show', ['id' => $id])->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso.');
-            return redirect()->route('admin.proposals')->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso.');
+            return redirect()
+                ->route('admin.proposals')
+                ->with(compact('proposal'))
+                ->with(
+                    'admin_proposal_crud_msg',
+                    'Ideia Legislativa Desaprovada e Respondida com Sucesso.'
+                );
         } else {
-            return redirect()->back()->with(compact('proposal'))->with('admin_error_msg', 'Ideia Legislativa já foi Moderada!');
+            return redirect()
+                ->back()
+                ->with(compact('proposal'))
+                ->with('admin_error_msg', 'Ideia Legislativa já foi Moderada!');
         }
     }
 
@@ -427,7 +503,12 @@ class AdminController extends Controller
         if (Input::get('disapprovalBtn')) {
             $button = 'disapprovalBtn';
 
-            $input = $formRequest->except('_token', '_method', '_wysihtml5_mode', $button);
+            $input = $formRequest->except(
+                '_token',
+                '_method',
+                '_wysihtml5_mode',
+                $button
+            );
 
             $input['responder_id'] = Auth::user()->id;
 
@@ -437,7 +518,13 @@ class AdminController extends Controller
             //Create ProposalHistory Object
             $proposal_history = new ProposalHistory();
             //Get attributes from Proposals Eloquent
-            $proposal_history->setRawAttributes(array_except($proposal->getAttributes(), ['id', 'created_at', 'updated_at']));
+            $proposal_history->setRawAttributes(
+                array_except($proposal->getAttributes(), [
+                    'id',
+                    'created_at',
+                    'updated_at',
+                ])
+            );
 
             //Append Update Info + Response
             $proposal_history->proposal_id = $id;
@@ -455,7 +542,12 @@ class AdminController extends Controller
             $proposal->forcefill($input)->save();
             // dd($proposal);
             //            return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso');
-            return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso');
+            return redirect()
+                ->route('admin.proposals')
+                ->with(
+                    'admin_proposal_crud_msg',
+                    'Ideia Legislativa Desaprovada e Respondida com Sucesso'
+                );
         }
         //Approval
         else {
@@ -467,7 +559,12 @@ class AdminController extends Controller
     {
         $this->proposalsRepository->toCommittee($id);
 
-        return redirect()->route('admin.proposals.approvalGoal')->with('admin_proposal_crud_msg', 'Ideia Legislativa enviada ao Comitê com Sucesso');
+        return redirect()
+            ->route('admin.proposals.approvalGoal')
+            ->with(
+                'admin_proposal_crud_msg',
+                'Ideia Legislativa enviada ao Comitê com Sucesso'
+            );
     }
 
     public function bypass($id)
@@ -476,7 +573,12 @@ class AdminController extends Controller
         $this->proposalsRepository->setApprovalGoal($id);
         $this->proposalsRepository->toCommittee($id);
 
-        return redirect()->route('admin.proposals.inCommittee')->with('admin_proposal_crud_msg', 'Ideia Legislativa enviada ao Comitê com Sucesso');
+        return redirect()
+            ->route('admin.proposals.inCommittee')
+            ->with(
+                'admin_proposal_crud_msg',
+                'Ideia Legislativa enviada ao Comitê com Sucesso'
+            );
     }
 
     /**
@@ -491,7 +593,12 @@ class AdminController extends Controller
         $proposal = $this->proposalsRepository->find($id);
 
         //Append Committee Moderation Info only if never been Moderated by Committee before
-        if ($proposal->approved_at_committee == null && $proposal->approved_by_committee == null && $proposal->disapproved_at_committee == null && $proposal->disapproved_by_committee == null) {
+        if (
+            $proposal->approved_at_committee == null &&
+            $proposal->approved_by_committee == null &&
+            $proposal->disapproved_at_committee == null &&
+            $proposal->disapproved_by_committee == null
+        ) {
             $proposal->approved_at_committee = Carbon::now();
             $proposal->approved_by_committee = Auth::user()->id;
             //Save
@@ -500,9 +607,19 @@ class AdminController extends Controller
             //Fire Event
             event(new ProposalApprovedByCommittee($proposal));
 
-            return redirect()->route('admin.proposals.inCommittee')->with('admin_proposal_crud_msg', 'Ideia Legislativa Aprovada pelo Comitê com Sucesso');
+            return redirect()
+                ->route('admin.proposals.inCommittee')
+                ->with(
+                    'admin_proposal_crud_msg',
+                    'Ideia Legislativa Aprovada pelo Comitê com Sucesso'
+                );
         } else {
-            return redirect()->back()->with('admin_error_msg', 'Ideia Legislativa já foi Moderada pelo Comitê!');
+            return redirect()
+                ->back()
+                ->with(
+                    'admin_error_msg',
+                    'Ideia Legislativa já foi Moderada pelo Comitê!'
+                );
         }
     }
 
@@ -518,7 +635,12 @@ class AdminController extends Controller
         $proposal = $this->proposalsRepository->find($id);
 
         //Append Moderation Info only if never been Moderated before
-        if ($proposal->approved_at_committee == null && $proposal->approved_by_committee == null && $proposal->disapproved_at_committee == null && $proposal->disapproved_by_committee == null) {
+        if (
+            $proposal->approved_at_committee == null &&
+            $proposal->approved_by_committee == null &&
+            $proposal->disapproved_at_committee == null &&
+            $proposal->disapproved_by_committee == null
+        ) {
             $proposal->disapproved_at_committee = Carbon::now();
             $proposal->disapproved_by_committee = Auth::user()->id;
 
@@ -530,9 +652,21 @@ class AdminController extends Controller
             //Fire Event
             event(new ProposalClosedByCommittee($proposal));
 
-            return redirect()->route('admin.proposals.inCommittee')->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada pelo Comitê e Finalizada com Sucesso.');
+            return redirect()
+                ->route('admin.proposals.inCommittee')
+                ->with(compact('proposal'))
+                ->with(
+                    'admin_proposal_crud_msg',
+                    'Ideia Legislativa Desaprovada pelo Comitê e Finalizada com Sucesso.'
+                );
         } else {
-            return redirect()->back()->with(compact('proposal'))->with('admin_error_msg', 'Ideia Legislativa já foi Moderada pelo Comitê!');
+            return redirect()
+                ->back()
+                ->with(compact('proposal'))
+                ->with(
+                    'admin_error_msg',
+                    'Ideia Legislativa já foi Moderada pelo Comitê!'
+                );
         }
     }
 
@@ -560,7 +694,12 @@ class AdminController extends Controller
             //Fire Event
             event(new ProposalTimeLimit($proposal));
 
-            return redirect()->route('admin.proposals')->with('admin_proposal_crud_msg', 'Ideia Legislativa Expirada e Finalizada com Sucesso.');
+            return redirect()
+                ->route('admin.proposals')
+                ->with(
+                    'admin_proposal_crud_msg',
+                    'Ideia Legislativa Expirada e Finalizada com Sucesso.'
+                );
         }
     }
 
@@ -575,7 +714,10 @@ class AdminController extends Controller
     {
         $proposals = $this->proposalsRepository->notResponded();
 
-        return view('admin.proposals.notresponded')->with('notrespondeds', $proposals);
+        return view('admin.proposals.notresponded')->with(
+            'notrespondeds',
+            $proposals
+        );
     }
 
     /**
@@ -603,7 +745,10 @@ class AdminController extends Controller
     {
         $proposals = $this->proposalsRepository->disapproved();
 
-        return view('admin.proposals.disapproved')->with('disapproveds', $proposals);
+        return view('admin.proposals.disapproved')->with(
+            'disapproveds',
+            $proposals
+        );
     }
 
     /**
@@ -631,7 +776,10 @@ class AdminController extends Controller
     {
         $proposals = $this->proposalsRepository->approvalGoal();
 
-        return view('admin.proposals.approval-goal')->with('approveds', $proposals);
+        return view('admin.proposals.approval-goal')->with(
+            'approveds',
+            $proposals
+        );
     }
 
     /**
@@ -645,7 +793,10 @@ class AdminController extends Controller
     {
         $proposals = $this->proposalsRepository->inCommittee();
 
-        return view('admin.proposals.in-committee')->with('inCommittee', $proposals);
+        return view('admin.proposals.in-committee')->with(
+            'inCommittee',
+            $proposals
+        );
     }
 
     /**
@@ -659,7 +810,10 @@ class AdminController extends Controller
     {
         $proposals = $this->proposalsRepository->approvedByCommittee();
 
-        return view('admin.proposals.approved-by-committee')->with('approvedsByCommittee', $proposals);
+        return view('admin.proposals.approved-by-committee')->with(
+            'approvedsByCommittee',
+            $proposals
+        );
     }
 
     /**
@@ -673,6 +827,9 @@ class AdminController extends Controller
     {
         $proposals = $this->proposalsRepository->disapprovedByCommittee();
 
-        return view('admin.proposals.disapproved-by-committee')->with('disapprovedsByCommittee', $proposals);
+        return view('admin.proposals.disapproved-by-committee')->with(
+            'disapprovedsByCommittee',
+            $proposals
+        );
     }
 }

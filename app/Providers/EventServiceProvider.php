@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -13,45 +15,17 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\ProposalWasCreated' => [
-            'App\Listeners\EmailProposalCreator',
-        ],
-        'App\Events\ProposalApproved' => [
-            'App\Listeners\EmailProposalApproved',
-        ],
-        'App\Events\ProposalClosed' => [
-            'App\Listeners\EmailProposalClosed',
-        ],
-        'App\Events\ProposalReachedApprovalGoal' => [
-            'App\Listeners\EmailProposalReachedApprovalGoal',
-        ],
-        'App\Events\ProposalTimeLimit' => [
-            'App\Listeners\EmailProposalTimeLimit',
-        ],
-        'App\Events\ProposalApprovedByCommittee' => [
-            'App\Listeners\EmailProposalApprovedByCommittee',
-        ],
-        'App\Events\ProposalClosedByCommittee' => [
-            'App\Listeners\EmailProposalClosedByCommittee',
-        ],
-
-        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
-            // add your listeners (aka providers) here
-            'SocialiteProviders\YouTube\YouTubeExtendSocialite@handle',
-            'SocialiteProviders\Instagram\InstagramExtendSocialite@handle',
-        ],
+        Registered::class => [SendEmailVerificationNotification::class],
     ];
 
     /**
-     * Register any other events for your application.
-     *
-     * @param \Illuminate\Contracts\Events\Dispatcher $events
+     * Register any events for your application.
      *
      * @return void
      */
-    public function boot(DispatcherContract $events)
+    public function boot()
     {
-        parent::boot($events);
+        parent::boot();
 
         //
     }

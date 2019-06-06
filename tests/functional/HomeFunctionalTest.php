@@ -16,7 +16,9 @@ class UserFunctionalTest extends TestCase
 
         $this->visit('/')
             // Sub-menu Ideia Legislativa?
-            ->click('Proponha uma ideia legislativa logando ou registrando-se aqui')
+            ->click(
+                'Proponha uma ideia legislativa logando ou registrando-se aqui'
+            )
             ->seePageIs('/login');
 
         $this->visit('/')
@@ -46,7 +48,10 @@ class UserFunctionalTest extends TestCase
         $this->visit('/contact')
             ->type('Acebolado Silva', 'name')
             ->type('alerjteste@alerj.com', 'email')
-            ->type('Gostaria de solicitar neve no natal de São Gonçalo', 'message')
+            ->type(
+                'Gostaria de solicitar neve no natal de São Gonçalo',
+                'message'
+            )
             ->press('Enviar!')
             ->seePageIs('/contact')
             ->see('Obrigado por');
@@ -98,7 +103,9 @@ class UserFunctionalTest extends TestCase
         // provide hidden input for your 'required' validation
         NoCaptcha::shouldReceive('display')
             ->zeroOrMoreTimes()
-            ->andReturn('<input type="hidden" name="g-recaptcha-response" value="1" />');
+            ->andReturn(
+                '<input type="hidden" name="g-recaptcha-response" value="1" />'
+            );
 
         $this->visit('/')
             ->click('Registro')
@@ -138,7 +145,7 @@ class UserFunctionalTest extends TestCase
             ->type('WrongUserEmail', 'email')
             ->type('WrongUserPwd', 'password')
             ->press('Login')
-            ->see('Credenciais informadas');   //aviso de credenciais incorretas
+            ->see('Credenciais informadas'); //aviso de credenciais incorretas
     }
 
     public function testActingAsUserNameShow()
@@ -151,8 +158,7 @@ class UserFunctionalTest extends TestCase
 
     public function testViewAdminWithoutLogin()
     {
-        $this->visit('/admin')
-            ->seePageIs('/login');
+        $this->visit('/admin')->seePageIs('/login');
     }
 
     public function testAdminMainScreen()
@@ -279,9 +285,9 @@ class UserFunctionalTest extends TestCase
             ->click('Todos')
             ->type($name, 'dataTableUser')
             ->click($name)
-            ->visit('/admin/users/'.$user->id)
+            ->visit('/admin/users/' . $user->id)
             ->click('editarUsuario')
-            ->seePageIs('/admin/users/'.$user->id.'/edit')
+            ->seePageIs('/admin/users/' . $user->id . '/edit')
             ->type($faker->name, 'name')
             ->type($faker->email, 'email')
             ->select($roleId, 'role_id')

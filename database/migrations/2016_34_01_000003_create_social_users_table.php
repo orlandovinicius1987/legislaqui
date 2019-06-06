@@ -21,8 +21,14 @@ class CreateSocialUsersTable extends Migration
         });
 
         Schema::table('social_users', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('social_network_id')->references('id')->on('social_networks');
+            $table
+                ->foreign('user_id')
+                ->references('id')
+                ->on('users');
+            $table
+                ->foreign('social_network_id')
+                ->references('id')
+                ->on('social_networks');
         });
     }
 
