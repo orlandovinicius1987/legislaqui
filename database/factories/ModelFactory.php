@@ -17,9 +17,7 @@ use App\User;
 use Illuminate\Support\Facades\Request;
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
-    //    $state = factory(App\State::class)->create();
-
-    //    dd($state->getUfAttribute());
+//    $faker = app('Faker');
     return [
         'name' => $faker->name,
         'email' => $faker->email,
@@ -28,11 +26,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         //'is_admin' => $faker->boolean(30),
         'remember_token' => str_random(10),
         //Aprovador 1 - Comissao 2 - Cidadao 99
-        'role_id' => $faker->randomElement([1, 2, 99]),
-        'uf' => State::all()
-            ->shuffle()
-            ->first()
-            ->getUfAttribute(),
+//        'role_id' => $faker->randomElement([1, 2, 99]),
+//        'uf' => State::all()
+//            ->shuffle()
+//            ->first()
+//            ->getUfAttribute(),
         'cpf' => $faker->cpf,
         'uuid' => $faker->uuid,
     ];
@@ -43,7 +41,7 @@ $factory->defineAs(App\User::class, 'admin', function ($faker) use ($factory) {
     $user = $factory->raw(App\User::class);
 
     //Admin 0
-    return array_merge($user, ['role_id' => 0]);
+    return array_merge($user, []);
 });
 
 $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
@@ -74,14 +72,14 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
         'responder_id' => !$response
             ? null
             : User::all()
-                ->where('role_id', 1)
+//                ->where('role_id', 1)
                 ->shuffle()
                 ->first()->id,
         'disapproved_at' => !$response ? null : \Carbon\Carbon::now(),
         'disapproved_by' => !$response
             ? null
             : User::all()
-                ->where('role_id', 1)
+//                ->where('role_id', 1)
                 ->shuffle()
                 ->first()->id,
         'approved_at' => $response
@@ -94,7 +92,7 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
             : ($random
                 ? null
                 : User::all()
-                    ->where('role_id', 1)
+//                    ->where('role_id', 1)
                     ->shuffle()
                     ->first()->id),
         'created_at' => \Carbon\Carbon::now(),
