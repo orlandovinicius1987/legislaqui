@@ -176,7 +176,7 @@ class ProposalsController extends Controller
         $proposal = $this->proposalsRepository->find($id);
 
         //Get User
-        if (!Auth::check()) {
+        if (!Auth::user()) {
             // The user is not logged in...
             // Retrieve UUID from Cookie
             $user_id = null;
