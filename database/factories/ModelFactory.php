@@ -26,11 +26,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         //'is_admin' => $faker->boolean(30),
         'remember_token' => str_random(10),
         //Aprovador 1 - Comissao 2 - Cidadao 99
-//        'role_id' => $faker->randomElement([1, 2, 99]),
-//        'uf' => State::all()
-//            ->shuffle()
-//            ->first()
-//            ->getUfAttribute(),
+        'role_id' => $faker->randomElement([1, 2, 99]),
+        'uf' => State::all()
+            ->shuffle()
+            ->first()
+            ->getUfAttribute(),
         'cpf' => $faker->cpf,
         'uuid' => $faker->uuid,
     ];
