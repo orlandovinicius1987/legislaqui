@@ -48,7 +48,7 @@
 
 @if(!empty(Session::get('error_msg')))
 
-    <div id="flash-overlay-modal" class="modal fade {{ $modalClass or '' }}">
+    <div id="flash-overlay-modal" class="modal fade {{ $modalClass ?? '' }}">
         <div class="modal-dialog">
             <div class="modal-content">
                 {{--<div class="modal-header">--}}
@@ -80,7 +80,7 @@
 
 @if(!empty(Session::get('proposal_crud_msg')))
 
-    <div id="flash-overlay-modal" class="modal fade {{ $modalClass or '' }}">
+    <div id="flash-overlay-modal" class="modal fade {{ $modalClass ?? '' }}">
         <div class="modal-dialog">
             <div class="modal-content">
                 {{--<div class="modal-header">--}}
@@ -112,7 +112,7 @@
 
 @if(!empty(Session::get('user_crud_msg')))
 
-    <div id="flash-overlay-modal" class="modal fade {{ $modalClass or '' }}">
+    <div id="flash-overlay-modal" class="modal fade {{ $modalClass ?? '' }}">
         <div class="modal-dialog">
             <div class="modal-content">
                 {{--<div class="modal-header">--}}
