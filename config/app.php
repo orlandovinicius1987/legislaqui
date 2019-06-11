@@ -11,8 +11,9 @@ return [
     | any other location as required by the application or its packages.
     |
     */
+    'name' => '#Legislaqui',
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name_formatted' => '<b>#</b>Legislaqui',
 
     /*
     |--------------------------------------------------------------------------
@@ -79,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt-BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,11 +160,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
-        /*
-         * Package Service Providers...
-         */
-
+        Collective\Html\HtmlServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -172,6 +169,13 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Stevebauman\Location\LocationServiceProvider::class,
+        /*
+          Other service providers...
+        */
+        //Laravel\Socialite\SocialiteServiceProvider::class,
+        \SocialiteProviders\Manager\ServiceProvider::class,
     ],
 
     /*
@@ -221,5 +225,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
+        'NoCaptcha' => 'Anhskohbo\NoCaptcha\Facades\NoCaptcha',
+        'Location' => 'Stevebauman\Location\Facades\Location',
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 ];
