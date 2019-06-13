@@ -31,6 +31,8 @@ class EmailProposalApprovedByCommittee
      */
     public function handle(ProposalApprovedByCommittee $event)
     {
-        $this->repository->sendProposalApprovedByCommittee($event->getProposal());
+        $this->repository->sendProposalApprovedByCommittee(
+            $event->getProposal()
+        );
     }
 }

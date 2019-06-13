@@ -23,9 +23,9 @@ class ProposalFormRequest extends Request
     {
         return [
             //
-            'name'            => 'required',
-            'idea_central'    => 'required',
-            'problem'         => 'required',
+            'name' => 'required',
+            'idea_central' => 'required',
+            'problem' => 'required',
             'idea_exposition' => 'required',
         ];
     }

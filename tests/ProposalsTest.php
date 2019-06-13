@@ -6,7 +6,7 @@ use Faker\Factory;
 
 //use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-class ProposalsTest extends TestCase
+class ProposalsTest extends \Tests\TestCase
 {
     /**
      * A basic functional test example.
@@ -22,7 +22,7 @@ class ProposalsTest extends TestCase
         //Not use Eloquent
         $proposal = factory(App\Proposal::class)->create();
 
-        $this->visit('/proposals/'.$proposal->id);
+        $this->visit('/proposals/' . $proposal->id);
         //         ->seeInDatabase('proposals', ['name' => $proposal->name]);
 
         //Not with Paginator
@@ -31,18 +31,21 @@ class ProposalsTest extends TestCase
 
     public function testPageProposal()
     {
-        $proposal = Proposal::paginate(20)->shuffle()->first();
-        $url_proposal = '/proposals/'.$proposal->id;
+        $proposal = Proposal::paginate(20)
+            ->shuffle()
+            ->first();
+        $url_proposal = '/proposals/' . $proposal->id;
         $this->visit($url_proposal)
-             ->see($proposal->name)
-             ->see($proposal->central_idea)
-             ->see($proposal->problem);
+            ->see($proposal->name)
+            ->see($proposal->central_idea)
+            ->see($proposal->problem);
     }
 
     public function testCreateProposal()
     {
         $user = User::all()->random();
-        $this->actingAs($user)->visit('/proposals/create')
+        $this->actingAs($user)
+            ->visit('/proposals/create')
             ->seePageIs('/proposals/create')
             ->type('idea name', 'name')
             ->type('central idea', 'idea_central')
@@ -91,8 +94,9 @@ class ProposalsTest extends TestCase
             ->seeInDatabase('proposals', ['response' => $response]);
     }*/
 
-    public function testProposalPaginates()      // isso serve para alguma coisa?!
+    public function testProposalPaginates()
     {
+        // isso serve para alguma coisa?!
         factory(App\Proposal::class, 50)->create();
         $proposals = App\Proposal::paginate(20);
         $this->assertEquals(20, $proposals->count());

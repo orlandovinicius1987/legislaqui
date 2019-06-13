@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 class Handler extends ExceptionHandler
 {
     /**
-     * A list of the exception types that should not be reported.
+     * A list of the exception types that are not reported.
      *
      * @var array
      */
@@ -24,35 +24,44 @@ class Handler extends ExceptionHandler
     ];
 
     /**
+     * A list of the inputs that are never flashed for validation exceptions.
+     *
+     * @var array
+     */
+    protected $dontFlash = ['password', 'password_confirmation'];
+
+    /**
      * Report or log an exception.
      *
-     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
-     *
-     * @param \Exception $e
-     *
+     * @param  \Exception  $exception
      * @return void
      */
-    public function report(Exception $e)
+    public function report(Exception $exception)
     {
-        parent::report($e);
+        parent::report($exception);
     }
 
     /**
      * Render an exception into an HTTP response.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Exception               $e
-     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $e)
+    public function render($request, Exception $exception)
     {
-        if ($e instanceof \Illuminate\Session\TokenMismatchException) {
-            return redirect()->back()->withInput($request->except('_token'))->with('flash_msg', 'Sua sessão provavelmente expirou, por favor tente novamente.');
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+            return redirect()
+                ->back()
+                ->withInput($request->except('_token'))
+                ->with(
+                    'flash_msg',
+                    'Sua sessão provavelmente expirou, por favor tente novamente.'
+                );
             //          return response()->view('errors.custom', [], 500);
         }
 
-        if ($this->isHttpException($e)) {
+        if ($this->isHttpException($exception)) {
             switch ($e->getStatusCode()) {
                 // not found
                 case 404:
@@ -65,11 +74,11 @@ class Handler extends ExceptionHandler
                     break;
 
                 default:
-                    return $this->renderHttpException($e);
+                    return $this->renderHttpException($exception);
                     break;
             }
         }
 
-        return parent::render($request, $e);
+        return parent::render($request, $exception);
     }
 }

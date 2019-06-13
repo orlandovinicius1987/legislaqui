@@ -14,7 +14,13 @@ class Like extends Eloquent
 {
     public $timestamps = false;
 
-    protected $fillable = ['user_id', 'proposal_id', 'uuid', 'ip_address', 'like'];
+    protected $fillable = [
+        'user_id',
+        'proposal_id',
+        'uuid',
+        'ip_address',
+        'like',
+    ];
     protected $table = 'likes';
 
     //    public function owner()

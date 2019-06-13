@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Drivers
@@ -13,45 +12,33 @@ return [
     */
 
     'drivers' => [
-
         'FreeGeoIp' => [
-
             'class' => Stevebauman\Location\Drivers\FreeGeoIp::class,
 
             'url' => 'http://freegeoip.lwan.ws/json/',
-
         ],
 
         'GeoPlugin' => [
-
             'class' => Stevebauman\Location\Drivers\GeoPlugin::class,
 
             'url' => 'http://www.geoplugin.net/php.gp?ip=',
-
         ],
 
         'IpInfo' => [
-
             'class' => Stevebauman\Location\Drivers\IpInfo::class,
 
             'url' => 'http://ipinfo.io/',
-
         ],
 
         'MaxMind' => [
-
             'class' => Stevebauman\Location\Drivers\MaxMind::class,
 
             'configuration' => [
-
                 'web_service' => false, //If set to true, you must fill in your user ID and license key
-                'user_id'     => '',
+                'user_id' => '',
                 'license_key' => '',
-
             ],
-
         ],
-
     ],
 
     /*
@@ -75,13 +62,7 @@ return [
     |
     */
 
-    'selected_driver_fallbacks' => [
-
-        'IpInfo',
-        'GeoPlugin',
-        'MaxMind',
-
-    ],
+    'selected_driver_fallbacks' => ['IpInfo', 'GeoPlugin', 'MaxMind'],
 
     /*
     |--------------------------------------------------------------------------
@@ -131,10 +112,8 @@ return [
     */
 
     'dropdown_config' => [
-
         'value' => 'country_code',
-        'name'  => 'country_name',
-
+        'name' => 'country_name',
     ],
 
     /*
@@ -147,7 +126,6 @@ return [
     */
 
     'country_codes' => [
-
         'AF' => 'Afghanistan',
         'AX' => 'Aland Islands',
         'AL' => 'Albania',
@@ -393,6 +371,5 @@ return [
         'YE' => 'Yemen',
         'ZM' => 'Zambia',
         'ZW' => 'Zimbabwe',
-
     ],
 ];

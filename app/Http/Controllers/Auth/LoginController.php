@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Session;
 use Validator;
 
-class AuthController extends Controller
+class LoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -25,12 +25,7 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesUsers, RegistersUsers {
-        AuthenticatesUsers::redirectPath insteadof RegistersUsers;
-        AuthenticatesUsers::getGuard insteadof RegistersUsers;
-        login as traitLogin;
-        register as traitRegister;
-    }
+    use AuthenticatesUsers;
 
     use ThrottlesLogins;
 
@@ -61,10 +56,10 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name'     => 'required|max:255',
-            'email'    => 'required|email|max:255|unique:users',
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-            'cpf'      => 'required',
+            'cpf' => 'required',
         ]);
     }
 
@@ -78,13 +73,13 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
+            'name' => $data['name'],
+            'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'uf'       => $data['uf'],
-            'role_id'  => 99,
-            'cpf'      => $data['cpf'],
-            'uuid'     => $data['uuid'],
+            'uf' => $data['uf'],
+            'role_id' => 99,
+            'cpf' => $data['cpf'],
+            'uuid' => $data['uuid'],
         ]);
     }
 
@@ -95,7 +90,7 @@ class AuthController extends Controller
             return view($this->registerView);
         }
 
-        $uf = State::lists('nome', 'uf');
+        $uf = State::all()->pluck('nome', 'uf');
 
         return view('auth.register', compact('uf'));
     }
@@ -111,7 +106,7 @@ class AuthController extends Controller
             return view('auth.authenticate');
         }
 
-        $uf = State::lists('nome', 'uf');
+        $uf = State::all()->pluck('nome', 'uf');
 
         return view('auth.login', compact('uf'));
     }
@@ -143,7 +138,10 @@ class AuthController extends Controller
 
             // Verifies if Captcha fails and redirect to register view
             if ($validate->fails()) {
-                $error = Session::flash('error_msg', 'Por favor, clique no campo reCAPTCHA para efetuar o registro!');
+                $error = Session::flash(
+                    'error_msg',
+                    'Por favor, clique no campo reCAPTCHA para efetuar o registro!'
+                );
 
                 return redirect()
                     ->back()

@@ -1,80 +1,10 @@
 <?php
 
 use App\State;
+use Tests\DuskTestCase;
 
-class UserFunctionalTest extends TestCase
+class UserFunctionalTest extends DuskTestCase
 {
-    public function testLinksMenuBar()
-    {
-        $this->visit('/')
-            ->click('INÍCIO')
-            ->seePageIs('/');
-
-        $this->visit('/')
-            ->click('Como Funciona?')
-            ->seePageIs('/about');
-
-        $this->visit('/')
-            // Sub-menu Ideia Legislativa?
-            ->click('Proponha uma ideia legislativa logando ou registrando-se aqui')
-            ->seePageIs('/login');
-
-        $this->visit('/')
-            // Sub-menu Ideia Legislativa?
-            ->click('Termos de Uso')
-            ->seePageIs('/terms');
-
-        $this->visit('/')
-            ->click('Nossas comissões')
-            ->seePageIs('/committee');
-
-        $this->visit('/')
-            ->click('Termos de uso')
-            ->seePageIs('/terms');
-
-        $this->visit('/')
-            ->click('Contato')
-            ->seePageIs('/contact');
-
-        $this->visit('/')
-            ->click('Login | Registro')
-            ->seePageIs('/login');
-    }
-
-    public function testContact()
-    {
-        $this->visit('/contact')
-            ->type('Acebolado Silva', 'name')
-            ->type('alerjteste@alerj.com', 'email')
-            ->type('Gostaria de solicitar neve no natal de São Gonçalo', 'message')
-            ->press('Enviar!')
-            ->seePageIs('/contact')
-            ->see('Obrigado por');
-    }
-
-    public function testLinksFiltersIndex()
-    {
-        $this->visit('/')
-            ->click('ABERTAS')
-            ->seePageIs('/?q=open');
-
-        $this->visit('/')
-            ->click('NA COMISSÃO')
-            ->seePageIs('/?q=committee');
-
-        $this->visit('/')
-            ->click('EXPIRADAS')
-            ->seePageIs('/?q=expired');
-
-        $this->visit('/')
-            ->click('NÃO ACATADAS')
-            ->seePageIs('/?q=disapproved');
-
-        $this->visit('/')
-            ->click('APROVADAS')
-            ->seePageIs('/?q=approved');
-    }
-
     public function testRegisterAction()
     {
         // use the factory to create a Faker\Generator instance
@@ -98,7 +28,9 @@ class UserFunctionalTest extends TestCase
         // provide hidden input for your 'required' validation
         NoCaptcha::shouldReceive('display')
             ->zeroOrMoreTimes()
-            ->andReturn('<input type="hidden" name="g-recaptcha-response" value="1" />');
+            ->andReturn(
+                '<input type="hidden" name="g-recaptcha-response" value="1" />'
+            );
 
         $this->visit('/')
             ->click('Registro')
@@ -138,7 +70,7 @@ class UserFunctionalTest extends TestCase
             ->type('WrongUserEmail', 'email')
             ->type('WrongUserPwd', 'password')
             ->press('Login')
-            ->see('Credenciais informadas');   //aviso de credenciais incorretas
+            ->see('Credenciais informadas'); //aviso de credenciais incorretas
     }
 
     public function testActingAsUserNameShow()
@@ -151,8 +83,7 @@ class UserFunctionalTest extends TestCase
 
     public function testViewAdminWithoutLogin()
     {
-        $this->visit('/admin')
-            ->seePageIs('/login');
+        $this->visit('/admin')->seePageIs('/login');
     }
 
     public function testAdminMainScreen()
@@ -279,9 +210,9 @@ class UserFunctionalTest extends TestCase
             ->click('Todos')
             ->type($name, 'dataTableUser')
             ->click($name)
-            ->visit('/admin/users/'.$user->id)
+            ->visit('/admin/users/' . $user->id)
             ->click('editarUsuario')
-            ->seePageIs('/admin/users/'.$user->id.'/edit')
+            ->seePageIs('/admin/users/' . $user->id . '/edit')
             ->type($faker->name, 'name')
             ->type($faker->email, 'email')
             ->select($roleId, 'role_id')

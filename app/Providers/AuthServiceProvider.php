@@ -19,7 +19,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         //'App\Model' => 'App\Policies\ModelPolicy',
         Proposal::class => ProposalPolicy::class,
-        User::class     => UserPolicy::class,
+        User::class => UserPolicy::class,
     ];
 
     /**
@@ -29,8 +29,8 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(GateContract $gate)
+    public function boot()
     {
-        $this->registerPolicies($gate);
+        $this->registerPolicies();
     }
 }

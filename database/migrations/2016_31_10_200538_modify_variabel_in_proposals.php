@@ -12,7 +12,10 @@ class ModifyVariabelInProposals extends Migration
     public function up()
     {
         Schema::table('proposals', function ($table) {
-            $table->boolean('in_committee')->default(false)->change();
+            $table
+                ->boolean('in_committee')
+                ->default(false)
+                ->change();
         });
     }
 
@@ -24,7 +27,10 @@ class ModifyVariabelInProposals extends Migration
     public function down()
     {
         Schema::table('proposals', function ($table) {
-            $table->boolean('in_committee')->nullable()->change();
+            $table
+                ->boolean('in_committee')
+                ->nullable()
+                ->change();
         });
     }
 }

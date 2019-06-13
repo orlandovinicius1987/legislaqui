@@ -57,8 +57,8 @@
                 <tr>
                     <th class="create">
                         <h3>
-                            @if (!Auth::check())
-                                <a href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                            @if (!Auth::user())
+                                <a href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;}">
                                     @else
                                         <a href="{{ route('proposal.create') }}">
                                             @endif

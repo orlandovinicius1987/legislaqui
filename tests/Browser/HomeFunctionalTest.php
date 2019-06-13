@@ -1,78 +1,127 @@
 <?php
 
 use App\State;
+use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
 
-class UserFunctionalTest extends TestCase
+class HomeFunctionalTest extends DuskTestCase
 {
     public function testLinksMenuBar()
     {
-        $this->visit('/')
-            ->click('INÍCIO')
-            ->seePageIs('/');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('INÍCIO')
+                ->assertPathIs('/');
+        });
 
-        $this->visit('/')
-            ->click('Como Funciona?')
-            ->seePageIs('/about');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('Como Funciona?')
+                ->assertPathIs('/about');
+        });
 
-        $this->visit('/')
-            // Sub-menu Ideia Legislativa?
-            ->click('Proponha uma ideia legislativa logando ou registrando-se aqui')
-            ->seePageIs('/login');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                // Sub-menu Ideia Legislativa?
+                ->click('@newProposalButton')
+                ->acceptDialog()
+                ->assertPathIs('/login');
+        });
 
-        $this->visit('/')
-            // Sub-menu Ideia Legislativa?
-            ->click('Termos de Uso')
-            ->seePageIs('/terms');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                // Sub-menu Ideia Legislativa?
+                ->click('@TermsOfServiceBar')
+                ->assertPathIs('/terms');
+        });
 
-        $this->visit('/')
-            ->click('Nossas comissões')
-            ->seePageIs('/committee');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('Nossas comissões')
+                ->assertPathIs('/committee');
+        });
 
-        $this->visit('/')
-            ->click('Termos de uso')
-            ->seePageIs('/terms');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('Termos de uso')
+                ->assertPathIs('/terms');
+        });
 
-        $this->visit('/')
-            ->click('Contato')
-            ->seePageIs('/contact');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('Contato')
+                ->assertPathIs('/contact');
+        });
 
-        $this->visit('/')
-            ->click('Login | Registro')
-            ->seePageIs('/login');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('Login | Registro')
+                ->assertPathIs('/login');
+        });
     }
 
     public function testContact()
     {
-        $this->visit('/contact')
-            ->type('Acebolado Silva', 'name')
-            ->type('alerjteste@alerj.com', 'email')
-            ->type('Gostaria de solicitar neve no natal de São Gonçalo', 'message')
-            ->press('Enviar!')
-            ->seePageIs('/contact')
-            ->see('Obrigado por');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/contact')
+                ->type('name', 'Acebolado Silva')
+                ->type('email', 'alerjteste@alerj.com')
+                ->type(
+                    'message',
+                    'Gostaria de solicitar neve no natal de São Gonçalo'
+                )
+                ->screenshot('teste')
+                ->press('Enviar!')
+                ->assertPathIs('/contact')
+                ->assertSee('Obrigado por');
+        });
     }
 
     public function testLinksFiltersIndex()
     {
-        $this->visit('/')
-            ->click('ABERTAS')
-            ->seePageIs('/?q=open');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('ABERTAS')
+                ->assertQueryStringHas('q', 'open');
+        });
 
-        $this->visit('/')
-            ->click('NA COMISSÃO')
-            ->seePageIs('/?q=committee');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('NA COMISSÃO')
+                ->assertQueryStringHas('q', 'committee');
+        });
 
-        $this->visit('/')
-            ->click('EXPIRADAS')
-            ->seePageIs('/?q=expired');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('EXPIRADAS')
+                ->assertQueryStringHas('q', 'expired');
+        });
 
-        $this->visit('/')
-            ->click('NÃO ACATADAS')
-            ->seePageIs('/?q=disapproved');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('NÃO ACATADAS')
+                ->assertQueryStringHas('q', 'disapproved');
+        });
 
-        $this->visit('/')
-            ->click('APROVADAS')
-            ->seePageIs('/?q=approved');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('APROVADAS')
+                ->assertQueryStringHas('q', 'approved');
+        });
     }
 
     public function testRegisterAction()
@@ -98,7 +147,9 @@ class UserFunctionalTest extends TestCase
         // provide hidden input for your 'required' validation
         NoCaptcha::shouldReceive('display')
             ->zeroOrMoreTimes()
-            ->andReturn('<input type="hidden" name="g-recaptcha-response" value="1" />');
+            ->andReturn(
+                '<input type="hidden" name="g-recaptcha-response" value="1" />'
+            );
 
         $this->visit('/')
             ->click('Registro')
@@ -138,7 +189,7 @@ class UserFunctionalTest extends TestCase
             ->type('WrongUserEmail', 'email')
             ->type('WrongUserPwd', 'password')
             ->press('Login')
-            ->see('Credenciais informadas');   //aviso de credenciais incorretas
+            ->see('Credenciais informadas'); //aviso de credenciais incorretas
     }
 
     public function testActingAsUserNameShow()
@@ -151,8 +202,7 @@ class UserFunctionalTest extends TestCase
 
     public function testViewAdminWithoutLogin()
     {
-        $this->visit('/admin')
-            ->seePageIs('/login');
+        $this->visit('/admin')->seePageIs('/login');
     }
 
     public function testAdminMainScreen()
@@ -279,9 +329,9 @@ class UserFunctionalTest extends TestCase
             ->click('Todos')
             ->type($name, 'dataTableUser')
             ->click($name)
-            ->visit('/admin/users/'.$user->id)
+            ->visit('/admin/users/' . $user->id)
             ->click('editarUsuario')
-            ->seePageIs('/admin/users/'.$user->id.'/edit')
+            ->seePageIs('/admin/users/' . $user->id . '/edit')
             ->type($faker->name, 'name')
             ->type($faker->email, 'email')
             ->select($roleId, 'role_id')

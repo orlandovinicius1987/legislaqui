@@ -56,9 +56,9 @@
                     <div class="col-xs-12 col-md-3 pull-right crienova">
                         <h3>
                             @if (!Auth::check())
-                                <a href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                <a dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
                                     @else
-                                        <a href="{{ route('proposal.create') }}" >
+                                        <a dusk="newProposalButton" href="{{ route('proposal.create') }}" >
                                             @endif
                                             <div class="icon-wrapper"><i class="fa fa-plus-circle custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
                                             <div class="quadrado_legislaqui" title="clique para criar uma nova ideia legislativa">Sua ideia legislativa</div>

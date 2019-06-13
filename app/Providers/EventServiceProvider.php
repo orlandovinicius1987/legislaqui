@@ -13,15 +13,14 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
+        Registered::class => [SendEmailVerificationNotification::class],
         'App\Events\ProposalWasCreated' => [
             'App\Listeners\EmailProposalCreator',
         ],
         'App\Events\ProposalApproved' => [
             'App\Listeners\EmailProposalApproved',
         ],
-        'App\Events\ProposalClosed' => [
-            'App\Listeners\EmailProposalClosed',
-        ],
+        'App\Events\ProposalClosed' => ['App\Listeners\EmailProposalClosed'],
         'App\Events\ProposalReachedApprovalGoal' => [
             'App\Listeners\EmailProposalReachedApprovalGoal',
         ],
@@ -43,16 +42,12 @@ class EventServiceProvider extends ServiceProvider
     ];
 
     /**
-     * Register any other events for your application.
-     *
-     * @param \Illuminate\Contracts\Events\Dispatcher $events
+     * Register any events for your application.
      *
      * @return void
      */
-    public function boot(DispatcherContract $events)
+    public function boot()
     {
-        parent::boot($events);
-
-        //
+        parent::boot();
     }
 }

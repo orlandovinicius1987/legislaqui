@@ -36,6 +36,8 @@ class AddCommitteeRolesTable extends Migration
 
     private function unseed()
     {
-        DB::table('roles')->where('id', '=', 2)->delete();
+        DB::table('roles')
+            ->where('id', '=', 2)
+            ->delete();
     }
 }

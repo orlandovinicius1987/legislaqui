@@ -31,6 +31,8 @@ class EmailProposalReachedApprovalGoal
      */
     public function handle(ProposalReachedApprovalGoal $event)
     {
-        $this->repository->sendProposalApprovalGoalNotification($event->getProposal());
+        $this->repository->sendProposalApprovalGoalNotification(
+            $event->getProposal()
+        );
     }
 }

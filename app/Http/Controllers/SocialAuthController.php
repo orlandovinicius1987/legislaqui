@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\SocialLogin\SocialUserService;
-use Socialite;
+use Laravel\Socialite\Facades\Socialite;
 
 class SocialAuthController extends Controller
 {
@@ -21,7 +21,12 @@ class SocialAuthController extends Controller
 
     public function socialNetworkCallback($socialNetwork)
     {
-        if (!$this->socialUserService->find($socialNetwork, $this->getDriver($socialNetwork)->user())) {
+        if (
+            !$this->socialUserService->find(
+                $socialNetwork,
+                $this->getDriver($socialNetwork)->user()
+            )
+        ) {
             return redirect()->route('login');
         }
 

@@ -2,8 +2,9 @@
 
 use App\Proposal;
 use App\User;
+use Tests\DuskTestCase;
 
-class ProposalFuncTest extends TestCase
+class ProposalFuncTest extends DuskTestCase
 {
     public function testCreateProposalMainButton()
     {
@@ -29,7 +30,7 @@ class ProposalFuncTest extends TestCase
         $user = User::all()->random();
 
         $this->actingAs($user)
-            ->visit('/proposals/'.$proposal->id)
+            ->visit('/proposals/' . $proposal->id)
             ->click('novaIdeia')
             ->seePageIs('/proposals/create')
             ->type($proposal->name, 'name')
@@ -47,7 +48,7 @@ class ProposalFuncTest extends TestCase
         $user = User::all()->random();
 
         $this->actingAs($user)
-            ->visit('/proposals/'.$proposal->id)
+            ->visit('/proposals/' . $proposal->id)
             ->see($proposal->name)
             ->click('Curtir')
             ->see('Sua curtida foi computada com sucesso')
@@ -71,14 +72,14 @@ class ProposalFuncTest extends TestCase
         $user = User::all()->random();
 
         $this->actingAs($user)
-            ->visit('/proposals/'.$proposal->id)
-            ->click('editar')      // criei 'id' para o teste; o phpunit, às vezes, identificava o texto e, às vezes, não.
-            ->seePageIs('/proposals/'.$proposal->id.'/edit')
+            ->visit('/proposals/' . $proposal->id)
+            ->click('editar') // criei 'id' para o teste; o phpunit, às vezes, identificava o texto e, às vezes, não.
+            ->seePageIs('/proposals/' . $proposal->id . '/edit')
             ->type($proposal->name, 'name')
             ->type($proposal->problem, 'problem')
             ->press('Gravar')
             ->see('Ideia Legislativa Editada')
-            ->seePageIs('/proposals/'.$proposal->id)
+            ->seePageIs('/proposals/' . $proposal->id)
             ->click('voltar')
             ->seePageIs('/')
             ->seeInDatabase('proposals', ['name' => $proposal->name]);
