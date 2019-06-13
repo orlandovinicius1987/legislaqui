@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($e instanceof \Illuminate\Session\TokenMismatchException) {
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
             return redirect()
                 ->back()
                 ->withInput($request->except('_token'))
@@ -61,7 +61,7 @@ class Handler extends ExceptionHandler
             //          return response()->view('errors.custom', [], 500);
         }
 
-        if ($this->isHttpException($e)) {
+        if ($this->isHttpException($exception)) {
             switch ($e->getStatusCode()) {
                 // not found
                 case 404:
@@ -79,6 +79,6 @@ class Handler extends ExceptionHandler
             }
         }
 
-        return parent::render($request, $e);
+        return parent::render($request, $exception);
     }
 }
