@@ -6,7 +6,7 @@ use Faker\Factory;
 
 //use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-class ProposalsTest extends TestCase
+class ProposalsTest extends \Tests\TestCase
 {
     /**
      * A basic functional test example.

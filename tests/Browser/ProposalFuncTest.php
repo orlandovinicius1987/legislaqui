@@ -2,8 +2,9 @@
 
 use App\Proposal;
 use App\User;
+use Tests\DuskTestCase;
 
-class ProposalFuncTest extends TestCase
+class ProposalFuncTest extends DuskTestCase
 {
     public function testCreateProposalMainButton()
     {

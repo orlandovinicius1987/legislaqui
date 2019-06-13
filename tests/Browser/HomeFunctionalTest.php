@@ -1,60 +1,89 @@
 <?php
 
 use App\State;
+use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
 
-class UserFunctionalTest extends TestCase
+class HomeFunctionalTest extends DuskTestCase
 {
     public function testLinksMenuBar()
     {
-        $this->visit('/')
-            ->click('INÍCIO')
-            ->seePageIs('/');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('INÍCIO')
+                ->assertPathIs('/');
+        });
 
-        $this->visit('/')
-            ->click('Como Funciona?')
-            ->seePageIs('/about');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('Como Funciona?')
+                ->assertPathIs('/about');
+        });
 
-        $this->visit('/')
-            // Sub-menu Ideia Legislativa?
-            ->click(
-                'Proponha uma ideia legislativa logando ou registrando-se aqui'
-            )
-            ->seePageIs('/login');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                // Sub-menu Ideia Legislativa?
+                ->click('@newProposalButton')
+                ->acceptDialog()
+                ->assertPathIs('/login');
+        });
 
-        $this->visit('/')
-            // Sub-menu Ideia Legislativa?
-            ->click('Termos de Uso')
-            ->seePageIs('/terms');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                // Sub-menu Ideia Legislativa?
+                ->click('@TermsOfServiceBar')
+                ->assertPathIs('/terms');
+        });
 
-        $this->visit('/')
-            ->click('Nossas comissões')
-            ->seePageIs('/committee');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('Nossas comissões')
+                ->assertPathIs('/committee');
+        });
 
-        $this->visit('/')
-            ->click('Termos de uso')
-            ->seePageIs('/terms');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('Termos de uso')
+                ->assertPathIs('/terms');
+        });
 
-        $this->visit('/')
-            ->click('Contato')
-            ->seePageIs('/contact');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('Contato')
+                ->assertPathIs('/contact');
+        });
 
-        $this->visit('/')
-            ->click('Login | Registro')
-            ->seePageIs('/login');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('Login | Registro')
+                ->assertPathIs('/login');
+        });
     }
 
     public function testContact()
     {
-        $this->visit('/contact')
-            ->type('Acebolado Silva', 'name')
-            ->type('alerjteste@alerj.com', 'email')
-            ->type(
-                'Gostaria de solicitar neve no natal de São Gonçalo',
-                'message'
-            )
-            ->press('Enviar!')
-            ->seePageIs('/contact')
-            ->see('Obrigado por');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/contact')
+                ->type('name', 'Acebolado Silva')
+                ->type('email', 'alerjteste@alerj.com')
+                ->type(
+                    'message',
+                    'Gostaria de solicitar neve no natal de São Gonçalo'
+                )
+                ->screenshot('teste')
+                ->press('Enviar!')
+                ->assertPathIs('/contact')
+                ->assertSee('Obrigado por');
+        });
     }
 
     public function testLinksFiltersIndex()

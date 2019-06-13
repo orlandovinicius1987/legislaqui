@@ -286,7 +286,7 @@
 
             <!-- relationship commissions -->
             <li class="pai"><a href="/committee" class="titulo " title="Comissões">Nossas comissões</a></li>
-            <li class="pai"><a href="/terms" class="titulo " title="Comissões">Termos de uso</a></li>
+            <li class="pai"><a dusk="TermsOfServiceBar" href="/terms" class="titulo " title="Comissões">Termos de uso</a></li>
             <li class="pai"><a href="/contact" class="titulo " title="Contato">Contato</a></li>
             {{--<li class="pai">--}}
                 {{--<a target="" href="javascript:;" class="titulo " title="ATIVIDADE PARLAMENTAR">ATIVIDADE PARLAMENTAR</a>--}}
