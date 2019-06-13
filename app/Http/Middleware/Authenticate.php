@@ -17,9 +17,9 @@ class Authenticate extends Middleware
      *
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next, ...$guards)
     {
-        if (Auth::guard($guard)->guest()) {
+        if (Auth::guard($guards)->guest()) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
