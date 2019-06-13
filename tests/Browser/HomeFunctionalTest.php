@@ -88,25 +88,40 @@ class HomeFunctionalTest extends DuskTestCase
 
     public function testLinksFiltersIndex()
     {
-        $this->visit('/')
-            ->click('ABERTAS')
-            ->seePageIs('/?q=open');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('ABERTAS')
+                ->assertQueryStringHas('q', 'open');
+        });
 
-        $this->visit('/')
-            ->click('NA COMISSÃO')
-            ->seePageIs('/?q=committee');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('NA COMISSÃO')
+                ->assertQueryStringHas('q', 'committee');
+        });
 
-        $this->visit('/')
-            ->click('EXPIRADAS')
-            ->seePageIs('/?q=expired');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('EXPIRADAS')
+                ->assertQueryStringHas('q', 'expired');
+        });
 
-        $this->visit('/')
-            ->click('NÃO ACATADAS')
-            ->seePageIs('/?q=disapproved');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('NÃO ACATADAS')
+                ->assertQueryStringHas('q', 'disapproved');
+        });
 
-        $this->visit('/')
-            ->click('APROVADAS')
-            ->seePageIs('/?q=approved');
+        $this->browse(function (Browser $browser) {
+            $browser
+                ->visit('/')
+                ->clickLink('APROVADAS')
+                ->assertQueryStringHas('q', 'approved');
+        });
     }
 
     public function testRegisterAction()
