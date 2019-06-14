@@ -115,7 +115,7 @@
 
                 <div class="form-group">
                     <div class="col-xs-8 col-xs-offset-4">
-                        <button type="submit" class="btn btn-primary">
+                        <button dusk="registerButton" type="submit" class="btn btn-primary">
                             <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro
                         </button>
                         <a href="redirect/facebook" id="facebookButton"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\fb_logo_blue29.png"></a>

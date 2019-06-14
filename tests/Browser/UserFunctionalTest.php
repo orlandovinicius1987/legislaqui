@@ -48,20 +48,6 @@ class UserFunctionalTest extends DuskTestCase
             ->seeInDatabase('users', ['email' => $email]);
     }
 
-    public function testLoginAction()
-    {
-        $user = App\User::all()->random();
-        $user_name = $user->name;
-        $user_email = $user->email;
-        $user_pwd = $user->password;
-
-        return $this->visit('/')
-            ->click('Login')
-            ->type($user_email, 'email')
-            ->type($user_pwd, 'password')
-            ->press('Login');
-    }
-
     public function testLoginError()
     {
         $this->visit('/')

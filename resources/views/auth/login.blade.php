@@ -31,7 +31,7 @@
                                 <label class="col-xs-4 control-label">E-Mail</label>
 
                                 <div class="col-xs-8">
-                                    <input type="email" class="campo" name="email" value="{{ (Session::get('last_auth_attempt') === 'login') ? old('email') : '' }}" placeholder="Insira seu email">
+                                    <input id="email" type="email" class="campo" name="email" value="{{ (Session::get('last_auth_attempt') === 'login') ? old('email') : '' }}" placeholder="Insira seu email">
 
                                     @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'login'))
                                         <span class="help-block">
@@ -45,7 +45,7 @@
                                 <label class="col-xs-4 control-label">Senha</label>
 
                                 <div class="col-xs-8">
-                                    <input type="password" class="campo" name="password" placeholder="Insira sua senha">
+                                    <input id="password" type="password" class="campo" name="password" placeholder="Insira sua senha">
 
                                     @if ($errors->has('password') && (Session::get('last_auth_attempt') === 'login'))
                                         <span class="help-block">
@@ -67,7 +67,7 @@
 
                         <div class="form-group">
                             <div class="col-xs-8 col-xs-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button dusk="loginButton" type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-sign-in fa-fw"></i>&nbsp; Login
                                 </button>
 
