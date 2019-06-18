@@ -217,7 +217,9 @@ class HomeFunctionalTest extends DuskTestCase
 
     public function testViewAdminWithoutLogin()
     {
-        $this->visit('/admin')->seePageIs('/login');
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/admin')->assertPathIs('/login');
+        });
     }
 
     public function testAdminMainScreen()

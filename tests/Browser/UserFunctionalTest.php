@@ -5,11 +5,6 @@ use Tests\DuskTestCase;
 
 class UserFunctionalTest extends DuskTestCase
 {
-    public function testViewAdminWithoutLogin()
-    {
-        $this->visit('/admin')->seePageIs('/login');
-    }
-
     public function testAdminMainScreen()
     {
         $user = factory(App\User::class, 'admin')->create();
