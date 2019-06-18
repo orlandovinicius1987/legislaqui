@@ -206,9 +206,13 @@ class HomeFunctionalTest extends DuskTestCase
     public function testActingAsUserNameShow()
     {
         $user = factory(App\User::class)->create();
-        $this->actingAs($user)
-            ->visit('/')
-            ->see($user->name);
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/')
+                ->assertSee(strtoupper($user->name));
+        });
     }
 
     public function testViewAdminWithoutLogin()

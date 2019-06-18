@@ -5,14 +5,6 @@ use Tests\DuskTestCase;
 
 class UserFunctionalTest extends DuskTestCase
 {
-    public function testActingAsUserNameShow()
-    {
-        $user = factory(App\User::class)->create();
-        $this->actingAs($user)
-            ->visit('/')
-            ->see($user->name);
-    }
-
     public function testViewAdminWithoutLogin()
     {
         $this->visit('/admin')->seePageIs('/login');
