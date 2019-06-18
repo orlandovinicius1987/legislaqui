@@ -5,17 +5,6 @@ use Tests\DuskTestCase;
 
 class UserFunctionalTest extends DuskTestCase
 {
-    public function testLoginError()
-    {
-        $this->visit('/')
-            ->click('Login | Registro')
-            ->seePageIs('/login')
-            ->type('WrongUserEmail', 'email')
-            ->type('WrongUserPwd', 'password')
-            ->press('Login')
-            ->see('Credenciais informadas'); //aviso de credenciais incorretas
-    }
-
     public function testActingAsUserNameShow()
     {
         $user = factory(App\User::class)->create();

@@ -3,13 +3,20 @@
 use App\State;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use Ramsey\Uuid\Uuid;
 use App\Repositories\UsersRepository;
-use App\User;
-use Anhskohbo\NoCaptcha\Facades\NoCaptcha;
 
 class HomeFunctionalTest extends DuskTestCase
 {
+    public function createFaker()
+    {
+        // use the factory to create a Faker\Generator instance
+        $faker = Faker\Factory::create();
+        // Add pt_BR provider
+        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+
+        return $faker;
+    }
+
     public function testLinksMenuBar()
     {
         $this->browse(function (Browser $browser) {
@@ -130,10 +137,7 @@ class HomeFunctionalTest extends DuskTestCase
 
     public function testRegisterAction()
     {
-        // use the factory to create a Faker\Generator instance
-        $faker = Faker\Factory::create();
-        // Add pt_BR provider
-        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+        $faker = $this->createFaker();
 
         $user = [
             'name' => $faker->name,
@@ -173,6 +177,7 @@ class HomeFunctionalTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user) {
             $browser
+                ->visit('/') //Receive cookie
                 ->visit('/login')
                 ->type('#email', $user->email)
                 ->type('#password', 'secret')
@@ -183,13 +188,19 @@ class HomeFunctionalTest extends DuskTestCase
 
     public function testLoginError()
     {
-        $this->visit('/')
-            ->click('Login | Registro')
-            ->seePageIs('/login')
-            ->type('WrongUserEmail', 'email')
-            ->type('WrongUserPwd', 'password')
-            ->press('Login')
-            ->see('Credenciais informadas'); //aviso de credenciais incorretas
+        $faker = $this->createFaker();
+
+        $this->browse(function (Browser $browser) use ($faker) {
+            $browser
+                ->visit('/')
+                ->visit('/login')
+                ->assertPathIs('/login')
+                ->type('#email', $faker->email)
+                ->type('#password', $faker->title)
+                ->press('@loginButton')
+                ->screenshot('teste6')
+                ->assertSee('Credenciais informadas'); //aviso de credenciais incorretas
+        });
     }
 
     public function testActingAsUserNameShow()
@@ -314,8 +325,7 @@ class HomeFunctionalTest extends DuskTestCase
 
     public function testAdminEditing()
     {
-        $faker = Faker\Factory::create();
-        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+        $faker = $this->createFaker();
 
         $user = factory(App\User::class, 'admin')->create();
 
@@ -341,9 +351,7 @@ class HomeFunctionalTest extends DuskTestCase
 
     public function testAdmCreatingUser()
     {
-        $faker = Faker\Factory::create();
-        // Add pt_BR provider
-        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+        $faker = $this->createFaker();
 
         $user = factory(App\User::class, 'admin')->create();
 
