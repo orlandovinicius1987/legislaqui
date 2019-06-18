@@ -3,6 +3,10 @@
 use App\State;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
+use Ramsey\Uuid\Uuid;
+use App\Repositories\UsersRepository;
+use App\User;
+use Anhskohbo\NoCaptcha\Facades\NoCaptcha;
 
 class HomeFunctionalTest extends DuskTestCase
 {
@@ -131,48 +135,34 @@ class HomeFunctionalTest extends DuskTestCase
         // Add pt_BR provider
         $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
 
-        // prevent validation error on captcha
-        NoCaptcha::shouldReceive('verifyResponse')
-            ->once()
-            ->andReturn(true);
+        $user = [
+            'name' => $faker->name,
+            'cpf' => $faker->cpf,
+            'pwd' => '12345678',
+            'state' => State::all()->random(),
+            'uuid' => $faker->uuid,
+            'email' => $faker->unique()->email,
+        ];
 
-        // provide hidden input for your 'required' validation
-        NoCaptcha::shouldReceive('display')
-            ->zeroOrMoreTimes()
-            ->andReturn(
-                '<input type="hidden" name="g-recaptcha-response" value="1" />'
-            );
-
-        $email = $faker->unique()->email;
-
-        $this->browse(function (Browser $browser) use ($faker, $email) {
-            //Generate a User Data to Register
-            $name = $faker->name;
-            $cpf = $faker->cpf;
-            $pwd = '123456';
-            $state = State::all()->random();
-            $uuid = $faker->uuid;
-
+        $this->browse(function (Browser $browser) use ($user) {
             $browser
-                ->visit('/')
-                ->screenshot('teste1')
-                ->click('@loginOrRegister');
-            //                ->screenshot('teste2')
-            //                ->assertPathIs('/login')
-            //                ->type($name, 'name')
-            //                ->type($email, 'email')
-            //                ->type($cpf, 'cpf')
-            //                ->type($pwd, 'password')
-            //                ->type($pwd, 'password_confirmation')
-            //                ->select($state->uf, 'uf')
-            //                ->type($uuid, 'uuid')
-            //                ->press('@registerButton')
-            //                ->assertSee('Registro feito com Sucesso.')
-            //                ->screenshot('teste2')
-            //                ->assertPathIs('/');
+                ->visit('/') //Receive cookie
+                ->visit('/login')
+                ->assertPathIs('/login')
+                ->type('name', $user['name'])
+                ->type('email', $user['email'])
+                ->type('cpf', $user['cpf'])
+                ->type('password', $user['pwd'])
+                ->type('password_confirmation', $user['pwd'])
+                ->select('uf', $user['state']->uf)
+                ->click('@registerButton')
+                ->assertPathIs('/')
+                ->assertAuthenticatedAs(
+                    app(UsersRepository::class)->findByEmail($user['email'])
+                );
         });
 
-        $this->assertDatabaseHas('users', ['email' => $email]);
+        $this->assertDatabaseHas('users', ['email' => $user['email']]);
     }
 
     public function testLoginAction()

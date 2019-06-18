@@ -5,49 +5,6 @@ use Tests\DuskTestCase;
 
 class UserFunctionalTest extends DuskTestCase
 {
-    public function testRegisterAction()
-    {
-        // use the factory to create a Faker\Generator instance
-        $faker = Faker\Factory::create();
-        // Add pt_BR provider
-        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
-
-        //Generate a User Data to Register
-        $name = $faker->name($gender = null | 'male' | 'female');
-        $email = $faker->freeEmail();
-        $cpf = $faker->cpf;
-        $pwd = '123456';
-        $state = State::all()->random();
-        $uuid = $faker->uuid;
-
-        // prevent validation error on captcha
-        NoCaptcha::shouldReceive('verifyResponse')
-            ->once()
-            ->andReturn(true);
-
-        // provide hidden input for your 'required' validation
-        NoCaptcha::shouldReceive('display')
-            ->zeroOrMoreTimes()
-            ->andReturn(
-                '<input type="hidden" name="g-recaptcha-response" value="1" />'
-            );
-
-        $this->visit('/')
-            ->click('Registro')
-            ->seePageIs('/login')
-            ->type($name, 'name')
-            ->type($email, 'email')
-            ->type($cpf, 'cpf')
-            ->type($pwd, 'password')
-            ->type($pwd, 'password_confirmation')
-            ->select($state->uf, 'uf')
-            ->type($uuid, 'uuid')
-            ->press('Registro')
-            ->see('Registro feito com Sucesso.')
-            ->seePageIs('/')
-            ->seeInDatabase('users', ['email' => $email]);
-    }
-
     public function testLoginError()
     {
         $this->visit('/')
