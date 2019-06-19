@@ -25,7 +25,9 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers {
+        login as traitLogin;
+    }
 
     use ThrottlesLogins;
 

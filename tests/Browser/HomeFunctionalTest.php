@@ -3,9 +3,20 @@
 use App\State;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
+use App\Repositories\UsersRepository;
 
 class HomeFunctionalTest extends DuskTestCase
 {
+    public function createFaker()
+    {
+        // use the factory to create a Faker\Generator instance
+        $faker = Faker\Factory::create();
+        // Add pt_BR provider
+        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+
+        return $faker;
+    }
+
     public function testLinksMenuBar()
     {
         $this->browse(function (Browser $browser) {
@@ -126,83 +137,89 @@ class HomeFunctionalTest extends DuskTestCase
 
     public function testRegisterAction()
     {
-        // use the factory to create a Faker\Generator instance
-        $faker = Faker\Factory::create();
-        // Add pt_BR provider
-        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+        $faker = $this->createFaker();
 
-        //Generate a User Data to Register
-        $name = $faker->name($gender = null | 'male' | 'female');
-        $email = $faker->freeEmail();
-        $cpf = $faker->cpf;
-        $pwd = '123456';
-        $state = State::all()->random();
-        $uuid = $faker->uuid;
+        $user = [
+            'name' => $faker->name,
+            'cpf' => $faker->cpf,
+            'pwd' => '12345678',
+            'state' => State::all()->random(),
+            'uuid' => $faker->uuid,
+            'email' => $faker->unique()->email,
+        ];
 
-        // prevent validation error on captcha
-        NoCaptcha::shouldReceive('verifyResponse')
-            ->once()
-            ->andReturn(true);
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser
+                ->visit('/') //Receive cookie
+                ->visit('/login')
+                ->assertPathIs('/login')
+                ->type('name', $user['name'])
+                ->type('email', $user['email'])
+                ->type('cpf', $user['cpf'])
+                ->type('password', $user['pwd'])
+                ->type('password_confirmation', $user['pwd'])
+                ->select('uf', $user['state']->uf)
+                ->click('@registerButton')
+                ->assertPathIs('/')
+                ->assertAuthenticatedAs(
+                    app(UsersRepository::class)->findByEmail($user['email'])
+                );
+        });
 
-        // provide hidden input for your 'required' validation
-        NoCaptcha::shouldReceive('display')
-            ->zeroOrMoreTimes()
-            ->andReturn(
-                '<input type="hidden" name="g-recaptcha-response" value="1" />'
-            );
-
-        $this->visit('/')
-            ->click('Registro')
-            ->seePageIs('/login')
-            ->type($name, 'name')
-            ->type($email, 'email')
-            ->type($cpf, 'cpf')
-            ->type($pwd, 'password')
-            ->type($pwd, 'password_confirmation')
-            ->select($state->uf, 'uf')
-            ->type($uuid, 'uuid')
-            ->press('Registro')
-            ->see('Registro feito com Sucesso.')
-            ->seePageIs('/')
-            ->seeInDatabase('users', ['email' => $email]);
+        $this->assertDatabaseHas('users', ['email' => $user['email']]);
     }
 
     public function testLoginAction()
     {
         $user = App\User::all()->random();
-        $user_name = $user->name;
-        $user_email = $user->email;
-        $user_pwd = $user->password;
+        $user->password = Hash::make('secret');
+        $user->save();
 
-        return $this->visit('/')
-            ->click('Login')
-            ->type($user_email, 'email')
-            ->type($user_pwd, 'password')
-            ->press('Login');
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser
+                ->visit('/') //Receive cookie
+                ->visit('/login')
+                ->type('#email', $user->email)
+                ->type('#password', 'secret')
+                ->press('@loginButton')
+                ->assertSee(strtoupper($user->name));
+        });
     }
 
     public function testLoginError()
     {
-        $this->visit('/')
-            ->click('Login | Registro')
-            ->seePageIs('/login')
-            ->type('WrongUserEmail', 'email')
-            ->type('WrongUserPwd', 'password')
-            ->press('Login')
-            ->see('Credenciais informadas'); //aviso de credenciais incorretas
+        $faker = $this->createFaker();
+
+        $this->browse(function (Browser $browser) use ($faker) {
+            $browser
+                ->visit('/')
+                ->visit('/login')
+                ->assertPathIs('/login')
+                ->type('#email', $faker->email)
+                ->type('#password', $faker->title)
+                ->press('@loginButton')
+                ->screenshot('teste6')
+                ->assertSee('Credenciais informadas'); //aviso de credenciais incorretas
+        });
     }
 
     public function testActingAsUserNameShow()
     {
         $user = factory(App\User::class)->create();
-        $this->actingAs($user)
-            ->visit('/')
-            ->see($user->name);
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/')
+                ->assertSee(strtoupper($user->name));
+        });
     }
 
     public function testViewAdminWithoutLogin()
     {
-        $this->visit('/admin')->seePageIs('/login');
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/admin')->assertPathIs('/login');
+        });
     }
 
     public function testAdminMainScreen()
@@ -314,8 +331,7 @@ class HomeFunctionalTest extends DuskTestCase
 
     public function testAdminEditing()
     {
-        $faker = Faker\Factory::create();
-        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+        $faker = $this->createFaker();
 
         $user = factory(App\User::class, 'admin')->create();
 
@@ -341,9 +357,7 @@ class HomeFunctionalTest extends DuskTestCase
 
     public function testAdmCreatingUser()
     {
-        $faker = Faker\Factory::create();
-        // Add pt_BR provider
-        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+        $faker = $this->createFaker();
 
         $user = factory(App\User::class, 'admin')->create();
 

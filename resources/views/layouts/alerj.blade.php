@@ -202,7 +202,7 @@
 
                         @if (Auth::guest())
                             <li>
-                                <a href="{{ url('/login') }}" class="titulo" title="Login | Registro">Login | Registro</a></li>
+                                <a dusk="loginOrRegister" href="{{ url('/login') }}" class="titulo" title="Login | Registro">Login | Registro</a></li>
                             {{--<li><a href="{{ url('/register') }}">Registro</a></li>--}}
                         @else
                             <li class="pai">
@@ -297,7 +297,7 @@
 
             @if (Auth::guest())
                 <li class="pai">
-                    <a href="{{ url('/login') }}" class="titulo" title="Login | Registro">Login | Registro</a></li>
+                    <a dusk="loginOrRegister" href="{{ url('/login') }}" class="titulo" title="Login | Registro">Login | Registro</a></li>
                 {{--<li><a href="{{ url('/register') }}">Registro</a></li>--}}
             @else
                 <li class="pai">
