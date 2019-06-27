@@ -29,8 +29,6 @@ class LoginController extends Controller
         login as traitLogin;
     }
 
-    use ThrottlesLogins;
-
     /**
      * Where to redirect users after login / registration.
      *
