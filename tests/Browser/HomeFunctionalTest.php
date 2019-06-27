@@ -182,7 +182,7 @@ class HomeFunctionalTest extends DuskTestCase
                 ->type('#email', $user->email)
                 ->type('#password', 'secret')
                 ->press('@loginButton')
-                ->assertSee(strtoupper($user->name));
+                ->assertSee(mb_strtoupper($user->name));
         });
     }
 
@@ -211,7 +211,7 @@ class HomeFunctionalTest extends DuskTestCase
             $browser
                 ->loginAs($user->id)
                 ->visit('/')
-                ->assertSee(strtoupper($user->name));
+                ->assertSee(mb_strtoupper($user->name));
         });
     }
 
