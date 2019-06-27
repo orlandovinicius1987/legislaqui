@@ -342,24 +342,37 @@ class HomeFunctionalTest extends DuskTestCase
 
         $user = factory(App\User::class, 'admin')->create();
 
-        $name = $user->name;
-        $input = [0, 1, 99, 2];
-        $roleId = $input[array_rand($input, 1)];
+        $newUser = factory(App\User::class)->raw();
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Todos')
-            ->type($name, 'dataTableUser')
-            ->click($name)
-            ->visit('/admin/users/' . $user->id)
-            ->click('editarUsuario')
-            ->seePageIs('/admin/users/' . $user->id . '/edit')
-            ->type($faker->name, 'name')
-            ->type($faker->email, 'email')
-            ->select($roleId, 'role_id')
-            ->press('Gravar')
-            ->see('Usuário Editado com Sucesso');
+        $this->browse(function (Browser $browser) use ($user, $newUser) {
+            $name = $user->name;
+
+            $browser
+                ->loginAs($user->id)
+                ->visit('/admin')
+                ->assertSee('Ideias Legislativas')
+                ->clickLink('Todos')
+                ->waitUntil(
+                    '!!$(\'#dataTableUser\').DataTable().search(\'' .
+                        $name .
+                        '\').draw()'
+                )
+                ->clickLink($name)
+                ->visit('/admin/users/' . $user->id)
+                ->click('#editarUsuario')
+                ->assertPathIs('/admin/users/' . $user->id . '/edit')
+                ->type('name', $newUser['name'])
+                ->type('email', $newUser['email'])
+                ->select('role_id', $newUser['role_id'])
+                ->press('Gravar')
+                ->assertSee('Usuário Editado com Sucesso');
+        });
+
+        $this->assertDatabaseHas('users', [
+            'email' => $newUser['email'],
+            'name' => $newUser['name'],
+            'role_id' => $newUser['role_id'],
+        ]);
     }
 
     public function testAdmCreatingUser()
