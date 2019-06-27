@@ -17,7 +17,7 @@ use App\User;
 use Illuminate\Support\Facades\Request;
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
-//    $faker = app('Faker');
+    //    $faker = app('Faker');
     return [
         'name' => $faker->name,
         'email' => $faker->email,
@@ -39,9 +39,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->defineAs(App\User::class, 'admin', function ($faker) use ($factory) {
     //
     $user = $factory->raw(App\User::class);
-
-    //Admin 0
-    return array_merge($user, []);
+    $user['role_id'] = 0;
+    return $user;
 });
 
 $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
@@ -72,14 +71,14 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
         'responder_id' => !$response
             ? null
             : User::all()
-//                ->where('role_id', 1)
+                //                ->where('role_id', 1)
                 ->shuffle()
                 ->first()->id,
         'disapproved_at' => !$response ? null : \Carbon\Carbon::now(),
         'disapproved_by' => !$response
             ? null
             : User::all()
-//                ->where('role_id', 1)
+                //                ->where('role_id', 1)
                 ->shuffle()
                 ->first()->id,
         'approved_at' => $response
@@ -92,7 +91,7 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
             : ($random
                 ? null
                 : User::all()
-//                    ->where('role_id', 1)
+                    //                    ->where('role_id', 1)
                     ->shuffle()
                     ->first()->id),
         'created_at' => \Carbon\Carbon::now(),

@@ -225,27 +225,34 @@ class HomeFunctionalTest extends DuskTestCase
     public function testAdminMainScreen()
     {
         $user = factory(App\User::class, 'admin')->create();
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->see('Ideias Legislativas');
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/')
+                ->click('Ir ao Painel de Admin')
+                ->assertSee('Ideias Legislativas');
+        });
     }
 
     public function testLinksAdminMainScreen()
     {
         $user = factory(App\User::class, 'admin')->create();
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->seePageIs('/admin')
-            ->click('verpropostas')
-            ->seePageIs('/admin/proposals')
-            //   ->click('maisinfoapoios')      LINK NÃO FUNCIONAL
-            //    ->seePageIs('/admin/proposals#');
-            ->click('maisinfousuarioregistrados')
-            ->seePageIs('/admin/users')
-            ->click('maisinfoaguardandomoderacao')
-            ->seePageIs('/admin/proposals/notresponded');
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/admin')
+                ->assertPathIs('/admin')
+                ->click('@verpropostas')
+                ->assertPathIs('/admin/proposals')
+                ->click('@maisinfoapoios')
+                ->assertPathIs('/admin/proposals')
+                ->click('@maisinfousuarioregistrados')
+                ->assertPathIs('/admin/users')
+                ->click('@maisinfoaguardandomoderacao')
+                ->assertPathIs('/admin/proposals/notresponded');
+        });
     }
 
     public function testAdminProposalsFilter()
