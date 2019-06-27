@@ -5,32 +5,6 @@ use Tests\DuskTestCase;
 
 class UserFunctionalTest extends DuskTestCase
 {
-    public function testAdminMainScreen()
-    {
-        $user = factory(App\User::class, 'admin')->create();
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->see('Ideias Legislativas');
-    }
-
-    public function testLinksAdminMainScreen()
-    {
-        $user = factory(App\User::class, 'admin')->create();
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->seePageIs('/admin')
-            ->click('verpropostas')
-            ->seePageIs('/admin/proposals')
-            //   ->click('maisinfoapoios')      LINK NÃO FUNCIONAL
-            //    ->seePageIs('/admin/proposals#');
-            ->click('maisinfousuarioregistrados')
-            ->seePageIs('/admin/users')
-            ->click('maisinfoaguardandomoderacao')
-            ->seePageIs('/admin/proposals/notresponded');
-    }
-
     public function testAdminProposalsFilter()
     {
         $user = factory(App\User::class, 'admin')->create();
