@@ -338,8 +338,6 @@ class HomeFunctionalTest extends DuskTestCase
 
     public function testAdminEditing()
     {
-        $faker = $this->createFaker();
-
         $user = factory(App\User::class, 'admin')->create();
 
         $newUser = factory(App\User::class)->raw();
@@ -377,24 +375,30 @@ class HomeFunctionalTest extends DuskTestCase
 
     public function testAdmCreatingUser()
     {
-        $faker = $this->createFaker();
-
         $user = factory(App\User::class, 'admin')->create();
+        $newUser = factory(App\User::class)->raw();
 
-        $input = [0, 1, 99, 2];
-        $roleId = $input[array_rand($input, 1)];
+        $this->browse(function (Browser $browser) use ($user, $newUser) {
+            $browser
+                ->loginAs($user)
+                ->visit('/admin')
+                ->assertSee('Ideias Legislativas')
+                ->clickLink('Todos')
+                ->click('#criarNovoUsuario')
+                ->assertPathIs('/admin/users/create')
+                ->type('name', $newUser['name'])
+                ->type('email', $newUser['email'])
+                ->select('uf', 'RJ')
+                ->select('role_id', $newUser['role_id'])
+                ->type('cpf', $newUser['cpf'])
+                ->press('Incluir Novo Usuário')
+                ->assertSee('Usuário Incluído com Sucesso');
+        });
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Todos')
-            ->click('criarNovoUsuario')
-            ->seePageIs('/admin/users/create')
-            ->type($faker->name, 'name')
-            ->type($faker->email, 'email')
-            ->select('RJ', 'uf')
-            ->select($roleId, 'role_id')
-            ->type($faker->cpf, 'cpf')
-            ->press('Incluir Novo Usuário');
+        $this->assertDatabaseHas('users', [
+            'email' => $newUser['email'],
+            'name' => $newUser['name'],
+            'role_id' => $newUser['role_id'],
+        ]);
     }
 }
