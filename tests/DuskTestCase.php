@@ -6,6 +6,7 @@ use Laravel\Dusk\TestCase as BaseTestCase;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Faker;
 
 abstract class DuskTestCase extends BaseTestCase
 {
@@ -53,5 +54,15 @@ abstract class DuskTestCase extends BaseTestCase
         foreach (static::$browsers as $browser) {
             $browser->driver->manage()->deleteAllCookies();
         }
+    }
+
+    public function createFaker()
+    {
+        // use the factory to create a Faker\Generator instance
+        $faker = Faker\Factory::create();
+        // Add pt_BR provider
+        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+
+        return $faker;
     }
 }

@@ -3,25 +3,30 @@
 use App\Proposal;
 use App\User;
 use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
 
-class ProposalFuncTest extends DuskTestCase
+class ProposalFunctionalTest extends DuskTestCase
 {
     public function testCreateProposalMainButton()
     {
-        $proposal = factory(App\Proposal::class)->create();
+        $proposal = factory(App\Proposal::class)->raw();
         $user = User::all()->random();
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Sua ideia legislativa')
-            ->seePageIs('/proposals/create')
-            ->type($proposal->name, 'name')
-            ->type($proposal->idea_central, 'idea_central')
-            ->type($proposal->problem, 'problem')
-            ->type($proposal->idea_exposition, 'idea_exposition')
-            ->press('Incluir')
-            ->see('Sucesso')
-            ->seeInDatabase('proposals', ['name' => $proposal->name]);
+        $this->browse(function (Browser $browser) use ($user, $proposal) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/')
+                ->click('@newProposalButton')
+                ->assertPathIs('/proposals/create')
+                ->type('name', $proposal['name'])
+                ->type('idea_central', $proposal['idea_central'])
+                ->type('problem', $proposal['problem'])
+                ->type('idea_exposition', $proposal['idea_exposition'])
+                ->press('Enviar proposta de ideia')
+                ->assertSee(mb_strtoupper('Incluir nova ideia'));
+        });
+
+        $this->assertDatabaseHas('proposals', ['name' => $proposal['name']]);
     }
 
     public function testCreateProposalBySecondButton()

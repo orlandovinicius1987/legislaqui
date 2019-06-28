@@ -1,22 +1,12 @@
 <?php
 
 use App\State;
-use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use App\Repositories\UsersRepository;
+use Tests\DuskTestCase;
 
 class HomeFunctionalTest extends DuskTestCase
 {
-    public function createFaker()
-    {
-        // use the factory to create a Faker\Generator instance
-        $faker = Faker\Factory::create();
-        // Add pt_BR provider
-        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
-
-        return $faker;
-    }
-
     public function testLinksMenuBar()
     {
         $this->browse(function (Browser $browser) {
