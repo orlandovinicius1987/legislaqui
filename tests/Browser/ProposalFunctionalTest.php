@@ -31,19 +31,31 @@ class ProposalFunctionalTest extends DuskTestCase
 
     public function testCreateProposalBySecondButton()
     {
-        $proposal = factory(App\Proposal::class)->create();
+        $proposal = factory(App\Proposal::class)->raw();
+        $proposal2 = factory(App\Proposal::class)->create();
         $user = User::all()->random();
 
-        $this->actingAs($user)
-            ->visit('/proposals/' . $proposal->id)
-            ->click('novaIdeia')
-            ->seePageIs('/proposals/create')
-            ->type($proposal->name, 'name')
-            ->type($proposal->idea_central, 'idea_central')
-            ->type($proposal->problem, 'problem')
-            ->type($proposal->idea_exposition, 'idea_exposition')
-            ->press('Incluir')
-            ->see('Ideia Legislativa Incluída');
+        $this->browse(function (Browser $browser) use (
+            $user,
+            $proposal,
+            $proposal2
+        ) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/proposals/' . $proposal2->id)
+                ->screenshot('1')
+                ->click('@novaIdeia')
+                ->screenshot('2')
+                ->assertPathIs('/proposals/create')
+                ->type('name', $proposal['name'])
+                ->type('idea_central', $proposal['idea_central'])
+                ->type('problem', $proposal['problem'])
+                ->type('idea_exposition', $proposal['idea_exposition'])
+                ->press('Enviar proposta de ideia')
+                ->assertSee(mb_strtoupper('Incluir nova ideia'));
+        });
+
+        $this->assertDatabaseHas('proposals', ['name' => $proposal['name']]);
     }
 
     public function testUserLikeSupportFollowProposal()

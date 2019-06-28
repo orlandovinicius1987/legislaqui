@@ -100,7 +100,7 @@
                         <a href="{{ route('proposal.create') }}" class="btn btn-primary botao" id="novaIdeia" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
                         @else
-                            <a href="{{ route('proposal.create') }}" class="btn btn-primary botao" id="novaIdeia">
+                            <a href="{{ route('proposal.create') }}" class="btn btn-primary botao" id="novaIdeia" dusk="novaIdeia">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
                         @endif
                         {{--@can('destroy', $proposal)
