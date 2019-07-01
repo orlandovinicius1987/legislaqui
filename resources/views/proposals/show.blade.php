@@ -89,11 +89,6 @@
                         {{--@endif--}}
 
                     {{--</div>--}}
-
-                    @can('edit', $proposal->id)
-                        editarCan
-                    @endcan
-
                     <div class="row">
                         <div class="col-xs-12">
                         @can('edit', $proposal)

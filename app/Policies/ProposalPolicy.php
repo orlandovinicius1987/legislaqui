@@ -64,7 +64,7 @@ class ProposalPolicy
      */
     public function isProposalOwner(User $user, Proposal $proposal): bool
     {
-        return $user->id == $proposal->user_id;
+        return $user->id === $proposal->user_id;
     }
 
     public function before($user, $ability)
