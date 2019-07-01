@@ -43,9 +43,7 @@ class ProposalFunctionalTest extends DuskTestCase
             $browser
                 ->loginAs($user->id)
                 ->visit('/proposals/' . $proposal2->id)
-                ->screenshot('1')
                 ->click('@novaIdeia')
-                ->screenshot('2')
                 ->assertPathIs('/proposals/create')
                 ->type('name', $proposal['name'])
                 ->type('idea_central', $proposal['idea_central'])
@@ -64,23 +62,112 @@ class ProposalFunctionalTest extends DuskTestCase
         $proposal = Proposal::all()->random();
         $user = User::all()->random();
 
-        $this->actingAs($user)
-            ->visit('/proposals/' . $proposal->id)
-            ->see($proposal->name)
-            ->click('Curtir')
-            ->see('Sua curtida foi computada com sucesso')
-            ->click('Curtir')
-            ->see('Você já curtiu')
-            ->click('Descurtir')
-            ->see('Você deixou de curtir')
-            ->click('Curtir')
-            ->see('Você voltou a curtir')
-            ->click('Apoiar!')
-            ->see('Seu apoio foi incluído')
-            ->click('Apoiar!')
-            ->see('Você já apoiou')
-            ->click('Acompanhar essa Ideia!')
-            ->see('Esta Ideia Legislativa será acompanhada');
+        $this->browse(function (Browser $browser) use ($user, $proposal) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/proposals/' . $proposal->id)
+                ->screenshot('1')
+                ->assertSee(mb_strtoupper($proposal->name))
+                ->click('@like');
+        });
+
+        $this->assertDatabaseHas('likes', [
+            'like' => 1,
+            'proposal_id' => $proposal->id,
+            'user_id' => $user->id,
+        ]);
+
+        $this->browse(function (Browser $browser) use ($user, $proposal) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/proposals/' . $proposal->id)
+                ->screenshot('2')
+                ->click('@like');
+        });
+
+        $this->assertDatabaseHas('likes', [
+            'like' => 1,
+            'proposal_id' => $proposal->id,
+            'user_id' => $user->id,
+        ]);
+
+        $this->browse(function (Browser $browser) use ($user, $proposal) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/proposals/' . $proposal->id)
+                ->screenshot('3')
+                ->click('@dislike');
+        });
+
+        $this->assertDatabaseHas('likes', [
+            'like' => 0,
+            'proposal_id' => $proposal->id,
+            'user_id' => $user->id,
+        ]);
+
+        $this->browse(function (Browser $browser) use ($user, $proposal) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/proposals/' . $proposal->id)
+                ->screenshot('4')
+                ->click('@like');
+        });
+
+        $this->browse(function (Browser $browser) use ($user, $proposal) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/proposals/' . $proposal->id)
+                ->screenshot('3')
+                ->click('@dislike');
+        });
+
+        $this->assertDatabaseHas('likes', [
+            'like' => 0,
+            'proposal_id' => $proposal->id,
+            'user_id' => $user->id,
+        ]);
+
+        $this->browse(function (Browser $browser) use ($user, $proposal) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/proposals/' . $proposal->id)
+                ->screenshot('3')
+                ->click('@dislike');
+        });
+
+        $this->assertDatabaseHas('likes', [
+            'like' => 0,
+            'proposal_id' => $proposal->id,
+            'user_id' => $user->id,
+        ]);
+
+        //Apoio
+
+        $this->browse(function (Browser $browser) use ($user, $proposal) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/proposals/' . $proposal->id)
+                ->screenshot('5')
+                ->click('@support');
+        });
+
+        $this->assertDatabaseHas('likes', [
+            'proposal_id' => $proposal->id,
+            'user_id' => $user->id,
+        ]);
+
+        $this->browse(function (Browser $browser) use ($user, $proposal) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/proposals/' . $proposal->id)
+                ->screenshot('6')
+                ->click('@support');
+        });
+
+        $this->assertDatabaseHas('likes', [
+            'proposal_id' => $proposal->id,
+            'user_id' => $user->id,
+        ]);
     }
 
     public function testUserEditIdea()
