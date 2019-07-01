@@ -90,10 +90,14 @@
 
                     {{--</div>--}}
 
+                    @can('edit', $proposal->id)
+                        editarCan
+                    @endcan
+
                     <div class="row">
                         <div class="col-xs-12">
                         @can('edit', $proposal)
-                        <a href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary botao" id="editar">
+                        <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary botao" id="editar">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Ideia</a>
                         @endcan
                         @if (!Auth::check())
@@ -108,7 +112,7 @@
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Ideia</a>
                         @endcan--}}
 
-                        <a href="{{ route('home')}}" class="btn btn-primary botao pull-right" id="voltar">
+                        <a dusk="goBack" href="{{ route('home')}}" class="btn btn-primary botao pull-right" id="voltar">
                         <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Voltar</a>
                         </div>
                     </div>

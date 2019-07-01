@@ -4,12 +4,9 @@ namespace App\Policies;
 
 use App\Proposal;
 use App\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProposalPolicy
 {
-    use HandlesAuthorization;
-
     /**
      * Create a new policy instance.
      *
@@ -65,13 +62,13 @@ class ProposalPolicy
      *
      * @return bool
      */
-    public function isProposalOwner(User $user, Proposal $proposal)
+    public function isProposalOwner(User $user, Proposal $proposal): bool
     {
-        return $user->id === $proposal->user_id;
+        return $user->id == $proposal->user_id;
     }
 
     public function before($user, $ability)
     {
-        return $user->is_admin;
+        return $user->is_admin ? true : null;
     }
 }

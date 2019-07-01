@@ -173,19 +173,25 @@ class ProposalFunctionalTest extends DuskTestCase
     public function testUserEditIdea()
     {
         $proposal = factory(App\Proposal::class)->create();
-        $user = User::all()->random();
+        $user = User::find($proposal->user_id);
 
-        $this->actingAs($user)
-            ->visit('/proposals/' . $proposal->id)
-            ->click('editar') // criei 'id' para o teste; o phpunit, às vezes, identificava o texto e, às vezes, não.
-            ->seePageIs('/proposals/' . $proposal->id . '/edit')
-            ->type($proposal->name, 'name')
-            ->type($proposal->problem, 'problem')
-            ->press('Gravar')
-            ->see('Ideia Legislativa Editada')
-            ->seePageIs('/proposals/' . $proposal->id)
-            ->click('voltar')
-            ->seePageIs('/')
-            ->seeInDatabase('proposals', ['name' => $proposal->name]);
+        $this->browse(function (Browser $browser) use ($user, $proposal) {
+            $browser
+                ->loginAs($user->id)
+                ->visit('/proposals/' . $proposal->id)
+                ->click('@editIdea')
+                ->assertPathIs('/proposals/' . $proposal->id . '/edit')
+                ->type('name', $proposal->name)
+                ->type('problem', $proposal->problem)
+                ->press('Gravar')
+                ->assertPathIs('/proposals/' . $proposal->id)
+                ->click('@goBack')
+                ->assertPathIs('/');
+        });
+
+        $this->assertDatabaseHas('proposals', [
+            'name' => $proposal->name,
+            'problem' => $proposal->problem,
+        ]);
     }
 }
