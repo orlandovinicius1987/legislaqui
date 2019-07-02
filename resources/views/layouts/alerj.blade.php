@@ -202,7 +202,7 @@
 
                         @if (Auth::guest())
                             <li>
-                                <a dusk="loginOrRegister" href="{{ url('/login') }}" class="titulo" title="Login | Registro">Login | Registro</a></li>
+                                <a href="{{ url('/login') }}" class="titulo" title="Login | Registro">Login | Registro</a></li>
                             {{--<li><a href="{{ url('/register') }}">Registro</a></li>--}}
                         @else
                             <li class="pai">
@@ -264,7 +264,7 @@
                         {{--<li class="dropdown-header">ALERJ</li>--}}
                     @elseif (Auth::user()->is_admin)
                         {{--@elseif (Auth::user()->role_id === 0 or Auth::user()->role_id === 1)--}}
-                        <a href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
+                        <a dusk="ProposalsGoToAdminPanel" href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
                         <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>
                         <a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
                         <a href="{{ route('home') }}">Listar Todas Propostas</a>
@@ -301,14 +301,14 @@
                 {{--<li><a href="{{ url('/register') }}">Registro</a></li>--}}
             @else
                 <li class="pai">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <a dusk="loginName" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
                     <div class='submenu'>
                         <ul>
                             @if (Auth::user()->is_admin)
-                                <a href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
+                                <a dusk="loginGoToAdminPanel" href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
                             @endif
                             <li class='filho_pai'><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Sair</a></li>
                         </ul>

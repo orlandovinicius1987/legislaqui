@@ -212,6 +212,15 @@ class HomeFunctionalTest extends DuskTestCase
         });
     }
 
+    private function switchToLatestTab($browser)
+    {
+        $window = collect($browser->driver->getWindowHandles())->last();
+
+        $browser->driver->switchTo()->window($window);
+
+        return $browser;
+    }
+
     public function testAdminMainScreen()
     {
         $user = factory(App\User::class, 'admin')->create();
@@ -220,8 +229,12 @@ class HomeFunctionalTest extends DuskTestCase
             $browser
                 ->loginAs($user->id)
                 ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->assertSee('Ideias Legislativas');
+                ->mouseover('@loginName')
+                ->click('@loginGoToAdminPanel');
+
+            $this->switchToLatestTab($browser);
+
+            $browser->assertPathIs('/admin');
         });
     }
 
