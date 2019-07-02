@@ -33,24 +33,24 @@
                     {{--<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>--}}
                     {{--<li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>--}}
                     <li><a>Ideias Legislativas</a></li>
-                    <li><a href="/admin/proposals"><i class="fa fa-hashtag text-info"></i> Todas</a></li>
-                    <li><a href="/admin/proposals/notresponded"><i class="fa fa-cogs text-danger "></i> Aguardando Publicação</a></li>
-                    <li><a href="/admin/proposals/approved"><i class="fa fa-check-circle-o text-success"></i> Publicadas</a></li>
-                    <li><a href="/admin/proposals/disapproved"><i class="fa fa-times-circle text-warning"></i> Desaprovadas</a></li>
+                    <li><a dusk="proposalsLink" href="/admin/proposals"><i class="fa fa-hashtag text-info"></i> Todas</a></li>
+                    <li><a dusk="notrespondedLink" href="/admin/proposals/notresponded"><i class="fa fa-cogs text-danger "></i> Aguardando Publicação</a></li>
+                    <li><a dusk="approvedLink" href="/admin/proposals/approved"><i class="fa fa-check-circle-o text-success"></i> Publicadas</a></li>
+                    <li><a dusk="disapprovedLink" href="/admin/proposals/disapproved"><i class="fa fa-times-circle text-warning"></i> Desaprovadas</a></li>
                     <hr>
-                    <li><a href="/admin/proposals/approval-goal"><i class="fa fa-trophy text-success"></i>Atingiram {{ config('global.approvalGoal') }} apoios</a></li>
-                    <li><a href="/admin/proposals/expired"><i class="fa fa-clock-o text-warning"></i> Ideias Expiradas</a></li>
+                    <li><a dusk="approvalGoalLink" href="/admin/proposals/approval-goal"><i class="fa fa-trophy text-success"></i>Atingiram {{ config('global.approvalGoal') }} apoios</a></li>
+                    <li><a dusk="expiredLink" href="/admin/proposals/expired"><i class="fa fa-clock-o text-warning"></i> Ideias Expiradas</a></li>
                     <hr>
                     <li><a>Na Comissão</a></li>
-                    <li><a href="/admin/proposals/in-committee"><i class="fa fa-gavel text-danger"></i> Aguardando Análise</a></li>
-                    <li><a href="/admin/proposals/approved-by-committee"><i class="fa fa-check-circle-o text-success"></i> Aprovadas</a></li>
-                    <li><a href="/admin/proposals/disapproved-by-committee"><i class="fa fa-exclamation-triangle text-warning"></i> Encerradas</a></li>
+                    <li><a dusk="inCommitteeLink" href="/admin/proposals/in-committee"><i class="fa fa-gavel text-danger"></i> Aguardando Análise</a></li>
+                    <li><a dusk="approvedByCommitteeLink" href="/admin/proposals/approved-by-committee"><i class="fa fa-check-circle-o text-success"></i> Aprovadas</a></li>
+                    <li><a dusk="disapprovedByCommitteeLink" href="/admin/proposals/disapproved-by-committee"><i class="fa fa-exclamation-triangle text-warning"></i> Encerradas</a></li>
                     <hr>
                     @can('edit', Auth::user())
                     <li><a>Usuários</a></li>
-                    <li><a href="/admin/users"><i class="fa fa fa-users text-warning"></i> Todos</a></li>
-                    <li><a href="/admin/users/?q=cidadao"><i class="fa fa-user-circle text-warning"></i> Cidadãos</a></li>
-                    <li><a href="/admin/users/?q=servidores"><i class="fa fa-id-card text-warning"></i> Servidores</a></li>
+                    <li><a dusk="usersLink" href="/admin/users"><i class="fa fa fa-users text-warning"></i> Todos</a></li>
+                    <li><a dusk="usersCidadaoLink" href="/admin/users/?q=cidadao"><i class="fa fa-user-circle text-warning"></i> Cidadãos</a></li>
+                    <li><a dusk="usersServidoresLink" href="/admin/users/?q=servidores"><i class="fa fa-id-card text-warning"></i> Servidores</a></li>
 
                     @endcan
                 </ul>

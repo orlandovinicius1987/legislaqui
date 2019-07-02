@@ -266,69 +266,53 @@ class HomeFunctionalTest extends DuskTestCase
             $browser
                 ->loginAs($user->id)
 
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->assertPathIs('/admin')
-
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->click('Todas')
+                ->visit('/admin')
+                ->click('@proposalsLink')
                 ->assertPathIs('/admin/proposals')
 
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->click('Aguardando Publicação')
+                ->visit('/admin')
+                ->click('@notrespondedLink')
                 ->assertPathIs('/admin/proposals/notresponded')
 
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->click('Publicadas')
+                ->visit('/admin')
+                ->click('@approvedLink')
                 ->assertPathIs('/admin/proposals/approved')
 
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->click('Desaprovadas')
+                ->visit('/admin')
+                ->click('@disapprovedLink')
                 ->assertPathIs('/admin/proposals/disapproved')
 
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->click('Atingiram 20000 apoios')
+                ->visit('/admin')
+                ->click('@approvalGoalLink')
                 ->assertPathIs('/admin/proposals/approval-goal')
 
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->click('Ideias Expiradas')
+                ->visit('/admin')
+                ->click('@expiredLink')
                 ->assertPathIs('/admin/proposals/expired')
 
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->click('Aguardando Análise')
+                ->visit('/admin')
+                ->click('@inCommitteeLink')
                 ->assertPathIs('/admin/proposals/in-committee')
 
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->click('Aprovadas')
+                ->visit('/admin')
+                ->click('@approvedByCommitteeLink')
                 ->assertPathIs('/admin/proposals/approved-by-committee')
 
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->click('Encerradas')
+                ->visit('/admin')
+                ->click('@disapprovedByCommitteeLink')
                 ->assertPathIs('/admin/proposals/disapproved-by-committee')
 
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->click('Todos')
+                ->visit('/admin')
+                ->click('@usersLink')
                 ->assertPathIs('/admin/users')
 
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->click('Cidadãos')
-                ->assertPathIs('/admin/users?q=cidadao')
+                ->visit('/admin')
+                ->click('@usersCidadaoLink')
+                ->assertQueryStringHas('q', 'cidadao')
 
-                ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->click('Servidores')
-                ->assertPathIs('/admin/users?q=servidores');
+                ->visit('/admin')
+                ->click('@usersServidoresLink')
+                ->assertQueryStringHas('q', 'servidores');
         });
     }
 
