@@ -192,9 +192,9 @@ class ProposalsController extends Controller
             ->where('proposal_id', $id)
             ->value('like');
 
-        Session::put('flash_msg', 'Task was successful!');
+        //        Session::put('flash_msg', 'Task was successful!');
 
-//        dd(Session::all());
+        //        dd(Session::all());
 
         switch ($existing_like) {
             // Already Unliked

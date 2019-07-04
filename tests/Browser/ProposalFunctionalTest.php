@@ -66,7 +66,6 @@ class ProposalFunctionalTest extends DuskTestCase
             $browser
                 ->loginAs($user->id)
                 ->visit('/proposals/' . $proposal->id)
-                ->screenshot('1')
                 ->assertSee(mb_strtoupper($proposal->name))
                 ->click('@like');
         });
@@ -81,7 +80,6 @@ class ProposalFunctionalTest extends DuskTestCase
             $browser
                 ->loginAs($user->id)
                 ->visit('/proposals/' . $proposal->id)
-                ->screenshot('2')
                 ->click('@like');
         });
 
@@ -95,7 +93,6 @@ class ProposalFunctionalTest extends DuskTestCase
             $browser
                 ->loginAs($user->id)
                 ->visit('/proposals/' . $proposal->id)
-                ->screenshot('3')
                 ->click('@dislike');
         });
 
@@ -109,29 +106,6 @@ class ProposalFunctionalTest extends DuskTestCase
             $browser
                 ->loginAs($user->id)
                 ->visit('/proposals/' . $proposal->id)
-                ->screenshot('4')
-                ->click('@like');
-        });
-
-        $this->browse(function (Browser $browser) use ($user, $proposal) {
-            $browser
-                ->loginAs($user->id)
-                ->visit('/proposals/' . $proposal->id)
-                ->screenshot('3')
-                ->click('@dislike');
-        });
-
-        $this->assertDatabaseHas('likes', [
-            'like' => 0,
-            'proposal_id' => $proposal->id,
-            'user_id' => $user->id,
-        ]);
-
-        $this->browse(function (Browser $browser) use ($user, $proposal) {
-            $browser
-                ->loginAs($user->id)
-                ->visit('/proposals/' . $proposal->id)
-                ->screenshot('3')
                 ->click('@dislike');
         });
 
@@ -147,7 +121,6 @@ class ProposalFunctionalTest extends DuskTestCase
             $browser
                 ->loginAs($user->id)
                 ->visit('/proposals/' . $proposal->id)
-                ->screenshot('5')
                 ->click('@support');
         });
 
@@ -160,7 +133,6 @@ class ProposalFunctionalTest extends DuskTestCase
             $browser
                 ->loginAs($user->id)
                 ->visit('/proposals/' . $proposal->id)
-                ->screenshot('6')
                 ->click('@support');
         });
 
@@ -184,9 +156,7 @@ class ProposalFunctionalTest extends DuskTestCase
                 ->type('name', $proposal->name)
                 ->type('problem', $proposal->problem)
                 ->press('Gravar')
-                ->assertPathIs('/proposals/' . $proposal->id)
-                ->click('@goBack')
-                ->assertPathIs('/');
+                ->assertPathIs('/proposals/' . $proposal->id);
         });
 
         $this->assertDatabaseHas('proposals', [
