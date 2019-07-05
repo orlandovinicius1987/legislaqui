@@ -7,6 +7,7 @@
  */
 use App\User;
 use Illuminate\Database\Seeder;
+use App\Proposal;
 
 class UserSeeder extends Seeder
 {
@@ -17,31 +18,33 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //15 Users and Proposals
-        factory(App\User::class, 15)
+        //Users and Proposals
+        factory(App\User::class, rand(50, 100))
             ->create()
             ->each(function ($user) {
                 //echo "user: $user->id\n";
 
-                foreach (range(1, rand(1, 10)) as $x) {
-                    $proposal = factory(App\Proposal::class)->create();
+                foreach (range(1, rand(1, 2)) as $x) {
+                    $proposals = factory(
+                        App\Proposal::class,
+                        random_int(1, 6)
+                    )->create();
 
-                    foreach (range(1, rand(1, 20)) as $y) {
-                        // Get random User
-                        $user = User::all()
-                            ->shuffle()
-                            ->first();
-
+                    foreach (range(1, rand(0, 20)) as $y) {
                         // Approvals
-                        $proposal->approvals()->attach($user->id);
-                        //$proposal->likes()->attach($user->id);
+                        $proposals->each(function (Proposal $item) use ($user) {
+                            $item->approvals()->attach($user->id);
+                        });
                     }
 
                     //Likes
-                    factory(App\Like::class)->create();
+                    factory(App\Like::class, random_int(0, 30))->create();
 
                     //Follows
-                    factory(App\ProposalFollow::class)->create();
+                    factory(
+                        App\ProposalFollow::class,
+                        random_int(0, 15)
+                    )->create();
                 }
             });
 
