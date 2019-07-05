@@ -26,16 +26,22 @@
 
     <div class="share_links col-xs-5 col-md-3">
         <div class="pull-right">
-            <a href="mailto:&amp;subject={{ config('app.name') }}&amp;body={{ urlencode($url) }} "><i class="fa fa-envelope-square"></i></a>
+            <a href="mailto:&amp;subject={{ config('app.name') }}&amp;body={{ urlencode($url) }} "><i class="fa fa-envelope-square"></i>
+            </a>
 
             <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($url) }}"
-               target="_blank"><i class="fa fa-facebook-official"></i></a>
+               target="_blank"><i class="fa fa-facebook-official"></i>
+            </a>
 
             <a href="https://twitter.com/intent/tweet?text=Proponha%20sua%20Ideia%20Legislativa%20Aqui!&url={{ urlencode($url) }}&via=Legislaqui! - ALERJ&hashtags={!! config('app.name') !!},e-democracia,e-cidadania"
-               target="_blank"><i class="fa fa-twitter-square"></i></a>
+               target="_blank"><i class="fa fa-twitter-square"></i>
+            </a>
 
-            <a href="https://plus.google.com/share?url={{ urlencode($url) }}"
-               target="_blank"><i class="fa fa-google-plus-square"></i></a>
+{{--            <a href="https://plus.google.com/share?url={{ urlencode($url) }}"
+               target="_blank"><i class="fa fa-google-plus-square"></i></a>--}}
+
+
+
         </div>
     </div>
 </div>

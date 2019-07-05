@@ -533,17 +533,18 @@ td.blue_link {
     /* height: auto; */
     font-family: 'univers_47';
     font-size: 11px;
+    font-weight: bolder;
     text-transform: uppercase;
     display: block;
     color: #ffffff;
     border-radius: 3px 3px 3px 3px;
     margin: 0px 2px 0px 0px;
     padding: 6px 10px 3px 10px;
-    background: #ff6600 !important;
+    background: #212e52 !important;
     text-decoration: none;
     /*border-color: transparent !important;*/
     line-height: 2.6em;
-    border: 1px #212e52 solid;
+    border: none;
 }
 
 .btn-primary:hover {
@@ -652,8 +653,8 @@ td.blue_link {
     -moz-border-radius:100%;
     -o-border-radius:100%;
     border-radius:100%;
-    border: 1px solid #9ea745;
-    color: #FB651D;
+    border: 1px solid #212e52;
+    color: #212e52;
     /*box-shadow: 0 1px 10px rgba(0, 0, 0, 0.46);*/
     text-align:center;
     /*display:table-cell;*/
@@ -839,6 +840,20 @@ td.blue_link {
     border-radius: 0px;
 }
 
+
+@media screen and (max-width: 500px) {
+
+    .buscaideia .form-control {
+        font-size: 10px;
+
+    }
+
+    .buscaideia .dimensionsBackground {
+        width: 13%;
+    }
+
+}
+
 input,
 button {
     background-color:transparent;
@@ -850,16 +865,18 @@ button {
 }
 
 .login {
-    background-color: #212e52;
+/*    background-color: #212e52;
     padding: 20px;
     border: 2px solid #ff6600;
-    border-radius: 20px;
+    border-radius: 20px;*/
 }
+
 
 
 .panel-body {
-    padding: 20px !important;
+    padding: 0px !important;
 }
+
 
 .panel-default h1 {
     /*margin: 25px 0 0 25px;*/
@@ -887,7 +904,7 @@ button {
     color: #333;
     background-color: #f5f5f5;
     border-color: #ddd;
-    padding: 10px 15px;
+    padding: 10px 0px;
     border-bottom: 1px solid transparent;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -966,9 +983,9 @@ table#datatable thead {
     padding-left: 5px;
     z-index: 100;
     margin-left: 10px;
-    width: 280px;
+
     margin-bottom: 5px;
-    /*position: relative;*/
+    /*position: relative;*//*    width: 280px;*/
     /*bottom: -30px;*/
     /*left: 10px;*/
     /*bottom:150px;*/
@@ -992,16 +1009,16 @@ table#datatable thead {
 }
 
 .quadrado_legislaqui {
-    background-color: #FB651D;
-    line-height: 1.6em;
+    background-color: #212e52;
+    line-height: 1.9em;
     border-radius: 8px 8px 8px 8px;
-    border: 2px #9ea745 solid;
-    margin-top: -2.5em;
+    /*border: 2px #9ea745 solid;*/
+    margin-top: -2.7em;
     padding-left: 2.5em;
     color: white;
     /*width: 25vw;*/
     font-family: 'dinlight';
-    padding-top: 3px;
+    padding-top: 5px;
     margin-left: 5px;
     margin-bottom: 10px;
 }
@@ -1227,9 +1244,11 @@ a.square {
     background-color: #212e52;
     line-height: 3em;
     padding: 15px;
-    margin-left: -15px;
+    /*margin-left: -15px;
+    margin-right: -15px;*/
+
     margin-top: -10px;
-    border-radius: 0px 0px 10px 0px;
+
     color: #FB651D;
 }
 
@@ -1401,8 +1420,38 @@ p.leading {
 }
 
 @media only screen and (max-width: 496px) {
+
+    .legislaqui {
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+
+    .legislaqui a {
+        font-size: 2em;
+    }
+    .moto {
+        line-height: 0.5em;
+        font-size: 0.8em;
+    }
+
+    .table-responsive {
+        border: none;
+    }
+
+
+    .action_links a {
+        margin-right: 15px !important;
+    }
+
+    .share_links a{
+        margin-right: 3px;
+    }
+
+
     .corpodaideia .panel-heading {
-        border-radius: 0 ;
+        border-radius: 0;
+        padding-top: 0px !important;
     }
     .row.tituloideia {
         margin-top: 20px;
@@ -1418,7 +1467,7 @@ p.leading {
     }
     .corpodaideia .panel {
         border-radius: 0;
-        border-top:0 ;
+        border: none ;
     }
     .share_links {
         font-size: 16px;
@@ -1601,10 +1650,10 @@ p.leading {
 /* Filters in Mobile DropDown */
 .drop_filter {
     /* Size and position */
-    width: 186px;
-    top: 5px;
-    left: 20%;
-    padding: 10px;
+    width: 100%;
+    /*top: 5px;
+    left: 20%;*/
+    padding: 7px;
 
     /* Styles */
     background: #FFFFFF;
@@ -1615,7 +1664,7 @@ p.leading {
 }
 
 .dropdown-menu {
-    left: 20%;
+    left: -59px;
 }
 /* Filters in Mobile DropDown END */
 
@@ -1629,7 +1678,7 @@ p.leading {
 /* Modal to Mobile with information about edemocracia */
 .modal_button, .modal_button:focus {
     /* Size and position */
-    width: 186px;
+    width: 100%;
     background: #212e52;
     color: #FFFFFF;
     border: 1px solid rgba(0,0,0,0.15);
@@ -1656,4 +1705,33 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
 
 .double {
     font-size: 1.2em;
+}
+
+
+
+
+
+
+
+.rodape {
+    margin-top:80px;
+}
+
+@media screen and (max-width: 500px) {
+
+    .rodape {
+        margin-top:0px;
+        text-align: center;
+    }
+
+
+    .rodape .informacoes {
+        margin-top: 20px;
+    }
+
+    .rodape .redes_sociais {
+        text-align: center !important;
+    }
+
+
 }

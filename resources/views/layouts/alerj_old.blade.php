@@ -46,6 +46,9 @@
     <input type="hidden" name="tempoBanner" id="tempoBanner" />
     <input type="hidden" name="tempoNoticia" id="tempoNoticia" />
 
+
+
+
 <div class="superior">
     <div class="brilho ">
         <div class="conteudo">
@@ -103,6 +106,7 @@
         </div>
     </div>
 </div>
+
 
 
 

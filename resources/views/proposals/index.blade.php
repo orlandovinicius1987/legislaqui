@@ -98,48 +98,52 @@
                 {{-- specific for Mobile --}}
                 <div class="row visible-xs">
 
-                    {{-- button to modal --}}
-                    <button type="button" class="btn modal_button" data-toggle="modal" data-target=".bs-example-modal-lg">
-                        Entenda!
-                    </button>
+                    <div class="col-xs-6">
+                        {{-- button to modal --}}
+                        <button type="button" class="btn modal_button" data-toggle="modal" data-target=".bs-example-modal-lg">
+                            Entenda!
+                        </button>
 
-                    {{-- modal --}}
-                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">O que é?</h4>
-                                </div>
-                                <div class="modal-body">
-                                No #Legislaqui você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar
-                                leis já existentes ou mudar a Constituição Estadual. As sugestões que receberem pelo menos 20 mil apoios
-                                serão encaminhadas à Comissão de Direitos Humanos e Legislação Participativa (CDH), onde serão discutidas
-                                e receberão parecer dos deputados, podendo virar um projeto de lei. Antes de propor uma ideia, procure, na
-                                lista de ideias já apresentadas, outras com o mesmo conteúdo, para não dividir os apoios e atrasar a tramitação.
-                                </div>
-                                <div class="modal-footer">
-                                   #Legislaqui - 2016
+                        {{-- modal --}}
+                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">O que é?</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        No #Legislaqui você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar
+                                        leis já existentes ou mudar a Constituição Estadual. As sugestões que receberem pelo menos 20 mil apoios
+                                        serão encaminhadas à Comissão de Direitos Humanos e Legislação Participativa (CDH), onde serão discutidas
+                                        e receberão parecer dos deputados, podendo virar um projeto de lei. Antes de propor uma ideia, procure, na
+                                        lista de ideias já apresentadas, outras com o mesmo conteúdo, para não dividir os apoios e atrasar a tramitação.
+                                    </div>
+                                    <div class="modal-footer">
+                                        #Legislaqui - 2016
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {{-- Menu DropDown --}}
-                    <div class="dropdown btn-group">
-                        <button class="btn gradient dropdown-toggle drop_filter" data-toggle="dropdown" id="filters">
-                            Filtre sua busca
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="/?q=open">Abertas</a></li>
-                            <li><a href="/?q=committee">Na Comissão</a></li>
-                            <li><a href="/?q=expired">Expiradas</a></li>
-                            <li><a href="/?q=disapproved">Não Acatadas</a></li>
-                            <li><a href="/?q=approved">Aprovadas</a></li>
-                        </ul>
-                    </div>
 
+                    <div class="col-xs-6">
+                        {{-- Menu DropDown --}}
+                        <div class="dropdown btn-group">
+                            <button class="btn gradient dropdown-toggle drop_filter" data-toggle="dropdown" id="filters">
+                                Filtre sua busca
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="/?q=open">Abertas</a></li>
+                                <li><a href="/?q=committee">Na Comissão</a></li>
+                                <li><a href="/?q=expired">Expiradas</a></li>
+                                <li><a href="/?q=disapproved">Não Acatadas</a></li>
+                                <li><a href="/?q=approved">Aprovadas</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 {{-- specific for Mobile End --}}
 
