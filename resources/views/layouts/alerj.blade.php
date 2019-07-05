@@ -110,12 +110,9 @@
 <div class="superior">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-xs-offset-2 col-xs-8 col-md-4">
                 <a class="" href="http://www.alerj.rj.gov.br/">
-
-                    <img src="http://www.alerj.rj.gov.br/Content/imagens/logotipo.png" class="sem_altocontraste" width="210" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
-                    <img src="http://www.alerj.rj.gov.br/Content/imagens/logotipo_altocontraste.png" width="210" class="altocontraste" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
-
+                   <img src="http://www.alerj.rj.gov.br/Content/imagens/logotipo.png" class="img-responsive" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
                 </a>
             </div>
 
@@ -527,7 +524,7 @@
             <div class="col-md-offset-1 col-md-2">
                 <div class="logotipo">
                     <a href="/" title="Assembléia Legislativa do Estado do Rio de Janeiro">
-                        <img src="http://www.alerj.rj.gov.br/Content/imagens/logotipo_inferior.png" class="img-responsive" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
+                        <img src="/imagens/logotipo_inferior.png" class="img-responsive" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
                     </a>
                 </div>
 

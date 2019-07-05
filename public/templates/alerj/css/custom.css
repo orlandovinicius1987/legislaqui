@@ -1724,6 +1724,10 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
         text-align: center;
     }
 
+    .rodape .logotipo {
+        margin: 0 30px;
+    }
+
 
     .rodape .informacoes {
         margin-top: 20px;
@@ -1731,6 +1735,7 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
 
     .rodape .redes_sociais {
         text-align: center !important;
+        margin-bottom: 30px;
     }
 
 
