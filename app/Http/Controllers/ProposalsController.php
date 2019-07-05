@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProposalChanged;
 use App\Events\ProposalWasCreated;
 use App\Http\Requests\ProposalFormRequest;
 use App\Http\Requests\ResponseFormRequest;
@@ -382,6 +383,8 @@ class ProposalsController extends Controller
 
         //Then update Proposal
         $proposal->fill($input)->save();
+
+        event(new ProposalChanged($proposal));
 
         return redirect()
             ->route('proposal.show', ['proposal' => $proposal])

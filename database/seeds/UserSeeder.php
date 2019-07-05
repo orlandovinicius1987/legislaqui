@@ -19,12 +19,12 @@ class UserSeeder extends Seeder
     public function run()
     {
         //Users and Proposals
-        factory(App\User::class, rand(50, 100))
+        factory(App\User::class, rand(20, 50))
             ->create()
             ->each(function ($user) {
                 //echo "user: $user->id\n";
 
-                foreach (range(1, rand(1, 2)) as $x) {
+                foreach (range(1, rand(2, 4)) as $x) {
                     $proposals = factory(
                         App\Proposal::class,
                         random_int(1, 6)
