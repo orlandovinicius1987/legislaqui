@@ -79,7 +79,6 @@
                                         <table class="twelve columns">
                                             <tr>
                                                 <td class="last right-text-pad">
-                                                    <p><strong>Ideia Central:</strong> {{ $proposal->idea_central }}</p>
                                                     <p><strong>Problema:</strong> {{ $proposal->problem }}</p>
                                                     <p><strong>Exposição da Ideia:</strong> {{ $proposal->idea_exposition }}</p>
                                                 </td>

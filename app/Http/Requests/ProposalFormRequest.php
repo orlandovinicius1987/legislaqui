@@ -22,10 +22,8 @@ class ProposalFormRequest extends Request
     public function rules()
     {
         return [
-            //
-            'name' => 'required',
-            'idea_central' => 'required',
-            'problem' => 'required',
+            'name'            => 'required',
+            'problem'         => 'required',
             'idea_exposition' => 'required',
         ];
     }

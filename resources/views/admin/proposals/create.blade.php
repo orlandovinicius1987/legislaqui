@@ -25,14 +25,6 @@
                 </div>
 
                 <div class="form-group">
-                    {{ Form::label('Ideia Central') }}
-                    {{ Form::textarea('idea_central', null,
-                        array('required',
-                              'class'=>'textarea',
-                              'placeholder'=>'Resuma sua Ideia')) }}
-                </div>
-
-                <div class="form-group">
                     {{ Form::label('Problema') }}
                     {{ Form::textarea('problem', null,
                         array('required',
@@ -52,7 +44,6 @@
                     {{ Form::submit('Incluir',
                       array('class'=>'btn btn-primary botao')) }}
                 </div>
-
                 {{ Form::close() }}
 
             </div>

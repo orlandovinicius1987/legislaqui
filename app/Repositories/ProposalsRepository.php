@@ -15,7 +15,6 @@ class ProposalsRepository
 {
     private $searchColumns = [
         'name',
-        'idea_central',
         'problem',
         'idea_exposition',
         'response',
@@ -23,7 +22,8 @@ class ProposalsRepository
 
     public function all()
     {
-        return Proposal::orderBy('updated_at', 'desc')->get();
+
+        return Proposal::whereNotNull('id')->orderBy('updated_at', 'desc')->get();
     }
 
     public function find($id)

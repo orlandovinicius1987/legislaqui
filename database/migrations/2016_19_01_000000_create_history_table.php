@@ -26,7 +26,7 @@ class CreateHistoryTable extends Migration
             $table->date('pub_date')->nullable();
             $table->date('limit_date')->nullable();
 
-            $table->text('idea_central');
+//            $table->text('idea_central');
             $table->text('problem');
             $table->text('idea_exposition');
             $table->text('response')->nullable();

@@ -43,16 +43,6 @@
                 <br>
 
                 <div class="form-group">
-                    {{ Form::label('Ideia central', null , ['class' => 'bold double']) }}
-                    {{ Form::textarea('idea_central', null,
-                        array('required',
-                              'class'=>'textarea',
-                              'placeholder'=>'Descreva sua ideia resumidamente, use apenas uma frase se puder')) }}
-                </div>
-
-                <br>
-
-                <div class="form-group">
                     {{ Form::label('Exposição completa da ideia', null , ['class' => 'bold double']) }}
                     {{ Form::textarea('idea_exposition', null,
                         array('required',
