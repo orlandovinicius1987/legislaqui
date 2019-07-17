@@ -47,59 +47,21 @@ $factory->define(App\Proposal::class, function (Faker\Generator $faker) {
     $random = $faker->boolean($chanceOfGettingTrue = 20);
 
     return [
-        'name' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-        'user_id' => User::all()
-            ->shuffle()
-            ->first()->id,
-        'open' => true,
-        'idea_central' => $faker->text($maxNbChars = 100),
-        'problem' => $faker->paragraph(
-            $nbSentences = 3,
-            $variableNbSentences = true
-        ),
-        'idea_exposition' => $faker->realText(
-            $maxNbChars = 200,
-            $indexSize = 2
-        ),
-        'response' => ($response = $faker->randomElement(
-            $array = [
-                null,
-                $faker->realText($maxNbChars = 100, $indexSize = 2),
-                $faker->text($maxNbChars = 50),
-            ]
-        )),
-        'responder_id' => !$response
-            ? null
-            : User::all()
-                //                ->where('role_id', 1)
-                ->shuffle()
-                ->first()->id,
-        'disapproved_at' => !$response ? null : \Carbon\Carbon::now(),
-        'disapproved_by' => !$response
-            ? null
-            : User::all()
-                //                ->where('role_id', 1)
-                ->shuffle()
-                ->first()->id,
-        'approved_at' => $response
-            ? null
-            : ($random
-                ? null
-                : \Carbon\Carbon::now()),
-        'approved_by' => $response
-            ? null
-            : ($random
-                ? null
-                : User::all()
-                    //                    ->where('role_id', 1)
-                    ->shuffle()
-                    ->first()->id),
-        'created_at' => \Carbon\Carbon::now(),
-        'updated_at' => \Carbon\Carbon::now(),
-        'pub_date' => \Carbon\Carbon::now(),
-        'limit_date' => \Carbon\Carbon::now()->addMonth(
-            config('global.timeLimitMonth')
-        ),
+        'name'            => $faker->sentence($nbWords = 6, $variableNbWords = true),
+        'user_id'         => User::all()->shuffle()->first()->id,
+        'open'            => true,
+        'problem'         => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+        'idea_exposition' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+        'response'        => $response = $faker->randomElement($array = [null, $faker->realText($maxNbChars = 100, $indexSize = 2), $faker->text($maxNbChars = 50)]),
+        'responder_id'    => !$response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
+        'disapproved_at'  => !$response ? null : \Carbon\Carbon::now(),
+        'disapproved_by'  => !$response ? null : User::all()->where('role_id', 1)->shuffle()->first()->id,
+        'approved_at'     => $response ? null : ($random ? null : \Carbon\Carbon::now()),
+        'approved_by'     => $response ? null : ($random ? null : User::all()->where('role_id', 1)->shuffle()->first()->id),
+        'created_at'      => \Carbon\Carbon::now(),
+        'updated_at'      => \Carbon\Carbon::now(),
+        'pub_date'        => \Carbon\Carbon::now(),
+        'limit_date'      => \Carbon\Carbon::now()->addMonth(config('global.timeLimitMonth')),
     ];
 });
 

@@ -16,7 +16,6 @@
                     <table class="table-responsive table-striped">
                         <tbody>
                         <tr><td class="table-td-label-show">Nome:</td><td class="table-td-show"> {{ $proposal->name }}</td></tr>
-                        <tr><td class="table-td-label-show">Ideia Central:</td><td class="table-td-show"> {{ $proposal->idea_central }}</td></tr>
                         <tr><td class="table-td-label-show">Problema:</td><td class="table-td-show"> {{ $proposal->problem }}</td></tr>
                         <tr><td class="table-td-label-show">Exposição da Ideia:</td><td class="table-td-show"> {{ $proposal->idea_exposition }}</td></tr>
                         </tbody>
