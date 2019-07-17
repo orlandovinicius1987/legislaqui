@@ -58,7 +58,7 @@
                     <label class="col-xs-4 control-label">Senha</label>
 
                     <div class="col-xs-8">
-                        <input type="password" class="campo" name="password" placeholder="Mínimo de 6 dígitos">
+                        <input type="password" class="campo" name="password" placeholder="Mínimo de 8 dígitos">
 
                         @if ($errors->has('password') && (Session::get('last_auth_attempt') === 'register'))
                             <span class="help-block">

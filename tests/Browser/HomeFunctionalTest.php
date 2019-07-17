@@ -1,22 +1,12 @@
 <?php
 
 use App\State;
-use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use App\Repositories\UsersRepository;
+use Tests\DuskTestCase;
 
 class HomeFunctionalTest extends DuskTestCase
 {
-    public function createFaker()
-    {
-        // use the factory to create a Faker\Generator instance
-        $faker = Faker\Factory::create();
-        // Add pt_BR provider
-        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
-
-        return $faker;
-    }
-
     public function testLinksMenuBar()
     {
         $this->browse(function (Browser $browser) {
@@ -182,7 +172,7 @@ class HomeFunctionalTest extends DuskTestCase
                 ->type('#email', $user->email)
                 ->type('#password', 'secret')
                 ->press('@loginButton')
-                ->assertSee(strtoupper($user->name));
+                ->assertSee(mb_strtoupper($user->name));
         });
     }
 
@@ -211,7 +201,7 @@ class HomeFunctionalTest extends DuskTestCase
             $browser
                 ->loginAs($user->id)
                 ->visit('/')
-                ->assertSee(strtoupper($user->name));
+                ->assertSee(mb_strtoupper($user->name));
         });
     }
 
@@ -222,6 +212,15 @@ class HomeFunctionalTest extends DuskTestCase
         });
     }
 
+    private function switchToLatestTab($browser)
+    {
+        $window = collect($browser->driver->getWindowHandles())->last();
+
+        $browser->driver->switchTo()->window($window);
+
+        return $browser;
+    }
+
     public function testAdminMainScreen()
     {
         $user = factory(App\User::class, 'admin')->create();
@@ -230,8 +229,12 @@ class HomeFunctionalTest extends DuskTestCase
             $browser
                 ->loginAs($user->id)
                 ->visit('/')
-                ->click('Ir ao Painel de Admin')
-                ->assertSee('Ideias Legislativas');
+                ->mouseover('@loginName')
+                ->click('@loginGoToAdminPanel');
+
+            $this->switchToLatestTab($browser);
+
+            $browser->assertPathIs('/admin');
         });
     }
 
@@ -258,130 +261,123 @@ class HomeFunctionalTest extends DuskTestCase
     public function testAdminProposalsFilter()
     {
         $user = factory(App\User::class, 'admin')->create();
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->seePageIs('/admin');
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Todas')
-            ->seePageIs('/admin/proposals');
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser
+                ->loginAs($user->id)
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Aguardando Publicação')
-            ->seePageIs('/admin/proposals/notresponded');
+                ->visit('/admin')
+                ->click('@proposalsLink')
+                ->assertPathIs('/admin/proposals')
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Publicadas')
-            ->seePageIs('/admin/proposals/approved');
+                ->visit('/admin')
+                ->click('@notrespondedLink')
+                ->assertPathIs('/admin/proposals/notresponded')
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Desaprovadas')
-            ->seePageIs('/admin/proposals/disapproved');
+                ->visit('/admin')
+                ->click('@approvedLink')
+                ->assertPathIs('/admin/proposals/approved')
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Atingiram 20000 apoios')
-            ->seePageIs('/admin/proposals/approval-goal');
+                ->visit('/admin')
+                ->click('@disapprovedLink')
+                ->assertPathIs('/admin/proposals/disapproved')
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Ideias Expiradas')
-            ->seePageIs('/admin/proposals/expired');
+                ->visit('/admin')
+                ->click('@approvalGoalLink')
+                ->assertPathIs('/admin/proposals/approval-goal')
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Aguardando Análise')
-            ->seePageIs('/admin/proposals/in-committee');
+                ->visit('/admin')
+                ->click('@expiredLink')
+                ->assertPathIs('/admin/proposals/expired')
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Aprovadas')
-            ->seePageIs('/admin/proposals/approved-by-committee');
+                ->visit('/admin')
+                ->click('@inCommitteeLink')
+                ->assertPathIs('/admin/proposals/in-committee')
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Encerradas')
-            ->seePageIs('/admin/proposals/disapproved-by-committee');
+                ->visit('/admin')
+                ->click('@approvedByCommitteeLink')
+                ->assertPathIs('/admin/proposals/approved-by-committee')
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Todos')
-            ->seePageIs('/admin/users');
+                ->visit('/admin')
+                ->click('@disapprovedByCommitteeLink')
+                ->assertPathIs('/admin/proposals/disapproved-by-committee')
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Cidadãos')
-            ->seePageIs('/admin/users?q=cidadao');
+                ->visit('/admin')
+                ->click('@usersLink')
+                ->assertPathIs('/admin/users')
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Servidores')
-            ->seePageIs('/admin/users?q=servidores');
+                ->visit('/admin')
+                ->click('@usersCidadaoLink')
+                ->assertQueryStringHas('q', 'cidadao')
+
+                ->visit('/admin')
+                ->click('@usersServidoresLink')
+                ->assertQueryStringHas('q', 'servidores');
+        });
     }
 
     public function testAdminEditing()
     {
-        $faker = $this->createFaker();
-
         $user = factory(App\User::class, 'admin')->create();
 
-        $name = $user->name;
-        $input = [0, 1, 99, 2];
-        $roleId = $input[array_rand($input, 1)];
+        $newUser = factory(App\User::class)->raw();
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Todos')
-            ->type($name, 'dataTableUser')
-            ->click($name)
-            ->visit('/admin/users/' . $user->id)
-            ->click('editarUsuario')
-            ->seePageIs('/admin/users/' . $user->id . '/edit')
-            ->type($faker->name, 'name')
-            ->type($faker->email, 'email')
-            ->select($roleId, 'role_id')
-            ->press('Gravar')
-            ->see('Usuário Editado com Sucesso');
+        $this->browse(function (Browser $browser) use ($user, $newUser) {
+            $name = $user->name;
+
+            $browser
+                ->loginAs($user->id)
+                ->visit('/admin')
+                ->assertSee('Ideias Legislativas')
+                ->clickLink('Todos')
+                ->waitUntil(
+                    '!!$(\'#dataTableUser\').DataTable().search(\'' .
+                        $name .
+                        '\').draw()'
+                )
+                ->clickLink($name)
+                ->visit('/admin/users/' . $user->id)
+                ->click('#editarUsuario')
+                ->assertPathIs('/admin/users/' . $user->id . '/edit')
+                ->type('name', $newUser['name'])
+                ->type('email', $newUser['email'])
+                ->select('role_id', $newUser['role_id'])
+                ->press('Gravar');
+        });
+
+        $this->assertDatabaseHas('users', [
+            'email' => $newUser['email'],
+            'name' => $newUser['name'],
+            'role_id' => $newUser['role_id'],
+        ]);
     }
 
     public function testAdmCreatingUser()
     {
-        $faker = $this->createFaker();
-
         $user = factory(App\User::class, 'admin')->create();
+        $newUser = factory(App\User::class)->raw();
 
-        $input = [0, 1, 99, 2];
-        $roleId = $input[array_rand($input, 1)];
+        $this->browse(function (Browser $browser) use ($user, $newUser) {
+            $browser
+                ->loginAs($user)
+                ->visit('/admin')
+                ->assertSee('Ideias Legislativas')
+                ->clickLink('Todos')
+                ->click('#criarNovoUsuario')
+                ->assertPathIs('/admin/users/create')
+                ->type('name', $newUser['name'])
+                ->type('email', $newUser['email'])
+                ->select('uf', 'RJ')
+                ->select('role_id', $newUser['role_id'])
+                ->type('cpf', $newUser['cpf'])
+                ->press('Incluir Novo Usuário')
+                ->assertSee('Usuário Incluído com Sucesso');
+        });
 
-        $this->actingAs($user)
-            ->visit('/')
-            ->click('Ir ao Painel de Admin')
-            ->click('Todos')
-            ->click('criarNovoUsuario')
-            ->seePageIs('/admin/users/create')
-            ->type($faker->name, 'name')
-            ->type($faker->email, 'email')
-            ->select('RJ', 'uf')
-            ->select($roleId, 'role_id')
-            ->type($faker->cpf, 'cpf')
-            ->press('Incluir Novo Usuário');
+        $this->assertDatabaseHas('users', [
+            'email' => $newUser['email'],
+            'name' => $newUser['name'],
+            'role_id' => $newUser['role_id'],
+        ]);
     }
 }

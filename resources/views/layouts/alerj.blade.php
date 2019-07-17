@@ -20,7 +20,7 @@
     <meta property="og:type"               content="Ideias Legislativas" />
     <meta property="og:title"              content="Legislaqui" />
     <meta property="og:description"        content="Proponha sua Ideia Legislativa" />
-    <meta property="og:image"              content="http://www.alerj.rj.gov.br/Content/imagens/logotipo.png" />
+    <meta property="og:image"              content="//www.alerj.rj.gov.br/Content/imagens/logotipo.png" />
 
     <!-- Styles -->
     {{-- Font Awesome --}}
@@ -31,30 +31,30 @@
     <link rel="stylesheet" type="text/css" href="/templates/alerj/css/custom.css" />
 
 
-    <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.validate.js"></script>
-    <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery-ui-1.10.4.custom.js"></script>
-    <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery-ui-1.10.4.custom.min.js"></script>
-    <script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.cookie.js"></script>
-    {{--<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/acessibilidade.js"></script>--}}
-    <link href="http://www.alerj.rj.gov.br/BotDetectCaptcha.ashx?get=layoutStyleSheet" rel="stylesheet"/>
+    <script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery.validate.js"></script>
+    <script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery-ui-1.10.4.custom.js"></script>
+    <script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery.cookie.js"></script>
+    {{--<script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/acessibilidade.js"></script>--}}
+    <link href="//www.alerj.rj.gov.br/BotDetectCaptcha.ashx?get=layoutStyleSheet" rel="stylesheet"/>
     <title>
 
         Assembléia Legislativa do Estado do Rio de Janeiro
 
     </title>
-    <link href="http://www.alerj.rj.gov.br/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="//www.alerj.rj.gov.br/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
-    {{--<link href="http://www.alerj.rj.gov.br/Content/css?v=" rel="stylesheet"/>--}}
-    <script src="http://www.alerj.rj.gov.br/bundles/modernizr?v=qVODBytEBVVePTNtSFXgRX0NCEjh9U_Oj8ePaSiRcGg1"></script>
-    <script src="http://www.alerj.rj.gov.br/bundles/jquery?v="></script>
+    {{--<link href="//www.alerj.rj.gov.br/Content/css?v=" rel="stylesheet"/>--}}
+    <script src="//www.alerj.rj.gov.br/bundles/modernizr?v=qVODBytEBVVePTNtSFXgRX0NCEjh9U_Oj8ePaSiRcGg1"></script>
+    <script src="//www.alerj.rj.gov.br/bundles/jquery?v="></script>
 </head>
 <body class="background_color_ffffff">
 <div id="popupCarregando" class="carregando" style="display: none">
     <div class="aguarde">AGUARDE...</div>
     <div class="loader">
-        <img src="http://www.alerj.rj.gov.br/Content/imagens/loading.gif" width="32" height="32">
+        <img src="//www.alerj.rj.gov.br/Content/imagens/loading.gif" width="32" height="32">
     </div>
 </div>
 <input type="hidden" name="tempoBanner" id="tempoBanner" />
@@ -66,9 +66,9 @@
     <div class="brilho ">
         <div class="conteudo">
             <div class="logotipo">
-                <a href="http://www.alerj.rj.gov.br/">
-                    <img src="http://www.alerj.rj.gov.br/Content/imagens/logotipo.png" class="sem_altocontraste" width="210" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
-                    <img src="http://www.alerj.rj.gov.br/Content/imagens/logotipo_altocontraste.png" width="210" class="altocontraste" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
+                <a href="//www.alerj.rj.gov.br/">
+                    <img src="//www.alerj.rj.gov.br/Content/imagens/logotipo.png" class="sem_altocontraste" width="210" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
+                    <img src="//www.alerj.rj.gov.br/Content/imagens/logotipo_altocontraste.png" width="210" class="altocontraste" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
                 </a>
             </div>
 
@@ -79,24 +79,24 @@
                 <div class="redes_sociais">
                     <div class="logotipo_redes">
                         <a target="_blank" href="https://instagram.com/instalerj/" title="Instagram">
-                            <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_36.png" width="20" height="20" alt="Instagram" title="Instagram"></a>
+                            <img src="//www.alerj.rj.gov.br/Content/imagens/icone_36.png" width="20" height="20" alt="Instagram" title="Instagram"></a>
                     </div>
 
                     <div class="logotipo_redes">
                         <a target="_blank"  href="https://www.facebook.com/assembleiaRJ" title="Facebook">
-                            <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_06.png" width="20" height="20" alt="Facebook" title="Facebook"></a>
+                            <img src="//www.alerj.rj.gov.br/Content/imagens/icone_06.png" width="20" height="20" alt="Facebook" title="Facebook"></a>
                     </div>
                     <div class="logotipo_redes">
                         <a target="_blank"  href="https://plus.google.com/u/0/+alerj/posts" title="Google Mais">
-                            <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_07.png" width="20" height="20" alt="Google Mais" title="Google Mais"></a>
+                            <img src="//www.alerj.rj.gov.br/Content/imagens/icone_07.png" width="20" height="20" alt="Google Mais" title="Google Mais"></a>
                     </div>
                     <div class="logotipo_redes">
                         <a target="_blank"  href="https://twitter.com/alerj" title="Twitter">
-                            <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_08.png" width="20" height="20" alt="Twitter" title="Twitter"></a>
+                            <img src="//www.alerj.rj.gov.br/Content/imagens/icone_08.png" width="20" height="20" alt="Twitter" title="Twitter"></a>
                     </div>
                     <div class="logotipo_redes">
                         <a target="_blank"  href="https://www.youtube.com/user/dcsalerj" title="Youtube">
-                            <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_09.png" width="20" height="20" alt="Youtube" title="Youtube"></a>
+                            <img src="//www.alerj.rj.gov.br/Content/imagens/icone_09.png" width="20" height="20" alt="Youtube" title="Youtube"></a>
                     </div>
                 </div>
 
@@ -117,11 +117,11 @@
                 <div class="descricao">INÍCIO</div>
                 <div class="icone Expandir">
                     <a href="javascript:;" title="Expandir Menu">
-                        <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_21.png" width="40" height="34" alt="Expandir Menu" title="Expandir Menu" border="0"></a>
+                        <img src="//www.alerj.rj.gov.br/Content/imagens/icone_21.png" width="40" height="34" alt="Expandir Menu" title="Expandir Menu" border="0"></a>
                 </div>
                 <div class="icone Recuar">
                     <a href="javascript:;" title="Recolher Menu">
-                        <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_22.png" width="40" height="34" alt="Recolher Menu" title="Recolher Menu" border="0"></a>
+                        <img src="//www.alerj.rj.gov.br/Content/imagens/icone_22.png" width="40" height="34" alt="Recolher Menu" title="Recolher Menu" border="0"></a>
                 </div>
             </div>
             <div class="posicao_menu_movel">
@@ -135,22 +135,22 @@
                             <div class='submenu_movel'>
                                 <ul>
                                     <li>
-                                        <a target='' href='http://www.alerj.rj.gov.br/Alerj/ComoFunciona' title='Como Funciona'>Como Funciona</a>
+                                        <a target='' href='//www.alerj.rj.gov.br/Alerj/ComoFunciona' title='Como Funciona'>Como Funciona</a>
                                     </li>
                                     <li>
-                                        <a target='' href='http://www.alerj.rj.gov.br/Alerj/MesaDiretora' title='Mesa Diretora'>Mesa Diretora</a>
+                                        <a target='' href='//www.alerj.rj.gov.br/Alerj/MesaDiretora' title='Mesa Diretora'>Mesa Diretora</a>
                                     </li>
                                     <li>
-                                        <a target='' href='http://www.alerj.rj.gov.br/Alerj/Historia' title='História'>História</a>
+                                        <a target='' href='//www.alerj.rj.gov.br/Alerj/Historia' title='História'>História</a>
                                     </li>
                                     <li>
-                                        <a target='' href='http://www.alerj.rj.gov.br/Alerj/VisitaGuiada' title='Visita Guiada'>Visita Guiada</a>
+                                        <a target='' href='//www.alerj.rj.gov.br/Alerj/VisitaGuiada' title='Visita Guiada'>Visita Guiada</a>
                                     </li>
                                     <li>
-                                        <a target='' href='http://www.alerj.rj.gov.br/Alerj/TourVirtual' title='Tour Virtual'>Tour Virtual</a>
+                                        <a target='' href='//www.alerj.rj.gov.br/Alerj/TourVirtual' title='Tour Virtual'>Tour Virtual</a>
                                     </li>
                                     <li>
-                                        <a target='' href='http://www.alerj.rj.gov.br/Alerj/Biblioteca' title='Biblioteca'>Biblioteca</a>
+                                        <a target='' href='//www.alerj.rj.gov.br/Alerj/Biblioteca' title='Biblioteca'>Biblioteca</a>
                                     </li>
                                 </ul>
                             </div>
@@ -188,21 +188,21 @@
 
                         {{--<li class="pai"><a target="" href="javascript:;" class="titulo" title="ATIVIDADE PARLAMENTAR">ATIVIDADE PARLAMENTAR</a>--}}
 
-                            {{--<div class='submenu_movel'><ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Plenário'>Plenário</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=57' title='Discursos e Votações'>Discursos e Votações</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=59' title='Ordem do Dia'>Ordem do Dia</a></li></ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Comissões'>Comissões</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=60' title='O Que São'>O Que São</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=61' title='Comissões Permanentes'>Comissões Permanentes</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=62' title='CPI (COMISSÃO PARLAMENTAR DE INQUÉRITO)'>CPI (COMISSÃO PARLAMENTAR DE INQUÉRITO)</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=63' title='Comissões Especiais'>Comissões Especiais</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=64' title='Comissões de Representação'>Comissões de Representação</a></li></ul><li><a target='_blank' href='http://www2.alerj.rj.gov.br/Diario-of.htm' title='Diário Oficial'>Diário Oficial</a></li><li><a target='_blank' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=1' title='Processo Legislativo'>Processo Legislativo</a></li></ul></div>--}}
+                            {{--<div class='submenu_movel'><ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Plenário'>Plenário</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=57' title='Discursos e Votações'>Discursos e Votações</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=59' title='Ordem do Dia'>Ordem do Dia</a></li></ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Comissões'>Comissões</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=60' title='O Que São'>O Que São</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=61' title='Comissões Permanentes'>Comissões Permanentes</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=62' title='CPI (COMISSÃO PARLAMENTAR DE INQUÉRITO)'>CPI (COMISSÃO PARLAMENTAR DE INQUÉRITO)</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=63' title='Comissões Especiais'>Comissões Especiais</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=64' title='Comissões de Representação'>Comissões de Representação</a></li></ul><li><a target='_blank' href='//www2.alerj.rj.gov.br/Diario-of.htm' title='Diário Oficial'>Diário Oficial</a></li><li><a target='_blank' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=1' title='Processo Legislativo'>Processo Legislativo</a></li></ul></div>--}}
                         {{--</li>--}}
 
                         <li><a href="/contact" class="titulo " title="Contato">Contato</a></li>
 
                         {{--<li class="pai"><a target="" href="javascript:;" class="titulo" title="COMUNICA&#199;&#195;O">COMUNICA&#199;&#195;O</a>--}}
 
-                            {{--<div class='submenu_movel'><ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Sala de Imprensa'>Sala de Imprensa</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='/Comunicacao/SalaDeImprensa/Noticias' title='Notícias'>Notícias</a></li><li><a  target='' href='/Comunicacao/SalaDeImprensa/Imagens' title='Imagens'>Imagens</a></li><li><a  target='' href='https://www.youtube.com/user/AlerjTV' title='TV ALERJ'>TV ALERJ</a></li><li><a  target='' href='http://www.radioalerj.com.br' title='Rádio ALERJ'>Rádio ALERJ</a></li><li><a  target='' href='/Comunicacao/SalaDeImprensa/Jornalistas' title='Cadastro de Jornalista'>Cadastro de Jornalista</a></li></ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Publicações'>Publicações</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='/Listar/IndexDocumentoEletronico?tipo=DI' title='CAPAS D. O.'>CAPAS D. O.</a></li><li><a  target='' href='/Comunicacao/Publicacoes/Jornal' title='Jornal da ALERJ'>Jornal da ALERJ</a></li></ul></ul></div>--}}
+                            {{--<div class='submenu_movel'><ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Sala de Imprensa'>Sala de Imprensa</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='/Comunicacao/SalaDeImprensa/Noticias' title='Notícias'>Notícias</a></li><li><a  target='' href='/Comunicacao/SalaDeImprensa/Imagens' title='Imagens'>Imagens</a></li><li><a  target='' href='https://www.youtube.com/user/AlerjTV' title='TV ALERJ'>TV ALERJ</a></li><li><a  target='' href='//www.radioalerj.com.br' title='Rádio ALERJ'>Rádio ALERJ</a></li><li><a  target='' href='/Comunicacao/SalaDeImprensa/Jornalistas' title='Cadastro de Jornalista'>Cadastro de Jornalista</a></li></ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Publicações'>Publicações</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='/Listar/IndexDocumentoEletronico?tipo=DI' title='CAPAS D. O.'>CAPAS D. O.</a></li><li><a  target='' href='/Comunicacao/Publicacoes/Jornal' title='Jornal da ALERJ'>Jornal da ALERJ</a></li></ul></ul></div>--}}
                         {{--</li>--}}
 
                         <!-- Authentication Links -->
 
                         @if (Auth::guest())
                             <li>
-                                <a dusk="loginOrRegister" href="{{ url('/login') }}" class="titulo" title="Login | Registro">Login | Registro</a></li>
+                                <a href="{{ url('/login') }}" class="titulo" title="Login | Registro">Login | Registro</a></li>
                             {{--<li><a href="{{ url('/register') }}">Registro</a></li>--}}
                         @else
                             <li class="pai">
@@ -230,7 +230,7 @@
 
                         {{--<li class="pai"><a target="" href="javascript:;" class="titulo" title="TRANSPAR&#202;NCIA">TRANSPAR&#202;NCIA</a>--}}
 
-                            {{--<div class='submenu_movel'><ul><li><a target='' href='http://www.alerj.rj.gov.br/Transparencia/PerguntasFrequentes' title='Perguntas Frequentes'>Perguntas Frequentes</a></li><li><a target='_blank' href='http://www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=L' title='Consulta de Preços'>Consulta de Preços</a></li><li><a target='_blank' href='http://www2.alerj.rj.gov.br/cadimalerj/default2.asp' title='Empresas Sancionadas'>Empresas Sancionadas</a></li><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Licitações'>Licitações</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='http://www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=C' title='Convites'>Convites</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=T' title='Tomada de Preços'>Tomada de Preços</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=P' title='Concorrências'>Concorrências</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=R' title='Pregão'>Pregão</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=I' title='Leilão'>Leilão</a></li></ul><li><a target='_blank' href='http://www2.alerj.rj.gov.br/leideacesso/default.html' title='Lei de Acesso à Informação'>Lei de Acesso à Informação</a></li></ul></div>--}}
+                            {{--<div class='submenu_movel'><ul><li><a target='' href='//www.alerj.rj.gov.br/Transparencia/PerguntasFrequentes' title='Perguntas Frequentes'>Perguntas Frequentes</a></li><li><a target='_blank' href='//www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=L' title='Consulta de Preços'>Consulta de Preços</a></li><li><a target='_blank' href='//www2.alerj.rj.gov.br/cadimalerj/default2.asp' title='Empresas Sancionadas'>Empresas Sancionadas</a></li><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Licitações'>Licitações</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='//www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=C' title='Convites'>Convites</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=T' title='Tomada de Preços'>Tomada de Preços</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=P' title='Concorrências'>Concorrências</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=R' title='Pregão'>Pregão</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=I' title='Leilão'>Leilão</a></li></ul><li><a target='_blank' href='//www2.alerj.rj.gov.br/leideacesso/default.html' title='Lei de Acesso à Informação'>Lei de Acesso à Informação</a></li></ul></div>--}}
                         {{--</li>--}}
                     </ul>
                 </div>
@@ -248,7 +248,7 @@
             </li>
             {{--<li class="pai">--}}
                 {{--<a target="" href="javascript:;" class="titulo " title="ALERJ">ALERJ</a>--}}
-                {{--<div class='submenu'><ul><li><a target='' href='http://www.alerj.rj.gov.br/Alerj/ComoFunciona' title='Como Funciona'>Como Funciona</a></li><li><a target='' href='/Alerj/MesaDiretora' title='Mesa Diretora'>Mesa Diretora</a></li><li><a target='' href='/Alerj/Historia' title='História'>História</a></li><li><a target='' href='/Alerj/VisitaGuiada' title='Visita Guiada'>Visita Guiada</a></li><li><a target='' href='/Alerj/TourVirtual' title='Tour Virtual'>Tour Virtual</a></li><li><a target='' href='/Alerj/Biblioteca' title='Biblioteca'>Biblioteca</a></li></ul><div class='detalhe'></div></div>--}}
+                {{--<div class='submenu'><ul><li><a target='' href='//www.alerj.rj.gov.br/Alerj/ComoFunciona' title='Como Funciona'>Como Funciona</a></li><li><a target='' href='/Alerj/MesaDiretora' title='Mesa Diretora'>Mesa Diretora</a></li><li><a target='' href='/Alerj/Historia' title='História'>História</a></li><li><a target='' href='/Alerj/VisitaGuiada' title='Visita Guiada'>Visita Guiada</a></li><li><a target='' href='/Alerj/TourVirtual' title='Tour Virtual'>Tour Virtual</a></li><li><a target='' href='/Alerj/Biblioteca' title='Biblioteca'>Biblioteca</a></li></ul><div class='detalhe'></div></div>--}}
             {{--</li>--}}
 
             <li class="pai">
@@ -264,7 +264,7 @@
                         {{--<li class="dropdown-header">ALERJ</li>--}}
                     @elseif (Auth::user()->is_admin)
                         {{--@elseif (Auth::user()->role_id === 0 or Auth::user()->role_id === 1)--}}
-                        <a href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
+                        <a dusk="ProposalsGoToAdminPanel" href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
                         <a href="{{ route('proposal.create') }}">Incluir Nova Proposta</a>
                         <a href="{{ route('users.proposals', Auth::user()->id) }}">Listar Minhas Propostas</a>
                         <a href="{{ route('home') }}">Listar Todas Propostas</a>
@@ -281,7 +281,7 @@
 
             {{--<li class="pai">--}}
                 {{--<a target="" href="javascript:;" class="titulo " title="DEPUTADOS">DEPUTADOS</a>--}}
-                {{--<div class='submenu'><ul><li><a target='' href='http://www.alerj.rj.gov.br/Deputados/QuemSao' title='Quem São'>Quem São</a></li><li><a target='' href='/Deputados/RepresentacaoPartidaria' title='Representação Partidária'>Representação Partidária</a></li><li><a target='' href='/Deputados/LinhaDireta' title='Linha Direta'>Linha Direta</a></li></ul><div class='detalhe'></div></div>--}}
+                {{--<div class='submenu'><ul><li><a target='' href='//www.alerj.rj.gov.br/Deputados/QuemSao' title='Quem São'>Quem São</a></li><li><a target='' href='/Deputados/RepresentacaoPartidaria' title='Representação Partidária'>Representação Partidária</a></li><li><a target='' href='/Deputados/LinhaDireta' title='Linha Direta'>Linha Direta</a></li></ul><div class='detalhe'></div></div>--}}
             {{--</li>--}}
 
             <!-- relationship commissions -->
@@ -290,7 +290,7 @@
             <li class="pai"><a href="/contact" class="titulo " title="Contato">Contato</a></li>
             {{--<li class="pai">--}}
                 {{--<a target="" href="javascript:;" class="titulo " title="ATIVIDADE PARLAMENTAR">ATIVIDADE PARLAMENTAR</a>--}}
-                {{--<div class='submenu'><ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Plenário'>Plenário</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=57' title='Discursos e Votações'>Discursos e Votações</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=59' title='Ordem do Dia'>Ordem do Dia</a></li></ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Comissões'>Comissões</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=60' title='O Que São'>O Que São</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=61' title='Comissões Permanentes'>Comissões Permanentes</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=62' title='CPI (COMISSÃO PARLAMENTAR DE INQUÉRITO)'>CPI (COMISSÃO PARLAMENTAR DE INQUÉRITO)</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=63' title='Comissões Especiais'>Comissões Especiais</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=64' title='Comissões de Representação'>Comissões de Representação</a></li></ul><li><a target='_blank' href='http://www2.alerj.rj.gov.br/Diario-of.htm' title='Diário Oficial'>Diário Oficial</a></li><li><a target='_blank' href='http://www2.alerj.rj.gov.br/lotus_notes/default.asp?link=1' title='Processo Legislativo'>Processo Legislativo</a></li></ul><div class='detalhe'></div></div>--}}
+                {{--<div class='submenu'><ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Plenário'>Plenário</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=57' title='Discursos e Votações'>Discursos e Votações</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=59' title='Ordem do Dia'>Ordem do Dia</a></li></ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Comissões'>Comissões</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=60' title='O Que São'>O Que São</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=61' title='Comissões Permanentes'>Comissões Permanentes</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=62' title='CPI (COMISSÃO PARLAMENTAR DE INQUÉRITO)'>CPI (COMISSÃO PARLAMENTAR DE INQUÉRITO)</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=63' title='Comissões Especiais'>Comissões Especiais</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=64' title='Comissões de Representação'>Comissões de Representação</a></li></ul><li><a target='_blank' href='//www2.alerj.rj.gov.br/Diario-of.htm' title='Diário Oficial'>Diário Oficial</a></li><li><a target='_blank' href='//www2.alerj.rj.gov.br/lotus_notes/default.asp?link=1' title='Processo Legislativo'>Processo Legislativo</a></li></ul><div class='detalhe'></div></div>--}}
             {{--</li>--}}
 
             <!-- Authentication Links -->
@@ -301,14 +301,14 @@
                 {{--<li><a href="{{ url('/register') }}">Registro</a></li>--}}
             @else
                 <li class="pai">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <a dusk="loginName" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
                     <div class='submenu'>
                         <ul>
                             @if (Auth::user()->is_admin)
-                                <a href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
+                                <a dusk="loginGoToAdminPanel" href="{{ route('admin') }}" target="_blank">Ir ao Painel de Admin</a>
                             @endif
                             <li class='filho_pai'><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Sair</a></li>
                         </ul>
@@ -318,7 +318,7 @@
 
             {{--<li class="pai">--}}
                 {{--<a target="" href="javascript:;" class="titulo " title="COMUNICA&#199;&#195;O">COMUNICA&#199;&#195;O</a>--}}
-                {{--<div class='submenu'><ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Sala de Imprensa'>Sala de Imprensa</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='/Comunicacao/SalaDeImprensa/Noticias' title='Notícias'>Notícias</a></li><li><a  target='' href='/Comunicacao/SalaDeImprensa/Imagens' title='Imagens'>Imagens</a></li><li><a  target='' href='https://www.youtube.com/user/AlerjTV' title='TV ALERJ'>TV ALERJ</a></li><li><a  target='' href='http://www.radioalerj.com.br' title='Rádio ALERJ'>Rádio ALERJ</a></li><li><a  target='' href='/Comunicacao/SalaDeImprensa/Jornalistas' title='Cadastro de Jornalista'>Cadastro de Jornalista</a></li></ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Publicações'>Publicações</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='/Listar/IndexDocumentoEletronico?tipo=DI' title='CAPAS D. O.'>CAPAS D. O.</a></li><li><a  target='' href='/Comunicacao/Publicacoes/Jornal' title='Jornal da ALERJ'>Jornal da ALERJ</a></li></ul></ul><div class='detalhe'></div></div>--}}
+                {{--<div class='submenu'><ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Sala de Imprensa'>Sala de Imprensa</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='/Comunicacao/SalaDeImprensa/Noticias' title='Notícias'>Notícias</a></li><li><a  target='' href='/Comunicacao/SalaDeImprensa/Imagens' title='Imagens'>Imagens</a></li><li><a  target='' href='https://www.youtube.com/user/AlerjTV' title='TV ALERJ'>TV ALERJ</a></li><li><a  target='' href='//www.radioalerj.com.br' title='Rádio ALERJ'>Rádio ALERJ</a></li><li><a  target='' href='/Comunicacao/SalaDeImprensa/Jornalistas' title='Cadastro de Jornalista'>Cadastro de Jornalista</a></li></ul><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Publicações'>Publicações</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='/Listar/IndexDocumentoEletronico?tipo=DI' title='CAPAS D. O.'>CAPAS D. O.</a></li><li><a  target='' href='/Comunicacao/Publicacoes/Jornal' title='Jornal da ALERJ'>Jornal da ALERJ</a></li></ul></ul><div class='detalhe'></div></div>--}}
             {{--</li>--}}
 
 
@@ -330,7 +330,7 @@
 
             {{--<li class="pai">--}}
                 {{--<a target="" href="javascript:;" class="titulo " title="TRANSPAR&#202;NCIA">TRANSPAR&#202;NCIA</a>--}}
-                {{--<div class='submenu'><ul><li><a target='' href='http://www.alerj.rj.gov.br/Transparencia/PerguntasFrequentes' title='Perguntas Frequentes'>Perguntas Frequentes</a></li><li><a target='_blank' href='http://www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=L' title='Consulta de Preços'>Consulta de Preços</a></li><li><a target='_blank' href='http://www2.alerj.rj.gov.br/cadimalerj/default2.asp' title='Empresas Sancionadas'>Empresas Sancionadas</a></li><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Licitações'>Licitações</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='http://www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=C' title='Convites'>Convites</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=T' title='Tomada de Preços'>Tomada de Preços</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=P' title='Concorrências'>Concorrências</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=R' title='Pregão'>Pregão</a></li><li><a  target='' href='http://www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=I' title='Leilão'>Leilão</a></li></ul><li><a target='_blank' href='http://www2.alerj.rj.gov.br/leideacesso/default.html' title='Lei de Acesso à Informação'>Lei de Acesso à Informação</a></li></ul><div class='detalhe'></div></div>--}}
+                {{--<div class='submenu'><ul><li><a target='' href='//www.alerj.rj.gov.br/Transparencia/PerguntasFrequentes' title='Perguntas Frequentes'>Perguntas Frequentes</a></li><li><a target='_blank' href='//www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=L' title='Consulta de Preços'>Consulta de Preços</a></li><li><a target='_blank' href='//www2.alerj.rj.gov.br/cadimalerj/default2.asp' title='Empresas Sancionadas'>Empresas Sancionadas</a></li><li class='filho_pai'><a id='filhoPai' target='' href='#' title='Licitações'>Licitações</a><ul class='submenu_filho_pai comissoes' ><li><a  target='' href='//www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=C' title='Convites'>Convites</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=T' title='Tomada de Preços'>Tomada de Preços</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=P' title='Concorrências'>Concorrências</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=R' title='Pregão'>Pregão</a></li><li><a  target='' href='//www2.alerj.rj.gov.br/licitacao/default2.asp?param=buscar&modalidade=I' title='Leilão'>Leilão</a></li></ul><li><a target='_blank' href='//www2.alerj.rj.gov.br/leideacesso/default.html' title='Lei de Acesso à Informação'>Lei de Acesso à Informação</a></li></ul><div class='detalhe'></div></div>--}}
             {{--</li>--}}
 
 
@@ -376,17 +376,17 @@
     </div>
 
     <div class="controle">
-        <div class="logotipo"><a href="/" title="Assembléia Legislativa do Estado do Rio de Janeiro"><img src="http://www.alerj.rj.gov.br/Content/imagens/logotipo_inferior.png" width="145" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro"></a></div>
+        <div class="logotipo"><a href="/" title="Assembléia Legislativa do Estado do Rio de Janeiro"><img src="//www.alerj.rj.gov.br/Content/imagens/logotipo_inferior.png" width="145" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro"></a></div>
         <div class="informacoes">
             <p class="titulo">PALÁCIO TIRADENTES</p>
             <p>Rua Primeiro de março, s/n - Praça XV - Rio de Janeiro<br /><span>CEP</span> 20010-090 &nbsp;&nbsp; <span>Telefone</span> +55 (21) 2588-1000 &nbsp;&nbsp; <span>Fax</span> +55 (21) 2588-1516</p>
         </div>
         <div class="redes_sociais">
-            <div class="logotipo_redes"><a target="_blank" href="https://instagram.com/instalerj/" title="Instagram"><img src="http://www.alerj.rj.gov.br/Content/imagens/icone_36.png" width="20" height="20" alt="Instagram" title="Instagram"></a></div>
-            <div class="logotipo_redes"><a target="_blank" href="https://www.facebook.com/assembleiaRJ" title="Facebook"><img src="http://www.alerj.rj.gov.br/Content/imagens/icone_06.png" width="20" height="20" alt="Facebook" title="Facebook"></a></div>
-            <div class="logotipo_redes"><a target="_blank" href="https://plus.google.com/u/0/+alerj/posts"><img src="http://www.alerj.rj.gov.br/Content/imagens/icone_07.png" width="20" height="20" alt="Google Mais" title="Google Mais"></a></div>
-            <div class="logotipo_redes"><a target="_blank" href="https://twitter.com/alerj" title="Twitter"><img src="http://www.alerj.rj.gov.br/Content/imagens/icone_08.png" width="20" height="20" alt="Twitter" title="Twitter"></a></div>
-            <div class="logotipo_redes"><a target="_blank" href="https://www.youtube.com/user/dcsalerj" title="Youtube"><img src="http://www.alerj.rj.gov.br/Content/imagens/icone_09.png" width="20" height="20" alt="Youtube" title="Youtube"></a></div>
+            <div class="logotipo_redes"><a target="_blank" href="https://instagram.com/instalerj/" title="Instagram"><img src="//www.alerj.rj.gov.br/Content/imagens/icone_36.png" width="20" height="20" alt="Instagram" title="Instagram"></a></div>
+            <div class="logotipo_redes"><a target="_blank" href="https://www.facebook.com/assembleiaRJ" title="Facebook"><img src="//www.alerj.rj.gov.br/Content/imagens/icone_06.png" width="20" height="20" alt="Facebook" title="Facebook"></a></div>
+            <div class="logotipo_redes"><a target="_blank" href="https://plus.google.com/u/0/+alerj/posts"><img src="//www.alerj.rj.gov.br/Content/imagens/icone_07.png" width="20" height="20" alt="Google Mais" title="Google Mais"></a></div>
+            <div class="logotipo_redes"><a target="_blank" href="https://twitter.com/alerj" title="Twitter"><img src="//www.alerj.rj.gov.br/Content/imagens/icone_08.png" width="20" height="20" alt="Twitter" title="Twitter"></a></div>
+            <div class="logotipo_redes"><a target="_blank" href="https://www.youtube.com/user/dcsalerj" title="Youtube"><img src="//www.alerj.rj.gov.br/Content/imagens/icone_09.png" width="20" height="20" alt="Youtube" title="Youtube"></a></div>
         </div>
     </div>
 </div>
@@ -397,18 +397,18 @@
 
 <script type="text/javascript">
 
-    var rootUrl = "http://www.alerj.rj.gov.br/";
+    var rootUrl = "//www.alerj.rj.gov.br/";
 </script>
-<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/menu.js"></script>
-<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/cycle.js"></script>
-<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.placeholder.js"></script>
-<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/menu.js"></script>
+<script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/cycle.js"></script>
+<script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery.placeholder.js"></script>
+<script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery.jscrollpane.min.js"></script>
 <!-- <script type="text/javascript" src=""></script> -->
-<script type="text/javascript" src="http://www.alerj.rj.gov.br/Content/javascript/javascript.js"></script>
+<script type="text/javascript" src="//www.alerj.rj.gov.br/Content/javascript/javascript.js"></script>
 <script type="text/javascript">
 
-    var rootUrl = "http://www.alerj.rj.gov.br/";
+    var rootUrl = "//www.alerj.rj.gov.br/";
     var tempoBanner =
             jQuery(function ($) {
                 $(document).ajaxStart(function () {
@@ -467,14 +467,14 @@
 //    }
 </script>
 
-<script type="text/javascript" src="/www.alerj.rj.gov.br/listarPerfilDeputado.js"></script>
-<script type="text/javascript" src="/www.alerj.rj.gov.br/visualizar.js"></script>
-<script type="text/javascript" src="/www.alerj.rj.gov.br/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="/www.alerj.rj.gov.br/jquery.jscrollpane.min.js"></script>
-<script type="text/javascript" src="/www.alerj.rj.gov.br/jgrid.js"></script>
+<script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/Visualizar/listarPerfilDeputado.js"></script>
+<script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/Visualizar/visualizar.js"></script>
+<script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jgrid.js"></script>
 <!-- InputMask -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
-{{--<script type="text/javascript" src="http://www.alerj.rj.gov.br/Scripts/jquery.meio.mask.js"></script>--}}
+{{--<script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery.meio.mask.js"></script>--}}
 
 <script>
     jQuery(function($){

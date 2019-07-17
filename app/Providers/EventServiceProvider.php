@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use App\Events\ProposalChanged;
+use App\Listeners\NotifyProposalSubscribers;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -39,6 +43,8 @@ class EventServiceProvider extends ServiceProvider
             'SocialiteProviders\YouTube\YouTubeExtendSocialite@handle',
             'SocialiteProviders\Instagram\InstagramExtendSocialite@handle',
         ],
+
+        ProposalChanged::class => [NotifyProposalSubscribers::class],
     ];
 
     /**

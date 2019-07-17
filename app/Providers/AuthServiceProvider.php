@@ -6,8 +6,8 @@ use App\Policies\ProposalPolicy;
 use App\Policies\UserPolicy;
 use App\Proposal;
 use App\User;
-use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -17,7 +17,6 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        //'App\Model' => 'App\Policies\ModelPolicy',
         Proposal::class => ProposalPolicy::class,
         User::class => UserPolicy::class,
     ];
