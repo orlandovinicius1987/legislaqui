@@ -17,7 +17,12 @@
         <div class="col-md-5 col-xs-12">
             <div class="panel panel-default panel-bg">
                 <div class="panel-heading-login">
-                    <div class="col-xs-4 auth"><h3>Login</h3></div>
+                    <div class="col-xs-12 auth text-center">
+                        <h3>
+                            Login
+                        </h3>
+                    </div>
+
                     <div class="after-auth"><h4>Caso já tenha uma conta de usuário, entre com seus dados abaixo.</h4></div>
                 </div>
                 <div class="panel-body">
@@ -66,19 +71,22 @@
                             </div>
 
                         <div class="form-group">
+
                             <div class="col-xs-8 col-xs-offset-4">
                                 <button dusk="loginButton" type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-sign-in fa-fw"></i>&nbsp; Login
                                 </button>
 
-                                <a class="btn btn-link form-forgot-pwd" href="{{ url('/password/reset') }}">Esqueceu sua Senha?</a><br>
+                                {{--<a class="btn btn-link form-forgot-pwd" href="{{ url('/password/reset') }}">Esqueceu sua Senha?</a><br>
                                 <a href="redirect/facebook" id="facebookButton"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\fb_logo_blue29.png"></a>
                                 <a href="redirect/twitter"><img src="www.alerj.rj.gov.br\icone_08.png"></a>
                                 <a href="redirect/youtube"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\youTube48px.png"></a>
                                 <a href="redirect/linkedin"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\linkedin_2C_34px.png"></a>
                                 <a href="redirect/instagram"><img src="www.alerj.rj.gov.br\icone_36.png"></a>
                                 <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
+                                --}}
                             </div>
+
                         </div>
                     </form>
                 </div>

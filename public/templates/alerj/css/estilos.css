@@ -150,27 +150,27 @@ img.altocontraste_none {
 /* ---------------------------------------------------------------------------------------------------- Icones */
 .icone a.icone_01,
 .icone a.icone_01:hover {
-    background-image: url(../imagens/icone_01.png);
+    background-image: url(/imagens/icone_01.png);
 }
 
 .icone a.icone_02,
 .icone a.icone_02:hover {
-    background-image: url(../imagens/icone_02.png);
+    background-image: url(/imagens/icone_02.png);
 }
 
 .icone a.icone_03,
 .icone a.icone_03:hover {
-    background-image: url(../imagens/icone_03.png);
+    background-image: url(/imagens/icone_03.png);
 }
 
 .icone a.icone_04,
 .icone a.icone_04:hover {
-    background-image: url(../imagens/icone_04.png);
+    background-image: url(/imagens/icone_04.png);
 }
 
 .icone a.icone_05,
 .icone a.icone_05:hover {
-    background-image: url(../imagens/icone_05.png);
+    background-image: url(/imagens/icone_05.png);
 }
 
 .icone a.icone_27,
@@ -185,24 +185,24 @@ img.altocontraste_none {
 
 .icone a.icone_29,
 .icone a.icone_29:hover {
-    background-image: url(../imagens/icone_29.png);
+    background-image: url(/imagens/icone_29.png);
 }
 
 .icone a.icone_30,
 .icone a.icone_30:hover,
 .icone span.icone_30,
 .icone span.icone_30:hover {
-    background-image: url(../imagens/icone_30.png);
+    background-image: url(/imagens/icone_30.png);
 }
 
 .icone a.icone_34,
 .icone a.icone_34:hover {
-    background-image: url(../imagens/icone_34.png);
+    background-image: url(/imagens/icone_34.png);
 }
 
 .icone a.icone_35,
 .icone a.icone_35:hover {
-    background-image: url(../imagens/icone_35.png);
+    background-image: url(/imagens/icone_35.png);
 }
 /* ---------------------------------------------------------------------------------------------------- Icones informativos */
 .icone_info {
@@ -216,52 +216,52 @@ img.altocontraste_none {
 
 .icone_info.icone_12,
 .icone_info.icone_12:hover {
-    background-image: url(../imagens/icone_12.png);
+    background-image: url(/imagens/icone_12.png);
 }
 
 .icone_info.icone_13,
 .icone_info.icone_13:hover {
-    background-image: url(../imagens/icone_13.png);
+    background-image: url(/imagens/icone_13.png);
 }
 
 .icone_info.icone_14,
 .icone_info.icone_14:hover {
-    background-image: url(../imagens/icone_14.png);
+    background-image: url(/imagens/icone_14.png);
 }
 
 .icone_info.icone_15,
 .icone_info.icone_15:hover {
-    background-image: url(../imagens/icone_15.png);
+    background-image: url(/imagens/icone_15.png);
 }
 
 .icone_info.icone_16,
 .icone_info.icone_16:hover {
-    background-image: url(../imagens/icone_16.png);
+    background-image: url(/imagens/icone_16.png);
 }
 
 .icone_info.icone_17,
 .icone_info.icone_17:hover {
-    background-image: url(../imagens/icone_17.png);
+    background-image: url(/imagens/icone_17.png);
 }
 
 .icone_info.icone_18,
 .icone_info.icone_18:hover {
-    background-image: url(../imagens/icone_18.png);
+    background-image: url(/imagens/icone_18.png);
 }
 
 .icone_info.icone_19,
 .icone_info.icone_19:hover {
-    background-image: url(../imagens/icone_19.png);
+    background-image: url(/imagens/icone_19.png);
 }
 
 .icone_info.icone_20,
 .icone_info.icone_20:hover {
-    background-image: url(../imagens/icone_20.png);
+    background-image: url(/imagens/icone_20.png);
 }
 
 .icone_info.icone_37,
 .icone_info.icone_37:hover {
-    background-image: url(../imagens/icone_37.png);
+    background-image: url(/imagens/icone_37.png);
 }
 /* ---------------------------------------------------------------------------------------------------- Estrutura */
 * {
@@ -286,7 +286,7 @@ body {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
     border-bottom: 3px solid #9EA745;
-    background: url(../imagens/base_superior.jpg) repeat-x;
+    background: url(/imagens/base_superior.jpg) repeat-x;
 }
 
 .superior.blog .brilho {
@@ -295,7 +295,7 @@ body {
     overflow: hidden;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(../imagens/brilho.png) no-repeat top center;
+    background: url(/imagens/brilho.png) no-repeat top center;
 }
 
 .superior.blog .conteudo {
@@ -349,7 +349,7 @@ body {
     overflow: hidden;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(../imagens/base_superior.jpg) repeat-x;
+    background: url(/imagens/base_superior.jpg) repeat-x;
 }
 
 .superior .brilho {
@@ -358,7 +358,7 @@ body {
     overflow: hidden;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(../imagens/brilho.png) no-repeat top center;
+    background: url(/imagens/brilho.png) no-repeat top center;
 }
 
 .superior .conteudo {
@@ -427,7 +427,7 @@ body {
     overflow: hidden;
     margin: 0px;
     padding: 0px;
-    background: url(../imagens/direita.png) bottom right no-repeat, url(../imagens/esquerda.png) bottom left no-repeat;
+    background: url(/imagens/direita.png) bottom right no-repeat, url(/imagens/esquerda.png) bottom left no-repeat;
     position: absolute;
     top: 55px;
     right: 0;
@@ -515,19 +515,22 @@ body {
 }
 /* ---------------------------------------------------------------------------------------------------- Redes Sociais */
 .redes_sociais {
-    width: 105px;
+/*    width: 105px;
     height: 20px;
     overflow: hidden;
     margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;*/
+
+    margin-top:30px;
+    text-align: right;
 }
 
 .redes_sociais .logotipo_redes {
     width: 20px;
     height: 20px;
-    float: left;
+    /*float: right;*/
     overflow: hidden;
-    margin: 0px 0px 0px 1px;
+    margin: 0px 0px 0px 7px;
     padding: 0px 0px 0px 0px;
 }
 /* ---------------------------------------------------------------------------------------------------- Menu Movel */
@@ -540,16 +543,21 @@ body {
     height: 50px;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(../imagens/base_menu.jpg) repeat-x -4px 0px;
+    background: url(/imagens/base_menu.jpg) repeat-x -4px 0px;
 }
 
 .base_menu .menu {
-    width: 1000px;
+    width: 1170px;
     height: 50px;
     margin: 0px auto 0px auto;
     padding: 0px 0px 0px 0px;
-    background: url(../imagens/menu.png) repeat-x;
+    background: url(/imagens/menu.png) repeat-x;
 }
+
+
+
+
+
 
 .base_menu .menu ul {
     width: auto;
@@ -599,14 +607,14 @@ body {
     line-height: auto;
     margin: 0px 0px 0px 0px;
     padding: 18px 15px 0px 15px;
-    background: url(../imagens/menu_ativo.png) top center no-repeat;
+    background: url(/imagens/menu_ativo.png) top center no-repeat;
 }
 
 .base_menu .menu ul li .submenu .detalhe {
     width: 180px;
     height: 20px;
     float: left;
-    background: url(../imagens/detalhe_submenu.png) no-repeat;
+    background: url(/imagens/detalhe_submenu.png) no-repeat;
 }
 
 .base_menu .menu ul li .submenu {
@@ -835,7 +843,7 @@ body {
     border-radius: 3px 3px 3px 3px;
     margin: 0px 1px 0px 0px;
     padding: 6px 0px 0px 0px;
-    background: url(../imagens/bg_paginacao.png) repeat-x;
+    background: url(/imagens/bg_paginacao.png) repeat-x;
 }
 
 .painel .botao {
@@ -867,7 +875,7 @@ body {
 }
 
 .painel .controle {
-    width: 1000px;
+    width: 1170px;
     height: auto;
     list-style: none;
     margin: 0px auto 0px auto;
@@ -983,7 +991,7 @@ body {
 }
 /* ---------------------------------------------------------------------------------------------------- Central */
 .central {
-    width: 1000px;
+    width: 1170px;
     height: auto;
     overflow: hidden;
     margin: 0px auto 0px auto;
@@ -1129,7 +1137,7 @@ body {
     top: 30px;
     left: 43px;
     position: absolute;
-    background: url(../imagens/cartela_nav_ativo.png) no-repeat;
+    background: url(/imagens/cartela_nav_ativo.png) no-repeat;
 }
 
 
@@ -1143,7 +1151,7 @@ body {
     float: left;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 20px;
-    background: url(../imagens/cartela_fundo_nav_direita.jpg) bottom right no-repeat, url(../imagens/cartela_fundo_nav.jpg) bottom left no-repeat;
+    background: url(/imagens/cartela_fundo_nav_direita.jpg) bottom right no-repeat, url(/imagens/cartela_fundo_nav.jpg) bottom left no-repeat;
 }
 
 .central_deputados .cartela .navegacao ul li {
@@ -1236,7 +1244,7 @@ body {
     top: 30px;
     left: 43px;
     position: absolute;
-    background: url(../imagens/cartela_nav_ativo.png) no-repeat;
+    background: url(/imagens/cartela_nav_ativo.png) no-repeat;
 }
 
 .central .cartela .navegacao li.nav_ativa {
@@ -1249,7 +1257,7 @@ body {
     float: left;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 20px;
-    background: url(../imagens/cartela_fundo_nav_direita.jpg) bottom right no-repeat, url(../imagens/cartela_fundo_nav.jpg) bottom left no-repeat;
+    background: url(/imagens/cartela_fundo_nav_direita.jpg) bottom right no-repeat, url(/imagens/cartela_fundo_nav.jpg) bottom left no-repeat;
 }
 
 .central .cartela .navegacao ul li {
@@ -1566,11 +1574,11 @@ body {
     height: auto;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(../imagens/bg_interna_detalhe.jpg) center top no-repeat, url(../imagens/bg_interna.jpg) center top repeat-y;
+    background: url(/imagens/bg_interna_detalhe.jpg) center top no-repeat, url(/imagens/bg_interna.jpg) center top repeat-y;
 }
 
 .interna .controle {
-    width: 1000px;
+    width: 1170px;
     min-height: 550px;
     overflow: hidden;
     margin: 0px auto 0px auto;
@@ -1692,7 +1700,7 @@ body {
     float: left;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(../imagens/fio.png) bottom repeat-x;
+    background: url(/imagens/fio.png) bottom repeat-x;
 }
 
 .interna .conteudo .titulo h1 {
@@ -2044,7 +2052,7 @@ body {
     float: left;
     margin: 0px 0px 20px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(../imagens/fio_aba.jpg) no-repeat 0px 30px;
+    background: url(/imagens/fio_aba.jpg) no-repeat 0px 30px;
 }
 
 .interna .conteudo .abas_interna ul li {
@@ -2087,7 +2095,7 @@ body {
     padding: 5px 0px 0px 0px;
     opacity: 1.0;
     filter: alpha(opacity=100);
-    background: url(../imagens/cartela_nav_ativo.png) bottom center no-repeat;
+    background: url(/imagens/cartela_nav_ativo.png) bottom center no-repeat;
 }
 /* ---------------------------------------------------------------------------------------------------- Interna - Colunas */
 .interna .conteudo .controle_linha {
@@ -2403,7 +2411,7 @@ body {
     position: absolute;
     top: 60px;
     left: 80px;
-    background: url(../imagens/lider.png) no-repeat;
+    background: url(/imagens/lider.png) no-repeat;
 }
 
 .interna .conteudo .lista_deputados .imagem {
@@ -2895,7 +2903,7 @@ textarea {
     overflow: hidden;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(../imagens/direita.png) bottom right no-repeat, url(../imagens/esquerda.png) bottom left no-repeat;
+    background: url(/imagens/direita.png) bottom right no-repeat, url(/imagens/esquerda.png) bottom left no-repeat;
 }
 
 .interna .conteudo .formulario .controle_linha .label_texto label {
@@ -3146,7 +3154,7 @@ input.datapicker_mes_ano {
 img.ui-datepicker-trigger {
     width: 20px;
     height: 20px;
-    background: url(../imagens/icone_calendario_off.png);
+    background: url(/imagens/icone_calendario_off.png);
     cursor: pointer;
     margin-left: 0px !important;
     margin-top: 0px !important;
@@ -3158,14 +3166,14 @@ img.ui-datepicker-trigger:hover,
 img.ui-datepicker-trigger:focus {
     width: 20px;
     height: 20px;
-    background: url(../imagens/icone_calendario_hover.png);
+    background: url(/imagens/icone_calendario_hover.png);
     cursor: pointer;
 }
 
 .hora img.ui-datepicker-trigger {
     width: 20px;
     height: 20px;
-    background: url(../imagens/icone_hora_off.png);
+    background: url(/imagens/icone_hora_off.png);
     cursor: pointer;
     margin-left: 0px !important;
     margin-top: 0px !important;
@@ -3176,7 +3184,7 @@ img.ui-datepicker-trigger:focus {
 .hora img.ui-datepicker-trigger:hover {
     width: 20px;
     height: 20px;
-    background: url(../imagens/icone_hora_hover.png);
+    background: url(/imagens/icone_hora_hover.png);
     cursor: pointer;
 }
 
@@ -3200,7 +3208,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .interna .conteudo .formulario .coluna_01.inicio .campo {
     width: 190px;
-    background: url(../imagens/esquerda.png) bottom left no-repeat;
+    background: url(/imagens/esquerda.png) bottom left no-repeat;
 }
 
 .interna .conteudo .formulario .coluna_01.fim {
@@ -3209,7 +3217,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .interna .conteudo .formulario .coluna_01.fim .campo {
     width: 210px;
-    background: url(../imagens/direita_fim.png) bottom right no-repeat;
+    background: url(/imagens/direita_fim.png) bottom right no-repeat;
 }
 
 .interna .conteudo .formulario .coluna_01.fim label {
@@ -3472,7 +3480,7 @@ input[type=number]::-webkit-inner-spin-button {
     top: -10px;
     left: 20px;
     z-index: 22;
-    background: url(../imagens/lider_bancada.png) no-repeat;
+    background: url(/imagens/lider_bancada.png) no-repeat;
 }
 
 .interna .conteudo .painel_interno ul li .imagem .icone img {
@@ -3570,12 +3578,12 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .interna .conteudo .painel_interno .conteudo .controle_sroll .jspDrag {
-    background: url(../imagens/trilho.png);
+    background: url(/imagens/trilho.png);
     background-color: transparent !important;
 }
 
 .interna .conteudo .painel_interno .conteudo .controle_sroll .jspTrack {
-    background: url(../imagens/base_scroll.png);
+    background: url(/imagens/base_scroll.png);
     background-color: transparent !important;
 }
 
@@ -4181,7 +4189,7 @@ input[type=number]::-webkit-inner-spin-button {
     float: left;
     margin: 0px 0px 10px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(../imagens/direita.png) bottom right no-repeat, url(../imagens/esquerda.png) bottom left no-repeat;
+    background: url(/imagens/direita.png) bottom right no-repeat, url(/imagens/esquerda.png) bottom left no-repeat;
 }
 
 .interna .conteudo .campo .pesquisar input {
@@ -4305,55 +4313,55 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .paginacao .controle .icone a.primeira {
-    background: url(../imagens/icone_26.png) no-repeat;
+    background: url(/imagens/icone_26.png) no-repeat;
 }
 
 .paginacao .controle .icone a.primeira:hover {
-    background: url(../imagens/icone_26_hover.png) no-repeat;
+    background: url(/imagens/icone_26_hover.png) no-repeat;
 }
 
 .paginacao .controle .icone a.primeira.desativado,
 .paginacao .controle .icone a.primeira.desativado:hover {
-    background: url(../imagens/icone_26_desativado.png) no-repeat;
+    background: url(/imagens/icone_26_desativado.png) no-repeat;
 }
 
 .paginacao .controle .icone a.anterior {
-    background: url(../imagens/icone_25.png) no-repeat;
+    background: url(/imagens/icone_25.png) no-repeat;
 }
 
 .paginacao .controle .icone a.anterior:hover {
-    background: url(../imagens/icone_25_hover.png) no-repeat;
+    background: url(/imagens/icone_25_hover.png) no-repeat;
 }
 
 .paginacao .controle .icone a.anterior.desativado,
 .paginacao .controle .icone a.anterior.desativado:hover {
-    background: url(../imagens/icone_25_desativado.png) no-repeat;
+    background: url(/imagens/icone_25_desativado.png) no-repeat;
 }
 
 .paginacao .controle .icone a.proxima {
-    background: url(../imagens/icone_23.png) no-repeat;
+    background: url(/imagens/icone_23.png) no-repeat;
 }
 
 .paginacao .controle .icone a.proxima:hover {
-    background: url(../imagens/icone_23_hover.png) no-repeat;
+    background: url(/imagens/icone_23_hover.png) no-repeat;
 }
 
 .paginacao .controle .icone a.proxima.desativado,
 .paginacao .controle .icone a.proxima.desativado:hover {
-    background: url(../imagens/icone_23_desativado.png) no-repeat;
+    background: url(/imagens/icone_23_desativado.png) no-repeat;
 }
 
 .paginacao .icone a.ultima {
-    background: url(../imagens/icone_24.png) no-repeat;
+    background: url(/imagens/icone_24.png) no-repeat;
 }
 
 .paginacao .icone a.ultima:hover {
-    background: url(../imagens/icone_24_hover.png) no-repeat;
+    background: url(/imagens/icone_24_hover.png) no-repeat;
 }
 
 .paginacao .icone a.ultima.desativado,
 .paginacao .icone a.ultima.desativado:hover {
-    background: url(../imagens/icone_24_desativado.png) no-repeat;
+    background: url(/imagens/icone_24_desativado.png) no-repeat;
 }
 /* ---------------------------------------------------------------------------------------------------- Secundaria */
 .secundaria {
@@ -4373,7 +4381,7 @@ input[type=number]::-webkit-inner-spin-button {
     float: left;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(../imagens/detalhe_principal.jpg) center top no-repeat;
+    background: url(/imagens/detalhe_principal.jpg) center top no-repeat;
 }
 
 .secundaria .conteudo {
@@ -4697,14 +4705,14 @@ input[type=number]::-webkit-inner-spin-button {
     width: 100%;
     height: 240px;
     overflow: hidden;
-    background: url(../imagens/bg_inferior_01.png) bottom center no-repeat, url(../imagens/bg_inferior_02.png) bottom right repeat;
+    background: url(/imagens/bg_inferior_01.png) bottom center no-repeat, url(/imagens/bg_inferior_02.png) bottom right repeat;
 }
 
 .inferior.interna {
     width: 100%;
-    height: 240px;
+    /*height: 240px;*/
     overflow: hidden;
-    background: url(../imagens/bg_inferior_interna_01.png) bottom center no-repeat, url(../imagens/bg_inferior_02.png) bottom right repeat;
+    background: url(/imagens/bg_inferior_interna_01.png) bottom center no-repeat, url(/imagens/bg_inferior_02.png) bottom right repeat;
 }
 
 .inferior.interna .controle_botao {
@@ -4730,10 +4738,10 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .inferior .controle {
-    width: 895px;
-    height: 50px;
+    /*width: 895px;
+    height: 50px;*/
     margin: 140px auto 0px auto;
-    padding: 0px 0px 0px 65px;
+    /*padding: 0px 0px 0px 65px;*/
 }
 
 .inferior .controle .logotipo {
@@ -4746,14 +4754,14 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .inferior .controle .informacoes {
-    width: 480px;
+    /*width: 480px;
     height: 45px;
     float: left;
     margin: 0px 0px 0px 39px;
-    padding: 6px 0px 0px 0px;
+    padding: 6px 0px 0px 0px;*/
 }
 
-.inferior .controle .informacoes p.titulo {
+.inferior .informacoes p.titulo {
     width: 100%;
     height: 14px;
     font-size: 0.688em;
@@ -4764,10 +4772,10 @@ input[type=number]::-webkit-inner-spin-button {
     padding: 3px 0px 0px 0px;
 }
 
-.inferior .controle .informacoes p {
+.inferior  .informacoes p {
     width: 100%;
     height: auto;
-    font-size: 0.688em;
+    font-size: 1em;
     font-family: 'dinlight';
     color: #ffffff;
     line-height: 1.4em;
@@ -4775,19 +4783,19 @@ input[type=number]::-webkit-inner-spin-button {
     padding: 0px 0px 0px 0px;
 }
 
-.inferior .controle .informacoes p span {
+.inferior .informacoes p span {
     color: #9ea745;
 }
 
-.inferior .controle .informacoes p .br_320 {
+.inferior .informacoes p .br_320 {
     display: none;
 }
 
 .inferior .controle .redes_sociais {
-    width: 105px;
-    height: 20px;
+/*    width: 105px;
+    height: 20px;*/
     overflow: hidden;
-    float: right;
+    /*float: right;*/
     margin: 30px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
 }
@@ -4819,7 +4827,7 @@ input[type=number]::-webkit-inner-spin-button {
     font-weight: normal;
     text-transform: uppercase;
     border: 0px;
-    background: #ffffff url(../imagens/fio.png) bottom repeat-x;
+    background: #ffffff url(/imagens/fio.png) bottom repeat-x;
 }
 
 .ui-widget-header .ui-dialog-title {
@@ -4877,11 +4885,11 @@ input[type=number]::-webkit-inner-spin-button {
 .ui-state-default .ui-icon {
     width: 20px;
     height: 20px;
-    background: #ff6600 url(../imagens/icone_31.png);
+    background: #ff6600 url(/imagens/icone_31.png);
 }
 
 .ui-state-default .ui-icon:hover {
-    background: #d44100 url(../imagens/icone_31.png);
+    background: #d44100 url(/imagens/icone_31.png);
 }
 
 .ui-dialog .ui-dialog-titlebar-close {
@@ -4960,7 +4968,7 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .redes_sociais {
-        width: 145px;
+        /*width: 145px;*/
     }
 
 
@@ -4978,9 +4986,9 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
 
-    .inferior .controle .redes_sociais {
+/*    .inferior .controle .redes_sociais {
         width: 170px;
-    }
+    }*/
 
     .inferior .controle .redes_sociais .logotipo_redes {
         width: 30px;
@@ -5046,7 +5054,7 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/base_superior.jpg) repeat-x;
+        background: url(/imagens/base_superior.jpg) repeat-x;
     }
 
     .superior .brilho {
@@ -5055,7 +5063,7 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/brilho.png) no-repeat top center;
+        background: url(/imagens/brilho.png) no-repeat top center;
     }
 
     .superior .conteudo {
@@ -5096,7 +5104,7 @@ input[type=number]::-webkit-inner-spin-button {
         height: 50px;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/base_menu.jpg) repeat-x -4px 0px;
+        background: url(/imagens/base_menu.jpg) repeat-x -4px 0px;
     }
 
     .base_menu .menu {
@@ -5104,7 +5112,7 @@ input[type=number]::-webkit-inner-spin-button {
         height: 50px;
         margin: 0px auto 0px auto;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/menu.png) repeat-x;
+        background: url(/imagens/menu.png) repeat-x;
     }
 
     .base_menu .menu ul {
@@ -5154,14 +5162,14 @@ input[type=number]::-webkit-inner-spin-button {
         line-height: auto;
         margin: 0px 0px 0px 0px;
         padding: 18px 10px 0px 10px;
-        background: url(../imagens/menu_ativo.png) top center no-repeat;
+        background: url(/imagens/menu_ativo.png) top center no-repeat;
     }
 
     .base_menu .menu ul li .submenu .detalhe {
         width: 180px;
         height: 20px;
         float: left;
-        background: url(../imagens/detalhe_submenu.png) no-repeat;
+        background: url(/imagens/detalhe_submenu.png) no-repeat;
     }
 
     .base_menu .menu ul li .submenu {
@@ -5356,7 +5364,7 @@ input[type=number]::-webkit-inner-spin-button {
         border-radius: 3px 3px 3px 3px;
         margin: 0px 1px 2px 0px;
         padding: 6px 0px 0px 0px;
-        background: url(../imagens/bg_paginacao.png) repeat-x;
+        background: url(/imagens/bg_paginacao.png) repeat-x;
     }
 
     .painel .botao {
@@ -5575,7 +5583,7 @@ input[type=number]::-webkit-inner-spin-button {
         top: 30px;
         left: 43px;
         position: absolute;
-        background: url(../imagens/cartela_nav_ativo.png) no-repeat;
+        background: url(/imagens/cartela_nav_ativo.png) no-repeat;
     }
 
     .central .cartela .navegacao li.nav_ativa {
@@ -5588,7 +5596,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 20px;
-        background: url(../imagens/cartela_fundo_nav_direita.jpg) bottom right no-repeat, url(../imagens/cartela_fundo_nav.jpg) bottom left no-repeat;
+        background: url(/imagens/cartela_fundo_nav_direita.jpg) bottom right no-repeat, url(/imagens/cartela_fundo_nav.jpg) bottom left no-repeat;
     }
 
     .central .cartela .navegacao ul li {
@@ -5821,7 +5829,7 @@ input[type=number]::-webkit-inner-spin-button {
         height: auto;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/bg_interna_detalhe_800.jpg) center top no-repeat, url(../imagens/bg_interna_800.jpg) center top repeat-y;
+        background: url(/imagens/bg_interna_detalhe_800.jpg) center top no-repeat, url(/imagens/bg_interna_800.jpg) center top repeat-y;
     }
 
     .interna .controle {
@@ -5951,7 +5959,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/fio.png) bottom repeat-x;
+        background: url(/imagens/fio.png) bottom repeat-x;
     }
 
     .interna .conteudo .titulo h1 {
@@ -6295,7 +6303,7 @@ input[type=number]::-webkit-inner-spin-button {
         padding: 5px 0px 0px 0px;
         opacity: 1.0;
         filter: alpha(opacity=100);
-        background: url(../imagens/cartela_nav_ativo.png) bottom center no-repeat;
+        background: url(/imagens/cartela_nav_ativo.png) bottom center no-repeat;
     }
     /* ---------------------------------------------------------------------------------------------------- Interna - Colunas - 800 */
     .interna .conteudo .controle_linha {
@@ -6763,7 +6771,7 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/direita.png) bottom right no-repeat, url(../imagens/esquerda.png) bottom left no-repeat;
+        background: url(/imagens/direita.png) bottom right no-repeat, url(/imagens/esquerda.png) bottom left no-repeat;
     }
 
     .interna .conteudo .formulario .controle_linha .label_texto label {
@@ -7021,7 +7029,7 @@ input[type=number]::-webkit-inner-spin-button {
     img.ui-datepicker-trigger {
         width: 20px;
         height: 20px;
-        background: url(../imagens/icone_calendario_off.png);
+        background: url(/imagens/icone_calendario_off.png);
         cursor: pointer;
         margin-left: 0px !important;
         margin-top: 0px !important;
@@ -7033,14 +7041,14 @@ input[type=number]::-webkit-inner-spin-button {
     img.ui-datepicker-trigger:focus {
         width: 20px;
         height: 20px;
-        background: url(../imagens/icone_calendario_hover.png);
+        background: url(/imagens/icone_calendario_hover.png);
         cursor: pointer;
     }
 
     .hora img.ui-datepicker-trigger {
         width: 20px;
         height: 20px;
-        background: url(../imagens/icone_hora_off.png);
+        background: url(/imagens/icone_hora_off.png);
         cursor: pointer;
         margin-left: 0px !important;
         margin-top: 0px !important;
@@ -7051,7 +7059,7 @@ input[type=number]::-webkit-inner-spin-button {
     .hora img.ui-datepicker-trigger:hover {
         width: 20px;
         height: 20px;
-        background: url(../imagens/icone_hora_hover.png);
+        background: url(/imagens/icone_hora_hover.png);
         cursor: pointer;
     }
 
@@ -7075,7 +7083,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     .interna .conteudo .formulario .coluna_01.inicio .campo {
         width: 190px;
-        background: url(../imagens/esquerda.png) bottom left no-repeat;
+        background: url(/imagens/esquerda.png) bottom left no-repeat;
     }
 
     .interna .conteudo .formulario .coluna_01.fim {
@@ -7084,7 +7092,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     .interna .conteudo .formulario .coluna_01.fim .campo {
         width: 210px;
-        background: url(../imagens/direita_fim.png) bottom right no-repeat;
+        background: url(/imagens/direita_fim.png) bottom right no-repeat;
     }
 
     .interna .conteudo .formulario .coluna_01.fim label {
@@ -7284,7 +7292,7 @@ input[type=number]::-webkit-inner-spin-button {
         top: -10px;
         left: 20px;
         z-index: 22;
-        background: url(../imagens/lider_bancada.png) no-repeat;
+        background: url(/imagens/lider_bancada.png) no-repeat;
     }
 
     .interna .conteudo .painel_interno ul li .imagem .icone img {
@@ -7386,12 +7394,12 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .interna .conteudo .painel_interno .conteudo .controle_sroll .jspDrag {
-        background: url(../imagens/trilho.png);
+        background: url(/imagens/trilho.png);
         background-color: transparent !important;
     }
 
     .interna .conteudo .painel_interno .conteudo .controle_sroll .jspTrack {
-        background: url(../imagens/base_scroll.png);
+        background: url(/imagens/base_scroll.png);
         background-color: transparent !important;
     }
 
@@ -7938,7 +7946,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 0px 0px 20px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/direita.png) bottom right no-repeat, url(../imagens/esquerda.png) bottom left no-repeat;
+        background: url(/imagens/direita.png) bottom right no-repeat, url(/imagens/esquerda.png) bottom left no-repeat;
     }
 
     .interna .conteudo .pesquisar input {
@@ -8028,55 +8036,55 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .paginacao .controle .icone a.primeira {
-        background: url(../imagens/icone_26.png) no-repeat;
+        background: url(/imagens/icone_26.png) no-repeat;
     }
 
     .paginacao .controle .icone a.primeira:hover {
-        background: url(../imagens/icone_26_hover.png) no-repeat;
+        background: url(/imagens/icone_26_hover.png) no-repeat;
     }
 
     .paginacao .controle .icone a.primeira.desativado,
     .paginacao .controle .icone a.primeira.desativado:hover {
-        background: url(../imagens/icone_26_desativado.png) no-repeat;
+        background: url(/imagens/icone_26_desativado.png) no-repeat;
     }
 
     .paginacao .controle .icone a.anterior {
-        background: url(../imagens/icone_25.png) no-repeat;
+        background: url(/imagens/icone_25.png) no-repeat;
     }
 
     .paginacao .controle .icone a.anterior:hover {
-        background: url(../imagens/icone_25_hover.png) no-repeat;
+        background: url(/imagens/icone_25_hover.png) no-repeat;
     }
 
     .paginacao .controle .icone a.anterior.desativado,
     .paginacao .controle .icone a.anterior.desativado:hover {
-        background: url(../imagens/icone_25_desativado.png) no-repeat;
+        background: url(/imagens/icone_25_desativado.png) no-repeat;
     }
 
     .paginacao .controle .icone a.proxima {
-        background: url(../imagens/icone_23.png) no-repeat;
+        background: url(/imagens/icone_23.png) no-repeat;
     }
 
     .paginacao .controle .icone a.proxima:hover {
-        background: url(../imagens/icone_23_hover.png) no-repeat;
+        background: url(/imagens/icone_23_hover.png) no-repeat;
     }
 
     .paginacao .controle .icone a.proxima.desativado,
     .paginacao .controle .icone a.proxima.desativado:hover {
-        background: url(../imagens/icone_23_desativado.png) no-repeat;
+        background: url(/imagens/icone_23_desativado.png) no-repeat;
     }
 
     .paginacao .icone a.ultima {
-        background: url(../imagens/icone_24.png) no-repeat;
+        background: url(/imagens/icone_24.png) no-repeat;
     }
 
     .paginacao .icone a.ultima:hover {
-        background: url(../imagens/icone_24_hover.png) no-repeat;
+        background: url(/imagens/icone_24_hover.png) no-repeat;
     }
 
     .paginacao .icone a.ultima.desativado,
     .paginacao .icone a.ultima.desativado:hover {
-        background: url(../imagens/icone_24_desativado.png) no-repeat;
+        background: url(/imagens/icone_24_desativado.png) no-repeat;
     }
     /* ---------------------------------------------------------------------------------------------------- Secundaria - 800 */
     .secundaria {
@@ -8096,7 +8104,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/detalhe_principal_800.jpg) center top no-repeat;
+        background: url(/imagens/detalhe_principal_800.jpg) center top no-repeat;
     }
 
     .secundaria .conteudo {
@@ -8301,14 +8309,14 @@ input[type=number]::-webkit-inner-spin-button {
         width: 100%;
         height: 220px;
         overflow: hidden;
-        background: url(../imagens/bg_inferior_01_800.png) bottom center no-repeat, url(../imagens/bg_inferior_02.png) bottom right repeat;
+        background: url(/imagens/bg_inferior_01_800.png) bottom center no-repeat, url(/imagens/bg_inferior_02.png) bottom right repeat;
     }
 
     .inferior.interna {
         width: 100%;
-        height: 240px;
+        /*height: 240px;*/
         overflow: hidden;
-        background: url(../imagens/bg_inferior_interna_01_800.png) bottom center no-repeat, url(../imagens/bg_inferior_02.png) bottom right repeat;
+        background: #212e52 ;
     }
 
     .inferior.interna .controle_botao {
@@ -8349,11 +8357,11 @@ input[type=number]::-webkit-inner-spin-button {
         padding: 0px 0px 0px 0px;
     }
 
-    .inferior .controle .informacoes {
+/*    .inferior .controle .informacoes {
         width: 380px;
-    }
+    }*/
 
-    .inferior .controle .informacoes p span {
+    .inferior .informacoes p span {
         color: #9ea745;
     }
 
@@ -8544,7 +8552,7 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/base_superior.jpg) repeat-x;
+        background: url(/imagens/base_superior.jpg) repeat-x;
     }
 
     .superior .brilho {
@@ -8553,7 +8561,7 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/brilho.png) no-repeat top center;
+        background: url(/imagens/brilho.png) no-repeat top center;
     }
 
     .superior .conteudo {
@@ -8628,7 +8636,7 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px -5px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/menu_movel_detalhe.png) no-repeat;
+        background: url(/imagens/menu_movel_detalhe.png) no-repeat;
     }
 
     .fundo_submovel {
@@ -8738,7 +8746,7 @@ input[type=number]::-webkit-inner-spin-button {
         text-decoration: none;
         margin: 0px 0px 0px 0px;
         padding: 5px 0px 5px 20px;
-        background: url(../imagens/menu_detalhe_item.png) 0px 10px no-repeat;
+        background: url(/imagens/menu_detalhe_item.png) 0px 10px no-repeat;
     }
 
     .menu_movel .controle ul li a:hover {
@@ -8756,7 +8764,7 @@ input[type=number]::-webkit-inner-spin-button {
         text-decoration: none;
         margin: 0px 0px 0px 0px;
         padding: 5px 0px 5px 10px;
-        background: url(../imagens/menu_detalhe_item.png) 0px 10px no-repeat;
+        background: url(/imagens/menu_detalhe_item.png) 0px 10px no-repeat;
     }
 
     .menu_movel .controle ul li a:hover.ativo {
@@ -8795,7 +8803,7 @@ input[type=number]::-webkit-inner-spin-button {
         box-shadow: none;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/bg_submenu.png) repeat-y;
+        background: url(/imagens/bg_submenu.png) repeat-y;
     }
 
     .menu_movel .controle ul li .submenu_movel ul li {
@@ -8867,16 +8875,16 @@ input[type=number]::-webkit-inner-spin-button {
         height: 50px;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/base_menu.jpg) repeat-x -4px 0px;
+        background: url(/imagens/base_menu.jpg) repeat-x -4px 0px;
     }
 
     .base_menu .menu {
-        width: 1000px;
+        width: 1170px;
         height: 50px;
         margin: 0px auto 0px auto;
         display: none;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/menu.png) repeat-x;
+        background: url(/imagens/menu.png) repeat-x;
     }
     /* ---------------------------------------------------------------------------------------------------- Ícones - 480 */
     .icone {
@@ -8965,7 +8973,7 @@ input[type=number]::-webkit-inner-spin-button {
         border-radius: 3px 3px 3px 3px;
         margin: 0px 1px 2px 0px;
         padding: 6px 0px 0px 0px;
-        background: url(../imagens/bg_paginacao.png) repeat-x;
+        background: url(/imagens/bg_paginacao.png) repeat-x;
     }
 
     .painel .botao {
@@ -9200,7 +9208,7 @@ input[type=number]::-webkit-inner-spin-button {
         top: 30px;
         left: 43px;
         position: absolute;
-        background: url(../imagens/cartela_nav_ativo.png) no-repeat;
+        background: url(/imagens/cartela_nav_ativo.png) no-repeat;
     }
 
     .central_deputados .cartela .navegacao li.nav_ativa {
@@ -9229,7 +9237,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 20px;
-        background: url(../imagens/cartela_fundo_nav_direita.jpg) bottom right no-repeat, url(../imagens/cartela_fundo_nav_480.jpg) bottom left no-repeat;
+        background: url(/imagens/cartela_fundo_nav_direita.jpg) bottom right no-repeat, url(/imagens/cartela_fundo_nav_480.jpg) bottom left no-repeat;
     }
 
     .central_deputados .cartela .navegacao ul li {
@@ -9273,7 +9281,7 @@ input[type=number]::-webkit-inner-spin-button {
         top: 30px;
         left: 43px;
         position: absolute;
-        background: url(../imagens/cartela_nav_ativo.png) no-repeat;
+        background: url(/imagens/cartela_nav_ativo.png) no-repeat;
     }
 
     .central .cartela .navegacao li.nav_ativa {
@@ -9286,7 +9294,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 20px;
-        background: url(../imagens/cartela_fundo_nav_direita.jpg) bottom right no-repeat, url(../imagens/cartela_fundo_nav_480.jpg) bottom left no-repeat;
+        background: url(/imagens/cartela_fundo_nav_direita.jpg) bottom right no-repeat, url(/imagens/cartela_fundo_nav_480.jpg) bottom left no-repeat;
     }
 
     .central .cartela .navegacao ul li {
@@ -9645,11 +9653,11 @@ input[type=number]::-webkit-inner-spin-button {
         height: auto;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/bg_interna_480.jpg) center top repeat-y;
+        background: url(/imagens/bg_interna_480.jpg) center top repeat-y;
     }
 
     .interna .controle {
-        width: 480px;
+        width: 100%;
         min-height: 550px;
         overflow: hidden;
         margin: 0px auto 0px auto;
@@ -9663,7 +9671,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 30px 0px 30px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/fio.png) bottom repeat-x;
+        background: url(/imagens/fio.png) bottom repeat-x;
     }
 
     .interna .controle .banner {
@@ -9785,7 +9793,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/fio.png) bottom repeat-x;
+        background: url(/imagens/fio.png) bottom repeat-x;
     }
 
     .interna .conteudo .titulo h1 {
@@ -10128,7 +10136,7 @@ input[type=number]::-webkit-inner-spin-button {
         padding: 5px 0px 0px 0px;
         opacity: 1.0;
         filter: alpha(opacity=100);
-        background: url(../imagens/cartela_nav_ativo.png) bottom center no-repeat;
+        background: url(/imagens/cartela_nav_ativo.png) bottom center no-repeat;
     }
     /* ---------------------------------------------------------------------------------------------------- Interna - Colunas - 480 */
     .interna .conteudo .controle_linha {
@@ -10603,7 +10611,7 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/direita.png) bottom right no-repeat, url(../imagens/esquerda.png) bottom left no-repeat;
+        background: url(/imagens/direita.png) bottom right no-repeat, url(/imagens/esquerda.png) bottom left no-repeat;
     }
 
     .interna .conteudo .formulario .controle_linha .label_texto label {
@@ -10861,7 +10869,7 @@ input[type=number]::-webkit-inner-spin-button {
     img.ui-datepicker-trigger {
         width: 20px;
         height: 20px;
-        background: url(../imagens/icone_calendario_off.png);
+        background: url(/imagens/icone_calendario_off.png);
         cursor: pointer;
         margin-left: 0px !important;
         margin-top: 0px !important;
@@ -10873,14 +10881,14 @@ input[type=number]::-webkit-inner-spin-button {
     img.ui-datepicker-trigger:focus {
         width: 20px;
         height: 20px;
-        background: url(../imagens/icone_calendario_hover.png);
+        background: url(/imagens/icone_calendario_hover.png);
         cursor: pointer;
     }
 
     .hora img.ui-datepicker-trigger {
         width: 20px;
         height: 20px;
-        background: url(../imagens/icone_hora_off.png);
+        background: url(/imagens/icone_hora_off.png);
         cursor: pointer;
         margin-left: 0px !important;
         margin-top: 0px !important;
@@ -10891,7 +10899,7 @@ input[type=number]::-webkit-inner-spin-button {
     .hora img.ui-datepicker-trigger:hover {
         width: 20px;
         height: 20px;
-        background: url(../imagens/icone_hora_hover.png);
+        background: url(/imagens/icone_hora_hover.png);
         cursor: pointer;
     }
 
@@ -10915,7 +10923,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     .interna .conteudo .formulario .coluna_01.inicio .campo {
         width: 230px;
-        background: url(../imagens/esquerda.png) bottom left no-repeat;
+        background: url(/imagens/esquerda.png) bottom left no-repeat;
     }
 
     .interna .conteudo .formulario .coluna_01.fim {
@@ -10924,7 +10932,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     .interna .conteudo .formulario .coluna_01.fim .campo {
         width: 210px;
-        background: url(../imagens/direita_fim.png) bottom right no-repeat;
+        background: url(/imagens/direita_fim.png) bottom right no-repeat;
     }
 
     .interna .conteudo .formulario .coluna_01.fim label {
@@ -11079,7 +11087,7 @@ input[type=number]::-webkit-inner-spin-button {
         top: -10px;
         left: 20px;
         z-index: 22;
-        background: url(../imagens/lider_bancada.png) no-repeat;
+        background: url(/imagens/lider_bancada.png) no-repeat;
     }
 
     .interna .conteudo .painel_interno ul li .imagem .icone img {
@@ -11181,12 +11189,12 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .interna .conteudo .painel_interno .conteudo .controle_sroll .jspDrag {
-        background: url(../imagens/trilho.png);
+        background: url(/imagens/trilho.png);
         background-color: transparent !important;
     }
 
     .interna .conteudo .painel_interno .conteudo .controle_sroll .jspTrack {
-        background: url(../imagens/base_scroll.png);
+        background: url(/imagens/base_scroll.png);
         background-color: transparent !important;
     }
 
@@ -11731,7 +11739,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 0px 0px 20px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/direita.png) bottom right no-repeat, url(../imagens/esquerda.png) bottom left no-repeat;
+        background: url(/imagens/direita.png) bottom right no-repeat, url(/imagens/esquerda.png) bottom left no-repeat;
     }
 
     .interna .conteudo .pesquisar input {
@@ -11821,55 +11829,55 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .paginacao .controle .icone a.primeira {
-        background: url(../imagens/icone_26.png) no-repeat;
+        background: url(/imagens/icone_26.png) no-repeat;
     }
 
     .paginacao .controle .icone a.primeira:hover {
-        background: url(../imagens/icone_26_hover.png) no-repeat;
+        background: url(/imagens/icone_26_hover.png) no-repeat;
     }
 
     .paginacao .controle .icone a.primeira.desativado,
     .paginacao .controle .icone a.primeira.desativado:hover {
-        background: url(../imagens/icone_26_desativado.png) no-repeat;
+        background: url(/imagens/icone_26_desativado.png) no-repeat;
     }
 
     .paginacao .controle .icone a.anterior {
-        background: url(../imagens/icone_25.png) no-repeat;
+        background: url(/imagens/icone_25.png) no-repeat;
     }
 
     .paginacao .controle .icone a.anterior:hover {
-        background: url(../imagens/icone_25_hover.png) no-repeat;
+        background: url(/imagens/icone_25_hover.png) no-repeat;
     }
 
     .paginacao .controle .icone a.anterior.desativado,
     .paginacao .controle .icone a.anterior.desativado:hover {
-        background: url(../imagens/icone_25_desativado.png) no-repeat;
+        background: url(/imagens/icone_25_desativado.png) no-repeat;
     }
 
     .paginacao .controle .icone a.proxima {
-        background: url(../imagens/icone_23.png) no-repeat;
+        background: url(/imagens/icone_23.png) no-repeat;
     }
 
     .paginacao .controle .icone a.proxima:hover {
-        background: url(../imagens/icone_23_hover.png) no-repeat;
+        background: url(/imagens/icone_23_hover.png) no-repeat;
     }
 
     .paginacao .controle .icone a.proxima.desativado,
     .paginacao .controle .icone a.proxima.desativado:hover {
-        background: url(../imagens/icone_23_desativado.png) no-repeat;
+        background: url(/imagens/icone_23_desativado.png) no-repeat;
     }
 
     .paginacao .icone a.ultima {
-        background: url(../imagens/icone_24.png) no-repeat;
+        background: url(/imagens/icone_24.png) no-repeat;
     }
 
     .paginacao .icone a.ultima:hover {
-        background: url(../imagens/icone_24_hover.png) no-repeat;
+        background: url(/imagens/icone_24_hover.png) no-repeat;
     }
 
     .paginacao .icone a.ultima.desativado,
     .paginacao .icone a.ultima.desativado:hover {
-        background: url(../imagens/icone_24_desativado.png) no-repeat;
+        background: url(/imagens/icone_24_desativado.png) no-repeat;
     }
     /* ---------------------------------------------------------------------------------------------------- Secundaria - 480 */
     .secundaria {
@@ -11889,7 +11897,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/detalhe_principal_480.jpg) center top no-repeat;
+        background: url(/imagens/detalhe_principal_480.jpg) center top no-repeat;
     }
 
     .secundaria .conteudo {
@@ -12092,25 +12100,27 @@ input[type=number]::-webkit-inner-spin-button {
     /* ---------------------------------------------------------------------------------------------------- Inferior - 480 ----*/
     .inferior {
         width: 100%;
-        height: 200px;
+        /*height: 200px;*/
         overflow: hidden;
-        background: url(../imagens/bg_inferior_04.png) bottom right repeat;
+        background: url(/imagens/bg_inferior_04.png) bottom right repeat;
     }
 
     .inferior.interna {
         width: 100%;
+        /*
         height: 190px;
         overflow: hidden;
-        background: url(../imagens/bg_inferior_04.png) bottom right repeat;
+        background: url(/imagens/bg_inferior_04.png) bottom right repeat;
+        */
     }
 
     .inferior.interna .controle_botao {
-        width: 440px;
+        width: 100%;
         height: 30px;
         overflow: hidden;
         margin: 0px auto 0px auto;
         padding: 0px 20px 0px 20px;
-        background: url(../imagens/bg_interna_480.jpg) center top repeat-y;
+        background: url(/imagens/bg_interna_480.jpg) center top repeat-y;
     }
 
     .inferior.interna .controle_botao a {
@@ -12128,8 +12138,8 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .inferior .controle {
-        width: 440px;
-        height: 130px;
+        width: 100%;
+        height: auto;
         margin: 40px auto 0px auto;
         padding: 30px 20px 0px 20px;
         background: #212e52;
@@ -12149,15 +12159,15 @@ input[type=number]::-webkit-inner-spin-button {
         width: 100px;
     }
 
-    .inferior .controle .informacoes {
+  /*  .inferior .controle .informacoes {
         width: 440px;
         height: 40px;
         float: left;
         margin: 0px 0px 0px 0px;
         padding: 10px 0px 0px 0px;
-    }
+    }*/
 
-    .inferior .controle .informacoes p.titulo {
+    .inferior .informacoes p.titulo {
         width: 100%;
         height: 14px;
         font-size: 0.688em;
@@ -12168,7 +12178,7 @@ input[type=number]::-webkit-inner-spin-button {
         padding: 3px 0px 0px 0px;
     }
 
-    .inferior .controle .informacoes p span {
+    .inferior .informacoes p span {
         color: #9ea745;
     }
 
@@ -12277,9 +12287,9 @@ input[type=number]::-webkit-inner-spin-button {
     /* Ajuste icones redes sociais 480 */
 
 
-    .redes_sociais {
+/*    .redes_sociais {
         width: 170px;
-    }
+    }*/
 
     .superior .conteudo .logotipo {
         width: 180px;
@@ -12301,9 +12311,9 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
 
-    .inferior .controle .redes_sociais {
+/*    .inferior .controle .redes_sociais {
         width: 160px;
-    }
+    }*/
 
     .inferior .controle .redes_sociais .logotipo_redes {
         width: 30px;
@@ -12343,7 +12353,7 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/base_superior.jpg) repeat-x;
+        background: url(/imagens/base_superior.jpg) repeat-x;
     }
 
     .superior .brilho {
@@ -12352,7 +12362,7 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/brilho.png) no-repeat top center;
+        background: url(/imagens/brilho.png) no-repeat top center;
     }
 
     .superior .conteudo {
@@ -12365,7 +12375,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     .superior .conteudo .logotipo {
         width: 130px;
-        height: 50px;
+        height: auto;
         float: left;
         overflow: hidden;
         margin: 0px 0px 0px 0px;
@@ -12443,7 +12453,7 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px -5px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/menu_movel_320_detalhe.png) no-repeat;
+        background: url(/imagens/menu_movel_320_detalhe.png) no-repeat;
     }
 
     .fundo_submovel {
@@ -12552,7 +12562,7 @@ input[type=number]::-webkit-inner-spin-button {
         text-decoration: none;
         margin: 0px 0px 0px 0px;
         padding: 5px 0px 5px 20px;
-        background: url(../imagens/menu_detalhe_item.png) 0px 10px no-repeat;
+        background: url(/imagens/menu_detalhe_item.png) 0px 10px no-repeat;
     }
 
     .menu_movel .controle ul li a:hover {
@@ -12570,7 +12580,7 @@ input[type=number]::-webkit-inner-spin-button {
         text-decoration: none;
         margin: 0px 0px 0px 0px;
         padding: 5px 0px 5px 10px;
-        background: url(../imagens/menu_detalhe_item.png) 0px 10px no-repeat;
+        background: url(/imagens/menu_detalhe_item.png) 0px 10px no-repeat;
     }
 
     .menu_movel .controle ul li a:hover.ativo {
@@ -12609,7 +12619,7 @@ input[type=number]::-webkit-inner-spin-button {
         box-shadow: none;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/bg_submenu.png) repeat-y;
+        background: url(/imagens/bg_submenu.png) repeat-y;
     }
 
     .menu_movel .controle ul li .submenu_movel ul li {
@@ -12662,16 +12672,16 @@ input[type=number]::-webkit-inner-spin-button {
         height: 50px;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/base_menu.jpg) repeat-x -4px 0px;
+        background: url(/imagens/base_menu.jpg) repeat-x -4px 0px;
     }
 
     .base_menu .menu {
-        width: 1000px;
+        width: 1170px;
         height: 50px;
         margin: 0px auto 0px auto;
         display: none;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/menu.png) repeat-x;
+        background: url(/imagens/menu.png) repeat-x;
     }
     /* ---------------------------------------------------------------------------------------------------- Ícones - 320 */
     .icone {
@@ -12762,7 +12772,7 @@ input[type=number]::-webkit-inner-spin-button {
         border-radius: 3px 3px 3px 3px;
         margin: 0px 1px 2px 0px;
         padding: 6px 0px 0px 0px;
-        background: url(../imagens/bg_paginacao.png) repeat-x;
+        background: url(/imagens/bg_paginacao.png) repeat-x;
     }
 
     .painel .botao {
@@ -13320,11 +13330,11 @@ input[type=number]::-webkit-inner-spin-button {
         height: auto;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/bg_interna_320.jpg) center top repeat-y;
+        background: url(/imagens/bg_interna_320.jpg) center top repeat-y;
     }
 
     .interna .controle {
-        width: 280px;
+        width: 100%;
         min-height: 250px;
         overflow: hidden;
         margin: 0px auto 0px auto;
@@ -13338,7 +13348,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 30px 0px 30px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/fio.png) bottom repeat-x;
+        background: url(/imagens/fio.png) bottom repeat-x;
     }
 
     .interna .controle .banner {
@@ -13460,7 +13470,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/fio.png) bottom repeat-x;
+        background: url(/imagens/fio.png) bottom repeat-x;
     }
 
     .interna .conteudo .titulo h1 {
@@ -13810,7 +13820,7 @@ input[type=number]::-webkit-inner-spin-button {
         padding: 5px 0px 0px 0px;
         opacity: 1.0;
         filter: alpha(opacity=100);
-        background: url(../imagens/cartela_nav_ativo.png) bottom center no-repeat;
+        background: url(/imagens/cartela_nav_ativo.png) bottom center no-repeat;
     }
     /* ---------------------------------------------------------------------------------------------------- Interna - Colunas - 320 */
     .interna .conteudo .controle_linha {
@@ -14280,7 +14290,7 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/direita.png) bottom right no-repeat, url(../imagens/esquerda.png) bottom left no-repeat;
+        background: url(/imagens/direita.png) bottom right no-repeat, url(/imagens/esquerda.png) bottom left no-repeat;
     }
 
     .interna .conteudo .formulario .controle_linha .label_texto label {
@@ -14538,7 +14548,7 @@ input[type=number]::-webkit-inner-spin-button {
     img.ui-datepicker-trigger {
         width: 20px;
         height: 20px;
-        background: url(../imagens/icone_calendario_off.png);
+        background: url(/imagens/icone_calendario_off.png);
         cursor: pointer;
         margin-left: 0px !important;
         margin-top: 0px !important;
@@ -14550,14 +14560,14 @@ input[type=number]::-webkit-inner-spin-button {
     img.ui-datepicker-trigger:focus {
         width: 20px;
         height: 20px;
-        background: url(../imagens/icone_calendario_hover.png);
+        background: url(/imagens/icone_calendario_hover.png);
         cursor: pointer;
     }
 
     .hora img.ui-datepicker-trigger {
         width: 20px;
         height: 20px;
-        background: url(../imagens/icone_hora_off.png);
+        background: url(/imagens/icone_hora_off.png);
         cursor: pointer;
         margin-left: 0px !important;
         margin-top: 0px !important;
@@ -14568,7 +14578,7 @@ input[type=number]::-webkit-inner-spin-button {
     .hora img.ui-datepicker-trigger:hover {
         width: 20px;
         height: 20px;
-        background: url(../imagens/icone_hora_hover.png);
+        background: url(/imagens/icone_hora_hover.png);
         cursor: pointer;
     }
 
@@ -14592,7 +14602,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     .interna .conteudo .formulario .coluna_01.inicio .campo {
         width: 150px;
-        background: url(../imagens/esquerda.png) bottom left no-repeat;
+        background: url(/imagens/esquerda.png) bottom left no-repeat;
     }
 
     .interna .conteudo .formulario .coluna_01.fim {
@@ -14601,7 +14611,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     .interna .conteudo .formulario .coluna_01.fim .campo {
         width: 140px;
-        background: url(../imagens/direita_fim.png) bottom right no-repeat;
+        background: url(/imagens/direita_fim.png) bottom right no-repeat;
     }
 
     .interna .conteudo .formulario .coluna_01.fim label {
@@ -14760,7 +14770,7 @@ input[type=number]::-webkit-inner-spin-button {
         top: -10px;
         left: 20px;
         z-index: 22;
-        background: url(../imagens/lider_bancada.png) no-repeat;
+        background: url(/imagens/lider_bancada.png) no-repeat;
     }
 
     .interna .conteudo .painel_interno ul li .imagem .icone img {
@@ -14862,12 +14872,12 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .interna .conteudo .painel_interno .conteudo .controle_sroll .jspDrag {
-        background: url(../imagens/trilho.png);
+        background: url(/imagens/trilho.png);
         background-color: transparent !important;
     }
 
     .interna .conteudo .painel_interno .conteudo .controle_sroll .jspTrack {
-        background: url(../imagens/base_scroll.png);
+        background: url(/imagens/base_scroll.png);
         background-color: transparent !important;
     }
 
@@ -15434,7 +15444,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 0px 0px 20px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/direita.png) bottom right no-repeat, url(../imagens/esquerda.png) bottom left no-repeat;
+        background: url(/imagens/direita.png) bottom right no-repeat, url(/imagens/esquerda.png) bottom left no-repeat;
     }
 
     .interna .conteudo .pesquisar input {
@@ -15524,55 +15534,55 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .paginacao .controle .icone a.primeira {
-        background: url(../imagens/icone_26.png) no-repeat;
+        background: url(/imagens/icone_26.png) no-repeat;
     }
 
     .paginacao .controle .icone a.primeira:hover {
-        background: url(../imagens/icone_26_hover.png) no-repeat;
+        background: url(/imagens/icone_26_hover.png) no-repeat;
     }
 
     .paginacao .controle .icone a.primeira.desativado,
     .paginacao .controle .icone a.primeira.desativado:hover {
-        background: url(../imagens/icone_26_desativado.png) no-repeat;
+        background: url(/imagens/icone_26_desativado.png) no-repeat;
     }
 
     .paginacao .controle .icone a.anterior {
-        background: url(../imagens/icone_25.png) no-repeat;
+        background: url(/imagens/icone_25.png) no-repeat;
     }
 
     .paginacao .controle .icone a.anterior:hover {
-        background: url(../imagens/icone_25_hover.png) no-repeat;
+        background: url(/imagens/icone_25_hover.png) no-repeat;
     }
 
     .paginacao .controle .icone a.anterior.desativado,
     .paginacao .controle .icone a.anterior.desativado:hover {
-        background: url(../imagens/icone_25_desativado.png) no-repeat;
+        background: url(/imagens/icone_25_desativado.png) no-repeat;
     }
 
     .paginacao .controle .icone a.proxima {
-        background: url(../imagens/icone_23.png) no-repeat;
+        background: url(/imagens/icone_23.png) no-repeat;
     }
 
     .paginacao .controle .icone a.proxima:hover {
-        background: url(../imagens/icone_23_hover.png) no-repeat;
+        background: url(/imagens/icone_23_hover.png) no-repeat;
     }
 
     .paginacao .controle .icone a.proxima.desativado,
     .paginacao .controle .icone a.proxima.desativado:hover {
-        background: url(../imagens/icone_23_desativado.png) no-repeat;
+        background: url(/imagens/icone_23_desativado.png) no-repeat;
     }
 
     .paginacao .icone a.ultima {
-        background: url(../imagens/icone_24.png) no-repeat;
+        background: url(/imagens/icone_24.png) no-repeat;
     }
 
     .paginacao .icone a.ultima:hover {
-        background: url(../imagens/icone_24_hover.png) no-repeat;
+        background: url(/imagens/icone_24_hover.png) no-repeat;
     }
 
     .paginacao .icone a.ultima.desativado,
     .paginacao .icone a.ultima.desativado:hover {
-        background: url(../imagens/icone_24_desativado.png) no-repeat;
+        background: url(/imagens/icone_24_desativado.png) no-repeat;
     }
     /* ---------------------------------------------------------------------------------------------------- Secundaria - 320 */
     .secundaria {
@@ -15592,7 +15602,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(../imagens/detalhe_principal_320.jpg) center top no-repeat;
+        background: url(/imagens/detalhe_principal_320.jpg) center top no-repeat;
     }
 
     .secundaria .conteudo {
@@ -15746,18 +15756,23 @@ input[type=number]::-webkit-inner-spin-button {
         margin-bottom: 0;
     }
     /* ---------------------------------------------------------------------------------------------------- Inferior - 320 ----*/
+
+
+
+
     .inferior {
         width: 100%;
         height: 230px;
         overflow: hidden;
-        background: url(../imagens/bg_inferior_03.png) bottom right repeat;
+        background: url(/imagens/bg_inferior_03.png) bottom right repeat;
     }
 
     .inferior.interna {
         width: 100%;
-        height: 190px;
+        height: auto;
         overflow: hidden;
-        background: url(../imagens/bg_inferior_03.png) bottom right repeat;
+        /*background: url(/imagens/bg_inferior_03.png) bottom right repeat;*/
+        background: #212e52;
     }
 
     .inferior.interna .controle_botao {
@@ -15766,7 +15781,7 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px auto 0px auto;
         padding: 0px 20px 0px 20px;
-        background: url(../imagens/bg_interna_480.jpg) center top repeat-y;
+        background: url(/imagens/bg_interna_480.jpg) center top repeat-y;
     }
 
     .inferior.interna .controle_botao a {
@@ -15784,7 +15799,7 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .inferior .controle {
-        width: 280px;
+        width: 100%;
         height: 190px;
         margin: 40px auto 0px auto;
         padding: 30px 20px 0px 20px;
@@ -15805,15 +15820,15 @@ input[type=number]::-webkit-inner-spin-button {
         width: 100px;
     }
 
-    .inferior .controle .informacoes {
+   /* .inferior .controle .informacoes {
         width: 280px;
         height: 40px;
         float: left;
         margin: 0px 0px 0px 0px;
         padding: 10px 0px 0px 0px;
-    }
+    }*/
 
-    .inferior .controle .informacoes p.titulo {
+    .inferior .informacoes p.titulo {
         width: 100%;
         height: 14px;
         font-size: 0.688em;
@@ -15824,7 +15839,7 @@ input[type=number]::-webkit-inner-spin-button {
         padding: 3px 0px 0px 0px;
     }
 
-    .inferior .controle .informacoes p {
+    .inferior .informacoes p {
         width: 100%;
         height: auto;
         font-size: 0.688em;
@@ -15835,17 +15850,17 @@ input[type=number]::-webkit-inner-spin-button {
         padding: 0px 0px 0px 0px;
     }
 
-    .inferior .controle .informacoes p span {
+    .inferior .informacoes p span {
         color: #9ea745;
     }
 
-    .inferior .controle .informacoes p .br_320 {
+    .inferior .informacoes p .br_320 {
         display: block;
     }
 
 
     .imagem_radio {
-        background: url("../imagens/RadioAlerj.png") no-repeat;
+        background: url("/imagens/RadioAlerj.png") no-repeat;
         width: 710px;
         height: 305px;
     }
@@ -15974,13 +15989,13 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     /*Ajuste icones redes sociais 320*/
-    .redes_sociais {
+/*    .redes_sociais {
         width: 170px;
-    }
+    }*/
 
     .superior .conteudo .coluna .redes_sociais {
         top: 20px;
-        right: -35px;
+        /*right: -35px;*/
         left: auto;
     }
 
@@ -16042,7 +16057,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .collspan .fio {
-    background: url("../imagens/fio.png") repeat-x scroll center bottom rgba(0, 0, 0, 0);
+    background: url("/imagens/fio.png") repeat-x scroll center bottom rgba(0, 0, 0, 0);
     float: left;
     height: 5px;
     overflow: hidden;
@@ -16184,14 +16199,14 @@ p.font-estilo1 {
     width: 100%;
     height: 240px;
     overflow: hidden;
-    background: url(../imagens/bg_inferior_01.png) bottom center no-repeat;
+    background: url(/imagens/bg_inferior_01.png) bottom center no-repeat;
 }
 
 .inferior_email.interna {
     width: 100%;
     height: 240px;
     overflow: hidden;
-    background: url(../imagens/bg_inferior_interna_01.png) bottom center no-repeat;
+    background: url(/imagens/bg_inferior_interna_01.png) bottom center no-repeat;
 }
 
 .inferior_email.interna .controle_botao {
@@ -16271,10 +16286,10 @@ p.font-estilo1 {
 }
 
 .inferior_email .controle .redes_sociais {
-    width: 105px;
+    /*width: 105px;
     height: 20px;
     overflow: hidden;
-    float: right;
+    float: right;*/
     margin: 30px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
 }
@@ -16422,7 +16437,7 @@ p#legenda::before {
 
 
 .paginacao .icone a.ultima {
-    background: transparent url("../imagens/icone_24.png") no-repeat scroll 0% 0%;
+    background: transparent url("/imagens/icone_24.png") no-repeat scroll 0% 0%;
 }
 
 /* Mudança da cor da aba */
@@ -16465,7 +16480,7 @@ p#legenda::before {
     top: -10px;
     left: 20px;
     z-index: 22;
-    background: url(../imagens/presidente.png) no-repeat;
+    background: url(/imagens/presidente.png) no-repeat;
 }
 
 .clear {

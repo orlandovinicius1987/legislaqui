@@ -2,8 +2,14 @@
 <div class="col-md-7 col-xs-12">
     <div class="panel panel-default panel-bg">
         <div class="panel-heading-login">
-            <div class="col-xs-4 auth"><h3>Registro</h3></div>
+            <div class="col-xs-12 auth text-center">
+                <h3>
+                    Registro
+                </h3>
+            </div>
+
             <div class="after-auth"><h4>Crie uma conta de usuário usando o formulário abaixo.</h4></div>
+
         </div>
         <div class="panel-body register">
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
@@ -114,16 +120,25 @@
                 </div>
 
                 <div class="form-group">
+
                     <div class="col-xs-8 col-xs-offset-4">
                         <button dusk="registerButton" type="submit" class="btn btn-primary">
                             <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro
                         </button>
+
+{{--
+
                         <a href="redirect/facebook" id="facebookButton"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\fb_logo_blue29.png"></a>
                         <a href="redirect/twitter"><img src="www.alerj.rj.gov.br\icone_08.png"></a>
                         <a href="redirect/youtube"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\youTube48px.png"></a>
                         <a href="redirect/linkedin"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\linkedin_2C_34px.png"></a>
                         <a href="redirect/instagram"><img src="www.alerj.rj.gov.br\icone_36.png"></a>
+--}}
+
+
                     </div>
+
+
                 </div>
             </form>
         </div>
