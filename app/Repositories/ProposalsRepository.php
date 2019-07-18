@@ -22,7 +22,9 @@ class ProposalsRepository
 
     public function all()
     {
-
+        //return Proposal::orderBy('updated_at', 'desc')->get();
+        //Verificar com o Antônio
+        //
         return Proposal::whereNotNull('id')->orderBy('updated_at', 'desc')->get();
     }
 
