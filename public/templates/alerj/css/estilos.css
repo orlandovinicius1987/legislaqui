@@ -554,6 +554,11 @@ body {
     background: url(/imagens/menu.png) repeat-x;
 }
 
+
+
+
+
+
 .base_menu .menu ul {
     width: auto;
     height: 50px;
@@ -8311,7 +8316,7 @@ input[type=number]::-webkit-inner-spin-button {
         width: 100%;
         /*height: 240px;*/
         overflow: hidden;
-        background: url(/imagens/bg_inferior_interna_01_800.png) bottom center no-repeat, url(/imagens/bg_inferior_02.png) bottom right repeat;
+        background: #212e52 ;
     }
 
     .inferior.interna .controle_botao {
@@ -12095,20 +12100,22 @@ input[type=number]::-webkit-inner-spin-button {
     /* ---------------------------------------------------------------------------------------------------- Inferior - 480 ----*/
     .inferior {
         width: 100%;
-        height: 200px;
+        /*height: 200px;*/
         overflow: hidden;
         background: url(/imagens/bg_inferior_04.png) bottom right repeat;
     }
 
     .inferior.interna {
         width: 100%;
-        /*height: 190px;*/
+        /*
+        height: 190px;
         overflow: hidden;
         background: url(/imagens/bg_inferior_04.png) bottom right repeat;
+        */
     }
 
     .inferior.interna .controle_botao {
-        width: 440px;
+        width: 100%;
         height: 30px;
         overflow: hidden;
         margin: 0px auto 0px auto;

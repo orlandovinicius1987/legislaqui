@@ -1052,9 +1052,9 @@ table#datatable thead {
         /*width: 100%;*/
     }
 
-    .btn-default {
+/*    .btn-default {
         width: 100%;
-    }
+    }*/
 }
 
 @media (max-width: 1018px) {
@@ -1711,11 +1711,47 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
 
 
 
+@media only screen and (min-width:767px){
 
+    .header-alerj {
+        margin-top: 20px;
+    }
 
-.rodape {
-    margin-top:80px;
 }
+
+
+
+@media only screen and (min-width:833px){
+
+    .rodape {
+        margin-top:80px;
+    }
+
+}
+
+
+
+
+@media only screen and (max-width:836px) {
+
+
+    .rodape {
+        padding-top: 30px;
+    }
+
+    .rodape .redes_sociais {
+        text-align: center !important;
+        margin-bottom: 30px;
+    }
+
+    .titulopagina {
+        text-align: center;
+    }
+
+}
+
+
+
 
 @media screen and (max-width: 500px) {
 
@@ -1740,3 +1776,14 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
 
 
 }
+
+@media only screen and (max-width:1024px) {
+    .base_menu .menu {
+        width: 980px;
+    }
+
+    .interna .controle {
+        width: 100%;
+    }
+}
+

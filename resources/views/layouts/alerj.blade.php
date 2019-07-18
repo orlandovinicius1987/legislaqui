@@ -109,14 +109,17 @@
 
 <div class="superior">
     <div class="container">
-        <div class="row">
-            <div class="col-xs-offset-2 col-xs-8 col-md-4">
+        <div class="row header-alerj">
+            <div class="col-sm-6 col-md-3">
                 <a class="" href="http://www.alerj.rj.gov.br/">
                    <img src="http://www.alerj.rj.gov.br/Content/imagens/logotipo.png" class="img-responsive" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
                 </a>
             </div>
 
-            <div class="col-md-2 pull-right redes_sociais">
+
+
+
+            <div class="col-sm-4 col-md-2 pull-right redes_sociais">
 
                 <span class="logotipo_redes">
                     <a target="_blank" href="https://instagram.com/instalerj/" title="Instagram">
@@ -521,7 +524,7 @@
 
 
         <div class="row rodape">
-            <div class="col-md-offset-1 col-md-2">
+            <div class="col-sm-3 col-md-offset-1 col-md-2">
                 <div class="logotipo">
                     <a href="/" title="Assembléia Legislativa do Estado do Rio de Janeiro">
                         <img src="/imagens/logotipo_inferior.png" class="img-responsive" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
@@ -530,7 +533,7 @@
 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-sm-9 col-md-6">
 
                 <div class="informacoes">
                     <p class="titulo">PALÁCIO TIRADENTES</p>
@@ -539,7 +542,7 @@
 
             </div>
 
-            <div class="col-md-2">
+            <div class="col-sm-12 col-md-2">
                 <div class="redes_sociais">
 
                     <span class="logotipo_redes">

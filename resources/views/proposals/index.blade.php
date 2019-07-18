@@ -53,7 +53,7 @@
                     <div class="col-xs-12 col-md-6 titulopagina">
                       <h1>Idéias Legislativas</h1>
                     </div>
-                    <div class="col-xs-12 col-md-3 pull-right crienova">
+                    <div class="col-xs-12 col-sm-4 col-md-3 pull-right crienova">
                         <h3>
                             @if (!Auth::check())
                                 <a dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
