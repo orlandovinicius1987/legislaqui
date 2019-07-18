@@ -41,7 +41,7 @@
                </div>
             @elseif ( $query == "approved" )
                 <div class="col-xs-12 instrucao">
-                    Essas são as propostas analisadas e aprovadas pela comissão.
+                    Essas são as propostas analisadas e em tramitação na comissão.
                 </div>
             @endif--}}
         </div>
@@ -76,7 +76,7 @@
                         <button type="button" class="btn btn-default {{ $query == "committee" ? 'active' :'' }}"
                                 data-toggle="tooltip" data-placement="top"
                                 title="Essas são as propostas que receberam o apoio suficiente e, neste momento, estão sendo analisadas pela comissão.">
-                            <a href="/?q=committee">NA COMISSÃO</a></button>
+                            <a href="/?q=committee">Em aprovação</a></button>
 
                         <button type="button" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}"
                                 data-toggle="tooltip" data-placement="top"
@@ -90,8 +90,8 @@
 
                         <button type="button" class="btn btn-default {{ $query == "approved" ? 'active' :'' }}"
                                 data-toggle="tooltip" data-placement="top"
-                                title="Essas são as propostas analisadas e aprovadas pela comissão.">
-                            <a href="/?q=approved">APROVADAS</a></button>
+                                title="Essas são as propostas analisadas em tramitação na comissão.">
+                            <a href="/?q=approved">EM TRAMITAÇÃO</a></button>
                     </div>--}}
                 </div>
 
@@ -137,10 +137,10 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a href="/?q=open">Abertas</a></li>
-                                <li><a href="/?q=committee">Na Comissão</a></li>
+                                <li><a href="/?q=committee">Em aprovação</a></li>
                                 <li><a href="/?q=expired">Expiradas</a></li>
                                 <li><a href="/?q=disapproved">Não Acatadas</a></li>
-                                <li><a href="/?q=approved">Aprovadas</a></li>
+                                <li><a href="/?q=approved">Em tramitação</a></li>
                             </ul>
                         </div>
                     </div>
@@ -165,7 +165,7 @@
                                     <a href="/?q=committee"><button type="button" class="btn btn-default  {{ $query == "committee" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Essas são as propostas que receberam o apoio suficiente e, neste momento, estão sendo analisadas pela comissão.">
-                                        NA COMISSÃO</button></a>
+                                        EM APROVAÇÃO</button></a>
 
                                     <a href="/?q=expired"><button type="button" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
@@ -179,8 +179,8 @@
 
                                     <a href="/?q=approved"><button type="button" class="btn btn-default {{ $query == "approved" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
-                                            title="Essas são as propostas analisadas e aprovadas pela comissão.">
-                                        APROVADAS</button></a>
+                                            title="Essas são as propostas analisadas em tramitação na Comissão.">
+                                        EM TRAMITAÇÃO</button></a>
                                 </div>
 
 

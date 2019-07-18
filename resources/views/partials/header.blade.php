@@ -29,7 +29,7 @@
             <a href="/?q=committee" class="btn btn-default {{ $query == "committee" ? 'active' :'' }}">NA COMISSÃO</a>
             <a href="/?q=expired" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}">EXPIRADAS</a>
             <a href="/?q=disapproved" class="btn btn-default {{ $query == "disapproved" ? 'active' :'' }}">NÃO ACATADAS</a>
-            <a href="/?q=approved" class="btn btn-default {{ $query == "approved" ? 'active' :'' }}">APROVADAS</a>
+            <a href="/?q=approved" class="btn btn-default {{ $query == "approved" ? 'active' :'' }}">EM TRAMITAÇÃO</a>
         </div>
     </div>--}}
 </div>

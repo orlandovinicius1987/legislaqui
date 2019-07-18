@@ -36,14 +36,14 @@
                     <li><a dusk="proposalsLink" href="/admin/proposals"><i class="fa fa-hashtag text-info"></i> Todas</a></li>
                     <li><a dusk="notrespondedLink" href="/admin/proposals/notresponded"><i class="fa fa-cogs text-danger "></i> Aguardando Publicação</a></li>
                     <li><a dusk="approvedLink" href="/admin/proposals/approved"><i class="fa fa-check-circle-o text-success"></i> Publicadas</a></li>
-                    <li><a dusk="disapprovedLink" href="/admin/proposals/disapproved"><i class="fa fa-times-circle text-warning"></i> Desaprovadas</a></li>
+                    <li><a dusk="disapprovedLink" href="/admin/proposals/disapproved"><i class="fa fa-times-circle text-warning"></i> Não Aprovadas</a></li>
                     <hr>
                     <li><a dusk="approvalGoalLink" href="/admin/proposals/approval-goal"><i class="fa fa-trophy text-success"></i>Atingiram {{ config('global.approvalGoal') }} apoios</a></li>
                     <li><a dusk="expiredLink" href="/admin/proposals/expired"><i class="fa fa-clock-o text-warning"></i> Ideias Expiradas</a></li>
                     <hr>
-                    <li><a>Na Comissão</a></li>
+                    <li><a>Em aprovação</a></li>
                     <li><a dusk="inCommitteeLink" href="/admin/proposals/in-committee"><i class="fa fa-gavel text-danger"></i> Aguardando Análise</a></li>
-                    <li><a dusk="approvedByCommitteeLink" href="/admin/proposals/approved-by-committee"><i class="fa fa-check-circle-o text-success"></i> Aprovadas</a></li>
+                    <li><a dusk="approvedByCommitteeLink" href="/admin/proposals/approved-by-committee"><i class="fa fa-check-circle-o text-success"></i> Em Tramitação</a></li>
                     <li><a dusk="disapprovedByCommitteeLink" href="/admin/proposals/disapproved-by-committee"><i class="fa fa-exclamation-triangle text-warning"></i> Encerradas</a></li>
                     <hr>
                     @can('edit', Auth::user())

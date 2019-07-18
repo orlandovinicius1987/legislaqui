@@ -26,7 +26,7 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Propostas Legislativas Desaprovadas</h3>
+                        <h3 class="box-title">Propostas Legislativas Não Aprovadas</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div id="dataTableAdmin2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -54,7 +54,7 @@
                                                     @if ($disapproved->in_committee == false)
 
                                                     @elseif ($disapproved->in_committee == true && $disapproved->approved_by_committee == null &&  $disapproved->disapproved_by_committee == null)
-                                                        <span class="label label-primary"> Está na Comissão</span>
+                                                        <span class="label label-primary"> Está em aprovação</span>
                                                     @else
                                                         @if ($disapproved->approved_by_committee != null && $disapproved->bill_project_id != null)
                                                             <span class="label label-success"> Virou projeto de lei!</span>
