@@ -5,7 +5,7 @@
  * Date: 22/06/2016
  * Time: 12:24.
  */
-
+//        app/Http/ViewComposers/StatusComposer.php
 namespace App\Http\ViewComposers;
 
 use App\Approval;
@@ -18,22 +18,14 @@ class StatusComposer
 {
     public function compose($view)
     {
-        $proposals = Proposal::all();
+        $proposals = Proposal::whereNotNull('id')->get()->values();
         $proposals_count = $proposals->count();
         $approvals_count = Approval::all()->count();
-        $users_count = User::all()->count();
+        $users_count = User::whereNotNull('id')->get()->values()->count();
 
         if ($proposals->count()) {
-            $not_responded_count = round(
-                ($proposals
-                    ->where('approved_by', null)
-                    ->where('disapproved_by', null)
-                    ->where('response', null)
-                    ->count() /
-                    $proposals->count()) *
-                    100,
-                2
-            );
+            $not_responded_count = round(($proposals->where('approved_by', null)->where('disapproved_by', null)
+                        ->where('response', null)->count() / $proposals->count()) * 100, 2);
         } else {
             $not_responded_count = 0;
         }
