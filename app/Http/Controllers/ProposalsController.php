@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProposalChanged;
 use App\Events\ProposalWasCreated;
 use App\Http\Requests\ProposalFormRequest;
 use App\Http\Requests\ResponseFormRequest;
@@ -192,9 +193,9 @@ class ProposalsController extends Controller
             ->where('proposal_id', $id)
             ->value('like');
 
-        Session::put('flash_msg', 'Task was successful!');
+        //        Session::put('flash_msg', 'Task was successful!');
 
-//        dd(Session::all());
+        //        dd(Session::all());
 
         switch ($existing_like) {
             // Already Unliked
@@ -382,6 +383,8 @@ class ProposalsController extends Controller
 
         //Then update Proposal
         $proposal->fill($input)->save();
+
+        event(new ProposalChanged($proposal));
 
         return redirect()
             ->route('proposal.show', ['proposal' => $proposal])

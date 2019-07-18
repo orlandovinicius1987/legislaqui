@@ -2,8 +2,11 @@
 
 namespace App;
 
+use App\Data\Repositories\Notifications;
+use App\Notifications\SendProposalChanged;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
 class Proposal extends Eloquent
 {
@@ -101,6 +104,89 @@ class Proposal extends Eloquent
         return Like::where('proposal_id', $this->id)
             ->where('like', 0)
             ->count();
+    }
+
+    public function followers()
+    {
+        return $this->hasMany(ProposalFollow::class);
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection|\IlluminateAgnostic\Arr\Support\Collection|\IlluminateAgnostic\Collection\Support\Collection|\IlluminateAgnostic\Str\Support\Collection|\Vanilla\Support\Collection
+     */
+    public function getFollowersEmails()
+    {
+        $emailsArray = [];
+
+        //Followers emails
+        $this->followers->each(function (ProposalFollow $follower) use (
+            &$emailsArray
+        ) {
+            $emailsArray[] = $follower->user->email;
+        });
+
+        //Owner email
+        if ($this->user) {
+            $emailsArray[] = $this->user->email;
+        }
+
+        return collect($emailsArray);
+    }
+
+    protected function dispatchMails($notification, Collection $emails)
+    {
+        $emails->each(function ($email) use ($notification) {
+            $this->createNotificationModel($email, $notification)->notify(
+                new $notification()
+            );
+        });
+    }
+
+    protected function makeSubject($notification)
+    {
+        return 'LEGISLAQUI - ' . $this->makeSubjectText($notification);
+    }
+
+    protected function makeSubjectText($notification): string
+    {
+        switch ($notification) {
+            case SendProposalChanged::class:
+                return 'Uma ideia legislativa que você acompanha foi alterada';
+        }
+
+        throw new \Exception(
+            'Notification class not supported: ' . $notification
+        );
+    }
+
+    public function createNotificationModel($destination, $notification)
+    {
+        return app(Notifications::class)->create([
+            'proposal_id' => $this->id,
+            'destination' => $destination,
+            'subject' => $this->makeSubject($notification),
+            'content_type' => $this->makeNotificationContentType($notification),
+        ]);
+    }
+
+    protected function makeNotificationContentType($notification): string
+    {
+        switch ($notification) {
+            case SendProposalChanged::class:
+                return 'changed';
+        }
+
+        throw new \Exception(
+            'Notification class not supported: ' . $notification
+        );
+    }
+
+    public function sendProposalChangedEmail()
+    {
+        $this->dispatchMails(
+            SendProposalChanged::class,
+            $this->getFollowersEmails()
+        );
     }
 
     /*public function getTotalLikeCountAttribute()

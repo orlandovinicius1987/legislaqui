@@ -17,11 +17,17 @@ class ProposalFollow extends Eloquent
     protected $fillable = ['user_id', 'proposal_id'];
     protected $table = 'proposal_follows';
 
+    protected $with = ['user'];
     /**
      * Get the followed proposal.
      */
     public function proposal()
     {
         return $this->belongsTo(Proposal::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

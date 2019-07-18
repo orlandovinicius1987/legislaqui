@@ -6,6 +6,7 @@ use Laravel\Dusk\TestCase as BaseTestCase;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Faker;
 
 abstract class DuskTestCase extends BaseTestCase
 {
@@ -32,7 +33,7 @@ abstract class DuskTestCase extends BaseTestCase
         $options = (new ChromeOptions())->addArguments([
             '--disable-gpu',
             '--headless',
-            '--window-size=3840,2160',
+            '--window-size=3940,2160',
         ]);
 
         return RemoteWebDriver::create(
@@ -42,5 +43,26 @@ abstract class DuskTestCase extends BaseTestCase
                 $options
             )
         );
+    }
+
+    /**
+     * Temporal solution for cleaning up session
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        foreach (static::$browsers as $browser) {
+            $browser->driver->manage()->deleteAllCookies();
+        }
+    }
+
+    public function createFaker()
+    {
+        // use the factory to create a Faker\Generator instance
+        $faker = Faker\Factory::create();
+        // Add pt_BR provider
+        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+
+        return $faker;
     }
 }
