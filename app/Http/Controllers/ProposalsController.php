@@ -31,6 +31,24 @@ class ProposalsController extends Controller
         $this->proposalsRepository = $proposalsRepository;
     }
 
+    public function index()
+    {
+        // $proposals = Proposal::paginate(config('global.pagination'));
+        //         $proposals = $this->proposalsRepository->all()->paginate(config('global.pagination'));
+        //         return view('proposals.index')->with(compact('proposals'));
+
+        $q = Input::get('q');
+        $s = Input::get('search');
+
+        $resultSet = $this->proposalsRepository
+            ->filterProposals($q, $s)
+            ->paginate(config('global.pagination'));
+
+        return view('proposals.index')
+            ->with('query', $q)
+            ->with('proposals', $resultSet);
+    }
+
     public function approval($id)
     {
         $this->proposalsRepository->approve($id);
@@ -146,24 +164,6 @@ class ProposalsController extends Controller
                 'proposal_crud_msg',
                 'Esta Ideia Legislativa será acompanhada! Obrigado.'
             );
-    }
-
-    public function index()
-    {
-        // $proposals = Proposal::paginate(config('global.pagination'));
-        //         $proposals = $this->proposalsRepository->all()->paginate(config('global.pagination'));
-        //         return view('proposals.index')->with(compact('proposals'));
-
-        $q = Input::get('q');
-        $s = Input::get('search');
-
-        $resultSet = $this->proposalsRepository
-            ->filterProposals($q, $s)
-            ->paginate(config('global.pagination'));
-
-        return view('proposals.index')
-            ->with('query', $q)
-            ->with('proposals', $resultSet);
     }
 
     public function like($id)
