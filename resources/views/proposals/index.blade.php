@@ -51,7 +51,7 @@
             <div class="panel-heading-nav">
                 <div class="row">
                     <div class="col-xs-12 col-md-6 titulopagina">
-                      <h1>Idéias Legislativas</h1>
+                      <h1>Ideias Legislativas</h1>
                     </div>
                     <div class="col-xs-12 col-sm-4 col-md-3 pull-right crienova">
                         <h3>
