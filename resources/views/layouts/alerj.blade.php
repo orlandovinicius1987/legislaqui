@@ -510,7 +510,7 @@
                         <div class="col-list">
                             <div class="col-md-4 t1">
 
-                                <a href="#" class="links">
+                                <a href="/proposals" class="links">
                                 <div class="col-head text-center">
                                     <span class="glyphicon " aria-hidden="true"><img class="image-icon" src="/imagens/icon-idea.png"></span>
                                     <h2>Idéias Legislativas</h2>
@@ -535,7 +535,7 @@
 
                             </div>
                             <div class="col-md-4 t3">
-                                <a href="#" class="links">
+                                <a href="//edemocracia.camara.leg.br/wikilegis/" class="links">
                                     <div class="col-head text-center">
                                         <span class="glyphicon " aria-hidden="true"><img class="image-icon" src="/imagens/logo-wikilegis.png"></span>
                                         <h2>Wikilegis</h2>
