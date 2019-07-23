@@ -1787,3 +1787,103 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
     }
 }
 
+
+
+
+.col-list .col-head { color: white; border-bottom: thick solid #252c52; border-radius: 5px 5px 0 0; margin-top: 45px; background-color: #383e61; padding: 15px;}
+
+.col-list a:hover {
+    text-decoration: none ;
+}
+
+
+.col-list .col-head:hover {
+    background-color: #252c52;
+    text-decoration: none !important;
+    border-bottom: thick solid #383e61;
+}
+
+.col-list .col-head span {
+    color: white;
+    /*font-size: 3em;*/
+    padding: 15px;
+    border: thick solid white;
+    border-radius: 50%;
+    margin-top: -45px;
+    background-color: #252c52;
+}
+
+
+.col-list .col-head h2 { margin-top: 7px; margin-bottom: 15px; font-size: 2em; font-weight: 700;     font-family: 'dinbold'; }
+/*
+.col-list .t1 .col-head { background-color: #383e61; padding: 15px;}
+.col-list .t2 .col-head { background-color: #3a4581; padding: 15px;}
+.col-list .t3 .col-head { background-color: #3a4581; padding: 15px;}
+
+.col-list .t1 li { border-bottom: 1px solid rgba(255, 183, 72, .4); }
+.col-list .t2 li { border-bottom: 1px solid rgba(22, 202, 200, .4); }
+.col-list .t3 li { border-bottom: 1px solid rgba(248, 113, 82, .4) }
+
+
+.col-list .t1 li:last-child,
+.col-list .t2 li:last-child,
+.col-list .t3 li:last-child { border-bottom: 0; }
+.col-list li p { cursor: pointer; font-size: 1.2em; padding: 7px; margin: 0; }
+.col-list li:hover { background-color: #F7F7F9; }
+
+*/
+
+
+.col-list .col-head p {
+    line-height: 1.4em;
+}
+
+.option span { color: rgba(162, 213, 0, 1); margin-left: 7px; margin-right: 7px;}
+
+
+.col-list .image-icon {
+    max-width: 50px;
+}
+
+.col-list .image-icon path {
+    fill: #ffffff !important;
+}
+
+@media only screen and (max-width:428px) {
+    .col-list .col-head p {
+        display: none;
+    }
+
+    .col-list .image-icon {
+        max-width: 30px;
+    }
+
+    .col-list .col-head {
+        margin-top: 30px;
+    }
+
+
+
+    .col-list .col-head h2 {
+        margin-top: 0px !important;
+        margin-bottom: 0px  !important;
+        font-size: 1.5em;
+    }
+
+    .col-list .col-head span {
+        padding: 10px;
+        border-radius: 50%;
+        position: relative;
+        top: -20px;
+        border: 3px solid white;
+
+    }
+
+    .col-list {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+
+
+}
