@@ -104,17 +104,50 @@
     </div>
 </nav>--}}
 
+{{--
 
+
+<div class="container-full">
+    <div class="row header-alerj2">
+
+        <div class="col-sm-6 col-md-1">
+            <img src="/imagens/logotipo-branco.png" class="img-responsive logo-alerj-header" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
+        </div>
+
+    </div>
+</div>
+
+--}}
 
 
 <div class="superior">
     <div class="container">
         <div class="row header-alerj">
+
+
+            <div class="col-sm-6 col-md-3">
+                <div class="legislaqui text-center"><a href="/"><span class="letra_branca">#</span><span class="letra_azul">Legisl</span><span class="letra_branca">aqui</span></a>
+                    <div class="moto letra_azul"><b>Você legislando na ALERJ</b></div>
+                </div>
+            </div>
+
+
+{{--
             <div class="col-sm-6 col-md-3">
                 <a class="" href="http://www.alerj.rj.gov.br/">
                    <img src="http://www.alerj.rj.gov.br/Content/imagens/logotipo.png" class="img-responsive" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
                 </a>
             </div>
+
+--}}
+
+
+
+
+
+
+
+
 
 
 
@@ -486,6 +519,7 @@
         <div class="controle">
             <div class="alerj">
 
+         {{--
                 <div class="row">
                     <div class="col-sm-4 col-xs-12 over">
                         <div class="legislaqui text-center"><a href="/"><span class="letra_branca">#</span><span class="letra_azul">Legisl</span><span class="letra_branca">aqui</span></a>
@@ -497,6 +531,9 @@
                     </div>
                     <div class="filter-line hidden-xs hidden-sm">&nbsp;</div>
                 </div>
+
+
+--}}
                 {{--<div class="content">--}}
 
 

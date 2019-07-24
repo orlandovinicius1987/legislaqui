@@ -978,6 +978,9 @@ table#datatable thead {
     /*height: 70px;*/
     /*border-radius: 18px 18px 0px 0px;*/
     /*border: 2px #9ea745 solid;*/
+
+
+    /*
     margin-top: -20px;
     padding: 15px;
     padding-left: 5px;
@@ -985,6 +988,8 @@ table#datatable thead {
     margin-left: 10px;
 
     margin-bottom: 5px;
+    */
+
     /*position: relative;*//*    width: 280px;*/
     /*bottom: -30px;*/
     /*left: 10px;*/
@@ -1790,7 +1795,8 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
 
 
 
-.col-list .col-head { color: white; border-bottom: thick solid #252c52; border-radius: 5px 5px 0 0; margin-top: 45px; background-color: #383e61; padding: 15px;}
+.col-list .col-head {
+    color: white; border-bottom: thick solid #252c52; border-radius: 5px 5px 0 0; margin-top: 45px; background-color: #383e61; padding: 15px;}
 
 .col-list a:hover {
     text-decoration: none ;
@@ -1800,7 +1806,13 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
 .col-list .col-head:hover {
     background-color: #252c52;
     text-decoration: none !important;
-    border-bottom: thick solid #383e61;
+    border-bottom: thick solid #90a244;
+}
+
+
+.col-list .col-head:hover span{
+    background-color: #90a244;
+
 }
 
 .col-list .col-head span {
@@ -1812,6 +1824,10 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
     margin-top: -45px;
     background-color: #252c52;
 }
+
+
+
+
 
 
 .col-list .col-head h2 { margin-top: 7px; margin-bottom: 15px; font-size: 2em; font-weight: 700;     font-family: 'dinbold'; }
@@ -1886,4 +1902,13 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
 
 
 
+}
+
+
+.header-alerj2 {
+    background: #252c52;
+}
+
+.logo-alerj-header {
+    padding: 10px;
 }
