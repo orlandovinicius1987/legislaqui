@@ -543,7 +543,6 @@
                 </div>
 
 
-
                 {{--@include('partials.footer')--}}
                 @include('partials.scripts')
             </div>

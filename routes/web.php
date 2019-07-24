@@ -52,6 +52,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
     Route::get('/proposals', ['as' => 'home', 'uses' => 'ProposalsController@index']);
+    Route::get('/hearings', ['as' => 'home', 'uses' => 'HearingsController@index']);
+    Route::get('/wikilegis', ['as' => 'home', 'uses' => 'WikilegisController@index']);
 
     Route::post('/', [
         'as' => 'home.post',
