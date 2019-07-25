@@ -24,7 +24,7 @@
 
         </div>
         <div class="col-md-4 t2">
-            <a href="#" class="links">
+            <a href="//edemocracia.al.rj.leg.br" class="links" target="_blank">
                 <div class="col-head text-center">
                     <span class="glyphicon " aria-hidden="true"><img class="image-icon" src="/imagens/icon-monitoring.png"></span>
                     <h2> Acompanhamento das Audiências das Comissões</h2>
@@ -37,7 +37,7 @@
 
         </div>
         <div class="col-md-4 t3">
-            <a href="//edemocracia.camara.leg.br/wikilegis/" class="links">
+            <a href="//edemocracia.camara.leg.br/wikilegis/" class="links" target="_blank">
                 <div class="col-head text-center">
                     <span class="glyphicon " aria-hidden="true"><img class="image-icon" src="/imagens/logo-wikilegis.png"></span>
                     <h2>Wikilegis</h2>
