@@ -545,7 +545,7 @@ body {
     height: 50px;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(/imagens/base_menu.jpg) repeat-x -4px 0px;
+    background: #252c52;
 }
 
 .base_menu .menu {
@@ -553,7 +553,7 @@ body {
     height: 50px;
     margin: 0px auto 0px auto;
     padding: 0px 0px 0px 0px;
-    background: url(/imagens/menu.png) repeat-x;
+    background: #252c52;
 }
 
 
@@ -585,9 +585,10 @@ body {
     overflow: hidden;
     float: left;
     font-family: 'univers_47';
-    color: #9ea745;
+    /*color: #9ea745;*/
+    color: #ffffff;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 18px;
     display: block;
     line-height: auto;
     margin: 12px 0px 0px 0px;
@@ -605,11 +606,13 @@ body {
     overflow: hidden;
     float: left;
     display: block;
-    color: #212e52;
+    /*color: #212e52;*/
+    color: #ffffff;
+
     line-height: auto;
     margin: 0px 0px 0px 0px;
     padding: 18px 15px 0px 15px;
-    background: url(/imagens/menu_ativo.png) top center no-repeat;
+    /*background: url(/imagens/menu_ativo.png) top center no-repeat;*/
 }
 
 .base_menu .menu ul li .submenu .detalhe {
