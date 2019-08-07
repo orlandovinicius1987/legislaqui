@@ -286,7 +286,8 @@ body {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
     border-bottom: 3px solid #9EA745;
-    background: url(/imagens/base_superior.jpg) repeat-x;
+    /*background: url(/imagens/base_superior.jpg) repeat-x;*/
+    background: #383e61;
 }
 
 .superior.blog .brilho {
@@ -349,7 +350,8 @@ body {
     overflow: hidden;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    background: url(/imagens/base_superior.jpg) repeat-x;
+    /*background: url(/imagens/base_superior.jpg) repeat-x;*/
+    background: #383e61;
 }
 
 .superior .brilho {
@@ -521,7 +523,7 @@ body {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;*/
 
-    margin-top:30px;
+    margin-top:20px;
     text-align: right;
 }
 
@@ -5054,7 +5056,8 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(/imagens/base_superior.jpg) repeat-x;
+        /*background: url(/imagens/base_superior.jpg) repeat-x;*/
+        background: #383e61;
     }
 
     .superior .brilho {
@@ -8552,7 +8555,8 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(/imagens/base_superior.jpg) repeat-x;
+        /*background: url(/imagens/base_superior.jpg) repeat-x;*/
+        background: #383e61;
     }
 
     .superior .brilho {
@@ -12353,7 +12357,8 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
-        background: url(/imagens/base_superior.jpg) repeat-x;
+        /*background: url(/imagens/base_superior.jpg) repeat-x;*/
+        background: #383e61;
     }
 
     .superior .brilho {

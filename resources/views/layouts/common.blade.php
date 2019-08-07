@@ -14,10 +14,21 @@
         <div class="container">
             <div class="row header-alerj">
                 <div class="col-sm-6 col-md-3">
+
+                    <div class="legislaqui_marca text-center">
+                        <img src="/imagens/marca_legislaqui.png" class="img-responsive">
+                    </div>
+
+{{--
+
                     <div class="legislaqui text-center"><a href="/"><span class="letra_branca">#</span>
                         <span class="letra_azul">Legisl</span><span class="letra_branca">aqui</span></a>
                         <div class="moto letra_azul"><b>Você legislando na ALERJ</b></div>
                     </div>
+--}}
+
+
+
                 </div>
 
                 <div class="col-sm-4 col-md-2 pull-right redes_sociais">
