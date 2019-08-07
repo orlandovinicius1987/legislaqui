@@ -1415,6 +1415,8 @@ a.square {
     margin-bottom: 0;
     font-family: "Trebuchet MS", Verdana, sans-serif;
     text-transform: uppercase;
+    border-radius: 0px;
+    border: none;
 }
 
 .navbar-default {
@@ -1440,7 +1442,6 @@ a.square {
     color: #FFFFFF;
     background-color: #4b5381;
 }
-
 
 
 .dropdown-menu {
@@ -1534,6 +1535,11 @@ a.square {
 }
 
 
+@media (min-width: 768px) and (max-width: 1024px){
+    .navbar-nav>li>a {
+        font-size: 14px;
+    }
+}
 
 
 /*.panel {*/
