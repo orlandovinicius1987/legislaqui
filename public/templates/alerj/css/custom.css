@@ -804,7 +804,7 @@ td.blue_link {
 
 .instrucao-topico {
     text-align: center;
-    background-color: #9ea745;
+    background-color: #f46b25;
     color: white;
     line-height: 46px;
     font-size: 1.4em;
@@ -813,13 +813,13 @@ td.blue_link {
 
 .instrucao-topico-h3 {
     text-align: center;
-    color: #9ea745;
+    color: #f46b25;
     font-size: 1.3em;
     margin-bottom: 15px;
 }
 
 .instrucao-topico-letra {
-    color: #9ea745;
+    color: #f46b25;
     font-weight: bold;
 }
 
