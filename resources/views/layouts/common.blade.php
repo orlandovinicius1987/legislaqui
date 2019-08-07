@@ -31,7 +31,7 @@
 
                 </div>
 
-                <div class="col-sm-4 col-md-2 pull-right redes_sociais">
+                <div class="col-sm-4 col-md-2 pull-right redes_sociais hidden-xs">
                     <span class="logotipo_redes">
                         <a target="_blank" href="https://instagram.com/instalerj/" title="Instagram">
                             <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_36.png" width="20" height="20"
@@ -86,7 +86,7 @@
 
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Idéia Legislativa<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ideia Legislativa<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             @if (Auth::guest())
                                 <li><a target='' href="{{ route('proposal.create') }}">Proponha uma ideia
@@ -560,7 +560,7 @@
 
                 </div>
 
-                <div class="col-sm-12 col-md-2">
+                <div class="col-sm-12 col-md-2 ">
                     <div class="redes_sociais">
 
                     <span class="logotipo_redes">

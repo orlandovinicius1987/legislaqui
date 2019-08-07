@@ -1410,6 +1410,23 @@ a.square {
 
 
 
+
+@media only screen and (max-width: 375px) {
+    .legislaqui_marca {
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .legislaqui_marca {
+        padding: 10px 30px;
+    }
+}
+
+
+
+
+
 /* Bootstrap Hack */
 .navbar {
     margin-bottom: 0;
