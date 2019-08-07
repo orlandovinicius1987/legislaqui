@@ -1978,12 +1978,12 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
 .col-list .col-head:hover {
     background-color: #252c52;
     text-decoration: none !important;
-    border-bottom: thick solid #90a244;
+    border-bottom: thick solid #f46b25;
 }
 
 
 .col-list .col-head:hover span{
-    background-color: #90a244;
+    background-color: #f46b25;
 
 }
 
