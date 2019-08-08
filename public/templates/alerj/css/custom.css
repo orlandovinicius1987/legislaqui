@@ -1411,17 +1411,24 @@ a.square {
 
 
 
-@media only screen and (max-width: 375px) {
+
+@media only screen and (max-width: 425px) {
     .legislaqui_marca {
         padding: 20px;
     }
 }
 
-@media only screen and (max-width: 425px) {
+
+@media only screen and (max-width: 768px) {
     .legislaqui_marca {
-        padding: 10px 30px;
+        padding-bottom: 30px;
+    }
+    .botao_topo {
+        display: none
+    ;
     }
 }
+
 
 
 
@@ -1443,7 +1450,7 @@ a.square {
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
     color: #ffffff;
-    background-color: #4b5381;
+    background-color: #ff6600;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -1452,12 +1459,12 @@ a.square {
 
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
     color: #FFFFFF;
-    background-color: #4b5381;
+    background-color: #ff6600;
 }
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
     color: #FFFFFF;
-    background-color: #4b5381;
+    background-color: #ff6600;
 }
 
 
@@ -1477,13 +1484,13 @@ a.square {
 
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    border: 2px solid #2c304b;
+    border: 0px solid #dd5800;
 
     border-radius: 4px;
     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
 
-    background-color: #4b5381;
+    background-color: #ff6600;
     border-top: 0px;
 }
 
@@ -1505,10 +1512,10 @@ a.square {
 }
 
 .dropdown-menu .divider {
-    height: 1px;
+    height: 2px;
     margin: 0px 0;
     overflow: hidden;
-    background-color: #252c52;
+    background-color: #dd5800;
 }
 
 
@@ -1961,7 +1968,7 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
     }
 
     .rodape .logotipo {
-        margin: 0 30px;
+        margin: 0 60px;
     }
 
 

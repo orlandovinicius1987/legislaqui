@@ -529,7 +529,9 @@
 
     <div class="inferior interna ">
         <div class="container">
-            <div class="row">
+
+
+            <div class="row botao_topo">
                 <div class="col-xs-12">
                     <div class="controle_botao">
                         <a href="javascript:;" class="scrolltop">TOPO</a>
