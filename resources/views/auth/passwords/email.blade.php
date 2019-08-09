@@ -34,7 +34,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-envelope"></i>&nbsp;Enviar Solicitude
+                                    <i class="fa fa-btn fa-envelope"></i> Enviar solicitação de troca de senha
                                 </button>
                             </div>
                         </div>

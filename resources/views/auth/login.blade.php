@@ -77,6 +77,12 @@
                                     <i class="fa fa-btn fa-sign-in fa-fw"></i>&nbsp; Login
                                 </button>
 
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        Esqueceu a sua senha?
+                                    </a>
+                                @endif
+
                                 {{--<a class="btn btn-link form-forgot-pwd" href="{{ url('/password/reset') }}">Esqueceu sua Senha?</a><br>
                                 <a href="redirect/facebook" id="facebookButton"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\fb_logo_blue29.png"></a>
                                 <a href="redirect/twitter"><img src="www.alerj.rj.gov.br\icone_08.png"></a>

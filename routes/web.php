@@ -51,9 +51,11 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
-    Route::get('/proposals', ['as' => 'home', 'uses' => 'ProposalsController@index']);
-    Route::get('/hearings', ['as' => 'home', 'uses' => 'HearingsController@index']);
-    Route::get('/wikilegis', ['as' => 'home', 'uses' => 'WikilegisController@index']);
+    Route::get('/hearings', ['as' => 'hearings.index', 'uses' => 'HearingsController@index']);
+
+    Route::get('/wikilegis', ['as' => 'wikilegis.index', 'uses' => 'WikilegisController@index']);
+
+    Route::get('/proposals', ['as' => 'proposals.index', 'uses' => 'ProposalsController@index']);
 
     Route::post('/', [
         'as' => 'home.post',
@@ -331,7 +333,4 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 
         return redirect('/');
     });
-
-    Route::get('manage-vue', 'VueItemController@manageVue');
-    Route::resource('vueitems', 'VueItemController');
 });
