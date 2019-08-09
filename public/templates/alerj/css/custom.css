@@ -859,9 +859,9 @@ td.blue_link {
 
 
 .form-control {
-    border: 1px solid #ff6600;
+    border: 2px solid rgba(232, 234, 237, 0.3);
     display:inline-block;
-    border-radius: 0px;
+    border-radius: 5px;
 }
 
 
@@ -1410,6 +1410,30 @@ a.square {
 
 
 
+
+
+@media only screen and (max-width: 425px) {
+    .legislaqui_marca {
+        padding: 20px;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .legislaqui_marca {
+        padding-bottom: 30px;
+    }
+    .botao_topo {
+        display: none
+    ;
+    }
+}
+
+
+
+
+
+
 /* Bootstrap Hack */
 .navbar {
     margin-bottom: 0;
@@ -1426,7 +1450,7 @@ a.square {
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
     color: #ffffff;
-    background-color: #4b5381;
+    background-color: #ff6600;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -1435,12 +1459,12 @@ a.square {
 
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
     color: #FFFFFF;
-    background-color: #4b5381;
+    background-color: #ff6600;
 }
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
     color: #FFFFFF;
-    background-color: #4b5381;
+    background-color: #ff6600;
 }
 
 
@@ -1460,13 +1484,13 @@ a.square {
 
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    border: 2px solid #2c304b;
+    border: 0px solid #dd5800;
 
     border-radius: 4px;
     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
 
-    background-color: #4b5381;
+    background-color: #ff6600;
     border-top: 0px;
 }
 
@@ -1488,10 +1512,10 @@ a.square {
 }
 
 .dropdown-menu .divider {
-    height: 1px;
+    height: 2px;
     margin: 0px 0;
     overflow: hidden;
-    background-color: #252c52;
+    background-color: #dd5800;
 }
 
 
@@ -1537,7 +1561,7 @@ a.square {
 
 @media (min-width: 768px) and (max-width: 1024px){
     .navbar-nav>li>a {
-        font-size: 14px;
+        font-size: 12px;
     }
 }
 
@@ -1580,6 +1604,7 @@ p.leading {
     text-align: center;
     line-height: 26px;
     font-family: dinregular;
+    margin: 0 30px 0 30px;
 }
 
 .controleideias.row span {
@@ -1920,18 +1945,42 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
 
     .rodape {
         padding-top: 30px;
+        padding-bottom: 30px;
     }
 
     .rodape .redes_sociais {
         text-align: center !important;
-        margin-bottom: 30px;
+        /*margin-bottom: 30px;*/
     }
 
     .titulopagina {
         text-align: center;
     }
 
+    .alerj .col-list {
+        margin-bottom: 40px;
+    }
+
 }
+
+
+
+
+
+@media only screen and (min-width:600px) and (max-width:836px)  {
+
+    .rodape .redes_sociais {
+        text-align: center !important;
+        /*margin-bottom: 30px;*/
+        margin-top: -10px;
+    }
+
+    .rodape .redes_sociais a img {
+        border: 0px;
+        margin-bottom:10px;
+    }
+}
+
 
 
 
@@ -1944,7 +1993,7 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
     }
 
     .rodape .logotipo {
-        margin: 0 30px;
+        margin: 0 60px;
     }
 
 
