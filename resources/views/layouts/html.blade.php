@@ -142,5 +142,7 @@
                 var dd = new DropDown($('#dd'));
             });
         </script>
+
+        @include('layouts.partials.google-analytics')
     </body>
 </html>
