@@ -49,6 +49,19 @@
                                  alt="Youtube" title="Youtube">
                         </a>
                     </span>
+
+                    @if(Auth::user())
+                        <li>
+                            <a target='' href="javascript:;" class="titulo" title="Usuário">
+                                Olá {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
+                            </a>
+                        </li>
+                        <li >
+                            <a href="{{ url('/logout') }}">
+                                <i class="fa fa-btn fa-sign-out"></i>Sair
+                            </a>
+                        </li>
+                    @endif
                 </div>
             </div>
         </div>
@@ -110,34 +123,17 @@
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-
-
                     @if (Auth::guest())
                         <li>
                             <a href="{{ url('/login') }}" class="titulo" title="Login | Registro">Login | Registro</a>
                         </li>
                     @else
-                        <li>
-                            <a target='' href="javascript:;" class="titulo" title="Usuário">
-                                Olá {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
-                            </a>
-                        </li>
-
-
                         @if (Auth::user()->is_admin)
                             <li>
-                                <a href="{{ route('admin') }}" target="_blank">Painel de Admin</a>
+                                <a href="{{ route('admin') }}" target="_blank">Administrador</a>
                             </li>
                         @endif
-
-                        <li >
-                            <a href="{{ url('/logout') }}">
-                                <i class="fa fa-btn fa-sign-out"></i>Sair
-                            </a>
-                        </li>
                     @endif
-
-
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
