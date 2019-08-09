@@ -4768,19 +4768,19 @@ input[type=number]::-webkit-inner-spin-button {
 
 .inferior .informacoes p.titulo {
     width: 100%;
-    height: 14px;
-    font-size: 0.688em;
+    height: auto;
+    font-size: 1em;
     font-family: 'dinbold';
     color: #ffffff;
     line-height: 1.0em;
     margin: 0px 0px 0px 0px;
-    padding: 3px 0px 0px 0px;
+    padding: 3px 0px 10px 0px;
 }
 
 .inferior  .informacoes p {
     width: 100%;
     height: auto;
-    font-size: 1em;
+    font-size: 1.1em;
     font-family: 'dinlight';
     color: #ffffff;
     line-height: 1.4em;
@@ -8554,7 +8554,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     .superior {
         width: 100%;
-        height: 110px;
+        height: auto;
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
@@ -12174,6 +12174,7 @@ input[type=number]::-webkit-inner-spin-button {
         padding: 10px 0px 0px 0px;
     }*/
 
+    /*
     .inferior .informacoes p.titulo {
         width: 100%;
         height: 14px;
@@ -12184,6 +12185,7 @@ input[type=number]::-webkit-inner-spin-button {
         margin: 0px 0px 0px 0px;
         padding: 3px 0px 0px 0px;
     }
+    */
 
     .inferior .informacoes p span {
         color: #9ea745;
@@ -12356,7 +12358,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     .superior {
         width: 100%;
-        height: 90px;
+        height: auto;
         overflow: hidden;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 0px 0px;
@@ -15838,19 +15840,19 @@ input[type=number]::-webkit-inner-spin-button {
 
     .inferior .informacoes p.titulo {
         width: 100%;
-        height: 14px;
-        font-size: 0.688em;
+        height: auto;
+        font-size: 1em;
         font-family: 'dinbold';
         color: #ffffff;
         line-height: 1.0em;
         margin: 0px 0px 0px 0px;
-        padding: 3px 0px 0px 0px;
+        padding: 3px 0px 5px 0px;
     }
 
     .inferior .informacoes p {
         width: 100%;
         height: auto;
-        font-size: 0.688em;
+        font-size: 1em;
         font-family: 'dinlight';
         color: #ffffff;
         line-height: 1.4em;
