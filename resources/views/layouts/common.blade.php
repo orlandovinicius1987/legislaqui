@@ -15,9 +15,9 @@
             <div class="row header-alerj">
 
                 <div class="col-sm-6 col-md-3">
-                    <div class="legislaqui_marca text-center">
+                    <a href="/" class="legislaqui_marca text-center">
                         <img src="/imagens/marca_legislaqui.png" class="img-responsive">
-                    </div>
+                    </a>
                 </div>
 
                 <div class="col-sm-4 col-md-2 pull-right redes_sociais hidden-xs">
