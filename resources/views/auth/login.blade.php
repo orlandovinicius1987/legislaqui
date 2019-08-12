@@ -25,7 +25,7 @@
 
                     <div class="after-auth"><h4>Caso já tenha uma conta de usuário, entre com seus dados abaixo.</h4></div>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body login-panel">
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
 
@@ -36,7 +36,7 @@
                                 <label class="col-xs-4 control-label">E-Mail</label>
 
                                 <div class="col-xs-8">
-                                    <input id="email" type="email" class="campo" name="email" value="{{ (Session::get('last_auth_attempt') === 'login') ? old('email') : '' }}" placeholder="Insira seu email">
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ (Session::get('last_auth_attempt') === 'login') ? old('email') : '' }}" placeholder="Insira seu email">
 
                                     @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'login'))
                                         <span class="help-block">
@@ -50,7 +50,7 @@
                                 <label class="col-xs-4 control-label">Senha</label>
 
                                 <div class="col-xs-8">
-                                    <input id="password" type="password" class="campo" name="password" placeholder="Insira sua senha">
+                                    <input id="password" type="password" class="form-control" name="password" placeholder="Insira sua senha">
 
                                     @if ($errors->has('password') && (Session::get('last_auth_attempt') === 'login'))
                                         <span class="help-block">
@@ -73,15 +73,20 @@
                         <div class="form-group">
 
                             <div class="col-xs-8 col-xs-offset-4">
-                                <button dusk="loginButton" type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in fa-fw"></i>&nbsp; Login
-                                </button>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         Esqueceu a sua senha?
                                     </a>
                                 @endif
+
+
+
+                                <button dusk="loginButton" type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-sign-in fa-fw"></i>&nbsp; Login
+                                </button>
+
+
 
                                 {{--<a class="btn btn-link form-forgot-pwd" href="{{ url('/password/reset') }}">Esqueceu sua Senha?</a><br>
                                 <a href="redirect/facebook" id="facebookButton"><img src="www.alerj.rj.gov.br\buttonsSocialLogin\fb_logo_blue29.png"></a>

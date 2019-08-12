@@ -21,7 +21,7 @@
                     <label class="col-xs-4 control-label">Nome</label>
 
                     <div class="col-xs-8">
-                        <input type="text" class="campo" name="name" value="{{ old('name') }}" placeholder="Insira seu nome">
+                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Insira seu nome">
                         @if ($errors->has('name') && (Session::get('last_auth_attempt') === 'register'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -34,7 +34,7 @@
                     <label class="col-xs-4 control-label">E-Mail</label>
 
                     <div class="col-xs-8">
-                        <input type="text" class="campo" name="email" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu email">
+                        <input type="text" class="form-control" name="email" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu email">
 
                         @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'register'))
                             <span class="help-block">
@@ -48,7 +48,7 @@
                     <label class="col-xs-4 control-label">CPF</label>
 
                     <div class="col-xs-8">
-                        <input required="required" class="campo" id="cpf" name="cpf" type="text" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">
+                        <input required="required" class="form-control" id="cpf" name="cpf" type="text" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">
 
                         {{--<input id="cfp" type="text" class="campo" name="cpf" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">--}}
 
@@ -64,7 +64,7 @@
                     <label class="col-xs-4 control-label">Senha</label>
 
                     <div class="col-xs-8">
-                        <input type="password" class="campo" name="password" placeholder="Mínimo de 8 dígitos">
+                        <input type="password" class="form-control" name="password" placeholder="Mínimo de 8 dígitos">
 
                         @if ($errors->has('password') && (Session::get('last_auth_attempt') === 'register'))
                             <span class="help-block">
@@ -78,7 +78,7 @@
                     <label class="col-xs-4 control-label">Confirme a Senha</label>
 
                     <div class="col-xs-8">
-                        <input type="password" class="campo" name="password_confirmation" placeholder="Confirmar sua senha">
+                        <input type="password" class="form-control" name="password_confirmation" placeholder="Confirmar sua senha">
 
                         @if ($errors->has('password_confirmation'))
                             <span class="help-block">
@@ -94,7 +94,7 @@
                     <div class="col-xs-8">
 
                         {{--Form::Label('uf', 'UF:')--}}
-                        {{ Form::select('uf', $uf, null, ['class' => 'campo']) }}
+                        {{ Form::select('uf', $uf, null, ['class' => 'form-control']) }}
 
                         @if ($errors->has('uf'))
                             <span class="help-block">

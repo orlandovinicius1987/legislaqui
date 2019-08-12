@@ -437,6 +437,22 @@ p.leading {
 .no-pointerevents .wrapper-dropdown-3.active .dropdown {
     display: block;
 }
+
+
+
+
+
+.panel-body.register {
+    margin: 0 30px;
+}
+
+
+.panel-body.login-panel {
+    margin: 0 30px;
+}
+
+
+
 /*#############################*/
 /************************************* END OF BRENO´S CHANGES **********************************/
 
