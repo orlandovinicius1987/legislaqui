@@ -18,9 +18,9 @@
                 {{ Form::hidden('uuid', Cookie::get('uuid')) }}
 
                 <div class="form-group{{ $errors->has('name') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
-                    <label class="col-xs-4 control-label">Nome</label>
+                    <label class="col-xs-12 col-md-4 control-label">Nome</label>
 
-                    <div class="col-xs-8">
+                    <div class="col-xs-12 col-md-8">
                         <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Insira seu nome">
                         @if ($errors->has('name') && (Session::get('last_auth_attempt') === 'register'))
                             <span class="help-block">
@@ -31,9 +31,9 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('email') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
-                    <label class="col-xs-4 control-label">E-Mail</label>
+                    <label class="col-xs-12 col-md-4 control-label">E-Mail</label>
 
-                    <div class="col-xs-8">
+                    <div class="col-xs-12 col-md-8">
                         <input type="text" class="form-control" name="email" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu email">
 
                         @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'register'))
@@ -45,9 +45,9 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('cpf') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
-                    <label class="col-xs-4 control-label">CPF</label>
+                    <label class="col-xs-12 col-md-4 control-label">CPF</label>
 
-                    <div class="col-xs-8">
+                    <div class="col-xs-12 col-md-8">
                         <input required="required" class="form-control" id="cpf" name="cpf" type="text" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">
 
                         {{--<input id="cfp" type="text" class="campo" name="cpf" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">--}}
@@ -61,9 +61,9 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('password') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
-                    <label class="col-xs-4 control-label">Senha</label>
+                    <label class="col-xs-12 col-md-4 control-label">Senha</label>
 
-                    <div class="col-xs-8">
+                    <div class="col-xs-12 col-md-8">
                         <input type="password" class="form-control" name="password" placeholder="Mínimo de 8 dígitos">
 
                         @if ($errors->has('password') && (Session::get('last_auth_attempt') === 'register'))
@@ -75,9 +75,9 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                    <label class="col-xs-4 control-label">Confirme a Senha</label>
+                    <label class="col-xs-12 col-md-4 control-label">Confirme a Senha</label>
 
-                    <div class="col-xs-8">
+                    <div class="col-xs-12 col-md-8">
                         <input type="password" class="form-control" name="password_confirmation" placeholder="Confirmar sua senha">
 
                         @if ($errors->has('password_confirmation'))
@@ -89,9 +89,9 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('uf') ? ' has-error' : '' }}">
-                    <label class="col-xs-4 control-label">UF</label>
+                    <label class="col-xs-12 col-md-4 control-label">UF</label>
 
-                    <div class="col-xs-8">
+                    <div class="col-xs-12 col-md-8">
 
                         {{--Form::Label('uf', 'UF:')--}}
                         {{ Form::select('uf', $uf, null, ['class' => 'form-control']) }}
@@ -121,7 +121,7 @@
 
                 <div class="form-group">
 
-                    <div class="col-xs-8 col-xs-offset-4">
+                    <div class="col-xs-12 col-md-8 col-md-offset-4">
                         <button dusk="registerButton" type="submit" class="btn btn-primary">
                             <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro
                         </button>

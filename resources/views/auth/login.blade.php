@@ -33,9 +33,9 @@
 
                             <div class="form-group{{ $errors->has('email') && (Session::get('last_auth_attempt') === 'login') ? ' has-error' : '' }}">
 
-                                <label class="col-xs-4 control-label">E-Mail</label>
+                                <label class="col-xs-12 col-md-4 control-label">E-Mail</label>
 
-                                <div class="col-xs-8">
+                                <div class="col-xs-12 col-md-8">
                                     <input id="email" type="email" class="form-control" name="email" value="{{ (Session::get('last_auth_attempt') === 'login') ? old('email') : '' }}" placeholder="Insira seu email">
 
                                     @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'login'))
@@ -47,9 +47,9 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('password') && (Session::get('last_auth_attempt') === 'login') ? ' has-error' : '' }}">
-                                <label class="col-xs-4 control-label">Senha</label>
+                                <label class="col-xs-12 col-md-4 control-label">Senha</label>
 
-                                <div class="col-xs-8">
+                                <div class="col-xs-12 col-md-8">
                                     <input id="password" type="password" class="form-control" name="password" placeholder="Insira sua senha">
 
                                     @if ($errors->has('password') && (Session::get('last_auth_attempt') === 'login'))
@@ -61,7 +61,7 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-xs-8 col-xs-offset-4">
+                                <div class="col-xs-12 col-md-8 col-md-offset-4">
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox" name="remember"> Permanecer conectado
@@ -72,7 +72,7 @@
 
                         <div class="form-group">
 
-                            <div class="col-xs-8 col-xs-offset-4">
+                            <div class="ccol-xs-12 col-md-8 col-md-offset-4">
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
