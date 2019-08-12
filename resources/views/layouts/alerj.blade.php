@@ -5,7 +5,7 @@
         <div class="interna">
             <div class="controle">
                 <div class="alerj">
-                    <div>
+                    <div class="container">
                         @yield('content')
                     </div>
 

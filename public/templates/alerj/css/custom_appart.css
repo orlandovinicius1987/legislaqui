@@ -1,0 +1,119 @@
+/*
+
+
+input {
+    font-family: 'dinlight';
+    font-size: 12px;
+    color: #666666;
+    padding: 2px 0px 0px 4px;
+}
+
+input {
+    width: auto;
+    height: 15px;
+    float: left;
+    overflow: hidden;
+    color: #666666;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: .7em;
+    outline: none;
+    border: 0px;
+    margin: 5px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background: none;
+}
+
+select {
+    color: #666666;
+    font-size: .7em;
+    border: 0px;
+    margin: 5px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+*/
+
+
+
+
+/* Form */
+
+
+/*
+
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.form-horizontal .control-label, label {
+    !* width: 100%; *!
+    min-height: 15px;
+    display: block;
+    !* float: left; *!
+    font-size: .75em;
+    font-family: 'dinregular';
+    color: #212e52;
+    !* margin: 0px 0px 0px 0px; *!
+    padding: 5px 0px 0px 0px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.form-forgot-pwd {
+    color: #212e52;
+    font-size: 11px;
+    padding: 10px 0px 0px 0px;
+}
+
+.form-horizontal .control-label {
+    text-align: right; !important
+}
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+/*
+
+.form-control {
+    border: 2px solid rgba(232, 234, 237, 0.3);
+    display:inline-block;
+    border-radius: 5px;
+}
+
+
+@media screen and (max-width: 500px) {
+
+    .buscaideia .form-control {
+        font-size: 10px;
+
+    }
+
+    .buscaideia .dimensionsBackground {
+        width: 13%;
+    }
+
+}
+
+input,
+button {
+    background-color:transparent;
+    border:0;
+}
+
+.form-control input[type=submit] {
+    text-align: center;
+}
+
+*/

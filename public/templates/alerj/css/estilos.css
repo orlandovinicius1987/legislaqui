@@ -2775,7 +2775,16 @@ table.ui-datepicker-calendar tr td a.ui-state-default.ui-state-highlight:hover {
     background: #e7e9d0;
 }
 
+
+
+
+
+
 /* ---------------------------------------------------------------------------------------------------- Interna - Formulario */
+
+
+/*
+
 input::-ms-clear {
     display: none;
 }
@@ -3138,6 +3147,12 @@ textarea {
     height: 10px;
     margin: 0px 3px 0px 0px;
 }
+
+
+*/
+
+
+
 /* ---------------------------------------------------------------------------------------------------- Date picker e Time Picker*/
 input.datapicker {
     float: left !important;
