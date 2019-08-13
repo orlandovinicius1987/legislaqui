@@ -307,10 +307,9 @@ body {
 }
 
 /* Headings & Paragraph */
+
+
 h1 {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
     font-family: 'univers_47';
     font-size: 2.8em;
     color: #212e52;
@@ -319,6 +318,7 @@ h1 {
     font-weight: normal;
     margin: 0px 0px 10px 0px;
     padding: 3px 0px 0px 0px;
+
 }
 
 

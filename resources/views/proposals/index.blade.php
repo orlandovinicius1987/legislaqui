@@ -3,49 +3,20 @@
 @section('title', config('app.name'))
 
 @section('header-text')
-    <div class="row explica">
+    {{--<div class="row explica">
         <div class="col-xs-12 instrucao hidden-xs">
             Você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar leis já existentes ou mudar a Constituição Estadual.
             As sugestões que receberem pelo menos 20 mil apoios serão encaminhadas à Comissão de Direitos Humanos e Legislação Participativa (CDH), onde serão discutidas e receberão parecer dos deputados, podendo virar um projeto de lei.
             Antes de propor uma ideia, procure, na lista de ideias já apresentadas, outras com o mesmo conteúdo, para não dividir os apoios e atrasar a tramitação.
         </div>
-    </div>
+    </div>--}}
 @stop
 
-
-<!-- Current Proposals -->
 @section('content')
 
     <div class="index">
 
         @include('partials.error')
-
-        <div class="">
-            {{--@if(($query == "open")or($query == ""))
-              <div class="col-xs-12 instrucao">
-                Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
-                encaminhada à Comissão. Antes de criar uma proposta, verifique se não há uma já criada para o mesmo fim.
-                 Várias ideias semelhantes terminam diluindo o apoio dos demais cidadãos.
-              </div>
-            @elseif ( $query == "committee" )
-              <div class="col-xs-12 instrucao">
-                 Essas são as propostas que receberam o apoio suficiente e, neste momento, estão sendo analisadas pela comissão.
-               </div>
-            @elseif ( $query == "expired" )
-              <div class="col-xs-12 instrucao">
-                  Essas são as propostas que não receberam o apoio suficiente e não foram encaminhadas para análise da comissão.
-              </div>
-            @elseif ( $query == "disapproved" )
-               <div class="col-xs-12 instrucao">
-                   Essas são as propostas analisadas e não acatadas pela comissão.
-               </div>
-            @elseif ( $query == "approved" )
-                <div class="col-xs-12 instrucao">
-                    Essas são as propostas analisadas e em tramitação na comissão.
-                </div>
-            @endif--}}
-        </div>
-
 
         <div class="panel panel-default">
             <div class="panel-heading-nav">
@@ -65,34 +36,7 @@
                                         </a></a>
                         </h3>
                     </div>
-                    {{--<div class="col-xs-7 pull-right text-right">
-                        <button type="button" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
-                encaminhada à Comissão. Antes de criar uma proposta, verifique se não há uma já criada para o mesmo fim.
-                 Várias ideias semelhantes terminam diluindo o apoio dos demais cidadãos.">
-                            <a href="/?q=open"> ABERTAS</a></button>
 
-                        <button type="button" class="btn btn-default {{ $query == "committee" ? 'active' :'' }}"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Essas são as propostas que receberam o apoio suficiente e, neste momento, estão sendo analisadas pela comissão.">
-                            <a href="/?q=committee">Em aprovação</a></button>
-
-                        <button type="button" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Essas são as propostas que não receberam o apoio suficiente e não foram encaminhadas para análise da comissão.">
-                            <a href="/?q=expired">EXPIRADAS</a></button>
-
-                        <button type="button" class="btn btn-default {{ $query == "disapproved" ? 'active' :'' }}"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Essas são as propostas analisadas e não acatadas pela comissão.">
-                            <a href="/?q=disapproved">NÃO ACATADAS</a></button>
-
-                        <button type="button" class="btn btn-default {{ $query == "approved" ? 'active' :'' }}"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Essas são as propostas analisadas em tramitação na comissão.">
-                            <a href="/?q=approved">EM TRAMITAÇÃO</a></button>
-                    </div>--}}
                 </div>
 
                 {{-- specific for Mobile --}}

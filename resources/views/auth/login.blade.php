@@ -12,8 +12,6 @@
         {{-- Include Auth Register View --}}
         @include('auth.register')
 
-
-
         <div class="col-md-5 col-xs-12">
             <div class="panel panel-default panel-bg">
                 <div class="panel-heading-login">

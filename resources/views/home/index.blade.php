@@ -8,7 +8,6 @@
 <!-- Current Proposals -->
 @section('content')
 
-
     <div class="col-list">
         <div class="col-md-4 t1">
 
@@ -17,7 +16,7 @@
                     <span class="glyphicon " aria-hidden="true"><img class="image-icon" src="/imagens/icon-idea.png"></span>
                     <h2>Ideias Legislativas</h2>
                     <p>
-                        Você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar leis já existentes ou mudar a Constituição Estadual.
+                       Você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar leis já existentes ou mudar a Constituição Estadual.
                     </p>
                 </div>
             </a>

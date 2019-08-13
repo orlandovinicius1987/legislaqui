@@ -6,6 +6,7 @@
             <div class="controle">
                 <div class="alerj">
                     <div class="container">
+                        @yield('header-text')
                         @yield('content')
                     </div>
 
