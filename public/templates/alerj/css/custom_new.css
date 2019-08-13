@@ -16,6 +16,38 @@
 
 
 
+.after-auth {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.forgot-pass {
+    padding-bottom: 15px;
+    display: block;
+}
+
+
+
+textarea {
+    width: 100%;
+    padding: 5px 0px 5px 10px !important;
+    margin: 5px 0px 0px 0px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: .75em;
+    font-weight: normal;
+    color: #666666;
+    background: none;
+    resize: none;
+}
+
+.create-header {
+    margin-bottom: 30px;
+}
+
+
+
+
 
 @media only screen and (max-width: 425px) {
     .legislaqui_marca {
@@ -298,7 +330,7 @@ p.leading {
         margin: 5px 15px 0px;
     }
     .interna .controle {
-        padding: 00px 0px 0px 0px;
+        padding: 15px 0px 15px 0px;
     }
     .over {
         margin: 0;
@@ -450,6 +482,59 @@ p.leading {
 .panel-body.login-panel {
     margin: 0 30px;
 }
+
+
+
+
+@media (min-width: 768px) {
+    .form-horizontal .control-label {
+        text-align: left;
+    }
+}
+
+
+@media (max-width:  992px) {
+
+
+}
+
+
+@media (min-width:  992px) {
+    .form-horizontal .control-label {
+        text-align: right;
+    }
+}
+
+
+
+
+.contact-form .form-control {
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+.navbar-default .navbar-toggle {
+    border-color: #778cc8;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #778cc8;
+}
+
+.navbar-default .navbar-toggle:focus {
+    background-color: #39508f;
+}
+
+.navbar-default .navbar-toggle:hover {
+    background-color: #39508f;
+}
+
 
 
 

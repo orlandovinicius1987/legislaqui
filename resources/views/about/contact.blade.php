@@ -24,7 +24,7 @@
 
         {{--<div class="panel-heading text-center">Contato</div>--}}
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12 contact-form">
 
 
                 <ul>

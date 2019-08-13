@@ -72,10 +72,10 @@
 
                         <div class="form-group">
 
-                            <div class="ccol-xs-12 col-md-8 col-md-offset-4">
+                            <div class="col-xs-12 col-md-8 col-md-offset-4">
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="forgot-pass " href="{{ route('password.request') }}">
                                         Esqueceu a sua senha?
                                     </a>
                                 @endif
