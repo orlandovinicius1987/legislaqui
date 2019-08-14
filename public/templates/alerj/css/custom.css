@@ -814,10 +814,6 @@ td.blue_link {
 }
 
 
-.filtros .btn-default {
-    font-size: 0.85em;
-    font-weight: 700;
-}
 
 .panel-heading h3 {
     color: #ff6600;
@@ -1220,42 +1216,12 @@ a.square {
 
 
 
-.btn-default {
-    color: #337ab7;
-    background-color: #f5f6ec;
-    /* border: 2px #9ea745 solid; */
-    /* border-top-right-radius: 1.2em; */
-    /* border-top-left-radius: 1.2em; */
-    margin-top: 15px;
-    /* padding: 8px 10px; */
-    padding-top: 10px;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-}
 
-.btn-default:hover {
-    background-color: #212e52;
-    color: white;
-    border: 1px #9ea745 solid;
-}
 
-.btn-default:focus {
-    background-color: #212e52;
-    color: white;
-    border: 1px #9ea745 solid;
-}
 
-.btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default {
-    background-color: #212e52;
-    color: white;
-    border: 1px #9ea745 solid;
-}
 
-.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
-    background-color: #212e52;
-    color: white;
-    border: 1px #9ea745 solid;
-}
+
+
 
 .btn-group-justified {
     margin-top: 4px;

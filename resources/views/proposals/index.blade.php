@@ -18,13 +18,16 @@
 
         @include('partials.error')
 
-        <div class="panel panel-default">
+        <div class="panel panel-default ideiaslegislativas">
             <div class="panel-heading-nav">
                 <div class="row">
                     <div class="col-xs-12 col-sm-7 col-md-6 titulopagina">
                       <h1>Ideias Legislativas</h1>
                     </div>
                     <div class="col-xs-12 col-sm-5 col-md-3 pull-right crienova">
+
+{{--
+
                         <h3>
                             @if (!Auth::check())
                                 <a dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
@@ -36,6 +39,19 @@
                                         </a>
                                 </a>
                         </h3>
+
+--}}
+
+
+                        @if (!Auth::check())
+                            <a class="btn btn-default btn-block" dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                @else
+                                    <a class="btn btn-default btn-block" dusk="newProposalButton" href="{{ route('proposal.create') }}">
+                                        @endif
+                                        <i class="fa fa-plus-circle"></i> Sua ideia legislativa
+                                    </a>
+                            </a>
+
                     </div>
 
                 </div>
@@ -43,9 +59,9 @@
                 {{-- specific for Mobile --}}
                 <div class="row visible-xs">
 
-                    <div class="col-xs-6">
+                    <div class="col-xs-12">
                         {{-- button to modal --}}
-                        <button type="button" class="btn modal_button" data-toggle="modal" data-target=".bs-example-modal-lg">
+                        <button type="button" class="btn btn-default btn-block {{--modal_button--}}" data-toggle="modal" data-target=".bs-example-modal-lg">
                             Entenda!
                         </button>
 
@@ -71,12 +87,13 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row visible-xs">
 
-
-                    <div class="col-xs-6">
+                    <div class="col-xs-12">
                         {{-- Menu DropDown --}}
-                        <div class="dropdown btn-group">
-                            <button class="btn gradient dropdown-toggle drop_filter" data-toggle="dropdown" id="filters">
+
+                            <button class="btn btn-default btn-block dropdown-toggle drop_filter" data-toggle="dropdown" id="filters">
                                 Filtre sua busca
                                 <span class="caret"></span>
                             </button>
@@ -87,7 +104,7 @@
                                 <li><a href="/?q=disapproved">Não Acatadas</a></li>
                                 <li><a href="/?q=approved">Em tramitação</a></li>
                             </ul>
-                        </div>
+
                     </div>
                 </div>
                 {{-- specific for Mobile End --}}
