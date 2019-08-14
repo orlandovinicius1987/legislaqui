@@ -4,8 +4,10 @@
 
 @section('header-text')
     <div class="row tituloideia">
-        <div class="col-xs-12 panel ">
-            <h1>{{ $proposal->name }}</h1>
+        <div class="col-xs-12 ">
+            <div class="panel">
+                <h1>{{ $proposal->name }}</h1>
+            </div>
         </div>
     </div>
 @stop
@@ -13,8 +15,8 @@
 
 @section('content')
 
-    <div class="">
-        <div class="corpodaideia">
+    <div class="row">
+        <div class="col-xs-12 corpodaideia">
 
             @include('partials.error')
 
