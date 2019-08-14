@@ -21,14 +21,18 @@
                 </div>
 
                 <div class="col-sm-4 col-md-2 pull-right redes_sociais hidden-xs">
-                    <span class="logotipo_redes">
+
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                                                <span class="logotipo_redes">
                         <a target="_blank" href="https://instagram.com/instalerj/" title="Instagram">
                             <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_36.png" width="20" height="20"
                                  alt="Instagram" title="Instagram">
                         </a>
                     </span>
 
-                    <span class="logotipo_redes">
+                            <span class="logotipo_redes">
                         <a target="_blank" href="https://www.facebook.com/assembleiaRJ" title="Facebook">
                             <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_06.png" width="20" height="20"
                                  alt="Facebook" title="Facebook">
@@ -36,38 +40,42 @@
                     </span>
 
 
-                    <span class="logotipo_redes">
+                            <span class="logotipo_redes">
                         <a target="_blank" href="https://twitter.com/alerj" title="Twitter">
                             <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_08.png" width="20" height="20"
                                  alt="Twitter" title="Twitter">
                         </a>
                     </span>
 
-                    <span class="logotipo_redes">
+                            <span class="logotipo_redes">
                         <a target="_blank" href="https://www.youtube.com/user/dcsalerj" title="Youtube">
                             <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_09.png" width="20" height="20"
                                  alt="Youtube" title="Youtube">
                         </a>
                     </span>
+                        </div>
+                    </div>
 
-                    @if(Auth::user())
-                        <li>
-                            <a target='' href="javascript:;" class="titulo" title="Usuário">
-                                Olá {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
-                            </a>
-                        </li>
-                        <li >
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
+                    <div class="row">
+                        <div class="col-xs-12">
+                            @if(Auth::user())
+
+                                    <a target='' href="javascript:;" class="titulo" title="Usuário">
+                                        Olá {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
+                                    </a>
+                                    <a class="btn btn-login" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                Sair
-                            </a>
+                                        Sair
+                                    </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </li>
-                    @endif
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                            @endif
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -123,7 +131,10 @@
                         </ul>
                     </li>
 
+                    {{--
                     <li><a href="/committee">Nossas Comissões</a></li>
+                    --}}
+
                     <li><a href="/terms">Termos de Uso</a></li>
                     <li><a href="/contact">Contato</a></li>
 

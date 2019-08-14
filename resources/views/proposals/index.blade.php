@@ -21,10 +21,10 @@
         <div class="panel panel-default">
             <div class="panel-heading-nav">
                 <div class="row">
-                    <div class="col-xs-12 col-md-6 titulopagina">
+                    <div class="col-xs-12 col-sm-7 col-md-6 titulopagina">
                       <h1>Ideias Legislativas</h1>
                     </div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 pull-right crienova">
+                    <div class="col-xs-12 col-sm-5 col-md-3 pull-right crienova">
                         <h3>
                             @if (!Auth::check())
                                 <a dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
@@ -33,7 +33,8 @@
                                             @endif
                                             <div class="icon-wrapper"><i class="fa fa-plus-circle custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
                                             <div class="quadrado_legislaqui" title="clique para criar uma nova ideia legislativa">Sua ideia legislativa</div>
-                                        </a></a>
+                                        </a>
+                                </a>
                         </h3>
                     </div>
 
@@ -98,7 +99,7 @@
                         <thead>
                         <tr>
                             <th >
-                                <div class="hidden-xs col-md-8 filtros">
+                                <div class="hidden-xs col-sm-12 col-md-8 filtros">
                                     <a href="/?q=open"><button type="button" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
