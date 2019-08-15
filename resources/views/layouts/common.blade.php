@@ -20,8 +20,7 @@
                     </a>
                 </div>
 
-                <div class="col-sm-4 col-md-2 pull-right redes_sociais hidden-xs">
-
+                <div class="col-sm-4 col-md-4 pull-right redes_sociais hidden-xs">
 
                     <div class="row">
                         <div class="col-xs-12">
@@ -56,17 +55,17 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row user-menu">
                         <div class="col-xs-12">
                             @if(Auth::user())
 
                                     <a target='' href="javascript:;" class="titulo" title="Usuário">
                                         Olá {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
                                     </a>
-                                    <a class="btn btn-login" href="{{ route('logout') }}"
+                                    <a class="btn btn-default btn-login" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                        Sair
+                                        <i class="fa fa-sign-out"></i> Sair
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

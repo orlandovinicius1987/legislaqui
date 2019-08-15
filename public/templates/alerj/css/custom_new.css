@@ -136,10 +136,17 @@ textarea {
 }
 
 
-
+.user-menu {
+    margin-top: 15px;
+}
+.user-menu a {
+    color: #ffffff;
+}
 
 
 /* Buttons Styles */
+
+
 
 .btn-default {
     color: #ffffff;
@@ -181,6 +188,10 @@ textarea {
 
 
 
+.btn-login {
+    background: #6772a8;
+    margin-left: 15px;
+}
 
 
 
