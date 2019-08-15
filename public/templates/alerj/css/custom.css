@@ -179,19 +179,11 @@ body {
 .header {
     margin-top: -20px;
 }
-
-.panel-body .table input[type="text"] {
-    color: #9ea745;
-    border-color: #9ea745;
-    /*width: 45vw;*/
-    margin-right: 20px;
-    border-radius: 5px !important;
-    text-transform: uppercase;
-}
-
+/*
 .panel-body .table .col-xs-4.buscaideia {
     margin-top: 11px;
 }
+*/
 
 
 .panel-body .table {
@@ -205,37 +197,6 @@ body {
 
 
 
-.header input[type="text"] {
-    color: #9ea745;
-    border-color: #9ea745;
-    /*width: 45vw;*/
-    margin-right: 20px;
-    border-radius: 5px !important;
-    text-transform: uppercase;
-}
-
-
-
-
-.form-control-feedback {
-    background-color: #9ea745;
-    color: white;
-    padding: 2px;
-    border-radius: 0px;
-    line-height: 24px;
-    height: 26px;
-    margin-top: 9px;
-    margin-right: 20px;
-}
-
-@media only screen and (max-width: 768px) {
-
-    .form-control-feedback {
-        margin-top: 9px;
-        margin-right: 20px;
-    }
-
-}
 
 .header input::-webkit-input-placeholder {
     color: #9ea745;
@@ -882,9 +843,15 @@ td.blue_link {
     background: #E8EAED;
 }
 
+
+/*
+
 .buscaideia {
     margin-top: 11px;
 }
+
+*/
+
 
 table#datatable thead {
     background: #E8EAED;
@@ -1334,15 +1301,6 @@ a.square {
 
 
 
-
-
-button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensionsBackground {
-    background: #9ea745;
-    color: #fff;
-    margin-top: 10px;
-    padding-top: 0;
-    pointer-events: all;
-}
 
 .bold {
     font-weight: 900;

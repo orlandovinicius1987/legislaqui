@@ -139,7 +139,7 @@ textarea {
 
 
 
-
+/* Buttons Styles */
 
 .btn-default {
     color: #ffffff;
@@ -182,6 +182,72 @@ textarea {
 
 
 
+
+
+/* Search Style */
+
+
+.buscaideia .form-control {
+    height: 38px;
+
+}
+
+.panel-body .table input[type="text"] {
+    color: #9ea745;
+    border-color: #9ea745;
+    border-radius: 5px !important;
+    text-transform: uppercase;
+}
+
+
+
+.header input[type="text"] {
+    color: #9ea745;
+    border-color: #9ea745;
+    /*width: 45vw;*/
+    margin-right: 20px;
+    border-radius: 5px !important;
+    text-transform: uppercase;
+}
+
+
+button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensionsBackground {
+    background: #9ea745;
+    color: #fff;
+    /*margin-top: 10px;*/
+    padding-top: 0;
+    pointer-events: all;
+}
+
+
+.form-control-feedback {
+    background-color: #9ea745;
+    color: white;
+    padding: 2px !important;
+    border-radius: 5px;
+    line-height: 28px !important;
+    height: 30px !important;
+    margin-top: 4px;
+    margin-right: 19px !important;
+    font-family: 'Glyphicons Halflings' !important;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .form-control-feedback {
+        margin-top: 9px;
+        margin-right: 20px;
+    }
+
+}
+
+
+
+
+
+
+
+
 @media (max-width: 768px) {
     .navbar-header {
         float: none;
@@ -217,7 +283,15 @@ textarea {
     .collapse.in{
         display:block !important;
     }
+
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: #ffffff;
+    }
+
 }
+
+
+
 
 
 @media (min-width: 768px) and (max-width: 1024px){
@@ -380,6 +454,11 @@ p.leading {
     }
     .over {
         margin: 0;
+    }
+
+    .controleideias.row {
+        margin-left: -20px;
+        margin-right: -20px;
     }
 }
 
