@@ -88,22 +88,35 @@
                         </div>
                     </div>
                 </div>
-                <div class="row visible-xs">
 
+
+
+                <div class="row visible-xs">
                     <div class="col-xs-12">
                         {{-- Menu DropDown --}}
 
-                            <button class="btn btn-default btn-block dropdown-toggle drop_filter" data-toggle="dropdown" id="filters">
-                                Filtre sua busca
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="/?q=open">Abertas</a></li>
-                                <li><a href="/?q=committee">Em aprovação</a></li>
-                                <li><a href="/?q=expired">Expiradas</a></li>
-                                <li><a href="/?q=disapproved">Não Acatadas</a></li>
-                                <li><a href="/?q=approved">Em tramitação</a></li>
-                            </ul>
+                        <button class="btn btn-default btn-block dropdown-toggle drop_filter" data-toggle="dropdown" id="filters">
+                            Filtre sua busca
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="/?q=open">Abertas</a></li>
+                            <li><a href="/?q=committee">Em aprovação</a></li>
+                            <li><a href="/?q=expired">Expiradas</a></li>
+                            <li><a href="/?q=disapproved">Não Acatadas</a></li>
+                            <li><a href="/?q=approved">Em tramitação</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 mobile-search buscaideia">
+
+                        {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
+                        {!! Form::text('search', null,
+                            array('required',
+                            'class'=>'form-control',
+                            'placeholder'=>'Busque uma ideia ...')) !!}
+                        <a href="#"  name="pesquisar"><button href="#" type="submit" class="btn btn-default glyphicon glyphicon-search form-control-feedback dimensionsBackground   ">{{--Pesquisar--}}</button></a>
+                        {!! Form::close() !!}
 
                     </div>
                 </div>
@@ -146,18 +159,20 @@
                                 </div>
 
 
-                                    <div class="col-xs-12 col-md-4 buscaideia">
-                                        {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
-                                        {!! Form::text('search', null,
-                                            array('required',
-                                            'class'=>'form-control',
-                                            'placeholder'=>'Busque uma ideia ...')) !!}
-                                        <a href="#"  name="pesquisar"><button href="#" type="submit" class="btn btn-default glyphicon glyphicon-search form-control-feedback dimensionsBackground   ">{{--Pesquisar--}}</button></a>
-                                        {!! Form::close() !!}
+                                <div class="hidden-xs col-xs-12 col-md-4 buscaideia">
+                                    {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
+                                    {!! Form::text('search', null,
+                                        array('required',
+                                        'class'=>'form-control',
+                                        'placeholder'=>'Busque uma ideia ...')) !!}
+                                    <a href="#"  name="pesquisar"><button href="#" type="submit" class="btn btn-default glyphicon glyphicon-search form-control-feedback dimensionsBackground   ">{{--Pesquisar--}}</button></a>
+                                    {!! Form::close() !!}
 
-                                    </div>
+                                </div>
 
-                                 {{--LINK PARA DÚVIDAS FREQUENTES--}}
+
+
+                                {{--LINK PARA DÚVIDAS FREQUENTES--}}
                                  {{--<a href="{{ route('about') }}">Dúvidas frequentes</a> --}}
                             </th>
                             @if (isset($is_not_responded) && Auth::user()->is_admin)
