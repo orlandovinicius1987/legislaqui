@@ -317,6 +317,14 @@ button.btn.btn-default.glyphicon.glyphicon-search.form-control-feedback.dimensio
     .navbar-nav>li>a {
         font-size: 12px;
     }
+    .buscaideia {
+        margin-top: 10px;
+    }
+    .form-control-feedback {
+
+        height: 30px !important;
+        width: 34px;
+    }
 }
 
 

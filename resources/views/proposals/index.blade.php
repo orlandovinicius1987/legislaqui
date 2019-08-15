@@ -129,7 +129,7 @@
                         <thead>
                         <tr>
                             <th >
-                                <div class="hidden-xs col-sm-12 col-md-8 filtros">
+                                <div class="hidden-xs col-sm-12 col-lg-8 filtros">
                                     <a href="/?q=open"><button type="button" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
@@ -159,7 +159,7 @@
                                 </div>
 
 
-                                <div class="hidden-xs col-xs-12 col-md-4 buscaideia">
+                                <div class="hidden-xs col-xs-12 col-lg-4 buscaideia">
                                     {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
                                     {!! Form::text('search', null,
                                         array('required',
