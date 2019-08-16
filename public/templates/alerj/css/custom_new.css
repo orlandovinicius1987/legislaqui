@@ -172,7 +172,7 @@ textarea {
 }
 
 .btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default {
-    background-color: #576197;
+    background-color: #ff6600;
     color: #ffffff;
 
 }

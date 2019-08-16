@@ -90,7 +90,9 @@
                         {{--@endif--}}
 
                     {{--</div>--}}
-                    <div class="row">
+
+
+                    <div class="row hidden-xs">
                         <div class="col-xs-12">
                         @can('edit', $proposal)
                         <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary botao" id="editar">
@@ -112,6 +114,35 @@
                         <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Voltar</a>
                         </div>
                     </div>
+
+
+
+                    <div class="row visible-xs">
+                        <div class="col-xs-12">
+                            @can('edit', $proposal)
+                                <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary btn-block " id="editar">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Ideia</a>
+                            @endcan
+                            @if (!Auth::check())
+                                <a href="{{ route('proposal.create') }}" class="btn btn-primary btn-block " id="novaIdeia" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
+                            @else
+                                <a href="{{ route('proposal.create') }}" class="btn btn-primary btn-block " id="novaIdeia" dusk="novaIdeia">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
+                            @endif
+                            {{--@can('destroy', $proposal)
+                            <a href="{{ route('proposal.destroy', $proposal->id) }}" class="btn btn-primary botao" onclick="if(!confirm('Você tem certeza que deseja apagar essa Ideia Legislativa?')){return false;};">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Ideia</a>
+                            @endcan--}}
+
+                            <a dusk="goBack" href="{{ route('home')}}" class="btn btn-primary btn-block" id="voltar">
+                                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Voltar</a>
+                        </div>
+
+                    </div>
+
+
+
 
                     {{--<div class="socialmedia">--}}
                         {{--<div class="addthis_sharing_toolbox"></div>--}}
