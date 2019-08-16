@@ -4,58 +4,68 @@
 
 @section('content')
 
-    <div class="">
-        <div class="">
-
+    <div class="row">
+        <div class="col-xs-12">
             @include('partials.error')
 
-            <div class="panel panel-default">
-                <div class="panel-heading text-center"><strong>Editar Proposta Legislativa</strong></div>
-                <div class="panel-body">
+            <h1 class="text-center">Editar Proposta Legislativa</h1>
 
-                    {{ Form::model($proposal, [
-                    'method' => 'PATCH',
-                    'route' => ['proposal.update', $proposal->id],
-                    'class' => 'form'
-                    ]) }}
-
-                   {{-- Form::open(array('route' => 'proposal.update', 'class' => 'form')) --}}
-
-                    <div class="form-group coluna_02">
-                        {{ Form::label('Nome da Proposta') }}
-                        {{ Form::text('name', null,
-                            array('required',
-                                  'class'=>'campo',
-                                  'placeholder'=>'Nome')) }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ Form::label('Problema') }}
-                        {{ Form::textarea('problem', null,
-                            array('required',
-                                  'class'=>'textarea',
-                                  'placeholder'=>'Descreva o Problema')) }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ Form::label('Exposição da Ideia') }}
-                        {{ Form::textarea('idea_exposition', null,
-                            array('required',
-                                  'class'=>'textarea',
-                                  'placeholder'=>'Descreva sua Ideia')) }}
-                    </div>
-
-
-                    <div class="form-group">
-                        {{ Form::submit('Gravar',
-                          array('class'=>'btn btn-primary botao')) }}
-                    </div>
-
-                    {{ Form::close() }}
-
-                </div>
-            </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+
+            {{ Form::model($proposal, [
+            'method' => 'PATCH',
+            'route' => ['proposal.update', $proposal->id],
+            'class' => 'form'
+            ]) }}
+
+            {{-- Form::open(array('route' => 'proposal.update', 'class' => 'form')) --}}
+
+            <div class="row form-group">
+                <div class="col-xs-12 ">
+
+                    {{ Form::label('Nome da Proposta') }}
+                    {{ Form::text('name', null,
+                        array('required',
+                              'class'=>'campo form-control',
+                              'placeholder'=>'Nome')) }}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-12 ">
+                    {{ Form::label('Problema') }}
+                    {{ Form::textarea('problem', null,
+                        array('required',
+                              'class'=>'textarea form-control',
+                              'placeholder'=>'Descreva o Problema')) }}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-12 ">
+                    {{ Form::label('Exposição da Ideia') }}
+                    {{ Form::textarea('idea_exposition', null,
+                        array('required',
+                              'class'=>'textarea form-control',
+                              'placeholder'=>'Descreva sua Ideia')) }}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-xs-12 ">
+                    {{ Form::submit('Gravar',
+                      array('class'=>'btn btn-primary botao')) }}
+                </div>
+            </div>
+
+            {{ Form::close() }}
+
+        </div>
+    </div>
+
 
 @stop

@@ -60,7 +60,7 @@
                             @if(Auth::user())
 
                                     <a target='' href="javascript:;" class="titulo" title="Usuário">
-                                        Olá {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
+                                        {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
                                     </a>
                                     <a class="btn btn-default btn-login" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -83,6 +83,26 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
+
+                <div class="visible-xs pull-left mobile-user">
+                    @if(Auth::user())
+
+                        <a target='' href="javascript:;" class="titulo" title="Usuário">
+                            {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
+                        </a>
+                        <a class="btn btn-default btn-login" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                            <i class="fa fa-sign-out"></i> Sair
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endif
+                </div>
+
+
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
