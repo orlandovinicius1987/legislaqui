@@ -60,7 +60,7 @@
                             @if(Auth::user())
 
                                     <a target='' href="javascript:;" class="titulo" title="Usuário">
-                                        {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
+                                       {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
                                     </a>
                                     <a class="btn btn-default btn-login" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -84,11 +84,11 @@
         <div class="container">
             <div class="navbar-header">
 
-                <div class="visible-xs pull-left mobile-user">
+{{--                <div class="visible-xs pull-left mobile-user">
                     @if(Auth::user())
 
                         <a target='' href="javascript:;" class="titulo" title="Usuário">
-                            {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
+                            11111{{ Auth::user()->name }}--}}{{-- <span class="caret"></span>--}}{{--
                         </a>
                         <a class="btn btn-default btn-login" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
@@ -100,7 +100,7 @@
                             @csrf
                         </form>
                     @endif
-                </div>
+                </div>--}}
 
 
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -147,6 +147,7 @@
                                         Propostas</a></li>
                                 <li><a href="{{ route('home') }}">Listar Todas Propostas</a></li>
                             @endif
+
                         </ul>
                     </li>
 
@@ -156,9 +157,28 @@
 
                     <li><a href="/terms">Termos de Uso</a></li>
                     <li><a href="/contact">Contato</a></li>
-
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+
+
+                    @if(Auth::user())
+                        <li class="visible-xs menu-user-mobile">
+                            <a target='' href="javascript:;" class="dropdown-toggle" title="Usuário">
+                               {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
+                            </a>
+
+                            <a class="btn btn-default btn-login " href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out"></i> Sair
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    @endif
+
+
                     @if (Auth::guest())
                         <li>
                             <a href="{{ url('/login') }}" class="titulo" title="Login | Registro">Login | Registro</a>
@@ -166,7 +186,7 @@
                     @else
                         @if (Auth::user()->is_admin)
                             <li>
-                                <a href="{{ route('admin') }}" target="_blank">Administrador</a>
+                                <a href="{{ route('admin') }}" target="_blank">Painel do Administrador</a>
                             </li>
                         @endif
                     @endif

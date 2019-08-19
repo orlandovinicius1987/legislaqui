@@ -194,6 +194,20 @@ textarea {
 }
 
 
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #4a58a47 !important;
+}
+
+.menu-user-mobile {
+    /*margin-right: 30px*/;
+    border-top: #4a58a4 solid 1px;
+    padding-top: 15px;
+}
+
+.menu-user-mobile .btn-login {
+    margin-right: 15px;
+}
+
 
 
 /* Search Style */
