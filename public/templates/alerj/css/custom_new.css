@@ -193,6 +193,23 @@ textarea {
     margin-left: 15px;
 }
 
+.btn-back {
+    background: #ff0000;
+}
+
+.btn-back:hover {
+    background: #212e52;
+}
+
+
+.btn-edit {
+    background: #449d44 !important;
+    border: none;
+}
+
+.btn-edit:hover {
+    background: #212e52;
+}
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     border-color: #4a58a47 !important;
