@@ -1,0 +1,179 @@
+/*
+
+
+input {
+    font-family: 'dinlight';
+    font-size: 12px;
+    color: #666666;
+    padding: 2px 0px 0px 4px;
+}
+
+input {
+    width: auto;
+    height: 15px;
+    float: left;
+    overflow: hidden;
+    color: #666666;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: .7em;
+    outline: none;
+    border: 0px;
+    margin: 5px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background: none;
+}
+
+select {
+    color: #666666;
+    font-size: .7em;
+    border: 0px;
+    margin: 5px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+*/
+
+
+
+
+/* Form */
+
+
+/*
+
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.form-horizontal .control-label, label {
+    !* width: 100%; *!
+    min-height: 15px;
+    display: block;
+    !* float: left; *!
+    font-size: .75em;
+    font-family: 'dinregular';
+    color: #212e52;
+    !* margin: 0px 0px 0px 0px; *!
+    padding: 5px 0px 0px 0px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.form-forgot-pwd {
+    color: #212e52;
+    font-size: 11px;
+    padding: 10px 0px 0px 0px;
+}
+
+.form-horizontal .control-label {
+    text-align: right; !important
+}
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+/*
+
+.form-control {
+    border: 2px solid rgba(232, 234, 237, 0.3);
+    display:inline-block;
+    border-radius: 5px;
+}
+
+
+@media screen and (max-width: 500px) {
+
+    .buscaideia .form-control {
+        font-size: 10px;
+
+    }
+
+    .buscaideia .dimensionsBackground {
+        width: 13%;
+    }
+
+}
+
+input,
+button {
+    background-color:transparent;
+    border:0;
+}
+
+.form-control input[type=submit] {
+    text-align: center;
+}
+
+*/
+
+
+
+
+
+/*
+
+.filtros .btn-default {
+    font-size: 0.85em;
+    font-weight: 700;
+}
+
+*/
+
+
+
+
+/*
+
+.btn-default {
+    color: #337ab7;
+    background-color: #f5f6ec;
+    !* border: 2px #9ea745 solid; *!
+    !* border-top-right-radius: 1.2em; *!
+    !* border-top-left-radius: 1.2em; *!
+    margin-top: 15px;
+    !* padding: 8px 10px; *!
+    padding-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.btn-default:hover {
+    background-color: #212e52;
+    color: white;
+    border: 1px #9ea745 solid;
+}
+
+.btn-default:focus {
+    background-color: #212e52;
+    color: white;
+    border: 1px #9ea745 solid;
+}
+
+.btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default {
+    background-color: #212e52;
+    color: white;
+    border: 1px #9ea745 solid;
+}
+
+.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+    background-color: #212e52;
+    color: white;
+    border: 1px #9ea745 solid;
+}
+
+*/
+
+
+

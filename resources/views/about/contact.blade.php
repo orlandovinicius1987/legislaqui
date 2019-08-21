@@ -20,56 +20,52 @@
 @section('content')
 
     @include('partials.error')
+    <div class="row">
+        <div class="col-xs-12 contact-form">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
 
-    <div class="">
-        {{--<div class="panel-heading text-center">Contato</div>--}}
-        <div class="">
+            @if(Session::has('message'))
+                <div class="alert alert-info">
+                    {{Session::get('message')}}
+                </div>
+            @endif
 
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+            {!! Form::open(array('route' => 'contact_store', 'class' => 'form')) !!}
 
-        @if(Session::has('message'))
-            <div class="alert alert-info">
-                {{Session::get('message')}}
+            <div class="form-group">
+                {!! Form::label('Nome') !!}
+                {!! Form::text('name', null,
+                    array('required',
+                          'class'=>'form-control',
+                          'placeholder'=>'Insira seu Nome')) !!}
             </div>
-        @endif
 
-        {!! Form::open(array('route' => 'contact_store', 'class' => 'form form-horizontal')) !!}
+            <div class="form-group">
+                {!! Form::label('E-mail') !!}
+                {!! Form::text('email', null,
+                    array('required',
+                          'class'=>'form-control',
+                          'placeholder'=>'Seu endereço de e-mail')) !!}
+            </div>
 
-        <div class="form-group">
-            {!! Form::label('Nome') !!}
-            {!! Form::text('name', null,
-                array('required',
-                      'class'=>'form-control',
-                      'placeholder'=>'Insira seu Nome')) !!}
-        </div>
+            <div class="form-group">
+                {!! Form::label('Mensagem') !!}
+                {!! Form::textarea('message', null,
+                    array('required',
+                          'class'=>'form-control',
+                          'placeholder'=>'Sua Mensagem')) !!}
+            </div>
 
-        <div class="form-group">
-            {!! Form::label('E-mail') !!}
-            {!! Form::text('email', null,
-                array('required',
-                      'class'=>'form-control',
-                      'placeholder'=>'Seu endereço de e-mail')) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('Mensagem') !!}
-            {!! Form::textarea('message', null,
-                array('required',
-                      'class'=>'form-control',
-                      'placeholder'=>'Sua Mensagem')) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::submit('Enviar!',
-              array('class'=>'btn btn-primary botao text-center')) !!}
-        </div>
-        {!! Form::close() !!}
+            <div class="form-group">
+                {!! Form::submit('Enviar!',
+                  array('class'=>'btn btn-primary botao text-center')) !!}
+            </div>
+            {!! Form::close() !!}
 
         </div>
     </div>
-
 @stop

@@ -20,15 +20,18 @@
                     </a>
                 </div>
 
-                <div class="col-sm-4 col-md-2 pull-right redes_sociais hidden-xs">
-                    <span class="logotipo_redes">
+                <div class="col-sm-4 col-md-4 pull-right redes_sociais hidden-xs">
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                                                <span class="logotipo_redes">
                         <a target="_blank" href="https://instagram.com/instalerj/" title="Instagram">
                             <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_36.png" width="20" height="20"
                                  alt="Instagram" title="Instagram">
                         </a>
                     </span>
 
-                    <span class="logotipo_redes">
+                            <span class="logotipo_redes">
                         <a target="_blank" href="https://www.facebook.com/assembleiaRJ" title="Facebook">
                             <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_06.png" width="20" height="20"
                                  alt="Facebook" title="Facebook">
@@ -36,38 +39,42 @@
                     </span>
 
 
-                    <span class="logotipo_redes">
+                            <span class="logotipo_redes">
                         <a target="_blank" href="https://twitter.com/alerj" title="Twitter">
                             <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_08.png" width="20" height="20"
                                  alt="Twitter" title="Twitter">
                         </a>
                     </span>
 
-                    <span class="logotipo_redes">
+                            <span class="logotipo_redes">
                         <a target="_blank" href="https://www.youtube.com/user/dcsalerj" title="Youtube">
                             <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_09.png" width="20" height="20"
                                  alt="Youtube" title="Youtube">
                         </a>
                     </span>
+                        </div>
+                    </div>
 
-                    @if(Auth::user())
-                        <li>
-                            <a target='' href="javascript:;" class="titulo" title="Usuário">
-                                Olá {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
-                            </a>
-                        </li>
-                        <li >
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
+                    <div class="row user-menu">
+                        <div class="col-xs-12">
+                            @if(Auth::user())
+
+                                    <a target='' href="javascript:;" class="titulo" title="Usuário">
+                                       {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
+                                    </a>
+                                    <a class="btn btn-default btn-login" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                Sair
-                            </a>
+                                        <i class="fa fa-sign-out"></i> Sair
+                                    </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </li>
-                    @endif
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                            @endif
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -76,6 +83,26 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
+
+{{--                <div class="visible-xs pull-left mobile-user">
+                    @if(Auth::user())
+
+                        <a target='' href="javascript:;" class="titulo" title="Usuário">
+                            11111{{ Auth::user()->name }}--}}{{-- <span class="caret"></span>--}}{{--
+                        </a>
+                        <a class="btn btn-default btn-login" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                            <i class="fa fa-sign-out"></i> Sair
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endif
+                </div>--}}
+
+
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -120,15 +147,38 @@
                                         Propostas</a></li>
                                 <li><a href="{{ route('home') }}">Listar Todas Propostas</a></li>
                             @endif
+
                         </ul>
                     </li>
 
+                    {{--
                     <li><a href="/committee">Nossas Comissões</a></li>
+                    --}}
+
                     <li><a href="/terms">Termos de Uso</a></li>
                     <li><a href="/contact">Contato</a></li>
-
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+
+
+                    @if(Auth::user())
+                        <li class="visible-xs menu-user-mobile">
+                            <a target='' href="javascript:;" class="dropdown-toggle" title="Usuário">
+                               {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
+                            </a>
+
+                            <a class="btn btn-default btn-login " href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out"></i> Sair
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    @endif
+
+
                     @if (Auth::guest())
                         <li>
                             <a href="{{ url('/login') }}" class="titulo" title="Login | Registro">Login | Registro</a>
@@ -136,7 +186,7 @@
                     @else
                         @if (Auth::user()->is_admin)
                             <li>
-                                <a href="{{ route('admin') }}" target="_blank">Administrador</a>
+                                <a href="{{ route('admin') }}" target="_blank">Painel do Administrador</a>
                             </li>
                         @endif
                     @endif

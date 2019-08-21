@@ -3,57 +3,31 @@
 @section('title', config('app.name'))
 
 @section('header-text')
-    <div class="row explica">
+    {{--<div class="row explica">
         <div class="col-xs-12 instrucao hidden-xs">
             Você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar leis já existentes ou mudar a Constituição Estadual.
             As sugestões que receberem pelo menos 20 mil apoios serão encaminhadas à Comissão de Direitos Humanos e Legislação Participativa (CDH), onde serão discutidas e receberão parecer dos deputados, podendo virar um projeto de lei.
             Antes de propor uma ideia, procure, na lista de ideias já apresentadas, outras com o mesmo conteúdo, para não dividir os apoios e atrasar a tramitação.
         </div>
-    </div>
+    </div>--}}
 @stop
 
-
-<!-- Current Proposals -->
 @section('content')
 
     <div class="index">
 
         @include('partials.error')
 
-        <div class="">
-            {{--@if(($query == "open")or($query == ""))
-              <div class="col-xs-12 instrucao">
-                Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
-                encaminhada à Comissão. Antes de criar uma proposta, verifique se não há uma já criada para o mesmo fim.
-                 Várias ideias semelhantes terminam diluindo o apoio dos demais cidadãos.
-              </div>
-            @elseif ( $query == "committee" )
-              <div class="col-xs-12 instrucao">
-                 Essas são as propostas que receberam o apoio suficiente e, neste momento, estão sendo analisadas pela comissão.
-               </div>
-            @elseif ( $query == "expired" )
-              <div class="col-xs-12 instrucao">
-                  Essas são as propostas que não receberam o apoio suficiente e não foram encaminhadas para análise da comissão.
-              </div>
-            @elseif ( $query == "disapproved" )
-               <div class="col-xs-12 instrucao">
-                   Essas são as propostas analisadas e não acatadas pela comissão.
-               </div>
-            @elseif ( $query == "approved" )
-                <div class="col-xs-12 instrucao">
-                    Essas são as propostas analisadas e em tramitação na comissão.
-                </div>
-            @endif--}}
-        </div>
-
-
-        <div class="panel panel-default">
+        <div class="panel panel-default ideiaslegislativas">
             <div class="panel-heading-nav">
                 <div class="row">
-                    <div class="col-xs-12 col-md-6 titulopagina">
+                    <div class="col-xs-12 col-sm-7 col-md-6 titulopagina">
                       <h1>Ideias Legislativas</h1>
                     </div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 pull-right crienova">
+                    <div class="col-xs-12 col-sm-5 col-md-3 pull-right crienova">
+
+{{--
+
                         <h3>
                             @if (!Auth::check())
                                 <a dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
@@ -62,45 +36,32 @@
                                             @endif
                                             <div class="icon-wrapper"><i class="fa fa-plus-circle custom-icon"><span class="fix-editor">&nbsp;</span></i></div>
                                             <div class="quadrado_legislaqui" title="clique para criar uma nova ideia legislativa">Sua ideia legislativa</div>
-                                        </a></a>
+                                        </a>
+                                </a>
                         </h3>
+
+--}}
+
+
+                        @if (!Auth::check())
+                            <a class="btn btn-default btn-block" dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                @else
+                                    <a class="btn btn-default btn-block" dusk="newProposalButton" href="{{ route('proposal.create') }}">
+                                        @endif
+                                        <i class="fa fa-plus-circle"></i> Sua ideia legislativa
+                                    </a>
+                            </a>
+
                     </div>
-                    {{--<div class="col-xs-7 pull-right text-right">
-                        <button type="button" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
-                encaminhada à Comissão. Antes de criar uma proposta, verifique se não há uma já criada para o mesmo fim.
-                 Várias ideias semelhantes terminam diluindo o apoio dos demais cidadãos.">
-                            <a href="/?q=open"> ABERTAS</a></button>
 
-                        <button type="button" class="btn btn-default {{ $query == "committee" ? 'active' :'' }}"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Essas são as propostas que receberam o apoio suficiente e, neste momento, estão sendo analisadas pela comissão.">
-                            <a href="/?q=committee">Em aprovação</a></button>
-
-                        <button type="button" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Essas são as propostas que não receberam o apoio suficiente e não foram encaminhadas para análise da comissão.">
-                            <a href="/?q=expired">EXPIRADAS</a></button>
-
-                        <button type="button" class="btn btn-default {{ $query == "disapproved" ? 'active' :'' }}"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Essas são as propostas analisadas e não acatadas pela comissão.">
-                            <a href="/?q=disapproved">NÃO ACATADAS</a></button>
-
-                        <button type="button" class="btn btn-default {{ $query == "approved" ? 'active' :'' }}"
-                                data-toggle="tooltip" data-placement="top"
-                                title="Essas são as propostas analisadas em tramitação na comissão.">
-                            <a href="/?q=approved">EM TRAMITAÇÃO</a></button>
-                    </div>--}}
                 </div>
 
                 {{-- specific for Mobile --}}
                 <div class="row visible-xs">
 
-                    <div class="col-xs-6">
+                    <div class="col-xs-12">
                         {{-- button to modal --}}
-                        <button type="button" class="btn modal_button" data-toggle="modal" data-target=".bs-example-modal-lg">
+                        <button type="button" class="btn btn-default btn-block {{--modal_button--}}" data-toggle="modal" data-target=".bs-example-modal-lg">
                             Entenda!
                         </button>
 
@@ -126,23 +87,37 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
 
-                    <div class="col-xs-6">
+
+                <div class="row visible-xs">
+                    <div class="col-xs-12">
                         {{-- Menu DropDown --}}
-                        <div class="dropdown btn-group">
-                            <button class="btn gradient dropdown-toggle drop_filter" data-toggle="dropdown" id="filters">
-                                Filtre sua busca
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="/?q=open">Abertas</a></li>
-                                <li><a href="/?q=committee">Em aprovação</a></li>
-                                <li><a href="/?q=expired">Expiradas</a></li>
-                                <li><a href="/?q=disapproved">Não Acatadas</a></li>
-                                <li><a href="/?q=approved">Em tramitação</a></li>
-                            </ul>
-                        </div>
+
+                        <button class="btn btn-default btn-block dropdown-toggle drop_filter" data-toggle="dropdown" id="filters">
+                            Filtre sua busca
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="/?q=open">Abertas</a></li>
+                            <li><a href="/?q=committee">Em aprovação</a></li>
+                            <li><a href="/?q=expired">Expiradas</a></li>
+                            <li><a href="/?q=disapproved">Não Acatadas</a></li>
+                            <li><a href="/?q=approved">Em tramitação</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 mobile-search buscaideia">
+
+                        {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
+                        {!! Form::text('search', null,
+                            array('required',
+                            'class'=>'form-control',
+                            'placeholder'=>'Busque uma ideia ...')) !!}
+                        <a href="#"  name="pesquisar"><button href="#" type="submit" class="btn btn-default glyphicon glyphicon-search form-control-feedback dimensionsBackground   ">{{--Pesquisar--}}</button></a>
+                        {!! Form::close() !!}
+
                     </div>
                 </div>
                 {{-- specific for Mobile End --}}
@@ -154,7 +129,7 @@
                         <thead>
                         <tr>
                             <th >
-                                <div class="hidden-xs col-md-8 filtros">
+                                <div class="hidden-xs col-sm-12 col-lg-8 filtros">
                                     <a href="/?q=open"><button type="button" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Essas são as propostas que ainda não chegaram à Comissão. Uma proposta precisa de 20 mil apoios para ser
@@ -184,18 +159,20 @@
                                 </div>
 
 
-                                    <div class="col-xs-12 col-md-4 buscaideia">
-                                        {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
-                                        {!! Form::text('search', null,
-                                            array('required',
-                                            'class'=>'form-control',
-                                            'placeholder'=>'Busque uma ideia ...')) !!}
-                                        <a href="#"  name="pesquisar"><button href="#" type="submit" class="btn btn-default glyphicon glyphicon-search form-control-feedback dimensionsBackground   ">{{--Pesquisar--}}</button></a>
-                                        {!! Form::close() !!}
+                                <div class="hidden-xs col-xs-12 col-lg-4 buscaideia">
+                                    {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
+                                    {!! Form::text('search', null,
+                                        array('required',
+                                        'class'=>'form-control',
+                                        'placeholder'=>'Busque uma ideia ...')) !!}
+                                    <a href="#"  name="pesquisar"><button href="#" type="submit" class="btn btn-default glyphicon glyphicon-search form-control-feedback dimensionsBackground   ">{{--Pesquisar--}}</button></a>
+                                    {!! Form::close() !!}
 
-                                    </div>
+                                </div>
 
-                                 {{--LINK PARA DÚVIDAS FREQUENTES--}}
+
+
+                                {{--LINK PARA DÚVIDAS FREQUENTES--}}
                                  {{--<a href="{{ route('about') }}">Dúvidas frequentes</a> --}}
                             </th>
                             @if (isset($is_not_responded) && Auth::user()->is_admin)

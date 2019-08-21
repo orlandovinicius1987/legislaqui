@@ -10,13 +10,9 @@
     </div>
 @stop
 
-
-<!-- Current Content -->
 @section('content')
-    <div class="">
-        {{--<div class="panel-heading text-center">Termos de Uso</div>--}}
-        <div class="">
-
+    <div class="row">
+        <div class="col-xs-12">
             <p class="leading">
                 O acesso e uso das ferramentas do portal Legislaqui estão sujeitos aos termos e condições abaixo, e à regulamentação do programa de democracia participativa da Alerj. Ao utilizar o portal, o cidadão reconhece que leu e aceita integralmente esses termos.
             </p>
