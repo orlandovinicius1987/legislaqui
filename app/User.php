@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\PasswordReset;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'uf', 'role_id', 'cpf', 'uuid',
+        'name',
+        'email',
+        'password',
+        'uf',
+        'role_id',
+        'cpf',
+        'uuid'
     ];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
@@ -27,22 +34,25 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token'];
 
     /* EM TESTE DE USO - NÃO MEXER     não está usando esse código, porém no 'User/Show' há uma menção $user->proposals_count
-       User has many Proposals*/
+     User has many Proposals*/
     /*public function proposals()
     {
         return $this->hasMany(Proposal::class);
     }*/
 
     /* EM TESTE DE USO - NÃO MEXER    ESTÁ SENDO USADA! - 'APOIAR UMA IDEIA'/'APOIAR PROPOSTA *************
-    User approvals Proposals */
+     User approvals Proposals */
     public function approvals()
     {
-        return $this->belongsToMany(Proposal::class, 'approvals', 'user_id', 'proposal_id');
+        return $this->belongsToMany(
+            Proposal::class,
+            'approvals',
+            'user_id',
+            'proposal_id'
+        );
     }
 
     /*EM TESTE DE USO - NÃO MEXER    não está usando esse código, porém no 'User/Show' há uma menção $user->likes_count
@@ -60,7 +70,7 @@ class User extends Authenticatable
      }*/
 
     /*EM TESTE DE USO - NÃO MEXER    Não está sendo usado!
-    User has one Role*/
+     User has one Role*/
     /*public function roles()
     {
         return $this->hasOne(Role::class, 'id');
@@ -69,7 +79,9 @@ class User extends Authenticatable
     // Get is_admin attribute
     public function getIsAdminAttribute()
     {
-        return Auth::user()->role_id === 0 or Auth::user()->role_id === 1 or Auth::user()->role_id === 2;
+        return Auth::user()->role_id === 0 or
+            Auth::user()->role_id === 1 or
+            Auth::user()->role_id === 2;
     }
 
     // Get is_super_user attribute
@@ -116,7 +128,10 @@ class User extends Authenticatable
 
     public function getAvatarAttribute()
     {
-        return 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?d=identicon'.'&s=80';
+        return 'https://www.gravatar.com/avatar/' .
+            md5(strtolower(trim($this->email))) .
+            '?d=identicon' .
+            '&s=80';
     }
 
     public function getCreatedAtAttribute($value)
@@ -132,7 +147,11 @@ class User extends Authenticatable
     // Socialite
     public function socialNetworks()
     {
-        return $this->belongsToMany('App\SocialNetwork', 'social_users', 'user_id');
+        return $this->belongsToMany(
+            'App\SocialNetwork',
+            'social_users',
+            'user_id'
+        );
     }
 
     public function socialUser()
@@ -150,5 +169,10 @@ class User extends Authenticatable
     public function getUsersAdm()
     {
         return $this->whereIn('role_id', [0, 1, 2])->get();
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new PasswordReset($token));
     }
 }
