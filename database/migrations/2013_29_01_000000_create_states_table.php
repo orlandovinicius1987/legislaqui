@@ -16,10 +16,12 @@ class CreateStatesTable extends Migration
     public function up()
     {
         Schema::create('states', function (Blueprint $table) {
-            $table->string('uf');
+
+            $table->increments('id');
+            $table->string('uf')->unique();
             $table->string('nome');
             $table->timestamps();
-            $table->primary('uf');
+            //$table->primary('uf');
         });
 
         $state = new StateSeederSupport();
