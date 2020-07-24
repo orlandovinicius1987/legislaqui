@@ -22,12 +22,7 @@
     @include('partials.error')
     <div class="row">
         <div class="col-xs-12 contact-form">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-
+            
             @if(Session::has('message'))
                 <div class="alert alert-info">
                     {{Session::get('message')}}
