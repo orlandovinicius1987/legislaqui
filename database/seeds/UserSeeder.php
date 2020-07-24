@@ -5,9 +5,12 @@
  * Date: 18/01/2016
  * Time: 12:19.
  */
+
+use App\Support\Constants;
 use App\User;
 use Illuminate\Database\Seeder;
 use App\Proposal;
+use Symfony\Component\Console\Helper\Helper;
 
 class UserSeeder extends Seeder
 {
@@ -18,6 +21,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+
+
         //Users and Proposals
         factory(App\User::class, rand(20, 50))
             ->create()
@@ -48,8 +53,9 @@ class UserSeeder extends Seeder
                 }
             });
 
+//        dd(get_role_id(Constants::ROLE_ADMIN));
         //Administrator
-        factory(App\User::class, 'admin', 1)->create([
+        factory(App\User::class, 'admin', get_role_id(Constants::ROLE_ADMIN))->create([
             'name' => 'Adm',
             'email' => 'adm@test.com',
             'password' => Hash::make('secret'),

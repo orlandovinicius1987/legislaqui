@@ -14,6 +14,8 @@ class Role extends Eloquent
 {
     public $timestamps = false;
 
+    protected $fillable = ['role'];
+
     // Role __belongs_to__ User
     public function user()
     {

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Support\Constants;
 use Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -79,26 +80,28 @@ class User extends Authenticatable
     // Get is_admin attribute
     public function getIsAdminAttribute()
     {
-        return Auth::user()->role_id === 0 or
-            Auth::user()->role_id === 1 or
-            Auth::user()->role_id === 2;
+        return Auth::user()->role_id == get_role_id(Constants::ROLE_ADMIN) or
+            Auth::user()->role_id == get_role_id(Constants::ROLE_APPROVAL) or
+            Auth::user()->role_id == get_role_id(Constants::ROLE_COMMISSION);
     }
 
     // Get is_super_user attribute
     public function getIsSuperUserAttribute()
     {
-        return Auth::user()->role_id === 0;
+        return Auth::user()->role_id == get_role_id(Constants::ROLE_ADMIN);
     }
 
     // Get is_committee_user attribute
     public function getIsCommitteeUserAttribute()
     {
-        return Auth::user()->role_id === 0 or Auth::user()->role_id === 2;
+        return Auth::user()->role_id == get_role_id(Constants::ROLE_ADMIN)
+            or Auth::user()->role_id == get_role_id(Constants::ROLE_COMMISSION);
     }
 
     // Get Role Name
     public function getRoleNameAttribute()
     {
+
         return Role::find($this->role_id)->role;
     }
 
@@ -162,13 +165,15 @@ class User extends Authenticatable
     // Return users of system
     public function getUsersCommon()
     {
-        return $this->where('role_id', '99')->get();
+        return $this->where('role_id', get_role_id(Constants::ROLE_CIDADAO))->get();
     }
 
     // Return users Adm, Approvers and Commission
     public function getUsersAdm()
     {
-        return $this->whereIn('role_id', [0, 1, 2])->get();
+        return $this->whereIn('role_id', [get_role_id(Constants::ROLE_ADMIN),
+            get_role_id(Constants::ROLE_APPROVAL),
+            get_role_id(Constants::ROLE_COMMISSION)])->get();
     }
 
     public function sendPasswordResetNotification($token)
