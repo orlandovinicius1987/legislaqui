@@ -21,7 +21,7 @@ class CreateBillsProjectTable extends Migration
             $table->increments('id');
             $table->integer('number')->unsigned();
             $table->string('owner');
-            $table->date('date')->nullable();
+            $table->timestamp('date')->nullable();
             $table->string('link')->nullable();
             $table->timestamps();
         });

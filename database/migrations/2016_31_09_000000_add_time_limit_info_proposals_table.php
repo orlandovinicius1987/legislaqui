@@ -17,7 +17,7 @@ class AddTimeLimitInfoProposalsTable extends Migration
     public function up()
     {
         Schema::table('proposals', function ($table) {
-            $table->date('time_limit_at')->nullable();
+            $table->timestamp('time_limit_at')->nullable();
             $table->integer('time_limit_by')->nullable();
         });
     }

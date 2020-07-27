@@ -17,8 +17,8 @@ class AddModerationInfoProposalsHistoryTable extends Migration
     public function up()
     {
         Schema::table('proposals_history', function ($table) {
-            $table->date('approved_at')->nullable();
-            $table->date('disapproved_at')->nullable();
+            $table->timestamp('approved_at')->nullable();
+            $table->timestamp('disapproved_at')->nullable();
             $table->integer('approved_by')->nullable();
             $table->integer('disapproved_by')->nullable();
         });
