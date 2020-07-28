@@ -9,6 +9,7 @@
 namespace App\Repositories;
 
 use App\SocialUser;
+use App\Support\Constants;
 use App\User;
 use Ramsey\Uuid\Uuid;
 
@@ -43,7 +44,7 @@ class SocialUserRepository
         $userModel->email = $email;
         $userModel->password = 'Empty';
         $userModel->uf = 'RJ';
-        $userModel->role_id = '99';
+        $userModel->role_id = get_role_id(Constants::ROLE_CIDADAO);
         $uuid = Uuid::uuid4();
         $userModel->uuid = $uuid;
         $userModel->save();

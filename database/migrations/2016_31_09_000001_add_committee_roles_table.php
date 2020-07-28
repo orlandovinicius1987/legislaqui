@@ -5,6 +5,8 @@
  * Date: 04/03/2016
  * Time: 12:15.
  */
+
+use App\Support\Constants;
 use Illuminate\Database\Migrations\Migration;
 
 class AddCommitteeRolesTable extends Migration
@@ -31,7 +33,7 @@ class AddCommitteeRolesTable extends Migration
 
     private function seed()
     {
-        DB::table('roles')->insert(['id' => '2', 'role' => 'Comissão']);
+        DB::table('roles')->insert(['role' => Constants::ROLE_COMMISSION]);
     }
 
     private function unseed()

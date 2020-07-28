@@ -17,8 +17,8 @@ class AddCommitteeModerationInfoProposalsTable extends Migration
     public function up()
     {
         Schema::table('proposals', function ($table) {
-            $table->date('approved_at_committee')->nullable();
-            $table->date('disapproved_at_committee')->nullable();
+            $table->timestamp('approved_at_committee')->nullable();
+            $table->timestamp('disapproved_at_committee')->nullable();
             $table->integer('approved_by_committee')->nullable();
             $table->integer('disapproved_by_committee')->nullable();
             $table->boolean('time_limit')->nullable();
