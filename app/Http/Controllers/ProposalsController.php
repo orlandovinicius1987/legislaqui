@@ -46,6 +46,7 @@ class ProposalsController extends Controller
 
         return view('proposals.index')
             ->with('query', $q)
+            ->with('search', $s)
             ->with('proposals', $resultSet);
     }
 
@@ -155,7 +156,7 @@ class ProposalsController extends Controller
         //Save Follow table
         ProposalFollow::create([
             'user_id' => Auth::user()->id,
-            'proposal_id' => $proposal->id,
+            'proposal_id' => $proposal->id
         ]);
 
         return redirect()
@@ -246,7 +247,7 @@ class ProposalsController extends Controller
                     'uuid' => $unique,
                     'proposal_id' => $proposal->id,
                     'like' => $action == 'like',
-                    'ip_address' => Request::ip(),
+                    'ip_address' => Request::ip()
                 ]);
 
                 $approval_url = route('proposal.approval', $id);
@@ -370,7 +371,7 @@ class ProposalsController extends Controller
             array_except($proposal->getAttributes(), [
                 'id',
                 'created_at',
-                'updated_at',
+                'updated_at'
             ])
         );
         //dd($proposal_history);
@@ -416,7 +417,7 @@ class ProposalsController extends Controller
             array_except($proposal->getAttributes(), [
                 'id',
                 'created_at',
-                'updated_at',
+                'updated_at'
             ])
         );
 

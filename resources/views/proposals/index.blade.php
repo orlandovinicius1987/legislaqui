@@ -107,18 +107,6 @@
                             <li><a href="/?q=approved">Em tramitação</a></li>
                         </ul>
                     </div>
-
-                    <div class="col-xs-12 mobile-search buscaideia">
-
-                        {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
-                        {!! Form::text('search', null,
-                            array('required',
-                            'class'=>'form-control',
-                            'placeholder'=>'Busque uma ideia ...')) !!}
-                        <a href="#"  name="pesquisar"><button href="#" type="submit" class="btn btn-default glyphicon glyphicon-search form-control-feedback dimensionsBackground   ">{{--Pesquisar--}}</button></a>
-                        {!! Form::close() !!}
-
-                    </div>
                 </div>
                 {{-- specific for Mobile End --}}
 
@@ -161,8 +149,9 @@
 
                                 <div class="hidden-xs col-xs-12 col-lg-4 buscaideia">
                                     {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
-                                    {!! Form::text('search', null,
-                                        array('required',
+                                    <input type="hidden" name="q" value="{{$query}}">
+                                    {!! Form::text('search', $search,
+                                        array(
                                         'class'=>'form-control',
                                         'placeholder'=>'Busque uma ideia ...')) !!}
                                     <a href="#"  name="pesquisar"><button href="#" type="submit" class="btn btn-default glyphicon glyphicon-search form-control-feedback dimensionsBackground   ">{{--Pesquisar--}}</button></a>
