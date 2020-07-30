@@ -11,9 +11,13 @@ return [
     | any other location as required by the application or its packages.
     |
     */
-    'name' => '#Legislaqui',
-
     'name_formatted' => '<b>#</b>Legislaqui',
+
+    'name' => env('APP_NAME', '#Legislaqui'),
+
+    'medium_name' => env('APP_NAME_MEDIUM', 'Legislaqui'),
+
+    'long_name' => env('APP_NAME_LONG', 'Legislaqui'),
 
     /*
     |--------------------------------------------------------------------------
@@ -176,7 +180,7 @@ return [
           Other service providers...
         */
         //Laravel\Socialite\SocialiteServiceProvider::class,
-        \SocialiteProviders\Manager\ServiceProvider::class,
+        \SocialiteProviders\Manager\ServiceProvider::class
     ],
 
     /*
@@ -230,6 +234,6 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'NoCaptcha' => 'Anhskohbo\NoCaptcha\Facades\NoCaptcha',
         'Location' => 'Stevebauman\Location\Facades\Location',
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-    ],
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class
+    ]
 ];

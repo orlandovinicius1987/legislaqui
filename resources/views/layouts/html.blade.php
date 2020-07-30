@@ -44,7 +44,7 @@
         <script type="text/javascript" src="//www.alerj.rj.gov.br/Scripts/jquery.cookie.js"></script>
         <link href="//www.alerj.rj.gov.br/BotDetectCaptcha.ashx?get=layoutStyleSheet" rel="stylesheet"/>
         <title>
-            Assembléia Legislativa do Estado do Rio de Janeiro
+            {{ config('app.medium_name') }}
         </title>
 
         <link href="//www.alerj.rj.gov.br/favicon.ico" rel="shortcut icon" type="image/x-icon" />
