@@ -40,7 +40,9 @@ class ProposalPolicy
      */
     public function edit(User $user, Proposal $proposal)
     {
-        return $this->isProposalOwner($user, $proposal);
+        //Tem que ser o autor da proposta e não pode estar publicado
+        return $this->isProposalOwner($user, $proposal) &&
+            $this->isNotPublished($proposal);
     }
 
     /**
@@ -70,5 +72,10 @@ class ProposalPolicy
     public function before($user, $ability)
     {
         return $user->is_admin ? true : null;
+    }
+
+    public function isNotPublished(Proposal $proposal): bool
+    {
+        return blank($proposal->approved_at);
     }
 }
