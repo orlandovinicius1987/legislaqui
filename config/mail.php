@@ -59,6 +59,11 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    'administrator' =>
+        env('MAIL_ADMINISTRATOR','administrator.legislaqui@alerj.rj.gov.br'),
+
+
+
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
@@ -129,4 +134,5 @@ return [
     */
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
+
 ];
