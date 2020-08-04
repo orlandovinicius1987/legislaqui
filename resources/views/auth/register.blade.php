@@ -1,3 +1,12 @@
+@extends('layouts.alerj')
+
+@section('content')
+
+    @if (Session::has('error_msg'))
+        <div class="alert alert-danger">{{ Session::get('error_msg') }}</div>
+    @endif
+
+
 <!-- Registro -->
 <div class="col-md-7 col-xs-12">
     <div class="panel panel-default panel-bg">
@@ -87,13 +96,16 @@
                         @endif
                     </div>
                 </div>
+{{--
 
                 <div class="form-group{{ $errors->has('uf') ? ' has-error' : '' }}">
                     <label class="col-xs-12 col-md-4 control-label">UF</label>
 
                     <div class="col-xs-12 col-md-8">
 
-                        {{--Form::Label('uf', 'UF:')--}}
+                        --}}
+{{--Form::Label('uf', 'UF:')--}}{{--
+
                         {{ Form::select('uf', $uf, null, ['class' => 'form-control']) }}
 
                         @if ($errors->has('uf'))
@@ -103,6 +115,7 @@
                         @endif
                     </div>
                 </div>
+--}}
 
                 {{--{{Location::get()->countryCode}}--}}
 
@@ -145,3 +158,5 @@
     </div>
 </div>
 
+
+@endsection

@@ -92,6 +92,7 @@
 
 
         {{-- Include Auth Register View --}}
+
         @include('auth.register')
 
 

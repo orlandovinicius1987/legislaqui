@@ -1,14 +1,8 @@
 @extends('layouts.html')
 
 @section('body')
-    <div id="popupCarregando" class="carregando" style="display: none">
-        <div class="aguarde">AGUARDE...</div>
-        <div class="loader">
-            <img src="//www.alerj.rj.gov.br/Content/imagens/loading.gif" width="32" height="32">
-        </div>
-    </div>
-    <input type="hidden" name="tempoBanner" id="tempoBanner"/>
-    <input type="hidden" name="tempoNoticia" id="tempoNoticia"/>
+
+    @include('layouts.partials.header')
 
     <div class="superior">
         <div class="container">
@@ -21,7 +15,6 @@
                 </div>
 
                 <div class="col-sm-4 col-md-4 pull-right redes_sociais hidden-xs">
-
                     <div class="row">
                         <div class="col-xs-12">
                                                 <span class="logotipo_redes">
@@ -80,28 +73,14 @@
         </div>
     </div>
 
+
+
+
+
+
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-
-{{--                <div class="visible-xs pull-left mobile-user">
-                    @if(Auth::user())
-
-                        <a target='' href="javascript:;" class="titulo" title="Usuário">
-                            11111{{ Auth::user()->name }}--}}{{-- <span class="caret"></span>--}}{{--
-                        </a>
-                        <a class="btn btn-default btn-login" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                            <i class="fa fa-sign-out"></i> Sair
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    @endif
-                </div>--}}
-
 
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
@@ -117,8 +96,6 @@
 
                     <li class="active"><a href="/">Início</a></li>
                     <li><a href="/about">Como Funciona</a></li>
-
-
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ideia Legislativa<span class="caret"></span></a>
@@ -164,7 +141,7 @@
                     @if(Auth::user())
                         <li class="visible-xs menu-user-mobile">
                             <a target='' href="javascript:;" class="dropdown-toggle" title="Usuário">
-                               {{ Auth::user()->name }}{{-- <span class="caret"></span>--}}
+                               {{ Auth::user()->name }}
                             </a>
 
                             <a class="btn btn-default btn-login " href="{{ route('logout') }}"
@@ -190,6 +167,8 @@
                             </li>
                         @endif
                     @endif
+
+
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -197,71 +176,6 @@
 
     @yield('contents')
 
-    <div class="inferior interna ">
-        <div class="container">
+    @include('layouts.partials.footer')
 
-
-            <div class="row botao_topo">
-                <div class="col-xs-12">
-                    <div class="controle_botao">
-                        <a href="javascript:;" class="scrolltop">TOPO</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row rodape">
-                <div class="col-sm-3 col-md-2 col-lg-offset-1 col-lg-2">
-                    <div class="logotipo">
-                        <a href="/" title="Assembléia Legislativa do Estado do Rio de Janeiro">
-                            <img src="/imagens/logotipo_inferior.png" class="img-responsive"
-                                 alt="Assembléia Legislativa do Estado do Rio de Janeiro"
-                                 title="Assembléia Legislativa do Estado do Rio de Janeiro">
-                        </a>
-                    </div>
-
-                </div>
-
-                <div class="col-sm-8 col-md-6">
-
-                    <div class="informacoes">
-                        <p class="titulo">PALÁCIO TIRADENTES</p>
-                        <p>Rua Primeiro de março, s/n - Praça XV - Rio de Janeiro<br/><span>CEP</span> 20010-090 &nbsp;&nbsp;
-                            <span class="footer_phone">Telefone</span> +55 (21) 2588-1000 &nbsp;&nbsp;{{-- <span>Fax</span> +55 (21) 2588-1516--}}
-                        </p>
-                    </div>
-
-                </div>
-
-                <div class="col-sm-1 col-md-2 ">
-                    <div class="redes_sociais">
-
-                    <span class="logotipo_redes">
-                        <a target="_blank" href="https://instagram.com/instalerj/" title="Instagram"><img
-                                    src="http://www.alerj.rj.gov.br/Content/imagens/icone_36.png" width="20" height="20"
-                                    alt="Instagram" title="Instagram">
-                        </a>
-                    </span>
-                        <span class="logotipo_redes">
-                        <a target="_blank" href="https://www.facebook.com/assembleiaRJ" title="Facebook"><img
-                                    src="http://www.alerj.rj.gov.br/Content/imagens/icone_06.png" width="20" height="20"
-                                    alt="Facebook" title="Facebook">
-                        </a>
-                    </span>
-                        <span class="logotipo_redes">
-                        <a target="_blank" href="https://twitter.com/alerj" title="Twitter"><img
-                                    src="http://www.alerj.rj.gov.br/Content/imagens/icone_08.png" width="20" height="20"
-                                    alt="Twitter" title="Twitter">
-                        </a>
-                    </span>
-                        <span class="logotipo_redes">
-                        <a target="_blank" href="https://www.youtube.com/user/dcsalerj" title="Youtube"><img
-                                    src="http://www.alerj.rj.gov.br/Content/imagens/icone_09.png" width="20" height="20"
-                                    alt="Youtube" title="Youtube">
-                        </a>
-                    </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
