@@ -125,8 +125,9 @@
 
                     <form class="form-inline my-2 my-lg-0">
                         {{--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">--}}
-                        <a href="{{ url('/login') }}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Entrar</a>
-                        <a href="{{ url('/register') }}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Registrar-se</a>
+                        <a href="{{ route('login') }}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Entrar</a>
+
+                        <a href="{{ route('register') }}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Registrar-se</a>
                     </form>
 
             @else
