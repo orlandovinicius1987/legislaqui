@@ -129,9 +129,6 @@
                         <a href="{{ url('/register') }}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Registrar-se</a>
                     </form>
 
-                <li>
-                    <a href="{{ url('/login') }}" class=" class="nav-item" title="Login | Registro"> Login | Registro</a>
-                </li>
             @else
                 @if (Auth::user()->is_admin)
                     <li>
@@ -140,12 +137,6 @@
                 @endif
             @endif
         </ul>
-
-
-
-
-
-
     </div>
 </nav>
 
