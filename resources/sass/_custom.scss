@@ -1,0 +1,13 @@
+/* Custom */
+
+
+
+.btn-outline-success {
+    color: #fff;
+    border-color: #ff6633;
+
+    &:hover{
+        background-color: #ff6633;
+        border-color: #ff6633;
+    }
+}

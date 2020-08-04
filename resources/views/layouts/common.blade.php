@@ -164,7 +164,5 @@
 
     --}}
     @yield('contents')
-
     @include('layouts.partials.footer')
-
 @endsection
