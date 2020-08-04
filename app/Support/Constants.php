@@ -16,5 +16,9 @@ class Constants
     const ROLE_APPROVAL = 'Aprovador';
     const ROLE_COMMISSION = 'Comissão';
 
+    const CONTACT_FORM_MAIL_SUBJECT = 'Contato Via Formulário da Página Legislaqui';
+    const RESPONSE_CONTACT_FORM_MAIL_SUBJECT = 'Seu contato foi registrado no legislaqui';
+
+
 
 }

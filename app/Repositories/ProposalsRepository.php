@@ -260,7 +260,8 @@ class ProposalsRepository
                 //Mail::send('emails.reminder', ['user' => $user], function ($message) use ($user) {
                 //$m->from('hello@app.com', 'Your Application');
                 //$message->from('us@example.com', 'Laravel');
-                $message->from('admin@alerj.rj.gov.br', 'e-democracia');
+
+                $message->from(config('mail.from.name'),config('mail.from.address'));
 
                 $message
                     ->to($proposal->user->email, $proposal->user->name)
@@ -279,10 +280,10 @@ class ProposalsRepository
             'emails.proposal-goal-notification',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from('admin@alerj.rj.gov.br', 'e-democracia');
+                $message->from(config('mail.from.name'),config('mail.from.address'));
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc('admin@alerj.rj.gov.br', 'e-democracia');
+                $message->bcc(config('mail.from.name'),config('mail.from.address'));
 
                 $message->subject(
                     'e-democracia: Notificação - Sua Proposta atingiu o número necessário de Apoios'
@@ -299,10 +300,10 @@ class ProposalsRepository
             'emails.proposal-approval-by-committee',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from('admin@alerj.rj.gov.br', 'e-democracia');
+                $message->from(config('mail.from.name'),config('mail.from.address'));
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc('admin@alerj.rj.gov.br', 'e-democracia');
+                $message->bcc(config('mail.from.name'),config('mail.from.address'));
 
                 $message->subject(
                     'e-democracia: Notificação - Proposta aprovada pelo Comitê'
@@ -319,10 +320,10 @@ class ProposalsRepository
             'emails.proposal-closed-by-committee',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from('admin@alerj.rj.gov.br', 'e-democracia');
+                $message->from(config('mail.from.name'),config('mail.from.address'));
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc('admin@alerj.rj.gov.br', 'e-democracia');
+                $message->bcc(config('mail.from.name'),config('mail.from.address'));
 
                 $message->subject(
                     'e-democracia: Notificação - Proposta encerrada pelo Comitê'
@@ -339,10 +340,10 @@ class ProposalsRepository
             'emails.proposal-time-limit',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from('admin@alerj.rj.gov.br', 'e-democracia');
+                $message->from(config('mail.from.name'),config('mail.from.address'));
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc('admin@alerj.rj.gov.br', 'e-democracia');
+                $message->bcc(config('mail.from.name'),config('mail.from.address'));
 
                 $message->subject(
                     'e-democracia: Notificação - Proposta aprovada pelo Comitê'
@@ -359,10 +360,10 @@ class ProposalsRepository
             'emails.proposal-closed',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from('admin@alerj.rj.gov.br', 'e-democracia');
+                $message->from(config('mail.from.name'),config('mail.from.address'));
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc('admin@alerj.rj.gov.br', 'e-democracia');
+                $message->bcc(config('mail.from.name'),config('mail.from.address'));
 
                 $message->subject(
                     'e-democracia: Notificação - Proposta encerrada'
