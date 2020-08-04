@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\State;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -58,9 +59,9 @@ class RegisterController extends Controller
                 'string',
                 'email',
                 'max:255',
-                'unique:users',
+                'unique:users'
             ],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
     }
 
@@ -80,7 +81,7 @@ class RegisterController extends Controller
             'uf' => $data['uf'],
             'role_id' => 99,
             'cpf' => $data['cpf'],
-            'uuid' => $data['uuid'],
+            'uuid' => $data['uuid']
         ]);
     }
 
@@ -93,7 +94,7 @@ class RegisterController extends Controller
         if (!app()->environment('local')) {
             // Validates Captcha
             $validate = Validator::make($request->all(), [
-                'g-recaptcha-response' => 'required|captcha',
+                'g-recaptcha-response' => 'required|captcha'
             ]);
 
             // Verifies if Captcha fails and redirect to register view
@@ -118,5 +119,13 @@ class RegisterController extends Controller
         \Session::flash('flash_msg', 'Registro feito com Sucesso.');
 
         return $register;
+    }
+
+    // showRegistrationForm Method Overload
+    public function showRegistrationForm()
+    {
+        $uf = State::all()->pluck('nome', 'uf');
+
+        return view('auth.register', compact('uf'));
     }
 }
