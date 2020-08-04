@@ -1,5 +1,5 @@
 <p>
-    Olá, {{ $name }}({{ $email }}) a sua mensagem abaixo foi registrada e em breve entraremos em contato.
+    Olá, {{ $name }} ({{ $email }}) a sua mensagem abaixo foi registrada e em breve entraremos em contato.
 </p>
 
 <p>

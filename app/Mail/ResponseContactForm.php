@@ -19,13 +19,16 @@ class ResponseContactForm extends Mailable
      * @return void
      */
 
-    protected $contactFormRequest;
+    protected $name;
+    protected $email;
+    protected $message;
 
-    public function __construct(ContactFormRequest $contactFormRequest)
+    public function __construct($name,$email,$message)
     {
-        $this->contactFormRequest = $contactFormRequest;
+        $this->name = $name;
+        $this->email = $email;
+        $this->message = $message;
     }
-
     /**
      * Build the message.
      *
@@ -36,8 +39,8 @@ class ResponseContactForm extends Mailable
 
         return $this->view('emails.response-contact')
             ->subject(Constants::RESPONSE_CONTACT_FORM_MAIL_SUBJECT)
-            ->with(['name' => $this->contactFormRequest->get('name')])
-            ->with(['email' => $this->contactFormRequest->get('email')])
-            ->with(['user_message' => $this->contactFormRequest->get('message')]);
+            ->with(['name' => $this->name])
+            ->with(['email' => $this->email])
+            ->with(['user_message' => $this->message]);
     }
 }

@@ -51,9 +51,13 @@ class AboutController extends Controller
         $msg =
             'Obrigado por entrar em contato com a e-democracia da ALERJ. Você receberá uma cópia de sua mensagem e retornaremos o seu contato em breve!';
 
-        Mail::to(config('mail.administrator')->cc($request->get('email'))->send( new ContactForm($request));
+        Mail::to(config('mail.administrator'))->send( new ContactForm($request->get('name'),
+            $request->get('email'),
+            $request->get('message')));
 
-        Mail::to(config('mail.administrator'))->cc($request->get('email'))->send( new ResponseContactForm($request));
+        Mail::to($request->get('email'))->send( new ResponseContactForm($request->get('name'),
+            $request->get('email'),
+            $request->get('message')));
 //
 
         return \Redirect::route('contact')->with('message', $msg);
