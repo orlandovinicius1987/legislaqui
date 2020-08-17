@@ -119,10 +119,10 @@
 {{--
     <div class="login">
         <div class="row">
-            <div class="col-md-5 col-xs-12">
+            <div class="col-md-5 col-12 ">
                 <div class="panel panel-default panel-bg">
                     <div class="panel-heading-login">
-                        <div class="col-xs-12 auth text-center">
+                        <div class="col-12  auth text-center">
                             <h3>
                                 Login
                             </h3>
@@ -139,8 +139,8 @@
                             {!! csrf_field() !!}
 
                             <div class="form-group{{ $errors->has('email') && (Session::get('last_auth_attempt') === 'login') ? ' has-error' : '' }}">
-                                <label class="col-xs-12 col-md-4 control-label">E-Mail</label>
-                                <div class="col-xs-12 col-md-8">
+                                <label class="col-12  col-md-4 control-label">E-Mail</label>
+                                <div class="col-12  col-md-8">
                                     <input id="email" type="email" class="form-control" name="email" value="{{ (Session::get('last_auth_attempt') === 'login') ? old('email') : '' }}" placeholder="Insira seu email">
                                     @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'login'))
                                         <span class="help-block">
@@ -151,8 +151,8 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('password') && (Session::get('last_auth_attempt') === 'login') ? ' has-error' : '' }}">
-                                <label class="col-xs-12 col-md-4 control-label">Senha</label>
-                                <div class="col-xs-12 col-md-8">
+                                <label class="col-12  col-md-4 control-label">Senha</label>
+                                <div class="col-12  col-md-8">
                                     <input id="password" type="password" class="form-control" name="password" placeholder="Insira sua senha">
 
                                     @if ($errors->has('password') && (Session::get('last_auth_attempt') === 'login'))
@@ -164,7 +164,7 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-xs-12 col-md-8 col-md-offset-4">
+                                <div class="col-12  col-md-8 col-md-offset-4">
 
                                     <div class="checkbox">
                                         <label>
@@ -176,7 +176,7 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-xs-12 col-md-8 col-md-offset-4">
+                                <div class="col-12  col-md-8 col-md-offset-4">
                                     @if (Route::has('password.request'))
                                         <a class="forgot-pass " href="{{ route('password.request') }}">
                                             Esqueceu a sua senha?

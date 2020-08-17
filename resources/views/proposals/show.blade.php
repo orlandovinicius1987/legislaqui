@@ -4,7 +4,7 @@
 
 @section('header-text')
     <div class="row tituloideia">
-        <div class="col-xs-12 ">
+        <div class="col-12  ">
             <div class="panel">
                 <h1>{{ $proposal->name }}</h1>
             </div>
@@ -16,7 +16,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-xs-12 corpodaideia">
+        <div class="col-12  corpodaideia">
 
             @include('partials.error')
 
@@ -93,7 +93,7 @@
 
 
                     <div class="row hidden-xs">
-                        <div class="col-xs-12">
+                        <div class="col-12 ">
                         @can('edit', $proposal)
                         <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-default btn-edit" id="editar">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Ideia</a>
@@ -118,7 +118,7 @@
 
 
                     <div class="row visible-xs">
-                        <div class="col-xs-12">
+                        <div class="col-12 ">
                             @can('edit', $proposal)
                                 <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-default btn-edit btn-block" id="editar">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Ideia</a>

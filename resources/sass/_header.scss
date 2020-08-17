@@ -33,3 +33,12 @@
 .navbar.bg-dark {
     background: #004c99 !important;
 }
+
+
+@media (min-width: 992px) {
+    .navbar-right .dropdown-menu {
+        position: absolute;
+        left:auto !important;
+
+    }
+}

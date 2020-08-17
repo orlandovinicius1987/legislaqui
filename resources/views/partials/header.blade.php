@@ -4,7 +4,7 @@
 <div class="header">
     @yield('header-text')
 {{--    <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12 ">
             {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
             {!! Form::text('search', null,
                 array('required',
@@ -24,7 +24,7 @@
 
     {{-- Don't remove before warning --}}
     {{--<div class="row">
-        <div class="col-xs-12" role="group" aria-label="...">
+        <div class="col-12 " role="group" aria-label="...">
             <a href="/?q=open" class="btn btn-default {{ $query == null ? 'active' :'' }} {{ $query == "open" ? 'active' :'' }}"> ABERTAS</a>
             <a href="/?q=committee" class="btn btn-default {{ $query == "committee" ? 'active' :'' }}">NA COMISSÃO</a>
             <a href="/?q=expired" class="btn btn-default {{ $query == "expired" ? 'active' :'' }}">EXPIRADAS</a>

@@ -174,10 +174,10 @@
 
 
     <!-- Registro -->
-    <div class="col-md-7 col-xs-12">
+    <div class="col-md-7 col-12 ">
         <div class="panel panel-default panel-bg">
             <div class="panel-heading-login">
-                <div class="col-xs-12 auth text-center">
+                <div class="col-12  auth text-center">
                     <h3>
                         Registro TESTE
                     </h3>
@@ -193,9 +193,9 @@
                     {{ Form::hidden('uuid', Cookie::get('uuid')) }}
 
                     <div class="form-group{{ $errors->has('name') && (\Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
-                        <label class="col-xs-12 col-md-4 control-label">Nome</label>
+                        <label class="col-12  col-md-4 control-label">Nome</label>
 
-                        <div class="col-xs-12 col-md-8">
+                        <div class="col-12  col-md-8">
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Insira seu nome">
                             @if ($errors->has('name') && (Session::get('last_auth_attempt') === 'register'))
                                 <span class="help-block">
@@ -206,10 +206,10 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('email') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
-                        <label class="col-xs-12 col-md-4 control-label">E-Mail</label>
+                        <label class="col-12  col-md-4 control-label">E-Mail</label>
 
-                    <div class="col-xs-12 col-md-8">
-                        <input type="text" class="form-control" name="email" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu email">
+                        <div class="col-12  col-md-8">
+                            <input type="text" class="form-control" name="email" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu email">
 
                             @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'register'))
                                 <span class="help-block">
@@ -220,9 +220,9 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('cpf') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
-                        <label class="col-xs-12 col-md-4 control-label">CPF</label>
+                        <label class="col-12  col-md-4 control-label">CPF</label>
 
-                        <div class="col-xs-12 col-md-8">
+                        <div class="col-12  col-md-8">
                             <input required="required" class="form-control" id="cpf" name="cpf" type="text" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">
 
                             <input id="cfp" type="text" class="campo" name="cpf" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">
@@ -236,10 +236,10 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('password') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }}">
-                        <label class="col-xs-12 col-md-4 control-label">Senha</label>
+                        <label class="col-12  col-md-4 control-label">Senha</label>
 
-                    <div class="col-xs-12 col-md-8">
-                        <input type="password" class="form-control" name="password" placeholder="Mínimo de 8 dígitos">
+                        <div class="col-12  col-md-8">
+                            <input type="password" class="form-control" name="password" placeholder="Mínimo de 8 dígitos">
 
                             @if ($errors->has('password') && (Session::get('last_auth_attempt') === 'register'))
                                 <span class="help-block">
@@ -250,9 +250,9 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                        <label class="col-xs-12 col-md-4 control-label">Confirme a Senha</label>
+                        <label class="col-12  col-md-4 control-label">Confirme a Senha</label>
 
-                        <div class="col-xs-12 col-md-8">
+                        <div class="col-12  col-md-8">
                             <input type="password" class="form-control" name="password_confirmation" placeholder="Confirmar sua senha">
 
                             @if ($errors->has('password_confirmation'))
@@ -265,9 +265,9 @@
 
 
                     <div class="form-group{{ $errors->has('uf') ? ' has-error' : '' }}">
-                        <label class="col-xs-12 col-md-4 control-label">UF</label>
+                        <label class="col-12  col-md-4 control-label">UF</label>
 
-                        <div class="col-xs-12 col-md-8">
+                        <div class="col-12  col-md-8">
 
                             {{ Form::Label('uf', 'UF:') }}
 
@@ -291,7 +291,7 @@
 
 
                     <div class="form-group{{ $errors->register->has('g-recaptcha-response') ? ' has-error text-center' : '' }}">
-                        <div class="col-xs-12">
+                        <div class="col-12 ">
                             {!! app('captcha')->display() !!}
 
                             @if ($errors->register->has('g-recaptcha-response'))
@@ -305,7 +305,7 @@
 
                     <div class="form-group">
 
-                        <div class="col-xs-12 col-md-8 col-md-offset-4">
+                        <div class="col-12  col-md-8 col-md-offset-4">
                             <button dusk="registerButton" type="submit" class="btn btn-primary">
                                 <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro
                             </button>

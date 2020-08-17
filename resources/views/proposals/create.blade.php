@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row create-header">
-        <div class="col-xs-12">
+        <div class="col-12 ">
             @include('partials.error')
             <h1 class="text-center">Propor Ideia Legislativa</h1>
             <p class="text-center">
@@ -14,10 +14,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12 ">
             {{ Form::open(array('route' => 'proposal.store', 'class' => 'form')) }}
             <div class="row form-group">
-                <div class="col-xs-12 ">
+                <div class="col-12  ">
                     {{ Form::label('Nome da ideia legislativa', null , ['class' => 'bold double']) }}
                     {{ Form::text('name', null,
                         array('required',
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="row form-group">
-                <div class="col-xs-12">
+                <div class="col-12 ">
                     {{ Form::label('Problema a ser resolvido', null , ['class' => 'bold double']) }}
                     {{ Form::textarea('problem', null,
                         array('required',
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="row form-group">
-                <div class="col-xs-12">
+                <div class="col-12 ">
                     {{ Form::label('Exposição completa da ideia', null , ['class' => 'bold double']) }}
                     {{ Form::textarea('idea_exposition', null,
                         array('required',
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="row form-group">
-                <div class="col-xs-12">
+                <div class="col-12 ">
                     {{ Form::submit('Enviar proposta de ideia',
                       array('class'=>'btn btn-primary ',
                       'dusk'=>"submitbuttonproposal")) }}

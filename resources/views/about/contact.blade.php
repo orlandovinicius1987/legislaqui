@@ -12,7 +12,7 @@
 
 @section('header-text')
     <div class="row">
-        <div class="col-xs-12 titulosecao text-center">
+        <div class="col-12  titulosecao text-center">
             <h1>Contato</h1>
         </div>
     </div>
@@ -21,8 +21,8 @@
 
     @include('partials.error')
     <div class="row">
-        <div class="col-xs-12 contact-form">
-            
+        <div class="col-12  contact-form">
+
             @if(Session::has('message'))
                 <div class="alert alert-info">
                     {{Session::get('message')}}

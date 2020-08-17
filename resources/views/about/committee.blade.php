@@ -4,7 +4,7 @@
 
 @section('header-text')
     <div class="row">
-        <div class="col-xs-12 titulosecao text-center">
+        <div class="col-12  titulosecao text-center">
             <h1>Comissões</h1>
         </div>
     </div>
@@ -13,7 +13,7 @@
 <!-- Current Content -->
 @section('content')
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12 ">
             <p>
                 Comissão de Direitos Humanos<br>
                 Comissão de Pesca<br>

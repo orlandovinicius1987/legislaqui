@@ -4,7 +4,7 @@
 
 @section('header-text')
     {{--<div class="row explica">
-        <div class="col-xs-12 instrucao hidden-xs">
+        <div class="col-12  instrucao hidden-xs">
             Você pode sugerir e dar seu apoio a ideias legislativas que podem virar novas leis estaduais, alterar leis já existentes ou mudar a Constituição Estadual.
             As sugestões que receberem pelo menos 20 mil apoios serão encaminhadas à Comissão de Direitos Humanos e Legislação Participativa (CDH), onde serão discutidas e receberão parecer dos deputados, podendo virar um projeto de lei.
             Antes de propor uma ideia, procure, na lista de ideias já apresentadas, outras com o mesmo conteúdo, para não dividir os apoios e atrasar a tramitação.
@@ -21,10 +21,10 @@
         <div class="panel panel-default ideiaslegislativas">
             <div class="panel-heading-nav">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-7 col-md-6 titulopagina">
+                    <div class="col-12  col-sm-7 col-md-6 titulopagina">
                       <h1>Ideias Legislativas</h1>
                     </div>
-                    <div class="col-xs-12 col-sm-5 col-md-3 pull-right crienova">
+                    <div class="col-12  col-sm-5 col-md-3 pull-right crienova">
 
 {{--
 
@@ -59,7 +59,7 @@
                 {{-- specific for Mobile --}}
                 <div class="row visible-xs">
 
-                    <div class="col-xs-12">
+                    <div class="col-12 ">
                         {{-- button to modal --}}
                         <button type="button" class="btn btn-default btn-block {{--modal_button--}}" data-toggle="modal" data-target=".bs-example-modal-lg">
                             Entenda!
@@ -92,7 +92,7 @@
 
 
                 <div class="row visible-xs">
-                    <div class="col-xs-12">
+                    <div class="col-12 ">
                         {{-- Menu DropDown --}}
 
                         <button class="btn btn-default btn-block dropdown-toggle drop_filter" data-toggle="dropdown" id="filters">
@@ -147,7 +147,7 @@
                                 </div>
 
 
-                                <div class="hidden-xs col-xs-12 col-lg-4 buscaideia">
+                                <div class="hidden-xs col-12  col-lg-4 buscaideia">
                                     {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
                                     <input  type="hidden" name="q" value="{{$query}}">
                                     {!! Form::text('search', $search,

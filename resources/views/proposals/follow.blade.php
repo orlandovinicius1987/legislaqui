@@ -35,7 +35,7 @@
                 </div>
 
                 {{--<div class="form-group{{ $errors->register->has('g-recaptcha-response') ? ' has-error text-center' : '' }}">--}}
-                    {{--<div class="col-xs-12">--}}
+                    {{--<div class="col-12 ">--}}
                         {{--{!! app('captcha')->display() !!}--}}
 
                         {{--@if ($errors->register->has('g-recaptcha-response'))--}}

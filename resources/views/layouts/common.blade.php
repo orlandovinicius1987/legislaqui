@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-sm-4 col-md-4 pull-right redes_sociais hidden-xs">
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-12 ">
                                                 <span class="logotipo_redes">
                         <a target="_blank" href="https://instagram.com/instalerj/" title="Instagram">
                             <img src="http://www.alerj.rj.gov.br/Content/imagens/icone_36.png" width="20" height="20"
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="row user-menu">
-                        <div class="col-xs-12">
+                        <div class="col-12 ">
                             @if(Auth::user())
                                 <a target='' href="javascript:;" class="titulo" title="Usuário">
                                     {{ Auth::user()->name }}

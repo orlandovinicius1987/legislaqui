@@ -11110,6 +11110,13 @@ section .section-title {
   background: #004c99 !important;
 }
 
+@media (min-width: 992px) {
+  .navbar-right .dropdown-menu {
+    position: absolute;
+    left: auto !important;
+  }
+}
+
 /* Custom */
 
 .btn-outline-success {
@@ -11120,5 +11127,86 @@ section .section-title {
 .btn-outline-success:hover {
   background-color: #ff6633;
   border-color: #ff6633;
+}
+
+ul.stepper {
+  padding: 0 1.5rem;
+  padding: 1.5rem;
+  margin: 1em -1.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  counter-reset: section;
+}
+
+.stepper-vertical {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stepper-vertical li {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stepper-vertical li p {
+  margin-left: 40px;
+}
+
+.primary-color,
+ul.stepper li.active a .circle,
+ul.stepper li.completed a .circle {
+  background-color: #4285f4 !important;
+}
+
+ul.stepper li a .circle {
+  display: inline-block;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-right: 0.5rem;
+  line-height: 2.7rem;
+  color: #fff;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.38);
+  border-radius: 50%;
+  font-size: 26px;
+}
+
+.stepper-vertical li a .circle {
+  order: 1;
+}
+
+ul.stepper li.active a .label,
+ul.stepper li.completed a .label {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 26px;
+  padding-bottom: 30px;
+}
+
+ul.stepper li a .label {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.stepper-vertical li a .label {
+  flex-flow: column nowrap;
+  order: 2;
+  margin-top: 0.2rem;
+}
+
+.stepper-vertical li:after {
+  position: absolute;
+  top: 2.6rem;
+  left: 1.29rem;
+  width: 4px;
+  height: calc(100% - 40px);
+  content: "";
+  /*background-color: rgba(0,0,0,0.3);*/
+  background-color: #4285f4;
 }
 

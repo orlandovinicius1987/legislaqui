@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12 ">
             @include('partials.error')
 
             <h1 class="text-center">Editar Proposta Legislativa</h1>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12 ">
 
             {{ Form::model($proposal, [
             'method' => 'PATCH',
@@ -25,7 +25,7 @@
             {{-- Form::open(array('route' => 'proposal.update', 'class' => 'form')) --}}
 
             <div class="row form-group">
-                <div class="col-xs-12 ">
+                <div class="col-12  ">
 
                     {{ Form::label('Nome da Proposta') }}
                     {{ Form::text('name', null,
@@ -37,7 +37,7 @@
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-12 ">
+                <div class="col-12  ">
                     {{ Form::label('Problema') }}
                     {{ Form::textarea('problem', null,
                         array('required',
@@ -48,7 +48,7 @@
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-12 ">
+                <div class="col-12  ">
                     {{ Form::label('Exposição da Ideia') }}
                     {{ Form::textarea('idea_exposition', null,
                         array('required',
@@ -59,7 +59,7 @@
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-12 ">
+                <div class="col-12  ">
                     {{ Form::submit('Gravar',
                       array('class'=>'btn btn-primary botao',
                       'dusk'=>'savebutton')) }}
