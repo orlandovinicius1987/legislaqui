@@ -7,7 +7,7 @@ use App\User;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class UserTests extends DuskTestCase
+class UserTest extends DuskTestCase
 {
     private static $newUser;
     private static $randomUser;
