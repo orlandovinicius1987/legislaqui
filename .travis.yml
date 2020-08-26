@@ -44,12 +44,15 @@ before_script:
   - psql -c 'grant all privileges on database teste to vagrant'  -U postgres
   - psql -d teste -U vagrant -c "show DateStyle;"
   - php artisan migrate
+  - php artisan m
   - php artisan db:seed
   - php artisan dusk:chrome-driver
   - export DISPLAY=:100.0
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
 script:
+  - touch storage/logs/laravel.log
+  - chmod -R 777 storage/logs/laravel.log
   - nohup php artisan queue:work --daemon &
   - php artisan dusk
 after_script:
