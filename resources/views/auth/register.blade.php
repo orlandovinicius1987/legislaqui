@@ -34,7 +34,7 @@
                     <label class="col-xs-12 col-md-4 control-label">E-Mail</label>
 
                     <div class="col-xs-12 col-md-8">
-                        <input type="text" class="form-control" name="email" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu email">
+                        <input type="text" class="form-control" dusk="register-email" name="email" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu email">
 
                         @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'register'))
                             <span class="help-block">
@@ -64,7 +64,7 @@
                     <label class="col-xs-12 col-md-4 control-label">Senha</label>
 
                     <div class="col-xs-12 col-md-8">
-                        <input type="password" class="form-control" name="password" placeholder="Mínimo de 8 dígitos">
+                        <input type="password" class="form-control" dusk="register-password" name="password" placeholder="Mínimo de 8 dígitos">
 
                         @if ($errors->has('password') && (Session::get('last_auth_attempt') === 'register'))
                             <span class="help-block">

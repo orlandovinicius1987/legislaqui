@@ -149,12 +149,13 @@
 
                                 <div class="hidden-xs col-xs-12 col-lg-4 buscaideia">
                                     {!! Form::open(array('route' => 'home.post', 'class'=>'form')) !!}
-                                    <input type="hidden" name="q" value="{{$query}}">
+                                    <input  type="hidden" name="q" value="{{$query}}">
                                     {!! Form::text('search', $search,
                                         array(
                                         'class'=>'form-control',
-                                        'placeholder'=>'Busque uma ideia ...')) !!}
-                                    <a href="#"  name="pesquisar"><button href="#" type="submit" class="btn btn-default glyphicon glyphicon-search form-control-feedback dimensionsBackground   ">{{--Pesquisar--}}</button></a>
+                                        'placeholder'=>'Busque uma ideia ...',
+                                         'dusk="proposal-search"')) !!}
+                                    <a href="#" name="pesquisar"><button href="#" type="submit" dusk="submitButton" class="btn btn-default glyphicon glyphicon-search form-control-feedback dimensionsBackground   ">{{--Pesquisar--}}</button></a>
                                     {!! Form::close() !!}
 
                                 </div>
@@ -179,7 +180,7 @@
                                     @foreach ($proposals as $proposal)
                                         <tr>
                                             {{--<!-- <td> --}}{{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}}{{-- </td>-->--}}
-                                            <td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}">{{$proposal->name}}</a>
+                                            <td dusk="proposal-{{$proposal->id}}" class="blue_link"><a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}">{{$proposal->name}}</a>
                                             @if ($proposal->bill_project)
                                                   [VIROU PROJETO DE LEI]
                                             @endif
