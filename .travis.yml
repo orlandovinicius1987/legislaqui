@@ -44,7 +44,6 @@ before_script:
   - psql -c 'grant all privileges on database teste to vagrant'  -U postgres
   - psql -d teste -U vagrant -c "show DateStyle;"
   - php artisan migrate
-  - php artisan m
   - php artisan db:seed
   - php artisan dusk:chrome-driver
   - export DISPLAY=:100.0
