@@ -2,15 +2,15 @@
 
 @section('title', 'Termos de Uso')
 
-@section('header-text')
+@section('content')
+
     <div class="row">
         <div class="col-12  titulosecao text-center">
             <h1>Termos de Uso</h1>
         </div>
     </div>
-@stop
 
-@section('content')
+
     <div class="row">
         <div class="col-12 ">
             <p class="leading">

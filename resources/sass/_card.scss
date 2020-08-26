@@ -1,58 +1,207 @@
-//*****************************  Login Style   *****************************
+//*****************************  Card Style   *****************************
 
-.h-100 {
-  height: 90% !important;
-  @media screen and (max-width: 479px) {
-    height: 90% !important;
-  }
+
+.lista-ideias {
+    .card {
+        background: none;
+        padding: 24px;
+        border: none;
+
+        h1, .h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0;
+        }
+        .card-header {
+            padding: 0;
+            margin-bottom: 0;
+            background: none;
+            border-bottom: none;
+
+            .action_links a {
+                border-right: solid 1px;
+                margin-right: 12px;
+                padding-right: 12px;
+
+                i {
+                    padding-right: 5px;
+                }
+
+                &:last-child {
+                    border-right: none;
+                }
+            }
+
+            .share_links {
+                font-size: 125%;
+            }
+
+        }
+        .card-body {
+            padding:0;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: 10px;
+
+            .navbar {
+                padding: 0;
+                /*margin: 12px 12px 0 12px;*/
+
+                .input-group > .form-control:not(:first-child),
+                .input-group > .custom-select:not(:first-child) {
+                    border-top-left-radius: 7px;
+                    border-bottom-left-radius: 7px;
+                }
+
+                .input-group > .input-group-append > .btn,
+                .input-group > .input-group-append > .input-group-text,
+                .input-group > .input-group-prepend:not(:first-child) > .btn,
+                .input-group > .input-group-prepend:not(:first-child) > .input-group-text,
+                .input-group > .input-group-prepend:first-child > .btn:not(:first-child),
+                .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
+                    border-top-right-radius: 7px;
+                    border-bottom-right-radius: 7px;
+                }
+            }
+
+            .table {
+                margin-bottom: 0;
+                thead {
+                    th{
+                        border-bottom: 0;
+                        padding: 0;
+
+                        h6 {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+                th {
+                    border-top: none;
+                }
+                .controles {
+                    /*padding-left: 12px;*/
+                }
+
+                tr {
+                    &:last-child{
+                        td {
+                            /*border-bottom: 1px solid #d9dee2;*/
+                            &:first-child{
+                                /*background: #0d6aad;*/
+                                border-radius: 0 0 0 10px;
+                            }
+                            &:last-child {
+                                border-radius: 0 0 10px 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .corpodaideia {
+
+                .table {
+
+
+                    thead {
+                        th{
+
+                            h6 {
+
+                            }
+                        }
+                    }
+                    th {
+
+                    }
+                    .controles {
+                    }
+
+                    tr {
+
+                        td{
+                            &:first-child {
+                                min-width: 200px;
+                            }
+                        }
+
+
+                        &:first-child {
+                            td {
+                                border-top: none;
+                                &:first-child{
+                                    border-radius: 10px 0 0 0 ;
+                                }
+                                &:last-child {
+                                    border-radius: 0 10px 0 0;
+                                }
+                            }
+                        }
+
+                        &:last-child{
+                            td {
+                                &:first-child{
+                                }
+                                &:last-child {
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+        .card-footer {
+            padding: 0;
+            background: none;
+            border-top: none;
+        }
+
+    }
 }
 
-.login {
-  margin-left: 0;
-  .card {
-    background: #ffffff;
-    border-top: 0px solid $blue !important;
-    padding: 1rem 1.5rem 2rem 1.5rem;
-    border-radius: 1rem;
-    box-shadow: 0px 2px 4px $grey-light03;
 
-    .card-header {
-      border-bottom: none;
-      text-align: center;
-      background: none;
-      padding: 15px 30px 30px 30px;
-
-    }
-
-    .card-body {
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-  }
-
-  @media screen and (max-width: 479px) {
-    /* start of phone styles */
+.propor-ideia {
 
     .card {
-      box-shadow: none;
-      padding: 0;
-      border-radius: 0;
-      background: none;
-      border: none;
+        background: none;
+        padding: 24px;
+        border: none;
 
-      .card-header {
-        padding: 0rem 1.4rem 2.5rem;
-        margin-bottom: 0;
-        background-color: none;
-        border-bottom: none;
-      }
+        .card-header {
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 0;
+            background: none;
+            border-bottom: none;
+        }
 
-      .btn-block {
-        margin-top: 1rem;
-        font-weight: 600;
-        letter-spacing: 0.15rem;
-      }
+        .card-body {
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: 10px;
+            background: #ffffff;
+
+
+            .ideia-labels {
+                font-weight: 600;
+                color: #919ca7;
+            }
+
+            .form-control {
+                background: #f9f9fa !important;
+            }
+        }
+
+        .card-footer {
+            background: none;
+            border-top: 0px solid rgba(0, 0, 0, 0.125);
+
+        }
+
     }
-  }
+
+
+
 }
+
 

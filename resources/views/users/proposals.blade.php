@@ -70,7 +70,7 @@
                 </thead>
             </table>
         {{--<a href="{{ route('proposal.create') }}" class="btn btn-primary botao">--}}
-            {{--<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Proposta</a>--}}
+            {{--<span class="fas fa-plus" aria-hidden="true"></span> Incluir Nova Proposta</a>--}}
     @endif
 
 @stop

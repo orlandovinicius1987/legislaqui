@@ -2,155 +2,161 @@
 
 @section('title', 'Propostas Legislativas')
 
-@section('header-text')
-    <div class="row tituloideia">
-        <div class="col-12  ">
-            <div class="panel">
-                <h1>{{ $proposal->name }}</h1>
-            </div>
-        </div>
-    </div>
-@stop
-
-
 @section('content')
 
-    <div class="row">
-        <div class="col-12  corpodaideia">
+
+    <div class="row lista-ideias">
+        <div class="col-12">
 
             @include('partials.error')
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    {{--<div class="col-xs-1" style="width: 54px; text-align: center; margin-top: -12px; margin-left: 5px;">--}}
-                        {{--<a href="{{ route('proposal.like', ['id' => $proposal->id]) }}" title="Like"><i class="fa fa-caret-up fa-lg" aria-hidden="true"></i></a>--}}
-                        {{--<span class="vote-count-post">{{ $proposal->total_like_count }}</span>--}}
-                        {{--<a href="{{ route('proposal.unlike', ['id' => $proposal->id]) }}" title="Dislike"><i class="fa fa-caret-down fa-lg" aria-hidden="true"></i></a>--}}
-                        {{--<a href="{{ route('proposal.approval', $proposal->id) }}" title="Apoiar essa ideia" ><i class="fa fa-star" aria-hidden="true"></i></a>--}}
-                        {{--<div class="favoritecount"><b></b></div>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-xs-11">--}}
-                    <div>
+            <div class="card">
+                <div class="card-header">
 
-                        @include('partials.share', ['url' => URL::full()])
-                        {{--@include('partials.like', ['proposalId' => $proposal->id])--}}
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <table class="table-responsive table-striped table-show">
-                        <tbody>
-
-                            <tr><td class="table-td-label-show">Nome</td><td class="table-td-show"> {{ $proposal->user->name }}</td></tr>
-                            {{--<tr><td class="table-td-label-show">Situação</td><td class="table-td-show">--}}
-
-                                    {{--@if ($proposal->approval == 0)--}}
-                                        {{--'DesAprovado'--}}
-                                    {{--@endif--}}
-
-
-                                    {{--@if ($proposal->approval == 1)--}}
-                                    {{--'Aprovado'--}}
-                                        {{--@endif--}}
-
-
-                                        {{--@if ($proposal->approval === null)--}}
-
-                                    {{--'Não Moderado'--}}
-                                        {{--@endif--}}
-
-                                {{--</td></tr>--}}
-                            <tr><td class="table-td-label-show">Data Publicação</td><td class="table-td-show"> {{ $proposal->pub_date->format('d/m/Y') }}</td></tr>
-                            <tr><td class="table-td-label-show">Data Limite</td><td class="table-td-show"> {{ $proposal->limit_date->format('d/m/Y') }}</td></tr>
-                            <tr><td class="table-td-label-show">Problema</td><td class="table-td-show"> {!! $proposal->problem !!}</td></tr>
-                            <tr><td class="table-td-label-show">Exposição da Ideia</td><td class="table-td-show"> {!! $proposal->idea_exposition !!}</td></tr>
-                            <tr><td class="table-td-label-show">Curtidas</td><td class="table-td-show"> {{ $proposal->like_count }}</td></tr>
-                            <tr><td class="table-td-label-show">Não Curtidas</td><td class="table-td-show"> {{ $proposal->unlike_count }}</td></tr>
-                            <tr><td class="table-td-label-show">Apoios</td><td class="table-td-show"> {{ $proposal->approvals->count() }}</td></tr>
-                            {{-- if has response -> return response data, else null --}}
-                            <tr><td class="table-td-label-show">Autor Resposta</td><td class="table-td-show"> {{ $proposal->responder ? $proposal->responder->name  : null }}</td></tr>
-                            <tr><td class="table-td-label-show">Resposta</td><td class="table-td-show"> {{ $proposal->response ? $proposal->response : null }}</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="panel-footer">
-                    {{--<div class="pull-left botao">--}}
-
-                        {{--<a href="{{ URL::current() }}/like" class="btn btn-info" role="button">Apoiar essa Ideia!</a>--}}
-                        {{--<a href="{{ route('proposal.like', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">--}}
-                            {{--<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Gostei dessa Ideia! </a>--}}
-                        {{--<a href="{{ route('proposal.unlike', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">--}}
-                            {{--<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Não gostei dessa Ideia!</a>--}}
-
-                        {{--@if (!Auth::check())--}}
-                        {{--<a href="{{ route('proposal.approval', $proposal->id) }}" class="btn btn-info botao" role="button" onclick="if(!confirm('Para apoiar oficialmente uma ideia legislativa você precisa criar uma conta na página da ALERJ.')){return false;};">--}}
-                            {{--<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Apoiar essa Ideia!</a>--}}
-                        {{--@else--}}
-                        {{--<a href="{{ route('proposal.approval', $proposal->id) }}" class="btn btn-info botao" role="button">--}}
-                            {{--<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Apoiar essa Ideia!</a>--}}
-                        {{--@endif--}}
-
-                    {{--</div>--}}
-
-
-                    <div class="row hidden-xs">
-                        <div class="col-12 ">
-                        @can('edit', $proposal)
-                        <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-default btn-edit" id="editar">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Ideia</a>
-                        @endcan
-                        @if (!Auth::check())
-                        <a href="{{ route('proposal.create') }}" class="btn btn-default " id="novaIdeia" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
-                        @else
-                            <a href="{{ route('proposal.create') }}" class="btn btn-default" id="novaIdeia" dusk="novaIdeia">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
-                        @endif
-                        {{--@can('destroy', $proposal)
-                        <a href="{{ route('proposal.destroy', $proposal->id) }}" class="btn btn-primary botao" onclick="if(!confirm('Você tem certeza que deseja apagar essa Ideia Legislativa?')){return false;};">
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Ideia</a>
-                        @endcan--}}
-
-                        <a dusk="goBack" href="{{ route('home')}}" class="btn btn-default btn-back pull-right" id="voltar">
-                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Voltar</a>
+                    <div class="row tituloideia">
+                        <div class="col-12 pl-4">
+                            <h1>
+                                {{ $proposal->name }}
+                            </h1>
                         </div>
                     </div>
 
+                    @include('partials.share', ['url' => URL::full()])
+                </div>
 
 
-                    <div class="row visible-xs">
-                        <div class="col-12 ">
+                <div class="card-body">
+                    <div class="corpodaideia">
+                        <table class="table  table-sm table-responsive table-striped table-show">
+                            <tbody>
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Nome
+                                </td>
+                                <td class="table-td-show">
+                                    {{ $proposal->user->name }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Data Publicação
+                                </td>
+                                <td class="table-td-show">
+                                    {{ $proposal->pub_date->format('d/m/Y') }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Data Limite
+                                </td>
+                                <td class="table-td-show">
+                                    {{ $proposal->limit_date->format('d/m/Y') }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Problema
+                                </td>
+                                <td class="table-td-show">
+                                    {!! $proposal->problem !!}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Exposição da Ideia
+                                </td>
+                                <td class="table-td-show">
+                                    {!! $proposal->idea_exposition !!}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Curtidas
+                                </td>
+                                <td class="table-td-show">
+                                    {{ $proposal->like_count }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Não Curtidas
+                                </td>
+                                <td class="table-td-show">
+                                    {{ $proposal->unlike_count }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Apoios
+                                </td>
+                                <td class="table-td-show">
+                                    {{ $proposal->approvals->count() }}
+                                </td>
+                            </tr>
+                            {{-- if has response -> return response data, else null --}}
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Autor Resposta
+                                </td>
+                                <td class="table-td-show">
+                                    {{ $proposal->responder ? $proposal->responder->name  : null }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Resposta
+                                </td>
+                                <td class="table-td-show">
+                                    {{ $proposal->response ? $proposal->response : null }}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="card-footer pt-3">
+                    <div class="row d-none d-sm-block">
+                        <div class="col-12 pl-5 pr-5">
                             @can('edit', $proposal)
-                                <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-default btn-edit btn-block" id="editar">
-                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Ideia</a>
+                                <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary btn-edit" id="editar">
+                                    <span class="fas fa-edit" aria-hidden="true"></span> Editar Ideia</a>
                             @endcan
                             @if (!Auth::check())
-                                <a href="{{ route('proposal.create') }}" class="btn btn-default btn-block " id="novaIdeia" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
-                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
+                                <a href="{{ route('proposal.create') }}" class="btn btn-primary " id="novaIdeia" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                    <span class="fas fa-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
                             @else
-                                <a href="{{ route('proposal.create') }}" class="btn btn-default btn-block " id="novaIdeia" dusk="novaIdeia">
-                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
+                                <a href="{{ route('proposal.create') }}" class="btn btn-primary" id="novaIdeia" dusk="novaIdeia">
+                                    <span class="fas fa-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
                             @endif
-                            {{--@can('destroy', $proposal)
-                            <a href="{{ route('proposal.destroy', $proposal->id) }}" class="btn btn-primary botao" onclick="if(!confirm('Você tem certeza que deseja apagar essa Ideia Legislativa?')){return false;};">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar Ideia</a>
-                            @endcan--}}
-
-                            <a dusk="goBack" href="{{ route('home')}}" class="btn btn-default btn-back btn-block" id="voltar">
-                                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Voltar</a>
+                            <a dusk="goBack" href="{{ route('home')}}" class="btn btn-outline-secondary" id="voltar">
+                                <span class="fas fa-undo" aria-hidden="true"></span> Voltar</a>
                         </div>
-
                     </div>
-
-
-
-
-                    {{--<div class="socialmedia">--}}
-                        {{--<div class="addthis_sharing_toolbox"></div>--}}
-                    {{--</div>--}}
-                    {{--@include('partials.share', ['url' => 'http://???????????/'])--}}
+                    <div class="d-block d-sm-none">
+                        <div class="col-12 ">
+                            @can('edit', $proposal)
+                                <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary btn-edit btn-block" id="editar">
+                                    <span class="fas fa-edit" aria-hidden="true"></span> Editar Ideia</a>
+                            @endcan
+                            @if (!Auth::check())
+                                <a href="{{ route('proposal.create') }}" class="btn btn-primary btn-block " id="novaIdeia" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                    <span class="fas fa-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
+                            @else
+                                <a href="{{ route('proposal.create') }}" class="btn btn-primary btn-block " id="novaIdeia" dusk="novaIdeia">
+                                    <span class="fas fa-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
+                            @endif
+                            <a dusk="goBack" href="{{ route('home')}}" class="btn btn-outline-secondary"  id="voltar">
+                                <span class="fas fa-undo" aria-hidden="true"></span> Voltar</a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
+
+
+
         </div>
     </div>
 

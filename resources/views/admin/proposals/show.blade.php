@@ -78,7 +78,7 @@
 
                                                 @can('edit', $proposal)
                                                     <a href="{{ route('admin.proposal.edit', $proposal->id) }}" class="btn btn-primary botao">
-                                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar Proposta</a>
+                                                        <span class="fas fa-edit" aria-hidden="true"></span> Editar Proposta</a>
                                                 @endcan
 
                                                  @can('bypass', $proposal)

@@ -15,7 +15,12 @@
 
         <!-- Styles -->
         {{-- Font Awesome --}}
+{{--
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+--}}
+
+
+
 
         <!-- Loading Bootstrap -->
         <link rel="stylesheet" href="{{mix('css/app.css')}}" type="text/css"/>

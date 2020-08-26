@@ -2,16 +2,15 @@
 
 @section('title', 'Nossas Comissões')
 
-@section('header-text')
+@section('content')
+
     <div class="row">
         <div class="col-12  titulosecao text-center">
             <h1>Comissões</h1>
         </div>
     </div>
-    @stop
 
-<!-- Current Content -->
-@section('content')
+
     <div class="row">
         <div class="col-12 ">
             <p>

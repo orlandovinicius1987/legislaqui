@@ -1360,7 +1360,7 @@
 
             if (!minDate || minDate.isBefore(calendar.firstDay)) {
                 html +=
-                    '<th class="prev available"><i class="fa fa-arrow-left icon icon-arrow-left glyphicon glyphicon-arrow-left"></i></th>'
+                    '<th class="prev available"><i class="fa fa-arrow-left icon icon-arrow-left fas fa-undo"></i></th>'
             } else {
                 html += '<th></th>'
             }
