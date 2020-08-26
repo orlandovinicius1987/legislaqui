@@ -24,10 +24,10 @@
     </div>
 
 
-    <div class="share_links col-4 col-sm-3 pr-5">
-        <div class="float-right">
-            <a href="mailto:&amp;subject={{ config('app.name') }}&amp;body={{ urlencode($url) }} ">
-                <i class="fas fa-envelope-square"></i>
+    <div class="share_links col-xs-4 col-sm-3">
+        <div class="pull-right">
+            <a href="{{'https://api.whatsapp.com/send?phone=&text='.rawurlencode('Proponha sua Ideia Legislativa Aqui! '.$url.' #LegislAqui #e-democracia #e-cidadania via @Legislaqui! - ALERJ')}}">
+                <i class="fa fa-whatsapp"></i> {{-- Trocar para https://fontawesome.com/icons/whatsapp-square?style=brands --}}
             </a>
 
 
@@ -46,8 +46,11 @@
                target="_blank"><i class="fab fa-twitter-square"></i>
             </a>
 
-{{--            <a href="https://plus.google.com/share?url={{ urlencode($url) }}"
-               target="_blank"><i class="fa fa-google-plus-square"></i></a>--}}
+            <a href="mailto:&amp;subject={{ config('app.name') }}&amp;body={{ urlencode($url) }} "><i class="fa fa-envelope-square"></i>
+            </a>
+
+{{--            <a href="https://plus.google.com/share?url={{ urlencode($url) }}"--}}
+{{--               target="_blank"><i class="fa fa-google-plus-square"></i></a>--}}
 
 
 
