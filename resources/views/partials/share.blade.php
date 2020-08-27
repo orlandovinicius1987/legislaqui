@@ -24,19 +24,11 @@
     </div>
 
 
-    <div class="share_links col-xs-4 col-sm-3">
+    <div class="share_links col-xs-4 col-sm-3 text-right">
         <div class="pull-right">
             <a href="{{'https://api.whatsapp.com/send?phone=&text='.rawurlencode('Proponha sua Ideia Legislativa Aqui! '.$url.' #LegislAqui #e-democracia #e-cidadania via @Legislaqui! - ALERJ')}}">
-                <i class="fa fa-whatsapp"></i> {{-- Trocar para https://fontawesome.com/icons/whatsapp-square?style=brands --}}
+                <i class="fab fa-whatsapp-square"></i>
             </a>
-
-
-            <a href="#"
-               target="_blank"><i class="fab fa-whatsapp-square"></i>
-            </a>
-
-
-
 
             <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($url) }}"
                target="_blank"><i class="fab fa-facebook-square"></i>
@@ -48,12 +40,6 @@
 
             <a href="mailto:&amp;subject={{ config('app.name') }}&amp;body={{ urlencode($url) }} "><i class="fa fa-envelope-square"></i>
             </a>
-
-{{--            <a href="https://plus.google.com/share?url={{ urlencode($url) }}"--}}
-{{--               target="_blank"><i class="fa fa-google-plus-square"></i></a>--}}
-
-
-
         </div>
     </div>
 </div>
