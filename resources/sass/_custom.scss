@@ -14,7 +14,7 @@
         background-color: #ff6633 !important;
         border-color: #ff6633 !important;
     }
-    .btn-outline-success:focus, .btn-outline-success.focus {
+    &:focus {
         box-shadow: 0 0 0 0.2rem rgba(249, 36, 164, 0.5) !important;
     }
 }
