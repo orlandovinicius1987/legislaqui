@@ -34,7 +34,7 @@
 
                     @if (Auth::guest())
                         <a class="dropdown-item"  target='' href="{{ route('proposal.create') }}">
-                            Proponha uma ideia legislativa logando ou registrando-se aqui
+                            Proponha uma ideia legislativa
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item"  href="{{ route('terms') }}">

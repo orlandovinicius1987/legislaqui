@@ -10,7 +10,7 @@
 
             @include('partials.error')
 
-            <div class="card">
+            <div class="card corpodaideia">
                 <div class="card-header">
 
                     <div class="row tituloideia">
@@ -26,7 +26,7 @@
 
 
                 <div class="card-body">
-                    <div class="corpodaideia">
+                    <div class="">
                         <table class="table  table-sm table-responsive table-striped table-show">
                             <tbody>
                             <tr>
@@ -119,36 +119,43 @@
                 <div class="card-footer pt-3">
                     <div class="row d-none d-sm-block">
                         <div class="col-12 pl-5 pr-5">
+
+                            <a dusk="goBack" href="{{ route('home')}}" class="btn btn-outline-secondary" id="voltar">
+                                <span class="fas fa-undo" aria-hidden="true"></span> Voltar
+                            </a>
+
                             @can('edit', $proposal)
-                                <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary btn-edit" id="editar">
+                                <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary btn-block float-right" id="editar">
                                     <span class="fas fa-edit" aria-hidden="true"></span> Editar Ideia</a>
                             @endcan
                             @if (!Auth::check())
-                                <a href="{{ route('proposal.create') }}" class="btn btn-primary " id="novaIdeia" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                <a href="{{ route('proposal.create') }}" class="btn btn-primary float-right" id="novaIdeia" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
                                     <span class="fas fa-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
                             @else
-                                <a href="{{ route('proposal.create') }}" class="btn btn-primary" id="novaIdeia" dusk="novaIdeia">
+                                <a href="{{ route('proposal.create') }}" class="btn btn-primary float-right" id="novaIdeia" dusk="novaIdeia">
                                     <span class="fas fa-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
                             @endif
-                            <a dusk="goBack" href="{{ route('home')}}" class="btn btn-outline-secondary" id="voltar">
-                                <span class="fas fa-undo" aria-hidden="true"></span> Voltar</a>
+
                         </div>
                     </div>
                     <div class="d-block d-sm-none">
                         <div class="col-12 ">
+                            <a dusk="goBack" href="{{ route('home')}}" class="btn btn-outline-secondary"  id="voltar">
+                                <span class="fas fa-undo" aria-hidden="true"></span> Voltar
+                            </a>
+
                             @can('edit', $proposal)
-                                <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary btn-edit btn-block" id="editar">
+                                <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary btn-block float-right" id="editar">
                                     <span class="fas fa-edit" aria-hidden="true"></span> Editar Ideia</a>
                             @endcan
                             @if (!Auth::check())
-                                <a href="{{ route('proposal.create') }}" class="btn btn-primary btn-block " id="novaIdeia" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                <a href="{{ route('proposal.create') }}" class="btn btn-primary btn-block float-right" id="novaIdeia" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
                                     <span class="fas fa-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
                             @else
-                                <a href="{{ route('proposal.create') }}" class="btn btn-primary btn-block " id="novaIdeia" dusk="novaIdeia">
+                                <a href="{{ route('proposal.create') }}" class="btn btn-primary btn-block float-right" id="novaIdeia" dusk="novaIdeia">
                                     <span class="fas fa-plus" aria-hidden="true"></span> Incluir Nova Ideia</a>
                             @endif
-                            <a dusk="goBack" href="{{ route('home')}}" class="btn btn-outline-secondary"  id="voltar">
-                                <span class="fas fa-undo" aria-hidden="true"></span> Voltar</a>
+
                         </div>
                     </div>
                 </div>
