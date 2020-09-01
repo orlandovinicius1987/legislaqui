@@ -136,7 +136,7 @@ class ProposalTest extends DuskTestCase
                 ->logout()
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
-                ->press('@like')
+                ->click('@like')
                 ->waitForText('Sua curtida foi computada com sucesso.')
                 ->screenshot('proposalSuccessfullyLiked');
 
@@ -162,7 +162,7 @@ class ProposalTest extends DuskTestCase
                 ->logout()
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
-                ->press('@dislike')
+                ->click('@dislike')
                 ->waitForText('Sua descurtida foi computada com sucesso.')
                 ->screenshot('proposalSuccessfullyDisLiked');
 
@@ -188,7 +188,7 @@ class ProposalTest extends DuskTestCase
                 ->logout()
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
-                ->press('@support')
+                ->click('@support')
                 ->waitForText('Seu apoio foi incluído com sucesso.')
                 ->assertSee('Seu apoio foi incluído com sucesso.')
                 ->screenshot('proposalSuccessfullySupported');
@@ -209,10 +209,9 @@ class ProposalTest extends DuskTestCase
                 ->logout()
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
-                ->press('@follow')
+                ->click('@follow')
                 ->waitForText('Esta Ideia Legislativa será acompanhada! Obrigado.')
                 ->screenshot('proposalSuccessfullyFollowed');
-
         });
         $this->assertDatabaseHas('proposal_follows', [
             'user_id' => $randomUser['id'],
