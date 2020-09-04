@@ -28,7 +28,6 @@ before_install:
   - sudo pg_upgradecluster 11 main
   - sudo pg_ctlcluster 12 main restart
   - sudo pg_dropcluster 11 main
-  - /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
 before_script:
   - phpenv config-rm xdebug.ini || true
   - composer self-update
@@ -51,8 +50,6 @@ before_script:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
 script:
-  - touch storage/logs/laravel.log
-  - chmod -R 777 storage/logs/laravel.log
   - nohup php artisan queue:work --daemon &
   - php artisan dusk
 after_script:
