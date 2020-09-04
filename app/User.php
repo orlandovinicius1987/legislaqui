@@ -25,10 +25,11 @@ class User extends Authenticatable
         'uf',
         'role_id',
         'cpf',
-        'uuid'
+        'uuid',
+        'last_login_at',
     ];
 
-    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at','last_login_at',];
 
     /**
      * The attributes excluded from the model's JSON form.
