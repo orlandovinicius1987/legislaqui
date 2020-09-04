@@ -33,7 +33,6 @@ before_script:
   - composer self-update
   - export LANGUAGE=pt_BR.UTF-8
   - locale
-  - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - cp .env.travis .env
   - cp .env.travis .env.dusk.local
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
@@ -51,6 +50,8 @@ before_script:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - php artisan serve &
 script:
+  - touch storage/logs/laravel.log
+  - chmod -R 777 storage/logs/laravel.log
   - nohup php artisan queue:work --daemon &
   - php artisan dusk
 after_script:
