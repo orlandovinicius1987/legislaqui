@@ -33,7 +33,6 @@ before_script:
   - composer self-update
   - export LANGUAGE=pt_BR.UTF-8
   - locale
-  - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - cp .env.travis .env
   - cp .env.travis .env.dusk.local
