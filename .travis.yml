@@ -28,12 +28,13 @@ before_install:
   - sudo pg_upgradecluster 11 main
   - sudo pg_ctlcluster 12 main restart
   - sudo pg_dropcluster 11 main
-  - travis_retry composer install --no-interaction
 before_script:
   - phpenv config-rm xdebug.ini || true
   - composer self-update
   - export LANGUAGE=pt_BR.UTF-8
   - locale
+  - sh -e /etc/init.d/xvfb start
+  - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - cp .env.travis .env
   - cp .env.travis .env.dusk.local
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
