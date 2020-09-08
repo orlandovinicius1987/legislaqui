@@ -52,9 +52,6 @@ before_script:
 script:
   - touch storage/logs/laravel.log
   - chmod -R 777 storage/logs/laravel.log
-  - ./vendor/laravel/dusk/bin/chromedriver-linux &
-  - sleep 5
-  - vendor/bin/phpunit
   - nohup php artisan queue:work --daemon &
   - php artisan dusk
 after_script:

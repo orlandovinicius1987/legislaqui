@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Tests\Browser\Pages;
-
 
 use App\User;
 use App\Proposal;
@@ -35,7 +33,6 @@ class ProposalTest extends DuskTestCase
             $newProposal
         ) {
             $browser
-                ->logout()
                 ->loginAs($randomUser['id'])
                 ->visit('/')
                 ->click('@newProposalButton')
@@ -67,7 +64,6 @@ class ProposalTest extends DuskTestCase
             $newProposal
         ) {
             $browser
-                ->logout()
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
                 ->click('@novaIdeia')
@@ -96,7 +92,6 @@ class ProposalTest extends DuskTestCase
             $newProposal
         ) {
             $browser
-                ->logout()
                 ->loginAs($randomUser['id'])
                 ->visit('/')
                 ->click('@newProposalButton')
@@ -133,7 +128,6 @@ class ProposalTest extends DuskTestCase
             $randomProposal
         ) {
             $browser
-                ->logout()
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
                 ->click('@like')
@@ -159,7 +153,6 @@ class ProposalTest extends DuskTestCase
             $randomProposal
         ) {
             $browser
-                ->logout()
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
                 ->click('@dislike')
@@ -185,7 +178,6 @@ class ProposalTest extends DuskTestCase
             $randomProposal
         ) {
             $browser
-                ->logout()
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
                 ->click('@support')
@@ -206,7 +198,6 @@ class ProposalTest extends DuskTestCase
             $randomProposal
         ) {
             $browser
-                ->logout()
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
                 ->click('@follow')
