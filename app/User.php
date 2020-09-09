@@ -13,7 +13,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 
 class User extends Authenticatable implements Auditable
 {
-    use AuditableI, SoftDeletes, Notifiable, AuditableI;
+    use AuditableI, SoftDeletes, Notifiable;
 
 
     /**
