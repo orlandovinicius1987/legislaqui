@@ -13,8 +13,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 
 class User extends Authenticatable implements Auditable
 {
-    use AuditableI, SoftDeletes, Notifiable;
-
+    use AuditableI, SoftDeletes, Notifiable, AuditableI;
 
 
     /**
@@ -106,7 +105,7 @@ class User extends Authenticatable implements Auditable
     // Get Role Name
     public function getRoleNameAttribute()
     {
-        return Role::find(1)->role;
+        return Role::find($this->role_id)->role;
     }
 
     // Get Proposals Count
