@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Auditable as AuditableI;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class SocialUser extends Model
+class SocialUser extends Model implements Auditable
 {
-    use SoftDeletes;
+    use AuditableI,SoftDeletes;
 
     protected $dates = ['deleted_at'];
 

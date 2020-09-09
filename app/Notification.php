@@ -3,13 +3,15 @@
 namespace App\Data\Models;
 
 use App\Proposal;
+use OwenIt\Auditing\Auditable as AuditableI;
+use OwenIt\Auditing\Contracts\Auditable;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Notification extends Eloquent
+class Notification extends Eloquent implements Auditable
 {
-    use Notifiable;
+    use AuditableI,Notifiable;
 
     /**
      * @var array
