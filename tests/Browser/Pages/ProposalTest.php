@@ -41,7 +41,7 @@ class ProposalTest extends DuskTestCase
                 ->type('problem',  $newProposal['problem'])
                 ->type('idea_exposition',  $newProposal['idea_exposition'])
                 ->screenshot('filledProposal-created')
-                ->press('Enviar proposta de ideia')
+                ->press('@submitbuttonproposal')
                 ->waitForText('Ideia Legislativa Incluída com Sucesso')
                 ->pause(5000)
                 ->assertSee( $newProposal['idea_exposition'])
@@ -71,7 +71,7 @@ class ProposalTest extends DuskTestCase
                 ->type('problem',$newProposal['problem'])
                 ->type('idea_exposition', $newProposal['idea_exposition'])
                 ->screenshot('filledProposal-included')
-                ->press('Enviar proposta de ideia')
+                ->press('@submitbuttonproposal')
                 ->waitForText('Ideia Legislativa Incluída com Sucesso')
                 ->pause(5000)
                 ->assertSee($newProposal['problem'])
@@ -99,14 +99,14 @@ class ProposalTest extends DuskTestCase
                 ->type('name',  $newProposal['name'])
                 ->type('problem',  $newProposal['problem'])
                 ->type('idea_exposition',  $newProposal['idea_exposition'])
-                ->press('Enviar proposta de ideia')
+                ->press('@submitbuttonproposal')
                 ->waitForText('Ideia Legislativa Incluída com Sucesso')
                 ->pause(5000)
                 ->assertSee( $newProposal['idea_exposition'])
                 ->click('@editIdea')
                 ->type('name',$newProposal['name'].'**')
                 ->type('problem',$newProposal['problem'].'**')
-                ->press('Gravar')
+                ->press('@savebutton')
                 ->pause(5000)
                 ->assertSee($newProposal['problem'])
                 ->screenshot('proposalSuccessfullyEdited');
@@ -130,7 +130,7 @@ class ProposalTest extends DuskTestCase
             $browser
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
-                ->click('@like')
+                ->press('@like')
                 ->waitForText('Sua curtida foi computada com sucesso.')
                 ->screenshot('proposalSuccessfullyLiked');
 
@@ -155,7 +155,7 @@ class ProposalTest extends DuskTestCase
             $browser
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
-                ->click('@dislike')
+                ->press('@dislike')
                 ->waitForText('Sua descurtida foi computada com sucesso.')
                 ->screenshot('proposalSuccessfullyDisLiked');
 
@@ -180,7 +180,7 @@ class ProposalTest extends DuskTestCase
             $browser
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
-                ->click('@support')
+                ->press('@support')
                 ->waitForText('Seu apoio foi incluído com sucesso.')
                 ->assertSee('Seu apoio foi incluído com sucesso.')
                 ->screenshot('proposalSuccessfullySupported');
@@ -200,7 +200,7 @@ class ProposalTest extends DuskTestCase
             $browser
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
-                ->click('@follow')
+                ->press('@follow')
                 ->waitForText('Esta Ideia Legislativa será acompanhada! Obrigado.')
                 ->screenshot('proposalSuccessfullyFollowed');
         });

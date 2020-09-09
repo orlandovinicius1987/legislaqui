@@ -58,7 +58,8 @@
             <div class="row form-group">
                 <div class="col-xs-12 ">
                     {{ Form::submit('Gravar',
-                      array('class'=>'btn btn-primary botao')) }}
+                      array('class'=>'btn btn-primary botao',
+                      'dusk'=>'savebutton')) }}
                 </div>
             </div>
 

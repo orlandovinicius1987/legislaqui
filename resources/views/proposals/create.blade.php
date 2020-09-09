@@ -46,7 +46,8 @@
             <div class="row form-group">
                 <div class="col-xs-12">
                     {{ Form::submit('Enviar proposta de ideia',
-                      array('class'=>'btn btn-primary botao')) }}
+                      array('class'=>'btn btn-primary ',
+                      'dusk'=>"submitbuttonproposal")) }}
                 </div>
             </div>
             {{ Form::close() }}
