@@ -22,34 +22,34 @@ class ProposalTest extends DuskTestCase
         static::$randomUser = User::all()->random()->toArray();
     }
 
-    public function testCreateProposal()
-    {
-        $this->init();
-        $randomUser = static::$randomUser;
-        $newProposal = static:: $newProposal;
-
-        $this->browse(function (Browser $browser) use (
-            $randomUser,
-            $newProposal
-        ) {
-            $browser
-                ->loginAs($randomUser['id'])
-                ->visit('/')
-                ->click('@newProposalButton')
-                ->assertSee('PROPOR IDEIA LEGISLATIVA')
-                ->type('@name_field',  $newProposal['name'])
-                ->type('@problem_field',  $newProposal['problem'])
-                ->type('@exposionidea_field',  $newProposal['idea_exposition'])
-                ->screenshot('filledProposal-created')
-                ->press('@submitbuttonproposal')
-                ->waitForText('Ideia Legislativa Incluída com Sucesso')
-                ->pause(5000)
-                ->assertSee( $newProposal['idea_exposition'])
-                ->screenshot('proposalSuccessfullyCreated');
-        });
-        $this->assertDatabaseHas('proposals', ['name' =>  $newProposal['name']]);
-    }
-
+//    public function testCreateProposal()
+//    {
+//        $this->init();
+//        $randomUser = static::$randomUser;
+//        $newProposal = static:: $newProposal;
+//
+//        $this->browse(function (Browser $browser) use (
+//            $randomUser,
+//            $newProposal
+//        ) {
+//            $browser
+//                ->loginAs($randomUser['id'])
+//                ->visit('/')
+//                ->click('@newProposalButton')
+//                ->assertSee('PROPOR IDEIA LEGISLATIVA')
+//                ->type('@name_field',  $newProposal['name'])
+//                ->type('@problem_field',  $newProposal['problem'])
+//                ->type('@exposionidea_field',  $newProposal['idea_exposition'])
+//                ->screenshot('filledProposal-created')
+//                ->press('@submitbuttonproposal')
+//                ->waitForText('Ideia Legislativa Incluída com Sucesso')
+//                ->pause(5000)
+//                ->assertSee( $newProposal['idea_exposition'])
+//                ->screenshot('proposalSuccessfullyCreated');
+//        });
+//        $this->assertDatabaseHas('proposals', ['name' =>  $newProposal['name']]);
+//    }
+//
 //    public function testIncludeProposal()
 //    {
 //        $this->init();
@@ -66,9 +66,9 @@ class ProposalTest extends DuskTestCase
 //                ->loginAs($randomUser['id'])
 //                ->visit('/proposals/'.$randomProposal['id'])
 //                ->click('@novaIdeia')
-//                ->type('name',$newProposal['name'])
-//                ->type('problem',$newProposal['problem'])
-//                ->type('idea_exposition', $newProposal['idea_exposition'])
+//                ->type('@name_field',$newProposal['name'])
+//                ->type('@problem_field',$newProposal['problem'])
+//                ->type('@exposionidea_field', $newProposal['idea_exposition'])
 //                ->screenshot('filledProposal-included')
 //                ->press('@submitbuttonproposal')
 //                ->waitForText('Ideia Legislativa Incluída com Sucesso')
@@ -79,43 +79,43 @@ class ProposalTest extends DuskTestCase
 //        });
 //        $this->assertDatabaseHas('proposals', ['name' => $newProposal['name']]);
 //    }
-//
-//    public function testEditProposal()
-//    {
-//        $this->init();
-//        $randomUser = static::$randomUser;
-//        $newProposal = static::$newProposal;
-//
-//        $this->browse(function (Browser $browser) use (
-//            $randomUser,
-//            $newProposal
-//        ) {
-//            $browser
-//                ->loginAs($randomUser['id'])
-//                ->visit('/')
-//                ->click('@newProposalButton')
-//                ->assertSee('PROPOR IDEIA LEGISLATIVA')
-//                ->type('name',  $newProposal['name'])
-//                ->type('problem',  $newProposal['problem'])
-//                ->type('idea_exposition',  $newProposal['idea_exposition'])
-//                ->press('@submitbuttonproposal')
-//                ->waitForText('Ideia Legislativa Incluída com Sucesso')
-//                ->pause(5000)
-//                ->assertSee( $newProposal['idea_exposition'])
-//                ->click('@editIdea')
-//                ->type('name',$newProposal['name'].'**')
-//                ->type('problem',$newProposal['problem'].'**')
-//                ->press('@savebutton')
-//                ->pause(5000)
-//                ->assertSee($newProposal['problem'])
-//                ->screenshot('proposalSuccessfullyEdited');
-//        });
-//        $this->assertDatabaseHas('proposals', [
-//            'name' => $newProposal['name'].'**',
-//            'problem' => $newProposal['problem'].'**',
-//        ]);
-//    }
-//
+
+    public function testEditProposal()
+    {
+        $this->init();
+        $randomUser = static::$randomUser;
+        $newProposal = static::$newProposal;
+
+        $this->browse(function (Browser $browser) use (
+            $randomUser,
+            $newProposal
+        ) {
+            $browser
+                ->loginAs($randomUser['id'])
+                ->visit('/')
+                ->click('@newProposalButton')
+                ->assertSee('PROPOR IDEIA LEGISLATIVA')
+                ->type('@name_field',  $newProposal['name'])
+                ->type('@problem_field',  $newProposal['problem'])
+                ->type('@exposionidea_field',  $newProposal['idea_exposition'])
+                ->press('@submitbuttonproposal')
+                ->waitForText('Ideia Legislativa Incluída com Sucesso')
+                ->pause(5000)
+                ->assertSee( $newProposal['idea_exposition'])
+                ->click('@editIdea')
+                ->type('@name-edit_field',$newProposal['name'].'**')
+                ->type('@problem-edit_field',$newProposal['problem'].'**')
+                ->press('@savebutton')
+                ->pause(5000)
+                ->assertSee($newProposal['problem'])
+                ->screenshot('proposalSuccessfullyEdited');
+        });
+        $this->assertDatabaseHas('proposals', [
+            'name' => $newProposal['name'].'**',
+            'problem' => $newProposal['problem'].'**',
+        ]);
+    }
+
 //    public function testLikeProposal()
 //    {
 //        $this->init();
