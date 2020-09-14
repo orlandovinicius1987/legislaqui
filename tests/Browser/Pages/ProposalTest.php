@@ -37,16 +37,15 @@ class ProposalTest extends DuskTestCase
                 ->visit('/')
                 ->click('@newProposalButton')
                 ->assertSee('PROPOR IDEIA LEGISLATIVA')
-                ->type('name',  $newProposal['name'])
-                ->type('problem',  $newProposal['problem'])
-                ->type('idea_exposition',  $newProposal['idea_exposition'])
+                ->type('@name_field',  $newProposal['name'])
+                ->type('@problem_field',  $newProposal['problem'])
+                ->type('@exposionidea_field',  $newProposal['idea_exposition'])
                 ->screenshot('filledProposal-created')
                 ->press('@submitbuttonproposal')
                 ->waitForText('Ideia Legislativa Incluída com Sucesso')
                 ->pause(5000)
                 ->assertSee( $newProposal['idea_exposition'])
                 ->screenshot('proposalSuccessfullyCreated');
-
         });
         $this->assertDatabaseHas('proposals', ['name' =>  $newProposal['name']]);
     }
