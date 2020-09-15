@@ -24,6 +24,8 @@ class ProposalTest extends DuskTestCase
 
     public function testCreateProposal()
     {
+
+
         $this->init();
         $randomUser = static::$randomUser;
         $newProposal = static:: $newProposal;
@@ -33,6 +35,7 @@ class ProposalTest extends DuskTestCase
             $newProposal
         ) {
             $browser
+                ->pause(6000)// Wait for Travis CI to load the page
                 ->loginAs($randomUser['id'])
                 ->visit('/')
                 ->click('@newProposalButton')
