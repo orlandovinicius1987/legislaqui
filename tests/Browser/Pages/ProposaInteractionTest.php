@@ -7,7 +7,7 @@ use App\Proposal;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ProposalTest extends DuskTestCase
+class ProposaInteractionTest extends DuskTestCase
 {
     private static $randomProposal;
     private static $randomUser;
