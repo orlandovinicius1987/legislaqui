@@ -42,6 +42,8 @@ class ProposalAbilitiesTest extends DuskTestCase
                 ->type('@exposionidea_field',  $newProposal['idea_exposition'])
                 ->screenshot('filledProposal-created')
                 ->click('@submitbuttonproposal')
+                ->pause(3000)
+                ->assertSee($newProposal['name'])
                 ->screenshot('proposalSuccessfullyCreated');
         });
         $this->assertDatabaseHas('proposals', ['name' =>  $newProposal['name']]);
@@ -68,6 +70,8 @@ class ProposalAbilitiesTest extends DuskTestCase
                 ->type('@exposionidea_field', $newProposal['idea_exposition'])
                 ->screenshot('filledProposal-included')
                 ->click('@submitbuttonproposal')
+                ->pause(3000)
+                ->assertSee($newProposal['name'])
                 ->screenshot('proposalSuccessfullyIncluded');
 
         });
