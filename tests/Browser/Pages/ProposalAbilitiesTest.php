@@ -97,7 +97,6 @@ class ProposalAbilitiesTest extends DuskTestCase
                 ->type('@problem_field',  $newProposal['problem'])
                 ->type('@exposionidea_field',  $newProposal['idea_exposition'])
                 ->click('@submitbuttonproposal')
-                ->waitForText('Ideia Legislativa Incluída com Sucesso')
                 ->pause(5000)
                 ->assertSee( $newProposal['idea_exposition'])
                 ->click('@editIdea')
