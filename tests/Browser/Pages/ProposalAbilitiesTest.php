@@ -82,8 +82,10 @@ class ProposalAbilitiesTest extends DuskTestCase
     {
         $this->init();
         $randomUser = static::$randomUser;
-        $randomProposal = Proposal::all()->random();
-        $randomProposal->user->name = $randomUser['name'];
+        $randomProposal1 = Proposal::all()->random();
+        $randomProposal1->user_id = $randomUser['id'];
+        $randomProposal1->save();
+        $randomProposal = Proposal::find($randomProposal1->id);
 
         $this->browse(function (Browser $browser) use (
             $randomUser,

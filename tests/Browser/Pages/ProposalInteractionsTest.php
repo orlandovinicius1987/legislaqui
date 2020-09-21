@@ -7,7 +7,7 @@ use App\Proposal;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ProposaInteractionTest extends DuskTestCase
+class ProposalInteractionsTest extends DuskTestCase
 {
     private static $randomProposal;
     private static $randomUser;
@@ -32,7 +32,7 @@ class ProposaInteractionTest extends DuskTestCase
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
                 ->press('@like')
-                ->waitForText('Sua curtida foi computada com sucesso.')
+                ->waitForText('Sua curtida foi computada com sucesso. Caso queira apoiar oficialmente esta proposta, clique aqui.')
                 ->screenshot('proposalSuccessfullyLiked');
 
         });
