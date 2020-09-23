@@ -136,6 +136,7 @@ class Proposal extends Eloquent
     protected function dispatchMails($notification, Collection $emails)
     {
         $emails->each(function ($email) use ($notification) {
+            info('EMAIL DETECTADO - '.$email);
             $this->createNotificationModel($email, $notification)->notify(
                 new $notification()
             );
