@@ -400,7 +400,7 @@ class ProposalsController extends Controller
         //Then update Proposal
         $proposal->fill($input)->save();
 
-        event(new ProposalChanged($proposal));
+//        event(new ProposalChanged($proposal));
 
         return redirect()
             ->route('proposal.show', ['proposal' => $proposal])
