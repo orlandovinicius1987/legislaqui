@@ -35,7 +35,6 @@ abstract class DuskTestCase extends BaseTestCase
             '--headless',
             '--window-size=1280,1024,16',
             '--disable-web-security',
-            '--lang=pt-BR',
         ]);
 
         return RemoteWebDriver::create(
@@ -45,5 +44,15 @@ abstract class DuskTestCase extends BaseTestCase
                 $options
             )
         );
+    }
+
+    public function createFaker()
+    {
+        // use the factory to create a Faker\Generator instance
+        $faker = Faker\Factory::create();
+        // Add pt_BR provider
+        $faker->addProvider(new Faker\Provider\pt_BR\Person($faker));
+
+        return $faker;
     }
 }
