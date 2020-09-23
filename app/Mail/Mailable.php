@@ -41,8 +41,8 @@ class Mailable extends IlluminateMailable
     public function fromArray($field)
     {
         return [
-            'name' => config('mail.from.name'),
             'address' => config('mail.from.address'),
+            'name' => config('mail.from.name'),
         ][$field];
     }
 }
