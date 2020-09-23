@@ -32,7 +32,7 @@ class ProposalInteractionsTest extends DuskTestCase
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
                 ->press('@like')
-                ->waitForText('Sua curtida foi computada com sucesso. Caso queira apoiar oficialmente esta proposta, clique aqui.')
+                ->assertDontSeeLink('Sua curtida foi computada com sucesso. Caso queira apoiar oficialmente esta proposta, clique aqui.')
                 ->screenshot('proposalSuccessfullyLiked');
 
         });
@@ -57,7 +57,7 @@ class ProposalInteractionsTest extends DuskTestCase
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
                 ->press('@dislike')
-                ->waitForText('Sua descurtida foi computada com sucesso.')
+                ->assertDontSeeLink('Sua descurtida foi computada com sucesso.')
                 ->screenshot('proposalSuccessfullyDisLiked');
 
         });
@@ -82,8 +82,7 @@ class ProposalInteractionsTest extends DuskTestCase
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
                 ->press('@support')
-                ->waitForText('Seu apoio foi incluído com sucesso.')
-                ->assertSee('Seu apoio foi incluído com sucesso.')
+                ->assertDontSeeLink('Seu apoio foi incluído com sucesso.')
                 ->screenshot('proposalSuccessfullySupported');
         });
     }
@@ -102,7 +101,7 @@ class ProposalInteractionsTest extends DuskTestCase
                 ->loginAs($randomUser['id'])
                 ->visit('/proposals/'.$randomProposal['id'])
                 ->press('@follow')
-                ->waitForText('Esta Ideia Legislativa será acompanhada! Obrigado.')
+                ->assertDontSeeLink('Esta Ideia Legislativa será acompanhada! Obrigado.')
                 ->screenshot('proposalSuccessfullyFollowed');
         });
         $this->assertDatabaseHas('proposal_follows', [
