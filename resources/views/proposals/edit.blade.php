@@ -31,6 +31,7 @@
                     {{ Form::text('name', null,
                         array('required',
                               'class'=>'campo form-control',
+                              'dusk'=>"name-edit_field",
                               'placeholder'=>'Nome')) }}
                 </div>
             </div>
@@ -41,6 +42,7 @@
                     {{ Form::textarea('problem', null,
                         array('required',
                               'class'=>'textarea form-control',
+                              'dusk'=>"problem-edit_field",
                               'placeholder'=>'Descreva o Problema')) }}
                 </div>
             </div>
@@ -51,6 +53,7 @@
                     {{ Form::textarea('idea_exposition', null,
                         array('required',
                               'class'=>'textarea form-control',
+                              'dusk'=>"exposionidea-edit_field",
                               'placeholder'=>'Descreva sua Ideia')) }}
                 </div>
             </div>
@@ -58,7 +61,8 @@
             <div class="row form-group">
                 <div class="col-xs-12 ">
                     {{ Form::submit('Gravar',
-                      array('class'=>'btn btn-primary botao')) }}
+                      array('class'=>'btn btn-primary botao',
+                      'dusk'=>'savebutton')) }}
                 </div>
             </div>
 

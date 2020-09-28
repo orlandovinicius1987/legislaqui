@@ -9,6 +9,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactFormRequest;
+use App\Mail\ContactForm;
+use App\Mail\ResponseContactForm;
+use App\Support\Constants;
+use Illuminate\Support\Facades\Mail;
 
 class AboutController extends Controller
 {
@@ -47,20 +51,14 @@ class AboutController extends Controller
         $msg =
             'Obrigado por entrar em contato com a e-democracia da ALERJ. Você receberá uma cópia de sua mensagem e retornaremos o seu contato em breve!';
 
-        \Mail::send(
-            'emails.contact',
-            [
-                'name' => $request->get('name'),
-                'email' => $request->get('email'),
-                'user_message' => $request->get('message'),
-            ],
-            function ($message) {
-                $message->from('wj@wjgilmore.com');
-                $message
-                    ->to('wj@wjgilmore.com', 'Admin')
-                    ->subject('TODOParrot Feedback');
-            }
-        );
+        Mail::to(config('mail.administrator'))->send( new ContactForm($request->get('name'),
+            $request->get('email'),
+            $request->get('message')));
+
+        Mail::to($request->get('email'))->send( new ResponseContactForm($request->get('name'),
+            $request->get('email'),
+            $request->get('message')));
+//
 
         return \Redirect::route('contact')->with('message', $msg);
     }
