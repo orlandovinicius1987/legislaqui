@@ -7,7 +7,9 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use App\Events\ProposalChanged;
+use App\Events\ProposalWasCreated;
 use App\Listeners\NotifyProposalSubscribers;
+use App\Listeners\NotifyProposalCreator;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,33 +20,31 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         Registered::class => [SendEmailVerificationNotification::class],
-        'App\Events\ProposalWasCreated' => [
-            'App\Listeners\EmailProposalCreator',
-        ],
+        ProposalWasCreated::class => [NotifyProposalCreator::class],
         'App\Events\ProposalApproved' => [
-            'App\Listeners\EmailProposalApproved',
+            'App\Listeners\EmailProposalApproved'
         ],
         'App\Events\ProposalClosed' => ['App\Listeners\EmailProposalClosed'],
         'App\Events\ProposalReachedApprovalGoal' => [
-            'App\Listeners\EmailProposalReachedApprovalGoal',
+            'App\Listeners\EmailProposalReachedApprovalGoal'
         ],
         'App\Events\ProposalTimeLimit' => [
-            'App\Listeners\EmailProposalTimeLimit',
+            'App\Listeners\EmailProposalTimeLimit'
         ],
         'App\Events\ProposalApprovedByCommittee' => [
-            'App\Listeners\EmailProposalApprovedByCommittee',
+            'App\Listeners\EmailProposalApprovedByCommittee'
         ],
         'App\Events\ProposalClosedByCommittee' => [
-            'App\Listeners\EmailProposalClosedByCommittee',
+            'App\Listeners\EmailProposalClosedByCommittee'
         ],
 
         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
             // add your listeners (aka providers) here
             'SocialiteProviders\YouTube\YouTubeExtendSocialite@handle',
-            'SocialiteProviders\Instagram\InstagramExtendSocialite@handle',
+            'SocialiteProviders\Instagram\InstagramExtendSocialite@handle'
         ],
 
-        ProposalChanged::class => [NotifyProposalSubscribers::class],
+        ProposalChanged::class => [NotifyProposalSubscribers::class]
     ];
 
     /**
