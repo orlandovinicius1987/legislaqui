@@ -4,6 +4,7 @@ namespace App;
 
 use App\Data\Repositories\Notifications;
 use App\Notifications\SendProposalChanged;
+use App\Notifications\SendProposalCreated;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
@@ -19,9 +20,23 @@ class Proposal extends Eloquent
      *
      * @var array
      */
-    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'pub_date', 'limit_date'];
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'pub_date',
+        'limit_date'
+    ];
 
-    protected $fillable = ['name', 'problem', 'idea_exposition', 'user_id', 'approved', 'pub_date', 'limit_date'];
+    protected $fillable = [
+        'name',
+        'problem',
+        'idea_exposition',
+        'user_id',
+        'approved',
+        'pub_date',
+        'limit_date'
+    ];
 
     //protected $guarded = ['id', 'pub_date', 'limit_date'];
 
@@ -137,6 +152,8 @@ class Proposal extends Eloquent
         switch ($notification) {
             case SendProposalChanged::class:
                 return 'Uma ideia legislativa que você acompanha foi alterada';
+            case SendProposalCreated::class:
+                return 'Sua ideia legislativa foi criada';
         }
 
         throw new \Exception(
@@ -150,7 +167,7 @@ class Proposal extends Eloquent
             'proposal_id' => $this->id,
             'destination' => $destination,
             'subject' => $this->makeSubject($notification),
-            'content_type' => $this->makeNotificationContentType($notification),
+            'content_type' => $this->makeNotificationContentType($notification)
         ]);
     }
 
@@ -159,6 +176,8 @@ class Proposal extends Eloquent
         switch ($notification) {
             case SendProposalChanged::class:
                 return 'changed';
+            case SendProposalCreated::class:
+                return 'created';
         }
 
         throw new \Exception(
@@ -170,6 +189,14 @@ class Proposal extends Eloquent
     {
         $this->dispatchMails(
             SendProposalChanged::class,
+            $this->getFollowersEmails()
+        );
+    }
+
+    public function sendProposalCreatedEmail()
+    {
+        $this->dispatchMails(
+            SendProposalCreated::class,
             $this->getFollowersEmails()
         );
     }
