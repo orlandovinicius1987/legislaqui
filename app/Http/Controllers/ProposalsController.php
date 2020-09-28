@@ -242,20 +242,36 @@ class ProposalsController extends Controller
             // New Like
             case null:
                 //dd($existing_like, $action, $str_action);
-                Like::create([
-                    'user_id' => $user_id,
-                    'uuid' => $unique,
-                    'proposal_id' => $proposal->id,
-                    'like' => $action == 'like',
-                    'ip_address' => Request::ip()
-                ]);
+                switch ($action) {
+                    case 'like':
+                        Like::create([
+                            'user_id' => $user_id,
+                            'uuid' => $unique,
+                            'proposal_id' => $proposal->id,
+                            'like' => $action == 'like',
+                            'ip_address' => Request::ip()
+                        ]);
 
-                $approval_url = route('proposal.approval', $id);
-                $msg =
-                    'Sua curtida foi computada com sucesso. Caso queira apoiar oficialmente esta proposta, <a href="' .
-                    $approval_url .
-                    '">clique aqui</a>.';
-                Session::flash('flash_msg', $msg);
+                        $approval_url = route('proposal.approval', $id);
+                        $msg =
+                            'Sua curtida foi computada com sucesso. Caso queira apoiar oficialmente esta proposta, <a href="' .
+                            $approval_url .
+                            '">clique aqui</a>.';
+                        Session::flash('flash_msg', $msg);
+                        break;
+                    case 'unlike':
+                        Like::create([
+                            'user_id' => $user_id,
+                            'uuid' => $unique,
+                            'proposal_id' => $proposal->id,
+                            'like' => $action == 'like',
+                            'ip_address' => Request::ip()
+                        ]);
+
+                        $msg = 'Sua descurtida foi computada com sucesso.';
+                        Session::flash('flash_msg', $msg);
+                        break;
+                }
                 break;
         }
 
@@ -328,9 +344,8 @@ class ProposalsController extends Controller
         //dd($input);
 
         $proposal = Proposal::create($input);
-        event(new ProposalWasCreated($proposal));
 
-        //Event::fire(new ProposalWasCreated($proposal));
+        event(new ProposalWasCreated($proposal));
 
         return redirect()
             ->route('proposal.show', ['proposal' => $proposal])

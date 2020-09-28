@@ -15,10 +15,10 @@
         @endif
 
         @if (!Auth::check())
-            <a href="{{ route('proposal.follow', $proposal->id) }}" onclick="if(!confirm('Para acompanhar uma ideia legislativa você precisa criar uma conta na página da ALERJ.')){return false;};">
+            <a dusk="follow" href="{{ route('proposal.follow', $proposal->id) }}" onclick="if(!confirm('Para acompanhar uma ideia legislativa você precisa criar uma conta na página da ALERJ.')){return false;};">
                 <i class="fa fa-asterisk" aria-hidden="true"></i><span class="hidden-xs">Acompanhar essa Ideia!</span></a>
         @else
-            <a href="{{ route('proposal.follow', $proposal->id) }}">
+            <a dusk="follow" href="{{ route('proposal.follow', $proposal->id) }}">
                 <i class="fa fa-asterisk" aria-hidden="true"></i><span class="hidden-xs">Acompanhar essa Ideia!</span></a>
         @endif
     </div>
@@ -26,7 +26,7 @@
 
     <div class="share_links col-xs-4 col-sm-3">
         <div class="pull-right">
-            <a href="mailto:&amp;subject={{ config('app.name') }}&amp;body={{ urlencode($url) }} "><i class="fa fa-envelope-square"></i>
+            <a href="{{'https://api.whatsapp.com/send?phone=&text='.rawurlencode('Proponha sua Ideia Legislativa Aqui! '.$url.' #LegislAqui #e-democracia #e-cidadania via @Legislaqui! - ALERJ')}}"><i class="fa fa-whatsapp"></i> {{-- Trocar para https://fontawesome.com/icons/whatsapp-square?style=brands --}}
             </a>
 
             <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($url) }}"
@@ -37,8 +37,11 @@
                target="_blank"><i class="fa fa-twitter-square"></i>
             </a>
 
-{{--            <a href="https://plus.google.com/share?url={{ urlencode($url) }}"
-               target="_blank"><i class="fa fa-google-plus-square"></i></a>--}}
+            <a href="mailto:&amp;subject={{ config('app.name') }}&amp;body={{ urlencode($url) }} "><i class="fa fa-envelope-square"></i>
+            </a>
+
+{{--            <a href="https://plus.google.com/share?url={{ urlencode($url) }}"--}}
+{{--               target="_blank"><i class="fa fa-google-plus-square"></i></a>--}}
 
 
 

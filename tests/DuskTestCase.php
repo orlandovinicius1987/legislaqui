@@ -33,7 +33,8 @@ abstract class DuskTestCase extends BaseTestCase
         $options = (new ChromeOptions())->addArguments([
             '--disable-gpu',
             '--headless',
-            '--window-size=3940,2160',
+            '--window-size=1280,1024,16',
+            '--disable-web-security',
         ]);
 
         return RemoteWebDriver::create(
@@ -43,17 +44,6 @@ abstract class DuskTestCase extends BaseTestCase
                 $options
             )
         );
-    }
-
-    /**
-     * Temporal solution for cleaning up session
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-        foreach (static::$browsers as $browser) {
-            $browser->driver->manage()->deleteAllCookies();
-        }
     }
 
     public function createFaker()

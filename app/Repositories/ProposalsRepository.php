@@ -13,19 +13,16 @@ use Session;
 
 class ProposalsRepository
 {
-    private $searchColumns = [
-        'name',
-        'problem',
-        'idea_exposition',
-        'response',
-    ];
+    private $searchColumns = ['name', 'problem', 'idea_exposition', 'response'];
 
     public function all()
     {
         //return Proposal::orderBy('updated_at', 'desc')->get();
         //Verificar com o Antônio
         //
-        return Proposal::whereNotNull('id')->orderBy('updated_at', 'desc')->get();
+        return Proposal::whereNotNull('id')
+            ->orderBy('updated_at', 'desc')
+            ->get();
     }
 
     public function find($id)
@@ -249,29 +246,6 @@ class ProposalsRepository
             ->get();
     }
 
-    public function sendProposalToCreator($proposal)
-    {
-        //dd($proposal);
-
-        Mail::send(
-            'emails.proposal-to-creator',
-            ['proposal' => $proposal],
-            function ($message) use ($proposal) {
-                //Mail::send('emails.reminder', ['user' => $user], function ($message) use ($user) {
-                //$m->from('hello@app.com', 'Your Application');
-                //$message->from('us@example.com', 'Laravel');
-
-                $message->from(config('mail.from.name'),config('mail.from.address'));
-
-                $message
-                    ->to($proposal->user->email, $proposal->user->name)
-                    ->subject('Your Reminder!');
-
-                $message->subject('e-democracia: Proposta Criada');
-            }
-        );
-    }
-
     public function sendProposalApprovalGoalNotification($proposal)
     {
         //dd($proposal);
@@ -409,7 +383,7 @@ class ProposalsRepository
                         'open' => true,
                         'in_committee' => true,
                         'approved_by_committee' => null,
-                        'disapproved_by_committee' => null,
+                        'disapproved_by_committee' => null
                     ])
                     ->withCount('approvals')
                     ->get();
