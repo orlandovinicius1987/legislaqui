@@ -13,7 +13,7 @@ class ProposalChanged extends Mailable
     public function build()
     {
         $this->to($this->notification->routeNotificationForMail())
-            ->from('example@gamil.com','name')
+            ->from($this->fromArray('address'), $this->fromArray('name'))
             ->subject($this->notification->subject)
             ->markdown('emails.proposal-changed')
             ->with([
