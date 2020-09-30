@@ -207,8 +207,8 @@ class Proposal extends Eloquent
         return $this->like_count - $this->unlike_count;
     }*/
 
-    /* public function getApprovalsCountAttribute()
+    public function getApprovalsCountAttribute()
     {
-        return User::all()->approvals()->get()->count();
-    }*/
+        return Approval::where('proposal_id', $this->id)->count();
+    }
 }
