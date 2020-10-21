@@ -8,7 +8,8 @@
         <div class="col-12 ">
             @include('partials.error')
 
-            <h1 class="text-center">Editar Proposta Legislativa</h1>
+
+            <h1 class=""><i class="fas fa-edit mr-3"></i> Editar Ideia Legislativa</h1>
 
         </div>
     </div>

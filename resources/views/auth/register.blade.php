@@ -149,7 +149,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-0">
+                            <div class="form-group row mb-0 text-right">
                                 <div class="col-md-12">
                                     <button dusk="registerButton" type="submit" class="btn btn-primary">
                                         <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro

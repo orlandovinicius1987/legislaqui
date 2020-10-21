@@ -50,31 +50,31 @@
                                 <div class="col-md-12">
                                     {{--<label for="email" class="col-form-label">Email</label>--}}
 
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ (Session::get('last_auth_attempt') === 'login') ? old('email') : '' }}" placeholder="Insira seu email">
                                     @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'login'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('email') }}</strong>
+                                            <strong><i class="fas fa-exclamation-triangle"></i> {{ $errors->first('email') }}</strong>
                                         </span>
                                     @endif
-
-
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ (Session::get('last_auth_attempt') === 'login') ? old('email') : '' }}" placeholder="Insira seu email">
                                 </div>
                             </div>
 
                             <div class="form-group{{ $errors->has('password') && (Session::get('last_auth_attempt') === 'login') ? ' has-error' : '' }} row">
                                 <div class="col-md-12">
                                     {{--<label for="password" class="col-form-label">Senha</label>--}}
-                                    <input id="password" type="password" class="form-control" name="password" placeholder="Insira sua senha">
-
                                     @if ($errors->has('password') && (Session::get('last_auth_attempt') === 'login'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('password') }}</strong>
+                                            <strong><i class="fas fa-exclamation-triangle"></i> {{ $errors->first('password') }}</strong>
                                         </span>
                                     @endif
+
+                                    <input id="password" type="password" class="form-control" name="password" placeholder="Insira sua senha">
+
+
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="form-group row text-left">
                                 <div class="col-md-6 ">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>

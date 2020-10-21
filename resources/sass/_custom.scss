@@ -1,6 +1,16 @@
 /* Custom */
 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #05a;
+}
 
+
+h1,.h1 {
+    font-size: 3rem;
+    i , .i{
+        color: #aad4ff;
+    }
+}
 
 .btn-outline-success {
     color: #fff;
@@ -55,4 +65,33 @@
 }
 
 
+.propor-ideia {
 
+    h1,.h1 {
+        font-size: 3rem;
+        color: #05a;
+      i{
+          color: #aad4ff;
+      }
+    }
+
+    .lead {
+        margin-top: 15px;
+    }
+
+    label {
+        font-size: 1.1rem;
+    }
+}
+
+
+
+.como-funciona {
+    h1, .h1 {
+        font-size: 3rem;
+        color: #05a;
+        i {
+            color: #aad4ff;
+        }
+    }
+}

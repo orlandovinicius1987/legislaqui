@@ -29,6 +29,8 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
 
+
+
         <title>
             {{ config('app.medium_name') }}
         </title>

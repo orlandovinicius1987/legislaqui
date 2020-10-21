@@ -1,126 +1,136 @@
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-    <div class="col-md-2">
-        <a href="/" class="legislaqui_marca text-center">
-            <img src="/imagens/marca_legislaqui.png" class="img-fluid">
-        </a>
-    </div>
-
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Início <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">Como Funciona</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Ideia Legislativa<span class="caret"></span>
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-{{--
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
---}}
-
-                    @if (Auth::guest())
-                        <a class="dropdown-item"  target='' href="{{ route('proposal.create') }}">
-                            Proponha uma ideia legislativa
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item"  href="{{ route('terms') }}">
-                            Termos de Uso
-                        </a>
-
-                    @elseif (Auth::user()->is_admin)
-
-                        <a class="dropdown-item"  target='' href="{{ route('proposal.create') }}" title='Incluir Nova Proposta'>
-                            Incluir Nova Proposta
-                        </a>
-                        <a class="dropdown-item"  target='' href="{{ route('users.proposals', Auth::user()->id) }}" title='Listar Minhas Propostas'>
-                            Listar Minhas Propostas
-                        </a>
-                        <a class="dropdown-item"  target='' href="{{ route('home') }}" title='Listar Todas Propostas'>
-                            Listar Todas Propostas
-                        </a>
-                    @else
-                        <a class="dropdown-item"  href="{{ route('proposal.create') }}">
-                            Incluir Nova Proposta
-                        </a>
-                        <a class="dropdown-item"  href="{{ route('users.proposals', Auth::user()->id) }}">
-                            Listar Minhas Propostas
-                        </a>
-                        <a class="dropdown-item"  href="{{ route('home') }}">
-                            Listar Todas Propostas
-                        </a>
-                    @endif
-{{--
-                    <a class="dropdown-item href="/terms">
-                    Termos de Uso
-                    </a>
-
-                    <a class="dropdown-item href="/contact">
-                    Contato
-                    </a>
-                    --}}
-
-                </div>
-            </li>
-{{--
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
---}}
-        </ul>
 
 
 
-        <ul class="nav navbar-nav navbar-right">
+        <div class="col-md-2 logo-alerj">
+            <a href="/" title="Assembléia Legislativa do Estado do Rio de Janeiro">
+                <img src="/imagens/logotipo_inferior.png" class="img-fluid" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
+            </a>
+        </div>
+
+        <div class="col-md-2 ">
+            <a href="/" class="legislaqui_marca text-center">
+                <img src="/imagens/marca_legislaqui.png" class="img-fluid">
+            </a>
+        </div>
 
 
-            @if(Auth::user())
-                <li class="visible-xs menu-user-mobile">
-{{--                    <a target='' href="javascript:;" class="dropdown-toggle" title="Usuário">
-                        {{ Auth::user()->name }}
-                    </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    <a class="btn btn-default btn-login " href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                        <i class="fa fa-sign-out"></i> Sair
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>--}}
-
-
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Início <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">Como Funciona</a>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ Auth::user()->name }}<span class="caret"></span>
+                        Ideia Legislativa<span class="caret"></span>
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {{--
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                        --}}
 
-                        <a class="dropdown-item"  target='' href="" title='Sair'  href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="fa fa-sign-out"></i> Sair
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                        @if (Auth::guest())
+                            <a class="dropdown-item"  target='' href="{{ route('proposal.create') }}">
+                                Proponha uma ideia legislativa
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item"  href="{{ route('terms') }}">
+                                Termos de Uso
+                            </a>
+
+                        @elseif (Auth::user()->is_admin)
+
+                            <a class="dropdown-item"  target='' href="{{ route('proposal.create') }}" title='Incluir Nova Proposta'>
+                                Incluir Nova Proposta
+                            </a>
+                            <a class="dropdown-item"  target='' href="{{ route('users.proposals', Auth::user()->id) }}" title='Listar Minhas Propostas'>
+                                Listar Minhas Propostas
+                            </a>
+                            <a class="dropdown-item"  target='' href="{{ route('home') }}" title='Listar Todas Propostas'>
+                                Listar Todas Propostas
+                            </a>
+                        @else
+                            <a class="dropdown-item"  href="{{ route('proposal.create') }}">
+                                Incluir Nova Proposta
+                            </a>
+                            <a class="dropdown-item"  href="{{ route('users.proposals', Auth::user()->id) }}">
+                                Listar Minhas Propostas
+                            </a>
+                            <a class="dropdown-item"  href="{{ route('home') }}">
+                                Listar Todas Propostas
+                            </a>
+                        @endif
+                        {{--
+                                            <a class="dropdown-item href="/terms">
+                                            Termos de Uso
+                                            </a>
+
+                                            <a class="dropdown-item href="/contact">
+                                            Contato
+                                            </a>
+                                            --}}
+
                     </div>
-
                 </li>
-            @endif
+                {{--
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            </li>
+                --}}
+            </ul>
 
-            @if (Auth::guest())
+
+
+            <ul class="nav navbar-nav navbar-right">
+
+
+                @if(Auth::user())
+                    <li class="visible-xs menu-user-mobile">
+                        {{--                    <a target='' href="javascript:;" class="dropdown-toggle" title="Usuário">
+                                                {{ Auth::user()->name }}
+                                            </a>
+
+                                            <a class="btn btn-default btn-login " href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                                         document.getElementById('logout-form').submit();">
+                                                <i class="fa fa-sign-out"></i> Sair
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>--}}
+
+
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }}<span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu user-menu1" aria-labelledby="navbarDropdown">
+
+                            <a class="dropdown-item"  target='' href="" title='Sair'  href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt"></i> Sair
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+
+                    </li>
+                @endif
+
+                @if (Auth::guest())
 
                     <form class="form-inline my-2 my-lg-0">
                         {{--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">--}}
@@ -129,15 +139,16 @@
                         <a href="{{ route('register') }}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Registrar-se</a>
                     </form>
 
-            @else
-                @if (Auth::user()->is_admin)
-                    <li>
-                        <a href="{{ route('admin') }}" target="_blank">Painel do Administrador</a>
-                    </li>
+                @else
+                    @if (Auth::user()->is_admin)
+                        <li>
+                            <a href="{{ route('admin') }}" target="_blank" class="btn btn-outline-success my-2 my-sm-0" type="submit">Painel do Administrador</a>
+                        </li>
+                    @endif
                 @endif
-            @endif
-        </ul>
-    </div>
+            </ul>
+        </div>
+
 </nav>
 
 

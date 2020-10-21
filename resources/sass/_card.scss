@@ -1,199 +1,109 @@
 //*****************************  Card Style   *****************************
 
+.cards-lista-ideias {
+    h1, .h1 {
+        font-size: 3rem;
+        color: #05a;
 
-.lista-ideias {
-    .card {
-        background: none;
-        padding: 24px;
-        border: none;
-
-        h1, .h1 {
-            font-size: 1.75rem;
-            margin-bottom: 0;
+        i {
+            color: #aad4ff;
         }
-        .card-header {
-            padding: 0;
-            margin-bottom: 0;
-            background: none;
-            border-bottom: none;
+    }
 
-            .action_links a {
-                border-right: solid 1px;
-                margin-right: 12px;
-                padding-right: 12px;
-
-                i {
-                    padding-right: 5px;
-                }
-
-                &:last-child {
-                    border-right: none;
-                }
-            }
-
-            .share_links {
-                font-size: 125%;
-            }
-
+    .controles {
+        button {
+            margin-right: 10px;
         }
-        .card-body {
-            padding:0;
-            border: 1px solid rgba(0, 0, 0, 0.125);
-            border-bottom: 0;
-            border-radius: 10px 10px 0 0;
+    }
 
-            .navbar {
-                padding: 0;
-                /*margin: 12px 12px 0 12px;*/
+    .btn-outline-secondary:not(:disabled):not(.disabled):active, .btn-outline-secondary:not(:disabled):not(.disabled).active, .show > .btn-outline-secondary.dropdown-toggle {
+        color: #fff;
+        background-color: #305bb0;
+        border-color: #305bb0;
+    }
 
-                .input-group > .form-control:not(:first-child),
-                .input-group > .custom-select:not(:first-child) {
-                    border-top-left-radius: 7px;
-                    border-bottom-left-radius: 7px;
-                }
-
-                .input-group > .input-group-append > .btn,
-                .input-group > .input-group-append > .input-group-text,
-                .input-group > .input-group-prepend:not(:first-child) > .btn,
-                .input-group > .input-group-prepend:not(:first-child) > .input-group-text,
-                .input-group > .input-group-prepend:first-child > .btn:not(:first-child),
-                .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
-                    border-top-right-radius: 7px;
-                    border-bottom-right-radius: 7px;
-                }
-            }
-
-            .table {
-                margin-bottom: 0;
-                thead {
-                    th{
-                        border-bottom: 0;
-                        padding: 0;
-
-                        h6 {
-                            margin-bottom: 0;
-                        }
-                    }
-                }
-                th {
-                    border-top: none;
-                }
-                .controles {
-                    /*padding-left: 12px;*/
-                }
-
-                tr {
-                    &:last-child{
-                        td {
-                            border-bottom: 0px solid #d9dee2;
-                            &:first-child{
-                                /*background: #0d6aad;*/
-                                border-radius: 0 !important;
-                            }
-                            &:last-child {
-                                border-radius: 0 !important;
-                            }
-                        }
-                    }
-                }
-            }
-
-
+    .btn-outline-secondary {
+        border-color: #aad4ff;
+        color: #aad4ff;
+        &:hover {
+            color: #fff;
+            background-color: #7bf;
+            border-color: #7bf;
         }
-        .card-footer {
-            padding: 0;
-            background: none;
-            border-top: 0;
-            border: 1px solid rgba(0, 0, 0, 0.125);
-            border-radius: 0 0 10px 10px;
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.1);
         }
     }
 
 
-    .corpodaideia {
+    .btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
+    .btn-outline-secondary:not(:disabled):not(.disabled).active:focus {
+        box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.1);
+    }
 
-        .card-body {
-            padding: 0;
-            border: 1px solid rgba(0, 0, 0, 0.125);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-            border-radius: 10px;
+    .card {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+        border: #ebebeb ;
+        &:hover {
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
         }
 
-        .table {
-            tr {
-                td{
-                    &:first-child {
-                        min-width: 200px;
-                        font-weight: 600;
-                        color: #919ca7;
-                    }
-                    &:last-child {
-                        width: 100%;
-                    }
-                }
+        .card-title {
+            i {
+                color: #ccd8f1;
+                margin-right: 5px;
+            }
+        }
 
+
+        .card-header {
+            padding: 1rem 1rem 0.3rem 1rem;
+            border-bottom: none ;
+        }
+
+        .card-body {
+            a {
+                /*color: #212529;*/
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+
+
+        }
+
+        .card-footer {
+            border-top: none;
+            padding: 0.5rem 1.25rem;
+            span {
                 &:first-child {
-                    td {
-                        border-top: none;
-                        &:first-child{
-                            border-radius: 10px 0 0 0 ;
-                        }
-                        &:last-child {
-                            border-radius: 0 10px 0 0;
-                        }
-                    }
+                    padding-right: 1rem;
+                    border-right: 1px solid rgba(0, 0, 0, 0.125);
                 }
-            }
-        }
 
-        .card-footer {
-            border: 0px solid rgba(0, 0, 0, 0.125);
-            border-radius:0;
+            }
         }
     }
 }
 
+.ideia {
 
-.propor-ideia {
-
-    .card {
-        background: none;
-        padding: 24px;
-        border: none;
-
-        .card-header {
-            padding: 0.75rem 1.25rem;
-            margin-bottom: 0;
-            background: none;
-            border-bottom: none;
-        }
-
-        .card-body {
-            border: 1px solid rgba(0, 0, 0, 0.125);
-            border-radius: 10px;
-            background: #ffffff;
-
-
-            .ideia-labels {
-                font-weight: 600;
-                color: #919ca7;
-            }
-
-            .form-control {
-                background: #f9f9fa !important;
-            }
-        }
-
-        .card-footer {
-            background: none;
-            border-top: 0px solid rgba(0, 0, 0, 0.125);
-
-        }
-
+    .action_links a {
+        margin-right: 15px;
+    }
+    .share_links {
+        font-size: 26px;
     }
 
 
+    .table {
+        th, td {
+            border-top: 0px solid #dee2e6;
+        }
+    }
 
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
 }
-
 
