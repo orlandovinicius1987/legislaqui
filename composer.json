@@ -17,6 +17,7 @@
         "laravel/socialite": "^2.0",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "5.8.*",
+        "owen-it/laravel-auditing": "^10.0",
         "predis/predis": "^1.1",
         "ramsey/uuid": "^3.4",
         "socialiteproviders/instagram": "^2.0",

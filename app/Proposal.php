@@ -8,10 +8,12 @@ use App\Notifications\SendProposalCreated;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
+use OwenIt\Auditing\Auditable as AuditableI;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Proposal extends Eloquent
+class   Proposal extends Eloquent implements Auditable
 {
-    use SoftDeletes;
+    use AuditableI,SoftDeletes;
 
     //public $timestamps = false;
 

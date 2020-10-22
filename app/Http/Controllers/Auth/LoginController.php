@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\State;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use Validator;
 
@@ -118,6 +120,9 @@ class LoginController extends Controller
         Session::put('last_auth_attempt', 'login');
 
         $login = $this->traitLogin($request);
+        $user = Auth::user();
+        $user->update([
+            'last_login_at' => Carbon::now()]);
 
         Session::flash('flash_msg', 'Login feito com Sucesso.');
 

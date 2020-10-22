@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Auditable as AuditableI;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class SocialNetwork extends Model
+class SocialNetwork extends Model implements Auditable
 {
-    use SoftDeletes;
+    use AuditableI, SoftDeletes;
 
     protected $table = 'social_networks';
 

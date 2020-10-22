@@ -9,9 +9,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use OwenIt\Auditing\Auditable as AuditableI;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class BillsProject extends Eloquent
+class BillsProject extends Eloquent implements Auditable
 {
+    use AuditableI;
+
     //public $timestamps = false;
 
     protected $fillable = ['number', 'owner', 'link', 'year'];

@@ -8,10 +8,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\PasswordReset;
+use OwenIt\Auditing\Auditable as AuditableI;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements Auditable
 {
-    use SoftDeletes, Notifiable;
+    use AuditableI, SoftDeletes, Notifiable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -25,10 +28,11 @@ class User extends Authenticatable
         'uf',
         'role_id',
         'cpf',
-        'uuid'
+        'uuid',
+        'last_login_at',
     ];
 
-    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at','last_login_at',];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -101,7 +105,7 @@ class User extends Authenticatable
     // Get Role Name
     public function getRoleNameAttribute()
     {
-        return Role::find(1)->role;
+        return Role::find($this->role_id)->role;
     }
 
     // Get Proposals Count
