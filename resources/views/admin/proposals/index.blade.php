@@ -29,7 +29,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Ideias Legislativas</h3>
-                        <div class="pull-right"><a href="{{ route('admin.proposal.create') }}" class="btn btn-success"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir Nova Ideia</a></div>
+                        <div class="pull-right"><a href="{{ route('admin.proposal.create') }}" class="btn btn-success"> <span class="fas fa-plus" aria-hidden="true"></span> Incluir Nova Ideia</a></div>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div id="dataTableAdmin_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">

@@ -5,16 +5,17 @@
 @section('content')
 
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12 ">
             @include('partials.error')
 
-            <h1 class="text-center">Editar Proposta Legislativa</h1>
+
+            <h1 class=""><i class="fas fa-edit mr-3"></i> Editar Ideia Legislativa</h1>
 
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-xs-12">
+    <div class="row propor-ideia">
+        <div class="col-12">
 
             {{ Form::model($proposal, [
             'method' => 'PATCH',
@@ -24,10 +25,12 @@
 
             {{-- Form::open(array('route' => 'proposal.update', 'class' => 'form')) --}}
 
-            <div class="row form-group">
-                <div class="col-xs-12 ">
+            <div class="row form-group mt-4 pb-2">
 
+                <div class="col-12 col-lg-3">
                     {{ Form::label('Nome da Proposta') }}
+                </div>
+                <div class="col-12 col-lg-9">
                     {{ Form::text('name', null,
                         array('required',
                               'class'=>'campo form-control',
@@ -37,8 +40,11 @@
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-12 ">
+
+                <div class="col-12 col-lg-3">
                     {{ Form::label('Problema') }}
+                </div>
+                <div class="col-12 col-lg-9">
                     {{ Form::textarea('problem', null,
                         array('required',
                               'class'=>'textarea form-control',
@@ -48,8 +54,11 @@
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-12 ">
+
+                <div class="col-12 col-lg-3">
                     {{ Form::label('Exposição da Ideia') }}
+                </div>
+                <div class="col-12 col-lg-9">
                     {{ Form::textarea('idea_exposition', null,
                         array('required',
                               'class'=>'textarea form-control',
@@ -58,8 +67,12 @@
                 </div>
             </div>
 
-            <div class="row form-group">
-                <div class="col-xs-12 ">
+            <div class="row form-group text-right">
+
+                <div class="col-12 col-lg-3">
+
+                </div>
+                <div class="col-12 col-lg-9">
                     {{ Form::submit('Gravar',
                       array('class'=>'btn btn-primary botao',
                       'dusk'=>'savebutton')) }}

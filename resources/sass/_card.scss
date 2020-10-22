@@ -1,0 +1,114 @@
+//*****************************  Card Style   *****************************
+
+.cards-lista-ideias {
+    h1, .h1 {
+        color: #05a;
+
+        i {
+            color: #aad4ff;
+        }
+    }
+
+    .controles {
+        button {
+            margin-right: 10px;
+
+            @include media-breakpoint-down(md) {
+                font-size: 12px;
+            }
+
+
+        }
+    }
+
+    .btn-outline-secondary:not(:disabled):not(.disabled):active, .btn-outline-secondary:not(:disabled):not(.disabled).active, .show > .btn-outline-secondary.dropdown-toggle {
+        color: #fff;
+        background-color: #305bb0;
+        border-color: #305bb0;
+    }
+
+    .btn-outline-secondary {
+        border-color: #aad4ff;
+        color: #aad4ff;
+        &:hover {
+            color: #fff;
+            background-color: #7bf;
+            border-color: #7bf;
+        }
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.1);
+        }
+    }
+
+
+    .btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
+    .btn-outline-secondary:not(:disabled):not(.disabled).active:focus {
+        box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.1);
+    }
+
+    .card {
+        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+        border: #ebebeb ;
+        &:hover {
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+        }
+
+        .card-title {
+            i {
+                color: #ccd8f1;
+                margin-right: 5px;
+            }
+        }
+
+
+        .card-header {
+            padding: 1rem 1rem 0.3rem 1rem;
+            border-bottom: none ;
+        }
+
+        .card-body {
+            a {
+                /*color: #212529;*/
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+
+
+        }
+
+        .card-footer {
+            border-top: none;
+            padding: 0.5rem 1.25rem;
+            span {
+                &:first-child {
+                    padding-right: 1rem;
+                    border-right: 1px solid rgba(0, 0, 0, 0.125);
+                }
+
+            }
+        }
+    }
+}
+
+.ideia {
+
+    .action_links a {
+        margin-right: 15px;
+    }
+    .share_links {
+        font-size: 26px;
+    }
+
+
+    .table {
+        th, td {
+            border-top: 0px solid #dee2e6;
+        }
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+}
+

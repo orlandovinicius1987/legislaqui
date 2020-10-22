@@ -55,10 +55,10 @@ class UserSeeder extends Seeder
 
 //        dd(get_role_id(Constants::ROLE_ADMIN));
         //Administrator
-        factory(App\User::class, 'admin', get_role_id(Constants::ROLE_ADMIN))->create([
+        dump(factory(App\User::class, 'admin', 1)->create([
             'name' => 'Adm',
             'email' => 'adm@test.com',
             'password' => Hash::make('secret'),
-        ]);
+        ]));
     }
 }

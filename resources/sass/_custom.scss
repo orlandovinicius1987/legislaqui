@@ -1,0 +1,129 @@
+/* Custom */
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #05a;
+}
+
+
+h1,.h1 {
+    font-size: 2.6rem;
+
+
+    @include media-breakpoint-down(md) {
+        font-size: 2.2rem;
+    }
+    @include media-breakpoint-down(sm) {
+    font-size: 1.6rem;
+    }
+    @include media-breakpoint-down(xs) {
+
+    }
+
+    i , .i{
+        color: #aad4ff;
+    }
+}
+
+
+h2,.h2 {
+    font-size: 2.0rem;
+
+
+    @include media-breakpoint-down(md) {
+        font-size: 1.7rem;
+    }
+    @include media-breakpoint-down(sm) {
+        font-size: 1.5rem;
+    }
+    @include media-breakpoint-down(xs) {
+
+    }
+
+    i , .i{
+        color: #aad4ff;
+    }
+}
+
+
+
+.btn-outline-success {
+    color: #fff;
+    border-color: #ff6633;
+
+    &:hover{
+        background-color: #ff6633;
+        border-color: #ff6633;
+    }
+    &:active {
+        background-color: #ff6633 !important;
+        border-color: #ff6633 !important;
+    }
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba(249, 36, 164, 0.5) !important;
+    }
+}
+
+
+
+
+.cards-lista-ideias {
+    .navbar {
+        padding: 0;
+
+        .input-group {
+            .form-control:not(:first-child),
+            .custom-select:not(:first-child) {
+                border-top-left-radius: 0.25rem;
+                border-bottom-left-radius: 0.25rem;
+            }
+
+            .input-group-append > .btn,
+            .input-group-append > .input-group-text,
+            .input-group-prepend:not(:first-child) > .btn,
+            .input-group-prepend:not(:first-child) > .input-group-text,
+            .input-group-prepend:first-child > .btn:not(:first-child),
+            .input-group-prepend:first-child > .input-group-text:not(:first-child) {
+                border-top-right-radius: 0.25rem;
+                border-bottom-right-radius: 0.25rem;
+            }
+
+
+        }
+    }
+
+    .controles {
+        .dropdown-menu {
+            min-width: inherit;
+        }
+    }
+}
+
+
+.propor-ideia {
+
+    h1,.h1 {
+        color: #05a;
+      i{
+          color: #aad4ff;
+      }
+    }
+
+    .lead {
+        margin-top: 15px;
+    }
+
+    label {
+        font-size: 1.1rem;
+    }
+}
+
+
+
+.como-funciona {
+    h1, .h1 {
+        color: #05a;
+        i {
+            color: #aad4ff;
+        }
+    }
+}
