@@ -48,6 +48,8 @@
 
 @if(!empty(Session::get('error_msg')))
 
+
+
     <div id="flash-overlay-modal" class="modal fade {{ $modalClass ?? '' }}">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -58,7 +60,8 @@
                 <div class="modal-body">
                     <div class="alert alert-danger">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        {!! Session::get('error_msg') !!}
+                        {{Session::get('error_msg')}}
+
                     </div>
                 </div>
 
@@ -151,17 +154,17 @@
     <div class="alert alert-danger">{!! Session::get('admin_error_msg') !!}</div>
 @endif
 
-{{--@if (Session::has('flash_msg'))--}}
-{{--<div class="alert alert-info">{{ Session::get('flash_msg') }}</div>--}}
-{{--@endif--}}
-
-{{--@if (Session::has('error_msg'))--}}
-{{--<div class="alert alert-danger">{{ Session::get('error_msg') }}</div>--}}
-{{--@endif--}}
-
-{{--@if(Session::has('user_crud_msg'))--}}
-{{--<div class="alert alert-info">{{ Session::get('user_crud_msg') }}</div>--}}
-{{--@endif--}}
+@if (Session::has('flash_msg'))
+<div class="alert alert-info"> {!! Session::get('flash_msg') !!}</div>
+@endif
+{{----}}
+@if (Session::has('error_msg'))
+<div class="alert alert-danger">{{ Session::get('error_msg') }}</div>
+@endif
+{{----}}
+@if(Session::has('user_crud_msg'))
+<div class="alert alert-info">{{ Session::get('user_crud_msg') }}</div>
+@endif
 
 
 <script>
@@ -172,6 +175,6 @@
             // will be called when all the animations on the queue finish
             $('#flash-overlay-modal').modal('hide');
         });
-//        $('#flash-overlay-modal').modal('hide');
+       $('#flash-overlay-modal').modal('hide');
     });
 </script>
