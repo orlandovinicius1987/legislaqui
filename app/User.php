@@ -101,8 +101,7 @@ class User extends Authenticatable
     // Get Role Name
     public function getRoleNameAttribute()
     {
-
-        return Role::find($this->role_id)->role;
+        return Role::find(1)->role;
     }
 
     // Get Proposals Count

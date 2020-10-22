@@ -19,7 +19,7 @@
         </div>
 
         <div class="row">
-            <div class="col-12 col-md-9">
+            <div class="col-12 col-md-8 col-lg-9">
                 <!-- search not in navbar collapse -->
                 <nav class="navbar navbar-expand navbar-light mt-3 mb-4">
                     <div class="d-flex flex-grow-1">
@@ -39,11 +39,11 @@
                 </nav>
             </div>
 
-            <div class="col-md-3  mt-3 mb-4 text-right">
+            <div class="col-12 col-md-4 col-lg-3 mt-0 mt-lg-3 mb-4 text-right">
                 @if (!Auth::check())
-                    <a class="btn btn-primary" dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                    <a class="btn btn-primary btn-block" dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
                         @else
-                            <a class="btn btn-primary" dusk="newProposalButton" href="{{ route('proposal.create') }}">
+                            <a class="btn btn-primary  btn-block" dusk="newProposalButton" href="{{ route('proposal.create') }}">
                                 @endif
                                 <i class="fa fa-plus-circle"></i> Criar ideia legislativa
                             </a>

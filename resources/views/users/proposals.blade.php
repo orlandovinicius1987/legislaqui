@@ -26,8 +26,6 @@
 
             <div class="row mt-5">
 
-
-
                 @foreach ($proposals as $proposal)
 
                     <div class="col-sm-6">

@@ -6,11 +6,45 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 
 h1,.h1 {
-    font-size: 3rem;
+    font-size: 2.6rem;
+
+
+    @include media-breakpoint-down(md) {
+        font-size: 2.2rem;
+    }
+    @include media-breakpoint-down(sm) {
+    font-size: 1.6rem;
+    }
+    @include media-breakpoint-down(xs) {
+
+    }
+
     i , .i{
         color: #aad4ff;
     }
 }
+
+
+h2,.h2 {
+    font-size: 2.0rem;
+
+
+    @include media-breakpoint-down(md) {
+        font-size: 1.7rem;
+    }
+    @include media-breakpoint-down(sm) {
+        font-size: 1.5rem;
+    }
+    @include media-breakpoint-down(xs) {
+
+    }
+
+    i , .i{
+        color: #aad4ff;
+    }
+}
+
+
 
 .btn-outline-success {
     color: #fff;
@@ -68,7 +102,6 @@ h1,.h1 {
 .propor-ideia {
 
     h1,.h1 {
-        font-size: 3rem;
         color: #05a;
       i{
           color: #aad4ff;
@@ -88,7 +121,6 @@ h1,.h1 {
 
 .como-funciona {
     h1, .h1 {
-        font-size: 3rem;
         color: #05a;
         i {
             color: #aad4ff;

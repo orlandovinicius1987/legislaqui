@@ -1,5 +1,5 @@
 <div class="controleideias row mt-2 mb-1">
-    <div class="action_links col-8 col-sm-9 ">
+    <div class="action_links col-12 col-sm-9 ">
         <a dusk="like" href="{{ route('proposal.like', ['id' => $proposal->id]) }}">
             <i class="far fa-thumbs-up" aria-hidden="true"></i><span class="hidden-xs">Curtir</span></a>
 
@@ -24,7 +24,7 @@
     </div>
 
 
-    <div class="share_links col-4 col-sm-3 text-right">
+    <div class="share_links col-12 col-sm-3 text-right">
         <div class="pull-right">
             <a href="{{'https://api.whatsapp.com/send?phone=&text='.rawurlencode('Proponha sua Ideia Legislativa Aqui! '.$url.' #LegislAqui #e-democracia #e-cidadania via @Legislaqui! - ALERJ')}}">
                 <i class="fab fa-whatsapp-square"></i>

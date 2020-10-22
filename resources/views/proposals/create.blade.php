@@ -8,12 +8,14 @@
 
     <div class="propor-ideia">
         <div class="row">
-            @include('partials.error')
-            <h1 class=""><i class="fas fa-folder-plus mr-3"></i>Propor Ideia Legislativa</h1>
-            <p class="lead">
-                Tão importante quanto escolher, pelo voto, um representante na Assembléia Legislativa é participar propondo ideias, posições e iniciativas ao processo parlamentar em favor da coletividade.
-            </p>
-            <h3 class="propor-envie mt-2">Envie-nos sua proposta!</h3>
+            <div class="col-12">
+                @include('partials.error')
+                <h1 class=""><i class="fas fa-folder-plus mr-3"></i>Propor Ideia Legislativa</h1>
+                <p class="lead">
+                    Tão importante quanto escolher, pelo voto, um representante na Assembléia Legislativa é participar propondo ideias, posições e iniciativas ao processo parlamentar em favor da coletividade.
+                </p>
+                <h3 class="propor-envie mt-2">Envie-nos sua proposta!</h3>
+            </div>
         </div>
 
         {{ Form::open(array('route' => 'proposal.store', 'class' => 'form')) }}
@@ -21,10 +23,10 @@
 
         <div class="row form-group mt-4 pb-2">
 
-            <div class="col-3">
+            <div class="col-12 col-lg-3">
                 {{ Form::label('Nome da ideia legislativa', null , ['class' => 'bold double']) }}
             </div>
-            <div class="col-9">
+            <div class="col-12 col-lg-9 ">
                 {{ Form::text('name', null,
                     array('required',
                           'class'=>'campo form-control',
@@ -33,10 +35,10 @@
         </div>
 
         <div class="row form-group pt-2 pb-2">
-            <div class="col-3">
+            <div class="col-12 col-lg-3">
                 {{ Form::label('Problema a ser resolvido', null , ['class' => 'bold double']) }}
             </div>
-            <div class="col-9">
+            <div class="col-12 col-lg-9 ">
                 {{ Form::textarea('problem', null,
                     array('required',
                           'class'=>'textarea form-control',
@@ -46,10 +48,10 @@
 
         <div class="row form-group pt-2 pb-2">
 
-            <div class="col-3">
+            <div class="col-12 col-lg-3">
                 {{ Form::label('Exposição completa da ideia', null , ['class' => 'bold double']) }}
             </div>
-            <div class="col-9">
+            <div class="col-12 col-lg-9 ">
                 {{ Form::textarea('idea_exposition', null,
                     array('required',
                           'class'=>'textarea form-control',

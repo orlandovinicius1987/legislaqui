@@ -15701,7 +15701,6 @@ section .section-title {
 
 .cards-lista-ideias h1,
 .cards-lista-ideias .h1 {
-  font-size: 3rem;
   color: #05a;
 }
 
@@ -15712,6 +15711,12 @@ section .section-title {
 
 .cards-lista-ideias .controles button {
   margin-right: 10px;
+}
+
+@media (max-width: 991.98px) {
+  .cards-lista-ideias .controles button {
+    font-size: 12px;
+  }
 }
 
 .cards-lista-ideias .btn-outline-secondary:not(:disabled):not(.disabled):active,
@@ -15815,13 +15820,53 @@ h6,
 
 h1,
 .h1 {
-  font-size: 3rem;
+  font-size: 2.6rem;
+}
+
+@media (max-width: 991.98px) {
+  h1,
+  .h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  h1,
+  .h1 {
+    font-size: 1.6rem;
+  }
 }
 
 h1 i,
 h1 .i,
 .h1 i,
 .h1 .i {
+  color: #aad4ff;
+}
+
+h2,
+.h2 {
+  font-size: 2.6rem;
+}
+
+@media (max-width: 767.98px) {
+  h2,
+  .h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  h2,
+  .h2 {
+    font-size: 2.2rem;
+  }
+}
+
+h2 i,
+h2 .i,
+.h2 i,
+.h2 .i {
   color: #aad4ff;
 }
 
@@ -15870,7 +15915,6 @@ h1 .i,
 
 .propor-ideia h1,
 .propor-ideia .h1 {
-  font-size: 3rem;
   color: #05a;
 }
 
@@ -15889,7 +15933,6 @@ h1 .i,
 
 .como-funciona h1,
 .como-funciona .h1 {
-  font-size: 3rem;
   color: #05a;
 }
 
