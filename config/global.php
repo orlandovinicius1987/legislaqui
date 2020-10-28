@@ -3,9 +3,9 @@
 return [
     'approvalGoal' => env('APPROVAL_GOAL', 20000),
 
-    'timeLimit' => 180,
+    'timeLimit' => 120,
 
-    'timeLimitMonth' => 3,
+    'timeLimitMonth' => 4,
 
-    'pagination' => 20,
+    'pagination' => 10,
 ];

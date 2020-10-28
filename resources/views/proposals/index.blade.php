@@ -123,16 +123,16 @@
                         EM TRAMITAÇÃO</button></a>
 
 
-                <div class="dropdown float-right">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        10
-                    </button>
-                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">25</a>
-                        <a class="dropdown-item" href="#">50</a>
-                        <a class="dropdown-item" href="#">100</a>
-                    </div>
-                </div>
+{{--                <div class="dropdown float-right">--}}
+{{--                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                        10--}}
+{{--                    </button>--}}
+{{--                    <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">--}}
+{{--                        <a class="dropdown-item" href="#">25</a>--}}
+{{--                        <a class="dropdown-item" href="#">50</a>--}}
+{{--                        <a class="dropdown-item" href="#">100</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
 
