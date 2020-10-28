@@ -29,9 +29,10 @@ class RolesRepository extends Repository
 
     public function findIdByRole($roleName)
     {
-        if(!$this->cache->has('role_'.$roleName)){
-            $this->cache->put('role_'.$roleName,Role::where('role',$roleName)->first()->id);
-        }
-        return $this->cache->get('role_'.$roleName);
+//        if(!$this->cache->has('role_'.$roleName)){
+//            $this->cache->put('role_'.$roleName,Role::where('role',$roleName)->first()->id);
+//        }
+        return Role::where('role',$roleName)->first()->id;
+//        return $this->cache->get('role_'.$roleName);
    }
 }

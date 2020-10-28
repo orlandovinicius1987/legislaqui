@@ -11,7 +11,13 @@
             <div class="col-md-12 text-left">
                 <h1><i class="fas fa-clipboard-list"></i> Ideias Legislativas</h1>
                 <div class="lead pb-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla in arcu et gravida. Curabitur finibus vulputate velit egestas ullamcorper. Suspendisse dignissim vitae urna in congue. Etiam ac vulputate ante, sit amet suscipit elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec sed rhoncus ligula. Donec blandit, lectus ac pretium commodo, metus metus euismod ex, eu ultrices dolor justo sed lorem. Nunc quis elit a nisl tincidunt laoreet. Sed condimentum quam at lacus dapibus, sed varius libero scelerisque. In hac habitasse platea dictumst.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla in arcu et gravida.
+                    Curabitur finibus vulputate velit egestas ullamcorper. Suspendisse dignissim vitae urna in congue.
+                    Etiam ac vulputate ante, sit amet suscipit elit. Class aptent taciti sociosqu ad litora torquent
+                    per conubia nostra, per inceptos himenaeos. Donec sed rhoncus ligula. Donec blandit, lectus ac
+                    pretium commodo, metus metus euismod ex, eu ultrices dolor justo sed lorem. Nunc quis elit a nisl
+                    tincidunt laoreet. Sed condimentum quam at lacus dapibus, sed varius libero scelerisque.
+                    In hac habitasse platea dictumst.
                 </div>
             </div>
 
@@ -151,7 +157,7 @@
                                 @endif
 
                                 <p class="card-text">
-                                    WHAT are you?' said the Queen, in a hot tureen! Who for such dainties would not join the dance? Will you, won't you, will you join the dance? "You can really have no answers.' 'If you can't help.
+                                    {{$proposal->idea_exposition}}
                                 </p>
 
 
