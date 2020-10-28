@@ -35,7 +35,7 @@
                                     <h5 class="card-title"><i class="fas fa-list-alt"></i> {{ $proposal->name }} </h5>
                                 </a>
                                 <p class="card-text">
-                                    WHAT are you?' said the Queen, in a hot tureen! Who for such dainties would not join the dance? Will you, won't you, will you join the dance? "You can really have no answers.' 'If you can't help.
+                                    {{$proposal->idea_exposition}}
                                 </p>
                             </div>
 
