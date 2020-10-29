@@ -81,6 +81,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('about', ['as' => 'about', 'uses' => 'AboutController@index']);
     // use terms
     Route::get('terms', ['as' => 'terms', 'uses' => 'AboutController@terms']);
+    Route::get('privacy-policy', ['as' => 'privacy-policy', 'uses' => 'AboutController@privacyPolicy']);
+
     Route::get('contact', [
         'as' => 'contact',
         'uses' => 'AboutController@create',

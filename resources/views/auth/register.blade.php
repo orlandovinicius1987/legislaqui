@@ -135,6 +135,21 @@
                             </div>
 
 
+                            <div class="row form-group{{ $errors->has('uf') ? ' has-error' : '' }}">
+
+                                <label class="col-md-12 control-label">
+
+                                </label>
+
+                                <div class="col-md-12">
+
+                                    <input class="" type="checkbox" name="terms" id="terms" required style="">
+
+                                    Li e concordo com os <a href="{{route('terms')}}" target="_blank">Termos de Uso</a> e com a <a href="{{route('privacy-policy')}}" target="_blank">Política de Privacidade</a>.
+
+                                </div>
+                            </div>
+
 
 
                             <div class="row form-group{{ $errors->register->has('g-recaptcha-response') ? ' has-error text-center' : '' }}">
