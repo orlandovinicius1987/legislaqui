@@ -41,9 +41,17 @@
                     <div class="card-header">
 
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-10">
                                 <h2 class="card-title">{{ $proposal->name }}</h2>
                             </div>
+                            <div class="col-sm-2 text-center temporestante">
+
+                                <i class="far fa-clock"></i> <br>
+                                20 dias
+
+                            </div>
+
+
                            {{-- <div class="col-sm-4">
                                 <div class="share_links text-right">
                                     <div class="pull-right">

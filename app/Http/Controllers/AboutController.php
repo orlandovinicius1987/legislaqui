@@ -32,6 +32,11 @@ class AboutController extends Controller
         return view('about.terms');
     }
 
+    public function privacyPolicy()
+    {
+        return view('about.privacy-policy');
+    }
+
     public function create()
     {
         return view('about.contact');
