@@ -39,8 +39,8 @@
                 <div class="card mb-4">
 
                     <div class="card-header">
+                        <div class="row d-flex align-items-center">
 
-                        <div class="row">
                             <div class="col-sm-10">
                                 <h2 class="card-title">{{ $proposal->name }}</h2>
                             </div>
@@ -78,7 +78,7 @@
 
 
                     </div>
-                    <div class="card-body">
+                    <div class="card-body ">
 
 
                         @include('partials.share', ['url' => URL::full()])
