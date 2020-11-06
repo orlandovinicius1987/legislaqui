@@ -20,7 +20,7 @@
             </div>
 
 
-            <div class="card m-5 pl-5 pr-5 pt-2">
+            <div class="card m-0 mt-4 m-lg-5 pl-4 pr-4  m-pl-5 m-pr-5 pt-2">
                 <h2 class="instrucao-topico mt-5 text-center">
                     <i class="far fa-question-circle"></i> Como criar uma Ideia Legislativa?
                 </h2>
@@ -101,7 +101,7 @@
 
 
 
-            <div class="card m-5 pl-5 pr-5 pt-5 pb-5">
+            <div class="card m-0 mt-4 m-lg-5 pl-4 pr-4  m-pl-5 m-pr-5 pt-5 pb-5">
 
                 <h2 class="mb-4 text-center">
                     <i class="far fa-question-circle"></i> Como apoiar uma Ideia Legislativa?
@@ -118,7 +118,7 @@
             </div>
 
 
-            <div class="card m-5 pl-5 pr-5 pt-5 pb-5">
+            <div class="card m-0 mt-4 m-lg-5 pl-4 pr-4  m-pl-5 m-pr-5 pt-5 pb-5">
                 <h2 class="mb-4 text-center">
                     <i class="far fa-question-circle"></i> Qual o encaminhamento das Ideias Legislativas na Alerj?
                 </h2>
