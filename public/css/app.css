@@ -15650,6 +15650,21 @@ section .section-title {
   font-weight: 700;
 }
 
+@media screen and (max-width: 479px) {
+  #footer .endereco p {
+    font-size: 1em !important;
+    margin-top: 30px;
+  }
+
+  #footer .social {
+    margin-top: 15px;
+  }
+
+  #footer .copyright {
+    margin-top: -30px !important;
+  }
+}
+
 @media (max-width: 767px) {
   #footer h5 {
     padding-left: 0;
