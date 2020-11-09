@@ -13,11 +13,11 @@
                 <div class="lead pb-3">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla in arcu et gravida.
                     Curabitur finibus vulputate velit egestas ullamcorper. Suspendisse dignissim vitae urna in congue.
-                    Etiam ac vulputate ante, sit amet suscipit elit. Class aptent taciti sociosqu ad litora torquent
-                    per conubia nostra, per inceptos himenaeos. Donec sed rhoncus ligula. Donec blandit, lectus ac
-                    pretium commodo, metus metus euismod ex, eu ultrices dolor justo sed lorem. Nunc quis elit a nisl
-                    tincidunt laoreet. Sed condimentum quam at lacus dapibus, sed varius libero scelerisque.
-                    In hac habitasse platea dictumst.
+                    Etiam ac vulputate ante, sit amet suscipit elit.
+                </div>
+                <div class="lead pb-3">
+                    <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=144" target="_blank">Clique aqui</a> para verificar se sua ideia já possui um projeto de lei existente
+
                 </div>
             </div>
 
