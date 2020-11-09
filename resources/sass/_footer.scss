@@ -83,6 +83,20 @@ section .section-title {
         font-weight: 700;
     }
 
+    @media screen and (max-width: 479px) {
+        .endereco p {
+            font-size: 1.0em !important;
+            margin-top: 30px;
+        }
+        .social {
+            margin-top: 15px;
+        }
+        .copyright {
+            margin-top: -30px !important;
+        }
+    }
+
+
 
     @media (max-width:767px){
         h5 {
