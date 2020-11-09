@@ -4,13 +4,13 @@
 
 
 
-        <div class="col-md-2 logo-alerj">
+        <div class="col-5 col-md-2 logo-alerj">
             <a href="/" title="Assembléia Legislativa do Estado do Rio de Janeiro">
                 <img src="/imagens/logotipo_inferior.png" class="img-fluid" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
             </a>
         </div>
 
-        <div class="col-md-2 ">
+        <div class="col-5 col-md-2">
             <a href="/" class="legislaqui_marca text-center">
                 <img src="/imagens/marca_legislaqui.png" class="img-fluid">
             </a>

@@ -103,9 +103,14 @@
 
     .card-header {
 
-        .tempo-restante {
-            color: rgba(0, 85, 170, 0.4);
-            font-size: 2rem;
+
+        .temporestante {
+            color: rgba(0, 85, 170, 0.3);
+            font-size: 1.4rem;
+
+            i {
+                font-size: 6rem;
+            }
         }
     }
 

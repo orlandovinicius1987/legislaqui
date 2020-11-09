@@ -1,4 +1,4 @@
-<div class="controleideias row mt-2 mb-1">
+<div class="controleideias row mt-2 mb-1 d-flex align-items-center ml-2 mr-2">
     <div class="action_links col-12 col-sm-9 ">
         <a dusk="like" href="{{ route('proposal.like', ['id' => $proposal->id]) }}">
             <i class="far fa-thumbs-up" aria-hidden="true"></i><span class="hidden-xs">Curtir</span></a>
