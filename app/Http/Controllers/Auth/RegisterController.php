@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use App\Support\Constants;
 
 class RegisterController extends Controller
 {
@@ -79,7 +80,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'uf' => $data['uf'],
-            'role_id' => 99,
+            'role_id' => get_role_id(Constants::ROLE_CIDADAO),
             'cpf' => $data['cpf'],
             'uuid' => $data['uuid']
         ]);
