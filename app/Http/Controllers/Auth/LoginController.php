@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Validator;
+use App\Support\Constants;
 
 class LoginController extends Controller
 {
@@ -61,7 +62,7 @@ class LoginController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-            'cpf' => 'required',
+            'cpf' => 'required'
         ]);
     }
 
@@ -79,9 +80,9 @@ class LoginController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'uf' => $data['uf'],
-            'role_id' => 99,
+            'role_id' => get_role_id(Constants::ROLE_CIDADAO),
             'cpf' => $data['cpf'],
-            'uuid' => $data['uuid'],
+            'uuid' => $data['uuid']
         ]);
     }
 
@@ -122,7 +123,8 @@ class LoginController extends Controller
         $login = $this->traitLogin($request);
         $user = Auth::user();
         $user->update([
-            'last_login_at' => Carbon::now()]);
+            'last_login_at' => Carbon::now()
+        ]);
 
         Session::flash('flash_msg', 'Login feito com Sucesso.');
 
@@ -138,7 +140,7 @@ class LoginController extends Controller
         if (!app()->environment('local')) {
             // Validates Captcha
             $validate = Validator::make($request->all(), [
-                'g-recaptcha-response' => 'required|captcha',
+                'g-recaptcha-response' => 'required|captcha'
             ]);
 
             // Verifies if Captcha fails and redirect to register view
