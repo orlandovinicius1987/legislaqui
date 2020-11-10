@@ -15,7 +15,6 @@ class User extends Authenticatable implements Auditable
 {
     use AuditableI, SoftDeletes, Notifiable;
 
-
     /**
      * The attributes that are mass assignable.
      *
@@ -30,9 +29,15 @@ class User extends Authenticatable implements Auditable
         'cpf',
         'uuid',
         'last_login_at',
+        'city_id'
     ];
 
-    protected $dates = ['created_at', 'updated_at', 'deleted_at','last_login_at',];
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'last_login_at'
+    ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -98,8 +103,8 @@ class User extends Authenticatable implements Auditable
     // Get is_committee_user attribute
     public function getIsCommitteeUserAttribute()
     {
-        return Auth::user()->role_id == get_role_id(Constants::ROLE_ADMIN)
-            or Auth::user()->role_id == get_role_id(Constants::ROLE_COMMISSION);
+        return Auth::user()->role_id == get_role_id(Constants::ROLE_ADMIN) or
+            Auth::user()->role_id == get_role_id(Constants::ROLE_COMMISSION);
     }
 
     // Get Role Name
@@ -168,15 +173,20 @@ class User extends Authenticatable implements Auditable
     // Return users of system
     public function getUsersCommon()
     {
-        return $this->where('role_id', get_role_id(Constants::ROLE_CIDADAO))->get();
+        return $this->where(
+            'role_id',
+            get_role_id(Constants::ROLE_CIDADAO)
+        )->get();
     }
 
     // Return users Adm, Approvers and Commission
     public function getUsersAdm()
     {
-        return $this->whereIn('role_id', [get_role_id(Constants::ROLE_ADMIN),
+        return $this->whereIn('role_id', [
+            get_role_id(Constants::ROLE_ADMIN),
             get_role_id(Constants::ROLE_APPROVAL),
-            get_role_id(Constants::ROLE_COMMISSION)])->get();
+            get_role_id(Constants::ROLE_COMMISSION)
+        ])->get();
     }
 
     public function sendPasswordResetNotification($token)

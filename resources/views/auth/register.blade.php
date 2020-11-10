@@ -115,27 +115,25 @@
                                 </div>
                             </div>
 
-                            <div class="row form-group{{ $errors->has('uf') ? ' has-error' : '' }}">
-
+                            <div class="row form-group{{ $errors->has('city_id') ? ' has-error' : '' }}">
                                 <label class="col-md-12 control-label">
-                                    {{ Form::Label('uf', 'UF:') }}
+                                    {{ Form::Label('Município', 'Município') }}
                                 </label>
 
                                 <div class="col-md-12">
+                                    {{ Form::select('city_id', $cities, null, ['data-width'=>'100%','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'Escolha um município...']) }}
 
-
-                                    {{ Form::select('uf', $uf, null, ['class' => 'form-control']) }}
-
-                                    @if ($errors->has('uf'))
+                                    @if ($errors->has('city_id'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('uf') }}</strong>
+                                        <strong>{{ $errors->first('city_id') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
 
+                            <input type="hidden" name="uf" value="RJ">
 
-                            <div class="row form-group{{ $errors->has('uf') ? ' has-error' : '' }}">
+                            <div class="row form-group{{ $errors->has('terms') ? ' has-error' : '' }}">
 
                                 <label class="col-md-12 control-label">
 

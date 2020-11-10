@@ -26,6 +26,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.14.0",
         "@popperjs/core": "^2.5.3",
+        "bootstrap-select": "^1.13.18",
         "popper": "^1.0.1",
         "yargs-parser": "^18.1.3"
     }

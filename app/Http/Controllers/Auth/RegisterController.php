@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\City;
 use App\State;
 use App\User;
 use App\Http\Controllers\Controller;
@@ -73,7 +74,9 @@ class RegisterController extends Controller
                         'unique:users'
                     ],
                     'terms' => 'required',
-                    'password' => ['required', 'string', 'min:8', 'confirmed']
+                    'password' => ['required', 'string', 'min:8', 'confirmed'],
+                    'city_id' => ['required'],
+                    'uf' => ['required']
                 ],
                 $this->getRecaptchaRules()
             )
@@ -94,6 +97,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'uf' => $data['uf'],
+            'city_id' => $data['city_id'],
             'role_id' => get_role_id(Constants::ROLE_CIDADAO),
             'cpf' => $data['cpf'],
             'uuid' => $data['uuid']
@@ -139,8 +143,8 @@ class RegisterController extends Controller
     // showRegistrationForm Method Overload
     public function showRegistrationForm()
     {
-        $uf = State::all()->pluck('nome', 'uf');
+        $cities = City::all()->pluck('name', 'id');
 
-        return view('auth.register', compact('uf'));
+        return view('auth.register', compact('cities'));
     }
 }

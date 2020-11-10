@@ -23,6 +23,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// bootstrap-select
+@import '~bootstrap-select/dist/css/bootstrap-select.min.css';
+
 // Font-Awesome
 @import "~@fortawesome/fontawesome-free/css/all.css";
 
@@ -44,6 +47,9 @@
 
 //Steps
 @import "steps";
+
+//Form
+@import "_form";
 
 
 //Steps

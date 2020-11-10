@@ -39,6 +39,22 @@ if (token) {
     )
 }
 
+/*
+ * bootstrap-select
+ */
+
+require('bootstrap-select/dist/js/bootstrap-select.min')
+require('bootstrap-select/dist/js/i18n/defaults-pt_BR.js')
+
+$('select').selectpicker()
+
+// var glob = require('glob'),
+//     path = require('path')
+//
+// glob.sync('bootstrap-select/dist/js/i18n/*.js').forEach(function(file) {
+//     require(path.resolve(file))
+// })
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
