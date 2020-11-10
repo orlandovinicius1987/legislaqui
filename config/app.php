@@ -180,7 +180,8 @@ return [
           Other service providers...
         */
         //Laravel\Socialite\SocialiteServiceProvider::class,
-        \SocialiteProviders\Manager\ServiceProvider::class
+        \SocialiteProviders\Manager\ServiceProvider::class,
+        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class
     ],
 
     /*
@@ -234,6 +235,7 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'NoCaptcha' => 'Anhskohbo\NoCaptcha\Facades\NoCaptcha',
         'Location' => 'Stevebauman\Location\Facades\Location',
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class
     ]
 ];

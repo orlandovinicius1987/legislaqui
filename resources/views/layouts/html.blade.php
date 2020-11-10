@@ -39,6 +39,7 @@
 
         <meta name="viewport" content="width=device-width" />
 
+        @include('partials.recaptcha-v2-head')
     </head>
 
     {{--
