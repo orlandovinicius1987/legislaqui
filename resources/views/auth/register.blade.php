@@ -150,19 +150,7 @@
                                 </div>
                             </div>
 
-
-
-                            <div class="row form-group{{ $errors->register->has('g-recaptcha-response') ? ' has-error text-center' : '' }}">
-                                <div class="col-md-12 ">
-                                    {!! app('captcha')->display() !!}
-
-                                    @if ($errors->register->has('g-recaptcha-response'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->register->first('g-recaptcha-response') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
+                            @include('partials.recaptcha-v2-form')
 
                             <div class="form-group row mb-0 text-right">
                                 <div class="col-md-12">
