@@ -24,9 +24,12 @@ class CreateUsersTable extends Migration
 
             $table->string('password');
 
-            $table->string('uf');
+            $table->string('uf')->nullable();
 
-            $table->foreign('uf')->references('uf')->on('states');
+            $table
+                ->foreign('uf')
+                ->references('uf')
+                ->on('states');
 
             $table->integer('role_id');
 
