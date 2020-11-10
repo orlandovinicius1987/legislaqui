@@ -17,7 +17,6 @@
                 </div>
                 <div class="lead pb-3">
                     <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=144" target="_blank">Clique aqui</a> para verificar se sua ideia já possui um projeto de lei existente
-
                 </div>
             </div>
 
@@ -36,7 +35,7 @@
 
                                 <span class="input-group-append">
                                     <button class="btn btn-primary border border-left-0" type="submit" >
-                                        <i class="fas fa-search"></i> Pesquisar
+                                        <i class="fas fa-search"></i>
                                     </button>
                                 </span>
                             </div>
