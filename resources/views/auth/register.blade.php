@@ -121,8 +121,7 @@
                                 </label>
 
                                 <div class="col-md-12">
-
-                                    {{ Form::select('city_id', $cities, null, ['class' => 'form-control']) }}
+                                    {{ Form::select('city_id', $cities, null, ['data-width'=>'100%','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'Escolha um município...']) }}
 
                                     @if ($errors->has('city_id'))
                                         <span class="help-block">
