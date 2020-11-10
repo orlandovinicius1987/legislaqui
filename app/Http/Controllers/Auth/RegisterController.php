@@ -45,6 +45,13 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    protected function getRecaptchaRules()
+    {
+        return config('recaptcha.enabled')
+            ? [recaptchaFieldName() => recaptchaRuleName()]
+            : [];
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -53,17 +60,24 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                'unique:users'
-            ],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
-        ]);
+        return Validator::make(
+            $data,
+            array_merge(
+                [
+                    'name' => ['required', 'string', 'max:255'],
+                    'email' => [
+                        'required',
+                        'string',
+                        'email',
+                        'max:255',
+                        'unique:users'
+                    ],
+                    'terms' => 'required',
+                    'password' => ['required', 'string', 'min:8', 'confirmed']
+                ],
+                $this->getRecaptchaRules()
+            )
+        );
     }
 
     /**
