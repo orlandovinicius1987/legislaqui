@@ -5,7 +5,8 @@
 <footer class="footer mt-auto py-3 bg-dark" id="footer">
     <div class="container">
         <div class="row text-center text-xs-center text-sm-left text-md-left pt-3">
-            <div class="offset-2 col-8 sm-offset-0 col-sm-3 col-md-3">
+
+            <div class="offset-2 col-8 col-sm-3 offset-md-0 col-md-3">
                 <a href="/" title="Assembléia Legislativa do Estado do Rio de Janeiro">
                     <img src="/imagens/logotipo_inferior.png" class="img-fluid"
                          alt="Assembléia Legislativa do Estado do Rio de Janeiro"
