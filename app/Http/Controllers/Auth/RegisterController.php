@@ -100,6 +100,7 @@ class RegisterController extends Controller
             'city_id' => $data['city_id'],
             'role_id' => get_role_id(Constants::ROLE_CIDADAO),
             'cpf' => $data['cpf'],
+            'whatsapp' => only_numbers($data['whatsapp']),
             'uuid' => $data['uuid']
         ]);
     }

@@ -4,8 +4,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap')
-
+require('./support/helpers')
+require('./support/axios')
+require('./support/core')
+require('./support/vue')
+require('./support/broadcast')
 /*
 require('@fortawesome/fontawesome-free')
 */
@@ -36,4 +39,8 @@ window.Vue = require('vue')
 
 const app = new Vue({
     el: '#app',
+
+    mounted() {
+        $('select').selectpicker()
+    },
 })

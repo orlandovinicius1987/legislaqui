@@ -1,13 +1,10 @@
 const mix = require('laravel-mix')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
  |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
  |
  */
 
@@ -25,3 +22,29 @@ mix.autoload({
     .js('resources/js/app.js', 'public/js', 'node-modules')
     .sass('resources/sass/app.scss', 'public/css')
     .version()
+
+/*
+ |--------------------------------------------------------------------------
+ | Plugins
+ |--------------------------------------------------------------------------
+ */
+
+const LiveReloadPlugin = require('webpack-livereload-plugin')
+
+mix.webpackConfig({
+    plugins: [
+        new LiveReloadPlugin(),
+
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: [
+                'js/*',
+                '!js/item.js',
+                '!static-files*',
+            ],
+        }),
+    ],
+
+    output: {
+        chunkFilename: 'js/chunks/[chunkhash].js',
+    },
+})
