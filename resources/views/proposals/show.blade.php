@@ -47,7 +47,7 @@
                             <div class="col-sm-2 text-center temporestante">
 
                                 <i class="far fa-clock"></i> <br>
-                                20 dias
+                                {{$proposal->days_left == 0 ? 'Encerrado' : $proposal->days_left.' dias'}}
 
                             </div>
 

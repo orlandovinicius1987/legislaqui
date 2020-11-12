@@ -15,10 +15,12 @@ if (!function_exists('set_menu_active')) {
     }
 }
 
-
 function get_role_id($name)
 {
-
     return app(RolesRepository::class)->findIdByRole($name);
 }
 
+function only_numbers($string)
+{
+    return preg_replace('/\D/', '', $string);
+}
