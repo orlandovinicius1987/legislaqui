@@ -221,4 +221,9 @@ class Proposal extends Eloquent implements Auditable
             ? 0
             : now()->diffInDays($this->limit_date);
     }
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
 }

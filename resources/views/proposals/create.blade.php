@@ -3,9 +3,6 @@
 @section('title', 'Incluir Proposta Legislativa')
 
 @section('content')
-
-
-
     <div class="propor-ideia">
         <div class="row">
             <div class="col-12">
@@ -31,6 +28,15 @@
                     array('required',
                           'class'=>'campo form-control',
                           'placeholder'=>'Digite aqui o nome da ideia')) }}
+            </div>
+        </div>
+
+        <div class="row form-group pt-2 pb-2">
+            <div class="col-12 col-lg-3">
+                {{ Form::label('Assuntos', null , ['class' => 'bold double']) }}
+            </div>
+            <div class="col-12 col-lg-9 ">
+                {{ Form::select('subjects', $subjects, null, ['name'=>'subjects[]','data-width'=>'100%','multiple','data-selected-text-format="count"','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'Selecione os assuntos...']) }}
             </div>
         </div>
 
