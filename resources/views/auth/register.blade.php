@@ -79,9 +79,7 @@
                                 <label class="col-md-12 control-label">CPF</label>
 
                                 <div class="col-md-12">
-                                    <input required="required" class="form-control" id="cpf" name="cpf" type="text" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">
-
-{{--                                    <input id="cfp" type="text" class="campo" name="cpf" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">--}}
+                                    <input v-mask='["###.###.###-##"]' required="required" class="form-control" id="cpf" name="cpf" type="text" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">
 
                                     @if ($errors->has('cpf') && (Session::get('last_auth_attempt') === 'register'))
                                         <span class="help-block">

@@ -99,7 +99,7 @@ class RegisterController extends Controller
             'uf' => $data['uf'],
             'city_id' => $data['city_id'],
             'role_id' => get_role_id(Constants::ROLE_CIDADAO),
-            'cpf' => $data['cpf'],
+            'cpf' => only_numbers($data['cpf']),
             'whatsapp' => only_numbers($data['whatsapp']),
             'uuid' => $data['uuid']
         ]);
