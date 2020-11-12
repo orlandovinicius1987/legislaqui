@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Repositories\Subjects;
 use App\Events\ProposalChanged;
 use App\Events\ProposalWasCreated;
 use App\Http\Requests\ProposalFormRequest;
@@ -69,7 +70,10 @@ class ProposalsController extends Controller
 
     public function create()
     {
-        return view('proposals.create');
+        return view('proposals.create')->with(
+            'subjects',
+            app(Subjects::class)->getSelectOptions()
+        );
     }
 
     /**
@@ -344,6 +348,7 @@ class ProposalsController extends Controller
         //dd($input);
 
         $proposal = Proposal::create($input);
+        $proposal->subjects()->sync($formRequest->get('subjects'));
 
         event(new ProposalWasCreated($proposal));
 
@@ -375,8 +380,6 @@ class ProposalsController extends Controller
 
         $input['user_id'] = Auth::user()->id;
         $input['open'] = true;
-        //$input['pub_date'] = Carbon::now();
-        //$input['limit_date'] = Carbon::now();
 
         //Create ProposalHistory Object
         $proposal_history = new ProposalHistory();
@@ -399,6 +402,7 @@ class ProposalsController extends Controller
 
         //Then update Proposal
         $proposal->fill($input)->save();
+        $proposal->subjects()->sync($request->get('subjects'));
 
         event(new ProposalChanged($proposal));
 
