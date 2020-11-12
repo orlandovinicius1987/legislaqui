@@ -40,7 +40,9 @@ class Proposal extends Eloquent implements Auditable
         'limit_date'
     ];
 
-    protected $appends = ['days_left'];
+    protected $appends = ['days_left', 'subject_ids_array'];
+
+    protected $with = ['subjects'];
 
     //protected $guarded = ['id', 'pub_date', 'limit_date'];
 
@@ -225,5 +227,12 @@ class Proposal extends Eloquent implements Auditable
     public function subjects()
     {
         return $this->belongsToMany(Subject::class);
+    }
+
+    public function getSubjectIdsArrayAttribute()
+    {
+        return $this->subjects()
+            ->get()
+            ->pluck('id');
     }
 }

@@ -118,13 +118,10 @@ class ProposalsController extends Controller
         //Get Proposal
         $proposal = $this->proposalsRepository->find($id);
 
-        //Via User Model
-        //        if ($user->can('update', $post)) {
-        //            //
-        //        }
-
         if (Gate::allows('edit', $proposal)) {
-            return view('proposals.edit')->with('proposal', $proposal);
+            return view('proposals.edit')
+                ->with('proposal', $proposal)
+                ->with('subjects', app(Subjects::class)->getSelectOptions());
         } else {
             return redirect()
                 ->route('proposals')
@@ -402,7 +399,7 @@ class ProposalsController extends Controller
 
         //Then update Proposal
         $proposal->fill($input)->save();
-        $proposal->subjects()->sync($request->get('subjects'));
+        $proposal->subjects()->sync($formRequest->get('subjects'));
 
         event(new ProposalChanged($proposal));
 
