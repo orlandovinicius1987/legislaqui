@@ -32,7 +32,7 @@
 
 <body role="document">
 
-@include('partials.header') 
+@include('partials.header')
 
 <div class="container theme-showcase" role="main">
         @yield('content')

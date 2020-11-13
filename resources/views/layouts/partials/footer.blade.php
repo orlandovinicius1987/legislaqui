@@ -7,16 +7,12 @@
         <div class="row text-center text-xs-center text-sm-left text-md-left pt-3">
 
             <div class="offset-2 col-8 col-sm-3 offset-md-0 col-md-3">
-                <a href="/" title="Assembléia Legislativa do Estado do Rio de Janeiro">
-                    <img src="/imagens/logotipo_inferior.png" class="img-fluid"
-                         alt="Assembléia Legislativa do Estado do Rio de Janeiro"
-                         title="Assembléia Legislativa do Estado do Rio de Janeiro">
-                </a>
+                @include('partials.logo-alerj')
             </div>
             <div class="col-12 col-sm-8 col-md-6 endereco text-center">
 
                 <p>Rua Primeiro de março, s/n - Praça XV - Rio de Janeiro<br/><span>CEP</span> 20010-090 &nbsp;&nbsp;
-                    <span class="footer_phone">Telefone</span> +55 (21) 2588-1000 &nbsp;
+                    <span class="footer_phone">Telefone</span> 0800 0220008
                 </p>
 
             </div>
