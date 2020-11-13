@@ -9,7 +9,7 @@
         <div class="col-12">
 
             <h1 class=""><i class="fas fa-cogs"></i> Como Funciona?</h1>
-            
+
 
             <div class="card m-0 mt-4 m-lg-5 pl-4 pr-4  m-pl-5 m-pr-5 pt-2">
                 <h2 class="instrucao-topico mt-5 text-center">

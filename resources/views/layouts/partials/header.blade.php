@@ -5,7 +5,7 @@
 
 
         <div class="col-5 col-md-2 logo-alerj">
-            <a href="/" title="Assembléia Legislativa do Estado do Rio de Janeiro">
+            <a href="//www.alerj.rj.gov.br/" title="Assembléia Legislativa do Estado do Rio de Janeiro" target="_blank">
                 <img src="/imagens/logotipo_inferior.png" class="img-fluid" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
             </a>
         </div>
