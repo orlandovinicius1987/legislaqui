@@ -9,14 +9,7 @@
         <div class="col-12">
 
             <h1 class=""><i class="fas fa-cogs"></i> Como Funciona?</h1>
-            <p class="lead">
-                Esta é uma ferramenta que oferece aos cidadãos um canal direto para sugerir pautas e projetos aos deputados estaduais.<br>
-                As ideias enviadas são analisadas por uma equipe técnica, que vai observar a pertinência da sugestão para a esfera de governo envolvida, no caso a Estadual. Ideias que digam respeito a assuntos de responsabilidade Federal, como mudanças na legislação penal por exemplo, não serão disponibilizadas ao público.
-            </p>
-
-            <div class="about video mt-5">
-                @include('about.video')
-            </div>
+            
 
             <div class="card m-0 mt-4 m-lg-5 pl-4 pr-4  m-pl-5 m-pr-5 pt-2">
                 <h2 class="instrucao-topico mt-5 text-center">
