@@ -21,6 +21,29 @@ class AboutController extends Controller
         return view('about.about');
     }
 
+    public function howto()
+    {
+        return view('about.howto');
+    }
+
+    public function support()
+    {
+        return view('about.support');
+    }
+
+    public function forwarding()
+    {
+        return view('about.forwarding');
+    }
+
+
+
+
+
+
+
+
+
     /* relationship commissions */
     public function committee()
     {

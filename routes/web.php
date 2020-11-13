@@ -77,8 +77,21 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'ProposalsController@unlike',
     ]);
 
-    //About - Contact Form
-    Route::get('about', ['as' => 'about', 'uses' => 'AboutController@index']);
+    Route::group(['prefix' => 'about'], function () {
+
+        //About - Contact Form
+        Route::get('about', ['as' => 'about.about', 'uses' => 'AboutController@index']);
+
+        //Forwarding
+        Route::get('forwarding', ['as' => 'about.forwarding', 'uses' => 'AboutController@forwarding']);
+
+        //Howto
+        Route::get('howto', ['as' => 'about.howto', 'uses' => 'AboutController@howto']);
+
+        //Support
+        Route::get('support', ['as' => 'about.support', 'uses' => 'AboutController@support']);
+    });
+
     // use terms
     Route::get('terms', ['as' => 'terms', 'uses' => 'AboutController@terms']);
     Route::get('privacy-policy', ['as' => 'privacy-policy', 'uses' => 'AboutController@privacyPolicy']);
@@ -98,7 +111,10 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 });
 
+
 Route::group(['middleware' => ['web', 'auth']], function () {
+
+
     //Proposals
     Route::get('proposals/create', [
         'as' => 'proposal.create',

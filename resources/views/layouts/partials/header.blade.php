@@ -5,7 +5,7 @@
 
 
         <div class="col-5 col-md-2 logo-alerj">
-            <a href="/" title="Assembléia Legislativa do Estado do Rio de Janeiro">
+            <a href="//www.alerj.rj.gov.br/" title="Assembléia Legislativa do Estado do Rio de Janeiro" target="_blank">
                 <img src="/imagens/logotipo_inferior.png" class="img-fluid" alt="Assembléia Legislativa do Estado do Rio de Janeiro" title="Assembléia Legislativa do Estado do Rio de Janeiro">
             </a>
         </div>
@@ -26,9 +26,35 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Início <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about">Como Funciona</a>
+
+
+                <li class="nav-item dropdown">
+                    <a href="{{ route('about.about') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+                        Como Funciona
+                    </a>
+
+                    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+
+                        <a target="" href="{{ route('about.howto') }}" class="dropdown-item">
+                            Proponha uma ideia legislativa
+                        </a>
+                        <div class="dropdown-divider"></div>
+
+                        <a href="{{ route('about.support') }}" class="dropdown-item">
+                            Como Apoiar uma Idéia
+                        </a>
+                        <div class="dropdown-divider"></div>
+
+                        <a href="{{ route('about.forwarding') }}" class="dropdown-item">
+                            Encaminhamento da Idéia
+                        </a>
+                    </div>
+
+
                 </li>
+
+
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Ideia Legislativa<span class="caret"></span>
