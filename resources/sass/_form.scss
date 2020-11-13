@@ -2,3 +2,17 @@
     background: #fff;
     border: 1px solid #ced4da;
 }
+
+// Bootstrap select
+
+.dropdown-item.selected{
+    background-color: #305BB0;
+    color: white;
+    -webkit-box-shadow:inset 0px 0px 0px .3px black;
+    -moz-box-shadow:inset 0px 0px 0px .3px black;
+    box-shadow:inset 0px 0px 0px .3px black;
+}
+
+.dropdown-item.selected:hover{
+    color: white;
+}
