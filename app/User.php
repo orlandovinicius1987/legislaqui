@@ -29,7 +29,8 @@ class User extends Authenticatable implements Auditable
         'cpf',
         'uuid',
         'last_login_at',
-        'city_id'
+        'city_id',
+        'whatsapp'
     ];
 
     protected $dates = [

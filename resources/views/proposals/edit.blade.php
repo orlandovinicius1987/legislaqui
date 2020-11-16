@@ -39,6 +39,15 @@
                 </div>
             </div>
 
+            <div class="row form-group pt-2 pb-2">
+                <div class="col-12 col-lg-3">
+                    {{ Form::label('Assuntos', null , ['class' => 'bold double']) }}
+                </div>
+                <div class="col-12 col-lg-9 ">
+                    {{ Form::select('subjects', $subjects, $proposal->subject_ids_array, ['name'=>'subjects[]','data-width'=>'100%','multiple','data-selected-text-format="count"','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'Selecione os assuntos...']) }}
+                </div>
+            </div>
+
             <div class="row form-group">
 
                 <div class="col-12 col-lg-3">

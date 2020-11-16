@@ -61,15 +61,25 @@
                                     </div>
                             </div>
 
-
+                            <div class="form-group{{ $errors->has('whatsapp') && (\Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }} row">
+                                <label class="col-12 control-label">Whatsapp</label>
+                                <div class="col-12 ">
+                                    <input
+                                        v-mask='["(##)#####-####"]'
+                                        type="text" class="form-control" name="whatsapp" value="{{ old('whatsapp') }}" placeholder="Insira seu Whatsapp">
+                                    @if ($errors->has('whatsapp') && (Session::get('last_auth_attempt') === 'register'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('whatsapp') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
 
                             <div class="form-group{{ $errors->has('cpf') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }} row">
                                 <label class="col-md-12 control-label">CPF</label>
 
                                 <div class="col-md-12">
-                                    <input required="required" class="form-control" id="cpf" name="cpf" type="text" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">
-
-{{--                                    <input id="cfp" type="text" class="campo" name="cpf" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">--}}
+                                    <input v-mask='["###.###.###-##"]' required="required" class="form-control" id="cpf" name="cpf" type="text" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('cpf') : '' }}" placeholder="Insira seu CPF">
 
                                     @if ($errors->has('cpf') && (Session::get('last_auth_attempt') === 'register'))
                                         <span class="help-block">

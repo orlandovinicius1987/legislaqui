@@ -11,9 +11,9 @@ use Illuminate\Support\Collection;
 use OwenIt\Auditing\Auditable as AuditableI;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class   Proposal extends Eloquent implements Auditable
+class Proposal extends Eloquent implements Auditable
 {
-    use AuditableI,SoftDeletes;
+    use AuditableI, SoftDeletes;
 
     //public $timestamps = false;
 
@@ -39,6 +39,10 @@ class   Proposal extends Eloquent implements Auditable
         'pub_date',
         'limit_date'
     ];
+
+    protected $appends = ['days_left', 'subject_ids_array'];
+
+    protected $with = ['subjects'];
 
     //protected $guarded = ['id', 'pub_date', 'limit_date'];
 
@@ -138,7 +142,6 @@ class   Proposal extends Eloquent implements Auditable
     protected function dispatchMails($notification, Collection $emails)
     {
         $emails->each(function ($email) use ($notification) {
-            info('EMAIL DETECTADO - '.$email);
             $this->createNotificationModel($email, $notification)->notify(
                 new $notification()
             );
@@ -212,5 +215,24 @@ class   Proposal extends Eloquent implements Auditable
     public function getApprovalsCountAttribute()
     {
         return Approval::where('proposal_id', $this->id)->count();
+    }
+
+    public function getDaysLeftAttribute()
+    {
+        return now() > $this->limit_date
+            ? 0
+            : now()->diffInDays($this->limit_date);
+    }
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
+
+    public function getSubjectIdsArrayAttribute()
+    {
+        return $this->subjects()
+            ->get()
+            ->pluck('id');
     }
 }
