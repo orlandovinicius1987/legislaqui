@@ -6,13 +6,15 @@ use BenSampo\Enum\Enum;
 
 final class ProposalState extends Enum
 {
-    const NotModerated = 0;
-    const Approved = 1;
-    const Disapproved = 2;
-    const Supported = 3;
-    const Expired = 4;
-    const Sent = 5;
-    const Forwarded = 6;
-    const NotForwarded = 7;
-    const BillProject = 8;
+    const All = 'Todas';
+
+    const NotModerated = 'Não moderadas';
+    const Approved = 'Aprovadas';
+    const Disapproved = 'Não aprovadas';
+    const Supported = 'Alcançaram apoios suficientes';
+    const Expired = 'Expiradas';
+    const Sent = 'Enviadas para a Comissão de Normas';
+    const Forwarded = 'Enviadas para projeto de lei';
+    const NotForwarded = 'Não acatadas pela Comissão de normas';
+    const BillProject = 'Viraram projeto de lei';
 }

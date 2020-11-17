@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Data\Repositories\Subjects;
+use App\Enums\ProposalState;
 use App\Events\ProposalChanged;
 use App\Events\ProposalWasCreated;
 use App\Http\Requests\ProposalFormRequest;
@@ -19,6 +20,7 @@ use Gate;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\ProposalSearchRequest;
 
 class ProposalsController extends Controller
 {
@@ -32,23 +34,20 @@ class ProposalsController extends Controller
         $this->proposalsRepository = $proposalsRepository;
     }
 
-    public function index()
+    public function index(ProposalSearchRequest $request)
     {
-        // $proposals = Proposal::paginate(config('global.pagination'));
-        //         $proposals = $this->proposalsRepository->all()->paginate(config('global.pagination'));
-        //         return view('proposals.index')->with(compact('proposals'));
-
-        $q = Input::get('q');
-        $s = Input::get('search');
+        $state = $request->get('state');
+        $s = $request->get('search');
 
         $resultSet = $this->proposalsRepository
-            ->filterProposals($q, $s)
+            ->filterProposals($state, $s)
             ->paginate(config('global.pagination'));
 
         return view('proposals.index')
-            ->with('query', $q)
+            ->with('state', $state)
             ->with('search', $s)
-            ->with('proposals', $resultSet);
+            ->with('proposals', $resultSet)
+            ->with('states', ProposalState::getInstances());
     }
 
     public function approval($id)
