@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Enums\ProposalState;
 use App\Events\ProposalReachedApprovalGoal;
 use App\Data\Models\Proposal;
 use App\Data\Models\User;
@@ -391,68 +392,29 @@ class ProposalsRepository
             $q = 'open';
         }
 
-        // Users cannot see what's not approved
-        if ($q == 'open') {
-            $query = Proposal::whereNotNull('approved_by');
-            $query
-                ->where(['open' => true, 'in_committee' => false])
-                ->withCount('approvals')
-                ->get();
-        }
+        $query = Proposal::query();
 
-        // Users can see proposals that have been disapproved, since them will be approved for a admin
-        if (
-            $q == 'committee' ||
-            $q == 'expired' ||
-            $q == 'disapproved' ||
-            $q == 'approved'
-        ) {
-            $query = Proposal::where(function ($query) {
-                $query
-                    ->where('approved_by', '<>', null)
-                    ->orwhere('disapproved_by', '<>', null);
-            });
-
-            if ($q == 'committee') {
-                $query
-                    ->where([
-                        'open' => true,
-                        'in_committee' => true,
-                        'approved_by_committee' => null,
-                        'disapproved_by_committee' => null
-                    ])
-                    ->withCount('approvals')
-                    ->get();
-            }
-
-            if ($q == 'expired') {
-                $query
-                    ->whereNotNull('time_limit_by')
-                    ->where(['open' => false, 'time_limit' => true])
-                    ->withCount('approvals')
-                    ->get();
-            }
-
-            if ($q == 'disapproved') {
-                $query
-                    ->whereNotNull('disapproved_by_committee')
-                    ->where('open', false)
-                    ->withCount('approvals')
-                    ->get();
-            }
-
-            if ($q == 'approved') {
-                $query
-                    ->whereNotNull('approved_by_committee') //->where('open', true)
-                    ->withCount('approvals')
-                    ->get();
-            }
+        switch ($q) {
+            case 'open':
+                $query->ofState(ProposalState::Approved);
+                break;
+            case 'committee':
+                $query->ofState(ProposalState::Sent);
+                break;
+            case 'expired':
+                $query->ofState(ProposalState::Expired);
+                break;
+            case 'disapproved':
+                $query->ofState(ProposalState::NotForwarded);
+                break;
+            case 'approved':
+                $query->ofState(ProposalState::Forwarded);
+                break;
         }
 
         $this->buildSearch($query, $s);
-        $query
-            ->orderBy('created_at', 'desc')
-            ->orderBy('approvals_count', 'desc');
+        $query->orderBy('created_at', 'desc');
+        //            ->orderBy('approvals_count', 'desc');
 
         return $query;
     }
