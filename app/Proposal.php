@@ -10,12 +10,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use OwenIt\Auditing\Auditable as AuditableI;
 use OwenIt\Auditing\Contracts\Auditable;
+use App\Enums\ProposalState;
 
 class Proposal extends Eloquent implements Auditable
 {
     use AuditableI, SoftDeletes;
-
-    //public $timestamps = false;
 
     /**
      * The attributes that should be mutated to dates.
@@ -207,10 +206,10 @@ class Proposal extends Eloquent implements Auditable
         );
     }
 
-    /*public function getTotalLikeCountAttribute()
+    public function getTotalLikeCountAttribute()
     {
         return $this->like_count - $this->unlike_count;
-    }*/
+    }
 
     public function getApprovalsCountAttribute()
     {
@@ -234,5 +233,64 @@ class Proposal extends Eloquent implements Auditable
         return $this->subjects()
             ->get()
             ->pluck('id');
+    }
+
+    public function getStateAttribute()
+    {
+        if (!blank($this->bill_project_id)) {
+            //Projeto de lei
+            return ProposalState::BillProject;
+        } else {
+            if (!blank($this->disapproved_at_committee)) {
+                //Não encaminhada
+                return ProposalState::NotForwarded;
+            } elseif (!blank($this->approved_at_committee)) {
+                //Encaminhada
+                return ProposalState::Forwarded;
+            } else {
+                if ($this->in_committee) {
+                    //Enviada
+                    return ProposalState::Sent;
+                } else {
+                    if (
+                        $this->approvals_count <
+                            config('global.approvalGoal') &&
+                        $this->days_left == 0 &&
+                        blank($this->disapproved_at)
+                    ) {
+                        //Expirada
+                        return ProposalState::Expired;
+                    } elseif (
+                        $this->approvals_count >=
+                            config('global.approvalGoal') &&
+                        blank($this->disapproved_at)
+                    ) {
+                        //Apoiada
+                        return ProposalState::Supported;
+                    } else {
+                        if (!blank($this->disapproved_at)) {
+                            //Desaprovada
+                            return ProposalState::Disapproved;
+                        } elseif (!blank($this->approved_at)) {
+                            //Aprovada
+                            return ProposalState::Approved;
+                        } else {
+                            //Não moderada
+                            return ProposalState::NotModerated;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public function isModeratable()
+    {
+        $state = $this->state;
+        return $state == ProposalState::NotModerated ||
+            $state == ProposalState::Disapproved ||
+            $state == ProposalState::Approved ||
+            $state == ProposalState::Expired ||
+            $state == ProposalState::Supported;
     }
 }
