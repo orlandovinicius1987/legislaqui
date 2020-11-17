@@ -167,10 +167,10 @@
 
                             <div class="card-footer">
                         <span class="curtidas">
-                            <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{ ($proposal->like_count - $proposal->unlike_count) }} Curtidas
+                            <i class="fa fa-thumbs-{{$proposal->total_like_count < 0 ? 'down' : 'up'}}" aria-hidden="true"></i> {{ $proposal->total_like_count  }} Curtidas
                         </span>
                                 <span class="apoios ml-3">
-                            <i class="fa fa-star" aria-hidden="true"></i> {{ $proposal->approvals()->count() }} Apoios
+                            <i class="fa fa-star" aria-hidden="true"></i> {{ $proposal->approvals_count }} Apoios
                         </span>
                             </div>
 

@@ -166,16 +166,25 @@
                                     {{ $proposal->response ? $proposal->response : null }}
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Estado
+                                </td>
+                                <td class="table-td-show">
+                                    {{ App\Enums\ProposalState::fromValue($proposal->state)->description }}
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
 
                     <div class="card-footer">
                         <span class="curtidas">
-                            <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{$proposal->likeCount}} Curtidas
+                            <i class="fa fa-thumbs-{{$proposal->total_like_count < 0 ? 'down' : 'up'}}" aria-hidden="true"></i> {{$proposal->total_like_count }} Curtidas
                         </span>
                         <span class="apoios ml-3">
-                            <i class="fa fa-star" aria-hidden="true"></i> {{$proposal->approvals->count()}} Apoios
+                            <i class="fa fa-star" aria-hidden="true"></i> {{$proposal->approvals_count}} Apoios
                         </span>
                     </div>
 
