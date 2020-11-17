@@ -1,10 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Data\Models;
 
+use App\Data\Models\Approval;
+use App\Data\Models\BillsProject;
 use App\Data\Repositories\Notifications;
+use App\Data\Models\Like;
 use App\Notifications\SendProposalChanged;
 use App\Notifications\SendProposalCreated;
+use App\Data\Models\ProposalFollow;
+use App\Data\Models\Subject;
+use App\Data\Models\User;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
@@ -292,5 +298,105 @@ class Proposal extends Eloquent implements Auditable
             $state == ProposalState::Approved ||
             $state == ProposalState::Expired ||
             $state == ProposalState::Supported;
+    }
+
+    public function scopeOfState($query, $states)
+    {
+        collect($states)->each(function ($state) use ($query) {
+            $query->orWhere(function ($query) use ($state) {
+                switch ($state) {
+                    case ProposalState::NotModerated:
+                        $query
+                            ->whereNull('bill_project_id')
+                            ->whereNull('disapproved_at_committee')
+                            ->whereNull('approved_at_committee')
+                            ->where('in_committee', 0)
+                            ->having('approval_goal', 0)
+                            ->whereNull('approved_at')
+                            ->whereNull('disapproved_at');
+
+                        break;
+                    case ProposalState::Approved:
+                        //Aprovada, não atingiu o limite e não expirou
+                        $query
+                            ->whereNull('bill_project_id')
+                            ->whereNull('disapproved_at_committee')
+                            ->whereNull('approved_at_committee')
+                            ->where('in_committee', 0)
+                            ->whereRaw(
+                                '(select count(*) from approvals a where a.proposal_id = proposals.id) < ' .
+                                    config('global.approvalGoal')
+                            )
+                            ->whereNotNull('approved_at')
+                            ->whereNull('disapproved_at');
+
+                        break;
+                    case ProposalState::Disapproved:
+                        $query
+                            ->whereNull('bill_project_id')
+                            ->whereNull('disapproved_at_committee')
+                            ->whereNull('approved_at_committee')
+                            ->where('in_committee', 0)
+                            ->whereRaw(
+                                '(select count(*) from approvals a where a.proposal_id = proposals.id) < ' .
+                                    config('global.approvalGoal')
+                            )
+                            ->whereNull('approved_at')
+                            ->whereNotNull('disapproved_at');
+                        break;
+                    case ProposalState::Supported:
+                        $query
+                            ->whereNull('bill_project_id')
+                            ->whereNull('disapproved_at_committee')
+                            ->whereNull('approved_at_committee')
+                            ->where('in_committee', 0)
+                            ->whereRaw(
+                                '(select count(*) from approvals a where a.proposal_id = proposals.id) >= ' .
+                                    config('global.approvalGoal')
+                            )
+                            ->whereNull('disapproved_at');
+                        break;
+                    case ProposalState::Expired:
+                        $query
+                            ->whereNull('bill_project_id')
+                            ->whereNull('disapproved_at_committee')
+                            ->whereNull('approved_at_committee')
+                            ->where('in_committee', 0)
+                            ->whereRaw(
+                                '(select count(*) from approvals a where a.proposal_id = proposals.id) < ' .
+                                    config('global.approvalGoal')
+                            )
+                            ->whereDate('limit_date', '<', now())
+                            ->whereNull('disapproved_at');
+                        break;
+                    case ProposalState::Sent:
+                        $query
+                            ->whereNull('bill_project_id')
+                            ->whereNull('disapproved_at_committee')
+                            ->whereNull('approved_at_committee')
+                            ->where('in_committee', 1);
+                        break;
+                    case ProposalState::Forwarded:
+                        $query
+                            ->whereNull('bill_project_id')
+                            ->whereNull('disapproved_at_committee')
+                            ->whereNotNull('approved_at_committee')
+                            ->where('in_committee', 1);
+                        break;
+                    case ProposalState::NotForwarded:
+                        $query
+                            ->whereNull('bill_project_id')
+                            ->whereNotNull('disapproved_at_committee')
+                            ->whereNull('approved_at_committee')
+                            ->where('in_committee', 1);
+                        break;
+                    case ProposalState::BillProject:
+                        $query->whereNotNull('bill_project_id');
+                        break;
+                }
+            });
+        });
+
+        return $query;
     }
 }

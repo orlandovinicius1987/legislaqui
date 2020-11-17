@@ -9,8 +9,8 @@
 namespace App\Repositories;
 
 use App\Data\Repositories\Repository;
-use App\Role;
-use App\User;
+use App\Data\Models\Role;
+use App\Data\Models\User;
 use Illuminate\Contracts\Cache\Repository as Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
@@ -29,10 +29,13 @@ class RolesRepository extends Repository
 
     public function findIdByRole($roleName)
     {
-        if(!$this->cache->has('role_'.$roleName)){
-            $this->cache->put('role_'.$roleName,Role::where('role',$roleName)->first()->id);
+        if (!$this->cache->has('role_' . $roleName)) {
+            $this->cache->put(
+                'role_' . $roleName,
+                Role::where('role', $roleName)->first()->id
+            );
         }
-//        return Role::where('role',$roleName)->first()->id;
-        return $this->cache->get('role_'.$roleName);
-   }
+        //        return Role::where('role',$roleName)->first()->id;
+        return $this->cache->get('role_' . $roleName);
+    }
 }

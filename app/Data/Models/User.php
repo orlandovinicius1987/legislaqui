@@ -1,7 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Data\Models;
 
+use App\Data\Models\Approval;
+use App\Data\Models\Like;
+use App\Data\Models\Proposal;
+use App\Data\Models\Role;
 use App\Support\Constants;
 use Auth;
 use Illuminate\Notifications\Notifiable;
@@ -160,7 +164,7 @@ class User extends Authenticatable implements Auditable
     public function socialNetworks()
     {
         return $this->belongsToMany(
-            'App\SocialNetwork',
+            'App\Data\Models\SocialNetwork',
             'social_users',
             'user_id'
         );
@@ -168,7 +172,7 @@ class User extends Authenticatable implements Auditable
 
     public function socialUser()
     {
-        return $this->hasMany('App\SocialUser');
+        return $this->hasMany('App\Data\Models\SocialUser');
     }
 
     // Return users of system

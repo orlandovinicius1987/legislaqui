@@ -8,15 +8,16 @@
 
 namespace App\Http\Controllers;
 
-use App\BillsProject;
+use App\Data\Models\BillsProject;
+use App\Enums\ProposalState;
 use App\Events\ProposalApprovedByCommittee;
 use App\Events\ProposalClosedByCommittee;
 use App\Events\ProposalTimeLimit;
 use App\Http\Requests\BillProjectFormRequest;
 use App\Http\Requests\ProposalFormRequest;
 use App\Http\Requests\ResponseFormRequest;
-use App\Proposal;
-use App\ProposalHistory;
+use App\Data\Models\Proposal;
+use App\Data\Models\ProposalHistory;
 use App\Repositories\DataRepository;
 use App\Repositories\ProposalsRepository;
 use App\Repositories\UsersRepository;
@@ -303,7 +304,7 @@ class AdminController extends Controller
             array_except($proposal->getAttributes(), [
                 'id',
                 'created_at',
-                'updated_at',
+                'updated_at'
             ])
         );
         //dd($proposal_history);
@@ -454,8 +455,6 @@ class AdminController extends Controller
             //Fire Event
             event(new ProposalClosed($proposal));
 
-            //return redirect()->back()->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada com Sucesso');
-            //                return redirect()->route('admin.proposal.show', ['id' => $id])->with(compact('proposal'))->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso.');
             return redirect()
                 ->route('admin.proposals')
                 ->with(compact('proposal'))
@@ -482,7 +481,6 @@ class AdminController extends Controller
     {
         //Get Proposal
         $proposal = $this->proposalsRepository->find($id);
-        //$proposal = Proposal::findOrFail($id);
 
         return view('admin.proposals.response')->with('proposal', $proposal);
     }
@@ -522,7 +520,7 @@ class AdminController extends Controller
                 array_except($proposal->getAttributes(), [
                     'id',
                     'created_at',
-                    'updated_at',
+                    'updated_at'
                 ])
             );
 
@@ -712,7 +710,9 @@ class AdminController extends Controller
      */
     public function notResponded()
     {
-        $proposals = $this->proposalsRepository->notResponded();
+        $proposals = $this->proposalsRepository->ofState(
+            ProposalState::NotModerated
+        );
 
         return view('admin.proposals.notresponded')->with(
             'notrespondeds',
@@ -729,7 +729,9 @@ class AdminController extends Controller
      */
     public function approved()
     {
-        $proposals = $this->proposalsRepository->approved();
+        $proposals = $this->proposalsRepository->ofState(
+            ProposalState::Approved
+        );
 
         return view('admin.proposals.approved')->with('approveds', $proposals);
     }
@@ -743,7 +745,9 @@ class AdminController extends Controller
      */
     public function disapproved()
     {
-        $proposals = $this->proposalsRepository->disapproved();
+        $proposals = $this->proposalsRepository->ofState(
+            ProposalState::Disapproved
+        );
 
         return view('admin.proposals.disapproved')->with(
             'disapproveds',
@@ -760,7 +764,9 @@ class AdminController extends Controller
      */
     public function expired()
     {
-        $proposals = $this->proposalsRepository->expired();
+        $proposals = $this->proposalsRepository->ofState(
+            ProposalState::Expired
+        );
 
         return view('admin.proposals.expired')->with('expired', $proposals);
     }
@@ -774,7 +780,9 @@ class AdminController extends Controller
      */
     public function approvalGoal()
     {
-        $proposals = $this->proposalsRepository->approvalGoal();
+        $proposals = $this->proposalsRepository->ofState(
+            ProposalState::Supported
+        );
 
         return view('admin.proposals.approval-goal')->with(
             'approveds',
@@ -791,7 +799,7 @@ class AdminController extends Controller
      */
     public function inCommittee()
     {
-        $proposals = $this->proposalsRepository->inCommittee();
+        $proposals = $this->proposalsRepository->ofState(ProposalState::Sent);
 
         return view('admin.proposals.in-committee')->with(
             'inCommittee',
@@ -808,7 +816,9 @@ class AdminController extends Controller
      */
     public function approvedByCommittee()
     {
-        $proposals = $this->proposalsRepository->approvedByCommittee();
+        $proposals = $this->proposalsRepository->ofState(
+            ProposalState::Forwarded
+        );
 
         return view('admin.proposals.approved-by-committee')->with(
             'approvedsByCommittee',
@@ -825,7 +835,9 @@ class AdminController extends Controller
      */
     public function disapprovedByCommittee()
     {
-        $proposals = $this->proposalsRepository->disapprovedByCommittee();
+        $proposals = $this->proposalsRepository->ofState(
+            ProposalState::NotForwarded
+        );
 
         return view('admin.proposals.disapproved-by-committee')->with(
             'disapprovedsByCommittee',

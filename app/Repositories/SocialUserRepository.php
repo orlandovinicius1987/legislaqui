@@ -8,9 +8,9 @@
 
 namespace App\Repositories;
 
-use App\SocialUser;
+use App\Data\Models\SocialUser;
 use App\Support\Constants;
-use App\User;
+use App\Data\Models\User;
 use Ramsey\Uuid\Uuid;
 
 class SocialUserRepository

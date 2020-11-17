@@ -1,12 +1,11 @@
 <?php
 
-use App\Proposal;
-use App\User;
+use App\Data\Models\Proposal;
+use App\Data\Models\User;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Laravel\Socialite\Facades\Socialite;
-
 
 class ProposalFuncTest extends TestCase
 {
@@ -14,7 +13,7 @@ class ProposalFuncTest extends TestCase
 
     public function testCreateProposalMainButton()
     {
-        $proposal = factory(App\Proposal::class)->create();
+        $proposal = factory(\App\Data\Models\Proposal::class)->create();
         $user = User::all()->random();
 
         $this->actingAs($user)
@@ -31,11 +30,11 @@ class ProposalFuncTest extends TestCase
 
     public function testCreateProposalBySecondButton()
     {
-        $proposal = factory(App\Proposal::class)->create();
+        $proposal = factory(\App\Data\Models\Proposal::class)->create();
         $user = User::all()->random();
 
         $this->actingAs($user)
-            ->visit('/proposals/'.$proposal->id)
+            ->visit('/proposals/' . $proposal->id)
             ->click('novaIdeia')
             ->seePageIs('/proposals/create')
             ->type($proposal->name, 'name')
@@ -51,7 +50,7 @@ class ProposalFuncTest extends TestCase
         $user = User::all()->random();
 
         $this->actingAs($user)
-            ->visit('/proposals/'.$proposal->id)
+            ->visit('/proposals/' . $proposal->id)
             ->see($proposal->name)
             ->click('Curtir')
             ->see('Sua curtida foi computada com sucesso')
@@ -71,90 +70,97 @@ class ProposalFuncTest extends TestCase
 
     public function testUserEditIdea()
     {
-        $proposal = factory(App\Proposal::class)->create();
+        $proposal = factory(\App\Data\Models\Proposal::class)->create();
         $user = User::all()->random();
 
         $this->actingAs($user)
-            ->visit('/proposals/'.$proposal->id)
-            ->click('editar')      // criei 'id' para o teste; o phpunit, às vezes, identificava o texto e, às vezes, não.
-            ->seePageIs('/proposals/'.$proposal->id.'/edit')
+            ->visit('/proposals/' . $proposal->id)
+            ->click('editar') // criei 'id' para o teste; o phpunit, às vezes, identificava o texto e, às vezes, não.
+            ->seePageIs('/proposals/' . $proposal->id . '/edit')
             ->type($proposal->name, 'name')
             ->type($proposal->problem, 'problem')
             ->press('Gravar')
             ->see('Ideia Legislativa Editada')
-            ->seePageIs('/proposals/'.$proposal->id)
+            ->seePageIs('/proposals/' . $proposal->id)
             ->click('voltar')
             ->seePageIs('/')
             ->seeInDatabase('proposals', ['name' => $proposal->name]);
     }
-    public function testAdminModeratingProposalApprove() {
-        $user = factory(App\User::class, 'admin')->create();
+    public function testAdminModeratingProposalApprove()
+    {
+        $user = factory(\App\Data\Models\User::class, 'admin')->create();
         $proposal = Proposal::all()->random();
 
         $this->actingAs($user)
             ->visit('/admin')
             ->click('Aguardando Publicação')
-            ->visit('/admin/proposals/'.$proposal->id.'/response')
+            ->visit('/admin/proposals/' . $proposal->id . '/response')
             ->see($proposal->problem)
             ->type('RESPOSTA', 'response')
             ->press('Aprovar!')
             ->seePageIs('/admin/proposals');
     }
 
-    public function testAdminModeratingProposalApproveWithoutResponse() {
-        $user = factory(App\User::class, 'admin')->create();
+    public function testAdminModeratingProposalApproveWithoutResponse()
+    {
+        $user = factory(\App\Data\Models\User::class, 'admin')->create();
         $proposal = Proposal::all()->random();
 
         $this->actingAs($user)
             ->visit('/admin')
             ->click('Aguardando Publicação')
-            ->visit('/admin/proposals/'.$proposal->id.'/response')
+            ->visit('/admin/proposals/' . $proposal->id . '/response')
             ->see($proposal->problem)
             ->press('Aprovar!')
             ->seePageIs('/admin/proposals');
     }
 
-    public function testAdminModeratingProposalDisapprove() {
-        $user = factory(App\User::class, 'admin')->create();
+    public function testAdminModeratingProposalDisapprove()
+    {
+        $user = factory(\App\Data\Models\User::class, 'admin')->create();
         $proposal = Proposal::all()->random();
 
         /* unit não reconhece aviso após click */
         $this->actingAs($user)
             ->visit('/admin')
             ->click('Aguardando Publicação')
-            ->visit('/admin/proposals/'.$proposal->id.'/response')
+            ->visit('/admin/proposals/' . $proposal->id . '/response')
             ->see($proposal->problem)
             ->type('RESPOSTA', 'response')
             ->press('Desaprovar')
             ->seePageIs('/admin/proposals');
-     }
+    }
 
-    public function testAdminModeratingPublishedProposalEditing() {
-        $user = factory(App\User::class, 'admin')->create();
+    public function testAdminModeratingPublishedProposalEditing()
+    {
+        $user = factory(\App\Data\Models\User::class, 'admin')->create();
         $proposal = Proposal::whereNotNull('approved_by')
             ->orderBy('updated_at', 'desc')
             ->first();
         $proposalTextFake = Proposal::all()->random();
-        $limitDate = \Carbon\Carbon::now()->addMonth(config('global.timeLimitMonth'));
+        $limitDate = \Carbon\Carbon::now()->addMonth(
+            config('global.timeLimitMonth')
+        );
 
         $this->actingAs($user)
             ->visit('/admin')
             ->click('Publicadas')
             ->seePageIs('/admin/proposals/approved')
-            ->visit('/admin/proposals/'.$proposal->id)
+            ->visit('/admin/proposals/' . $proposal->id)
             ->see('Esta Ideia Legislativa já foi Moderada')
             ->click('Editar Proposta')
-            ->type($proposalTextFake->name,'name')
-            ->type($proposalTextFake->problem,'problem')
-            ->type($proposalTextFake->idea_exposition,'idea_exposition')
-            ->type($limitDate,'limit_date')
+            ->type($proposalTextFake->name, 'name')
+            ->type($proposalTextFake->problem, 'problem')
+            ->type($proposalTextFake->idea_exposition, 'idea_exposition')
+            ->type($limitDate, 'limit_date')
             ->press('Gravar')
             ->see('Ideia Legislativa Editada com Sucesso')
-            ->seePageIs('/admin/proposals/'.$proposal->id);
+            ->seePageIs('/admin/proposals/' . $proposal->id);
     }
 
-    public function testAdminModeratingPublishedProposalSendACommission() {
-        $user = factory(App\User::class, 'admin')->create();
+    public function testAdminModeratingPublishedProposalSendACommission()
+    {
+        $user = factory(\App\Data\Models\User::class, 'admin')->create();
         $proposal = Proposal::whereNotNull('approved_by')
             ->orderBy('updated_at', 'asc')
             ->first();
@@ -163,14 +169,14 @@ class ProposalFuncTest extends TestCase
             ->visit('/admin')
             ->click('Publicadas')
             ->seePageIs('/admin/proposals/approved')
-            ->visit('/admin/proposals/'.$proposal->id)
+            ->visit('/admin/proposals/' . $proposal->id)
             ->see('Esta Ideia Legislativa já foi Moderada')
             ->click('Enviar diretamente')
             ->seePageIs('/admin/proposals/in-committee')
             ->see($proposal->name);
     }
 
-   /* public function testAdminModeratingDisapprovedProposal() {
+    /* public function testAdminModeratingDisapprovedProposal() {
         $user = factory(App\User::class, 'admin')->create();
         $proposal = Proposal::whereNotNull('disapproved_by')
         ->orderBy('updated_at', 'desc')
@@ -187,14 +193,15 @@ class ProposalFuncTest extends TestCase
             ->see($proposal->name);   // Sistema não envia proposta Desaprovada para comissão, mas existe o botão lá
     }*/
 
-    public function testAdminModeratingWaitingAnalysisInCommitteeApprove() {
-        $user = factory(App\User::class, 'admin')->create();
+    public function testAdminModeratingWaitingAnalysisInCommitteeApprove()
+    {
+        $user = factory(\App\Data\Models\User::class, 'admin')->create();
         $proposal = Proposal::whereNotNull('approved_by')
-                ->where('in_committee', true)
-                ->whereNull('approved_by_committee')
-                ->whereNull('disapproved_by_committee')
-                ->orderBy('updated_at', 'desc')
-                ->first();
+            ->where('in_committee', true)
+            ->whereNull('approved_by_committee')
+            ->whereNull('disapproved_by_committee')
+            ->orderBy('updated_at', 'desc')
+            ->first();
 
         $this->actingAs($user)
             ->visit('/admin')
@@ -206,8 +213,9 @@ class ProposalFuncTest extends TestCase
             ->see($proposal->name);
     }
 
-    public function testAdminModeratingWaitingAnalysisInCommitteeDisapprove() {
-        $user = factory(App\User::class, 'admin')->create();
+    public function testAdminModeratingWaitingAnalysisInCommitteeDisapprove()
+    {
+        $user = factory(\App\Data\Models\User::class, 'admin')->create();
         $proposal = Proposal::whereNotNull('approved_by')
             ->where('in_committee', true)
             ->whereNull('approved_by_committee')
@@ -225,8 +233,9 @@ class ProposalFuncTest extends TestCase
             ->see($proposal->name);
     }
 
-    public function testAdminModeratingApprovedByCommitteeSignBill() {
-        $user = factory(App\User::class, 'admin')->create();
+    public function testAdminModeratingApprovedByCommitteeSignBill()
+    {
+        $user = factory(\App\Data\Models\User::class, 'admin')->create();
         /*$proposal = Proposal::whereNotNull('approved_by_committee')
             ->orderBy('updated_at', 'desc')
             ->first();*/
@@ -236,21 +245,20 @@ class ProposalFuncTest extends TestCase
             ->click('Aprovadas')
             ->seePageIs('/admin/proposals/approved-by-committee')
             ->click('Assignar Projeto de Lei')
-           /* ->seePageIs('/admin/proposals/'." ".'/bill-project')*/
+            /* ->seePageIs('/admin/proposals/'." ".'/bill-project')*/
             ->see('Projeto de Lei')
             ->type('121', 'number')
             ->type('121', 'year')
-            ->type('Deputado Responsável Júnior do PoLvo','owner')
-            ->type('wwww.alerj.gov.br/projeto-de-lei.php','link')
+            ->type('Deputado Responsável Júnior do PoLvo', 'owner')
+            ->type('wwww.alerj.gov.br/projeto-de-lei.php', 'link')
             ->press('Gravar')
             ->see('121')
             ->see('wwww.alerj.gov.br/projeto-de-lei.php')
             ->see('Deputado Responsável Júnior do PoLvo');
     }
 
-
-    public function testSocialLogin() {
-
+    public function testSocialLogin()
+    {
         $abstractUser = Mockery::mock('Laravel\Socialite\Two\User');
         $abstractUser
             ->shouldReceive('getId')
@@ -265,6 +273,5 @@ class ProposalFuncTest extends TestCase
         Socialite::shouldReceive('driver->user')->andReturn($abstractUser);
 
         $this->visit('/auth/facebook/callback');
-
-     }
+    }
 }

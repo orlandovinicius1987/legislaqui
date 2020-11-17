@@ -6,8 +6,9 @@
  * Time: 13:06.
  */
 
-namespace App;
+namespace App\Data\Models;
 
+use App\Data\Models\Proposal;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use OwenIt\Auditing\Auditable as AuditableI;
 use OwenIt\Auditing\Contracts\Auditable;

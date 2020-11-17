@@ -70,7 +70,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 1.0
         </div>
-        <strong>Copyright &copy; #Legislaqui 2016 <a href="http://alerj.rj.gov.br">Alerj</a>.</strong> Todos os direitos reservados.
+        <strong>Copyright &copy; #Legislaqui 2016 <a href="http://www.alerj.rj.gov.br">Alerj</a>.</strong> Todos os direitos reservados.
     </footer>
 </div><!-- ./wrapper -->
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Data\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -26,7 +26,7 @@ class SocialNetwork extends Model implements Auditable
     public function users()
     {
         return $this->belongsToMany(
-            'App\User',
+            'App\Data\Models\User',
             'social_users',
             'social_network_id'
         )->withPivot('social_network_user_id', 'data');

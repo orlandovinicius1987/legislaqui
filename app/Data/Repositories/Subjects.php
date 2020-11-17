@@ -1,7 +1,7 @@
 <?php
 namespace App\Data\Repositories;
 
-use App\Subject;
+use App\Data\Models\Subject;
 
 class Subjects extends Repository
 {

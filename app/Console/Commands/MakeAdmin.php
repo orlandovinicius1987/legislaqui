@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Support\Constants;
-use App\User;
+use App\Data\Models\User;
 use Illuminate\Console\Command;
 
 class MakeAdmin extends Command
@@ -39,13 +39,18 @@ class MakeAdmin extends Command
      */
     public function handle()
     {
-        if (! $user = User::where('email', $user_email = $this->argument('user_email'))->first()) {
+        if (
+            !($user = User::where(
+                'email',
+                $user_email = $this->argument('user_email')
+            )->first())
+        ) {
             return $this->error('User not found');
         }
 
         $user->role_id = get_role_id(Constants::ROLE_ADMIN);
         $user->save();
 
-        $this->info($user->name.' is now an administrator');
+        $this->info($user->name . ' is now an administrator');
     }
 }

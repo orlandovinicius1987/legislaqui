@@ -8,14 +8,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Proposal;
+use App\Data\Models\Proposal;
 use App\Repositories\ProposalsRepository;
-use App\User;
+use App\Data\Models\User;
 
 class UsersController extends Controller
 {
     private $proposalsRepository;
-
 
     public function __construct(ProposalsRepository $proposals)
     {
@@ -30,10 +29,10 @@ class UsersController extends Controller
      * @return Response
      */
 
-      public function proposals($user_id)
+    public function proposals($user_id)
     {
         return view('users.proposals', [
-            'proposals' => $this->proposalsRepository->forUser($user_id),
+            'proposals' => $this->proposalsRepository->forUser($user_id)
         ]);
     }
 
