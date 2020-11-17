@@ -15,6 +15,11 @@ class ProposalsRepository
 {
     private $searchColumns = ['name', 'problem', 'idea_exposition', 'response'];
 
+    public function ofState($states)
+    {
+        return Proposal::ofState($states)->get();
+    }
+
     public function all()
     {
         //return Proposal::orderBy('updated_at', 'desc')->get();
@@ -255,10 +260,16 @@ class ProposalsRepository
             'emails.proposal-goal-notification',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from(config('mail.from.address'),config('mail.from.name'));
+                $message->from(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc(config('mail.from.address'),config('mail.from.name'));
+                $message->bcc(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->subject(
                     'e-democracia: Notificação - Sua Proposta atingiu o número necessário de Apoios'
@@ -275,10 +286,16 @@ class ProposalsRepository
             'emails.proposal-approval-by-committee',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from(config('mail.from.address'),config('mail.from.name'));
+                $message->from(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc(config('mail.from.address'),config('mail.from.name'));
+                $message->bcc(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->subject(
                     'e-democracia: Notificação - Proposta aprovada pelo Comitê'
@@ -295,10 +312,16 @@ class ProposalsRepository
             'emails.proposal-closed-by-committee',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from(config('mail.from.address'),config('mail.from.name'));
+                $message->from(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc(config('mail.from.address'),config('mail.from.name'));
+                $message->bcc(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->subject(
                     'e-democracia: Notificação - Proposta encerrada pelo Comitê'
@@ -315,10 +338,16 @@ class ProposalsRepository
             'emails.proposal-time-limit',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from(config('mail.from.address'),config('mail.from.name'));
+                $message->from(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc(config('mail.from.address'),config('mail.from.name'));
+                $message->bcc(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->subject(
                     'e-democracia: Notificação - Proposta aprovada pelo Comitê'
@@ -335,10 +364,16 @@ class ProposalsRepository
             'emails.proposal-closed',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from(config('mail.from.address'),config('mail.from.name'));
+                $message->from(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc(config('mail.from.address'),config('mail.from.name'));
+                $message->bcc(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->subject(
                     'e-democracia: Notificação - Proposta encerrada'
