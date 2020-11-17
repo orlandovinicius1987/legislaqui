@@ -46,6 +46,7 @@
                                             {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Rating: activate to sort column ascending" style="width: 168px;">Rating</th>--}}
                                             <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Apoios: activate to sort column ascending" style="width: 168px;">Apoios</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Publicação</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="" style="width: 168px;">Moderação</th>
                                             {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Resposta</th>--}}
                                         </tr>
                                         </thead>
@@ -66,20 +67,28 @@
                                                 <td>{{ $proposal->approvals()->count() }}</td>
 
                                                 {{--Proposal Moderation--}}
-                                                <td class="text-center">
+                                                <td >
                                                     {{--{{$proposal->moderation($proposal->id)}}--}}
                                                     {{--@if () === null)--}}
                                                         {{--<a href="{{ route('admin.proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a>--}}
                                                     {{--@endif--}}
-                                                    @if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
+                                                    @if ($proposal->approved_at && !$proposal->disapproved_at)
+                                                        <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i> Já Publicada
+                                                    @elseif ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
+                                                        <i class="fa fa-circle-o-notch" aria-hidden="true"></i> Aguardando moderação
+                                                    @elseif ($proposal->disapproved_at)
+                                                        <i class="fa fa-times-circle text-warning" aria-hidden="true"></i> Desaprovada
+                                                    @endif
+                                                </td>
+
+
+                                                <td class="text-center">
+                                                   
+                                                    @if (!$proposal->disapproved_at)
                                                         <a href="{{ route('admin.proposal.response', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
-                                                            <i class="fa fa-cog fa-spin fa fa-fw"></i> Publicar essa Ideia! </a>
-                                                    @else
-                                                        @if ($proposal->approved_at)
-                                                            <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i> Já Publicada
-                                                        @else
-                                                            <i class="fa fa-times-circle text-warning" aria-hidden="true"></i> Desaprovada
-                                                        @endif
+                                                            <i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa ideia! </a>
+                                                   
+                                                       
                                                     @endif
                                                 </td>
 

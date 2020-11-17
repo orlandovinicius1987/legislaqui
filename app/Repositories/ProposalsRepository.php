@@ -152,6 +152,7 @@ class ProposalsRepository
     {
         return Proposal::where('approval_goal', true)
             ->where('in_committee', false)
+            ->whereNotNull('approved_by')
             ->orderBy('updated_at', 'desc')
             ->get();
     }

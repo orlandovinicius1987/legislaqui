@@ -47,14 +47,20 @@
                     </div>
 
                     <div class="pull-left botao">
+                        
+                            <div class="form-group">
+                                
+                                @if(!$proposal->disapproved_at && !$proposal->approved_at)
+                                    {{ Form::submit('Aprovar!',
+                                    array('name' => 'approvalBtn', 'class'=>'btn btn-primary botao')) }}
 
-                        <div class="form-group">
-                            {{ Form::submit('Aprovar!',
-                              array('name' => 'approvalBtn', 'class'=>'btn btn-primary botao')) }}
-
-                            {{ Form::submit('Desaprovar',
-                               array('name' => 'disapprovalBtn', 'class'=>'btn btn-danger botao')) }}
-                        </div>
+                                    {{ Form::submit('Desaprovar',
+                                    array('name' => 'disapprovalBtn', 'class'=>'btn btn-danger botao')) }}
+                                @elseif($proposal->approved_at)
+                                    {{ Form::submit('Remover aprovação',
+                                    array('name' => 'disapprovalBtn', 'class'=>'btn btn-danger botao')) }}
+                                @endif
+                                </div>
 
                     </div>
 

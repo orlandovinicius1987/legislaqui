@@ -39,6 +39,7 @@
                                             <th>Id</th>
                                             <th>Nome</th>
                                             <th>Enviar para Comissão</th>
+                                            <th>Moderação</th>
                                         </tr>
                                         </thead>
 
@@ -49,6 +50,7 @@
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
                                                 <td><a href="{{ route('admin.proposal.toCommittee', $approved->id) }}" class="btn btn-danger">Enviar</a></td>
+                                                <td><a href="{{ route('admin.proposal.response', ['id' => $approved->id]) }}" class="btn btn-info botao" role="button"><i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar esta ideia!</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -57,6 +59,7 @@
                                             <th>Id</th>
                                             <th>Nome</th>
                                             <th>Enviar para Comissão</th>
+                                            <th>Moderação</th>
                                         </tr>
                                         </tfoot>
                                     </table>
