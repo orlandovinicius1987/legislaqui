@@ -6,8 +6,9 @@
  * Time: 14:11.
  */
 
-namespace App;
+namespace App\Data\Models;
 
+use App\Data\Models\Proposal;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use OwenIt\Auditing\Auditable as AuditableI;
 use OwenIt\Auditing\Contracts\Auditable;
@@ -23,7 +24,7 @@ class Like extends Eloquent implements Auditable
         'proposal_id',
         'uuid',
         'ip_address',
-        'like',
+        'like'
     ];
     protected $table = 'likes';
 

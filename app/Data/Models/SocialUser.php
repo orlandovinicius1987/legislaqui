@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Data\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -9,7 +9,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 
 class SocialUser extends Model implements Auditable
 {
-    use AuditableI,SoftDeletes;
+    use AuditableI, SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
@@ -23,6 +23,6 @@ class SocialUser extends Model implements Auditable
     // Socialite
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Data\Models\User');
     }
 }

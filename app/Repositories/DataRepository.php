@@ -8,8 +8,8 @@
 
 namespace App\Repositories;
 
-use App\Role;
-use App\State;
+use App\Data\Models\Role;
+use App\Data\Models\State;
 
 class DataRepository
 {

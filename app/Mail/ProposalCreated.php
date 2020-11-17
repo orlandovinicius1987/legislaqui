@@ -1,7 +1,7 @@
 <?php
 namespace App\Mail;
 
-use App\Proposal as ProposalModel;
+use App\Data\Models\Proposal as ProposalModel;
 
 class ProposalCreated extends Mailable
 {

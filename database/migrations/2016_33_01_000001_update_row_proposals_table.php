@@ -1,6 +1,6 @@
 <?php
 
-use App\Proposal;
+use App\Data\Models\Proposal;
 use Illuminate\Database\Migrations\Migration;
 
 class UpdateRowProposalsTable extends Migration
@@ -13,7 +13,7 @@ class UpdateRowProposalsTable extends Migration
     public function up()
     {
         Proposal::where('in_committee', null)->update([
-            'in_committee' => false,
+            'in_committee' => false
         ]);
     }
 
@@ -25,7 +25,7 @@ class UpdateRowProposalsTable extends Migration
     public function down()
     {
         Proposal::where('in_committee', false)->update([
-            'in_committee' => null,
+            'in_committee' => null
         ]);
     }
 }

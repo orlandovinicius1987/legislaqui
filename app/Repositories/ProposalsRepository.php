@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use App\Events\ProposalReachedApprovalGoal;
-use App\Proposal;
-use App\User;
+use App\Data\Models\Proposal;
+use App\Data\Models\User;
 use Auth;
 use Carbon\Carbon;
 use DB;

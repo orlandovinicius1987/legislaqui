@@ -1,7 +1,7 @@
 <?php
 
-use App\Proposal;
-use App\User;
+use App\Data\Models\Proposal;
+use App\Data\Models\User;
 use Faker\Factory;
 
 //use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -20,7 +20,7 @@ class ProposalsTest extends \Tests\TestCase
         $this->seeInDatabase('proposals', ['name' => $proposal->name]);
 
         //Not use Eloquent
-        $proposal = factory(App\Proposal::class)->create();
+        $proposal = factory(\App\Data\Models\Proposal::class)->create();
 
         $this->visit('/proposals/' . $proposal->id);
         //         ->seeInDatabase('proposals', ['name' => $proposal->name]);
@@ -97,8 +97,8 @@ class ProposalsTest extends \Tests\TestCase
     public function testProposalPaginates()
     {
         // isso serve para alguma coisa?!
-        factory(App\Proposal::class, 50)->create();
-        $proposals = App\Proposal::paginate(20);
+        factory(\App\Data\Models\Proposal::class, 50)->create();
+        $proposals = \App\Data\Models\Proposal::paginate(20);
         $this->assertEquals(20, $proposals->count());
     }
 

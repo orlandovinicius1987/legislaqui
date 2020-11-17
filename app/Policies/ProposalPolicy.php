@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Proposal;
-use App\User;
+use App\Data\Models\Proposal;
+use App\Data\Models\User;
 
 class ProposalPolicy
 {
@@ -20,8 +20,8 @@ class ProposalPolicy
     /**
      * Determine if the given proposal can be bypassed to committee by the user.
      *
-     * @param \App\User     $user
-     * @param \App\Proposal $proposal
+     * @param \App\Data\Models\User     $user
+     * @param \App\Data\Models\Proposal $proposal
      *
      * @return bool
      */
@@ -33,8 +33,8 @@ class ProposalPolicy
     /**
      * Determine if the given proposal can be updated by the user.
      *
-     * @param \App\User     $user
-     * @param \App\Proposal $proposal
+     * @param \App\Data\Models\User     $user
+     * @param \App\Data\Models\Proposal $proposal
      *
      * @return bool
      */
@@ -48,8 +48,8 @@ class ProposalPolicy
     /**
      * Determine if the given proposal can be destroyed by the user.
      *
-     * @param \App\User     $user
-     * @param \App\Proposal $proposal
+     * @param \App\Data\Models\User     $user
+     * @param \App\Data\Models\Proposal $proposal
      *
      * @return bool
      */

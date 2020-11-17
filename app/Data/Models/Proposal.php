@@ -1,10 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Data\Models;
 
+use App\Data\Models\Approval;
+use App\Data\Models\BillsProject;
 use App\Data\Repositories\Notifications;
+use App\Data\Models\Like;
 use App\Notifications\SendProposalChanged;
 use App\Notifications\SendProposalCreated;
+use App\Data\Models\ProposalFollow;
+use App\Data\Models\Subject;
+use App\Data\Models\User;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;

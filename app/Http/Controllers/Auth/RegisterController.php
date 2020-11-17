@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\City;
-use App\State;
-use App\User;
+use App\Data\Models\City;
+use App\Data\Models\State;
+use App\Data\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
