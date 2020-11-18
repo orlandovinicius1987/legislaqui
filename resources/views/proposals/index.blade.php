@@ -21,7 +21,7 @@
 
         </div>
 
-        <form class="my-auto w-100 d-inline-block order-1" action="{{ route('home.post') }}" method="post">
+        <form id="filter-proposals" class="my-auto w-100 d-inline-block order-1" action="{{ route('home.post') }}" method="post">
             @csrf
             <div class="row">
                 <div class="col-12 col-md-8 col-lg-9">
@@ -56,7 +56,7 @@
 
             <div class="row mb-4 controles">
                 <div class="col-12">
-                    {{ Form::select('state', $states, $state, ['data-width'=>'100%','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'']) }}
+                    {{ Form::select('state', $states, $state, ['id'=>'state-select','data-width'=>'100%','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'']) }}
                 </div>
             </div>
         </form>
