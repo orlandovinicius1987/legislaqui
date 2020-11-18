@@ -41,6 +41,7 @@
                                             <th>Curtidas</th>
                                             <th>Apoios</th>
                                             <th>Situação</th>
+                                            <th>Moderação</th>
                                         </tr>
                                         </thead>
 
@@ -69,18 +70,13 @@
                                                         @endif
                                                    @endif
                                                 </td>
-                                            </tr>
+                                                @if($approved->isModeratable())
+                                                    <td><a href="{{ route('admin.proposal.response', ['id' => $approved->id]) }}" class="btn btn-info botao" role="button"><i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar esta ideia!</a>  </td>
+                                                @endif
+                                                </tr>
                                         @endforeach
                                         </tbody>
-                                        <tfoot>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Nome</th>
-                                            <th>Curtidas</th>
-                                            <th>Apoios</th>
-                                            <th>Situação</th>
-                                        </tr>
-                                        </tfoot>
+                                        
                                     </table>
                                 </div>
                             </div>

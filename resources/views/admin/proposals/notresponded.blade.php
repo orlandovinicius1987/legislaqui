@@ -67,13 +67,7 @@
 
 
                                         </tbody>
-                                        <tfoot>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Nome</th>
-                                            <th>Não Moderadas</th>
-                                        </tr>
-                                        </tfoot>
+                                        
                                     </table>
                                 </div>
                             </div>

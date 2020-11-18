@@ -47,14 +47,24 @@
                     </div>
 
                     <div class="pull-left botao">
+                        
+                            <div class="form-group">
+                                
+                                @if($proposal->state == App\Enums\ProposalState::NotModerated)
+                                    {{ Form::submit('Aprovar!',
+                                    array('name' => 'approvalBtn', 'class'=>'btn btn-primary botao')) }}
 
-                        <div class="form-group">
-                            {{ Form::submit('Aprovar!',
-                              array('name' => 'approvalBtn', 'class'=>'btn btn-primary botao')) }}
+                                    {{ Form::submit('Desaprovar',
+                                    array('name' => 'disapprovalBtn', 'class'=>'btn btn-danger botao')) }}
+                                @elseif($proposal->state == App\Enums\ProposalState::Approved)
+                                    {{ Form::submit('Remover aprovação',
+                                    array('name' => 'disapprovalBtn', 'class'=>'btn btn-danger botao')) }}
+                                @elseif($proposal->state == App\Enums\ProposalState::Disapproved)
+                                    {{ Form::submit('Aprovar!',
+                                    array('name' => 'approvalBtn', 'class'=>'btn btn-primary botao')) }}
 
-                            {{ Form::submit('Desaprovar',
-                               array('name' => 'disapprovalBtn', 'class'=>'btn btn-danger botao')) }}
-                        </div>
+                                @endif
+                                </div>
 
                     </div>
 

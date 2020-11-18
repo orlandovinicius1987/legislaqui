@@ -45,7 +45,8 @@
                                             {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Dislikes: activate to sort column ascending" style="width: 214px;">Dislikes</th>--}}
                                             {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Rating: activate to sort column ascending" style="width: 168px;">Rating</th>--}}
                                             <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Apoios: activate to sort column ascending" style="width: 168px;">Apoios</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Publicação</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Status</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="" style="width: 168px;">Moderação</th>
                                             {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Resposta</th>--}}
                                         </tr>
                                         </thead>
@@ -66,20 +67,44 @@
                                                 <td>{{ $proposal->approvals()->count() }}</td>
 
                                                 {{--Proposal Moderation--}}
-                                                <td class="text-center">
+                                                <td >
                                                     {{--{{$proposal->moderation($proposal->id)}}--}}
                                                     {{--@if () === null)--}}
                                                         {{--<a href="{{ route('admin.proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a>--}}
                                                     {{--@endif--}}
-                                                    @if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
+                                                    @if ($proposal->state == App\Enums\ProposalState::Approved)
+                                                        <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i> Aprovada
+                                                    @elseif ($proposal->state == App\Enums\ProposalState::NotModerated)
+                                                        <i class="fa fa-circle-o-notch" aria-hidden="true"></i> Aguardando moderação
+                                                    @elseif ($proposal->state == App\Enums\ProposalState::Disapproved)
+                                                        <i class="fa fa-times-circle-o" aria-hidden="true"></i> Desaprovada
+                                                    @elseif ($proposal->state == App\Enums\ProposalState::Supported)
+                                                        <i class="fa fa-commenting-o" aria-hidden="true"></i> Apoiada
+                                                    @elseif ($proposal->state == App\Enums\ProposalState::Expired)
+                                                        <i class="fa fa-hourglass-o" aria-hidden="true"></i> Expirada
+                                                    @elseif ($proposal->state == App\Enums\ProposalState::Sent)
+                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Enviada para comissão
+                                                    @elseif ($proposal->state == App\Enums\ProposalState::Forwarded)
+                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Encaminhada
+                                                    @elseif ($proposal->state == App\Enums\ProposalState::NotForwarded)
+                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Não encaminhada
+                                                    @elseif ($proposal->state == App\Enums\ProposalState::BillProject)
+                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Projeto de Lei
+                                                    @endif
+                                                </td>
+
+                                                
+                                                
+                                                
+
+                                                <td class="text-center">
+                                                   
+                                                    @if ($proposal->isModeratable())
+                                                        
                                                         <a href="{{ route('admin.proposal.response', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
-                                                            <i class="fa fa-cog fa-spin fa fa-fw"></i> Publicar essa Ideia! </a>
-                                                    @else
-                                                        @if ($proposal->approved_at)
-                                                            <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i> Já Publicada
-                                                        @else
-                                                            <i class="fa fa-times-circle text-warning" aria-hidden="true"></i> Desaprovada
-                                                        @endif
+                                                            <i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa ideia! </a>
+                                                   
+                                                       
                                                     @endif
                                                 </td>
 
@@ -99,17 +124,7 @@
                                         @endforeach
 
                                         </tbody>
-                                        <tfoot>
-                                        <tr>
-                                            <th rowspan="1" colspan="1">Id</th>
-                                            <th rowspan="1" colspan="1">Nome</th>
-                                            <th rowspan="1" colspan="1">Curtidas</th>
-                                            {{--<th rowspan="1" colspan="1">Dislikes</th>--}}
-                                            {{--<th rowspan="1" colspan="1">Rating</th>--}}
-                                            <th rowspan="1" colspan="1">Apoiamentos</th>
-                                            <th rowspan="1" colspan="1">Resposta</th>
-                                        </tr>
-                                        </tfoot>
+                                        
                                     </table>
 
                             <!-- <td> {{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}} </td>-->
