@@ -45,7 +45,7 @@
                                             {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Dislikes: activate to sort column ascending" style="width: 214px;">Dislikes</th>--}}
                                             {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Rating: activate to sort column ascending" style="width: 168px;">Rating</th>--}}
                                             <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Apoios: activate to sort column ascending" style="width: 168px;">Apoios</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Publicação</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Status</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="" style="width: 168px;">Moderação</th>
                                             {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Resposta: activate to sort column ascending" style="width: 168px;">Resposta</th>--}}
                                         </tr>
@@ -84,9 +84,18 @@
                                                         <i class="fa fa-hourglass-o" aria-hidden="true"></i> Expirada
                                                     @elseif ($proposal->state == App\Enums\ProposalState::Sent)
                                                         <i class="fa fa-exchange" aria-hidden="true"></i> Enviada para comissão
+                                                    @elseif ($proposal->state == App\Enums\ProposalState::Forwarded)
+                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Encaminhada
+                                                    @elseif ($proposal->state == App\Enums\ProposalState::NotForwarded)
+                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Não encaminhada
+                                                    @elseif ($proposal->state == App\Enums\ProposalState::BillProject)
+                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Projeto de Lei
                                                     @endif
                                                 </td>
 
+                                                
+                                                
+                                                
 
                                                 <td class="text-center">
                                                    
