@@ -389,32 +389,15 @@ class ProposalsRepository
     public function filterProposals($q, $s)
     {
         if (empty($q)) {
-            $q = 'open';
+            $q = 'All';
         }
 
         $query = Proposal::query();
 
-        switch ($q) {
-            case 'open':
-                $query->ofState(ProposalState::Approved);
-                break;
-            case 'committee':
-                $query->ofState(ProposalState::Sent);
-                break;
-            case 'expired':
-                $query->ofState(ProposalState::Expired);
-                break;
-            case 'disapproved':
-                $query->ofState(ProposalState::NotForwarded);
-                break;
-            case 'approved':
-                $query->ofState(ProposalState::Forwarded);
-                break;
-        }
+        $query->ofState(ProposalState::getInstances()[$q]->value);
 
         $this->buildSearch($query, $s);
         $query->orderBy('created_at', 'desc');
-        //            ->orderBy('approvals_count', 'desc');
 
         return $query;
     }
