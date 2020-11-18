@@ -513,6 +513,7 @@ class AdminController extends Controller
             $proposal->disapproved_at = Carbon::now();
             $proposal->disapproved_by = Auth::user()->id;
             $proposal->approved_by = null;
+            $proposal->approved_at = null;
 
             //Create ProposalHistory Object
             $proposal_history = new ProposalHistory();

@@ -69,14 +69,7 @@
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        <tfoot>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Nome</th>
-                                            <th>Situação</th>
-                                            {{--<th>Sem Resposta</th>--}}
-                                        </tr>
-                                        </tfoot>
+                                        
                                     </table>
                                 </div>
                             </div>

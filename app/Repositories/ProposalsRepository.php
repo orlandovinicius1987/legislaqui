@@ -101,19 +101,21 @@ class ProposalsRepository
     public function publish($id)
     {
         $proposal = $this->find($id);
-
+    
         //Append Moderation Info only if never been Moderated before
         if (
             $proposal->approved_at == null &&
-            $proposal->approved_by == null &&
-            $proposal->disapproved_at == null &&
-            $proposal->disapproved_by == null
+            $proposal->approved_by == null 
         ) {
             $proposal->approved_at = Carbon::now();
             $proposal->approved_by = Auth::user()->id;
+            $proposal->disapproved_at = null;
+            $proposal->disapproved_by = null; 
+            
             //Save
             $proposal->save();
         }
+
 
         return $proposal;
     }

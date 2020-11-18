@@ -50,15 +50,19 @@
                         
                             <div class="form-group">
                                 
-                                @if(!$proposal->disapproved_at && !$proposal->approved_at)
+                                @if($proposal->state == App\Enums\ProposalState::NotModerated)
                                     {{ Form::submit('Aprovar!',
                                     array('name' => 'approvalBtn', 'class'=>'btn btn-primary botao')) }}
 
                                     {{ Form::submit('Desaprovar',
                                     array('name' => 'disapprovalBtn', 'class'=>'btn btn-danger botao')) }}
-                                @elseif($proposal->approved_at)
+                                @elseif($proposal->state == App\Enums\ProposalState::Approved)
                                     {{ Form::submit('Remover aprovação',
                                     array('name' => 'disapprovalBtn', 'class'=>'btn btn-danger botao')) }}
+                                @elseif($proposal->state == App\Enums\ProposalState::Disapproved)
+                                    {{ Form::submit('Aprovar!',
+                                    array('name' => 'approvalBtn', 'class'=>'btn btn-primary botao')) }}
+
                                 @endif
                                 </div>
 
