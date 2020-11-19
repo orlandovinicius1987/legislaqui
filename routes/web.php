@@ -341,6 +341,11 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
         'uses' => 'AdminController@billProject',
     ]);
 
+    Route::get('admin/proposals/bill-project-sidebar', [
+        'as' => 'admin.proposal.billProjectSidebar',
+        'uses' => 'AdminController@billProjectSidebar',
+    ]);
+
     Route::patch('admin/proposals/{id}/update-bill-project', [
         'as' => 'admin.proposal.updateBillProject',
         'uses' => 'AdminController@updateBillProject',
