@@ -316,7 +316,6 @@ class Proposal extends Eloquent implements Auditable
                             ->where('in_committee', 0)
                             ->whereNull('approved_at')
                             ->whereNull('disapproved_at');
-
                         break;
                     case ProposalState::Approved:
                         //Aprovada, não atingiu o limite e não expirou
@@ -329,6 +328,7 @@ class Proposal extends Eloquent implements Auditable
                                 '(select count(*) from approvals a where a.proposal_id = proposals.id) < ' .
                                     config('global.approvalGoal')
                             )
+                            ->whereDate('limit_date', '>=', now())
                             ->whereNotNull('approved_at')
                             ->whereNull('disapproved_at');
 
