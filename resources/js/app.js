@@ -40,23 +40,7 @@ window.Vue = require('vue')
 const app = new Vue({
     el: '#app',
 
-    methods: {
-        changePerPage($event) {
-            const pageSize = $event.target.value
-
-            $('#filter-proposals').submit(function() {
-                $(this).append(
-                    '<input id="per_page" type="hidden" name="per_page" value=' +
-                        pageSize +
-                        ' /> ',
-                )
-                $(this).append(
-                    '<input id="page" type="hidden" name="page" value="1" /> ',
-                )
-                return true
-            })
-        },
-    },
+    methods: {},
 
     mounted() {
         $('select').selectpicker()
