@@ -21,7 +21,7 @@
 
         </div>
 
-        <form class="my-auto w-100 d-inline-block order-1" action="{{ route('home.post') }}" method="post">
+        <form id="filter-proposals" class="my-auto w-100 d-inline-block order-1" action="{{ route('home.post') }}" method="post">
             @csrf
             <div class="row">
                 <div class="col-12 col-md-8 col-lg-9">
@@ -55,8 +55,17 @@
             </div>
 
             <div class="row mb-4 controles">
-                <div class="col-12">
-                    {{ Form::select('state', $states, $state, ['data-width'=>'100%','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'']) }}
+                <div class="col-3">
+                    {{ Form::select('state', $states, $state ,['data-width'=>'100%','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'Situação']) }}
+                </div>
+                <div class="col-3">
+                    {{ Form::select('per_page', $pageSizes, $per_page ,['data-width'=>'100%','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'Resultados por página']) }}
+                </div>
+                <div class="col-3">
+                    {{ Form::select('order_by', $orderBys, $order_by ,['data-width'=>'100%','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'Ordenar por']) }}
+                </div>
+                <div class="col-3">
+                    {{ Form::select('subject', $subjects, $selected_subjects, ['name'=>'selected_subjects[]','multiple','data-width'=>'100%','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'Assuntos','data-selected-text-format="count"']) }}
                 </div>
             </div>
         </form>
@@ -111,7 +120,7 @@
 
         <div class="row">
             <div class="col-12 mt-3">
-                {!! $proposals->links() !!}
+                {{ $proposals->appends(Request::except('page'))->links() }}
             </div>
         </div>
 

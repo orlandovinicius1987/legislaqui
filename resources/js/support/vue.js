@@ -62,17 +62,17 @@ Vue.component(
 import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue)
 
-/**
- * Autoload Vue components
- */
-const file = require.context('../components/app/', true, /\.vue$/i)
-file.keys().map(file => {
-    const name = 'App' + _.last(file.split('/')).split('.')[0]
-
-    return Vue.component(name, () =>
-        import('../components/app/' + basename(file)),
-    )
-})
+// /**
+//  * Autoload Vue components
+//  */
+// const file = require.context('../components/app/', true, /\.vue$/i)
+// file.keys().map(file => {
+//     const name = 'App' + _.last(file.split('/')).split('.')[0]
+//
+//     return Vue.component(name, () =>
+//         import('../components/app/' + basename(file)),
+//     )
+// })
 
 /**
  * Vue The Mask

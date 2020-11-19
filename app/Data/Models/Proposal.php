@@ -6,6 +6,7 @@ use App\Data\Models\Approval;
 use App\Data\Models\BillsProject;
 use App\Data\Repositories\Notifications;
 use App\Data\Models\Like;
+use App\Data\Scopes\ViewableProposals;
 use App\Notifications\SendProposalChanged;
 use App\Notifications\SendProposalCreated;
 use App\Data\Models\ProposalFollow;
@@ -48,6 +49,8 @@ class Proposal extends Eloquent implements Auditable
     protected $appends = ['days_left', 'subject_ids_array'];
 
     protected $with = ['subjects'];
+
+    public $orderBy = ['field' => 'pub_date', 'order' => 'desc'];
 
     //protected $guarded = ['id', 'pub_date', 'limit_date'];
 
@@ -311,7 +314,6 @@ class Proposal extends Eloquent implements Auditable
                             ->whereNull('disapproved_at_committee')
                             ->whereNull('approved_at_committee')
                             ->where('in_committee', 0)
-                            ->having('approval_goal', 0)
                             ->whereNull('approved_at')
                             ->whereNull('disapproved_at');
 
@@ -354,7 +356,8 @@ class Proposal extends Eloquent implements Auditable
                                 '(select count(*) from approvals a where a.proposal_id = proposals.id) >= ' .
                                     config('global.approvalGoal')
                             )
-                            ->whereNull('disapproved_at');
+                            ->whereNull('disapproved_at')
+                            ->whereNotNull('approved_at');
                         break;
                     case ProposalState::Expired:
                         $query
@@ -367,36 +370,49 @@ class Proposal extends Eloquent implements Auditable
                                     config('global.approvalGoal')
                             )
                             ->whereDate('limit_date', '<', now())
-                            ->whereNull('disapproved_at');
+                            ->whereNull('disapproved_at')
+                            ->whereNotNull('approved_at');
                         break;
                     case ProposalState::Sent:
                         $query
                             ->whereNull('bill_project_id')
                             ->whereNull('disapproved_at_committee')
                             ->whereNull('approved_at_committee')
-                            ->where('in_committee', 1);
+                            ->where('in_committee', 1)
+                            ->whereNotNull('approved_at');
                         break;
                     case ProposalState::Forwarded:
                         $query
                             ->whereNull('bill_project_id')
                             ->whereNull('disapproved_at_committee')
                             ->whereNotNull('approved_at_committee')
-                            ->where('in_committee', 1);
+                            ->where('in_committee', 1)
+                            ->whereNotNull('approved_at');
                         break;
                     case ProposalState::NotForwarded:
                         $query
                             ->whereNull('bill_project_id')
                             ->whereNotNull('disapproved_at_committee')
                             ->whereNull('approved_at_committee')
-                            ->where('in_committee', 1);
+                            ->where('in_committee', 1)
+                            ->whereNotNull('approved_at');
                         break;
                     case ProposalState::BillProject:
-                        $query->whereNotNull('bill_project_id');
+                        $query
+                            ->whereNotNull('bill_project_id')
+                            ->whereNotNull('approved_at');
                         break;
                 }
             });
         });
 
         return $query;
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new ViewableProposals());
     }
 }

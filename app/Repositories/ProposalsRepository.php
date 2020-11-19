@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Data\Repositories\Repository;
 use App\Enums\ProposalState;
 use App\Events\ProposalReachedApprovalGoal;
 use App\Data\Models\Proposal;
@@ -12,9 +13,34 @@ use DB;
 use Illuminate\Support\Facades\Mail;
 use Session;
 
-class ProposalsRepository
+class ProposalsRepository extends Repository
 {
     private $searchColumns = ['name', 'problem', 'idea_exposition', 'response'];
+
+    public function getOrderByVariables($data)
+    {
+        return [
+            'order_by' =>
+                isset($data['order_by']) && $data['order_by']
+                    ? $data['order_by']
+                    : json_encode([
+                        'field' => 'pub_date',
+                        'order' => 'desc'
+                    ]),
+
+            'orderBys' => [
+                json_encode([
+                    'field' => 'pub_date',
+                    'order' => 'desc'
+                ]) => 'Do mais recente ao mais antigo',
+
+                json_encode([
+                    'field' => 'pub_date',
+                    'order' => 'asc'
+                ]) => 'Do mais antigo ao mais recente'
+            ]
+        ];
+    }
 
     public function ofState($states)
     {
@@ -101,21 +127,17 @@ class ProposalsRepository
     public function publish($id)
     {
         $proposal = $this->find($id);
-    
+
         //Append Moderation Info only if never been Moderated before
-        if (
-            $proposal->approved_at == null &&
-            $proposal->approved_by == null 
-        ) {
+        if ($proposal->approved_at == null && $proposal->approved_by == null) {
             $proposal->approved_at = Carbon::now();
             $proposal->approved_by = Auth::user()->id;
             $proposal->disapproved_at = null;
-            $proposal->disapproved_by = null; 
-            
+            $proposal->disapproved_by = null;
+
             //Save
             $proposal->save();
         }
-
 
         return $proposal;
     }
@@ -389,7 +411,7 @@ class ProposalsRepository
     /**
      * @return mixed
      */
-    public function filterProposals($q, $s)
+    public function filterProposals($q, $subjectsIds, $s)
     {
         if (empty($q)) {
             $q = 'All';
@@ -399,8 +421,17 @@ class ProposalsRepository
 
         $query->ofState(ProposalState::getInstances()[$q]->value);
 
+        if ($subjectsIds) {
+            $query->whereExists(function ($query) use ($subjectsIds) {
+                $query
+                    ->select(DB::raw(1))
+                    ->from('proposal_subject')
+                    ->whereRaw('proposal_id = "proposals".id')
+                    ->whereIn('subject_id', $subjectsIds);
+            });
+        }
+
         $this->buildSearch($query, $s);
-        $query->orderBy('created_at', 'desc');
 
         return $query;
     }
