@@ -19,7 +19,7 @@ class ViewableProposals extends Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $user = current_user();
+        $user = auth()->user();
         if (static::$enabled) {
             if (!$user || !$user->is_admin) {
                 $builder->where(function ($builder) use ($user) {

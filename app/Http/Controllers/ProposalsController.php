@@ -14,7 +14,6 @@ use App\Data\Models\Proposal;
 use App\Data\Models\ProposalFollow;
 use App\Data\Models\ProposalHistory;
 use App\Repositories\ProposalsRepository;
-use App\Services\PerPage\PerPageService;
 use Auth;
 use Carbon\Carbon;
 use Cookie;
