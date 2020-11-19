@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\Data\Repositories\Traits\DataProcessing;
+use App\Data\Repositories\Traits\OrderBy;
+use App\Data\Repositories\Traits\PerPage;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
@@ -16,7 +18,7 @@ use App\Data\Scopes\Active as ActiveScope;
 
 abstract class Repository
 {
-    use DataProcessing;
+    use DataProcessing, PerPage, OrderBy;
 
     /**
      * @var
@@ -118,8 +120,6 @@ abstract class Repository
     {
         $queryFilter = $this->getQueryFilter();
 
-        info(request()->toArray());
-
         $this->filterText($queryFilter, $query);
 
         $this->order($query);
@@ -136,10 +136,7 @@ abstract class Repository
                 $this->getPageSize($queryFilter),
                 ['*'],
                 'page',
-                $queryFilter->pagination &&
-                $queryFilter->pagination->currentPage
-                    ? $queryFilter->pagination->currentPage
-                    : 1
+                $queryFilter->pagination->currentPage ?? 1
             )
         );
     }
@@ -170,7 +167,10 @@ abstract class Repository
      */
     protected function filterText($filter, $query)
     {
-        if ($text = $filter['filter']['text']) {
+        if (
+            isset($filter['filter']['text']) &&
+            ($text = $filter['filter']['text'])
+        ) {
             $this->filterAllColumns($query, $text);
         }
 
@@ -355,11 +355,11 @@ abstract class Repository
                     'from' => ($from =
                         ($data->currentPage() - 1) * $data->perPage() + 1),
                     'to' => $from + count($data->items()) - 1,
-                    'pages' => $this->generatePages($data),
-                ],
+                    'pages' => $this->generatePages($data)
+                ]
             ],
             'filter' => $this->getQueryFilter()['filter'],
-            'rows' => $this->transform($data->items()),
+            'rows' => $this->transform($data->items())
         ];
     }
 
@@ -514,9 +514,7 @@ abstract class Repository
     protected function getPageSize($queryFilter)
     {
         return $this->paginate
-            ? ($queryFilter->pagination && $queryFilter->pagination->perPage
-                ? $queryFilter->pagination->perPage
-                : 10)
+            ? $queryFilter->pagination->perPage ?? 10
             : 10000;
     }
 }

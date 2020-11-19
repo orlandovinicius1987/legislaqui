@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 use OwenIt\Auditing\Auditable as AuditableI;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class Subject extends Eloquent implements Auditable
+class Subject extends Model implements Auditable
 {
     use AuditableI;
 

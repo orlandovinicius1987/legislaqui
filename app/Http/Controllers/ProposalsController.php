@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Models\Subject;
 use App\Data\Repositories\Subjects;
 use App\Enums\ProposalState;
 use App\Events\ProposalChanged;
@@ -13,6 +14,7 @@ use App\Data\Models\Proposal;
 use App\Data\Models\ProposalFollow;
 use App\Data\Models\ProposalHistory;
 use App\Repositories\ProposalsRepository;
+use App\Services\PerPage\PerPageService;
 use Auth;
 use Carbon\Carbon;
 use Cookie;
@@ -36,18 +38,30 @@ class ProposalsController extends Controller
 
     public function index(ProposalSearchRequest $request)
     {
-        $state = $request->get('state');
-        $s = $request->get('search');
+        $data = $request->all() ?? [];
+        $state = $data['state'] ?? null;
+        $searchString = $data['search'] ?? null;
+        $selected_subjects = $data['selected_subjects'] ?? [];
 
-        $resultSet = $this->proposalsRepository
-            ->filterProposals($state, $s)
-            ->paginate(config('global.pagination'));
+        $query = $this->proposalsRepository->filterProposals(
+            $state,
+            $selected_subjects,
+            $searchString
+        );
+
+        $query = $this->proposalsRepository->orderBy($query, $data);
+
+        $proposals = $this->proposalsRepository->paginate($query, $data);
 
         return view('proposals.index')
             ->with('state', $state)
-            ->with('search', $s)
-            ->with('proposals', $resultSet)
-            ->with('states', ProposalState::getInstances());
+            ->with('search', $searchString)
+            ->with('proposals', $proposals)
+            ->with('states', ProposalState::getInstances())
+            ->with($this->proposalsRepository->getViewVariables($data))
+            ->with($this->proposalsRepository->getOrderByVariables($data))
+            ->with('subjects', Subject::all()->pluck('name', 'id'))
+            ->with('selected_subjects', $selected_subjects);
     }
 
     public function approval($id)

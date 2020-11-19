@@ -49,6 +49,8 @@ class Proposal extends Eloquent implements Auditable
 
     protected $with = ['subjects'];
 
+    public $orderBy = ['field' => 'pub_date', 'order' => 'desc'];
+
     //protected $guarded = ['id', 'pub_date', 'limit_date'];
 
     // Proposal __belongs_to__ User

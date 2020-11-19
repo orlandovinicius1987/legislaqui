@@ -56,39 +56,9 @@ const app = new Vue({
                 return true
             })
         },
-
-        changeSelectFilter($event) {
-            const value = $event.target.value
-            const name = $event.target.name
-
-            $('#filter-proposals')
-                .submit(function() {
-                    $(this).append(
-                        '<input id="' +
-                            name +
-                            '" type="hidden" name=' +
-                            name +
-                            ' value=' +
-                            value +
-                            ' /> ',
-                    )
-                })
-                .submit()
-        },
     },
 
     mounted() {
         $('select').selectpicker()
-
-        const functionSelectFilter = this.changeSelectFilter
-        const functionPerPage = this.changePerPage
-
-        $('#state-select').on('change', function(e) {
-            functionSelectFilter(e)
-        })
-
-        $('#per-page-select').on('change', function(e) {
-            functionPerPage(e)
-        })
     },
 })
