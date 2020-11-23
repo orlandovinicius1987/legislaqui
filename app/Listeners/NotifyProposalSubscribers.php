@@ -3,8 +3,8 @@
 namespace App\Listeners;
 
 use App\Notifications\SendProposalChanged;
-use App\ProposalFollow;
-use App\User;
+use App\Data\Models\ProposalFollow;
+use App\Data\Models\User;
 use App\Events\ProposalChanged;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;

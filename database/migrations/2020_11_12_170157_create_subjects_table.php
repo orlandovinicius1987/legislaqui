@@ -3,16 +3,16 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Subject as SubjectModel;
+use App\Data\Models\Subject as SubjectModel;
 
 class CreateSubjectsTable extends Migration
 {
     public $subjects = [
         'Agricultura, Pecuária e Políticas Rural, Agrária e Pesqueira',
-        'Assuntos Da Criança, do Adolescente e do Idoso',
+        'Assuntos da Criança, do Adolescente e do Idoso',
         'Assuntos Municipais e de Desenvolvimento Regional',
         'Ciência e Tecnologia',
-        'Combate às DiscriminaçõES e Preconceitos de Raça, Cor, Etnia, Religião e Procedência Nacional',
+        'Combate às Discriminações e Preconceitos de Raça, Cor, Etnia, Religião e Procedência Nacional',
         'Constituição e Justiça',
         'Cultura',
         'Defesa Civil',
@@ -20,21 +20,21 @@ class CreateSubjectsTable extends Migration
         'Defesa do Meio Ambiente',
         'Defesa dos Direitos Da Mulher',
         'Defesa dos Direitos Humanos e Cidadania',
-        'Defesa e Proteção dos Animais No Estado do Rio de Janeiro',
+        'Defesa e Proteção dos Animais no Estado do Rio de Janeiro',
         'Economia, Indústria e Comércio',
         'Educação',
         'Emendas Constitucionais e Vetos',
         'Esporte e Lazer',
-        'IndicaçõES Legislativas',
+        'Indicações Legislativas',
         'Legislação Constitucional Complementar e Códigos',
         'Minas e Energia',
-        'Normas Internas e ProposiçõES Externas',
+        'Normas Internas e Proposições Externas',
         'Obras Públicas',
-        'orçamento, Finanças, Fiscalização Financeira e Controle',
-        'Para Prevenir e Combater a Pirataria No Estado do Rio de Janeiro',
-        'Pessoa Com Deficiência',
+        'Orçamento, Finanças, Fiscalização Financeira e Controle',
+        'Para Prevenir e Combater a Pirataria no Estado do Rio de Janeiro',
+        'Pessoa com Deficiência',
         'Política Urbana, Habitação e Assuntos Fundiários',
-        'Prevenção AO Uso de Drogas e Dependentes QUímicos Em Geral',
+        'Prevenção ao Uso de Drogas e Dependentes Químicos em Geral',
         'Redação',
         'Saneamento Ambiental',
         'Saúde',

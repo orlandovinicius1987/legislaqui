@@ -1,11 +1,12 @@
 <?php
-namespace App;
+namespace App\Data\Models;
 
+use App\Data\Models\Proposal;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use OwenIt\Auditing\Auditable as AuditableI;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class City extends Eloquent implements Auditable
+class Subject extends Model implements Auditable
 {
     use AuditableI;
 
@@ -13,8 +14,8 @@ class City extends Eloquent implements Auditable
 
     protected $dates = ['created_at', 'updated_at'];
 
-    public function user()
+    public function proposals()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(Proposal::class);
     }
 }

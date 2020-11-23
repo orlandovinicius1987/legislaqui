@@ -93,6 +93,18 @@
                                     {{ $proposal->user->name }}
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Assuntos
+                                </td>
+                                <td class="table-td-show">
+                                    {!! implode('</br> ',$proposal->subjects->map(function ($subject){
+                                        return $subject->name;
+                                    })->toArray()) !!}
+                                </td>
+                            </tr>
+
                             <tr>
                                 <td class="pl-4 ideia-labels">
                                     Data Publicação
@@ -150,32 +162,33 @@
                                 </td>
                             </tr>
                             {{-- if has response -> return response data, else null --}}
-                            <tr>
-                                <td class="pl-4 ideia-labels">
-                                    Autor Resposta
-                                </td>
-                                <td class="table-td-show">
-                                    {{ $proposal->responder ? $proposal->responder->name  : null }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pl-4 ideia-labels">
-                                    Resposta
-                                </td>
-                                <td class="table-td-show">
-                                    {{ $proposal->response ? $proposal->response : null }}
-                                </td>
-                            </tr>
-                            </tbody>
+{{--                            <tr>--}}
+{{--                                <td class="pl-4 ideia-labels">--}}
+{{--                                    Autor Resposta--}}
+{{--                                </td>--}}
+{{--                                <td class="table-td-show">--}}
+{{--                                    {{ $proposal->responder ? $proposal->responder->name  : null }}--}}
+{{--                                </td>--}}
+{{--                            </tr>--}}
+                            @if($proposal->response)
+                                <tr>
+                                    <td class="pl-4 ideia-labels">
+                                        Resposta
+                                    </td>
+                                    <td class="table-td-show">
+                                        {{ $proposal->response ? $proposal->response : null }}
+                                    </td>
+                                </tr>
+                            @endIf
                         </table>
                     </div>
 
                     <div class="card-footer">
                         <span class="curtidas">
-                            <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{$proposal->likeCount}} Curtidas
+                            <i class="fa fa-thumbs-{{$proposal->total_like_count < 0 ? 'down' : 'up'}}" aria-hidden="true"></i> {{$proposal->total_like_count }} Curtidas
                         </span>
                         <span class="apoios ml-3">
-                            <i class="fa fa-star" aria-hidden="true"></i> {{$proposal->approvals->count()}} Apoios
+                            <i class="fa fa-star" aria-hidden="true"></i> {{$proposal->approvals_count}} Apoios
                         </span>
                     </div>
 

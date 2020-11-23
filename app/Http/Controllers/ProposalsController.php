@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\Models\Subject;
 use App\Data\Repositories\Subjects;
+use App\Enums\ProposalState;
 use App\Events\ProposalChanged;
 use App\Events\ProposalWasCreated;
 use App\Http\Requests\ProposalFormRequest;
 use App\Http\Requests\ResponseFormRequest;
-use App\Like;
-use App\Proposal;
-use App\ProposalFollow;
-use App\ProposalHistory;
+use App\Data\Models\Like;
+use App\Data\Models\Proposal;
+use App\Data\Models\ProposalFollow;
+use App\Data\Models\ProposalHistory;
 use App\Repositories\ProposalsRepository;
 use Auth;
 use Carbon\Carbon;
@@ -19,6 +21,7 @@ use Gate;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\ProposalSearchRequest;
 
 class ProposalsController extends Controller
 {
@@ -32,23 +35,32 @@ class ProposalsController extends Controller
         $this->proposalsRepository = $proposalsRepository;
     }
 
-    public function index()
+    public function index(ProposalSearchRequest $request)
     {
-        // $proposals = Proposal::paginate(config('global.pagination'));
-        //         $proposals = $this->proposalsRepository->all()->paginate(config('global.pagination'));
-        //         return view('proposals.index')->with(compact('proposals'));
+        $data = $request->all() ?? [];
+        $state = $data['state'] ?? null;
+        $searchString = $data['search'] ?? null;
+        $selected_subjects = $data['selected_subjects'] ?? [];
 
-        $q = Input::get('q');
-        $s = Input::get('search');
+        $query = $this->proposalsRepository->filterProposals(
+            $state,
+            $selected_subjects,
+            $searchString
+        );
 
-        $resultSet = $this->proposalsRepository
-            ->filterProposals($q, $s)
-            ->paginate(config('global.pagination'));
+        $query = $this->proposalsRepository->orderBy($query, $data);
+
+        $proposals = $this->proposalsRepository->paginate($query, $data);
 
         return view('proposals.index')
-            ->with('query', $q)
-            ->with('search', $s)
-            ->with('proposals', $resultSet);
+            ->with('state', $state)
+            ->with('search', $searchString)
+            ->with('proposals', $proposals)
+            ->with('states', ProposalState::filterStates())
+            ->with($this->proposalsRepository->getViewVariables($data))
+            ->with($this->proposalsRepository->getOrderByVariables($data))
+            ->with('subjects', Subject::all()->pluck('name', 'id'))
+            ->with('selected_subjects', $selected_subjects);
     }
 
     public function approval($id)

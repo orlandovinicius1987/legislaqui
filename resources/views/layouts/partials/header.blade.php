@@ -41,12 +41,12 @@
                         <div class="dropdown-divider"></div>
 
                         <a href="{{ route('about.support') }}" class="dropdown-item">
-                            Como Apoiar uma Idéia
+                            Como apoiar uma ideia
                         </a>
                         <div class="dropdown-divider"></div>
 
                         <a href="{{ route('about.forwarding') }}" class="dropdown-item">
-                            Encaminhamento da Idéia
+                            Encaminhamento da ideia
                         </a>
                     </div>
 

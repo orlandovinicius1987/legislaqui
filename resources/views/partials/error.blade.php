@@ -165,16 +165,3 @@
 @if(Session::has('user_crud_msg'))
 <div class="alert alert-info">{{ Session::get('user_crud_msg') }}</div>
 @endif
-
-
-<script>
-    $(function() {
-        $('#flash-overlay-modal').modal('show');
-        $('#flash-overlay-modal').delay(3000).fadeOut(350);
-        $('#flash-overlay-modal').promise().done(function(){
-            // will be called when all the animations on the queue finish
-            $('#flash-overlay-modal').modal('hide');
-        });
-       $('#flash-overlay-modal').modal('hide');
-    });
-</script>

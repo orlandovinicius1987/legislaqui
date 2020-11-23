@@ -63,15 +63,7 @@
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        <tfoot>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Nome</th>
-                                            <th>Curtidas</th>
-                                            <th>Apoios</th>
-                                            <th>Moderação da Comissão</th>
-                                        </tr>
-                                        </tfoot>
+                                        
                                     </table>
                                 </div>
                             </div>

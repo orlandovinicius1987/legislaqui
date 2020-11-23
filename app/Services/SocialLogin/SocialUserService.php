@@ -10,7 +10,7 @@ namespace App\Services\SocialLogin;
 
 use App\Repositories\SocialUserRepository;
 use App\Repositories\UsersRepository;
-use App\SocialNetwork;
+use App\Data\Models\SocialNetwork;
 
 class SocialUserService
 {
@@ -97,12 +97,10 @@ class SocialUserService
                 ->where('social_network_id', $socialNetwork->id)
                 ->first())
         ) {
-            $userSocialNetwork = $user
-                ->socialNetworks()
-                ->save($socialNetwork, [
-                    'social_network_user_id' => $socialUser->getId(),
-                    'data' => json_encode($socialUser),
-                ]);
+            $userSocialNetwork = $user->socialNetworks()->save($socialNetwork, [
+                'social_network_user_id' => $socialUser->getId(),
+                'data' => json_encode($socialUser)
+            ]);
         }
     }
 }

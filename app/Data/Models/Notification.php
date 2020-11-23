@@ -2,7 +2,7 @@
 
 namespace App\Data\Models;
 
-use App\Proposal;
+use App\Data\Models\Proposal;
 use OwenIt\Auditing\Auditable as AuditableI;
 use OwenIt\Auditing\Contracts\Auditable;
 use Ramsey\Uuid\Uuid;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Notification extends Eloquent implements Auditable
 {
-    use AuditableI,Notifiable;
+    use AuditableI, Notifiable;
 
     /**
      * @var array
@@ -20,7 +20,7 @@ class Notification extends Eloquent implements Auditable
         'proposal_id',
         'subject',
         'destination',
-        'content_type',
+        'content_type'
     ];
 
     protected $table = 'notifications';

@@ -2,18 +2,50 @@
 
 namespace App\Repositories;
 
+use App\Data\Repositories\Repository;
+use App\Enums\ProposalState;
 use App\Events\ProposalReachedApprovalGoal;
-use App\Proposal;
-use App\User;
+use App\Data\Models\Proposal;
+use App\Data\Models\User;
 use Auth;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Facades\Mail;
 use Session;
 
-class ProposalsRepository
+class ProposalsRepository extends Repository
 {
     private $searchColumns = ['name', 'problem', 'idea_exposition', 'response'];
+
+    public function getOrderByVariables($data)
+    {
+        return [
+            'order_by' =>
+                isset($data['order_by']) && $data['order_by']
+                    ? $data['order_by']
+                    : json_encode([
+                        'field' => 'pub_date',
+                        'order' => 'desc'
+                    ]),
+
+            'orderBys' => [
+                json_encode([
+                    'field' => 'pub_date',
+                    'order' => 'desc'
+                ]) => 'Do mais recente ao mais antigo',
+
+                json_encode([
+                    'field' => 'pub_date',
+                    'order' => 'asc'
+                ]) => 'Do mais antigo ao mais recente'
+            ]
+        ];
+    }
+
+    public function ofState($states)
+    {
+        return Proposal::ofState($states)->get();
+    }
 
     public function all()
     {
@@ -97,14 +129,12 @@ class ProposalsRepository
         $proposal = $this->find($id);
 
         //Append Moderation Info only if never been Moderated before
-        if (
-            $proposal->approved_at == null &&
-            $proposal->approved_by == null &&
-            $proposal->disapproved_at == null &&
-            $proposal->disapproved_by == null
-        ) {
+        if ($proposal->approved_at == null && $proposal->approved_by == null) {
             $proposal->approved_at = Carbon::now();
             $proposal->approved_by = Auth::user()->id;
+            $proposal->disapproved_at = null;
+            $proposal->disapproved_by = null;
+
             //Save
             $proposal->save();
         }
@@ -146,6 +176,7 @@ class ProposalsRepository
     {
         return Proposal::where('approval_goal', true)
             ->where('in_committee', false)
+            ->whereNotNull('approved_by')
             ->orderBy('updated_at', 'desc')
             ->get();
     }
@@ -255,10 +286,16 @@ class ProposalsRepository
             'emails.proposal-goal-notification',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from(config('mail.from.address'),config('mail.from.name'));
+                $message->from(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc(config('mail.from.address'),config('mail.from.name'));
+                $message->bcc(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->subject(
                     'e-democracia: Notificação - Sua Proposta atingiu o número necessário de Apoios'
@@ -275,10 +312,16 @@ class ProposalsRepository
             'emails.proposal-approval-by-committee',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from(config('mail.from.address'),config('mail.from.name'));
+                $message->from(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc(config('mail.from.address'),config('mail.from.name'));
+                $message->bcc(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->subject(
                     'e-democracia: Notificação - Proposta aprovada pelo Comitê'
@@ -295,10 +338,16 @@ class ProposalsRepository
             'emails.proposal-closed-by-committee',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from(config('mail.from.address'),config('mail.from.name'));
+                $message->from(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc(config('mail.from.address'),config('mail.from.name'));
+                $message->bcc(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->subject(
                     'e-democracia: Notificação - Proposta encerrada pelo Comitê'
@@ -315,10 +364,16 @@ class ProposalsRepository
             'emails.proposal-time-limit',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from(config('mail.from.address'),config('mail.from.name'));
+                $message->from(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc(config('mail.from.address'),config('mail.from.name'));
+                $message->bcc(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->subject(
                     'e-democracia: Notificação - Proposta aprovada pelo Comitê'
@@ -335,10 +390,16 @@ class ProposalsRepository
             'emails.proposal-closed',
             ['proposal' => $proposal],
             function ($message) use ($proposal) {
-                $message->from(config('mail.from.address'),config('mail.from.name'));
+                $message->from(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->to($proposal->user->email, $proposal->user->name);
-                $message->bcc(config('mail.from.address'),config('mail.from.name'));
+                $message->bcc(
+                    config('mail.from.address'),
+                    config('mail.from.name')
+                );
 
                 $message->subject(
                     'e-democracia: Notificação - Proposta encerrada'
@@ -350,74 +411,30 @@ class ProposalsRepository
     /**
      * @return mixed
      */
-    public function filterProposals($q, $s)
+    public function filterProposals($q, $subjectsIds, $s)
     {
         if (empty($q)) {
-            $q = 'open';
+            $q = 'All';
         }
 
-        // Users cannot see what's not approved
-        if ($q == 'open') {
-            $query = Proposal::whereNotNull('approved_by');
-            $query
-                ->where(['open' => true, 'in_committee' => false])
-                ->withCount('approvals')
-                ->get();
-        }
+        $query = Proposal::query();
 
-        // Users can see proposals that have been disapproved, since them will be approved for a admin
-        if (
-            $q == 'committee' ||
-            $q == 'expired' ||
-            $q == 'disapproved' ||
-            $q == 'approved'
-        ) {
-            $query = Proposal::where(function ($query) {
+        if (is_string($q)) {
+            $q = json_decode($q);
+        }
+        $query->ofState($q);
+
+        if ($subjectsIds) {
+            $query->whereExists(function ($query) use ($subjectsIds) {
                 $query
-                    ->where('approved_by', '<>', null)
-                    ->orwhere('disapproved_by', '<>', null);
+                    ->select(DB::raw(1))
+                    ->from('proposal_subject')
+                    ->whereRaw('proposal_id = "proposals".id')
+                    ->whereIn('subject_id', $subjectsIds);
             });
-
-            if ($q == 'committee') {
-                $query
-                    ->where([
-                        'open' => true,
-                        'in_committee' => true,
-                        'approved_by_committee' => null,
-                        'disapproved_by_committee' => null
-                    ])
-                    ->withCount('approvals')
-                    ->get();
-            }
-
-            if ($q == 'expired') {
-                $query
-                    ->whereNotNull('time_limit_by')
-                    ->where(['open' => false, 'time_limit' => true])
-                    ->withCount('approvals')
-                    ->get();
-            }
-
-            if ($q == 'disapproved') {
-                $query
-                    ->whereNotNull('disapproved_by_committee')
-                    ->where('open', false)
-                    ->withCount('approvals')
-                    ->get();
-            }
-
-            if ($q == 'approved') {
-                $query
-                    ->whereNotNull('approved_by_committee') //->where('open', true)
-                    ->withCount('approvals')
-                    ->get();
-            }
         }
 
         $this->buildSearch($query, $s);
-        $query
-            ->orderBy('created_at', 'desc')
-            ->orderBy('approvals_count', 'desc');
 
         return $query;
     }

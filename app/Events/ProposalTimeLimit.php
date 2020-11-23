@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Proposal;
+use App\Data\Models\Proposal;
 use Illuminate\Queue\SerializesModels;
 
 class ProposalTimeLimit extends Event
