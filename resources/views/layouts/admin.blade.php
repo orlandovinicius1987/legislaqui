@@ -8,11 +8,8 @@
     <link href="{{ asset('/templates/admin/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- FontAwesome 4.6.3 -->
     {{--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />--}}
-
     <!-- FontAwesome 4.7.0 -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-
     <!-- Ionicons 2.0.0 -->
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
@@ -43,6 +40,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+
+
 </head>
 <body class="skin-blue">
 <div class="wrapper">
@@ -86,6 +85,10 @@
 </script>
 <!-- Bootstrap 3.3.2 JS -->
 <script src="{{ asset('/templates/admin/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+
+
+
+
 
 <!-- Morris.js charts -->
 {{--<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>--}}
@@ -205,6 +208,12 @@
         $("#cpf").mask("999.999.999-99");
     });
 </script>
+
+
+<!-- compiled -->
+<script src="{{mix('/js/admin/admin.js')}}"></script>
+<link href="{{ mix('/css/admin.css') }}" rel="stylesheet" type="text/css" />
+<!-- compiled -->
 
 </body>
 </html>

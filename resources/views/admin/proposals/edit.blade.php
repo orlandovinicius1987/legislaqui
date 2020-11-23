@@ -28,6 +28,11 @@
                     </div>
 
                     <div class="form-group">
+                        {{ Form::label('Assuntos') }}
+                        {{ Form::select('subjects', $subjects, $proposal->subject_ids_array, ['name'=>'subjects[]','data-width'=>'100%','multiple','data-selected-text-format="count"','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'Selecione os assuntos...']) }}
+                    </div>
+
+                    <div class="form-group">
                         {{ Form::label('Problema') }}
                         {{ Form::textarea('problem', null,
                             array('required',
