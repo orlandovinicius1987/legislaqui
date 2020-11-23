@@ -38,7 +38,9 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Curtidas</th>
+                                            @if(config('likes_enabled'))
+                                                <th>Curtidas</th>
+                                            @endIf
                                             <th>Apoios</th>
                                             <th>Moderação da Comissão</th>
                                         </tr>
@@ -54,7 +56,9 @@
                                                 {{--<td><a href="{{ route('admin.proposal.response', ['id' => $inCommittee->id]) }}" class="btn btn-info botao" role="button">--}}
                                                     {{--<i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa Ideia! </a></td>--}}
                                                 <td>{{$inCommittee->like_count - $inCommittee->unlike_count}}</td>
-                                                <td>{{$inCommittee->approvals()->count()}}</td>
+                                                @if(config('likes_enabled'))
+                                                    <td>{{$inCommittee->approvals()->count()}}</td>
+                                                @endIf
                                                 <td>
                                                     <a href="{{ route('admin.proposal.committeeApproval', $inCommittee->id) }}" class="btn btn-danger">Aprovar</a>
                                                     <a href="{{ route('admin.proposal.committeeDisapproval', $inCommittee->id) }}" class="btn btn-danger">Desaprovar</a>
