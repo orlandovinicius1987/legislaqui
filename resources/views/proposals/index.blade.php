@@ -14,7 +14,7 @@
                     Etiam ac vulputate ante, sit amet suscipit elit.
                 </div>
                 <div class="lead pb-3">
-                    <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=144" target="_blank">Clique aqui</a> para verificar se sua ideia já possui um projeto de lei existente
+                    Verifique se sua ideia já existe em forma de <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=55" target="_blank">lei</a> ou <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=144" target="_blank">projeto de lei</a>.
                 </div>
             </div>
 
