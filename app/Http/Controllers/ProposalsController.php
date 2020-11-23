@@ -56,7 +56,7 @@ class ProposalsController extends Controller
             ->with('state', $state)
             ->with('search', $searchString)
             ->with('proposals', $proposals)
-            ->with('states', ProposalState::getInstances())
+            ->with('states', ProposalState::filterStates())
             ->with($this->proposalsRepository->getViewVariables($data))
             ->with($this->proposalsRepository->getOrderByVariables($data))
             ->with('subjects', Subject::all()->pluck('name', 'id'))

@@ -16,9 +16,9 @@ abstract class Model extends Eloquent implements AuditableContract
 
     protected $dates = ['created_at', 'updated_at'];
 
-    protected $controlCreatedBy = true;
+    protected $controlCreatedBy = false;
 
-    protected $controlUpdatedBy = true;
+    protected $controlUpdatedBy = false;
 
     /**
      * Save the model to the database.

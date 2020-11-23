@@ -17,4 +17,25 @@ final class ProposalState extends Enum
     const Forwarded = 'Enviadas para projeto de lei';
     const NotForwarded = 'Não acatadas pela Comissão de normas';
     const BillProject = 'Viraram projeto de lei';
+
+    public static function filterStates()
+    {
+        return [
+            json_encode([self::All]) => 'Todas',
+            json_encode(self::openStates()) => 'Abertas',
+            json_encode([
+                self::Supported
+            ]) => 'Aguardando envio à Comissão de Normas',
+            json_encode([self::Sent]) => 'Em avaliação pela Comissão de Normas',
+            json_encode([self::Expired]) => 'Encerradas sem apoios suficientes',
+            json_encode([
+                self::BillProject
+            ]) => 'Transformadas em projeto de lei'
+        ];
+    }
+
+    public static function openStates()
+    {
+        return [self::Approved, self::Supported];
+    }
 }
