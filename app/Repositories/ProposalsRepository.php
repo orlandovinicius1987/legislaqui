@@ -419,7 +419,10 @@ class ProposalsRepository extends Repository
 
         $query = Proposal::query();
 
-        $query->ofState(ProposalState::getInstances()[$q]->value);
+        if (is_string($q)) {
+            $q = json_decode($q);
+        }
+        $query->ofState($q);
 
         if ($subjectsIds) {
             $query->whereExists(function ($query) use ($subjectsIds) {
