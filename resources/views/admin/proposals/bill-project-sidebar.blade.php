@@ -37,7 +37,7 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            @if(config('likes_enabled'))
+                                            @if(config('app.likes_enabled'))
                                                 <th>Curtidas</th>
                                             @endIf
                                             <th>Apoios</th>
@@ -54,7 +54,7 @@
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
                                                 {{--<td><a href="{{ route('admin.proposal.response', $approved->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
                                                 <td>{{$proposal->like_count - $proposal->unlike_count}}</td>
-                                                @if(config('likes_enabled'))
+                                                @if(config('app.likes_enabled'))
                                                     <td>{{$proposal->approvals()->count()}}</td>
                                                 @endIf
                                                 <td>Número: {{ $proposal->bill_project->number }}<br>

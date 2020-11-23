@@ -138,7 +138,7 @@
                                 </td>
                             </tr>
 
-                            @if(config('likes_enabled'))
+                            @if(config('app.likes_enabled'))
                                 <tr>
                                     <td class="pl-4 ideia-labels">
                                         Curtidas
@@ -188,17 +188,17 @@
                     </div>
 
                     <div class="card-footer">
-                        @if(config('likes_enabled'))
+                        @if(config('app.likes_enabled'))
                             <span class="curtidas">
                                 <i class="fa fa-thumbs-{{$proposal->total_like_count < 0 ? 'down' : 'up'}}" aria-hidden="true"></i> {{$proposal->total_like_count }} Curtidas
                             </span>
                         @endIf
 
-                        @if(config('likes_enabled'))
+                        @if(config('app.likes_enabled'))
                             <span class="apoios ml-3">
                         @endIf
                             <i class="fa fa-star" aria-hidden="true"></i> {{$proposal->approvals_count}} Apoios
-                        @if(config('likes_enabled'))
+                        @if(config('app.likes_enabled'))
                             </span>
                         @endIf
                     </div>

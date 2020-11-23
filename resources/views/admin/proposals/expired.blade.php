@@ -38,7 +38,7 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            @if(config('likes_enabled'))
+                                            @if(config('app.likes_enabled'))
                                                 <th>Curtidas</th>
                                             @endIf
                                             <th>Apoios</th>
@@ -51,7 +51,7 @@
                                             <tr>
                                                 <td>{{ $expired->id }}</td>
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$expired->id)) }}">{{ $expired->name }}</a></td>
-                                                @if(config('likes_enabled'))
+                                                @if(config('app.likes_enabled'))
                                                     <td>{{$expired->like_count - $expired->unlike_count}}</td>
                                                 @endIf
                                                 <td>{{$expired->approvals()->count()}}</td>
