@@ -6,6 +6,6 @@ trait Orderable
 {
     public function getOrderBy()
     {
-        return coollect(isset($this->orderBy) ? $this->orderBy : []);
+        return isset($this->orderBy) ? $this->orderBy : null;
     }
 }

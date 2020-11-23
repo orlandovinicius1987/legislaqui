@@ -109,9 +109,15 @@
                                 <td class="pl-4 ideia-labels">
                                     Data Publicação
                                 </td>
+                                @if($proposal->pub_date)
                                 <td class="table-td-show">
                                     {{ $proposal->pub_date->format('d/m/Y') }}
                                 </td>
+                                @else
+                                    <td>
+                                        Exibida após aprovação
+                                    </td>
+                                @endif
                             </tr>
                             <tr>
                                 <td class="pl-4 ideia-labels">
@@ -137,22 +143,26 @@
                                     {!! $proposal->idea_exposition !!}
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="pl-4 ideia-labels">
-                                    Curtidas
-                                </td>
-                                <td class="table-td-show">
-                                    {{ $proposal->like_count }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pl-4 ideia-labels">
-                                    Não Curtidas
-                                </td>
-                                <td class="table-td-show">
-                                    {{ $proposal->unlike_count }}
-                                </td>
-                            </tr>
+
+                            @if(config('app.likes_enabled'))
+                                <tr>
+                                    <td class="pl-4 ideia-labels">
+                                        Curtidas
+                                    </td>
+                                    <td class="table-td-show">
+                                        {{ $proposal->like_count }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="pl-4 ideia-labels">
+                                        Não Curtidas
+                                    </td>
+                                    <td class="table-td-show">
+                                        {{ $proposal->unlike_count }}
+                                    </td>
+                                </tr>
+                            @endIf
+
                             <tr>
                                 <td class="pl-4 ideia-labels">
                                     Apoios
@@ -184,12 +194,19 @@
                     </div>
 
                     <div class="card-footer">
-                        <span class="curtidas">
-                            <i class="fa fa-thumbs-{{$proposal->total_like_count < 0 ? 'down' : 'up'}}" aria-hidden="true"></i> {{$proposal->total_like_count }} Curtidas
-                        </span>
-                        <span class="apoios ml-3">
+                        @if(config('app.likes_enabled'))
+                            <span class="curtidas">
+                                <i class="fa fa-thumbs-{{$proposal->total_like_count < 0 ? 'down' : 'up'}}" aria-hidden="true"></i> {{$proposal->total_like_count }} Curtidas
+                            </span>
+                        @endIf
+
+                        @if(config('app.likes_enabled'))
+                            <span class="apoios ml-3">
+                        @endIf
                             <i class="fa fa-star" aria-hidden="true"></i> {{$proposal->approvals_count}} Apoios
-                        </span>
+                        @if(config('app.likes_enabled'))
+                            </span>
+                        @endIf
                     </div>
 
                 </div>

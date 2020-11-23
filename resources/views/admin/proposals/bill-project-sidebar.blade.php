@@ -37,7 +37,9 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Curtidas</th>
+                                            @if(config('app.likes_enabled'))
+                                                <th>Curtidas</th>
+                                            @endIf
                                             <th>Apoios</th>
                                             <th>Projeto de Lei</th>
                                             <th></th>
@@ -52,9 +54,11 @@
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
                                                 {{--<td><a href="{{ route('admin.proposal.response', $approved->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
                                                 <td>{{$proposal->like_count - $proposal->unlike_count}}</td>
-                                                <td>{{$proposal->approvals()->count()}}</td>
+                                                @if(config('app.likes_enabled'))
+                                                    <td>{{$proposal->approvals()->count()}}</td>
+                                                @endIf
                                                 <td>Número: {{ $proposal->bill_project->number }}<br>
-                                                    Link: <a href="$proposal->bill_project->link" target="_blank">{{ $proposal->bill_project->link }}</a><br>
+                                                    Link: <a href={{$proposal->bill_project->link}} target="_blank">{{ $proposal->bill_project->link }}</a><br>
                                                     Responsável: {{$proposal->bill_project->owner}}
                                                 </td>
                                                 <td><a href="{{ route('admin.proposal.billProject', ['id' => $proposal->id]) }}" class="btn btn-warning botao" role="button">

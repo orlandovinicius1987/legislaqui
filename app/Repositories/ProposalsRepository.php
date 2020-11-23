@@ -17,6 +17,23 @@ class ProposalsRepository extends Repository
 {
     private $searchColumns = ['name', 'problem', 'idea_exposition', 'response'];
 
+    protected $model = Proposal::class;
+
+    public function addCustomSelects($query, $orderBy)
+    {
+        if ($orderBy['field'] == 'approvals_count') {
+            $query->selectRaw(
+                '(SELECT COUNT(*) from approvals a where a.proposal_id="proposals".id) as approvals_count'
+            );
+        }
+
+        if ($orderBy['field'] == 'likes_count') {
+            $query->selectRaw(
+                '(((SELECT COUNT(*) from likes dis where dis.like=1 and dis.proposal_id="proposals".id))-(SELECT COUNT(*) from likes l where l.like=0 and l.proposal_id="proposals".id)) as likes_count'
+            );
+        }
+    }
+
     public function getOrderByVariables($data)
     {
         return [
@@ -24,21 +41,46 @@ class ProposalsRepository extends Repository
                 isset($data['order_by']) && $data['order_by']
                     ? $data['order_by']
                     : json_encode([
-                        'field' => 'pub_date',
+                        'field' => 'approvals_count',
                         'order' => 'desc'
                     ]),
 
-            'orderBys' => [
-                json_encode([
-                    'field' => 'pub_date',
-                    'order' => 'desc'
-                ]) => 'Do mais recente ao mais antigo',
+            'orderBys' => array_merge(
+                [
+                    json_encode([
+                        'field' => 'approvals_count',
+                        'order' => 'desc'
+                    ]) => 'Mais apoiado',
 
-                json_encode([
-                    'field' => 'pub_date',
-                    'order' => 'asc'
-                ]) => 'Do mais antigo ao mais recente'
-            ]
+                    json_encode([
+                        'field' => 'approvals_count',
+                        'order' => 'asc'
+                    ]) => 'Menos apoiado',
+                    json_encode([
+                        'field' => 'pub_date',
+                        'order' => 'desc'
+                    ]) => 'Mais recente',
+
+                    json_encode([
+                        'field' => 'pub_date',
+                        'order' => 'asc'
+                    ]) => 'Mais antigo'
+                ],
+                //Caso as curtidas estejam habilitadas
+                config('app.likes_enabled')
+                    ? [
+                        json_encode([
+                            'field' => 'likes_count',
+                            'order' => 'desc'
+                        ]) => 'Mais curtido',
+
+                        json_encode([
+                            'field' => 'likes_count',
+                            'order' => 'asc'
+                        ]) => 'Menos curtido'
+                    ]
+                    : []
+            )
         ];
     }
 
@@ -132,6 +174,7 @@ class ProposalsRepository extends Repository
         if ($proposal->approved_at == null && $proposal->approved_by == null) {
             $proposal->approved_at = Carbon::now();
             $proposal->approved_by = Auth::user()->id;
+            $proposal->pub_date = Carbon::now();
             $proposal->disapproved_at = null;
             $proposal->disapproved_by = null;
 
@@ -417,7 +460,7 @@ class ProposalsRepository extends Repository
             $q = 'All';
         }
 
-        $query = Proposal::query();
+        $query = Proposal::select('*');
 
         if (is_string($q)) {
             $q = json_decode($q);

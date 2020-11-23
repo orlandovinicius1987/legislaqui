@@ -1,10 +1,13 @@
 <div class="controleideias row mt-2 mb-1 d-flex align-items-center ml-2 mr-2">
     <div class="action_links col-12 col-sm-9 ">
-        <a dusk="like" href="{{ route('proposal.like', ['id' => $proposal->id]) }}">
-            <i class="far fa-thumbs-up" aria-hidden="true"></i><span class="hidden-xs">Curtir</span></a>
 
-        <a dusk="dislike" href="{{ route('proposal.unlike', ['id' => $proposal->id]) }}">
-            <i class="far fa-thumbs-down" aria-hidden="true"></i><span class="hidden-xs">Descurtir</span></a>
+        @if(config('app.likes_enabled'))
+            <a dusk="like" href="{{ route('proposal.like', ['id' => $proposal->id]) }}">
+                <i class="far fa-thumbs-up" aria-hidden="true"></i><span class="hidden-xs">Curtir</span></a>
+
+            <a dusk="dislike" href="{{ route('proposal.unlike', ['id' => $proposal->id]) }}">
+                <i class="far fa-thumbs-down" aria-hidden="true"></i><span class="hidden-xs">Descurtir</span></a>
+        @endIf
 
         @if (!Auth::check())
             <a dusk="support" href="{{ route('proposal.approval', $proposal->id) }}" onclick="if(!confirm('Para apoiar oficialmente uma ideia legislativa você precisa criar uma conta na página da ALERJ.')){return false;};">
