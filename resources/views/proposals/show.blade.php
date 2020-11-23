@@ -93,6 +93,18 @@
                                     {{ $proposal->user->name }}
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td class="pl-4 ideia-labels">
+                                    Assuntos
+                                </td>
+                                <td class="table-td-show">
+                                    {!! implode('</br> ',$proposal->subjects->map(function ($subject){
+                                        return $subject->name;
+                                    })->toArray()) !!}
+                                </td>
+                            </tr>
+
                             <tr>
                                 <td class="pl-4 ideia-labels">
                                     Data Publicação
@@ -150,32 +162,24 @@
                                 </td>
                             </tr>
                             {{-- if has response -> return response data, else null --}}
-                            <tr>
-                                <td class="pl-4 ideia-labels">
-                                    Autor Resposta
-                                </td>
-                                <td class="table-td-show">
-                                    {{ $proposal->responder ? $proposal->responder->name  : null }}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pl-4 ideia-labels">
-                                    Resposta
-                                </td>
-                                <td class="table-td-show">
-                                    {{ $proposal->response ? $proposal->response : null }}
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="pl-4 ideia-labels">
-                                    Estado
-                                </td>
-                                <td class="table-td-show">
-                                    {{ App\Enums\ProposalState::fromValue($proposal->state)->description }}
-                                </td>
-                            </tr>
-                            </tbody>
+{{--                            <tr>--}}
+{{--                                <td class="pl-4 ideia-labels">--}}
+{{--                                    Autor Resposta--}}
+{{--                                </td>--}}
+{{--                                <td class="table-td-show">--}}
+{{--                                    {{ $proposal->responder ? $proposal->responder->name  : null }}--}}
+{{--                                </td>--}}
+{{--                            </tr>--}}
+                            @if($proposal->response)
+                                <tr>
+                                    <td class="pl-4 ideia-labels">
+                                        Resposta
+                                    </td>
+                                    <td class="table-td-show">
+                                        {{ $proposal->response ? $proposal->response : null }}
+                                    </td>
+                                </tr>
+                            @endIf
                         </table>
                     </div>
 
