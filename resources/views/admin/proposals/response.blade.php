@@ -30,16 +30,16 @@
                     </div>
 
                     <div class="pull-left botao">
-                        
+
                             <div class="form-group">
-                                
+
                                 @if($proposal->state == App\Enums\ProposalState::NotModerated)
                                     {{ Form::submit('Aprovar!',
                                     array('name' => 'approvalBtn', 'class'=>'btn btn-primary botao')) }}
 
                                     {{ Form::submit('Desaprovar',
                                     array('name' => 'disapprovalBtn', 'class'=>'btn btn-danger botao')) }}
-                                @elseif($proposal->state == App\Enums\ProposalState::Approved)
+                                @elseif($proposal->state == App\Enums\ProposalState::Approved || $proposal->state == App\Enums\ProposalState::Supported)
                                     {{ Form::submit('Remover aprovação',
                                     array('name' => 'disapprovalBtn', 'class'=>'btn btn-danger botao')) }}
                                 @elseif($proposal->state == App\Enums\ProposalState::Disapproved)

@@ -26,7 +26,7 @@
                                         <div class="row">
                                             {{--Proposal Moderation--}}
                                             <div class="pull-left botao">
-                                                @if ($proposal->approved_at == null && $proposal->approved_by == null && $proposal->disapproved_at == null && $proposal->disapproved_by == null )
+                                                @if ($proposal->state == App\Enums\ProposalState::NotModerated || $proposal->state == App\Enums\ProposalState::Approved ||$proposal->state == App\Enums\ProposalState::Disapproved || $proposal->state == App\Enums\ProposalState::Supported)
                                                     <a href="{{ route('admin.proposal.response', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
                                                         <i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa Ideia! </a>
                                                 @else
