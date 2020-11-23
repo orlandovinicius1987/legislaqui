@@ -45,6 +45,7 @@
                     <li><a dusk="inCommitteeLink" href="/admin/proposals/in-committee"><i class="fa fa-gavel text-danger"></i> Aguardando Análise</a></li>
                     <li><a dusk="approvedByCommitteeLink" href="/admin/proposals/approved-by-committee"><i class="fa fa-check-circle-o text-success"></i> Em Tramitação</a></li>
                     <li><a dusk="disapprovedByCommitteeLink" href="/admin/proposals/disapproved-by-committee"><i class="fa fa-exclamation-triangle text-warning"></i> Encerradas</a></li>
+                    <li><a dusk="billProjectLink" href="/admin/proposals/bill-project-sidebar"><i class="fa fa-file-text"></i> Projetos de Lei</a></li>
                     <hr>
                     @can('edit', Auth::user())
                     <li><a>Usuários</a></li>
