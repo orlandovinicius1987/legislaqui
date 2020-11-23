@@ -51,6 +51,8 @@ class User extends Authenticatable implements Auditable
      */
     protected $hidden = ['password', 'remember_token'];
 
+    protected $appends = ['whatsapp_formatted'];
+
     /* EM TESTE DE USO - NÃO MEXER     não está usando esse código, porém no 'User/Show' há uma menção $user->proposals_count
      User has many Proposals*/
     /*public function proposals()
@@ -197,5 +199,12 @@ class User extends Authenticatable implements Auditable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new PasswordReset($token));
+    }
+
+    public function getWhatsappFormattedAttribute()
+    {
+        return strlen($this->whatsapp) == 11
+            ? vsprintf('(%s%s)%s%s%s%s%s-%s%s%s%s', str_split($this->whatsapp))
+            : $this->whatsapp;
     }
 }

@@ -1,7 +1,5 @@
 window._ = require('lodash')
 
-window.Popper = require('popper.js').default
-
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -38,3 +36,7 @@ window.sha256 = sha256
  */
 let cheerio = require('cheerio')
 window.cheerio = cheerio
+
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip()
+})
