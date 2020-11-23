@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Data\Models\BillsProject;
+use App\Data\Models\Subject;
 use App\Enums\ProposalState as ProposalState;
 use App\Events\ProposalApprovedByCommittee;
 use App\Events\ProposalClosedByCommittee;
@@ -240,7 +241,9 @@ class AdminController extends Controller
         //        }
 
         if (Gate::allows('edit', $proposal)) {
-            return view('admin.proposals.edit')->with('proposal', $proposal);
+            return view('admin.proposals.edit')
+                ->with('proposal', $proposal)
+                ->with('subjects', Subject::all()->pluck('name', 'id'));
         } else {
             return redirect()
                 ->route('admin.proposals')
@@ -317,6 +320,7 @@ class AdminController extends Controller
 
         //Then update Proposal
         $proposal->fill($input)->save();
+        $proposal->subjects()->sync($formRequest->get('subjects'));
 
         return redirect()
             ->route('admin.proposal.show', ['id' => $id])
@@ -347,34 +351,38 @@ class AdminController extends Controller
         //Fill more data into input
         //$input['date'] = Carbon::now();
 
-        if($proposal->state == ProposalState::Forwarded){
-        //Update Bills_Project Table
-        $bill_project->fill($input)->save();
-        //Update Proposals Table
-        $proposal->bill_project_id = $bill_project->id;
-        $proposal->open = false;
+        if ($proposal->state == ProposalState::Forwarded) {
+            //Update Bills_Project Table
+            $bill_project->fill($input)->save();
+            //Update Proposals Table
+            $proposal->bill_project_id = $bill_project->id;
+            $proposal->open = false;
 
-        //Save Proposal
-        $proposal->save();
+            //Save Proposal
+            $proposal->save();
 
-        return redirect()
-            ->route('admin.proposal.approvedByCommittee', ['id' => $id])
-            ->with(
-                'admin_proposal_crud_msg',
-                'Ideia Legislativa transformada em Projeto de Lei com Sucesso!'
-            );}
+            return redirect()
+                ->route('admin.proposal.approvedByCommittee', ['id' => $id])
+                ->with(
+                    'admin_proposal_crud_msg',
+                    'Ideia Legislativa transformada em Projeto de Lei com Sucesso!'
+                );
+        } elseif ($proposal->state == ProposalState::BillProject) {
+            BillsProject::where('id', $proposal->bill_project_id)->update([
+                'number' => $input['number'],
+                'year' => $input['year'],
+                'owner' => $input['owner'],
+                'link' => $input['link'],
+                'updated_at' => Carbon::now()
+            ]);
 
-        elseif($proposal->state == ProposalState::BillProject){
-
-
-        BillsProject::where('id',$proposal->bill_project_id)->update(['number'=>$input['number'],'year'=>$input['year'],'owner'=>$input['owner'], 'link'=>$input['link'], 'updated_at'=>Carbon::now()]);
-
-        return redirect()
-            ->route('admin.proposal.billProjectSidebar', ['id' => $id])
-            ->with(
-                'admin_proposal_crud_msg',
-                'Projeto de Lei atualizado com Sucesso!'
-            );}
+            return redirect()
+                ->route('admin.proposal.billProjectSidebar', ['id' => $id])
+                ->with(
+                    'admin_proposal_crud_msg',
+                    'Projeto de Lei atualizado com Sucesso!'
+                );
+        }
     }
 
     /**
@@ -795,7 +803,6 @@ class AdminController extends Controller
      */
     public function approvalGoal()
     {
-
         $proposals = $this->proposalsRepository->ofState(
             ProposalState::Supported
         );
@@ -863,7 +870,6 @@ class AdminController extends Controller
 
     public function billProjectSidebar()
     {
-
         $projects = $this->proposalsRepository->ofState(
             ProposalState::BillProject
         );
