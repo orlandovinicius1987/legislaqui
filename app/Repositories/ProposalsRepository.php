@@ -132,6 +132,7 @@ class ProposalsRepository extends Repository
         if ($proposal->approved_at == null && $proposal->approved_by == null) {
             $proposal->approved_at = Carbon::now();
             $proposal->approved_by = Auth::user()->id;
+            $proposal->pub_date = Carbon::now();
             $proposal->disapproved_at = null;
             $proposal->disapproved_by = null;
 

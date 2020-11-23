@@ -350,7 +350,6 @@ class ProposalsController extends Controller
 
         $input['user_id'] = Auth::user()->id;
         $input['open'] = true;
-        $input['pub_date'] = Carbon::now();
         $input['limit_date'] = Carbon::now()->addMonth(
             config('global.timeLimitMonth')
         );

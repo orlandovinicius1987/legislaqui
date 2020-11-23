@@ -535,6 +535,8 @@ class AdminController extends Controller
             $proposal->disapproved_by = Auth::user()->id;
             $proposal->approved_by = null;
             $proposal->approved_at = null;
+            //remove a data de publicação
+            $proposal->pub_date = null;
 
             //Create ProposalHistory Object
             $proposal_history = new ProposalHistory();

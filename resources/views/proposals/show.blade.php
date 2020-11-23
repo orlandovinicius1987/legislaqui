@@ -109,9 +109,15 @@
                                 <td class="pl-4 ideia-labels">
                                     Data Publicação
                                 </td>
+                                @if($proposal->pub_date)
                                 <td class="table-td-show">
                                     {{ $proposal->pub_date->format('d/m/Y') }}
                                 </td>
+                                @else
+                                    <td>
+                                        Exibida após aprovação
+                                    </td>
+                                @endif
                             </tr>
                             <tr>
                                 <td class="pl-4 ideia-labels">

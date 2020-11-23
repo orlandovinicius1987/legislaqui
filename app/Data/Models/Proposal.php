@@ -339,10 +339,6 @@ class Proposal extends Eloquent implements Auditable
                             ->whereNull('disapproved_at_committee')
                             ->whereNull('approved_at_committee')
                             ->where('in_committee', 0)
-                            ->whereRaw(
-                                '(select count(*) from approvals a where a.proposal_id = proposals.id) < ' .
-                                    config('global.approvalGoal')
-                            )
                             ->whereNull('approved_at')
                             ->whereNotNull('disapproved_at');
                         break;

@@ -63,14 +63,14 @@
                                                     {{--{{ $approvedByCommittee->bill_project_id }}--}}</td>
                                                 @else
                                                     <td>Número: {{ $approvedByCommittee->bill_project->number }}<br>
-                                                        Link: <a href="$approvedByCommittee->bill_project->link" target="_blank">{{ $approvedByCommittee->bill_project->link }}</a><br>
+                                                        Link: <a href={{$approvedByCommittee->bill_project->link}} target="_blank">{{ $approvedByCommittee->bill_project->link }}</a><br>
                                                         Responsável: {{$approvedByCommittee->bill_project->owner}}
                                                     </td>
                                                 @endif
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        
+
                                     </table>
                                 </div>
                             </div>
