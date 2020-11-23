@@ -19,7 +19,7 @@ use OwenIt\Auditing\Auditable as AuditableI;
 use OwenIt\Auditing\Contracts\Auditable;
 use App\Enums\ProposalState;
 
-class Proposal extends Eloquent implements Auditable
+class Proposal extends Model implements Auditable
 {
     use AuditableI, SoftDeletes;
 
@@ -50,7 +50,7 @@ class Proposal extends Eloquent implements Auditable
 
     protected $with = ['subjects'];
 
-    public $orderBy = ['field' => 'pub_date', 'order' => 'desc'];
+    protected $orderBy = ['field' => 'approvals_count', 'order' => 'desc'];
 
     //protected $guarded = ['id', 'pub_date', 'limit_date'];
 

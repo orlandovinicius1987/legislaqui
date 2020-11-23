@@ -16,7 +16,15 @@ trait OrderBy
 
     public function getDefaultOrderBy()
     {
-        return $this->model->orderBy ?? ['field' => 'name', 'order' => 'desc'];
+        return (new $this->model())->getOrderBy() ?? [
+            'field' => 'name',
+            'order' => 'desc'
+        ];
+    }
+
+    public function new()
+    {
+        return new $this->model();
     }
 
     public function orderBy($query, $data)
@@ -26,6 +34,12 @@ trait OrderBy
                 ? (array) json_decode($data['order_by'])
                 : ($data['order_by'] = $this->getDefaultOrderBy());
 
+        $this->addCustomSelects($query, $orderBy);
+
         return $query->orderBy($orderBy['field'], $orderBy['order']);
+    }
+
+    public function addCustomSelects($query, $orderBy)
+    {
     }
 }
