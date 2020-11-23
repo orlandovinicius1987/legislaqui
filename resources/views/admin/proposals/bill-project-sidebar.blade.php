@@ -58,7 +58,7 @@
                                                     <td>{{$proposal->approvals()->count()}}</td>
                                                 @endIf
                                                 <td>Número: {{ $proposal->bill_project->number }}<br>
-                                                    Link: <a href="$proposal->bill_project->link" target="_blank">{{ $proposal->bill_project->link }}</a><br>
+                                                    Link: <a href={{$proposal->bill_project->link}} target="_blank">{{ $proposal->bill_project->link }}</a><br>
                                                     Responsável: {{$proposal->bill_project->owner}}
                                                 </td>
                                                 <td><a href="{{ route('admin.proposal.billProject', ['id' => $proposal->id]) }}" class="btn btn-warning botao" role="button">
