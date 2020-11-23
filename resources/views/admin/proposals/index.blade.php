@@ -41,7 +41,7 @@
                                         <tr role="row">
                                             <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Id: activate to sort column ascending" style="width: 68px;">Id</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Nome: activate to sort column descending" style="width: 296px;" aria-sort="ascending">Nome</th>
-                                            @if(config('likes_enabled'))
+                                            @if(config('app.likes_enabled'))
                                                 <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Likes: activate to sort column ascending" style="width: 241px;">Curtidas</th>
                                             @endIf
                                             {{--<th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Dislikes: activate to sort column ascending" style="width: 214px;">Dislikes</th>--}}
@@ -60,7 +60,7 @@
                                                 {{--Proposal Name--}}
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$proposal->id)) }}">{{ $proposal->name }}</a></td>
                                                 {{--Likes --}}
-                                                @if(config('likes_enabled'))
+                                                @if(config('app.likes_enabled'))
                                                     <td>{{ ($proposal->like_count - $proposal->unlike_count)}}</td>
                                                 @endIf
                                                 {{--Unlikes--}}
