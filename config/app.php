@@ -19,6 +19,8 @@ return [
 
     'long_name' => env('APP_NAME_LONG', 'Legislaqui'),
 
+    'likes_enabled' => env('LIKES_ENABLED', true),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

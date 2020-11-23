@@ -34,7 +34,6 @@
                     </a>
 
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-
                         <a target="" href="{{ route('about.howto') }}" class="dropdown-item">
                             Proponha uma ideia legislativa
                         </a>
@@ -49,11 +48,7 @@
                             Encaminhamento da ideia
                         </a>
                     </div>
-
-
                 </li>
-
-
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
