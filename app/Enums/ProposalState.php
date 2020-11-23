@@ -21,6 +21,7 @@ final class ProposalState extends Enum
     public static function filterStates()
     {
         return [
+            json_encode([self::All]) => 'Todas',
             json_encode(self::openStates()) => 'Abertas',
             json_encode([
                 self::Supported
