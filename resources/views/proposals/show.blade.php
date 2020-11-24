@@ -43,16 +43,8 @@
 
                             <div class="col-sm-10">
                                 <h2 class="card-title">{{ $proposal->name }}</h2>
-
                                 <p>
-                                    <span class="badge badge-success">Aprovada</span>
-                                    <span class="badge badge-danger">Não aprovada</span>
-                                    <span class="badge badge-success">Alcançou apoios suficientes</span>
-                                    <span class="badge badge-danger">Expirada</span>
-                                    <span class="badge badge-success">Enviada para a Comissão de Normas</span>
-                                    <span class="badge badge-success">Enviada para projeto de lei</span>
-                                    <span class="badge badge-danger">Não acatada pela Comissão de normas</span>
-                                    <span class="badge badge-primary">Virou projeto de lei</span>
+                                    @include('proposals.partials.badge')
                                 </p>
 
                             </div>

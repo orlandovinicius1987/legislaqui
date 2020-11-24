@@ -34,6 +34,11 @@
                                 <a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}" class="stretched-link">
                                     <h5 class="card-title"><i class="fas fa-list-alt"></i> {{ $proposal->name }} </h5>
                                 </a>
+
+                                <p>
+                                    @include('proposals.partials.badge')
+                                </p>
+
                                 <p class="card-text">
                                     {{$proposal->idea_exposition}}
                                 </p>

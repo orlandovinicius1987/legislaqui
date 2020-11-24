@@ -81,6 +81,11 @@
                                         {{$proposal->name}}
                                     </h5>
                                 </a>
+
+                                <p>
+                                    @include('proposals.partials.badge')
+                                </p>
+
                                 @if ($proposal->bill_project)
                                     [VIROU PROJETO DE LEI]
                                 @endif
