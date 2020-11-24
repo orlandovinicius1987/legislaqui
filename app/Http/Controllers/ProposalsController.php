@@ -7,7 +7,8 @@ use App\Data\Repositories\Subjects;
 use App\Enums\ProposalState;
 use App\Events\ProposalChanged;
 use App\Events\ProposalWasCreated;
-use App\Http\Requests\ProposalFormRequest;
+use App\Http\Requests\ProposalStoreRequest;
+use App\Http\Requests\ProposalUpdateRequest;
 use App\Http\Requests\ResponseFormRequest;
 use App\Data\Models\Like;
 use App\Data\Models\Proposal;
@@ -344,7 +345,7 @@ class ProposalsController extends Controller
         //return view('proposals.show')->with(compact('proposal'))
     }
 
-    public function store(ProposalFormRequest $formRequest)
+    public function store(ProposalStoreRequest $formRequest)
     {
         $input = $formRequest->except('_token');
 
@@ -380,7 +381,7 @@ class ProposalsController extends Controller
      *
      * @return Response
      */
-    public function update($id, ProposalFormRequest $formRequest)
+    public function update($id, ProposalUpdateRequest $formRequest)
     {
         $proposal = $this->proposalsRepository->find($id);
 
