@@ -1,7 +1,12 @@
 @switch($proposal->state)
+    @case(\App\Enums\ProposalState::NotModerated)
+        <span class="badge badge-warning">
+            Aguardando moderação
+        </span>
+    @break
     @case(\App\Enums\ProposalState::Approved)
-        <span class="badge badge-success">
-            Aprovada
+    <span class="badge badge-warning">
+            Aberta
         </span>
     @break
     @case(\App\Enums\ProposalState::Disapproved)

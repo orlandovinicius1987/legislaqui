@@ -86,10 +86,6 @@
                                     @include('proposals.partials.badge')
                                 </p>
 
-                                @if ($proposal->bill_project)
-                                    [VIROU PROJETO DE LEI]
-                                @endif
-
                                 <p class="card-text">
                                     {{$proposal->idea_exposition}}
                                 </p>
