@@ -5,6 +5,51 @@
 @section('content')
     <div class="cards-lista-ideias">
         @include('partials.error')
+
+
+        <div class="row">
+            <div class="col-md-8 text-left">
+                <div class="pb-2 font-weight-bold">
+                    Contribua com uma democracia viva, participe do processo legislativo.
+                </div>
+                <h1>
+                {{--    <i class="fas fa-clipboard-list"></i> Ideias Legislativas--}}
+                    Envie-nos a sua ideia legislativa, ela pode virar lei
+                </h1>
+                <div class="lead pb-3">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla in arcu et gravida.
+                    Curabitur finibus vulputate velit egestas ullamcorper. Suspendisse dignissim vitae urna in congue.
+                </div>
+
+
+                @if (!Auth::check())
+                    <a class="btn-lg btn-primary mr-3" dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                        @else
+                            <a class="btn-lg btn-primary" dusk="newProposalButton" href="{{ route('proposal.create') }}">
+                                @endif
+                                <i class="fa fa-plus-circle"></i> Criar ideia legislativa
+                            </a>
+                    </a>
+
+
+                    <a class="btn-lg btn-outline-primary" href="{{ route('about.howto') }}" >
+                        <i class="far fa-question-circle"></i> Saiba como funciona
+                    </a>
+
+                <div class="mt-3 pb-3">
+                    Verifique se sua ideia já existe em forma de <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=55" target="_blank">lei</a> ou <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=144" target="_blank">projeto de lei</a>.
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img src="imagens/legislaqui-website-mockup.png" class="img-fluid">
+            </div>
+        </div>
+
+
+
+
+
+{{--
         <div class="row">
             <div class="col-md-12 text-left">
                 <h1><i class="fas fa-clipboard-list"></i> Ideias Legislativas</h1>
@@ -13,13 +58,17 @@
                     Curabitur finibus vulputate velit egestas ullamcorper. Suspendisse dignissim vitae urna in congue.
                     Etiam ac vulputate ante, sit amet suscipit elit.
                 </div>
+
+
+
                 <div class="lead pb-3">
                     Verifique se sua ideia já existe em forma de <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=55" target="_blank">lei</a> ou <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=144" target="_blank">projeto de lei</a>.
                 </div>
             </div>
-
-
         </div>
+
+
+        --}}
 
         <form id="filter-proposals" class="my-auto w-100 d-inline-block order-1" action="{{ route('home.post') }}" method="post">
             @csrf
@@ -43,15 +92,11 @@
                 </div>
 
                 <div class="col-12 col-md-4 col-lg-3 mt-0 mt-lg-3 mb-4 text-right">
-                @if (!Auth::check())
-                        <a class="btn btn-primary btn-block" dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
-                        @else
-                                <a class="btn btn-primary  btn-block" dusk="newProposalButton" href="{{ route('proposal.create') }}">
-                                    @endif
-                                    <i class="fa fa-plus-circle"></i> Criar ideia legislativa
-                                </a>
-                        </a>
+
                 </div>
+
+
+
             </div>
 
             <div class="row mb-4 controles">
