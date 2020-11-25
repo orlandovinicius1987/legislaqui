@@ -8,7 +8,6 @@ use App\Http\Traits\WithRouteParams;
 
 class ProposalUpdateRequest extends ProposalStoreRequest
 {
-    use WithRouteParams;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -16,7 +15,8 @@ class ProposalUpdateRequest extends ProposalStoreRequest
      */
     public function authorize()
     {
-        return Proposal::find($this->route()->parameters()['id'])->state ==
-            ProposalState::NotModerated;
+        return (auth()->user() && auth()->user()->is_admin) ||
+            Proposal::find($this->route()->parameters()['id'])->state ==
+                ProposalState::NotModerated;
     }
 }
