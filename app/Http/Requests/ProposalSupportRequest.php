@@ -16,7 +16,7 @@ class ProposalSupportRequest extends Request
      */
     public function authorize()
     {
-        return Proposal::find($this->route()->parameters()['id'])->isFollowable();
+        return Proposal::find($this->route()->parameters()['id'])->isSupportable();
     }
 
     public function rules()

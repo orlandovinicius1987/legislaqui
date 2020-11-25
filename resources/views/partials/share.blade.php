@@ -12,7 +12,7 @@
         @if (!Auth::check())
             <a dusk="support" href="{{ route('proposal.approval', $proposal->id) }}" onclick="if(!confirm('Para apoiar oficialmente uma ideia legislativa você precisa criar uma conta na página da ALERJ.')){return false;};">
                 <i class="far fa-star" aria-hidden="true"></i><span class="hidden-xs">Apoiar!</span></a>
-        @elseif (Auth::check() && $proposal->isFollowable())
+        @elseif (Auth::check() && $proposal->isSupportable())
             <a dusk="support" href="{{ route('proposal.approval', $proposal->id) }}">
                 <i class="far fa-star" aria-hidden="true"></i><span class="hidden-xs">Apoiar!</span></a>
         @endif
