@@ -35,7 +35,7 @@ class ViewableProposals extends Scope
                     ]);
 
                     if ($user) {
-                        $builder->orWhere('user_id', $user->id);
+                        $builder->orWhere('proposals.user_id', $user->id);
                     }
                 });
             }
