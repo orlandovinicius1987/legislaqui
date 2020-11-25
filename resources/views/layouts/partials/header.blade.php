@@ -27,7 +27,6 @@
                     <a class="nav-link" href="/">Início <span class="sr-only">(current)</span></a>
                 </li>
 
-
                 <li class="nav-item dropdown">
                     <a href="{{ route('about.about') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
                         Como Funciona
@@ -111,6 +110,10 @@
                                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                             </li>
                 --}}
+
+
+
+
             </ul>
 
 
