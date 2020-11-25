@@ -77,38 +77,38 @@
                                                         {{--<a href="{{ route('admin.proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a>--}}
                                                     {{--@endif--}}
                                                     @if ($proposal->state == App\Enums\ProposalState::Approved)
-                                                        <i class="fa fa-check-circle-o text-success" aria-hidden="true"></i> Aprovada
+                                                        <i class="fa fa-check-circle text-success" aria-hidden="true"></i> Aprovada
                                                     @elseif ($proposal->state == App\Enums\ProposalState::NotModerated)
-                                                        <i class="fa fa-circle-o-notch" aria-hidden="true"></i> Aguardando moderação
+                                                        <i class="fa fa-circle-notch" aria-hidden="true"></i> Aguardando moderação
                                                     @elseif ($proposal->state == App\Enums\ProposalState::Disapproved)
-                                                        <i class="fa fa-times-circle-o" aria-hidden="true"></i> Desaprovada
+                                                        <i class="fa fa-times-circle" aria-hidden="true"></i> Desaprovada
                                                     @elseif ($proposal->state == App\Enums\ProposalState::Supported)
-                                                        <i class="fa fa-commenting-o" aria-hidden="true"></i> Apoiada
+                                                        <i class="fa fa-commenting" aria-hidden="true"></i> Apoiada
                                                     @elseif ($proposal->state == App\Enums\ProposalState::Expired)
-                                                        <i class="fa fa-hourglass-o" aria-hidden="true"></i> Expirada
+                                                        <i class="fa fa-hourglass" aria-hidden="true"></i> Expirada
                                                     @elseif ($proposal->state == App\Enums\ProposalState::Sent)
-                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Enviada para comissão
+                                                        <i class="fa fa-exchange-alt" aria-hidden="true"></i> Enviada para comissão
                                                     @elseif ($proposal->state == App\Enums\ProposalState::Forwarded)
-                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Encaminhada
+                                                        <i class="fa fa-exchange-alt" aria-hidden="true"></i> Encaminhada
                                                     @elseif ($proposal->state == App\Enums\ProposalState::NotForwarded)
-                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Não encaminhada
+                                                        <i class="fa fa-exchange-alt" aria-hidden="true"></i> Não encaminhada
                                                     @elseif ($proposal->state == App\Enums\ProposalState::BillProject)
-                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Projeto de Lei
+                                                        <i class="fa fa-file-alt" aria-hidden="true"></i> Projeto de Lei
                                                     @endif
                                                 </td>
 
-                                                
-                                                
-                                                
+
+
+
 
                                                 <td class="text-center">
-                                                   
+
                                                     @if ($proposal->isModeratable())
-                                                        
+
                                                         <a href="{{ route('admin.proposal.response', ['id' => $proposal->id]) }}" class="btn btn-info botao" role="button">
                                                             <i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar essa ideia! </a>
-                                                   
-                                                       
+
+
                                                     @endif
                                                 </td>
 
@@ -128,7 +128,7 @@
                                         @endforeach
 
                                         </tbody>
-                                        
+
                                     </table>
 
                             <!-- <td> {{-- Html::linkAction('ProposalsController@show', $proposal->name, array($proposal->id)) --}} </td>-->

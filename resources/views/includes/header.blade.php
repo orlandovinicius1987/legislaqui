@@ -5,6 +5,7 @@
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <i class="fas fa-bars"></i>
             <span class="sr-only">Toggle navigation</span>
         </a>
         <div class="navbar-custom-menu">
