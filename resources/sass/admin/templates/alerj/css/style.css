@@ -1,0 +1,27 @@
+@font-face
+{
+    font-family: 'univers_47';
+    src: url('/fonts/univ47-webfont.eot');
+    src: url('/fonts/univ47-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/univ47-webfont.svg#univers_47_lightcond47LtCn') format('svg'), url('/fonts/univ47-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'univers_47';
+    background: #e8eaed;
+}
+
+.fa-btn {
+    margin-right: 6px;
+}
+
+.footer {
+    /* Set the fixed height of the footer here */
+    height: 40px;
+    background-color: #f5f5f5;
+}
+
+.text-muted {
+    margin: 10px 0;
+}

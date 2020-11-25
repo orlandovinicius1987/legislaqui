@@ -8,7 +8,7 @@
         }
 
     </style>
-    
+
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
@@ -33,7 +33,7 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="header">NAVEGAÇÂO</li>
+            <li class="header">NAVEGAÇÃO</li>
             <li class="active treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
@@ -44,17 +44,17 @@
                     <li><a>Ideias Legislativas</a></li>
                     <li><a dusk="proposalsLink" href="/admin/proposals"><i class="fa fa-hashtag text-info"></i> Todas</a></li>
                     <li><a dusk="notrespondedLink" href="/admin/proposals/notresponded" data-toggle="tooltip" data-placement="right" title="Ideias legislativas criadas pelo cidadão que ainda não foram moderadas."><i class="fa fa-cogs text-danger "></i> Aguardando Moderação</a></li>
-                    <li><a dusk="approvedLink" href="/admin/proposals/approved" data-toggle="tooltip" data-placement="right" title="Ideias legislativas aprovadas pelo moderador e disponíveis publicamente para apoiamentos."><i class="fa fa-check-circle-o text-success"></i> Aprovadas pelo moderador</a></li>
+                    <li><a dusk="approvedLink" href="/admin/proposals/approved" data-toggle="tooltip" data-placement="right" title="Ideias legislativas aprovadas pelo moderador e disponíveis publicamente para apoiamentos."><i class="fa fa-check-circle text-success"></i> Aprovadas pelo moderador</a></li>
                     <li><a dusk="disapprovedLink" href="/admin/proposals/disapproved" data-toggle="tooltip" data-placement="right" title="Ideias legislativas não aprovadas pelo moderador."><i class="fa fa-times-circle text-warning"></i> Não aprovadas pelo moderador</a></li>
                     <hr>
                     <li><a dusk="approvalGoalLink" href="/admin/proposals/approval-goal" data-toggle="tooltip" data-placement="right" title="Ideias legislativas que receberam o número necessário de apoios e aguardam o envio, pelo moderador, para a análise da comissão."><i class="fa fa-trophy text-success"></i>Atingiram {{ config('global.approvalGoal') }} apoios</a></li>
-                    <li><a dusk="expiredLink" href="/admin/proposals/expired" data-toggle="tooltip" data-placement="right" title="Ideias legislativas que não receberam o número necessário de apoios até a data limite."><i class="fa fa-clock-o text-warning"></i> Ideias Expiradas</a></li>
+                    <li><a dusk="expiredLink" href="/admin/proposals/expired" data-toggle="tooltip" data-placement="right" title="Ideias legislativas que não receberam o número necessário de apoios até a data limite."><i class="fa fa-clock text-warning"></i> Ideias Expiradas</a></li>
                     <hr>
                     <li><a>Em aprovação</a></li>
                     <li><a dusk="inCommitteeLink" href="/admin/proposals/in-committee" data-toggle="tooltip" data-placement="right" title="Ideias legislativas aguardando a análise da comissão."><i class="fa fa-gavel text-danger"></i>Aguardando análise</a></li>
-                    <li><a dusk="approvedByCommitteeLink" href="/admin/proposals/approved-by-committee" data-toggle="tooltip" data-placement="right" title="Ideias legislativas aprovadas pela comissão."><i class="fa fa-check-circle-o text-success"></i> Aprovadas pela comissão</a></li>
+                    <li><a dusk="approvedByCommitteeLink" href="/admin/proposals/approved-by-committee" data-toggle="tooltip" data-placement="right" title="Ideias legislativas aprovadas pela comissão."><i class="fa fa-check-circle text-success"></i> Aprovadas pela comissão</a></li>
                     <li><a dusk="disapprovedByCommitteeLink" href="/admin/proposals/disapproved-by-committee" data-toggle="tooltip" data-placement="right" title="Ideias legislativas não aprovadas pela comissão."><i class="fa fa-exclamation-triangle text-warning"></i> Não aprovadas pela comissão</a></li>
-                    <li><a dusk="billProjectLink" href="/admin/proposals/bill-project-sidebar" data-toggle="tooltip" data-placement="right" title="Ideias legislativas que se tornaram projetos de lei, os quais foram assignados no sistema."><i class="fa fa-file-text"></i> Tornaram-se projetos de lei</a></li>
+                    <li><a dusk="billProjectLink" href="/admin/proposals/bill-project-sidebar" data-toggle="tooltip" data-placement="right" title="Ideias legislativas que se tornaram projetos de lei, os quais foram assignados no sistema."><i class="fa fa-file-alt"></i> Tornaram-se projetos de lei</a></li>
                     <hr>
                     @can('edit', Auth::user())
                     <li><a>Usuários</a></li>

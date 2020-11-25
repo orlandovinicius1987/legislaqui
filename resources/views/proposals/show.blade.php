@@ -15,8 +15,10 @@
 
 
                 @can('edit', $proposal)
+                    @if($proposal->state == App\Enums\ProposalState::NotModerated)
                     <a dusk="editIdea" href="{{ route('proposal.edit', $proposal->id) }}" class="btn btn-primary btn-block " id="editar">
                         <span class="fas fa-edit" aria-hidden="true"></span> Editar Ideia</a>
+                    @endif
                 @endcan
 
                 @if (!Auth::check())
