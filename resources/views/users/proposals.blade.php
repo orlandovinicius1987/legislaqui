@@ -34,18 +34,28 @@
                                 <a href="{{ route('proposal.show',array('id'=>$proposal->id)) }}" class="stretched-link">
                                     <h5 class="card-title"><i class="fas fa-list-alt"></i> {{ $proposal->name }} </h5>
                                 </a>
+
+                                <p>
+                                    @include('proposals.partials.badge')
+                                </p>
+
                                 <p class="card-text">
                                     {{$proposal->idea_exposition}}
                                 </p>
                             </div>
 
                             <div class="card-footer">
-                        <span class="curtidas">
-                            <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{ ($proposal->like_count - $proposal->unlike_count) }} Curtidas
-                        </span>
-                                <span class="apoios ml-3">
-                            <i class="fa fa-star" aria-hidden="true"></i> {{ $proposal->approvals->count() }} Apoios
-                        </span>
+                                @if(config('app.likes_enabled'))
+                                    <span class="curtidas">
+                                        <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{ ($proposal->like_count - $proposal->unlike_count) }} Curtidas
+                                    </span>
+
+                                    <span class="apoios ml-3">
+                                @endIf
+                                    <i class="fa fa-star" aria-hidden="true"></i> {{ $proposal->approvals->count() }} Apoios
+                                @if(config('app.likes_enabled'))
+                                    </span>
+                                @endIf
                             </div>
 
                         </div>

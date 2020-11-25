@@ -43,13 +43,17 @@
 
                             <div class="col-sm-10">
                                 <h2 class="card-title">{{ $proposal->name }}</h2>
-                            </div>
-                            <div class="col-sm-2 text-center temporestante">
-
-                                <i class="far fa-clock"></i> <br>
-                                {{$proposal->days_left == 0 ? 'Encerrado' : $proposal->days_left.' dias'}}
+                                <p>
+                                    @include('proposals.partials.badge')
+                                </p>
 
                             </div>
+                            @if($proposal->state == \App\Enums\ProposalState::Approved || $proposal->state == \App\Enums\ProposalState::Supported || $proposal->state == \App\Enums\ProposalState::Expired)
+                                <div class="col-sm-2 text-center temporestante">
+                                    <i class="far fa-clock"></i> <br>
+                                    {!! $proposal->days_left == 0 ? 'Prazo</br>esgotado' : $proposal->days_left.' dias</br>restantes' !!}
+                                </div>
+                            @endIf
 
 
                            {{-- <div class="col-sm-4">

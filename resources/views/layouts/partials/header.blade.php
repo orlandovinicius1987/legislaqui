@@ -69,29 +69,29 @@
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item"  href="{{ route('terms') }}">
-                                Termos de Uso
+                                Termos de uso
                             </a>
 
                         @elseif (Auth::user()->is_admin)
 
                             <a class="dropdown-item"  target='' href="{{ route('proposal.create') }}" title='Incluir Nova Proposta'>
-                                Incluir Nova Proposta
+                                Incluir nova proposta
                             </a>
                             <a class="dropdown-item"  target='' href="{{ route('users.proposals', Auth::user()->id) }}" title='Listar Minhas Propostas'>
-                                Listar Minhas Propostas
+                                Listar minhas propostas
                             </a>
                             <a class="dropdown-item"  target='' href="{{ route('home') }}" title='Listar Todas Propostas'>
-                                Listar Todas Propostas
+                                Listar todas propostas
                             </a>
                         @else
                             <a class="dropdown-item"  href="{{ route('proposal.create') }}">
-                                Incluir Nova Proposta
+                                Incluir nova proposta
                             </a>
                             <a class="dropdown-item"  href="{{ route('users.proposals', Auth::user()->id) }}">
-                                Listar Minhas Propostas
+                                Listar minhas propostas
                             </a>
                             <a class="dropdown-item"  href="{{ route('home') }}">
-                                Listar Todas Propostas
+                                Listar todas propostas
                             </a>
                         @endif
                         {{--

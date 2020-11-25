@@ -2,8 +2,12 @@
 
 namespace App\Http\Requests;
 
-class ProposalFormRequest extends Request
+use App\Http\Traits\WithRouteParams;
+
+class ProposalStoreRequest extends Request
 {
+    use WithRouteParams;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -22,9 +26,9 @@ class ProposalFormRequest extends Request
     public function rules()
     {
         return [
-            'name'            => 'required',
-            'problem'         => 'required',
-            'idea_exposition' => 'required',
+            'name' => 'required',
+            'problem' => 'required',
+            'idea_exposition' => 'required'
         ];
     }
 }
