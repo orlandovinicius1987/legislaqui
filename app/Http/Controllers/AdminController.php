@@ -15,7 +15,8 @@ use App\Events\ProposalApprovedByCommittee;
 use App\Events\ProposalClosedByCommittee;
 use App\Events\ProposalTimeLimit;
 use App\Http\Requests\BillProjectFormRequest;
-use App\Http\Requests\ProposalFormRequest;
+use App\Http\Requests\ProposalStoreRequest;
+use App\Http\Requests\ProposalUpdateRequest;
 use App\Http\Requests\ResponseFormRequest;
 use App\Data\Models\Proposal;
 use App\Data\Models\ProposalHistory;
@@ -201,7 +202,7 @@ class AdminController extends Controller
      *
      * @return Response
      */
-    public function storeProposal(ProposalFormRequest $formRequest)
+    public function storeProposal(ProposalStoreRequest $formRequest)
     {
         $input = $formRequest->except('_token');
 
@@ -288,7 +289,7 @@ class AdminController extends Controller
      *
      * @return Response
      */
-    public function updateProposal($id, ProposalFormRequest $formRequest)
+    public function updateProposal($id, ProposalUpdateRequest $formRequest)
     {
         $proposal = $this->proposalsRepository->find($id);
 

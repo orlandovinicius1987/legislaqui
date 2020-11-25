@@ -8,6 +8,8 @@ use App\Enums\ProposalState;
 use App\Events\ProposalChanged;
 use App\Events\ProposalWasCreated;
 use App\Http\Requests\ProposalStoreRequest;
+use App\Http\Requests\ProposalSupportRequest;
+use App\Http\Requests\ProposalFollowRequest;
 use App\Http\Requests\ProposalUpdateRequest;
 use App\Http\Requests\ResponseFormRequest;
 use App\Data\Models\Like;
@@ -64,7 +66,7 @@ class ProposalsController extends Controller
             ->with('selected_subjects', $selected_subjects);
     }
 
-    public function approval($id)
+    public function approval($id, ProposalSupportRequest $request)
     {
         $this->proposalsRepository->approve($id);
 
@@ -162,23 +164,30 @@ class ProposalsController extends Controller
      *
      * @return Response
      */
-    public function follow($id)
+    public function follow($id , ProposalFollowRequest $request)
     {
         //Get Proposal
         $proposal = $this->proposalsRepository->find($id);
 
+
+
+
         //Save Follow table
-        ProposalFollow::create([
+        $follow = ProposalFollow::firstOrCreate([
             'user_id' => Auth::user()->id,
             'proposal_id' => $proposal->id
         ]);
 
+        if($follow->wasRecentlyCreated) {
+            Session::flash('flash_msg', 'Esta Ideia Legislativa será acompanhada! Obrigado.');
+        }
+        else{
+            Session::flash('flash_msg', 'Esta Ideia Legislativa já está sendo acompanhada!');
+        }
+
         return redirect()
-            ->route('proposal.show', ['proposal' => $proposal])
-            ->with(
-                'proposal_crud_msg',
-                'Esta Ideia Legislativa será acompanhada! Obrigado.'
-            );
+            ->route('proposal.show', ['proposal' => $proposal]);
+
     }
 
     public function like($id)

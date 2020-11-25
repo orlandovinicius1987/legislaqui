@@ -5,10 +5,7 @@
     <title>{{ config('app.name') }} | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-    <!-- compiled -->
-    <script src="{{mix('/js/admin/admin.js')}}"></script>
-    <link href="{{ mix('/css/admin.css') }}" rel="stylesheet" type="text/css" />
-    <!-- compiled -->
+
 </head>
 <body class="skin-blue">
 <div class="wrapper">
@@ -38,6 +35,11 @@
         </div>
         <strong>Copyright &copy; #Legislaqui 2016 <a href="http://www.alerj.rj.gov.br">Alerj</a>.</strong> Todos os direitos reservados.
     </footer>
+
+        <!-- compiled -->
+        <script src="{{mix('/js/admin/admin.js')}}"></script>
+        <link href="{{ mix('/css/admin.css') }}" rel="stylesheet" type="text/css" />
+        <!-- compiled -->
 </div><!-- ./wrapper -->
 
 </body>
