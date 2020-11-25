@@ -411,4 +411,25 @@ class Proposal extends Model implements Auditable
 
         static::addGlobalScope(new ViewableProposals());
     }
+
+    public function isFollowable()
+    {
+        $state = $this->state;
+
+        return $state == ProposalState::NotModerated ||
+    $state == ProposalState::Disapproved ||
+    $state == ProposalState::Approved ||
+    $state == ProposalState::Supported ||
+    $state == ProposalState::Sent||
+    $state == ProposalState::Forwarded;;
+    }
+
+    public function isSupportable()
+    {
+        $state = $this->state;
+
+        return $state == ProposalState::Approved ||
+            $state == ProposalState::Supported ;
+    }
+
 }
