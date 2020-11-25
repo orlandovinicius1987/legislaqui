@@ -5,10 +5,8 @@ namespace App\Http\Requests;
 use App\Data\Models\Proposal;
 use App\Enums\ProposalState;
 
-
 class ProposalFollowRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -16,13 +14,13 @@ class ProposalFollowRequest extends Request
      */
     public function authorize()
     {
-       return Proposal::find($this->route()->parameters()['id'])->isFollowable();
+        return Proposal::find(
+            $this->route()->parameters()['id']
+        )->isFollowable();
     }
 
     public function rules()
     {
-        return [
-
-        ];
+        return [];
     }
 }
