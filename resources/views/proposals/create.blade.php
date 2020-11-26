@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="row form-group pt-2 pb-2">
+        {{-- <div class="row form-group pt-2 pb-2">
             <div class="col-12 col-lg-3">
                 {{ Form::label('Assuntos', null , ['class' => 'bold double']) }}
             </div>
@@ -50,7 +50,7 @@
                           'class'=>'textarea form-control',
                           'placeholder'=>'Descreva o problema que deseja resolver com esta ideia')) }}
             </div>
-        </div>
+        </div> --}}
 
         <div class="row form-group pt-2 pb-2">
 

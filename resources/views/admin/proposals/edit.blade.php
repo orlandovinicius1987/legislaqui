@@ -27,7 +27,7 @@
                                   'placeholder'=>'Nome')) }}
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         {{ Form::label('Assuntos') }}
                         {{ Form::select('subjects', $subjects, $proposal->subject_ids_array, ['name'=>'subjects[]','data-width'=>'100%','multiple','data-selected-text-format="count"','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'Selecione os assuntos...']) }}
                     </div>
@@ -39,7 +39,7 @@
                                   'class'=>'textarea',
                                   'placeholder'=>'Descreva o Problema')) }}
                     </div>
-
+ --}}
                     <div class="form-group">
                         {{ Form::label('Exposição da Ideia') }}
                         {{ Form::textarea('idea_exposition', null,

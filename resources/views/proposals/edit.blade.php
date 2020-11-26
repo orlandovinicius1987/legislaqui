@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <div class="row form-group pt-2 pb-2">
+            {{-- <div class="row form-group pt-2 pb-2">
                 <div class="col-12 col-lg-3">
                     {{ Form::label('Assuntos', null , ['class' => 'bold double']) }}
                 </div>
@@ -61,7 +61,7 @@
                               'placeholder'=>'Descreva o Problema')) }}
                 </div>
             </div>
-
+ --}}
             <div class="row form-group">
 
                 <div class="col-12 col-lg-3">
