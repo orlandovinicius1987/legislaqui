@@ -184,7 +184,7 @@
 {{--                                    {{ $proposal->responder ? $proposal->responder->name  : null }}--}}
 {{--                                </td>--}}
 {{--                            </tr>--}}
-                            @if($proposal->response)
+                            @if($proposal->response && !blank($proposal->disapproved_at))
                                 <tr>
                                     <td class="pl-4 ideia-labels">
                                         Resposta
