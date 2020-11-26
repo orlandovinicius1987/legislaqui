@@ -42,7 +42,6 @@
                                                 <th>Curtidas</th>
                                             @endIf
                                             <th>Apoios</th>
-                                            <th>Situação</th>
                                             <th>Moderação</th>
                                         </tr>
                                         </thead>
@@ -59,28 +58,15 @@
                                                 @endIf
                                                 <td>{{$approved->approvals()->count()}}</td>
                                                 <td>
-                                                   @if ($approved->in_committee == false)
-                                                        <span class="label label-default"> Em votação</span></a>
 
-                                                   @elseif ($approved->in_committee == true && $approved->approved_by_committee == null &&  $approved->disapproved_by_committee == null)
-                                                            <span class="label label-primary"> Está em aprovação</span>
-                                                   @else
-                                                        @if ($approved->approved_by_committee != null && $approved->bill_project_id != null)
-                                                            <span class="label label-success"> Virou projeto de lei!</span>
-                                                        @elseif ($approved->approved_by_committee != null && $approved->bill_project_id == null)
-                                                            <span class="label label-info"> Aprovada pela Comissão</span>
-                                                        @elseif ($approved->disapproved_by_committee)
-                                                            <span class="label label-warning"> Desaprovada pela Comissão</span>
-                                                        @endif
-                                                   @endif
                                                 </td>
-                                                @if($approved->isModeratable())
-                                                    <td><a href="{{ route('admin.proposal.response', ['id' => $approved->id]) }}" class="btn btn-info botao" role="button"><i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar esta ideia!</a>  </td>
-                                                @endif
+                                                    @if($approved->isModeratable())
+                                                        <td><a href="{{ route('admin.proposal.response', ['id' => $approved->id]) }}" class="btn btn-info botao" role="button"><i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar esta ideia!</a>  </td>
+                                                    @endif
                                                 </tr>
                                         @endforeach
                                         </tbody>
-                                        
+
                                     </table>
                                 </div>
                             </div>
