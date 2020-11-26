@@ -250,10 +250,7 @@ class Proposal extends Model implements Auditable
             //Projeto de lei
             return ProposalState::BillProject;
         } else {
-            if (!blank($this->disapproved_at_committee)) {
-                //Não encaminhada
-                return ProposalState::NotForwarded;
-            } elseif (!blank($this->approved_at_committee)) {
+            if (!blank($this->approved_at_committee)) {
                 //Encaminhada
                 return ProposalState::Forwarded;
             } else {
@@ -393,14 +390,7 @@ class Proposal extends Model implements Auditable
                             ->where('in_committee', 1)
                             ->whereNotNull('approved_at');
                         break;
-                    case ProposalState::NotForwarded:
-                        $query
-                            ->whereNull('bill_project_id')
-                            ->whereNotNull('disapproved_at_committee')
-                            ->whereNull('approved_at_committee')
-                            ->where('in_committee', 1)
-                            ->whereNotNull('approved_at');
-                        break;
+                    
                     case ProposalState::BillProject:
                         $query
                             ->whereNotNull('bill_project_id')

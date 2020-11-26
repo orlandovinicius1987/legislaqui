@@ -52,8 +52,8 @@
                     <hr>
                     <li><a>Em aprovação</a></li>
                     <li><a dusk="inCommitteeLink" href="/admin/proposals/in-committee" data-toggle="tooltip" data-placement="right" title="Ideias legislativas aguardando a análise da comissão."><i class="fa fa-gavel text-danger"></i>Aguardando análise</a></li>
-                    <li><a dusk="approvedByCommitteeLink" href="/admin/proposals/approved-by-committee" data-toggle="tooltip" data-placement="right" title="Ideias legislativas aprovadas pela comissão."><i class="fa fa-check-circle text-success"></i> Aprovadas pela comissão</a></li>
-                    <li><a dusk="disapprovedByCommitteeLink" href="/admin/proposals/disapproved-by-committee" data-toggle="tooltip" data-placement="right" title="Ideias legislativas não aprovadas pela comissão."><i class="fa fa-exclamation-triangle text-warning"></i> Não aprovadas pela comissão</a></li>
+                    <li><a dusk="approvedByCommitteeLink" href="/admin/proposals/approved-by-committee" data-toggle="tooltip" data-placement="right" title="Ideias legislativas aprovadas pela comissão."><i class="fa fa-check-circle text-success"></i> Em discussão pela comissão</a></li>
+                    {{-- <li><a dusk="disapprovedByCommitteeLink" href="/admin/proposals/disapproved-by-committee" data-toggle="tooltip" data-placement="right" title="Ideias legislativas não aprovadas pela comissão."><i class="fa fa-exclamation-triangle text-warning"></i> Não aprovadas pela comissão</a></li> --}}
                     <li><a dusk="billProjectLink" href="/admin/proposals/bill-project-sidebar" data-toggle="tooltip" data-placement="right" title="Ideias legislativas que se tornaram projetos de lei, os quais foram assignados no sistema."><i class="fa fa-file-alt"></i> Tornaram-se projetos de lei</a></li>
                     <hr>
                     @can('edit', Auth::user())

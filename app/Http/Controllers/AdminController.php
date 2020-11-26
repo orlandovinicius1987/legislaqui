@@ -853,25 +853,6 @@ class AdminController extends Controller
         );
     }
 
-    /**
-     * List: Disapproved Proposals by Committee.
-     *
-     * @param  void
-     *
-     * @return Response
-     */
-    public function disapprovedByCommittee()
-    {
-        $proposals = $this->proposalsRepository->ofState(
-            ProposalState::NotForwarded
-        );
-
-        return view('admin.proposals.disapproved-by-committee')->with(
-            'disapprovedsByCommittee',
-            $proposals
-        );
-    }
-
     public function billProjectSidebar()
     {
         $projects = $this->proposalsRepository->ofState(

@@ -14,8 +14,8 @@ final class ProposalState extends Enum
     const Supported = 'Alcançaram apoios suficientes';
     const Expired = 'Expiradas';
     const Sent = 'Enviadas para a Comissão de Normas';
-    const Forwarded = 'Enviadas para projeto de lei';
-    const NotForwarded = 'Não acatadas pela Comissão de normas';
+    const Forwarded = 'Em discussão pela comissão';
+    //const NotForwarded = 'Não acatadas pela Comissão de normas';
     const BillProject = 'Viraram projeto de lei';
 
     public static function filterStates()

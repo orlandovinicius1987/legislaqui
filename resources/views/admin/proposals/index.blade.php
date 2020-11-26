@@ -85,8 +85,6 @@
                                                         <i class="fa fa-exchange-alt" aria-hidden="true"></i> Enviada para comissão
                                                     @elseif ($proposal->state == App\Enums\ProposalState::Forwarded)
                                                         <i class="fa fa-exchange-alt" aria-hidden="true"></i> Encaminhada
-                                                    @elseif ($proposal->state == App\Enums\ProposalState::NotForwarded)
-                                                        <i class="fa fa-exchange-alt" aria-hidden="true"></i> Não encaminhada
                                                     @elseif ($proposal->state == App\Enums\ProposalState::BillProject)
                                                         <i class="fa fa-file-alt" aria-hidden="true"></i> Projeto de Lei
                                                     @endif
