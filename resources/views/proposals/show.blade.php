@@ -100,16 +100,16 @@
                                 </td>
                             </tr>
 
-                            <tr>
-                                <td class="pl-4 ideia-labels">
-                                    Assuntos
-                                </td>
-                                <td class="table-td-show">
-                                    {!! implode('</br> ',$proposal->subjects->map(function ($subject){
-                                        return $subject->name;
-                                    })->toArray()) !!}
-                                </td>
-                            </tr>
+{{--                            <tr>--}}
+{{--                                <td class="pl-4 ideia-labels">--}}
+{{--                                    Assuntos--}}
+{{--                                </td>--}}
+{{--                                <td class="table-td-show">--}}
+{{--                                    {!! implode('</br> ',$proposal->subjects->map(function ($subject){--}}
+{{--                                        return $subject->name;--}}
+{{--                                    })->toArray()) !!}--}}
+{{--                                </td>--}}
+{{--                            </tr>--}}
 
                             @if($proposal->pub_date)
                                 <tr>
