@@ -538,6 +538,7 @@ class AdminController extends Controller
             $proposal->approved_at = null;
             //remove a data de publicação
             $proposal->pub_date = null;
+            $proposal->limit_date = null;
 
             //Create ProposalHistory Object
             $proposal_history = new ProposalHistory();

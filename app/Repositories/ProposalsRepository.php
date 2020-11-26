@@ -175,6 +175,9 @@ class ProposalsRepository extends Repository
             $proposal->approved_at = Carbon::now();
             $proposal->approved_by = Auth::user()->id;
             $proposal->pub_date = Carbon::now();
+            $proposal->limit_date = Carbon::now()->addDays(
+                config('global.daysUntilExpiration')
+            );
             $proposal->disapproved_at = null;
             $proposal->disapproved_by = null;
 

@@ -50,7 +50,7 @@
 
                     <div class="form-group">
                         {{ Form::label('Data Limite') }}
-                        {{ Form::date('limit_date', $proposal->limit_date) }}
+                        {{ Form::date('limit_date', $proposal->limit_date ? '' : '') }}
                     </div>
 
                     <div class="form-group">

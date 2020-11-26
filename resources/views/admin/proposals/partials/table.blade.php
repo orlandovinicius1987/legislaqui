@@ -15,7 +15,11 @@
     @else
         <tr><td class="table-td-label-show">Data Publicação<td class="table-td-show"> Exibida após aprovação</td></tr>
     @endif
-    <tr><td class="table-td-label-show">Data Limite</td><td class="table-td-show"> {{ $proposal->limit_date->format('d/m/Y') }}</td></tr>
+    @if($proposal->pub_date)
+        <tr><td class="table-td-label-show">Data Limite</td><td class="table-td-show"> {{ $proposal->limit_date->format('d/m/Y') }}</td></tr>
+    @else
+        <tr><td class="table-td-label-show">Data Limite<td class="table-td-show"> Exibida após aprovação</td></tr>
+    @endif
     <tr><td class="table-td-label-show">Exposição da Ideia</td><td class="table-td-show"> {!! $proposal->idea_exposition !!}</td></tr>
     <tr><td class="table-td-label-show">Número de Apoios</td><td class="table-td-show"> {{ $proposal->approvals->count() }}</td></tr>
     <tr></tr>
