@@ -111,28 +111,26 @@
                                 </td>
                             </tr>
 
-                            <tr>
-                                <td class="pl-4 ideia-labels">
-                                    Data Publicação
-                                </td>
-                                @if($proposal->pub_date)
-                                <td class="table-td-show">
-                                    {{ $proposal->pub_date->format('d/m/Y') }}
-                                </td>
-                                @else
-                                    <td>
-                                        Exibida após aprovação
+                            @if($proposal->pub_date)
+                                <tr>
+                                    <td class="pl-4 ideia-labels">
+                                        Data Publicação
                                     </td>
-                                @endif
-                            </tr>
-                            <tr>
-                                <td class="pl-4 ideia-labels">
-                                    Data Limite
-                                </td>
-                                <td class="table-td-show">
-                                    {{ $proposal->limit_date->format('d/m/Y') }}
-                                </td>
-                            </tr>
+                                    <td class="table-td-show">
+                                        {{ $proposal->pub_date->format('d/m/Y')  ?? 'Não definida'}}
+                                    </td>
+                                </tr>
+                            @endIf
+                            @if($proposal->limit_date)
+                                <tr>
+                                    <td class="pl-4 ideia-labels">
+                                        Data Limite
+                                    </td>
+                                    <td class="table-td-show">
+                                        {{ $proposal->limit_date->format('d/m/Y') ?? 'Não definida'}}
+                                    </td>
+                                </tr>
+                            @endIf
                             <tr>
                                 <td class="pl-4 ideia-labels">
                                     Problema
@@ -186,7 +184,7 @@
 {{--                                    {{ $proposal->responder ? $proposal->responder->name  : null }}--}}
 {{--                                </td>--}}
 {{--                            </tr>--}}
-                            @if($proposal->response)
+                            @if($proposal->response && !blank($proposal->disapproved_at))
                                 <tr>
                                     <td class="pl-4 ideia-labels">
                                         Resposta

@@ -164,13 +164,10 @@ class ProposalsController extends Controller
      *
      * @return Response
      */
-    public function follow($id , ProposalFollowRequest $request)
+    public function follow($id, ProposalFollowRequest $request)
     {
         //Get Proposal
         $proposal = $this->proposalsRepository->find($id);
-
-
-
 
         //Save Follow table
         $follow = ProposalFollow::firstOrCreate([
@@ -178,16 +175,19 @@ class ProposalsController extends Controller
             'proposal_id' => $proposal->id
         ]);
 
-        if($follow->wasRecentlyCreated) {
-            Session::flash('flash_msg', 'Esta Ideia Legislativa será acompanhada! Obrigado.');
-        }
-        else{
-            Session::flash('flash_msg', 'Esta Ideia Legislativa já está sendo acompanhada!');
+        if ($follow->wasRecentlyCreated) {
+            Session::flash(
+                'flash_msg',
+                'Esta Ideia Legislativa será acompanhada! Obrigado.'
+            );
+        } else {
+            Session::flash(
+                'flash_msg',
+                'Esta Ideia Legislativa já está sendo acompanhada!'
+            );
         }
 
-        return redirect()
-            ->route('proposal.show', ['proposal' => $proposal]);
-
+        return redirect()->route('proposal.show', ['proposal' => $proposal]);
     }
 
     public function like($id)
@@ -360,9 +360,7 @@ class ProposalsController extends Controller
 
         $input['user_id'] = Auth::user()->id;
         $input['open'] = true;
-        $input['limit_date'] = Carbon::now()->addMonth(
-            config('global.timeLimitMonth')
-        );
+        $input['limit_date'] = null;
         //dd($input);
 
         $proposal = Proposal::create($input);
