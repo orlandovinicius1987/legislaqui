@@ -68,22 +68,17 @@
                                                 {{--Rating--}}
                                                 {{--<td>{{ $proposal->rating }}</td>--}}
                                                 {{--Approvals--}}
-                                                <td>{{ $proposal->approvals()->count() }}</td>
+                                                <td>{{ $proposal->approvals_count }}</td>
 
-                                                {{--Proposal Moderation--}}
-                                                <td >
-                                                    {{--{{$proposal->moderation($proposal->id)}}--}}
-                                                    {{--@if () === null)--}}
-                                                        {{--<a href="{{ route('admin.proposal.response', $proposal->id) }}" class="btn btn-danger">Responder Proposta</a>--}}
-                                                    {{--@endif--}}
+                                                <td>
                                                     @if ($proposal->state == App\Enums\ProposalState::Approved)
-                                                        <i class="fa fa-check-circle text-success" aria-hidden="true"></i> Aprovada
+                                                        <i class="fa fa-check-circle" aria-hidden="true"></i> Aprovada
                                                     @elseif ($proposal->state == App\Enums\ProposalState::NotModerated)
                                                         <i class="fa fa-circle-notch" aria-hidden="true"></i> Aguardando moderação
                                                     @elseif ($proposal->state == App\Enums\ProposalState::Disapproved)
                                                         <i class="fa fa-times-circle" aria-hidden="true"></i> Desaprovada
                                                     @elseif ($proposal->state == App\Enums\ProposalState::Supported)
-                                                        <i class="fa fa-commenting" aria-hidden="true"></i> Apoiada
+                                                        <i class="fa fa-comment-dots" aria-hidden="true"></i> Apoiada
                                                     @elseif ($proposal->state == App\Enums\ProposalState::Expired)
                                                         <i class="fa fa-hourglass" aria-hidden="true"></i> Expirada
                                                     @elseif ($proposal->state == App\Enums\ProposalState::Sent)
@@ -95,12 +90,13 @@
                                                     @elseif ($proposal->state == App\Enums\ProposalState::BillProject)
                                                         <i class="fa fa-file-alt" aria-hidden="true"></i> Projeto de Lei
                                                     @endif
+
                                                 </td>
 
 
 
 
-
+                                                {{--Proposal Moderation--}}
                                                 <td class="text-center">
 
                                                     @if ($proposal->isModeratable())

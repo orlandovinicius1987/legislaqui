@@ -53,10 +53,10 @@
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$proposal->id)) }}">{{ $proposal->name }}</a></td>
                                                 {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$approved->id)) }}">{{ $approved->name }}</a></td>--}}
                                                 {{--<td><a href="{{ route('admin.proposal.response', $approved->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
-                                                <td>{{$proposal->like_count - $proposal->unlike_count}}</td>
                                                 @if(config('app.likes_enabled'))
-                                                    <td>{{$proposal->approvals()->count()}}</td>
+                                                    <td>{{$proposal->like_count - $proposal->unlike_count}}</td>
                                                 @endIf
+                                                <td>{{$proposal->approvals()->count()}}</td>
                                                 <td>Número: {{ $proposal->bill_project->number }}<br>
                                                     Link: <a href={{$proposal->bill_project->link}} target="_blank">{{ $proposal->bill_project->link }}</a><br>
                                                     Responsável: {{$proposal->bill_project->owner}}

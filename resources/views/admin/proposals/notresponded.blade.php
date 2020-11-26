@@ -38,7 +38,7 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Não Moderadas</th>
+                                            <th>Moderação</th>
                                         </tr>
                                         </thead>
 
@@ -67,7 +67,7 @@
 
 
                                         </tbody>
-                                        
+
                                     </table>
                                 </div>
                             </div>
