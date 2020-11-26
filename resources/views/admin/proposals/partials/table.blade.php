@@ -5,10 +5,10 @@
     <tr><td class="table-td-label-show">E-mail do Autor</td><td class="table-td-show"> {{ $proposal->user->email }}</td></tr>
     <tr><td class="table-td-label-show">Whatsapp do Autor</td><td class="table-td-show"> {{ $proposal->user->whatsapp_formatted }}</td></tr>
 
-    <tr><td class="table-td-label-show">Assuntos</td><td class="table-td-show">
+    {{-- <tr><td class="table-td-label-show">Assuntos</td><td class="table-td-show">
             {!! implode('</br> ',$proposal->subjects->map(function ($subject){
             return $subject->name;
-            })->toArray()) !!}</td></tr>
+            })->toArray()) !!}</td></tr> --}}
 
     @if($proposal->pub_date)
         <tr><td class="table-td-label-show">Data Publicação</td><td class="table-td-show"> {{ $proposal->pub_date->format('d/m/Y') }}</td></tr>
