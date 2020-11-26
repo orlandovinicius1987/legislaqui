@@ -8,50 +8,59 @@
 
 
         <div class="row">
-            <div class="col-md-8 text-left">
-                <div class="pb-2 font-weight-bold">
-                    Contribua com uma democracia viva, participe do processo legislativo.
-                </div>
+
+            <div class="col-md-6 text-left">
+                {{--
+
+                                <div class="pb-2 font-weight-bold">
+                                    Contribua com uma democracia viva, participe do processo legislativo.
+                                </div>
+                --}}
+
                 <h1>
-                    {{--    <i class="fas fa-clipboard-list"></i> Ideias Legislativas--}}
-                    Envie-nos a sua ideia legislativa, ela pode virar lei
+                    Quer propor um projeto na Alerj?
                 </h1>
                 <div class="lead pb-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla in arcu et gravida.
-                    Curabitur finibus vulputate velit egestas ullamcorper. Suspendisse dignissim vitae urna in congue.
+                    Sua boa ideia agora pode virar lei. Seja bem-vindo (a) à plataforma <span class="font-weight-bold">Legislaqui</span>. Por esta ferramenta você pode contribuir para a melhoria da sua cidade, do seu bairro e da sua família. Basta clicar no campo abaixo e sugerir a sua ideia. Vamos começar?
+
                 </div>
 
-
-                @if (!Auth::check())
-                    <a class="btn-lg btn-primary mr-3" dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
-                        @else
-                            <a class="btn-lg btn-primary" dusk="newProposalButton" href="{{ route('proposal.create') }}">
-                                @endif
-                                <i class="fa fa-plus-circle"></i> Criar ideia legislativa
-                            </a>
-                    </a>
-
-
-                    <a class="btn-lg btn-outline-primary mr-3" href="{{ route('about.howto') }}" >
-                        <i class="far fa-question-circle"></i> Saiba como funciona
-                    </a>
-
-                    {{--            <a class="btn-lg btn-outline-primary" href="{{ route('about.howto') }}" >
-                                    <i class="far fa-question-circle"></i> Projetos de lei criados
-                                </a>--}}
-
-                    <div class="mt-4">
-                        &sup1; Verifique se sua ideia já existe em forma de <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=55" target="_blank">lei</a> ou <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=144" target="_blank">projeto de lei</a>.
-                    </div>
+                <div class="mt-2">
+                    @if (!Auth::check())
+                        <a class="btn-lg btn-primary mr-3" dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                            @else
+                                <a class="btn-lg btn-primary" dusk="newProposalButton" href="{{ route('proposal.create') }}">
+                                    @endif
+                                    <i class="fa fa-plus-circle"></i> Criar ideia legislativa
+                                </a>
+                        </a>
 
 
-                    <div class="pb-3">
-                        &sup2; <a href="">Acompanhe aqui</a> a tramitação dos projetos de lei oriundos de ideias legislativas do legislaqui
-                    </div>
+                        <a class="btn-lg btn-outline-primary mr-3" href="{{ route('about.howto') }}" >
+                            <i class="far fa-question-circle"></i> Saiba como funciona
+                        </a>
+
+                </div>
+
+                <div class="mt-4">
+                    &sup1; Verifique se sua ideia já existe em forma de <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=55" target="_blank">lei</a> ou <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=144" target="_blank">projeto de lei</a>.
+                </div>
+
+{{--
+                <div class="pb-3">
+                    &sup2; <a href="">Acompanhe aqui</a> a tramitação dos projetos de lei oriundos de ideias legislativas do legislaqui
+                </div>
+--}}
+
 
             </div>
-            <div class="col-md-4">
-                <img src="imagens/legislaqui-website-mockup.png" class="img-fluid">
+            <div class="col-md-6">
+
+                <div class='embed-container'>
+                    <iframe src='https://www.youtube.com/embed//Nh3WXmYXdyU' frameborder='0' allowfullscreen></iframe>
+                </div>
+
+                {{--<img src="imagens/legislaqui-website-mockup.png" class="img-fluid">--}}
             </div>
         </div>
 
@@ -90,13 +99,13 @@
                             <div class="input-group">
                                 <input type="text"  name="search" value="{{$search}}" class="form-control border" placeholder="Busque uma ideia ...">
 
-{{--
-                                <span class="input-group-append">
-                                        <button class="btn btn-primary border border-left-0" type="submit" >
-                                            <i class="fas fa-search"></i>
-                                        </button>
-                                </span>
---}}
+                                {{--
+                                                                <span class="input-group-append">
+                                                                        <button class="btn btn-primary border border-left-0" type="submit" >
+                                                                            <i class="fas fa-search"></i>
+                                                                        </button>
+                                                                </span>
+                                --}}
 
                             </div>
 
