@@ -38,8 +38,8 @@
                                         <tr role="row">
                                             <th>Id</th>
                                             <th>Nome</th>
-                                            <th>Situação</th>
-                                            {{--<th>Sem Resposta</th>--}}
+                                            <th>Apoios</th>
+                                            <th>Moderação</th>
                                         </tr>
                                         </thead>
 
@@ -48,28 +48,15 @@
                                             <tr>
                                                 <td>{{ $disapproved->id }}</td>
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$disapproved->id)) }}">{{ $disapproved->name }}</a></td>
-                                                {{--<td class="blue_link"><a href="{{ route('proposal.show',array('id'=>$disapproved->id)) }}">{{ $disapproved->name }}</a></td>--}}
-                                                {{--<td><a href="{{ route('admin.proposal.response', $disapproved->id) }}" class="btn btn-danger">Responder Proposta</a></td>--}}
-                                                <td>
-                                                    @if ($disapproved->in_committee == false)
 
-                                                    @elseif ($disapproved->in_committee == true && $disapproved->approved_by_committee == null &&  $disapproved->disapproved_by_committee == null)
-                                                        <span class="label label-primary"> Está em aprovação</span>
-                                                    @else
-                                                        @if ($disapproved->approved_by_committee != null && $disapproved->bill_project_id != null)
-                                                            <span class="label label-success"> Virou projeto de lei!</span>
-                                                        @elseif ($disapproved->approved_by_committee != null && $disapproved->bill_project_id == null)
-                                                            <span class="label label-info"> Aprovada pela Comissão</span>
-                                                        @elseif ($disapproved->disapproved_by_committee)
-                                                            <span class="label label-warning"> Desaprovada pela Comissão</span>
-                                                        @endif
-                                                    @endif
-                                                </td>
-
+                                                <td>{{$disapproved->approvals()->count()}}</td>
+                                                @if($disapproved->isModeratable())
+                                                    <td><a href="{{ route('admin.proposal.response', ['id' => $disapproved->id]) }}" class="btn btn-info botao" role="button"><i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar esta ideia!</a>  </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        
+
                                     </table>
                                 </div>
                             </div>

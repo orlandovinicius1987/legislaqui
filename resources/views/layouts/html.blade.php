@@ -11,7 +11,7 @@
         <meta property="og:type"               content="Ideias Legislativas" />
         <meta property="og:title"              content="Legislaqui" />
         <meta property="og:description"        content="Proponha sua Ideia Legislativa" />
-        <meta property="og:image"              content="//www.alerj.rj.gov.br/Content/imagens/logotipo.png" />
+        <meta property="og:image"              content="http://www.alerj.rj.gov.br/Content/imagens/logotipo.png" />
 
         <!-- Styles -->
         {{-- Font Awesome --}}

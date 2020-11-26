@@ -50,14 +50,15 @@
                                             <tr>
                                                 <td>{{ $disapprovedByCommittee->id }}</td>
                                                 <td><a href="{{ route('admin.proposal.show',array('id'=>$disapprovedByCommittee->id)) }}">{{ $disapprovedByCommittee->name }}</a></td>
-                                                <td>{{$disapprovedByCommittee->like_count - $disapprovedByCommittee->unlike_count}}</td>
                                                 @if(config('app.likes_enabled'))
-                                                    <td>{{$disapprovedByCommittee->approvals()->count()}}</td>
+                                                    <td>{{$disapprovedByCommittee->like_count - $disapprovedByCommittee->unlike_count}}</td>
                                                 @endIf
+                                                <td>{{$disapprovedByCommittee->approvals()->count()}}</td>
+
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        
+
                                     </table>
                                 </div>
                             </div>
