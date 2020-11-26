@@ -60,8 +60,8 @@
                                                 @endIf
                                                 <td>{{$inCommittee->approvals()->count()}}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.proposal.committeeApproval', $inCommittee->id) }}" class="btn btn-danger">Aprovar</a>
-                                                    <a href="{{ route('admin.proposal.committeeDisapproval', $inCommittee->id) }}" class="btn btn-danger">Desaprovar</a>
+                                                    <a href="{{ route('admin.proposal.committeeApproval', $inCommittee->id) }}" class="btn btn-danger">Em discussão</a>
+                                                   {{--  <a href="{{ route('admin.proposal.committeeDisapproval', $inCommittee->id) }}" class="btn btn-danger">Desaprovar</a> --}}
                                                 </td>
 
                                             </tr>
