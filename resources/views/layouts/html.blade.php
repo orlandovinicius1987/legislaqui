@@ -35,7 +35,7 @@
             {{ config('app.medium_name') }}
         </title>
 
-        <link href="//www.alerj.rj.gov.br/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
         <meta name="viewport" content="width=device-width" />
 
