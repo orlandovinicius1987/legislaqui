@@ -131,14 +131,14 @@
                                     </td>
                                 </tr>
                             @endIf
-                            <tr>
-                                <td class="pl-4 ideia-labels">
-                                    Problema
-                                </td>
-                                <td class="table-td-show">
-                                    {!! $proposal->problem !!}
-                                </td>
-                            </tr>
+{{--                            <tr>--}}
+{{--                                <td class="pl-4 ideia-labels">--}}
+{{--                                    Problema--}}
+{{--                                </td>--}}
+{{--                                <td class="table-td-show">--}}
+{{--                                    {!! $proposal->problem !!}--}}
+{{--                                </td>--}}
+{{--                            </tr>--}}
                             <tr>
                                 <td class="pl-4 ideia-labels">
                                     Exposição da Ideia
