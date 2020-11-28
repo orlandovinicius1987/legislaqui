@@ -23,7 +23,7 @@ class ProposalStoreRequest extends Request
     {
         return [
             'name' => 'required',
-            'problem' => 'required',
+            //'problem' => 'required',
             'idea_exposition' => 'required'
         ];
     }

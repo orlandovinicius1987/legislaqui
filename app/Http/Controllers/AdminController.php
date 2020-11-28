@@ -538,6 +538,7 @@ class AdminController extends Controller
             $proposal->approved_at = null;
             //remove a data de publicação
             $proposal->pub_date = null;
+            $proposal->limit_date = null;
 
             //Create ProposalHistory Object
             $proposal_history = new ProposalHistory();
@@ -848,25 +849,6 @@ class AdminController extends Controller
 
         return view('admin.proposals.approved-by-committee')->with(
             'approvedsByCommittee',
-            $proposals
-        );
-    }
-
-    /**
-     * List: Disapproved Proposals by Committee.
-     *
-     * @param  void
-     *
-     * @return Response
-     */
-    public function disapprovedByCommittee()
-    {
-        $proposals = $this->proposalsRepository->ofState(
-            ProposalState::NotForwarded
-        );
-
-        return view('admin.proposals.disapproved-by-committee')->with(
-            'disapprovedsByCommittee',
             $proposals
         );
     }

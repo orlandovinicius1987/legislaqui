@@ -250,10 +250,7 @@ class Proposal extends Model implements Auditable
             //Projeto de lei
             return ProposalState::BillProject;
         } else {
-            if (!blank($this->disapproved_at_committee)) {
-                //Não encaminhada
-                return ProposalState::NotForwarded;
-            } elseif (!blank($this->approved_at_committee)) {
+            if (!blank($this->approved_at_committee)) {
                 //Encaminhada
                 return ProposalState::Forwarded;
             } else {
@@ -265,22 +262,30 @@ class Proposal extends Model implements Auditable
                         $this->approvals_count <
                             config('global.approvalGoal') &&
                         $this->days_left == 0 &&
-                        blank($this->disapproved_at)
+                        blank($this->disapproved_at) &&
+                        !blank($this->approved_at)
                     ) {
                         //Expirada
                         return ProposalState::Expired;
                     } elseif (
                         $this->approvals_count >=
                             config('global.approvalGoal') &&
-                        blank($this->disapproved_at)
+                        blank($this->disapproved_at) &&
+                        !blank($this->approved_at)
                     ) {
                         //Apoiada
                         return ProposalState::Supported;
                     } else {
-                        if (!blank($this->disapproved_at)) {
+                        if (
+                            !blank($this->disapproved_at) &&
+                            blank($this->approved_at)
+                        ) {
                             //Desaprovada
                             return ProposalState::Disapproved;
-                        } elseif (!blank($this->approved_at)) {
+                        } elseif (
+                            blank($this->disapproved_at) &&
+                            !blank($this->approved_at)
+                        ) {
                             //Aprovada
                             return ProposalState::Approved;
                         } else {
@@ -385,14 +390,7 @@ class Proposal extends Model implements Auditable
                             ->where('in_committee', 1)
                             ->whereNotNull('approved_at');
                         break;
-                    case ProposalState::NotForwarded:
-                        $query
-                            ->whereNull('bill_project_id')
-                            ->whereNotNull('disapproved_at_committee')
-                            ->whereNull('approved_at_committee')
-                            ->where('in_committee', 1)
-                            ->whereNotNull('approved_at');
-                        break;
+                    
                     case ProposalState::BillProject:
                         $query
                             ->whereNotNull('bill_project_id')
@@ -417,11 +415,11 @@ class Proposal extends Model implements Auditable
         $state = $this->state;
 
         return $state == ProposalState::NotModerated ||
-    $state == ProposalState::Disapproved ||
-    $state == ProposalState::Approved ||
-    $state == ProposalState::Supported ||
-    $state == ProposalState::Sent||
-    $state == ProposalState::Forwarded;;
+            $state == ProposalState::Disapproved ||
+            $state == ProposalState::Approved ||
+            $state == ProposalState::Supported ||
+            $state == ProposalState::Sent ||
+            $state == ProposalState::Forwarded;
     }
 
     public function isSupportable()
@@ -429,7 +427,6 @@ class Proposal extends Model implements Auditable
         $state = $this->state;
 
         return $state == ProposalState::Approved ||
-            $state == ProposalState::Supported ;
+            $state == ProposalState::Supported;
     }
-
 }

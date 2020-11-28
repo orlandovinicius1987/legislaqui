@@ -50,6 +50,14 @@
                 </li>
 
                 <li class="nav-item dropdown">
+                    <a href="{{ route('terms') }}" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false" class="nav-link ">
+                        Termos de Uso
+                    </a>
+
+                  
+                </li>
+
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Ideia Legislativa<span class="caret"></span>
                     </a>

@@ -34,11 +34,7 @@
             Enviada para projeto de lei
         </span>
     @break
-    @case(\App\Enums\ProposalState::NotForwarded)
-        <span class="badge badge-danger">
-            Não acatada pela Comissão de normas
-        </span>
-    @break
+    
     @case(\App\Enums\ProposalState::BillProject)
         <span class="badge badge-primary">
             Virou projeto de lei

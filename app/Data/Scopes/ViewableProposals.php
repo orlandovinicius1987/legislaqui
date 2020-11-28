@@ -30,7 +30,6 @@ class ViewableProposals extends Scope
                         ProposalState::Expired,
                         ProposalState::Sent,
                         ProposalState::Forwarded,
-                        ProposalState::NotForwarded,
                         ProposalState::BillProject
                     ]);
 

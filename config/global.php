@@ -7,5 +7,7 @@ return [
 
     'timeLimitMonth' => 4,
 
-    'pagination' => 10
+    'pagination' => 10,
+
+    'daysUntilExpiration' => env('PROPOSAL_DAYS_UNTIL_EXPIRATION', 120)
 ];
