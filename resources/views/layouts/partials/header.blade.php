@@ -23,38 +23,20 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Início <span class="sr-only">(current)</span></a>
+                <li class="nav-item {{Route::currentRouteName() == 'proposals.index' ? 'active' : ''}}">
+                    <a class="nav-link" href="{{route('proposals.index')}}"> Início </a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a href="{{ route('about.about') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+                <li class="nav-item {{Route::currentRouteName() == 'about.about' ? 'active' : ''}}">
+                    <a href="{{ route('about.about') }}" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false" class="nav-link">
                         Como Funciona
                     </a>
-
-                    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a target="" href="{{ route('about.howto') }}" class="dropdown-item">
-                            Proponha uma ideia legislativa
-                        </a>
-                        <div class="dropdown-divider"></div>
-
-                        <a href="{{ route('about.support') }}" class="dropdown-item">
-                            Como apoiar uma ideia
-                        </a>
-                        <div class="dropdown-divider"></div>
-
-                        <a href="{{ route('about.forwarding') }}" class="dropdown-item">
-                            Encaminhamento da ideia
-                        </a>
-                    </div>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a href="{{ route('terms') }}" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false" class="nav-link ">
+                <li class="nav-item {{Route::currentRouteName() == 'terms' ? 'active' : ''}}">
+                    <a href="{{ route('terms') }}" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false" class="nav-link">
                         Termos de Uso
                     </a>
-
-                  
                 </li>
 
                 <li class="nav-item dropdown">
@@ -74,13 +56,8 @@
                             <a class="dropdown-item"  target='' href="{{ route('proposal.create') }}">
                                 Proponha uma ideia legislativa
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item"  href="{{ route('terms') }}">
-                                Termos de uso
-                            </a>
 
-                        @elseif (Auth::user()->is_admin)
-
+                        @else
                             <a class="dropdown-item"  target='' href="{{ route('proposal.create') }}" title='Incluir Nova Proposta'>
                                 Incluir nova proposta
                             </a>
@@ -88,19 +65,9 @@
                                 Listar minhas propostas
                             </a>
                             <a class="dropdown-item"  target='' href="{{ route('home') }}" title='Listar Todas Propostas'>
-                                Listar todas propostas
+                                Listar todas as propostas
                             </a>
-                        @else
-                            <a class="dropdown-item"  href="{{ route('proposal.create') }}">
-                                Incluir nova proposta
-                            </a>
-                            <a class="dropdown-item"  href="{{ route('users.proposals', Auth::user()->id) }}">
-                                Listar minhas propostas
-                            </a>
-                            <a class="dropdown-item"  href="{{ route('home') }}">
-                                Listar todas propostas
-                            </a>
-                        @endif
+                        @endIf
                         {{--
                                             <a class="dropdown-item href="/terms">
                                             Termos de Uso
