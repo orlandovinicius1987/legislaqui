@@ -39,7 +39,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown {{!Auth::guest() && (Route::currentRouteName() == 'proposal.create' || Route::currentRouteName() == 'users.proposals') ? 'active' : ''}}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Ideia Legislativa<span class="caret"></span>
                     </a>
