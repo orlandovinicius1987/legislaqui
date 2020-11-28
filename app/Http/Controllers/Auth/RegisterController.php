@@ -111,26 +111,6 @@ class RegisterController extends Controller
         // Request comes from Register form
         \Session::put('last_auth_attempt', 'register');
 
-        if (!app()->environment('local')) {
-            // Validates Captcha
-            $validate = Validator::make($request->all(), [
-                'g-recaptcha-response' => 'required|captcha'
-            ]);
-
-            // Verifies if Captcha fails and redirect to register view
-            if ($validate->fails()) {
-                $error = \Session::flash(
-                    'error_msg',
-                    'Por favor, clique no campo reCAPTCHA para efetuar o registro!'
-                );
-
-                return redirect()
-                    ->back()
-                    ->withInput($request->all(), 'register')
-                    ->withErrors($validate, 'register');
-            }
-        }
-
         redirect('auth.login');
 
         // If Captcha is OK, then register User Request
