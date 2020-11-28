@@ -30,7 +30,7 @@
 
     <div class="share_links col-12 col-sm-3 text-right">
         <div class="pull-right">
-            <a href="{{'https://api.whatsapp.com/send?phone=&text='.rawurlencode('Proponha sua Ideia Legislativa Aqui! '.$url.' #LegislAqui #e-democracia #e-cidadania via @Legislaqui! - ALERJ')}}">
+            <a href="{{'https://api.whatsapp.com/send?phone=&text='.rawurlencode($url)}}" target="_blank">
                 <i class="fab fa-whatsapp-square"></i>
             </a>
 
@@ -38,11 +38,11 @@
                target="_blank"><i class="fab fa-facebook-square"></i>
             </a>
 
-            <a href="https://twitter.com/intent/tweet?text=Proponha%20sua%20Ideia%20Legislativa%20Aqui!&url={{ urlencode($url) }}&via=Legislaqui! - ALERJ&hashtags={!! config('app.name') !!},e-democracia,e-cidadania"
+            <a href="https://twitter.com/intent/tweet?text=Proponha%20sua%20Ideia%20Legislativa%20Aqui!&url={{ urlencode($url) }}&ALERJ&hashtags={!! config('app.name') !!}"
                target="_blank"><i class="fab fa-twitter-square"></i>
             </a>
 
-            <a href="mailto:&amp;subject={{ config('app.name') }}&amp;body={{ urlencode($url) }} "><i class="fa fa-envelope-square"></i>
+            <a href="mailto:?subject={{ config('app.name') }}&amp;body={{ urlencode($url) }} "><i class="fa fa-envelope-square"></i>
             </a>
         </div>
     </div>

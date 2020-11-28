@@ -7,11 +7,16 @@ use App\Data\Models\BillsProject;
 use App\Data\Repositories\Notifications;
 use App\Data\Models\Like;
 use App\Data\Scopes\ViewableProposals;
+use App\Notifications\SendProposalApproved;
+use App\Notifications\SendProposalBillProject;
 use App\Notifications\SendProposalChanged;
 use App\Notifications\SendProposalCreated;
 use App\Data\Models\ProposalFollow;
 use App\Data\Models\Subject;
 use App\Data\Models\User;
+use App\Notifications\SendProposalDisapproved;
+use App\Notifications\SendProposalInDiscussion;
+use App\Notifications\SendProposalReachedApprovalGoal;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
@@ -168,6 +173,16 @@ class Proposal extends Model implements Auditable
                 return 'Uma ideia legislativa que você acompanha foi alterada';
             case SendProposalCreated::class:
                 return 'Sua ideia legislativa foi criada';
+            case SendProposalApproved::class:
+                return 'Uma ideia legislativa que você acompanha foi aprovada';
+            case SendProposalDisapproved::class:
+                return 'Uma ideia legislativa que você acompanha foi desaprovada';
+            case SendProposalInDiscussion::class:
+                return 'Uma ideia legislativa que você acompanha já está em discussão';
+            case SendProposalReachedApprovalGoal::class:
+                return 'Uma ideia legislativa que você acompanha alcançou apoios suficientes';
+            case SendProposalBillProject::class:
+                return 'Uma ideia legislativa que você acompanha se tornou projeto de lei';
         }
 
         throw new \Exception(
@@ -192,11 +207,25 @@ class Proposal extends Model implements Auditable
                 return 'changed';
             case SendProposalCreated::class:
                 return 'created';
+            case SendProposalApproved::class:
+                return 'stateChanged';
+            case SendProposalDisapproved::class:
+                return 'stateChanged';
+            case SendProposalInDiscussion::class:
+                return 'stateChanged';
+            case SendProposalReachedApprovalGoal::class:
+                return 'stateChanged';
+            case SendProposalBillProject::class:
+                return 'stateChanged';
         }
 
         throw new \Exception(
             'Notification class not supported: ' . $notification
         );
+    }
+
+    public function sendProposal()
+    {
     }
 
     public function sendProposalChangedEmail()
@@ -211,6 +240,46 @@ class Proposal extends Model implements Auditable
     {
         $this->dispatchMails(
             SendProposalCreated::class,
+            $this->getFollowersEmails()
+        );
+    }
+
+    public function sendProposalApprovedEmail()
+    {
+        $this->dispatchMails(
+            SendProposalApproved::class,
+            $this->getFollowersEmails()
+        );
+    }
+
+    public function sendProposalDisapprovedEmail()
+    {
+        $this->dispatchMails(
+            SendProposalDisapproved::class,
+            $this->getFollowersEmails()
+        );
+    }
+
+    public function sendProposalInDiscussionEmail()
+    {
+        $this->dispatchMails(
+            SendProposalInDiscussion::class,
+            $this->getFollowersEmails()
+        );
+    }
+
+    public function sendProposalReachedApprovalGoalEmail()
+    {
+        $this->dispatchMails(
+            SendProposalReachedApprovalGoal::class,
+            $this->getFollowersEmails()
+        );
+    }
+
+    public function sendProposalBillProjectEmail()
+    {
+        $this->dispatchMails(
+            SendProposalBillProject::class,
             $this->getFollowersEmails()
         );
     }
@@ -390,7 +459,7 @@ class Proposal extends Model implements Auditable
                             ->where('in_committee', 1)
                             ->whereNotNull('approved_at');
                         break;
-                    
+
                     case ProposalState::BillProject:
                         $query
                             ->whereNotNull('bill_project_id')

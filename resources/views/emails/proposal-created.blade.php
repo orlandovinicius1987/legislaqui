@@ -14,7 +14,7 @@
                                             <table class="twelve columns">
                                                 <tr>
                                                     <td class="six sub-columns">
-                                                        {{ Html::image(('img/alerj.png'), null, array( 'width' => 70, 'height' => 70 )) }}
+                                                        {{ Html::image(('https://iili.io/dovpp9.png'), null, array( 'width' => 70, 'height' => 70 )) }}
                                                     </td>
                                                     <td class="six sub-columns last" align="right" style="text-align:right; vertical-align:middle;">
                                                         <span class="template-label">{{ config('app.name') }}</span>
@@ -40,7 +40,7 @@
                                         <table class="twelve columns">
                                             <tr>
                                                 <td>
-                                                    <h3><strong>{{ $proposal->user->name }}</strong>, Sua Ideia Legislativa atingiu o número mínimo de apoios necessários para ser avaliado por uma comissão. Parabéns e obrigado pela sua contribuição!</h3>
+                                                    <h3><strong>{{ $proposal->user->name }}</strong>, Obrigado pela sua contribuição!</h3>
                                                     <img width="580" height="300" src="http://placehold.it/580x300">
                                                 </td>
                                                 <td class="expander"></td>
@@ -70,7 +70,6 @@
                                         <table class="twelve columns">
                                             <tr>
                                                 <td class="last right-text-pad">
-                                                    <p><strong>Problema:</strong> {{ $proposal->problem }}</p>
                                                     <p><strong>Exposição da Ideia:</strong> {{ $proposal->idea_exposition }}</p>
                                                 </td>
                                                 <td class="expander"></td>

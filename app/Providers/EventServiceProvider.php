@@ -2,13 +2,18 @@
 
 namespace App\Providers;
 
+use App\Events\ProposalApproved;
+use App\Events\ProposalBillProject;
+use App\Events\ProposalDisapproved;
+use App\Events\ProposalnDiscussion;
+use App\Events\ProposalReachedApprovalGoal;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use App\Events\ProposalChanged;
 use App\Events\ProposalWasCreated;
-use App\Listeners\NotifyProposalSubscribers;
+use App\Listeners\NotifyProposalChanged;
 use App\Listeners\NotifyProposalCreator;
 
 class EventServiceProvider extends ServiceProvider
@@ -21,22 +26,6 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [SendEmailVerificationNotification::class],
         ProposalWasCreated::class => [NotifyProposalCreator::class],
-        'App\Events\ProposalApproved' => [
-            'App\Listeners\EmailProposalApproved'
-        ],
-        'App\Events\ProposalClosed' => ['App\Listeners\EmailProposalClosed'],
-        'App\Events\ProposalReachedApprovalGoal' => [
-            'App\Listeners\EmailProposalReachedApprovalGoal'
-        ],
-        'App\Events\ProposalTimeLimit' => [
-            'App\Listeners\EmailProposalTimeLimit'
-        ],
-        'App\Events\ProposalApprovedByCommittee' => [
-            'App\Listeners\EmailProposalApprovedByCommittee'
-        ],
-        'App\Events\ProposalClosedByCommittee' => [
-            'App\Listeners\EmailProposalClosedByCommittee'
-        ],
 
         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
             // add your listeners (aka providers) here
@@ -44,7 +33,12 @@ class EventServiceProvider extends ServiceProvider
             'SocialiteProviders\Instagram\InstagramExtendSocialite@handle'
         ],
 
-        ProposalChanged::class => [NotifyProposalSubscribers::class]
+        ProposalChanged::class => [NotifyProposalChanged::class],
+        ProposalApproved::class => [NotifyProposalChanged::class],
+        ProposalDisapproved::class => [NotifyProposalChanged::class],
+        ProposalnDiscussion::class => [NotifyProposalChanged::class],
+        ProposalReachedApprovalGoal::class => [NotifyProposalChanged::class],
+        ProposalBillProject::class => [NotifyProposalChanged::class]
     ];
 
     /**

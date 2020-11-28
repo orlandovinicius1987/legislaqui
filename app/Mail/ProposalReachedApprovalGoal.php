@@ -3,7 +3,7 @@ namespace App\Mail;
 
 use App\Data\Models\Proposal as ProposalModel;
 
-class ProposalCreated extends Mailable
+class ProposalReachedApprovalGoal extends Mailable
 {
     /**
      * Build the message.
@@ -15,7 +15,7 @@ class ProposalCreated extends Mailable
         $this->to($this->notification->routeNotificationForMail())
             ->from($this->fromArray('address'), $this->fromArray('name'))
             ->subject($this->notification->subject)
-            ->markdown('emails.proposal-created')
+            ->markdown('emails.proposal-reached-approval-goal')
             ->with([
                 'notification' => $this->notification,
                 'proposal' => ProposalModel::find(
