@@ -9,7 +9,7 @@ use App\Events\ProposalChanged;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NotifyProposalSubscribers
+class NotifyProposalChanged
 {
     /**
      * Handle the event.

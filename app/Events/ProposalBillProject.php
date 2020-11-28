@@ -11,7 +11,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
  * Class ProposalChanged
  * @package App\Events
  */
-class ProposalApproved
+class ProposalBillProject
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
