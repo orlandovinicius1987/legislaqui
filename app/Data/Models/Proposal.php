@@ -501,7 +501,8 @@ class Proposal extends Model implements Auditable
     {
         $state = $this->state;
 
-        return $state == ProposalState::Approved ||
-            $state == ProposalState::Supported;
+        return $this->limit_date >= now() &&
+            ($state == ProposalState::Approved ||
+                $state == ProposalState::Supported);
     }
 }
