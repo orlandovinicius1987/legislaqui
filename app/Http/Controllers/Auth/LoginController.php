@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Validator;
+use Laravel\Socialite\Facades\Socialite as Socialite;
 use App\Support\Constants;
 
 class LoginController extends Controller
@@ -32,39 +33,126 @@ class LoginController extends Controller
         login as traitLogin;
     }
 
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
 
-    /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest', ['except' => 'logout']);
-    }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param array $data
-     *
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-            'cpf' => 'required'
-        ]);
-    }
+    public function redirectToProvider(string $provider)
+        {
+            
+            try {
+                $scopes = config("services.$provider.scopes") ?? [];
+                
+                if (count($scopes) === 0) {
+                    return Socialite::driver($provider)->redirect();
+                } else {
+                    return Socialite::driver($provider)->scopes($scopes)->redirect();
+                }
+                
+            } catch (\Exception $e) {
+                abort(404);
+            }
+        }
+    public function handleProviderCallback(string $provider)
+        {
+            //dd(Socialite::driver($provider));
+            try {
+                $data = Socialite::driver($provider)->user();
+            
+                    return $this->handleSocialUser($provider, $data);
+            } catch (\Exception $e) {
+               
+                return redirect('login')->withErrors(['authentication_deny' => 'Login with '.ucfirst($provider).' failed. Please try again.']);
+            }
+        }
+    public function handleSocialUser(string $provider, object $data)
+        {
+            $user = User::where([
+                "social->{$provider}->id" => $data->id,
+            ])->first();
+    if (!$user) {
+                $user = User::where([
+                    'email' => $data->email,
+                ])->first();
+            }
+    if (!$user) {
+                return $this->createUserWithSocialData($provider, $data);
+            }
+    $social = $user->social;
+            $social[$provider] = [
+                'id' => $data->id,
+                'token' => $data->token
+            ];
+            $user->social = $social;
+            $user->save();
+    return $this->socialLogin($user);
+        }
+    public function createUserWithSocialData(string $provider, object $data)
+        {
+            try {
+                $user = new User;
+                $user->name = $data->name;
+                $user->email = $data->email;
+                $user->social = [
+                    $provider => [
+                        'id' => $data->id,
+                        'token' => $data->token,
+                    ],
+                ];
+
+                // Check support verify or not
+                if ($user instanceof MustVerifyEmail) {
+                    $user->markEmailAsVerified();
+                }
+                
+                $user->save();
+            return $this->socialLogin($user);
+            } catch (Exception $e) {
+                
+                return redirect('login')->withErrors(['authentication_deny' => 'Login with '.ucfirst($provider).' failed. Please try again.']);
+            }
+        }
+    public function socialLogin(User $user)
+        {
+            
+            auth()->loginUsingId($user->id);
+            return redirect($this->redirectTo);
+        }
+    
+
+
+
+            /**
+             * Where to redirect users after login / registration.
+             *
+             * @var string
+             */
+            protected $redirectTo = '/';
+
+            /**
+             * Create a new authentication controller instance.
+             *
+             * @return void
+             */
+            public function __construct()
+            {
+                $this->middleware('guest', ['except' => 'logout']);
+            }
+
+            /**
+             * Get a validator for an incoming registration request.
+             *
+             * @param array $data
+             *
+             * @return \Illuminate\Contracts\Validation\Validator
+             */
+            protected function validator(array $data)
+            {
+                return Validator::make($data, [
+                    'name' => 'required|max:255',
+                    'email' => 'required|email|max:255|unique:users',
+                    'password' => 'required|confirmed|min:6',
+                    'cpf' => 'required'
+                ]);
+            }
 
     /**
      * Create a new user (citizen - 99) instance after a valid registration.

@@ -44,6 +44,22 @@ class User extends Authenticatable implements Auditable
         'last_login_at'
     ];
 
+        /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'social' => 'array',
+        ];
+
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtolower($value);
+    }
+
+
     /**
      * The attributes excluded from the model's JSON form.
      *

@@ -60,28 +60,13 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
-        return Validator::make(
-            $data,
-            array_merge(
-                [
-                    'name' => ['required', 'string', 'max:255'],
-                    'email' => [
-                        'required',
-                        'string',
-                        'email',
-                        'max:255',
-                        'unique:users'
-                    ],
-                    'terms' => 'required',
-                    'password' => ['required', 'string', 'min:8', 'confirmed'],
-                    'city_id' => ['required'],
-                    'uf' => ['required']
-                ],
-                $this->getRecaptchaRules()
-            )
-        );
-    }
+        {
+        
+            return Validator::make($data, [
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,NULL,id,deleted_at,NULL'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+        }
 
     /**
      * Create a new user (citizen - 99) instance after a valid registration.

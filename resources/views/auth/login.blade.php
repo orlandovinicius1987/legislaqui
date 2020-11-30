@@ -56,6 +56,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('password') && (Session::get('last_auth_attempt') === 'login') ? ' has-error' : '' }} row">
+                                {!! csrf_field() !!}
                                 <div class="col-md-12">
                                     {{--<label for="password" class="col-form-label">Senha</label>--}}
                                     @if ($errors->has('password') && (Session::get('last_auth_attempt') === 'login'))
@@ -98,6 +99,16 @@
 
                                 </div>
                             </div>
+                            @foreach(['facebook', 'linkedin'] as $provider)
+                                <a class="btn btn-link" href="{{ route('social.login', ['provider' => $provider]) }}">Login with {{ ucwords($provider) }}</a>
+                            @endforeach
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        <div>{{ $error }}</div>
+                                    @endforeach
+    </div>
+@endif
                         </form>
                     </div>
                 </div>
