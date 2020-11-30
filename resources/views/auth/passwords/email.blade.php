@@ -1,13 +1,35 @@
 @extends('layouts.alerj')
-
-<!-- Main Content -->
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Solicitar Nova Senha</div>
-                <div class="panel-body">
+
+    @if (Session::has('error_msg'))
+        <div class="alert alert-danger">{{ Session::get('error_msg') }}</div>
+    @endif
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+        }
+
+        .container-fluid {
+            display: none !important;
+        }
+    </style>
+
+    <div class="d-flex h-100">
+        <div class="row align-self-center w-100 login">
+            <div class="col-md-8 col-lg-6 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            Solicitar Nova Senha
+                        </h3>
+                    </div>
+
+                    <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -18,10 +40,10 @@
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail</label>
+{{--                            <label class="col-md-12 control-label">E-mail</label>--}}
 
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            <div class="col-md-12">
+                                <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Insira seu email">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -31,9 +53,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="form-group row mb-0">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary btn-block">
                                     <i class="fa fa-btn fa-envelope"></i> Enviar solicitação de troca de senha
                                 </button>
                             </div>

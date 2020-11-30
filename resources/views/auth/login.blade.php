@@ -5,9 +5,6 @@
         <div class="alert alert-danger">{{ Session::get('error_msg') }}</div>
     @endif
 
-
-
-
     <style>
         html {
             height: 100%;
@@ -21,7 +18,6 @@
             display: none !important;
         }
     </style>
-
 
     <div class="d-flex h-100">
         <div class="row align-self-center w-100 login">
@@ -70,7 +66,6 @@
 
                                     <input id="password" type="password" class="form-control" name="password" placeholder="Insira sua senha">
 
-
                                 </div>
                             </div>
 
@@ -92,7 +87,6 @@
                                         </a>
                                     @endif
                                 </div>
-
                             </div>
 
                             <div class="form-group row mb-0">

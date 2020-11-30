@@ -3,16 +3,11 @@
 @section('title', 'Propostas Legislativas')
 
 @section('content')
-
-
-
-
     @include('partials.error')
     <div class="cards-lista-ideias">
         <div class="row ideia">
 
             <div class="mb-3 col-12 col-lg-3 order-lg-2">
-
 
                 @can('edit', $proposal)
                     @if($proposal->state == App\Enums\ProposalState::NotModerated)
@@ -86,14 +81,13 @@
                     </div>
                     <div class="card-body ">
 
-
                         @include('partials.share', ['url' => URL::full()])
 
                         <table class="table table-sm table-responsive table-striped table-show">
                             <tbody>
                             <tr>
                                 <td class="pl-4 ideia-labels">
-                                    Nome
+                                    Título
                                 </td>
                                 <td class="table-td-show">
                                     {{ $proposal->user->name }}
@@ -131,17 +125,17 @@
                                     </td>
                                 </tr>
                             @endIf
+{{--                            <tr>--}}
+{{--                                <td class="pl-4 ideia-labels">--}}
+{{--                                    Problema--}}
+{{--                                </td>--}}
+{{--                                <td class="table-td-show">--}}
+{{--                                    {!! $proposal->problem !!}--}}
+{{--                                </td>--}}
+{{--                            </tr>--}}
                             <tr>
                                 <td class="pl-4 ideia-labels">
-                                    Problema
-                                </td>
-                                <td class="table-td-show">
-                                    {!! $proposal->problem !!}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pl-4 ideia-labels">
-                                    Exposição da Ideia
+                                    Descrição
                                 </td>
                                 <td class="table-td-show">
                                     {!! $proposal->idea_exposition !!}

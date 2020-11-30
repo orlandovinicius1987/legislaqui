@@ -12,7 +12,11 @@ use App\Data\Models\BillsProject;
 use App\Data\Models\Subject;
 use App\Enums\ProposalState as ProposalState;
 use App\Events\ProposalApprovedByCommittee;
+use App\Events\ProposalBillProject;
+use App\Events\ProposalChanged;
 use App\Events\ProposalClosedByCommittee;
+use App\Events\ProposalDisapproved;
+use App\Events\ProposalInDiscussion;
 use App\Events\ProposalTimeLimit;
 use App\Http\Requests\BillProjectFormRequest;
 use App\Http\Requests\ProposalStoreRequest;
@@ -321,6 +325,7 @@ class AdminController extends Controller
 
         //Then update Proposal
         $proposal->fill($input)->save();
+        event(new ProposalChanged($proposal));
         $proposal->subjects()->sync($formRequest->get('subjects'));
 
         return redirect()
@@ -361,6 +366,7 @@ class AdminController extends Controller
 
             //Save Proposal
             $proposal->save();
+            event(new ProposalBillProject($proposal));
 
             return redirect()
                 ->route('admin.proposal.approvedByCommittee', ['id' => $id])
@@ -443,56 +449,6 @@ class AdminController extends Controller
     }
 
     /**
-     * First Moderation: Disapproving Proposals to get them rid off frontend.
-     *
-     * @param int $id
-     *
-     * @return Response
-     */
-    public function disapprovedProposal($id, ResponseFormRequest $formRequest)
-    {
-        $proposal = $this->proposalsRepository->find($id);
-
-        $input = $formRequest->except('_token', '_method', '_wysihtml5_mode');
-
-        //Append Moderation Info only if never been Moderated before
-        if (
-            $proposal->approved_at == null &&
-            $proposal->approved_by == null &&
-            $proposal->disapproved_at == null &&
-            $proposal->disapproved_by == null
-        ) {
-            $proposal->response = $input['response'];
-            $proposal->response_id = Auth::user()->id;
-
-            $proposal->disapproved_at = Carbon::now();
-            $proposal->disapproved_by = Auth::user()->id;
-
-            // Close
-            $proposal->open = false;
-            // and Save
-            //$proposal->forcefill($input)->save();
-            $proposal->save();
-
-            //Fire Event
-            event(new ProposalClosed($proposal));
-
-            return redirect()
-                ->route('admin.proposals')
-                ->with(compact('proposal'))
-                ->with(
-                    'admin_proposal_crud_msg',
-                    'Ideia Legislativa Desaprovada e Respondida com Sucesso.'
-                );
-        } else {
-            return redirect()
-                ->back()
-                ->with(compact('proposal'))
-                ->with('admin_error_msg', 'Ideia Legislativa já foi Moderada!');
-        }
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
@@ -565,6 +521,7 @@ class AdminController extends Controller
 
             //Then update Proposal
             $proposal->forcefill($input)->save();
+            event(new ProposalDisapproved($proposal));
             // dd($proposal);
             //            return redirect()->route('admin.proposal.show', ['id' => $id])->with('admin_proposal_crud_msg', 'Ideia Legislativa Desaprovada e Respondida com Sucesso');
             return redirect()
@@ -630,7 +587,7 @@ class AdminController extends Controller
             $proposal->save();
 
             //Fire Event
-            event(new ProposalApprovedByCommittee($proposal));
+            event(new ProposalInDiscussion($proposal));
 
             return redirect()
                 ->route('admin.proposals.inCommittee')

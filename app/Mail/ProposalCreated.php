@@ -15,7 +15,7 @@ class ProposalCreated extends Mailable
         $this->to($this->notification->routeNotificationForMail())
             ->from($this->fromArray('address'), $this->fromArray('name'))
             ->subject($this->notification->subject)
-            ->markdown('emails.proposal-to-creator')
+            ->markdown('emails.proposal-created')
             ->with([
                 'notification' => $this->notification,
                 'proposal' => ProposalModel::find(

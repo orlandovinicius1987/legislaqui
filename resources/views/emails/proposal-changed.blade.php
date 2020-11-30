@@ -1,9 +1,22 @@
 @component('mail::message')
-A proposta legislativa , a qual você acompanha, foi alterada.
+A Ideia Legislativa a seguir, a qual você acompanha, foi alterada.
 
-Visualize a proposta em:
-<a href="{{route('proposal.show', ['id' => $proposal->id])}}">Link</a>
+| Proposta Legislativa |
+| :-------------------- |
+| {{ $proposal->name }} |
 
-@include('emails.signature')
+| Exposição da Ideia |
+| :------------------ |
+| {{ $proposal->idea_exposition }} |
+
+@component('mail::button', ['url' => route('proposal.show', ['id' => $proposal->id])])
+    Visualizar ideia
+@endcomponent
+
+@component('mail::footer')
+    @include('emails.cancel-subscription', ['proposal'=>$proposal])
+    <br>
+    @include('emails.signature')
+@endcomponent
 
 @endcomponent

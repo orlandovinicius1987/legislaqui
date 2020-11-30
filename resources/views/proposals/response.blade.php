@@ -16,7 +16,7 @@
                     <table class="table-responsive table-striped">
                         <tbody>
                         <tr><td class="table-td-label-show">Nome:</td><td class="table-td-show"> {{ $proposal->name }}</td></tr>
-                        <tr><td class="table-td-label-show">Problema:</td><td class="table-td-show"> {{ $proposal->problem }}</td></tr>
+{{--                        <tr><td class="table-td-label-show">Problema:</td><td class="table-td-show"> {{ $proposal->problem }}</td></tr>--}}
                         <tr><td class="table-td-label-show">Exposição da Ideia:</td><td class="table-td-show"> {{ $proposal->idea_exposition }}</td></tr>
                         </tbody>
                     </table>
@@ -27,13 +27,13 @@
                     'class' => 'form'
                     ]) }}
 
-                    <div class="form-group">
-                        {{ Form::label('Resposta') }}
-                        {{ Form::textarea('response', null,
-                            array('required',
-                                  'class'=>'textarea',
-                                  'placeholder'=>'Responder Proposta')) }}
-                    </div>
+{{--                    <div class="form-group">--}}
+{{--                        {{ Form::label('Resposta') }}--}}
+{{--                        {{ Form::textarea('response', null,--}}
+{{--                            array('required',--}}
+{{--                                  'class'=>'textarea',--}}
+{{--                                  'placeholder'=>'Responder Proposta')) }}--}}
+{{--                    </div>--}}
 
                     <div class="form-group">
                         {{ Form::submit('Responder',

@@ -7,10 +7,6 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 
-/**
- * Class ProposalChanged
- * @package App\Events
- */
 class ProposalChanged
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;

@@ -40,7 +40,7 @@
                                         <thead>
                                         <tr role="row">
                                             <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Id: activate to sort column ascending" style="width: 68px;">Id</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Nome: activate to sort column descending" style="width: 296px;" aria-sort="ascending">Nome</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Título: activate to sort column descending" style="width: 296px;" aria-sort="ascending">Título</th>
                                             @if(config('app.likes_enabled'))
                                                 <th class="sorting" tabindex="0" aria-controls="dataTableUser" rowspan="1" colspan="1" aria-label="Likes: activate to sort column ascending" style="width: 241px;">Curtidas</th>
                                             @endIf
