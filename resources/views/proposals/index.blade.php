@@ -112,11 +112,11 @@
                 <div class="col-12 col-md-3 mb-2 mb-md-0">
                     {{ Form::select('order_by', $orderBys, $order_by ,['data-width'=>'100%','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'Ordenar por']) }}
                 </div>
-                <div class="col-12 col-md-1  mb-2 mb-md-0">
+                <div class="col-12 col-md-3  mb-2 mb-md-0">
                     {{ Form::select('per_page', $pageSizes, $per_page ,['data-width'=>'100%','data-style'=>'form-control', 'data-live-search'=>'true', 'title'=>'Resultados por página']) }}
                 </div>
 
-                <div class="col-12 col-md-2">
+                <div class="col-12 col-md-3">
                     <button class="btn btn-primary btn-block border border-left-0" type="submit" >
                         <i class="fas fa-search"></i> Filtrar
                     </button>
