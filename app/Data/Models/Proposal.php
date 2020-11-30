@@ -144,11 +144,6 @@ class Proposal extends Model implements Auditable
             $emailsArray[] = $follower->user->email;
         });
 
-        //Owner email
-        if ($this->user) {
-            $emailsArray[] = $this->user->email;
-        }
-
         return collect($emailsArray);
     }
 
@@ -176,7 +171,7 @@ class Proposal extends Model implements Auditable
             case SendProposalApproved::class:
                 return 'Uma ideia legislativa que você acompanha foi aprovada';
             case SendProposalDisapproved::class:
-                return 'Uma ideia legislativa que você acompanha foi desaprovada';
+                return 'Uma ideia legislativa que você acompanha não foi aprovada';
             case SendProposalInDiscussion::class:
                 return 'Uma ideia legislativa que você acompanha já está em discussão';
             case SendProposalReachedApprovalGoal::class:

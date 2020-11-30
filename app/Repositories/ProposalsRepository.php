@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Data\Models\ProposalFollow;
 use App\Data\Repositories\Repository;
 use App\Enums\ProposalState;
+use App\Events\ProposalApproved;
 use App\Events\ProposalReachedApprovalGoal;
 use App\Data\Models\Proposal;
 use App\Data\Models\User;
@@ -117,14 +118,21 @@ class ProposalsRepository extends Repository
     {
         $follow = ProposalFollow::where('user_id', $userId)
             ->where('proposal_id', $proposalId)
-            ->firstOrFail();
+            ->first();
 
-        return $follow->delete();
+        if ($follow) {
+            $follow->delete();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function approve($id)
     {
         $proposal = $this->find($id);
+
+        $state = $proposal->state;
 
         $user = Auth::user();
 
@@ -151,6 +159,7 @@ class ProposalsRepository extends Repository
         // Condition: 20.000 approved this proposal + is not in_committee
         if (
             $total_approvals >= config('global.approvalGoal') &&
+            $state == ProposalState::Approved &&
             $proposal->in_committee == false
         ) {
             // Set approval_goal flag
@@ -169,6 +178,8 @@ class ProposalsRepository extends Repository
         // Set in_committee flag
         $proposal->in_committee = true;
         $proposal->save();
+
+        //event(new ProposalSent($proposal))
 
         return $proposal;
     }
@@ -201,6 +212,7 @@ class ProposalsRepository extends Repository
 
             //Save
             $proposal->save();
+            event(new ProposalApproved($proposal));
         }
 
         return $proposal;

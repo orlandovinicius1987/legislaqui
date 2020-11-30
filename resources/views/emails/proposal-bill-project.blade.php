@@ -1,5 +1,5 @@
 @component('mail::message')
-A Ideia Legislativa , a qual você acompanha, foi alterada.
+A Ideia Legislativa a seguir se tornou projeto de lei!
 
 | Proposta Legislativa |
 | :-------------------- |

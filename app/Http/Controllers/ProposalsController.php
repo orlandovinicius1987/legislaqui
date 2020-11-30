@@ -188,12 +188,19 @@ class ProposalsController extends Controller
     public function unfollow($id, ProposalUnfollowRequest $request)
     {
         //Get Proposal
-        $follow = $this->proposalsRepository->unfollow($id, Auth::user()->id);
+        $success = $this->proposalsRepository->unfollow($id, Auth::user()->id);
 
-        Session::flash(
-            'flash_msg',
-            'Esta Ideia Legislativa não será mais acompanhada.'
-        );
+        if ($success) {
+            Session::flash(
+                'flash_msg',
+                'Esta Ideia Legislativa não será mais acompanhada.'
+            );
+        } else {
+            Session::flash(
+                'flash_msg',
+                'Você não está acompanhando essa ideia legislativa.'
+            );
+        }
 
         $proposal = $this->proposalsRepository->find($id);
 
@@ -374,6 +381,10 @@ class ProposalsController extends Controller
         //dd($input);
 
         $proposal = Proposal::create($input);
+        $follow = $this->proposalsRepository->follow(
+            $proposal->id,
+            Auth::user()->id
+        );
         $proposal->subjects()->sync($formRequest->get('subjects'));
 
         event(new ProposalWasCreated($proposal));
