@@ -1,19 +1,14 @@
 <?php
 
-namespace App\Http\Traits;
+namespace App\Http\Requests\Traits;
 
 trait WithRouteParams
 {
-    /**
-     * @param array $all
-     * @return array
-     */
-    public function sanitize(array $all)
+    public function all($array = null)
     {
-        $this->replace(
-            $all = array_replace_recursive($all, $this->route()->parameters())
+        return array_replace_recursive(
+            parent::all(),
+            $this->route()->parameters()
         );
-
-        return $all;
     }
 }

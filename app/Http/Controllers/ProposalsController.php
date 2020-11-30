@@ -10,6 +10,7 @@ use App\Events\ProposalWasCreated;
 use App\Http\Requests\ProposalStoreRequest;
 use App\Http\Requests\ProposalSupportRequest;
 use App\Http\Requests\ProposalFollowRequest;
+use App\Http\Requests\ProposalUnfollowRequest;
 use App\Http\Requests\ProposalUpdateRequest;
 use App\Http\Requests\ResponseFormRequest;
 use App\Data\Models\Like;
@@ -159,21 +160,10 @@ class ProposalsController extends Controller
 
     /**
      * Store Proposal Follow information.
-     *
-     * @param int $id
-     *
-     * @return Response
      */
     public function follow($id, ProposalFollowRequest $request)
     {
-        //Get Proposal
-        $proposal = $this->proposalsRepository->find($id);
-
-        //Save Follow table
-        $follow = ProposalFollow::firstOrCreate([
-            'user_id' => Auth::user()->id,
-            'proposal_id' => $proposal->id
-        ]);
+        $follow = $this->proposalsRepository->follow($id, Auth::user()->id);
 
         if ($follow->wasRecentlyCreated) {
             Session::flash(
@@ -186,6 +176,33 @@ class ProposalsController extends Controller
                 'Esta Ideia Legislativa já está sendo acompanhada!'
             );
         }
+
+        $proposal = $this->proposalsRepository->find($id);
+
+        return redirect()->route('proposal.show', ['proposal' => $proposal]);
+    }
+
+    /**
+     * Store Proposal Follow information.
+     */
+    public function unfollow($id, ProposalUnfollowRequest $request)
+    {
+        //Get Proposal
+        $success = $this->proposalsRepository->unfollow($id, Auth::user()->id);
+
+        if ($success) {
+            Session::flash(
+                'flash_msg',
+                'Esta Ideia Legislativa não será mais acompanhada.'
+            );
+        } else {
+            Session::flash(
+                'flash_msg',
+                'Você não está acompanhando essa ideia legislativa.'
+            );
+        }
+
+        $proposal = $this->proposalsRepository->find($id);
 
         return redirect()->route('proposal.show', ['proposal' => $proposal]);
     }
@@ -364,6 +381,10 @@ class ProposalsController extends Controller
         //dd($input);
 
         $proposal = Proposal::create($input);
+        $follow = $this->proposalsRepository->follow(
+            $proposal->id,
+            Auth::user()->id
+        );
         $proposal->subjects()->sync($formRequest->get('subjects'));
 
         event(new ProposalWasCreated($proposal));

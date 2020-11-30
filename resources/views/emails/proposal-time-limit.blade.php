@@ -40,7 +40,7 @@
                                         <table class="twelve columns">
                                             <tr>
                                                 <td>
-                                                    <h3><strong>{{ $proposal->user->name }}</strong>, Sua ideia legislativa expirou. Obrigado pela sua contribuição!</h3>
+                                                    <h3><strong>{{ $proposal->user->name }}</strong>, Sua Ideia Legislativa expirou. Obrigado pela sua contribuição!</h3>
                                                     <img width="580" height="300" src="http://placehold.it/580x300">
                                                 </td>
                                                 <td class="expander"></td>
