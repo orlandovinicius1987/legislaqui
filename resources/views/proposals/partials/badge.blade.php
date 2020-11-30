@@ -26,15 +26,15 @@
     @break
     @case(\App\Enums\ProposalState::Sent)
         <span class="badge badge-success">
-            Enviada para a Comissão de Normas
+            Enviada para a comissão
         </span>
     @break
     @case(\App\Enums\ProposalState::Forwarded)
         <span class="badge badge-success">
-            Enviada para projeto de lei
+            Em discussão pela comissão
         </span>
     @break
-    
+
     @case(\App\Enums\ProposalState::BillProject)
         <span class="badge badge-primary">
             Virou projeto de lei

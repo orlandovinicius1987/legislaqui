@@ -479,6 +479,17 @@ class Proposal extends Model implements Auditable
         static::addGlobalScope(new ViewableProposals());
     }
 
+    public function isFollowedByCurrentUser()
+    {
+        if ($user = auth()->user()) {
+            return !!ProposalFollow::where('user_id', $user->id)
+                ->where('proposal_id', $this->id)
+                ->first();
+        } else {
+            return false;
+        }
+    }
+
     public function isFollowable()
     {
         $state = $this->state;

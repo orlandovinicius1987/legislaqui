@@ -190,6 +190,33 @@ class ProposalsController extends Controller
         return redirect()->route('proposal.show', ['proposal' => $proposal]);
     }
 
+    /**
+     * Store Proposal Follow information.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function unfollow($id, Request $request)
+    {
+        //Get Proposal
+        $proposal = $this->proposalsRepository->find($id);
+
+        //Save Follow table
+        $follow = ProposalFollow::where('user_id', Auth::user()->id)
+            ->where('proposal_id', $proposal->id)
+            ->firstOrFail();
+
+        $follow->delete();
+
+        Session::flash(
+            'flash_msg',
+            'Esta Ideia Legislativa não será mais acompanhada.'
+        );
+
+        return redirect()->route('proposal.show', ['proposal' => $proposal]);
+    }
+
     public function like($id)
     {
         return $this->likeUnlike($id, 'like');
