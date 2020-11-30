@@ -192,7 +192,7 @@
 
         <div class="row">
             <div class="col-12 mt-3">
-                {{ $proposals->appends(Request::except('page'))->links() }}
+                {{ $proposals->appends(Request::except('page'))->onEachSide(1)->links() }}
             </div>
         </div>
 

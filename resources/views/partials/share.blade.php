@@ -18,7 +18,6 @@
                     <i class="far fa-star" aria-hidden="true"></i><span class="hidden-xs">Apoiar!</span></a>
             @endif
         @endIf
-{{--            if (Auth::check() && !$proposal->isFollowable())--}}
 
         @if($proposal->isFollowable())
             @if (!Auth::check())
