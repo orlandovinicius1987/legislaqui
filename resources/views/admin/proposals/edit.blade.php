@@ -20,7 +20,7 @@
                     ]) }}
 
                     <div class="form-group coluna_02">
-                        {{ Form::label('Nome da Proposta') }}
+                        {{ Form::label('Título da Proposta') }}
                         {{ Form::text('name', null,
                             array('required',
                                   'class'=>'campo',
@@ -41,7 +41,7 @@
                     </div>
  --}}
                     <div class="form-group">
-                        {{ Form::label('Exposição da Ideia') }}
+                        {{ Form::label('Descrição da Ideia') }}
                         {{ Form::textarea('idea_exposition', null,
                             array('required',
                                   'class'=>'textarea',

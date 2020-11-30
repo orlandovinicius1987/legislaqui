@@ -17,7 +17,7 @@
                 {{ Form::open(array('route' => 'admin.proposal.store', 'class' => 'form')) }}
 
                 <div class="form-group coluna_02">
-                    {{ Form::label('Nome da Propostas') }}
+                    {{ Form::label('Título da Propostas') }}
                     {{ Form::text('name', null,
                         array('required',
                               'class'=>'campo',
@@ -25,15 +25,7 @@
                 </div>
 
                 <div class="form-group">
-                    {{ Form::label('Problema') }}
-                    {{ Form::textarea('problem', null,
-                        array('required',
-                              'class'=>'textarea',
-                              'placeholder'=>'Descreva o Problema')) }}
-                </div>
-
-                <div class="form-group">
-                    {{ Form::label('Exposição da Ideia') }}
+                    {{ Form::label('Descrição da Ideia') }}
                     {{ Form::textarea('idea_exposition', null,
                         array('required',
                               'class'=>'textarea',

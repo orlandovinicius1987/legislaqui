@@ -20,7 +20,7 @@
     @else
         <tr><td class="table-td-label-show">Data Limite<td class="table-td-show"> Exibida após aprovação</td></tr>
     @endif
-    <tr><td class="table-td-label-show">Exposição da Ideia</td><td class="table-td-show"> {!! $proposal->idea_exposition !!}</td></tr>
+    <tr><td class="table-td-label-show">Descrição da Ideia</td><td class="table-td-show"> {!! $proposal->idea_exposition !!}</td></tr>
     <tr><td class="table-td-label-show">Número de Apoios</td><td class="table-td-show"> {{ $proposal->approvals->count() }}</td></tr>
     <tr></tr>
     {{-- not moderated == null --}}
