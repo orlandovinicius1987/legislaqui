@@ -45,7 +45,7 @@ class PasswordReset extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->subject('reset de senha')
+            ->subject('LEGISLAQUI - Notificação de troca de senha')
             ->markdown('emails.auth.password-reset', [
                 'expire' => config(
                     'auth.passwords.' .
