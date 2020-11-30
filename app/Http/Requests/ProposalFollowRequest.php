@@ -3,10 +3,11 @@
 namespace App\Http\Requests;
 
 use App\Data\Models\Proposal;
-use App\Enums\ProposalState;
+use App\Http\Requests\Traits\WithRouteParams;
 
 class ProposalFollowRequest extends Request
 {
+    use WithRouteParams;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -21,6 +22,6 @@ class ProposalFollowRequest extends Request
 
     public function rules()
     {
-        return [];
+        return ['id' => 'exists:proposals,id'];
     }
 }

@@ -10,6 +10,7 @@ use App\Events\ProposalWasCreated;
 use App\Http\Requests\ProposalStoreRequest;
 use App\Http\Requests\ProposalSupportRequest;
 use App\Http\Requests\ProposalFollowRequest;
+use App\Http\Requests\ProposalUnfollowRequest;
 use App\Http\Requests\ProposalUpdateRequest;
 use App\Http\Requests\ResponseFormRequest;
 use App\Data\Models\Like;
@@ -159,21 +160,10 @@ class ProposalsController extends Controller
 
     /**
      * Store Proposal Follow information.
-     *
-     * @param int $id
-     *
-     * @return Response
      */
     public function follow($id, ProposalFollowRequest $request)
     {
-        //Get Proposal
-        $proposal = $this->proposalsRepository->find($id);
-
-        //Save Follow table
-        $follow = ProposalFollow::firstOrCreate([
-            'user_id' => Auth::user()->id,
-            'proposal_id' => $proposal->id
-        ]);
+        $follow = $this->proposalsRepository->follow($id, Auth::user()->id);
 
         if ($follow->wasRecentlyCreated) {
             Session::flash(
@@ -187,32 +177,25 @@ class ProposalsController extends Controller
             );
         }
 
+        $proposal = $this->proposalsRepository->find($id);
+
         return redirect()->route('proposal.show', ['proposal' => $proposal]);
     }
 
     /**
      * Store Proposal Follow information.
-     *
-     * @param int $id
-     *
-     * @return Response
      */
-    public function unfollow($id, Request $request)
+    public function unfollow($id, ProposalUnfollowRequest $request)
     {
         //Get Proposal
-        $proposal = $this->proposalsRepository->find($id);
-
-        //Save Follow table
-        $follow = ProposalFollow::where('user_id', Auth::user()->id)
-            ->where('proposal_id', $proposal->id)
-            ->firstOrFail();
-
-        $follow->delete();
+        $follow = $this->proposalsRepository->unfollow($id, Auth::user()->id);
 
         Session::flash(
             'flash_msg',
             'Esta Ideia Legislativa não será mais acompanhada.'
         );
+
+        $proposal = $this->proposalsRepository->find($id);
 
         return redirect()->route('proposal.show', ['proposal' => $proposal]);
     }

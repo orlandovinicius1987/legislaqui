@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Data\Models\ProposalFollow;
 use App\Data\Repositories\Repository;
 use App\Enums\ProposalState;
 use App\Events\ProposalReachedApprovalGoal;
@@ -102,6 +103,23 @@ class ProposalsRepository extends Repository
     public function find($id)
     {
         return Proposal::findOrFail($id);
+    }
+
+    public function follow($proposalId, $userId)
+    {
+        return ProposalFollow::firstOrCreate([
+            'user_id' => $userId,
+            'proposal_id' => $proposalId
+        ]);
+    }
+
+    public function unfollow($proposalId, $userId)
+    {
+        $follow = ProposalFollow::where('user_id', $userId)
+            ->where('proposal_id', $proposalId)
+            ->firstOrFail();
+
+        return $follow->delete();
     }
 
     public function approve($id)
