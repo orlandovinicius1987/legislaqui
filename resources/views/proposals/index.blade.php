@@ -8,9 +8,13 @@
 
 
         <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <div class='embed-container'>
+                    <iframe src='https://www.youtube.com/embed//Nh3WXmYXdyU' frameborder='0' allowfullscreen></iframe>
+                </div>
+            </div>
 
-            <div class="col-md-6 text-left">
-
+            <div class="col-md-12 col-lg-6 text-left">
                 <h1>
                     Quer propor um projeto na Alerj?
                 </h1>
@@ -41,11 +45,7 @@
                 </div>
 
             </div>
-            <div class="col-md-6">
-                <div class='embed-container'>
-                    <iframe src='https://www.youtube.com/embed//Nh3WXmYXdyU' frameborder='0' allowfullscreen></iframe>
-                </div>
-            </div>
+
         </div>
 
 

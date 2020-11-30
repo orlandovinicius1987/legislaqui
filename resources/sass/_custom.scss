@@ -179,3 +179,9 @@ h2,.h2 {
 .btn-100 {
     width: 100%;
 }
+
+section {
+    @include media-breakpoint-down(xs) {
+        padding: 20px 0;
+    }
+}
