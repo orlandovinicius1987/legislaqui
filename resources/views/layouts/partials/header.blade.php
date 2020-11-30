@@ -4,13 +4,13 @@
 
 
 
-        <div class="col-5 col-md-2 logo-alerj">
+        <div class="col-4 col-md-2 logo-alerj">
 
             @include('partials.logo-alerj')
 
         </div>
 
-        <div class="col-5 col-md-2">
+        <div class="col-4 col-md-2">
             <a href="/" class="legislaqui_marca text-center">
                 <img src="/imagens/marca_legislaqui.png" class="img-fluid">
             </a>
