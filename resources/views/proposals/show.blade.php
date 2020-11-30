@@ -87,7 +87,7 @@
                             <tbody>
                             <tr>
                                 <td class="pl-4 ideia-labels">
-                                    Nome
+                                    Título
                                 </td>
                                 <td class="table-td-show">
                                     {{ $proposal->user->name }}
@@ -135,7 +135,7 @@
 {{--                            </tr>--}}
                             <tr>
                                 <td class="pl-4 ideia-labels">
-                                    Exposição da Ideia
+                                    Descrição
                                 </td>
                                 <td class="table-td-show">
                                     {!! $proposal->idea_exposition !!}
