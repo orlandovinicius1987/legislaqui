@@ -18,9 +18,9 @@ class ProposalBillProject extends Mailable
             ->markdown('emails.proposal-bill-project')
             ->with([
                 'notification' => $this->notification,
-                'proposal' => ProposalModel::find(
-                    $this->notification->proposal_id
-                )->load('user')
+                'proposal' => ProposalModel::withoutGlobalScopes()
+                    ->find($this->notification->proposal_id)
+                    ->load('user')
             ]);
 
         return $this;

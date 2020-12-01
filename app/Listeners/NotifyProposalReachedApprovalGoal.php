@@ -4,7 +4,7 @@ namespace App\Listeners;
 
 use App\Events\ProposalReachedApprovalGoal;
 
-class NotifyProposalReachedApprovalGoal
+class NotifyProposalReachedApprovalGoal extends Listener
 {
     /**
      * Handle the event.
