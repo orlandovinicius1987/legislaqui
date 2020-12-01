@@ -6,6 +6,7 @@ use App\Data\Models\City;
 use App\Data\Models\State;
 use App\Data\Models\User;
 use App\Http\Controllers\Controller;
+use App\Rules\Contact;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -76,7 +77,8 @@ class RegisterController extends Controller
                     'terms' => 'required',
                     'password' => ['required', 'string', 'min:8', 'confirmed'],
                     'city_id' => ['required'],
-                    'uf' => ['required']
+                    'uf' => ['required'],
+                    'whatsapp' => [new Contact('whatsapp', 'Whatsapp')]
                 ],
                 $this->getRecaptchaRules()
             )
