@@ -4,7 +4,7 @@ namespace App\Listeners;
 
 use App\Events\ProposalDisapproved;
 
-class NotifyProposalDisapproved
+class NotifyProposalDisapproved extends Listener
 {
     /**
      * Handle the event.
