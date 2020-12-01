@@ -34,7 +34,7 @@
                             </a>
                     </div>
                     <div class="col-12 col-md-6">
-                        <a class="btn btn-outline-primary btn-100 mr-3" href="{{ route('about.howto') }}" >
+                        <a class="btn btn-outline-primary btn-100 mr-3" href="{{ route('about.about') }}" >
                             <i class="far fa-question-circle"></i> Saiba como funciona
                         </a>
                     </div>
