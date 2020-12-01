@@ -74,7 +74,7 @@
                                         Após aceita e publicada, você receberá um email de confirmação e um link para compartilhar sua ideia nas redes sociais. Essa etapa é importante para que você conquiste os 12 mil apoios num prazo máximo de até quatro meses.
                                     </p>
                                     <p>
-                                        **** As ideias que não conseguirem o número mínimo de apoios no período de quatro meses serão encerradas, ficando disponíveis para consulta.
+                                        As ideias que não conseguirem o número mínimo de apoios no período de quatro meses serão encerradas, ficando disponíveis para consulta.
                                     </p>
                                 </li>
 

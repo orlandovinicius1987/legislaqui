@@ -16,11 +16,19 @@ Os usuários e seus permissionamentos são mantidos pela própria aplicação, a
     - Cria ideias legislativas
     - Apoia
     - Acompanha ideias
-    
+
+### Configurações
 #### Atribuir o perfil de administrador a um usuário
 
 ```
-legislaqui:make:admin {user_email}
+php artisan legislaqui:make:admin {user_email}
+```
+
+#### Opção de curtidas
+
+A opção de curtidas é habilitada por padrão. Para desabilitá-la, altere o .env para
+```
+LIKES_ENABLED=false
 ```
 
 ### Serviços externos
