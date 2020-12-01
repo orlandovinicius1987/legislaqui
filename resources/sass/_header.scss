@@ -20,6 +20,12 @@
             font-weight: 600;
         }
 
+        .active {
+            a {
+                color: #f63 !important;
+            }
+        }
+
         .btn {
             margin-right: 15px;
             &:last-of-type {
