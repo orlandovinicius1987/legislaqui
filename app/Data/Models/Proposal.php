@@ -490,7 +490,6 @@ class Proposal extends Model implements Auditable
         $state = $this->state;
 
         return $state == ProposalState::NotModerated ||
-            $state == ProposalState::Disapproved ||
             $state == ProposalState::Approved ||
             $state == ProposalState::Supported ||
             $state == ProposalState::Sent ||
@@ -504,5 +503,16 @@ class Proposal extends Model implements Auditable
         return $this->limit_date >= now() &&
             ($state == ProposalState::Approved ||
                 $state == ProposalState::Supported);
+    }
+
+    public function isPublic()
+    {
+        return $this->state != ProposalState::NotModerated;
+    }
+
+    public function userCanView($userId)
+    {
+        return $this->user_id == $userId ||
+            (User::find($userId)->is_admin ?? false);
     }
 }

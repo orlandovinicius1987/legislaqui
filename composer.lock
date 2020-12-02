@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "587a1aa3a51f5eb0bd0a17c621eac46b",
+    "content-hash": "2653c3e7c01be2a39bb7d4f94c273ccc",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -965,6 +965,47 @@
                 "trusted proxy"
             ],
             "time": "2020-06-23T01:36:47+00:00"
+        },
+        {
+            "name": "geekcom/validator-docs",
+            "version": "1.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/geekcom/validator-docs.git",
+                "reference": "48e70a253d67c1b81341e93fdfd1e3b2e629a633"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/geekcom/validator-docs/zipball/48e70a253d67c1b81341e93fdfd1e3b2e629a633",
+                "reference": "48e70a253d67c1b81341e93fdfd1e3b2e629a633",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*"
+            },
+            "require-dev": {
+                "laravel/framework": "5.*",
+                "laravel/laravel": "5.0.*",
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "geekcom\\ValidatorDocs\\": "src/validator-docs"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Rodrigues Lima",
+                    "email": "danielrodrigues-ti@hotmail.com"
+                }
+            ],
+            "description": "Biblioteca para validação de Título de Eleitor, CPF, CNPJ, NIS e CNH",
+            "time": "2019-08-14T14:53:44+00:00"
         },
         {
             "name": "geoip2/geoip2",
@@ -2757,16 +2798,6 @@
                 "nosql",
                 "predis",
                 "redis"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/tillkruss",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/tillkruss",
-                    "type": "github"
-                }
             ],
             "time": "2016-06-16T16:22:20+00:00"
         },
@@ -5590,9 +5621,9 @@
             "authors": [
                 {
                     "name": "Marcel Pociot",
+                    "role": "Developer",
                     "email": "marcel@beyondco.de",
-                    "homepage": "https://beyondco.de",
-                    "role": "Developer"
+                    "homepage": "https://beyondco.de"
                 }
             ],
             "description": "Symfony Var-Dump Server for Laravel",
@@ -6651,8 +6682,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Utility class for timing",
