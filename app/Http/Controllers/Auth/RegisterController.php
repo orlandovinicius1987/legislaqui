@@ -67,6 +67,7 @@ class RegisterController extends Controller
             array_merge(
                 [
                     'name' => ['required', 'string', 'max:255'],
+                    'cpf' => ['required', 'cpf'],
                     'email' => [
                         'required',
                         'string',
