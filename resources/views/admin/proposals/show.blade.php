@@ -62,14 +62,14 @@
                                                         <span class="fas fa-edit" aria-hidden="true"></span> Editar Proposta</a>
                                                 @endcan
 
-                                                 @can('bypass', $proposal)
-                                                    @if($proposal->in_committee)
+{{--                                                 @can('bypass', $proposal)--}}
+{{--                                                    @if($proposal->in_committee)--}}
 
-                                                    @else
-                                                        <a href="{{ route('admin.proposal.bypass', $proposal->id) }}" class="btn btn-danger botao">
-                                                            <span class="glyphicon glyphicon-forward" aria-hidden="true"></span> Enviar diretamente à Comissão</a>
-                                                    @endif
-                                                 @endcan
+{{--                                                    @else--}}
+{{--                                                        <a href="{{ route('admin.proposal.bypass', $proposal->id) }}" class="btn btn-danger botao">--}}
+{{--                                                            <span class="glyphicon glyphicon-forward" aria-hidden="true"></span> Enviar diretamente à Comissão</a>--}}
+{{--                                                    @endif--}}
+{{--                                                 @endcan--}}
 
                                                 {{--@can('destroy', $proposal)--}}
                                                 {{--<a href="{{ route('admin.proposal.destroy', $proposal->id) }}" class="btn btn-danger botao" onclick="if(!confirm('Você tem certeza que deseja apagar essa Ideia Legislativa?')){return false;};">--}}

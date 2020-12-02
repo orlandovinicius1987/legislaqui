@@ -27,7 +27,7 @@ class ProposalPolicy
      */
     public function bypass(User $user, Proposal $proposal)
     {
-        return $user->is_committee_user;
+        return false;
     }
 
     /**
