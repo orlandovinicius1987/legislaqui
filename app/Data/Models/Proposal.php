@@ -490,7 +490,6 @@ class Proposal extends Model implements Auditable
         $state = $this->state;
 
         return $state == ProposalState::NotModerated ||
-            $state == ProposalState::Disapproved ||
             $state == ProposalState::Approved ||
             $state == ProposalState::Supported ||
             $state == ProposalState::Sent ||
