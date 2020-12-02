@@ -99,7 +99,7 @@
 
                                 </div>
                             </div>
-                            @foreach(['facebook', 'linkedin'] as $provider)
+                            @foreach(['facebook', 'twitter'] as $provider)
                                 <a class="btn btn-link" href="{{ route('social.login', ['provider' => $provider]) }}">Login with {{ ucwords($provider) }}</a>
                             @endforeach
                             @if ($errors->any())

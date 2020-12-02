@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use App\Support\Constants;
+    
+
 
 class RegisterController extends Controller
 {
@@ -36,14 +38,16 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct()
-    {
-        $this->middleware('guest');
+    {   
+
+        $this->middleware('canRegister');
     }
 
     protected function getRecaptchaRules()
@@ -93,7 +97,7 @@ class RegisterController extends Controller
     // Register Method Overload
     public function register(Request $request)
     {
-        // Request comes from Register form
+        // Request comes  from Register form
         \Session::put('last_auth_attempt', 'register');
 
         redirect('auth.login');

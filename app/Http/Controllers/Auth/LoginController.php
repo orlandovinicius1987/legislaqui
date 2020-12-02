@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Validator;
+use Cookie;
 use Laravel\Socialite\Facades\Socialite as Socialite;
 use App\Support\Constants;
 
@@ -53,13 +54,13 @@ class LoginController extends Controller
         }
     public function handleProviderCallback(string $provider)
         {
-            //dd(Socialite::driver($provider));
+           
             try {
-                $data = Socialite::driver($provider)->user();
-            
+                $data = Socialite::driver($provider)->stateless()->user();
+                
                     return $this->handleSocialUser($provider, $data);
             } catch (\Exception $e) {
-               
+                dd($e);
                 return redirect('login')->withErrors(['authentication_deny' => 'Login with '.ucfirst($provider).' failed. Please try again.']);
             }
         }
@@ -68,14 +69,14 @@ class LoginController extends Controller
             $user = User::where([
                 "social->{$provider}->id" => $data->id,
             ])->first();
-    if (!$user) {
-                $user = User::where([
-                    'email' => $data->email,
-                ])->first();
-            }
-    if (!$user) {
-                return $this->createUserWithSocialData($provider, $data);
-            }
+            /* if (!$user) {
+                        $user = User::where([
+                            'email' => $data->email,
+                        ])->first();
+                    } */
+            if (!$user) {
+                        return $this->createUserWithSocialData($provider, $data);
+                    }
     $social = $user->social;
             $social[$provider] = [
                 'id' => $data->id,
@@ -97,6 +98,8 @@ class LoginController extends Controller
                         'token' => $data->token,
                     ],
                 ];
+                $user->role_id = get_role_id(Constants::ROLE_CIDADAO);
+                $user->uuid = Cookie::get('uuid');
 
                 // Check support verify or not
                 if ($user instanceof MustVerifyEmail) {
