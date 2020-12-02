@@ -364,11 +364,21 @@ class ProposalsController extends Controller
 
     public function show($id)
     {
-        $proposal = $this->proposalsRepository->find($id);
+        if ($proposal = Proposal::withoutGlobalScopes()->findOrFail($id)) {
+            if (
+                !$proposal->isPublic() &&
+                !$proposal->userCanView(auth()->user()->id ?? null)
+            ) {
+                Session::flash(
+                    'flash_msg',
+                    'Para visualizar esta ideia, você deve fazer login'
+                );
+
+                return redirect()->guest('login');
+            }
+        }
 
         return view('proposals.show', ['proposal' => $proposal]);
-        //return view('proposals.show')->with('proposal', $proposal);
-        //return view('proposals.show')->with(compact('proposal'))
     }
 
     public function store(ProposalStoreRequest $formRequest)
