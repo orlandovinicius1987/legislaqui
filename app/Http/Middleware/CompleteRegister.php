@@ -18,8 +18,7 @@ class CompleteRegister extends Middleware
      * @return mixed
      */
     public function handle($request, Closure $next, ...$guards)
-    {
-        
+    {  
         if (blank(Auth::user()->cpf)) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);

@@ -8,10 +8,11 @@ use App\Data\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use App\Support\Constants;
-    
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
+
 
 
 class RegisterController extends Controller
@@ -27,8 +28,51 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers {
-        register as traitRegister;
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function userRegister(Request $request)
+    {
+        
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->createOrUpdate($request->all())));
+
+        if(!Auth::user()){
+            $this->guard()->login($user);
+        }
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        if (method_exists($this, 'redirectTo')) {
+            return $this->redirectTo();
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        //
     }
 
     /**
@@ -65,13 +109,39 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
         {
-        
-            return Validator::make($data, [
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,NULL,id,deleted_at,NULL'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
-            ]);
+            return Validator::make(
+                $data,
+                array_merge(
+                    $this->getValidator(Auth::user()->social),
+                    $this->getRecaptchaRules()
+                )
+            );
         }
 
+
+    protected function getValidator($social)
+    {
+        return $social ?
+        [
+            
+        ]
+        :
+        [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                'unique:users'
+            ],
+            'terms' => 'required',
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'city_id' => ['required'],
+            'uf' => ['required']
+        ];
+
+    }
     /**
      * Create a new user (citizen - 99) instance after a valid registration.
      *
@@ -79,8 +149,17 @@ class RegisterController extends Controller
      *
      * @return model user
      */
-    protected function create(array $data)
-    {
+    protected function createOrUpdate(array $data)
+    {   
+        $user = User::where('id' , Auth::user()->id)->first();
+        if (Auth::user()->social){
+            User::where('id', $user->id)->update([
+                'cpf' => only_numbers($data['cpf']),
+                'city_id' => $data['city_id'],
+                'uf' => $data['uf'],
+            ]);
+            return $user;    
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -99,11 +178,11 @@ class RegisterController extends Controller
     {
         // Request comes  from Register form
         \Session::put('last_auth_attempt', 'register');
-
+        
         redirect('auth.login');
 
         // If Captcha is OK, then register User Request
-        $register = $this->traitRegister($request);
+        $register = $this->userRegister($request);
 
         \Session::flash('flash_msg', 'Registro feito com Sucesso.');
 
