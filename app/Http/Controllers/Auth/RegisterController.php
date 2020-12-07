@@ -33,17 +33,6 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    /**
-     * Get the guard to be used during authentication.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-     */
-
-    protected function guard()
-    {
-        return Auth::guard();
-    }
-
     public function userRegister(Request $request)
     {
         $this->validator($request->all())->validate();
@@ -87,6 +76,16 @@ class RegisterController extends Controller
     }
 
     /**
+     * Get the guard to be used during registration.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard();
+    }
+
+    /**
      * Where to redirect users after registration.
      *
      * @var string
@@ -118,6 +117,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //dd($data);
         return Validator::make(
             $data,
             array_merge(
@@ -129,27 +129,30 @@ class RegisterController extends Controller
 
     protected function getValidator($social)
     {
-        if ($social) {
-        } else {
-        }
-        return [
-            'name' => ['required', 'string', 'max:255'],
-            'cpf' => ['required', 'cpf'],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                'unique:users',
-            ],
-            'terms' => 'required',
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'city_id' => ['required'],
-            'uf' => ['required'],
-            'whatsapp' => [new Contact('whatsapp', 'Whatsapp')],
-        ];
+        return $social
+            ? [
+                'city_id' => ['required'],
+                'cpf' => ['required', 'cpf'],
+                'terms' => 'required',
+                'whatsapp' => [new Contact('whatsapp', 'Whatsapp')],
+            ]
+            : [
+                'city_id' => ['required'],
+                'cpf' => ['required', 'cpf'],
+                'email' => [
+                    'required',
+                    'string',
+                    'email',
+                    'max:255',
+                    'unique:users',
+                ],
+                'name' => ['required', 'string', 'max:255'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'terms' => 'required',
+                'uf' => ['required'],
+                'whatsapp' => [new Contact('whatsapp', 'Whatsapp')],
+            ];
     }
-
     /**
      * Create a new user (citizen - 99) instance after a valid registration.
      *
