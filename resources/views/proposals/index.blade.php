@@ -9,9 +9,7 @@
 
         <div class="row">
             <div class="col-md-12 col-lg-6">
-                <div class='embed-container'>
-                    <iframe src='https://www.youtube.com/embed//Nh3WXmYXdyU' frameborder='0' allowfullscreen></iframe>
-                </div>
+                @include('about.video')
             </div>
 
             <div class="col-md-12 col-lg-6 text-left">
