@@ -57,9 +57,10 @@ return [
 
     // Login social - Twitter
     'twitter' => [
-        'client_id' => 'fdScJuZRoTB8F3awCgFS85ooi',
-        'client_secret' => 'kA6iIggVCoSB757Yb0pGjQPDqqarlKAYYQyxKoIddtcobG5RaK',
-        'redirect' => 'http://local.edemocracia.com/auth/twitter/callback'
+        'client_id' => env('TWITTER_CLIENT_ID'),
+        'client_secret' => env('TWITTER_SECRET'),
+        'redirect' => env('TWITTER_CALLBACK'),
+    
     ],
 
     // Login social - youtube

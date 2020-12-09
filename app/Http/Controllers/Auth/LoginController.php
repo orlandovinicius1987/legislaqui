@@ -16,6 +16,8 @@ use Validator;
 use Cookie;
 use Laravel\Socialite\Facades\Socialite as Socialite;
 use App\Support\Constants;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Laravel\Socialite\src\One\AbstractProvider;
 
 class LoginController extends Controller
 {
@@ -34,15 +36,14 @@ class LoginController extends Controller
         login as traitLogin;
     }
 
-
+    
 
     public function redirectToProvider(string $provider)
         {
             
             try {
                 $scopes = config("services.$provider.scopes") ?? [];
-                
-                if (count($scopes) === 0) {
+                if (count($scopes) === 0) {    
                     return Socialite::driver($provider)->redirect();
                 } else {
                     return Socialite::driver($provider)->scopes($scopes)->redirect();
@@ -54,10 +55,12 @@ class LoginController extends Controller
         }
     public function handleProviderCallback(string $provider)
         {
-           
             try {
-                $data = Socialite::driver($provider)->stateless()->user();
-                
+                if($provider == 'facebook'){
+                    $data = Socialite::driver($provider)->stateless()->user();
+                }else{
+                    $data = Socialite::driver($provider)->user();
+                }
                     return $this->handleSocialUser($provider, $data);
             } catch (\Exception $e) {
                 dd($e);

@@ -17,7 +17,15 @@
         .container-fluid {
             display: none !important;
         }
+
+        .facebook
+        {
+            background-color: #3B5998;
+        }
+
     </style>
+
+    
 
     <div class="d-flex h-100">
         <div class="row align-self-center w-100 login">
@@ -99,14 +107,23 @@
 
                                 </div>
                             </div>
+                        
+                
                             @foreach(['facebook', 'twitter'] as $provider)
-                                <a class="btn btn-link" href="{{ route('social.login', ['provider' => $provider]) }}">Login with {{ ucwords($provider) }}</a>
+                            <div class="social-login mt-3">
+                                <a class="btn btn-block  btn-{{$provider}}" href="{{ route('social.login', ['provider' => $provider]) }}">
+                                    <span class= 'fab fa-fw fa-{{$provider}}'></span>
+                                    Entrar com {{ ucwords($provider) }}
+                                </a>
+                            </div>
+                            
                             @endforeach
                             @if ($errors->any())
                                 <div class="alert alert-danger">
                                     @foreach ($errors->all() as $error)
                                         <div>{{ $error }}</div>
                                     @endforeach
+                            
     </div>
 @endif
                         </form>

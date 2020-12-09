@@ -34,6 +34,18 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    
+     protected function guard()
+    {
+        return Auth::guard();
+    }
+
+     
     public function userRegister(Request $request)
     {
         
@@ -112,7 +124,7 @@ class RegisterController extends Controller
             return Validator::make(
                 $data,
                 array_merge(
-                    $this->getValidator(Auth::user()->social),
+                    $this->getValidator(Auth::user()),
                     $this->getRecaptchaRules()
                 )
             );
@@ -123,7 +135,8 @@ class RegisterController extends Controller
     {
         return $social ?
         [
-            
+            'city_id' => ['required'],
+            'cpf'=> ['required'],
         ]
         :
         [
@@ -151,12 +164,14 @@ class RegisterController extends Controller
      */
     protected function createOrUpdate(array $data)
     {   
-        $user = User::where('id' , Auth::user()->id)->first();
-        if (Auth::user()->social){
+        if (Auth::user()){
+            $user = User::where('id' , Auth::user()->id)->first();
             User::where('id', $user->id)->update([
                 'cpf' => only_numbers($data['cpf']),
                 'city_id' => $data['city_id'],
                 'uf' => $data['uf'],
+                'whatsapp' => $data['whatsapp'],
+                'uuid' => $data['uuid'],
             ]);
             return $user;    
         }

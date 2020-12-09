@@ -77,7 +77,7 @@
                                 </div>
                             @endif        
 
-                            @if (!Auth::user())
+                            @if (!Auth::user() || !Auth::user()->whatsapp)
                                 <div class="form-group{{ $errors->has('whatsapp') && (\Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }} row">
                                     <label class="col-12 control-label">Whatsapp</label>
                                     <div class="col-12 ">
