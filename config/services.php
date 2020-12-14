@@ -49,16 +49,18 @@ return [
 
     // Login social - Facebook
     'facebook' => [
-        'client_id' => '924736410991077',
-        'client_secret' => '8184d025a6a35a2b1d7a2eb6610d45a6',
-        'redirect' => 'http://local.edemocracia.com/auth/facebook/callback'
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('FACEBOOK_CALLBACK_URL'),
+        'scopes' => ['email', 'public_profile'],
     ],
 
     // Login social - Twitter
     'twitter' => [
-        'client_id' => 'fdScJuZRoTB8F3awCgFS85ooi',
-        'client_secret' => 'kA6iIggVCoSB757Yb0pGjQPDqqarlKAYYQyxKoIddtcobG5RaK',
-        'redirect' => 'http://local.edemocracia.com/auth/twitter/callback'
+        'client_id' => env('TWITTER_CLIENT_ID'),
+        'client_secret' => env('TWITTER_SECRET'),
+        'redirect' => env('TWITTER_CALLBACK'),
+    
     ],
 
     // Login social - youtube

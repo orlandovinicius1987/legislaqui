@@ -17,7 +17,7 @@
         "geekcom/validator-docs": "1.*",
         "laravel/framework": "5.8.*",
         "laravel/horizon": "^3.2",
-        "laravel/socialite": "^2.0",
+        "laravel/socialite": "^5.1",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "5.8.*",
         "owen-it/laravel-auditing": "^10.0",

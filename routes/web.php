@@ -33,6 +33,7 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+
 Route::group(['middleware' => 'web'], function () {
     Route::get('/teste', 'SocialAuthController@redirectToProvider');
 
@@ -40,12 +41,10 @@ Route::group(['middleware' => 'web'], function () {
         return view('teste');
     });
 
-    //Social Login
-    Route::get('/redirect/{socialNetwork}', 'SocialAuthController@redirect');
-    Route::get(
-        '/auth/{socialNetwork}/callback',
-        'SocialAuthController@socialNetworkCallback'
-    );
+    Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')
+    ->name('social.login');
+    Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')
+    ->name('social.callback'); 
 
     Route::auth();
 
@@ -134,7 +133,7 @@ Route::group(['middleware' => 'web'], function () {
     ]);
 });
 
-Route::group(['middleware' => ['web', 'auth']], function () {
+Route::group(['middleware' => ['web', 'auth', 'complete']], function () {
     //Proposals
     Route::get('proposals/create', [
         'as' => 'proposal.create',

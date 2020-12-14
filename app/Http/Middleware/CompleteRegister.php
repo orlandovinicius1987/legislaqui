@@ -6,7 +6,7 @@ use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Authenticate extends Middleware
+class CompleteRegister extends Middleware
 {
     /**
      * Handle an incoming request.
@@ -18,15 +18,16 @@ class Authenticate extends Middleware
      * @return mixed
      */
     public function handle($request, Closure $next, ...$guards)
-    {
-        if (Auth::guard($guards)->guest() || blank(Auth::user()->cpf)) {
+    {  
+        if (blank(Auth::user()->cpf)) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('login');
+                return redirect()->route('register');
             }
         }
-
         return $next($request);
+
+
     }
 }
