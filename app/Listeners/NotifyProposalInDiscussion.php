@@ -4,7 +4,7 @@ namespace App\Listeners;
 
 use App\Events\ProposalInDiscussion;
 
-class NotifyProposalInDiscussion
+class NotifyProposalInDiscussion extends Listener
 {
     /**
      * Handle the event.

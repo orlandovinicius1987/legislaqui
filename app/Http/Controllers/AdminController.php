@@ -13,6 +13,7 @@ use App\Data\Models\Subject;
 use App\Enums\ProposalState as ProposalState;
 use App\Events\ProposalApprovedByCommittee;
 use App\Events\ProposalBillProject;
+use App\Events\ProposalChanged;
 use App\Events\ProposalClosedByCommittee;
 use App\Events\ProposalDisapproved;
 use App\Events\ProposalInDiscussion;
@@ -324,6 +325,7 @@ class AdminController extends Controller
 
         //Then update Proposal
         $proposal->fill($input)->save();
+        event(new ProposalChanged($proposal));
         $proposal->subjects()->sync($formRequest->get('subjects'));
 
         return redirect()

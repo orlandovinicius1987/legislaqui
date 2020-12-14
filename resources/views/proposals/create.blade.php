@@ -21,13 +21,13 @@
         <div class="row form-group mt-4 pb-2">
 
             <div class="col-12 col-lg-3">
-                {{ Form::label('Nome da ideia legislativa', null , ['class' => 'bold double']) }}
+                {{ Form::label('Título da ideia', null , ['class' => 'bold double']) }}
             </div>
             <div class="col-12 col-lg-9 ">
                 {{ Form::text('name', null,
                     array('required',
                           'class'=>'campo form-control',
-                          'placeholder'=>'Digite aqui o nome da ideia')) }}
+                          'placeholder'=>'Digite aqui o título da Ideia')) }}
             </div>
         </div>
 
@@ -55,13 +55,13 @@
         <div class="row form-group pt-2 pb-2">
 
             <div class="col-12 col-lg-3">
-                {{ Form::label('Exposição completa da ideia', null , ['class' => 'bold double']) }}
+                {{ Form::label('Descrição da ideia', null , ['class' => 'bold double']) }}
             </div>
             <div class="col-12 col-lg-9 ">
                 {{ Form::textarea('idea_exposition', null,
                     array('required',
                           'class'=>'textarea form-control',
-                          'placeholder'=>'Descreva de forma completa a sua ideia e como ela pode resolver o problema descrito acima. Dê todos os detalhes que achar necessário.')) }}
+                          'placeholder'=>'Descreva de forma completa a sua Ideia. Dê todos os detalhes que achar necessário.')) }}
             </div>
         </div>
 

@@ -356,10 +356,10 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
         'uses' => 'AdminController@disapprovedByCommittee'
     ]);
 
-    Route::get('admin/proposals/{id}/bypass', [
-        'as' => 'admin.proposal.bypass',
-        'uses' => 'AdminController@bypass'
-    ]);
+    //    Route::get('admin/proposals/{id}/bypass', [
+    //        'as' => 'admin.proposal.bypass',
+    //        'uses' => 'AdminController@bypass'
+    //    ]);
 
     Route::get('admin/proposals/{id}/bill-project', [
         'as' => 'admin.proposal.billProject',

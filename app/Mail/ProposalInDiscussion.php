@@ -18,9 +18,9 @@ class ProposalInDiscussion extends Mailable
             ->markdown('emails.proposal-in-discussion')
             ->with([
                 'notification' => $this->notification,
-                'proposal' => ProposalModel::find(
-                    $this->notification->proposal_id
-                )->load('user')
+                'proposal' => ProposalModel::withoutGlobalScopes()
+                    ->find($this->notification->proposal_id)
+                    ->load('user')
             ]);
 
         return $this;

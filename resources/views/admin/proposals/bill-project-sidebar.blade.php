@@ -36,7 +36,7 @@
                                         <thead>
                                         <tr role="row">
                                             <th>Id</th>
-                                            <th>Nome</th>
+                                            <th>Título</th>
                                             @if(config('app.likes_enabled'))
                                                 <th>Curtidas</th>
                                             @endIf

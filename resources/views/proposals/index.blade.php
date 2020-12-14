@@ -8,60 +8,42 @@
 
 
         <div class="row">
+            <div class="col-md-12 col-lg-6">
+                @include('about.video')
+            </div>
 
-            <div class="col-md-6 text-left">
-                {{--
-
-                                <div class="pb-2 font-weight-bold">
-                                    Contribua com uma democracia viva, participe do processo legislativo.
-                                </div>
-                --}}
-
+            <div class="col-md-12 col-lg-6 text-left">
                 <h1>
                     Quer propor um projeto na Alerj?
                 </h1>
                 <div class="lead pb-3">
                     Sua boa ideia agora pode virar lei. Seja bem-vindo (a) à plataforma <span class="font-weight-bold">Legislaqui</span>. Por esta ferramenta você pode contribuir para a melhoria da sua cidade, do seu bairro e da sua família. Basta clicar no campo abaixo e sugerir a sua ideia. Vamos começar?
-
                 </div>
 
-                <div class="mt-2">
-                    @if (!Auth::check())
-                        <a class="btn-lg btn-primary mr-3" dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
-                            @else
-                                <a class="btn-lg btn-primary" dusk="newProposalButton" href="{{ route('proposal.create') }}">
-                                    @endif
-                                    <i class="fa fa-plus-circle"></i> Criar ideia legislativa
-                                </a>
-                        </a>
-
-
-                        <a class="btn-lg btn-outline-primary mr-3" href="{{ route('about.howto') }}" >
+                <div class="row mt-2">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0">
+                        @if (!Auth::check())
+                            <a class="btn btn-primary btn-100 mr-3" dusk="newProposalButton" href="{{ route('proposal.create') }}" onclick="if(!confirm('Para incluir nova ideia legislativa você deve estar logado')){return false;};">
+                                @else
+                                    <a class="btn btn-primary btn-100" dusk="newProposalButton" href="{{ route('proposal.create') }}">
+                                        @endif
+                                        <i class="fa fa-plus-circle"></i> Criar ideia legislativa
+                                    </a>
+                            </a>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <a class="btn btn-outline-primary btn-100 mr-3" href="{{ route('about.about') }}" >
                             <i class="far fa-question-circle"></i> Saiba como funciona
                         </a>
-
+                    </div>
                 </div>
 
                 <div class="mt-4">
                     &sup1; Verifique se sua ideia já existe em forma de <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=55" target="_blank">lei</a> ou <a href="http://www3.alerj.rj.gov.br/lotus_notes/default.asp?id=144" target="_blank">projeto de lei</a>.
                 </div>
 
-{{--
-                <div class="pb-3">
-                    &sup2; <a href="">Acompanhe aqui</a> a tramitação dos projetos de lei oriundos de ideias legislativas do legislaqui
-                </div>
---}}
-
-
             </div>
-            <div class="col-md-6">
 
-                <div class='embed-container'>
-                    <iframe src='https://www.youtube.com/embed//Nh3WXmYXdyU' frameborder='0' allowfullscreen></iframe>
-                </div>
-
-                {{--<img src="imagens/legislaqui-website-mockup.png" class="img-fluid">--}}
-            </div>
         </div>
 
 

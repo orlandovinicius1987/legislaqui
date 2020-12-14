@@ -10,7 +10,7 @@ use App\Events\ProposalChanged;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NotifyProposalCreator
+class NotifyProposalCreator extends Listener
 {
     /**
      * Handle the event.

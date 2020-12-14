@@ -183,7 +183,8 @@ return [
         */
         //Laravel\Socialite\SocialiteServiceProvider::class,
         \SocialiteProviders\Manager\ServiceProvider::class,
-        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class
+        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
+        geekcom\ValidatorDocs\ValidatorProvider::class
     ],
 
     /*

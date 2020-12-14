@@ -6,6 +6,7 @@ use App\Data\Models\City;
 use App\Data\Models\State;
 use App\Data\Models\User;
 use App\Http\Controllers\Controller;
+use App\Rules\Contact;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -133,28 +134,30 @@ class RegisterController extends Controller
 
     protected function getValidator($social)
     {
-        return $social ?
-        [
-            'city_id' => ['required'],
-            'cpf'=> ['required'],
-        ]
-        :
-        [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                'unique:users'
-            ],
-            'terms' => 'required',
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'city_id' => ['required'],
-            'uf' => ['required']
-        ];
-
+        return Validator::make(
+            $data,
+            array_merge(
+                [
+                    'name' => ['required', 'string', 'max:255'],
+                    'cpf' => ['required', 'cpf'],
+                    'email' => [
+                        'required',
+                        'string',
+                        'email',
+                        'max:255',
+                        'unique:users'
+                    ],
+                    'terms' => 'required',
+                    'password' => ['required', 'string', 'min:8', 'confirmed'],
+                    'city_id' => ['required'],
+                    'uf' => ['required'],
+                    'whatsapp' => [new Contact('whatsapp', 'Whatsapp')]
+                ],
+                $this->getRecaptchaRules()
+            )
+        );
     }
+  
     /**
      * Create a new user (citizen - 99) instance after a valid registration.
      *
