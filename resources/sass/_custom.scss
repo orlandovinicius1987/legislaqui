@@ -190,3 +190,40 @@ section {
 .stepper h3 {
     margin-left: 40px;
 }
+
+.btn-facebook {
+    background-color: #5890FF;
+    border-color: #5890FF;
+    &:hover {
+        color: #fff;
+        background-color: #256eff;
+        border-color: #256eff;
+    }
+    &:focus {
+        color: #fff;
+        background-color: #256eff;
+        border-color: #256eff;
+    }
+}
+
+
+.btn-twitter {
+    background-color: #5ec1de;
+    border-color: #5ec1de;
+    &:hover {
+        color: #fff;
+        background-color: #3eb5d7;
+        border-color: #34b1d5;
+    }
+    &:focus {
+        color: #fff;
+        background-color: #3eb5d7;
+        border-color: #34b1d5;
+    }
+}
+
+
+
+
+
+
