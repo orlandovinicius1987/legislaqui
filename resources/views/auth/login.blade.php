@@ -94,7 +94,7 @@
                                 <div class="col-md-12">
 
                                     <button dusk="loginButton" type="submit" class="btn btn-primary btn-block">
-                                        <i class="fa fa-btn fa-sign-in fa-fw"></i>&nbsp; Entrar
+                                        <i class="fas fa-sign-in-alt"></i> Entrar
                                     </button>
 
                                 </div>

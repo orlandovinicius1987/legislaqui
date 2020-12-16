@@ -160,10 +160,10 @@
 
                             @include('partials.recaptcha-v2-form')
 
-                            <div class="form-group row mb-0 text-right">
+                            <div class="form-group row mb-0">
                                 <div class="col-md-12">
                                     <button dusk="registerButton" type="submit" class="btn btn-primary">
-                                        <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro
+                                        <i class="fas fa-user"></i>&nbsp; Registro
                                     </button>
                                 </div>
                             </div>
