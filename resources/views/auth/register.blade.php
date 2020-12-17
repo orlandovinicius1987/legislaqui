@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('partials.error')
+    @include('partials.error')
 
     <div class="d-flex h-100">
         <div class="row align-self-center w-100 login">
@@ -48,32 +48,32 @@
                             {{ Form::hidden('uuid', Cookie::get('uuid')) }}
                             @if (!Auth::user())
                                 <div class="form-group{{ $errors->has('name') && (\Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }} row">
-                                        <label class="col-12 control-label">Nome</label>
-                                        <div class="col-12 ">
-                                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Insira seu nome">
-                                            @if ($errors->has('name') && (Session::get('last_auth_attempt') === 'register'))
-                                                <span class="help-block">
+                                    <label class="col-12 control-label">Nome</label>
+                                    <div class="col-12 ">
+                                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Insira seu nome">
+                                        @if ($errors->has('name') && (Session::get('last_auth_attempt') === 'register'))
+                                            <span class="help-block">
                                             <strong>{{ $errors->first('name') }}</strong>
                                         </span>
-                                            @endif
-                                        </div>
+                                        @endif
+                                    </div>
                                 </div>
                             @endif
 
                             @if (!Auth::user())
                                 <div class="form-group{{ $errors->has('email') && (Session::get('last_auth_attempt') === 'register') ? ' has-error' : '' }} row">
 
-                                        <label class="col-md-12 control-label">E-Mail</label>
+                                    <label class="col-md-12 control-label">E-Mail</label>
 
-                                        <div class="col-md-12">
-                                            <input type="text" class="form-control" name="email" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu email">
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" name="email" value="{{ (Session::get('last_auth_attempt') === 'register') ? old('email') : '' }}" placeholder="Insira seu email">
 
-                                            @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'register'))
-                                                <span class="help-block">
+                                        @if ($errors->has('email') && (Session::get('last_auth_attempt') === 'register'))
+                                            <span class="help-block">
                                             <strong>{{ $errors->first('email') }}</strong>
                                         </span>
-                                            @endif
-                                        </div>
+                                        @endif
+                                    </div>
                                 </div>
                             @endif
 
@@ -184,14 +184,21 @@
 
                             @include('partials.recaptcha-v2-form')
 
-                            <div class="form-group row mb-0 text-right">
+                            <div class="form-group row mb-0">
                                 <div class="col-md-12">
-                                    <button dusk="registerButton" type="submit" class="btn btn-primary">
-                                        <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro
-                                    </button>
+
+                                    @if (Auth::user())
+                                        <button dusk="registerButton" type="submit" class="btn btn-primary">
+                                            <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Completar Registro
+                                        </button>
+                                    @else
+                                        <button dusk="registerButton" type="submit" class="btn btn-primary">
+                                            <i class="fa fa-btn fa-user fa-fw"></i>&nbsp; Registro
+                                        </button>
+                                    @endif
+
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>
