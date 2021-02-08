@@ -14,8 +14,6 @@ use App\Support\Constants;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 
-
-
 class RegisterController extends Controller
 {
     /*
@@ -40,26 +38,24 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Contracts\Auth\StatefulGuard
      */
-    
-     protected function guard()
+
+    protected function guard()
     {
         return Auth::guard();
     }
 
-     
     public function userRegister(Request $request)
     {
-        
         $this->validator($request->all())->validate();
 
-        event(new Registered($user = $this->createOrUpdate($request->all())));
+        event(new Registered(($user = $this->createOrUpdate($request->all()))));
 
-        if(!Auth::user()){
+        if (!Auth::user()) {
             $this->guard()->login($user);
         }
 
-        return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+        return $this->registered($request, $user) ?:
+            redirect($this->redirectPath());
     }
 
     /**
@@ -73,7 +69,9 @@ class RegisterController extends Controller
             return $this->redirectTo();
         }
 
-        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+        return property_exists($this, 'redirectTo')
+            ? $this->redirectTo
+            : '/home';
     }
 
     /**
@@ -95,15 +93,13 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
-
     /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct()
-    {   
-
+    {
         $this->middleware('canRegister');
     }
 
@@ -121,43 +117,39 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-        {
-            return Validator::make(
-                $data,
-                array_merge(
-                    $this->getValidator(Auth::user()),
-                    $this->getRecaptchaRules()
-                )
-            );
-        }
-
-
-    protected function getValidator($social)
     {
         return Validator::make(
             $data,
             array_merge(
-                [
-                    'name' => ['required', 'string', 'max:255'],
-                    'cpf' => ['required', 'cpf'],
-                    'email' => [
-                        'required',
-                        'string',
-                        'email',
-                        'max:255',
-                        'unique:users'
-                    ],
-                    'terms' => 'required',
-                    'password' => ['required', 'string', 'min:8', 'confirmed'],
-                    'city_id' => ['required'],
-                    'uf' => ['required'],
-                    'whatsapp' => [new Contact('whatsapp', 'Whatsapp')]
-                ],
+                $this->getValidator(Auth::user()),
                 $this->getRecaptchaRules()
             )
         );
     }
-  
+
+    protected function getValidator($social)
+    {
+        if ($social) {
+        } else {
+        }
+        return [
+            'name' => ['required', 'string', 'max:255'],
+            'cpf' => ['required', 'cpf'],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                'unique:users',
+            ],
+            'terms' => 'required',
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'city_id' => ['required'],
+            'uf' => ['required'],
+            'whatsapp' => [new Contact('whatsapp', 'Whatsapp')],
+        ];
+    }
+
     /**
      * Create a new user (citizen - 99) instance after a valid registration.
      *
@@ -166,9 +158,9 @@ class RegisterController extends Controller
      * @return model user
      */
     protected function createOrUpdate(array $data)
-    {   
-        if (Auth::user()){
-            $user = User::where('id' , Auth::user()->id)->first();
+    {
+        if (Auth::user()) {
+            $user = User::where('id', Auth::user()->id)->first();
             User::where('id', $user->id)->update([
                 'cpf' => only_numbers($data['cpf']),
                 'city_id' => $data['city_id'],
@@ -176,7 +168,7 @@ class RegisterController extends Controller
                 'whatsapp' => $data['whatsapp'],
                 'uuid' => $data['uuid'],
             ]);
-            return $user;    
+            return $user;
         }
         return User::create([
             'name' => $data['name'],
@@ -187,7 +179,7 @@ class RegisterController extends Controller
             'role_id' => get_role_id(Constants::ROLE_CIDADAO),
             'cpf' => only_numbers($data['cpf']),
             'whatsapp' => only_numbers($data['whatsapp']),
-            'uuid' => $data['uuid']
+            'uuid' => $data['uuid'],
         ]);
     }
 
@@ -196,7 +188,7 @@ class RegisterController extends Controller
     {
         // Request comes  from Register form
         \Session::put('last_auth_attempt', 'register');
-        
+
         redirect('auth.login');
 
         // If Captcha is OK, then register User Request

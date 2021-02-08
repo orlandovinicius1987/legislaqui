@@ -36,129 +36,134 @@ class LoginController extends Controller
         login as traitLogin;
     }
 
-    
-
     public function redirectToProvider(string $provider)
-        {
-            
-            try {
-                $scopes = config("services.$provider.scopes") ?? [];
-                if (count($scopes) === 0) {    
-                    return Socialite::driver($provider)->redirect();
-                } else {
-                    return Socialite::driver($provider)->scopes($scopes)->redirect();
-                }
-                
-            } catch (\Exception $e) {
-                abort(404);
+    {
+        try {
+            $scopes = config("services.$provider.scopes") ?? [];
+            if (count($scopes) === 0) {
+                return Socialite::driver($provider)->redirect();
+            } else {
+                return Socialite::driver($provider)
+                    ->scopes($scopes)
+                    ->redirect();
             }
+        } catch (\Exception $e) {
+            abort(404);
         }
+    }
     public function handleProviderCallback(string $provider)
-        {
-            try {
-                if($provider == 'facebook'){
-                    $data = Socialite::driver($provider)->stateless()->user();
-                }else{
-                    $data = Socialite::driver($provider)->user();
-                }
-                    return $this->handleSocialUser($provider, $data);
-            } catch (\Exception $e) {
-                dd($e);
-                return redirect('login')->withErrors(['authentication_deny' => 'Login with '.ucfirst($provider).' failed. Please try again.']);
+    {
+        try {
+            if ($provider == 'facebook') {
+                $data = Socialite::driver($provider)
+                    ->stateless()
+                    ->user();
+            } else {
+                $data = Socialite::driver($provider)->user();
             }
+            return $this->handleSocialUser($provider, $data);
+        } catch (\Exception $e) {
+            dd($e);
+            return redirect('login')->withErrors([
+                'authentication_deny' =>
+                    'Login with ' .
+                    ucfirst($provider) .
+                    ' failed. Please try again.',
+            ]);
         }
+    }
     public function handleSocialUser(string $provider, object $data)
-        {
-            $user = User::where([
-                "social->{$provider}->id" => $data->id,
-            ])->first();
-            /* if (!$user) {
+    {
+        $user = User::where([
+            "social->{$provider}->id" => $data->id,
+        ])->first();
+        /* if (!$user) {
                         $user = User::where([
                             'email' => $data->email,
                         ])->first();
                     } */
-            if (!$user) {
-                        return $this->createUserWithSocialData($provider, $data);
-                    }
-    $social = $user->social;
-            $social[$provider] = [
-                'id' => $data->id,
-                'token' => $data->token
-            ];
-            $user->social = $social;
-            $user->save();
-    return $this->socialLogin($user);
+        if (!$user) {
+            return $this->createUserWithSocialData($provider, $data);
         }
+        $social = $user->social;
+        $social[$provider] = [
+            'id' => $data->id,
+            'token' => $data->token,
+        ];
+        $user->social = $social;
+        $user->save();
+        return $this->socialLogin($user);
+    }
     public function createUserWithSocialData(string $provider, object $data)
-        {
-            try {
-                $user = new User;
-                $user->name = $data->name;
-                $user->email = $data->email;
-                $user->social = [
-                    $provider => [
-                        'id' => $data->id,
-                        'token' => $data->token,
-                    ],
-                ];
-                $user->role_id = get_role_id(Constants::ROLE_CIDADAO);
-                $user->uuid = Cookie::get('uuid');
+    {
+        try {
+            $user = new User();
+            $user->name = $data->name;
+            $user->email = $data->email;
+            $user->social = [
+                $provider => [
+                    'id' => $data->id,
+                    'token' => $data->token,
+                ],
+            ];
+            $user->role_id = get_role_id(Constants::ROLE_CIDADAO);
+            $user->uuid = Cookie::get('uuid');
 
-                // Check support verify or not
-                if ($user instanceof MustVerifyEmail) {
-                    $user->markEmailAsVerified();
-                }
-                
-                $user->save();
+            // Check support verify or not
+            if ($user instanceof MustVerifyEmail) {
+                $user->markEmailAsVerified();
+            }
+
+            $user->save();
             return $this->socialLogin($user);
-            } catch (Exception $e) {
-                
-                return redirect('login')->withErrors(['authentication_deny' => 'Login with '.ucfirst($provider).' failed. Please try again.']);
-            }
+        } catch (Exception $e) {
+            return redirect('login')->withErrors([
+                'authentication_deny' =>
+                    'Login with ' .
+                    ucfirst($provider) .
+                    ' failed. Please try again.',
+            ]);
         }
+    }
     public function socialLogin(User $user)
-        {
-            
-            auth()->loginUsingId($user->id);
-            return redirect($this->redirectTo);
-        }
-    
+    {
+        auth()->loginUsingId($user->id);
+        return redirect($this->redirectTo);
+    }
 
+    /**
+     * Where to redirect users after login / registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/';
 
+    /**
+     * Create a new authentication controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest', ['except' => 'logout']);
+    }
 
-            /**
-             * Where to redirect users after login / registration.
-             *
-             * @var string
-             */
-            protected $redirectTo = '/';
-
-            /**
-             * Create a new authentication controller instance.
-             *
-             * @return void
-             */
-            public function __construct()
-            {
-                $this->middleware('guest', ['except' => 'logout']);
-            }
-
-            /**
-             * Get a validator for an incoming registration request.
-             *
-             * @param array $data
-             *
-             * @return \Illuminate\Contracts\Validation\Validator
-             */
-            protected function validator(array $data)
-            {
-                return Validator::make($data, [
-                    'name' => 'required|max:255',
-                    'email' => 'required|email|max:255|unique:users',
-                    'password' => 'required|confirmed|min:6',
-                    'cpf' => 'required'
-                ]);
-            }
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param array $data
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+            'cpf' => 'required',
+        ]);
+    }
 
     /**
      * Create a new user (citizen - 99) instance after a valid registration.
@@ -176,7 +181,7 @@ class LoginController extends Controller
             'uf' => $data['uf'],
             'role_id' => get_role_id(Constants::ROLE_CIDADAO),
             'cpf' => $data['cpf'],
-            'uuid' => $data['uuid']
+            'uuid' => $data['uuid'],
         ]);
     }
 
@@ -217,7 +222,7 @@ class LoginController extends Controller
         $login = $this->traitLogin($request);
         $user = Auth::user();
         $user->update([
-            'last_login_at' => Carbon::now()
+            'last_login_at' => Carbon::now(),
         ]);
 
         Session::flash('flash_msg', 'Login feito com Sucesso.');
