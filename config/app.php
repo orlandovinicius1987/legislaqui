@@ -182,9 +182,9 @@ return [
           Other service providers...
         */
         //Laravel\Socialite\SocialiteServiceProvider::class,
-        \SocialiteProviders\Manager\ServiceProvider::class,
+        //\SocialiteProviders\Manager\ServiceProvider::class,
         Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
-        geekcom\ValidatorDocs\ValidatorProvider::class
+        geekcom\ValidatorDocs\ValidatorProvider::class,
     ],
 
     /*
@@ -239,6 +239,6 @@ return [
         'NoCaptcha' => 'Anhskohbo\NoCaptcha\Facades\NoCaptcha',
         'Location' => 'Stevebauman\Location\Facades\Location',
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class
-    ]
+        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
+    ],
 ];

@@ -38,6 +38,12 @@
                 <p>
                     A utilização do Legislaqui está condicionada à realização de cadastro com inserção de CPF atrelado a conta no Facebook ou no Google ou, ainda, pelo preenchimento de formulário eletrônico com as informações solicitadas. A senha criada para acesso ao portal será criptografada, pessoal e inviolável, não sendo possível à Alerj visualizá-la. A senha é específica para acesso ao sistema do Legislaqui.
                 </p>
+                <h3>
+                    EXCLUSÃO DE DADOS
+                </h3>
+                <p>
+                    Conforme orientação do artigo 5º da LEI Nº 13.709, DE 14 DE AGOSTO DE 2018, destinamos o e-mail <b>legislaqui@alerj.rj.gov.br</b> para exclusão de dados. Sendo assim os cidadãos que desejarem exclusão dos seus dados do legislaqui deverão encaminhar mensagem para o e-mail citado, solicitando a exclusão.
+                </p>
 
 
 

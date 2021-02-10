@@ -33,6 +33,7 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+
 Route::group(['middleware' => 'web'], function () {
     Route::get('/teste', 'SocialAuthController@redirectToProvider');
 
@@ -40,12 +41,14 @@ Route::group(['middleware' => 'web'], function () {
         return view('teste');
     });
 
-    //Social Login
-    Route::get('/redirect/{socialNetwork}', 'SocialAuthController@redirect');
     Route::get(
-        '/auth/{socialNetwork}/callback',
-        'SocialAuthController@socialNetworkCallback'
-    );
+        '/login/{provider}',
+        'Auth\LoginController@redirectToProvider'
+    )->name('social.login');
+    Route::get(
+        '/login/{provider}/callback',
+        'Auth\LoginController@handleProviderCallback'
+    )->name('social.callback');
 
     Route::auth();
 
@@ -53,62 +56,62 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/hearings', [
         'as' => 'hearings.index',
-        'uses' => 'HearingsController@index'
+        'uses' => 'HearingsController@index',
     ]);
 
     Route::get('/wikilegis', [
         'as' => 'wikilegis.index',
-        'uses' => 'WikilegisController@index'
+        'uses' => 'WikilegisController@index',
     ]);
 
     Route::get('/proposals', [
         'as' => 'proposals.index',
-        'uses' => 'ProposalsController@index'
+        'uses' => 'ProposalsController@index',
     ]);
 
     Route::post('/', [
         'as' => 'home.post',
-        'uses' => 'ProposalsController@index'
+        'uses' => 'ProposalsController@index',
     ]);
 
     Route::get('proposals/{id}', [
         'as' => 'proposal.show',
-        'uses' => 'ProposalsController@show'
+        'uses' => 'ProposalsController@show',
     ])->where('id', '[0-9]+');
 
     // Like Button
     Route::get('proposals/{id}/like', [
         'as' => 'proposal.like',
-        'uses' => 'ProposalsController@like'
+        'uses' => 'ProposalsController@like',
     ]);
     Route::get('proposals/{id}/unlike', [
         'as' => 'proposal.unlike',
-        'uses' => 'ProposalsController@unlike'
+        'uses' => 'ProposalsController@unlike',
     ]);
 
     Route::group(['prefix' => 'about'], function () {
         //About - Contact Form
         Route::get('about', [
             'as' => 'about.about',
-            'uses' => 'AboutController@index'
+            'uses' => 'AboutController@index',
         ]);
 
         //Forwarding
         Route::get('forwarding', [
             'as' => 'about.forwarding',
-            'uses' => 'AboutController@forwarding'
+            'uses' => 'AboutController@forwarding',
         ]);
 
         //Howto
         Route::get('howto', [
             'as' => 'about.howto',
-            'uses' => 'AboutController@howto'
+            'uses' => 'AboutController@howto',
         ]);
 
         //Support
         Route::get('support', [
             'as' => 'about.support',
-            'uses' => 'AboutController@support'
+            'uses' => 'AboutController@support',
         ]);
     });
 
@@ -116,97 +119,102 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('terms', ['as' => 'terms', 'uses' => 'AboutController@terms']);
     Route::get('privacy-policy', [
         'as' => 'privacy-policy',
-        'uses' => 'AboutController@privacyPolicy'
+        'uses' => 'AboutController@privacyPolicy',
     ]);
 
     Route::get('contact', [
         'as' => 'contact',
-        'uses' => 'AboutController@create'
+        'uses' => 'AboutController@create',
     ]);
     Route::post('contact', [
         'as' => 'contact_store',
-        'uses' => 'AboutController@store'
+        'uses' => 'AboutController@store',
     ]);
     // relationship commissions
     Route::get('committee', [
         'as' => 'committee',
-        'uses' => 'AboutController@committee'
+        'uses' => 'AboutController@committee',
     ]);
 });
 
-Route::group(['middleware' => ['web', 'auth']], function () {
+Route::group(['middleware' => ['web', 'auth', 'complete']], function () {
     //Proposals
     Route::get('proposals/create', [
         'as' => 'proposal.create',
-        'uses' => 'ProposalsController@create'
+        'uses' => 'ProposalsController@create',
     ]);
 
     Route::post('proposals', [
         'as' => 'proposal.store',
-        'uses' => 'ProposalsController@store'
+        'uses' => 'ProposalsController@store',
     ]);
 
     Route::get('proposals/{id}/edit', [
         'as' => 'proposal.edit',
-        'uses' => 'ProposalsController@edit'
+        'uses' => 'ProposalsController@edit',
     ]);
 
     Route::patch('proposals/{id}/update', [
         'as' => 'proposal.update',
-        'uses' => 'ProposalsController@update'
+        'uses' => 'ProposalsController@update',
     ]);
 
     Route::get('proposals/{id}/destroy', [
         'as' => 'proposal.destroy',
-        'uses' => 'ProposalsController@destroy'
+        'uses' => 'ProposalsController@destroy',
     ]);
 
     Route::get('proposals/{id}/response', [
         'as' => 'proposal.response',
-        'uses' => 'ProposalsController@response'
+        'uses' => 'ProposalsController@response',
     ]);
 
     Route::patch('proposals/{id}/updateResponse', [
         'as' => 'proposal.updateResponse',
-        'uses' => 'ProposalsController@updateResponse'
+        'uses' => 'ProposalsController@updateResponse',
     ]);
 
     Route::get('proposals/notresponded', [
         'as' => 'proposals.notresponded',
-        'uses' => 'ProposalsController@notResponded'
+        'uses' => 'ProposalsController@notResponded',
     ]);
 
     //Approval Button
     Route::get('proposals/{id}/approval', [
         'as' => 'proposal.approval',
-        'uses' => 'ProposalsController@approval'
+        'uses' => 'ProposalsController@approval',
     ]);
 
     //Follow Button
     Route::get('proposals/{id}/follow', [
         'as' => 'proposal.follow',
-        'uses' => 'ProposalsController@follow'
+        'uses' => 'ProposalsController@follow',
     ]);
 
     //Unfollow Button
     Route::get('proposals/{id}/unfollow', [
         'as' => 'proposal.unfollow',
-        'uses' => 'ProposalsController@unfollow'
+        'uses' => 'ProposalsController@unfollow',
     ]);
 
     //Users
     Route::get('users/{id}/proposals', [
         'as' => 'users.proposals',
-        'uses' => 'UsersController@proposals'
+        'uses' => 'UsersController@proposals',
     ]);
 
     Route::get('users/{id}/responses', [
         'as' => 'users.responses',
-        'uses' => 'UsersController@responses'
+        'uses' => 'UsersController@responses',
     ]);
 });
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
+    Route::get('/phpinfo', function () {
+        phpinfo();
+        die();
+    });
+
     //Admin
     View::composer('admin.*', 'App\Http\ViewComposers\StatusComposer');
 
@@ -214,147 +222,147 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 
     Route::get('admin/users/', [
         'as' => 'admin.users',
-        'uses' => 'AdminController@users'
+        'uses' => 'AdminController@users',
     ]);
 
     Route::get('admin/users/{id}', [
         'as' => 'admin.users.show',
-        'uses' => 'AdminController@showUser'
+        'uses' => 'AdminController@showUser',
     ])->where('id', '[0-9]+');
 
     Route::get('admin/users/create', [
         'as' => 'admin.users.create',
-        'uses' => 'AdminController@createUser'
+        'uses' => 'AdminController@createUser',
     ]);
 
     Route::post('admin/users', [
         'as' => 'admin.users.store',
-        'uses' => 'AdminController@storeUser'
+        'uses' => 'AdminController@storeUser',
     ]);
 
     Route::get('admin/users/{id}/edit', [
         'as' => 'admin.users.edit',
-        'uses' => 'AdminController@editUser'
+        'uses' => 'AdminController@editUser',
     ]);
 
     Route::patch('admin/users/{id}/update', [
         'as' => 'admin.users.update',
-        'uses' => 'AdminController@updateUser'
+        'uses' => 'AdminController@updateUser',
     ]);
 
     Route::get('admin/users/{id}/destroy', [
         'as' => 'admin.users.destroy',
-        'uses' => 'AdminController@destroyUser'
+        'uses' => 'AdminController@destroyUser',
     ]);
 
     Route::get('admin/proposals', [
         'as' => 'admin.proposals',
-        'uses' => 'AdminController@proposals'
+        'uses' => 'AdminController@proposals',
     ]);
 
     Route::get('admin/proposals/{id}', [
         'as' => 'admin.proposal.show',
-        'uses' => 'AdminController@showProposal'
+        'uses' => 'AdminController@showProposal',
     ])->where('id', '[0-9]+');
 
     Route::get('admin/proposals/notresponded', [
         'as' => 'admin.proposals.notresponded',
-        'uses' => 'AdminController@notResponded'
+        'uses' => 'AdminController@notResponded',
     ]);
 
     Route::get('admin/proposals/{id}/response', [
         'as' => 'admin.proposal.response',
-        'uses' => 'AdminController@response'
+        'uses' => 'AdminController@response',
     ]);
 
     Route::patch('admin/proposals/{id}/updateResponse', [
         'as' => 'admin.proposal.updateResponse',
-        'uses' => 'AdminController@updateResponse'
+        'uses' => 'AdminController@updateResponse',
     ]);
 
     Route::get('admin/proposals/create', [
         'as' => 'admin.proposal.create',
-        'uses' => 'AdminController@createProposal'
+        'uses' => 'AdminController@createProposal',
     ]);
 
     Route::post('admin/proposals', [
         'as' => 'admin.proposal.store',
-        'uses' => 'AdminController@storeProposal'
+        'uses' => 'AdminController@storeProposal',
     ]);
 
     Route::get('admin/proposals/{id}/edit', [
         'as' => 'admin.proposal.edit',
-        'uses' => 'AdminController@editProposal'
+        'uses' => 'AdminController@editProposal',
     ]);
 
     Route::patch('admin/proposals/{id}/update', [
         'as' => 'admin.proposal.update',
-        'uses' => 'AdminController@updateProposal'
+        'uses' => 'AdminController@updateProposal',
     ]);
 
     Route::get('admin/proposals/{id}/destroy', [
         'as' => 'admin.proposal.destroy',
-        'uses' => 'AdminController@destroyProposal'
+        'uses' => 'AdminController@destroyProposal',
     ]);
 
     Route::get('admin/proposals/{id}/approved_at_by', [
         'as' => 'admin.proposal.approved',
-        'uses' => 'AdminController@approvedProposal'
+        'uses' => 'AdminController@approvedProposal',
     ]);
 
     Route::get('admin/proposals/{id}/disapproved_at_by', [
         'as' => 'admin.proposal.disapproved',
-        'uses' => 'AdminController@disapprovedProposal'
+        'uses' => 'AdminController@disapprovedProposal',
     ]);
 
     Route::get('admin/proposals/approved', [
         'as' => 'admin.proposals.approved',
-        'uses' => 'AdminController@approved'
+        'uses' => 'AdminController@approved',
     ]);
 
     Route::get('admin/proposals/disapproved', [
         'as' => 'admin.proposals.disapproved',
-        'uses' => 'AdminController@disapproved'
+        'uses' => 'AdminController@disapproved',
     ]);
 
     Route::get('admin/proposals/expired', [
         'as' => 'admin.proposals.expired',
-        'uses' => 'AdminController@expired'
+        'uses' => 'AdminController@expired',
     ]);
 
     Route::get('admin/proposals/approval-goal', [
         'as' => 'admin.proposals.approvalGoal',
-        'uses' => 'AdminController@approvalGoal'
+        'uses' => 'AdminController@approvalGoal',
     ]);
 
     Route::get('admin/proposals/{id}/to-committee', [
         'as' => 'admin.proposal.toCommittee',
-        'uses' => 'AdminController@toCommittee'
+        'uses' => 'AdminController@toCommittee',
     ]);
 
     Route::get('admin/proposals/in-committee', [
         'as' => 'admin.proposals.inCommittee',
-        'uses' => 'AdminController@inCommittee'
+        'uses' => 'AdminController@inCommittee',
     ]);
 
     Route::get('admin/proposals/{id}/committee-approval', [
         'as' => 'admin.proposal.committeeApproval',
-        'uses' => 'AdminController@approvedProposalByCommittee'
+        'uses' => 'AdminController@approvedProposalByCommittee',
     ]);
 
     Route::get('admin/proposals/{id}/committee-disapproval', [
         'as' => 'admin.proposal.committeeDisapproval',
-        'uses' => 'AdminController@disapprovedProposalByCommittee'
+        'uses' => 'AdminController@disapprovedProposalByCommittee',
     ]);
 
     Route::get('admin/proposals/approved-by-committee', [
         'as' => 'admin.proposal.approvedByCommittee',
-        'uses' => 'AdminController@approvedByCommittee'
+        'uses' => 'AdminController@approvedByCommittee',
     ]);
 
     Route::get('admin/proposals/disapproved-by-committee', [
         'as' => 'admin.proposal.disapprovedByCommittee',
-        'uses' => 'AdminController@disapprovedByCommittee'
+        'uses' => 'AdminController@disapprovedByCommittee',
     ]);
 
     //    Route::get('admin/proposals/{id}/bypass', [
@@ -364,17 +372,17 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
 
     Route::get('admin/proposals/{id}/bill-project', [
         'as' => 'admin.proposal.billProject',
-        'uses' => 'AdminController@billProject'
+        'uses' => 'AdminController@billProject',
     ]);
 
     Route::get('admin/proposals/bill-project-sidebar', [
         'as' => 'admin.proposal.billProjectSidebar',
-        'uses' => 'AdminController@billProjectSidebar'
+        'uses' => 'AdminController@billProjectSidebar',
     ]);
 
     Route::patch('admin/proposals/{id}/update-bill-project', [
         'as' => 'admin.proposal.updateBillProject',
-        'uses' => 'AdminController@updateBillProject'
+        'uses' => 'AdminController@updateBillProject',
     ]);
 
     Route::get('/admin/logout', function () {
