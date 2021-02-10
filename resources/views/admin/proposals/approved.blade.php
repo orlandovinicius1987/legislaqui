@@ -57,9 +57,6 @@
                                                     <td>{{$approved->like_count - $approved->unlike_count}}</td>
                                                 @endIf
                                                 <td>{{$approved->approvals()->count()}}</td>
-                                                <td>
-
-                                                </td>
                                                     @if($approved->isModeratable())
                                                         <td><a href="{{ route('admin.proposal.response', ['id' => $approved->id]) }}" class="btn btn-info botao" role="button"><i class="fa fa-cog fa-spin fa fa-fw"></i> Moderar esta ideia!</a>  </td>
                                                     @endif
