@@ -4,7 +4,7 @@
 
 <footer class="footer mt-auto py-3 bg-dark" id="footer">
     <div class="container">
-        <div class="row text-center text-xs-center text-sm-left text-md-left pt-3">
+        <div class="row text-center text-xs-center text-sm-left text-md-left pt-3 d-flex align-items-center">
 
             <div class="offset-2 col-8 col-sm-3 offset-md-0 col-md-3">
                 @include('partials.logo-alerj')
