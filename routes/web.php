@@ -33,180 +33,180 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
+Route::group(['middleware' => 'navbarAndFooter'], function () {
+    Route::group(['middleware' => 'web'], function () {
+        Route::get('/teste', 'SocialAuthController@redirectToProvider');
 
-Route::group(['middleware' => 'web'], function () {
-    Route::get('/teste', 'SocialAuthController@redirectToProvider');
+        Route::get('/teste', function () {
+            return view('teste');
+        });
 
-    Route::get('/teste', function () {
-        return view('teste');
+        Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')->name(
+            'social.login'
+        );
+        Route::get(
+            '/login/{provider}/callback',
+            'Auth\LoginController@handleProviderCallback'
+        )->name('social.callback');
+
+        Route::auth();
+
+        Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+
+        Route::get('/hearings', [
+            'as' => 'hearings.index',
+            'uses' => 'HearingsController@index',
+        ]);
+
+        Route::get('/wikilegis', [
+            'as' => 'wikilegis.index',
+            'uses' => 'WikilegisController@index',
+        ]);
+
+        Route::get('/proposals', [
+            'as' => 'proposals.index',
+            'uses' => 'ProposalsController@index',
+        ]);
+
+        Route::post('/', [
+            'as' => 'home.post',
+            'uses' => 'ProposalsController@index',
+        ]);
+
+        Route::get('proposals/{id}', [
+            'as' => 'proposal.show',
+            'uses' => 'ProposalsController@show',
+        ])->where('id', '[0-9]+');
+
+        // Like Button
+        Route::get('proposals/{id}/like', [
+            'as' => 'proposal.like',
+            'uses' => 'ProposalsController@like',
+        ]);
+        Route::get('proposals/{id}/unlike', [
+            'as' => 'proposal.unlike',
+            'uses' => 'ProposalsController@unlike',
+        ]);
+
+        Route::group(['prefix' => 'about'], function () {
+            //About - Contact Form
+            Route::get('about', [
+                'as' => 'about.about',
+                'uses' => 'AboutController@index',
+            ]);
+
+            //Forwarding
+            Route::get('forwarding', [
+                'as' => 'about.forwarding',
+                'uses' => 'AboutController@forwarding',
+            ]);
+
+            //Howto
+            Route::get('howto', [
+                'as' => 'about.howto',
+                'uses' => 'AboutController@howto',
+            ]);
+
+            //Support
+            Route::get('support', [
+                'as' => 'about.support',
+                'uses' => 'AboutController@support',
+            ]);
+        });
+
+        // use terms
+        Route::get('terms', ['as' => 'terms', 'uses' => 'AboutController@terms']);
+        Route::get('privacy-policy', [
+            'as' => 'privacy-policy',
+            'uses' => 'AboutController@privacyPolicy',
+        ]);
+
+        Route::get('contact', [
+            'as' => 'contact',
+            'uses' => 'AboutController@create',
+        ]);
+        Route::post('contact', [
+            'as' => 'contact_store',
+            'uses' => 'AboutController@store',
+        ]);
+        // relationship commissions
+        Route::get('committee', [
+            'as' => 'committee',
+            'uses' => 'AboutController@committee',
+        ]);
     });
 
-    Route::get(
-        '/login/{provider}',
-        'Auth\LoginController@redirectToProvider'
-    )->name('social.login');
-    Route::get(
-        '/login/{provider}/callback',
-        'Auth\LoginController@handleProviderCallback'
-    )->name('social.callback');
-
-    Route::auth();
-
-    Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
-
-    Route::get('/hearings', [
-        'as' => 'hearings.index',
-        'uses' => 'HearingsController@index',
-    ]);
-
-    Route::get('/wikilegis', [
-        'as' => 'wikilegis.index',
-        'uses' => 'WikilegisController@index',
-    ]);
-
-    Route::get('/proposals', [
-        'as' => 'proposals.index',
-        'uses' => 'ProposalsController@index',
-    ]);
-
-    Route::post('/', [
-        'as' => 'home.post',
-        'uses' => 'ProposalsController@index',
-    ]);
-
-    Route::get('proposals/{id}', [
-        'as' => 'proposal.show',
-        'uses' => 'ProposalsController@show',
-    ])->where('id', '[0-9]+');
-
-    // Like Button
-    Route::get('proposals/{id}/like', [
-        'as' => 'proposal.like',
-        'uses' => 'ProposalsController@like',
-    ]);
-    Route::get('proposals/{id}/unlike', [
-        'as' => 'proposal.unlike',
-        'uses' => 'ProposalsController@unlike',
-    ]);
-
-    Route::group(['prefix' => 'about'], function () {
-        //About - Contact Form
-        Route::get('about', [
-            'as' => 'about.about',
-            'uses' => 'AboutController@index',
+    Route::group(['middleware' => ['web', 'auth', 'complete']], function () {
+        //Proposals
+        Route::get('proposals/create', [
+            'as' => 'proposal.create',
+            'uses' => 'ProposalsController@create',
         ]);
 
-        //Forwarding
-        Route::get('forwarding', [
-            'as' => 'about.forwarding',
-            'uses' => 'AboutController@forwarding',
+        Route::post('proposals', [
+            'as' => 'proposal.store',
+            'uses' => 'ProposalsController@store',
         ]);
 
-        //Howto
-        Route::get('howto', [
-            'as' => 'about.howto',
-            'uses' => 'AboutController@howto',
+        Route::get('proposals/{id}/edit', [
+            'as' => 'proposal.edit',
+            'uses' => 'ProposalsController@edit',
         ]);
 
-        //Support
-        Route::get('support', [
-            'as' => 'about.support',
-            'uses' => 'AboutController@support',
+        Route::patch('proposals/{id}/update', [
+            'as' => 'proposal.update',
+            'uses' => 'ProposalsController@update',
+        ]);
+
+        Route::get('proposals/{id}/destroy', [
+            'as' => 'proposal.destroy',
+            'uses' => 'ProposalsController@destroy',
+        ]);
+
+        Route::get('proposals/{id}/response', [
+            'as' => 'proposal.response',
+            'uses' => 'ProposalsController@response',
+        ]);
+
+        Route::patch('proposals/{id}/updateResponse', [
+            'as' => 'proposal.updateResponse',
+            'uses' => 'ProposalsController@updateResponse',
+        ]);
+
+        Route::get('proposals/notresponded', [
+            'as' => 'proposals.notresponded',
+            'uses' => 'ProposalsController@notResponded',
+        ]);
+
+        //Approval Button
+        Route::get('proposals/{id}/approval', [
+            'as' => 'proposal.approval',
+            'uses' => 'ProposalsController@approval',
+        ]);
+
+        //Follow Button
+        Route::get('proposals/{id}/follow', [
+            'as' => 'proposal.follow',
+            'uses' => 'ProposalsController@follow',
+        ]);
+
+        //Unfollow Button
+        Route::get('proposals/{id}/unfollow', [
+            'as' => 'proposal.unfollow',
+            'uses' => 'ProposalsController@unfollow',
+        ]);
+
+        //Users
+        Route::get('users/{id}/proposals', [
+            'as' => 'users.proposals',
+            'uses' => 'UsersController@proposals',
+        ]);
+
+        Route::get('users/{id}/responses', [
+            'as' => 'users.responses',
+            'uses' => 'UsersController@responses',
         ]);
     });
-
-    // use terms
-    Route::get('terms', ['as' => 'terms', 'uses' => 'AboutController@terms']);
-    Route::get('privacy-policy', [
-        'as' => 'privacy-policy',
-        'uses' => 'AboutController@privacyPolicy',
-    ]);
-
-    Route::get('contact', [
-        'as' => 'contact',
-        'uses' => 'AboutController@create',
-    ]);
-    Route::post('contact', [
-        'as' => 'contact_store',
-        'uses' => 'AboutController@store',
-    ]);
-    // relationship commissions
-    Route::get('committee', [
-        'as' => 'committee',
-        'uses' => 'AboutController@committee',
-    ]);
-});
-
-Route::group(['middleware' => ['web', 'auth', 'complete']], function () {
-    //Proposals
-    Route::get('proposals/create', [
-        'as' => 'proposal.create',
-        'uses' => 'ProposalsController@create',
-    ]);
-
-    Route::post('proposals', [
-        'as' => 'proposal.store',
-        'uses' => 'ProposalsController@store',
-    ]);
-
-    Route::get('proposals/{id}/edit', [
-        'as' => 'proposal.edit',
-        'uses' => 'ProposalsController@edit',
-    ]);
-
-    Route::patch('proposals/{id}/update', [
-        'as' => 'proposal.update',
-        'uses' => 'ProposalsController@update',
-    ]);
-
-    Route::get('proposals/{id}/destroy', [
-        'as' => 'proposal.destroy',
-        'uses' => 'ProposalsController@destroy',
-    ]);
-
-    Route::get('proposals/{id}/response', [
-        'as' => 'proposal.response',
-        'uses' => 'ProposalsController@response',
-    ]);
-
-    Route::patch('proposals/{id}/updateResponse', [
-        'as' => 'proposal.updateResponse',
-        'uses' => 'ProposalsController@updateResponse',
-    ]);
-
-    Route::get('proposals/notresponded', [
-        'as' => 'proposals.notresponded',
-        'uses' => 'ProposalsController@notResponded',
-    ]);
-
-    //Approval Button
-    Route::get('proposals/{id}/approval', [
-        'as' => 'proposal.approval',
-        'uses' => 'ProposalsController@approval',
-    ]);
-
-    //Follow Button
-    Route::get('proposals/{id}/follow', [
-        'as' => 'proposal.follow',
-        'uses' => 'ProposalsController@follow',
-    ]);
-
-    //Unfollow Button
-    Route::get('proposals/{id}/unfollow', [
-        'as' => 'proposal.unfollow',
-        'uses' => 'ProposalsController@unfollow',
-    ]);
-
-    //Users
-    Route::get('users/{id}/proposals', [
-        'as' => 'users.proposals',
-        'uses' => 'UsersController@proposals',
-    ]);
-
-    Route::get('users/{id}/responses', [
-        'as' => 'users.responses',
-        'uses' => 'UsersController@responses',
-    ]);
 });
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function () {

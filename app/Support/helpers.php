@@ -24,3 +24,8 @@ function only_numbers($string)
 {
     return preg_replace('/\D/', '', $string);
 }
+
+function to_boolean($boolean)
+{
+    return $boolean === 'true' || $boolean === '1' || $boolean === 1 || $boolean === true;
+}
