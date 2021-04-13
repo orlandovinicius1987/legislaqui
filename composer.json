@@ -12,6 +12,7 @@
         "anhskohbo/no-captcha": "3.*",
         "bensampo/laravel-enum": "1.x",
         "biscolab/laravel-recaptcha": "^4.4",
+        "bugsnag/bugsnag-laravel": "^2.0",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "geekcom/validator-docs": "1.*",
